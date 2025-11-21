@@ -22,14 +22,14 @@ interface ProjectConfig {
 }
 
 export async function initCommand(options: InitOptions) {
-  console.log(chalk.bold.cyan('\n🚀 Initializing AADS in your project...\n'));
+  console.log(chalk.bold.cyan('\n🚀 Initializing RANA in your project...\n'));
 
-  // Check if .aads.yml already exists
-  const configPath = path.join(process.cwd(), '.aads.yml');
+  // Check if .rana.yml already exists
+  const configPath = path.join(process.cwd(), '.rana.yml');
   const exists = await fileExists(configPath);
 
   if (exists && !options.force) {
-    console.log(chalk.yellow('⚠️  .aads.yml already exists!'));
+    console.log(chalk.yellow('⚠️  .rana.yml already exists!'));
     const { overwrite } = await inquirer.prompt([
       {
         type: 'confirm',
@@ -52,20 +52,20 @@ export async function initCommand(options: InitOptions) {
   spinner.succeed('Project information collected');
 
   // Generate configuration
-  spinner.start('Generating .aads.yml configuration...');
+  spinner.start('Generating .rana.yml configuration...');
   const config = generateConfig(projectInfo, options.template || 'default');
-  spinner.succeed('.aads.yml configuration generated');
+  spinner.succeed('.rana.yml configuration generated');
 
   // Write configuration file
-  spinner.start('Writing .aads.yml...');
+  spinner.start('Writing .rana.yml...');
   await fs.writeFile(configPath, yaml.dump(config, { indent: 2 }));
-  spinner.succeed('.aads.yml created successfully');
+  spinner.succeed('.rana.yml created successfully');
 
   // Create docs directory
-  spinner.start('Creating docs/aads/ directory...');
-  const docsPath = path.join(process.cwd(), 'docs', 'aads');
+  spinner.start('Creating docs/rana/ directory...');
+  const docsPath = path.join(process.cwd(), 'docs', 'rana');
   await fs.mkdir(docsPath, { recursive: true });
-  spinner.succeed('docs/aads/ directory created');
+  spinner.succeed('docs/rana/ directory created');
 
   // Copy documentation templates
   spinner.start('Copying documentation templates...');
@@ -73,22 +73,22 @@ export async function initCommand(options: InitOptions) {
   spinner.succeed('Documentation templates copied');
 
   // Success message
-  console.log(chalk.bold.green('\n✅ AADS initialized successfully!\n'));
+  console.log(chalk.bold.green('\n✅ RANA initialized successfully!\n'));
   console.log(chalk.gray('Files created:'));
-  console.log(chalk.gray('  📄 .aads.yml'));
-  console.log(chalk.gray('  📁 docs/aads/'));
-  console.log(chalk.gray('  📝 docs/aads/AGENT_INSTRUCTIONS.md'));
-  console.log(chalk.gray('  ✅ docs/aads/DEVELOPMENT_CHECKLIST.md\n'));
+  console.log(chalk.gray('  📄 .rana.yml'));
+  console.log(chalk.gray('  📁 docs/rana/'));
+  console.log(chalk.gray('  📝 docs/rana/AGENT_INSTRUCTIONS.md'));
+  console.log(chalk.gray('  ✅ docs/rana/DEVELOPMENT_CHECKLIST.md\n'));
 
   console.log(chalk.bold.white('Next steps:'));
-  console.log(chalk.gray('  1. Review and customize .aads.yml'));
-  console.log(chalk.gray('  2. Update docs/aads/AGENT_INSTRUCTIONS.md with project-specific rules'));
-  console.log(chalk.gray('  3. Run ') + chalk.cyan('aads check') + chalk.gray(' to verify setup'));
-  console.log(chalk.gray('  4. Share .aads.yml with your AI assistant\n'));
+  console.log(chalk.gray('  1. Review and customize .rana.yml'));
+  console.log(chalk.gray('  2. Update docs/rana/AGENT_INSTRUCTIONS.md with project-specific rules'));
+  console.log(chalk.gray('  3. Run ') + chalk.cyan('rana check') + chalk.gray(' to verify setup'));
+  console.log(chalk.gray('  4. Share .rana.yml with your AI assistant\n'));
 
   console.log(chalk.bold.cyan('💡 Pro Tip:'));
   console.log(chalk.gray('When working with AI assistants, say:'));
-  console.log(chalk.italic.white('"Follow the AADS framework defined in .aads.yml"\n'));
+  console.log(chalk.italic.white('"Follow the RANA framework defined in .rana.yml"\n'));
 }
 
 async function fileExists(filePath: string): Promise<boolean> {

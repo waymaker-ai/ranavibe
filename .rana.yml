@@ -1,10 +1,10 @@
-# AADS Configuration for AADS Framework
-# This is a self-referential example of AADS in use
+# RANA Configuration for RANA Framework
+# This is a self-referential example of RANA in use
 
 version: 1.0.0
 
 project:
-  name: "AADS Framework"
+  name: "RANA Framework"
   type: "tooling"
   description: "AI-Assisted Development Standard - Universal framework for production-quality AI development"
   languages:
@@ -76,7 +76,7 @@ quality_gates:
 deployment:
   npm:
     enabled: true
-    package_name: "@aads/cli"
+    package_name: "@rana/cli"
     registry: "https://registry.npmjs.org/"
 
   github:
@@ -100,7 +100,7 @@ ai_assistant:
 # Tooling
 tools:
   cli:
-    name: "@aads/cli"
+    name: "@rana/cli"
     version: "0.1.0"
     commands:
       - init
@@ -110,10 +110,10 @@ tools:
 
   documentation:
     framework: "Nextra"
-    url: "https://aads.dev"
+    url: "https://rana.dev"
 
 # Community
 community:
-  discord: "https://discord.gg/aads"
-  twitter: "@aads_dev"
+  discord: "https://discord.gg/rana"
+  twitter: "@rana_dev"
   github_discussions: true

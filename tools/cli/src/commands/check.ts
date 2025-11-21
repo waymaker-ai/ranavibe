@@ -18,18 +18,18 @@ interface CheckResult {
 }
 
 export async function checkCommand(options: CheckOptions) {
-  console.log(chalk.bold.cyan('\n= Checking AADS compliance...\n'));
+  console.log(chalk.bold.cyan('\n= Checking RANA compliance...\n'));
 
   const results: CheckResult[] = [];
 
-  // 1. Check if .aads.yml exists
-  const spinner = ora('Checking for .aads.yml...').start();
-  const configPath = path.join(process.cwd(), '.aads.yml');
+  // 1. Check if .rana.yml exists
+  const spinner = ora('Checking for .rana.yml...').start();
+  const configPath = path.join(process.cwd(), '.rana.yml');
 
   try {
     const configContent = await fs.readFile(configPath, 'utf-8');
     const config = yaml.load(configContent) as any;
-    spinner.succeed('Found .aads.yml');
+    spinner.succeed('Found .rana.yml');
 
     // 2. Validate configuration
     spinner.start('Validating configuration...');
@@ -102,9 +102,9 @@ export async function checkCommand(options: CheckOptions) {
 
   } catch (error: any) {
     if (error.code === 'ENOENT') {
-      spinner.fail('.aads.yml not found');
-      console.log(chalk.yellow('\n   No .aads.yml configuration found'));
-      console.log(chalk.gray('   Run ') + chalk.cyan('aads init') + chalk.gray(' to initialize AADS\n'));
+      spinner.fail('.rana.yml not found');
+      console.log(chalk.yellow('\nï¿½  No .rana.yml configuration found'));
+      console.log(chalk.gray('   Run ') + chalk.cyan('rana init') + chalk.gray(' to initialize RANA\n'));
       process.exit(1);
     } else {
       spinner.fail('Error during check');
@@ -341,16 +341,16 @@ function displayResults(results: CheckResult[], verbose: boolean) {
   const failed = results.filter(r => !r.passed).length;
   const total = results.length;
 
-  console.log(chalk.bold('\n=Ê AADS Compliance Report\n'));
+  console.log(chalk.bold('\n=ï¿½ RANA Compliance Report\n'));
 
   if (verbose) {
     console.log(chalk.gray('Detailed Results:\n'));
     results.forEach(result => {
-      const icon = result.passed ? chalk.green('') : chalk.yellow(' ');
+      const icon = result.passed ? chalk.green('') : chalk.yellow('ï¿½');
       const color = result.passed ? chalk.green : chalk.yellow;
       console.log(`${icon} ${color(result.name)}: ${chalk.gray(result.message)}`);
       if (result.fixable) {
-        console.log(chalk.gray(`   ’ Fixable with --fix flag`));
+        console.log(chalk.gray(`   ï¿½ Fixable with --fix flag`));
       }
     });
     console.log();
@@ -360,7 +360,7 @@ function displayResults(results: CheckResult[], verbose: boolean) {
   console.log(chalk.bold('Summary:'));
   console.log(chalk.green(`   ${passed} passed`));
   if (failed > 0) {
-    console.log(chalk.yellow(`    ${failed} warnings`));
+    console.log(chalk.yellow(`  ï¿½ ${failed} warnings`));
   }
   console.log(chalk.gray(`  Total: ${total} checks\n`));
 
@@ -368,7 +368,7 @@ function displayResults(results: CheckResult[], verbose: boolean) {
   if (failed === 0) {
     console.log(chalk.bold.green(' All checks passed!\n'));
   } else {
-    console.log(chalk.bold.yellow(`   ${failed} warning(s) found\n`));
+    console.log(chalk.bold.yellow(`ï¿½  ${failed} warning(s) found\n`));
     console.log(chalk.gray('Run with ') + chalk.cyan('--verbose') + chalk.gray(' for detailed output'));
     console.log(chalk.gray('Run with ') + chalk.cyan('--fix') + chalk.gray(' to auto-fix fixable issues\n'));
   }

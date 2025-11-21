@@ -1,10 +1,10 @@
 {
-  "name": "@aads/cli",
+  "name": "@rana/cli",
   "version": "0.1.0",
-  "description": "CLI tool for AI-Assisted Development Standard (AADS)",
+  "description": "CLI tool for AI-Assisted Development Standard (RANA)",
   "main": "dist/index.js",
   "bin": {
-    "aads": "dist/cli.js"
+    "rana": "dist/cli.js"
   },
   "type": "module",
   "scripts": {
@@ -15,7 +15,7 @@
     "prepublishOnly": "npm run build"
   },
   "keywords": [
-    "aads",
+    "rana",
     "ai",
     "development",
     "standards",
@@ -25,20 +25,20 @@
     "gpt",
     "copilot"
   ],
-  "author": "AADS Contributors",
+  "author": "RANA Contributors",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aads-dev/aads-framework.git",
+    "url": "git+https://github.com/rana-dev/rana-framework.git",
     "directory": "tools/cli"
   },
   "bugs": {
-    "url": "https://github.com/aads-dev/aads-framework/issues"
+    "url": "https://github.com/rana-dev/rana-framework/issues"
   },
-  "homepage": "https://aads.dev",
+  "homepage": "https://rana.dev",
   "funding": {
     "type": "individual",
-    "url": "https://waymaker.com/aads"
+    "url": "https://waymaker.com/rana"
   },
   "dependencies": {
     "chalk": "^5.3.0",

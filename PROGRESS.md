@@ -1,4 +1,4 @@
-# AADS Framework - Build Progress
+# RANA Framework - Build Progress
 
 **Last Updated:** 2025-11-05
 **Status:** Foundation Complete, Ready for Next Phase
@@ -34,14 +34,14 @@
    - Integration guide for Claude Code
    - Training new agents
 
-**For AADS Framework (Open Source):**
+**For RANA Framework (Open Source):**
 7. ✅ `docs/COMPETITIVE_ANALYSIS.md` (4,000 words)
    - Research on existing solutions
    - No comprehensive solution exists
    - Clear market opportunity
 
 8. ✅ `docs/FRAMEWORK_VISION.md` (7,000 words)
-   - Complete vision for AADS
+   - Complete vision for RANA
    - 24-month roadmap
    - Monetization strategy
 
@@ -50,16 +50,16 @@
    - Build backward from outcome
    - 7-phase systematic approach
 
-10. ✅ `docs/AADS_QUICK_START_GUIDE.md` (6,000 words)
+10. ✅ `docs/RANA_QUICK_START_GUIDE.md` (6,000 words)
     - 30-day launch plan
     - Week-by-week tasks
     - Partnership opportunities
 
-### AADS Framework Repository
+### RANA Framework Repository
 
 **Structure:**
 ```
-/aads-framework/
+/rana-framework/
 ├── README.md ✅
 │   - Compelling introduction
 │   - Problem/solution clear
@@ -69,9 +69,9 @@
 ├── LICENSE ✅
 │   - MIT License
 │
-├── .aads.yml ✅
+├── .rana.yml ✅
 │   - Self-referential example
-│   - Shows AADS in use
+│   - Shows RANA in use
 │
 ├── docs/
 │   ├── SPECIFICATION.md ✅
@@ -88,7 +88,7 @@
 ├── examples/
 │   └── react-typescript/ ✅
 │       ├── README.md ✅
-│       ├── .aads.yml ✅
+│       ├── .rana.yml ✅
 │       ├── package.json ✅
 │       └── src/
 │           ├── App.tsx ✅
@@ -108,7 +108,7 @@
 - ✅ Core documentation written
 - ✅ Example project (React) created
 - ✅ CLI scaffolding ready
-- ✅ `aads init` command fully implemented
+- ✅ `rana init` command fully implemented
 
 ---
 
@@ -134,14 +134,14 @@ You can start using these TODAY:
 - ✅ Write tests
 - ✅ Deploy to production
 
-### 2. **AADS Framework Foundation**
+### 2. **RANA Framework Foundation**
 
 Ready to build on:
 - ✅ Formal specification (v1.0.0)
-- ✅ Configuration schema (.aads.yml)
+- ✅ Configuration schema (.rana.yml)
 - ✅ Example project (React)
 - ✅ CLI tool foundation
-- ✅ `aads init` command (production-ready)
+- ✅ `rana init` command (production-ready)
 
 ### 3. **Go-to-Market Strategy**
 
@@ -173,18 +173,18 @@ Bonus framework (REPM):
 - ✅ Design system integration
 - ✅ Workflow flowcharts
 
-**For AADS:**
+**For RANA:**
 - ✅ README.md (compelling, clear)
 - ✅ SPECIFICATION.md (formal, complete)
 - ✅ React example (working, documented)
-- ✅ CLI `aads init` (fully functional)
+- ✅ CLI `rana init` (fully functional)
 - ✅ Configuration schema (defined, validated)
 
 ### What's In Progress:
 
 - ⏳ Additional example projects (Next.js, Vue)
 - ⏳ Additional CLI commands (check, validate, flow, deploy)
-- ⏳ Documentation website (aads.dev)
+- ⏳ Documentation website (rana.dev)
 - ⏳ Launch content (blog posts, social media)
 
 ---
@@ -195,27 +195,27 @@ Bonus framework (REPM):
 
 1. **Test the CLI tool**
    ```bash
-   cd /Users/ashleykays/aads-framework/tools/cli
+   cd /Users/ashleykays/rana-framework/tools/cli
    npm install
    npm run build
    npm link  # Test locally
-   aads init # Should work!
+   rana init # Should work!
    ```
 
 2. **Create GitHub repository**
    ```bash
-   cd /Users/ashleykays/aads-framework
+   cd /Users/ashleykays/rana-framework
    git init
    git add .
-   git commit -m "Initial commit: AADS Framework v0.1.0"
-   gh repo create aads-framework --public --source=. --push
+   git commit -m "Initial commit: RANA Framework v0.1.0"
+   gh repo create rana-framework --public --source=. --push
    ```
 
 3. **Implement remaining CLI commands**
-   - `aads check` - Validate compliance
-   - `aads validate` - Check .aads.yml syntax
-   - `aads flow` - Guided workflow
-   - `aads deploy` - Deploy with checks
+   - `rana check` - Validate compliance
+   - `rana validate` - Check .rana.yml syntax
+   - `rana flow` - Guided workflow
+   - `rana deploy` - Deploy with checks
 
 ### **Short-term (2-4 Weeks):**
 
@@ -227,14 +227,14 @@ Bonus framework (REPM):
 5. **Build documentation site**
    - Use Nextra or Docusaurus
    - Deploy to Vercel
-   - Get aads.dev domain
+   - Get rana.dev domain
 
 6. **Write launch content**
-   - Blog post: "Why We Need AADS"
+   - Blog post: "Why We Need RANA"
    - Twitter/X thread (15-20 tweets)
    - LinkedIn post (professional)
    - Reddit posts (r/programming, r/webdev, r/typescript)
-   - HackerNews post ("Show HN: AADS")
+   - HackerNews post ("Show HN: RANA")
 
 ### **Medium-term (1-3 Months):**
 
@@ -270,27 +270,27 @@ Bonus framework (REPM):
 ### Target (30 Days):
 - 🎯 GitHub repo public
 - 🎯 100+ GitHub stars
-- 🎯 10+ projects using AADS
+- 🎯 10+ projects using RANA
 - 🎯 3+ integrations announced
 - 🎯 Launch blog post published
 
 ### Target (90 Days):
 - 🎯 500+ GitHub stars
-- 🎯 100+ projects using AADS
+- 🎯 100+ projects using RANA
 - 🎯 10+ integrations live
-- 🎯 Documentation site at aads.dev
+- 🎯 Documentation site at rana.dev
 - 🎯 Active community (Discord/GitHub)
 
 ### Target (6 Months):
 - 🎯 2,000+ GitHub stars
-- 🎯 1,000+ projects using AADS
+- 🎯 1,000+ projects using RANA
 - 🎯 20+ integrations
 - 🎯 First conference talk
 - 🎯 Industry recognition
 
 ### Target (1 Year):
 - 🎯 10,000+ GitHub stars
-- 🎯 10,000+ projects using AADS
+- 🎯 10,000+ projects using RANA
 - 🎯 50+ integrations
 - 🎯 Enterprise adoption
 - 🎯 Considered industry standard
@@ -309,7 +309,7 @@ Bonus framework (REPM):
 | AI Frameworks | Agent architecture | No dev standards |
 | Blog Posts | General advice | Fragmented, not actionable |
 
-**AADS fills this gap** with:
+**RANA fills this gap** with:
 - ✅ Universal standard (any tool, any stack)
 - ✅ Complete workflow (research → deployment)
 - ✅ Actionable checklists (not just advice)
@@ -341,39 +341,39 @@ Search for existing implementations first, then propose an approach.
 
 **Result:** Better code quality immediately
 
-### **Option 2: Test AADS CLI (5 minutes)**
+### **Option 2: Test RANA CLI (5 minutes)**
 
 ```bash
-cd /Users/ashleykays/aads-framework/tools/cli
+cd /Users/ashleykays/rana-framework/tools/cli
 npm install
 npm run build
 npm link
 cd ~/your-test-project
-aads init
+rana init
 ```
 
-**Result:** See AADS in action
+**Result:** See RANA in action
 
 ### **Option 3: Publish to GitHub (10 minutes)**
 
 ```bash
-cd /Users/ashleykays/aads-framework
+cd /Users/ashleykays/rana-framework
 git init
 git add .
-git commit -m "feat: Initial AADS framework release"
-gh repo create aads-framework --public --push
+git commit -m "feat: Initial RANA framework release"
+gh repo create rana-framework --public --push
 ```
 
-**Result:** AADS is public, can start gathering feedback
+**Result:** RANA is public, can start gathering feedback
 
 ### **Option 4: Publish CLI to npm (15 minutes)**
 
 ```bash
-cd /Users/ashleykays/aads-framework/tools/cli
+cd /Users/ashleykays/rana-framework/tools/cli
 npm publish --access public
 ```
 
-**Result:** Anyone can install with `npm install -g @aads/cli`
+**Result:** Anyone can install with `npm install -g @rana/cli`
 
 ---
 
@@ -407,7 +407,7 @@ npm publish --access public
 ### **Essential (Publish Now):**
 - ✅ README.md
 - ✅ LICENSE
-- ✅ .aads.yml
+- ✅ .rana.yml
 - ✅ docs/SPECIFICATION.md
 - ✅ docs/COMPETITIVE_ANALYSIS.md
 - ✅ examples/react-typescript/*
@@ -475,11 +475,11 @@ npm publish --access public
 **Next action:**
 ```bash
 # Make it public!
-cd /Users/ashleykays/aads-framework
+cd /Users/ashleykays/rana-framework
 git init
 git add .
-git commit -m "feat: Initial AADS framework release v0.1.0"
-gh repo create aads-framework --public --push
+git commit -m "feat: Initial RANA framework release v0.1.0"
+gh repo create rana-framework --public --push
 
 # Then:
 # 1. Polish README

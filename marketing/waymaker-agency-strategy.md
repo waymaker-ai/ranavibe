@@ -9,7 +9,7 @@
 ## Executive Summary
 
 **The Opportunity:**
-Launch Waymaker as an AI-native development agency while building the platform and AADS tools. Agency revenue funds product development and validates the AADS framework in production.
+Launch Waymaker as an AI-native development agency while building the platform and RANA tools. Agency revenue funds product development and validates the RANA framework in production.
 
 **Timeline:**
 - **Week 1-2:** Launch marketing page, outbound outreach
@@ -19,7 +19,7 @@ Launch Waymaker as an AI-native development agency while building the platform a
 
 **Why This Works:**
 1. You already have the Bettr platform (proof of capability)
-2. AADS framework is your unique differentiator
+2. RANA framework is your unique differentiator
 3. Market is hungry for fast, quality development
 4. Services fund product development
 
@@ -28,22 +28,22 @@ Launch Waymaker as an AI-native development agency while building the platform a
 ## The Services-to-Product Playbook
 
 ### Phase 1: Agency (Months 1-6)
-**Focus:** Revenue generation, AADS validation
-- Offer: Custom development using AADS
+**Focus:** Revenue generation, RANA validation
+- Offer: Custom development using RANA
 - Pricing: Project-based ($25K-$50K per project)
 - Delivery: 4-8 week sprints
 - Goal: $50K-$100K/month
 
 ### Phase 2: Agency + Tools (Months 7-12)
 **Focus:** Productize common patterns
-- Offer: Agency services + AADS CLI
-- Pricing: Agency + $29/month for AADS Pro
+- Offer: Agency services + RANA CLI
+- Pricing: Agency + $29/month for RANA Pro
 - Delivery: Faster with better tools
 - Goal: $100K-$200K/month
 
 ### Phase 3: Platform (Months 13-24)
 **Focus:** Self-service platform
-- Offer: Waymaker platform with AADS built-in
+- Offer: Waymaker platform with RANA built-in
 - Pricing: $99-$499/month + optional services
 - Delivery: Platform + white-glove for enterprise
 - Goal: $500K+/month with higher margins
@@ -76,7 +76,7 @@ Launch Waymaker as an AI-native development agency while building the platform a
 - **Pain:** Need speed but can't compromise quality
 - **Budget:** $15K-$40K for MVP
 - **Where:** Indie Hackers, HN, dev communities
-- **Why:** Understand AADS value, fast decisions
+- **Why:** Understand RANA value, fast decisions
 
 **4. Agencies (White-Label Partners)**
 - **Profile:** Non-technical agencies needing dev capacity
@@ -151,7 +151,7 @@ Launch Waymaker as an AI-native development agency while building the platform a
 - [ ] Craft personalized outreach emails (10/day)
 - [ ] LinkedIn outreach to startup founders (10/day)
 - [ ] Engage in relevant Twitter conversations
-- [ ] Post AADS open source announcement (builds credibility)
+- [ ] Post RANA open source announcement (builds credibility)
 
 ### **Week 3-4: First Client**
 
@@ -164,9 +164,9 @@ Launch Waymaker as an AI-native development agency while building the platform a
    - Ask for intros to startups needing development
 
 2. **Content Marketing** (builds pipeline)
-   - Write: "How we built [Bettr feature] in 3 days with AI + AADS"
-   - Share: AADS framework on HN/Reddit
-   - Demo: Live stream building a feature with AADS
+   - Write: "How we built [Bettr feature] in 3 days with AI + RANA"
+   - Share: RANA framework on HN/Reddit
+   - Demo: Live stream building a feature with RANA
 
 3. **Direct Outreach** (volume game)
    - 100 personalized emails to target companies
@@ -184,7 +184,7 @@ Launch Waymaker as an AI-native development agency while building the platform a
 - Expand outreach to 20/day
 
 **Operational:**
-- Refine AADS framework based on client work
+- Refine RANA framework based on client work
 - Document reusable components
 - Build internal templates
 - Hire contractor for overflow
@@ -194,15 +194,15 @@ Launch Waymaker as an AI-native development agency while building the platform a
 **Goal:** $150K-$300K in contracts
 
 **Scale Operations:**
-- Bring on 1-2 contractors (vetted, AADS-trained)
+- Bring on 1-2 contractors (vetted, RANA-trained)
 - Create playbooks for common project types
-- Build starter templates (Next.js + Supabase + AADS)
+- Build starter templates (Next.js + Supabase + RANA)
 - Implement project management system
 
 **Marketing:**
 - Publish 2 case studies/month
 - Start YouTube channel (build in public)
-- Weekly AADS tips on Twitter
+- Weekly RANA tips on Twitter
 - Guest posts on dev blogs
 - Speak at startup events
 
@@ -219,7 +219,7 @@ Launch Waymaker as an AI-native development agency while building the platform a
 **Goals:**
 - Understand their problem
 - Assess budget/timeline fit
-- Determine if AADS is right approach
+- Determine if RANA is right approach
 - Build rapport
 
 **Questions to Ask:**
@@ -239,7 +239,7 @@ Launch Waymaker as an AI-native development agency while building the platform a
 - Project scope with specific deliverables
 - Timeline (week-by-week breakdown)
 - Pricing (transparent, itemized)
-- AADS framework explanation
+- RANA framework explanation
 - Case studies relevant to their industry
 - Next steps + contract
 
@@ -267,7 +267,7 @@ Week 4: Polish + Launch
 ## What You Get
 ✅ Production-ready application
 ✅ Full code ownership
-✅ AADS quality framework
+✅ RANA quality framework
 ✅ 30-day post-launch support
 
 ## Next Steps
@@ -301,7 +301,7 @@ Questions? Book a follow-up call: [Calendly Link]
 - Set expectations
 
 **Day 2-3: Architecture**
-- Create `.aads.yml` for their project
+- Create `.rana.yml` for their project
 - Design database schema
 - API architecture
 - Choose tech stack
@@ -319,11 +319,11 @@ Questions? Book a follow-up call: [Calendly Link]
 
 **Daily Workflow:**
 - Morning: Review priorities with client (async or 15min call)
-- Day: Development using AADS framework
+- Day: Development using RANA framework
 - Evening: Deploy to staging, send update in Slack
 - Weekly: Live demo call (30min)
 
-**AADS Ensures:**
+**RANA Ensures:**
 - No mock data (real integrations from day 1)
 - TypeScript strict mode (no any types)
 - Error handling in every feature
@@ -427,10 +427,10 @@ None / [Describe if any]
 - Sales & client management
 - Architecture & technical decisions
 - Code review
-- AADS quality control
+- RANA quality control
 
 **Contractors (1-2):**
-- Implementation (guided by AADS)
+- Implementation (guided by RANA)
 - Testing
 - Documentation
 
@@ -440,12 +440,12 @@ None / [Describe if any]
 **You:**
 - CEO/Founder
 - Client relationships (key accounts)
-- Product vision (AADS platform)
+- Product vision (RANA platform)
 
 **Technical Lead:**
 - Architecture
 - Code review
-- AADS enforcement
+- RANA enforcement
 
 **Developers (2-3):**
 - Implementation
@@ -506,7 +506,7 @@ None / [Describe if any]
 
 **This funds:**
 - Your salary (6 months)
-- AADS platform development
+- RANA platform development
 - Marketing & growth
 - Emergency buffer
 
@@ -522,18 +522,18 @@ Double the numbers above = $625K revenue, $449K profit in 6 months
 - Launch with founding client discount (20% off)
 - Offer money-back guarantee
 - Start with warm network
-- Build in public (AADS open source creates inbound)
+- Build in public (RANA open source creates inbound)
 
 ### **Risk 2: Scope Creep**
 **Mitigation:**
-- Strict AADS quality gates prevent over-engineering
+- Strict RANA quality gates prevent over-engineering
 - Fixed-price, fixed-scope contracts
 - Change order process for new features
 - Weekly demos keep scope aligned
 
 ### **Risk 3: Quality Issues**
 **Mitigation:**
-- AADS framework prevents common AI mistakes
+- RANA framework prevents common AI mistakes
 - Daily deployments catch issues early
 - 30-day support period to fix problems
 - Code review before delivery
@@ -541,14 +541,14 @@ Double the numbers above = $625K revenue, $449K profit in 6 months
 ### **Risk 4: Can't Scale**
 **Mitigation:**
 - Document everything as you go
-- Train contractors on AADS
+- Train contractors on RANA
 - Build templates for common patterns
 - Transition to productized offerings
 
 ### **Risk 5: Market Timing**
 **Mitigation:**
 - Services are recession-resistant (companies need dev)
-- AADS differentiation hard to copy
+- RANA differentiation hard to copy
 - Faster delivery = better value in any economy
 
 ---
@@ -571,7 +571,7 @@ Double the numbers above = $625K revenue, $449K profit in 6 months
 - ✅ $300K+ in revenue
 - ✅ 5+ completed projects
 - ✅ 2-3 contractors trained
-- ✅ AADS CLI launched
+- ✅ RANA CLI launched
 - ✅ Clear path to platform
 
 ---
@@ -604,8 +604,8 @@ Double the numbers above = $625K revenue, $449K profit in 6 months
    - Engage on Twitter daily
 
 5. **Content Marketing**
-   - Write: "How I built Bettr with AI + AADS"
-   - Publish AADS framework on GitHub
+   - Write: "How I built Bettr with AI + RANA"
+   - Publish RANA framework on GitHub
    - Create demo video
 
 ### **Ongoing:**
@@ -645,7 +645,7 @@ Double the numbers above = $625K revenue, $449K profit in 6 months
 
 **You have everything needed to launch TODAY:**
 - ✅ Proven capability (Bettr)
-- ✅ Unique framework (AADS)
+- ✅ Unique framework (RANA)
 - ✅ Market demand (AI development)
 - ✅ Clear positioning
 - ✅ Pricing strategy

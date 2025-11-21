@@ -9,32 +9,32 @@ import { deployCommand } from './commands/deploy.js';
 const program = new Command();
 
 program
-  .name('aads')
+  .name('rana')
   .description('AI-Assisted Development Standard - CLI tool for production-quality AI development')
   .version('0.1.0');
 
 // ASCII Art Banner
 const banner = `
 ${chalk.bold.cyan('╔═══════════════════════════════════════╗')}
-${chalk.bold.cyan('║')}  ${chalk.bold.white('AADS - AI-Assisted Development')}  ${chalk.bold.cyan('║')}
+${chalk.bold.cyan('║')}  ${chalk.bold.white('RANA - AI-Assisted Development')}  ${chalk.bold.cyan('║')}
 ${chalk.bold.cyan('║')}       ${chalk.bold.white('Production-Quality AI Code')}       ${chalk.bold.cyan('║')}
 ${chalk.bold.cyan('╚═══════════════════════════════════════╝')}
 
-${chalk.gray('Sponsored by')} ${chalk.bold('Waymaker')} ${chalk.gray('• https://waymaker.com/aads')}
+${chalk.gray('Sponsored by')} ${chalk.bold('Waymaker')} ${chalk.gray('• https://waymaker.com/rana')}
 `;
 
 // Init command
 program
   .command('init')
-  .description('Initialize AADS in your project')
+  .description('Initialize RANA in your project')
   .option('-t, --template <type>', 'Template to use (default, react, nextjs, vue)', 'default')
-  .option('-f, --force', 'Overwrite existing .aads.yml')
+  .option('-f, --force', 'Overwrite existing .rana.yml')
   .action(initCommand);
 
 // Check command
 program
   .command('check')
-  .description('Check compliance with AADS standards')
+  .description('Check compliance with RANA standards')
   .option('-v, --verbose', 'Show detailed output')
   .option('-f, --fix', 'Automatically fix issues where possible')
   .action(checkCommand);
@@ -42,7 +42,7 @@ program
 // Deploy command
 program
   .command('deploy')
-  .description('Deploy with AADS verification workflow')
+  .description('Deploy with RANA verification workflow')
   .option('--verify', 'Verify deployment in production')
   .option('--skip-tests', 'Skip testing phase (not recommended)')
   .action(deployCommand);
@@ -50,7 +50,7 @@ program
 // Validate command
 program
   .command('validate')
-  .description('Validate .aads.yml configuration')
+  .description('Validate .rana.yml configuration')
   .action(async () => {
     const { validateConfig } = await import('./commands/validate.js');
     await validateConfig();
@@ -59,7 +59,7 @@ program
 // Config command
 program
   .command('config')
-  .description('Show current AADS configuration')
+  .description('Show current RANA configuration')
   .action(async () => {
     const { showConfig } = await import('./commands/config.js');
     await showConfig();
@@ -68,7 +68,7 @@ program
 // Status command
 program
   .command('status')
-  .description('Show AADS project status')
+  .description('Show RANA project status')
   .action(async () => {
     const { showStatus } = await import('./commands/status.js');
     await showStatus();
@@ -78,11 +78,11 @@ program
 program.on('--help', () => {
   console.log(banner);
   console.log(chalk.gray('\nExamples:'));
-  console.log(chalk.gray('  $ aads init                  # Initialize AADS in current project'));
-  console.log(chalk.gray('  $ aads check                 # Check compliance'));
-  console.log(chalk.gray('  $ aads deploy --verify       # Deploy with verification'));
-  console.log(chalk.gray('\nDocumentation: https://aads.dev'));
-  console.log(chalk.gray('GitHub: https://github.com/aads-dev/aads-framework\n'));
+  console.log(chalk.gray('  $ rana init                  # Initialize RANA in current project'));
+  console.log(chalk.gray('  $ rana check                 # Check compliance'));
+  console.log(chalk.gray('  $ rana deploy --verify       # Deploy with verification'));
+  console.log(chalk.gray('\nDocumentation: https://rana.dev'));
+  console.log(chalk.gray('GitHub: https://github.com/rana-dev/rana-framework\n'));
 });
 
 // Parse arguments

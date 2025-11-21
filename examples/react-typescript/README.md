@@ -1,13 +1,13 @@
-# React + TypeScript AADS Example
+# React + TypeScript RANA Example
 
-This is a complete example showing how to use AADS with a React + TypeScript project.
+This is a complete example showing how to use RANA with a React + TypeScript project.
 
 ## What's Included
 
-- ✅ Complete `.aads.yml` configuration
-- ✅ AADS documentation in `docs/aads/`
+- ✅ Complete `.rana.yml` configuration
+- ✅ RANA documentation in `docs/rana/`
 - ✅ TypeScript strict mode enabled
-- ✅ Example React components following AADS
+- ✅ Example React components following RANA
 - ✅ Real API integration (no mocks)
 - ✅ Error handling and loading states
 - ✅ Production-ready code
@@ -21,14 +21,14 @@ npm install
 # Run development server
 npm run dev
 
-# Check AADS compliance
-aads check
+# Check RANA compliance
+rana check
 
 # Build for production
 npm run build
 ```
 
-## AADS Principles Demonstrated
+## RANA Principles Demonstrated
 
 ### 1. Real Data Only (No Mocks)
 
@@ -82,8 +82,8 @@ const users: User[] = await userService.getUsers();
 
 ```
 react-typescript/
-├── .aads.yml                    # AADS configuration
-├── docs/aads/
+├── .rana.yml                    # RANA configuration
+├── docs/rana/
 │   ├── AGENT_INSTRUCTIONS.md    # Development rules
 │   └── DEVELOPMENT_CHECKLIST.md # Quality checklist
 ├── src/
@@ -99,7 +99,7 @@ react-typescript/
 └── vite.config.ts
 ```
 
-## AADS Compliance Checklist
+## RANA Compliance Checklist
 
 This example demonstrates:
 
@@ -115,9 +115,9 @@ This example demonstrates:
 
 ## Learn More
 
-- [AADS Documentation](https://aads.dev)
-- [Configuration Guide](https://aads.dev/docs/configuration)
-- [Best Practices](https://aads.dev/docs/best-practices)
+- [RANA Documentation](https://rana.dev)
+- [Configuration Guide](https://rana.dev/docs/configuration)
+- [Best Practices](https://rana.dev/docs/best-practices)
 
 ## License
 

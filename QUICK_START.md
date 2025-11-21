@@ -1,4 +1,4 @@
-# AADS + Waymaker - Quick Start Guide
+# RANA + Waymaker - Quick Start Guide
 
 **Goal:** Launch agency services and start getting clients THIS WEEK.
 
@@ -56,7 +56,7 @@ What we do:
 • Fix broken AI code ($6K+)
 • AI integration ($12K)
 
-Built on AADS framework (open sourcing soon).
+Built on RANA framework (open sourcing soon).
 
 First 3 clients get 20% off.
 
@@ -91,7 +91,7 @@ First 3 clients: 20% off
 • AI Integration: $12K (3 weeks)
 • Rescue: $6K+
 
-Built with AADS framework
+Built with RANA framework
 
 4/ Founding client offer: 20% off
 
@@ -142,7 +142,7 @@ that's 5x faster than traditional dev without the broken code.
 Now offering:
 • MVP: 4 weeks
 • Features: 2 weeks
-• Built with AADS framework (open sourcing)
+• Built with RANA framework (open sourcing)
 
 First 3 clients: 20% off
 
@@ -169,7 +169,7 @@ AMA about the process!
 ```
 
 ### Dev.to (optional)
-Write a longer post about your AADS process and link to services.
+Write a longer post about your RANA process and link to services.
 
 ---
 
@@ -237,7 +237,7 @@ Ask:
 
 **Minutes 15-25: Present Solution**
 - "Based on what you said..."
-- Explain AADS approach
+- Explain RANA approach
 - Show Bettr as example
 - Discuss timeline (realistic)
 
@@ -280,7 +280,7 @@ Week 4: Polish + Launch
 ✅ Full code ownership
 ✅ Modern tech stack (React, Supabase, etc)
 ✅ 30-day post-launch support
-✅ AADS quality framework
+✅ RANA quality framework
 
 ## Next Steps
 1. Review this proposal
@@ -452,10 +452,10 @@ The first client will come faster than you think.
 `https://your-domain.com/services`
 
 **Marketing Copy:**
-`/Users/ashleykays/aads-framework/marketing/`
+`/Users/ashleykays/rana-framework/marketing/`
 
 **Full Strategy:**
-`/Users/ashleykays/aads-framework/AADS_WAYMAKER_LAUNCH_GUIDE.md`
+`/Users/ashleykays/rana-framework/RANA_WAYMAKER_LAUNCH_GUIDE.md`
 
 **This Guide:**
-`/Users/ashleykays/aads-framework/QUICK_START.md`
+`/Users/ashleykays/rana-framework/QUICK_START.md`

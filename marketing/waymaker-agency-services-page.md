@@ -12,7 +12,7 @@ Enterprise-quality applications built with AI-native development. No compromises
 [Book Strategy Call] [See Our Work]
 
 **Trust Indicator:**
-"Built with AADS - the AI development framework trusted by production teams"
+"Built with RANA - the AI development framework trusted by production teams"
 
 ---
 
@@ -39,7 +39,7 @@ Most teams are either too traditional (slow) or too AI-reliant (broken code). Yo
 
 ✅ **AI Acceleration** - We use AI for 80% of the heavy lifting
 ✅ **Human Expertise** - Architects ensure production-quality patterns
-✅ **AADS Framework** - Our open-source standard prevents AI mistakes
+✅ **RANA Framework** - Our open-source standard prevents AI mistakes
 ✅ **Real Testing** - Every feature tested and deployed before completion
 
 **Result:** 5x faster than traditional development, with enterprise-grade quality.
@@ -53,12 +53,12 @@ Most teams are either too traditional (slow) or too AI-reliant (broken code). Yo
 **Week 1: Discovery & Architecture**
 - Requirements workshop
 - Technical architecture design
-- AADS configuration for your project
+- RANA configuration for your project
 - Database schema & API design
 - Design system setup
 
 **Week 2-3: Rapid Development**
-- AI-assisted implementation using AADS
+- AI-assisted implementation using RANA
 - Daily progress updates with live demos
 - Real data integration (no mocks)
 - Continuous deployment to staging
@@ -115,7 +115,7 @@ Starting at: **$12,000** (3-week engagement)
 Fix broken AI-generated code or technical debt.
 - Code audit & refactoring
 - Performance optimization
-- AADS implementation
+- RANA implementation
 - Best practices enforcement
 
 Starting at: **$6,000** (1-week audit + 2-week fix)
@@ -125,7 +125,7 @@ Starting at: **$6,000** (1-week audit + 2-week fix)
 **🏢 Enterprise Development**
 Full-scale application development with dedicated team.
 - Dedicated engineering team
-- Custom AADS configuration
+- Custom RANA configuration
 - Weekly sprint cycles
 - Ongoing development & support
 
@@ -139,7 +139,7 @@ Starting at: **$40,000/month** (3-month minimum)
 
 ✅ **Full Code Ownership** - No vendor lock-in, clean handoff
 ✅ **Production-Ready Code** - Tested, deployed, documented
-✅ **AADS Framework** - Open-source development standards
+✅ **RANA Framework** - Open-source development standards
 ✅ **Modern Tech Stack** - React, Next.js, TypeScript, Supabase, Tailwind
 ✅ **Real-Time Collaboration** - Daily updates, live demos, Slack access
 ✅ **Knowledge Transfer** - Team training & comprehensive docs
@@ -191,7 +191,7 @@ Starting at: **$40,000/month** (3-month minimum)
 
 **[Client 2: E-Learning Platform]**
 *Challenge:* Legacy codebase slowing development
-*Solution:* Technical rescue + AADS implementation
+*Solution:* Technical rescue + RANA implementation
 *Result:* 10x faster feature development
 *Tech:* React, PostgreSQL, Claude API
 
@@ -212,7 +212,7 @@ Starting at: **$40,000/month** (3-month minimum)
 **🤖 AI-Native, Not AI-Only**
 We use AI for speed, but humans ensure quality. Best of both worlds.
 
-**📋 AADS Framework**
+**📋 RANA Framework**
 Our open-source framework prevents the common AI coding mistakes that plague other agencies.
 
 **⚡ Speed Without Sacrifice**
@@ -288,8 +288,8 @@ We train your team, document everything, and ensure smooth handoff.
 **Q: How is this different from hiring developers?**
 A: We're 5x faster because we use AI for implementation while senior engineers handle architecture. You get a full team (engineering, design, QA) for less than one senior developer's salary.
 
-**Q: What's AADS and why does it matter?**
-A: AADS (AI-Assisted Development Standard) is our open-source framework that ensures AI writes production-quality code. It's like having a quality control system that prevents AI mistakes before they happen.
+**Q: What's RANA and why does it matter?**
+A: RANA (AI-Assisted Development Standard) is our open-source framework that ensures AI writes production-quality code. It's like having a quality control system that prevents AI mistakes before they happen.
 
 **Q: Do I own the code?**
 A: Yes, 100%. Full ownership, no licensing fees, clean handoff. You can take it anywhere.
@@ -346,14 +346,14 @@ We'll discuss your project, timeline, and budget. No pressure, no obligation.
 
 **Prefer to see our work first?**
 
-[View Case Studies] [Download AADS Framework] [Read Our Blog]
+[View Case Studies] [Download RANA Framework] [Read Our Blog]
 
 ---
 
 ## Footer Trust Signals
 
 ✅ Production-grade code
-✅ AADS-certified development
+✅ RANA-certified development
 ✅ 30-day support included
 ✅ Full code ownership
 ✅ 5-year+ senior engineers
@@ -366,7 +366,7 @@ We'll discuss your project, timeline, and budget. No pressure, no obligation.
 
 [Twitter] [GitHub] [LinkedIn] [Blog]
 
-© 2025 Waymaker. Built with AADS.
+© 2025 Waymaker. Built with RANA.
 
 ---
 
@@ -379,7 +379,7 @@ We'll discuss your project, timeline, and budget. No pressure, no obligation.
 3. **Real case studies** - Social proof
 4. **Clear process** - Reduces uncertainty
 5. **Guarantee** - De-risks the decision
-6. **AADS differentiation** - Unique selling point
+6. **RANA differentiation** - Unique selling point
 7. **Multiple CTAs** - Various entry points
 8. **FAQ** - Handles objections preemptively
 
@@ -399,6 +399,6 @@ We'll discuss your project, timeline, and budget. No pressure, no obligation.
 - AI-assisted development services
 - MVP development in 4 weeks
 - AI code quality framework
-- AADS development
+- RANA development
 - Production-ready AI coding
 - Fast startup development

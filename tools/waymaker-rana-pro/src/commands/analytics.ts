@@ -16,13 +16,13 @@ interface ComplianceMetric {
 }
 
 export async function analyticsCommand(options: AnalyticsOptions) {
-  const spinner = ora('Fetching AADS analytics...').start();
+  const spinner = ora('Fetching RANA analytics...').start();
 
   try {
     // Check if user is authenticated
     const authToken = await getAuthToken();
     if (!authToken) {
-      spinner.fail('Not authenticated. Run: waymaker-aads login');
+      spinner.fail('Not authenticated. Run: waymaker-rana login');
       return;
     }
 
@@ -54,7 +54,7 @@ async function getAuthToken(): Promise<string | null> {
 
 async function fetchAnalytics(token: string, days: number): Promise<ComplianceMetric[]> {
   // TODO: Replace with actual API call
-  // const response = await fetch(`https://api.waymaker.com/v1/aads/analytics?days=${days}`, {
+  // const response = await fetch(`https://api.waymaker.com/v1/rana/analytics?days=${days}`, {
   //   headers: { Authorization: `Bearer ${token}` }
   // });
   // return response.json();
@@ -69,7 +69,7 @@ async function fetchAnalytics(token: string, days: number): Promise<ComplianceMe
 }
 
 function displayAnalytics(metrics: ComplianceMetric[], period: number) {
-  console.log(chalk.bold.cyan(`\n📊 AADS Compliance Analytics (Last ${period} days)\n`));
+  console.log(chalk.bold.cyan(`\n📊 RANA Compliance Analytics (Last ${period} days)\n`));
 
   const avgScore = metrics.reduce((sum, m) => sum + m.score, 0) / metrics.length;
   const totalViolations = metrics.reduce((sum, m) => sum + m.violations, 0);
@@ -89,14 +89,14 @@ function displayAnalytics(metrics: ComplianceMetric[], period: number) {
   });
 
   console.log();
-  console.log(chalk.gray('View detailed analytics: https://waymaker.com/dashboard/aads'));
+  console.log(chalk.gray('View detailed analytics: https://waymaker.com/dashboard/rana'));
 }
 
 async function exportAnalytics(metrics: ComplianceMetric[], format: string) {
   const spinner = ora('Exporting analytics...').start();
 
   try {
-    const filename = `aads-analytics-${Date.now()}.${format}`;
+    const filename = `rana-analytics-${Date.now()}.${format}`;
     let content: string;
 
     if (format === 'json') {

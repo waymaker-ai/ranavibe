@@ -1,10 +1,10 @@
 {
-  "name": "@waymaker/aads-pro",
+  "name": "@waymaker/rana-pro",
   "version": "0.1.0",
-  "description": "Waymaker AADS Pro - Enhanced AI-Assisted Development with team collaboration and analytics",
+  "description": "Waymaker RANA Pro - Enhanced AI-Assisted Development with team collaboration and analytics",
   "main": "dist/index.js",
   "bin": {
-    "waymaker-aads": "dist/cli.js"
+    "waymaker-rana": "dist/cli.js"
   },
   "type": "module",
   "scripts": {
@@ -15,7 +15,7 @@
     "prepublishOnly": "npm run build"
   },
   "keywords": [
-    "aads",
+    "rana",
     "waymaker",
     "ai",
     "development",
@@ -30,15 +30,15 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aads-dev/aads-framework.git",
-    "directory": "tools/waymaker-aads-pro"
+    "url": "git+https://github.com/rana-dev/rana-framework.git",
+    "directory": "tools/waymaker-rana-pro"
   },
   "bugs": {
-    "url": "https://github.com/aads-dev/aads-framework/issues"
+    "url": "https://github.com/rana-dev/rana-framework/issues"
   },
-  "homepage": "https://waymaker.com/aads",
+  "homepage": "https://waymaker.com/rana",
   "dependencies": {
-    "@aads/cli": "^0.1.0",
+    "@rana/cli": "^0.1.0",
     "chalk": "^5.3.0",
     "commander": "^11.1.0",
     "inquirer": "^9.2.12",

@@ -1,14 +1,14 @@
 /**
- * User Service - AADS Compliant
+ * User Service - RANA Compliant
  *
- * This service demonstrates AADS best practices:
+ * This service demonstrates RANA best practices:
  * - Real API calls (no mocks)
  * - Proper error handling
  * - TypeScript types
  * - Clean service layer pattern
  */
 
-// ✅ AADS: Proper TypeScript types
+// ✅ RANA: Proper TypeScript types
 export interface User {
   id: number;
   name: string;
@@ -35,7 +35,7 @@ const API_BASE_URL = 'https://jsonplaceholder.typicode.com';
 /**
  * User service for managing user data
  *
- * AADS Pattern: Service layer
+ * RANA Pattern: Service layer
  * - Encapsulates API logic
  * - Provides typed responses
  * - Handles errors consistently
@@ -44,9 +44,9 @@ class UserService {
   /**
    * Get all users from API
    *
-   * ✅ AADS: Real API call, not mocks
-   * ✅ AADS: Proper error handling
-   * ✅ AADS: TypeScript return type
+   * ✅ RANA: Real API call, not mocks
+   * ✅ RANA: Proper error handling
+   * ✅ RANA: TypeScript return type
    */
   async getUsers(): Promise<User[]> {
     try {
@@ -59,7 +59,7 @@ class UserService {
       const data = await response.json();
       return data as User[];
     } catch (error) {
-      // ✅ AADS: Proper error handling
+      // ✅ RANA: Proper error handling
       console.error('Error fetching users:', error);
       throw error;
     }
@@ -68,9 +68,9 @@ class UserService {
   /**
    * Get a single user by ID
    *
-   * ✅ AADS: Real API call
-   * ✅ AADS: Error handling
-   * ✅ AADS: TypeScript types
+   * ✅ RANA: Real API call
+   * ✅ RANA: Error handling
+   * ✅ RANA: TypeScript types
    */
   async getUser(id: number): Promise<User> {
     try {
@@ -160,7 +160,7 @@ class UserService {
   }
 }
 
-// ✅ AADS Pattern: Export singleton instance
+// ✅ RANA Pattern: Export singleton instance
 export const userService = new UserService();
 
 // Also export the class for testing

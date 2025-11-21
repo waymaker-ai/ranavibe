@@ -1,10 +1,10 @@
-# AADS: AI-Assisted Development Standard
+# RANA: AI-Assisted Development Standard
 
 > A comprehensive framework that ensures AI coding assistants produce production-quality code.
 
-[![GitHub Stars](https://img.shields.io/github/stars/yourusername/aads-framework?style=social)](https://github.com/yourusername/aads-framework)
+[![GitHub Stars](https://img.shields.io/github/stars/yourusername/rana-framework?style=social)](https://github.com/yourusername/rana-framework)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![npm version](https://badge.fury.io/js/%40aads%2Fcli.svg)](https://badge.fury.io/js/%40aads%2Fcli)
+[![npm version](https://badge.fury.io/js/%40rana%2Fcli.svg)](https://badge.fury.io/js/%40rana%2Fcli)
 
 ---
 
@@ -24,7 +24,7 @@ AI assistants often:
 
 ## The Solution
 
-AADS provides:
+RANA provides:
 - ✅ **Development principles** that work
 - ✅ **Quality gates** that catch issues
 - ✅ **Checklists** that ensure completeness
@@ -37,23 +37,23 @@ AADS provides:
 
 ```bash
 # Install CLI
-npm install -g @aads/cli
+npm install -g @rana/cli
 
 # Initialize in your project
 cd your-project
-aads init
+rana init
 
 # Start developing with standards
-aads flow feature "Add user authentication"
+rana flow feature "Add user authentication"
 ```
 
 That's it! AI assistants will now follow your standards automatically.
 
 ---
 
-## What is AADS?
+## What is RANA?
 
-**AADS (AI-Assisted Development Standard)** is like:
+**RANA (AI-Assisted Development Standard)** is like:
 - **Conventional Commits** for commit messages
 - **Semantic Versioning** for releases
 - **ESLint** for code style
@@ -104,7 +104,7 @@ Works with Cursor, Claude, GPT, GitHub Copilot, and more.
 
 ### 1. **Add Configuration**
 
-Create `.aads.yml` in your project:
+Create `.rana.yml` in your project:
 
 ```yaml
 version: 1.0.0
@@ -148,7 +148,7 @@ When you ask AI to add a feature, it:
 ### 3. **Verify Compliance**
 
 ```bash
-aads check
+rana check
 
 # Output:
 # ✅ Design system followed
@@ -163,58 +163,58 @@ aads check
 
 ### React + TypeScript
 ```bash
-git clone https://github.com/yourusername/aads-framework
-cd aads-framework/examples/react-typescript
-cat .aads.yml
+git clone https://github.com/yourusername/rana-framework
+cd rana-framework/examples/react-typescript
+cat .rana.yml
 ```
 
 ### Next.js + Supabase
 ```bash
 cd examples/nextjs-supabase
-cat .aads.yml
+cat .rana.yml
 ```
 
 ### Vue + Firebase
 ```bash
 cd examples/vue-firebase
-cat .aads.yml
+cat .rana.yml
 ```
 
 ---
 
 ## Documentation
 
-📖 **Full Documentation:** [https://aads.dev](https://aads.dev)
+📖 **Full Documentation:** [https://rana.dev](https://rana.dev)
 
-- [Getting Started](https://aads.dev/docs/getting-started)
-- [Configuration](https://aads.dev/docs/configuration)
-- [Workflow Guide](https://aads.dev/docs/workflow)
-- [Quality Gates](https://aads.dev/docs/quality-gates)
-- [Examples](https://aads.dev/docs/examples)
-- [Integrations](https://aads.dev/docs/integrations)
+- [Getting Started](https://rana.dev/docs/getting-started)
+- [Configuration](https://rana.dev/docs/configuration)
+- [Workflow Guide](https://rana.dev/docs/workflow)
+- [Quality Gates](https://rana.dev/docs/quality-gates)
+- [Examples](https://rana.dev/docs/examples)
+- [Integrations](https://rana.dev/docs/integrations)
 
 ---
 
 ## CLI Commands
 
 ```bash
-# Initialize AADS in your project
-aads init
+# Initialize RANA in your project
+rana init
 
 # Check compliance with standards
-aads check
+rana check
 
 # Start a new feature workflow
-aads flow feature "feature name"
+rana flow feature "feature name"
 
 # Deploy with verification
-aads deploy --verify
+rana deploy --verify
 
 # Show current configuration
-aads config
+rana config
 
-# Validate .aads.yml file
-aads validate
+# Validate .rana.yml file
+rana validate
 ```
 
 ---
@@ -243,9 +243,9 @@ aads validate
 
 ---
 
-## Why AADS?
+## Why RANA?
 
-### **Before AADS:**
+### **Before RANA:**
 ```typescript
 // AI creates this
 const mockUsers = [
@@ -260,7 +260,7 @@ const mockUsers = [
 // Never deployed
 ```
 
-### **After AADS:**
+### **After RANA:**
 ```typescript
 // AI creates this
 import { apiGet } from '@/services/api';
@@ -284,7 +284,7 @@ const users = await apiGet<User[]>('/users');
 
 ## Comparison
 
-| Feature | AADS | AGENTS.md | Cursor Rules | Blog Posts |
+| Feature | RANA | AGENTS.md | Cursor Rules | Blog Posts |
 |---------|------|-----------|--------------|------------|
 | Universal standard | ✅ | ⚠️ | ❌ | ❌ |
 | Complete workflow | ✅ | ❌ | ❌ | ❌ |
@@ -300,9 +300,9 @@ const users = await apiGet<User[]>('/users');
 
 ### Get Involved
 
-- 💬 **Discord:** [Join our community](https://discord.gg/aads)
-- 🐦 **Twitter:** [@aads_dev](https://twitter.com/aads_dev)
-- 📧 **Newsletter:** [Subscribe for updates](https://aads.dev/newsletter)
+- 💬 **Discord:** [Join our community](https://discord.gg/rana)
+- 🐦 **Twitter:** [@rana_dev](https://twitter.com/rana_dev)
+- 📧 **Newsletter:** [Subscribe for updates](https://rana.dev/newsletter)
 
 ### Contributing
 
@@ -313,7 +313,7 @@ We love contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 - 🐛 Report bugs
 - ✨ Suggest features
 - 🔧 Submit PRs
-- 📣 Share AADS with others
+- 📣 Share RANA with others
 
 ---
 
@@ -341,15 +341,15 @@ We love contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ## Success Stories
 
-> "AADS saved us 10+ hours/week fixing AI mistakes. Now our AI-generated code just works."
+> "RANA saved us 10+ hours/week fixing AI mistakes. Now our AI-generated code just works."
 >
 > — **Sarah Chen**, Senior Developer at TechCorp
 
-> "We rolled out AADS across our team of 20 developers. Code quality improved dramatically."
+> "We rolled out RANA across our team of 20 developers. Code quality improved dramatically."
 >
 > — **Michael Rodriguez**, Engineering Manager at StartupXYZ
 
-> "As someone teaching developers how to use AI, AADS is exactly what we needed."
+> "As someone teaching developers how to use AI, RANA is exactly what we needed."
 >
 > — **Alex Thompson**, Developer Advocate
 
@@ -367,28 +367,28 @@ Created by [Your Name](https://github.com/yourusername)
 
 Inspired by the need for better AI-assisted development practices.
 
-Special thanks to all [contributors](https://github.com/yourusername/aads-framework/graphs/contributors).
+Special thanks to all [contributors](https://github.com/yourusername/rana-framework/graphs/contributors).
 
 ---
 
 ## Support
 
-- 📖 **Documentation:** [aads.dev](https://aads.dev)
-- 💬 **Discord:** [Join community](https://discord.gg/aads)
-- 🐛 **Issues:** [GitHub Issues](https://github.com/yourusername/aads-framework/issues)
-- 📧 **Email:** support@aads.dev
+- 📖 **Documentation:** [rana.dev](https://rana.dev)
+- 💬 **Discord:** [Join community](https://discord.gg/rana)
+- 🐛 **Issues:** [GitHub Issues](https://github.com/yourusername/rana-framework/issues)
+- 📧 **Email:** support@rana.dev
 
 ---
 
 **Start building production-quality code with AI today.**
 
 ```bash
-npm install -g @aads/cli
-aads init
+npm install -g @rana/cli
+rana init
 ```
 
 ⭐ **Star this repo if you find it useful!**
 
 ---
 
-*AADS: Production-Quality AI Development*
+*RANA: Production-Quality AI Development*

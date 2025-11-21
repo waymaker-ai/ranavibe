@@ -21,7 +21,7 @@ interface TeamMember {
 export async function teamCommand(options: TeamOptions) {
   const authToken = await getAuthToken();
   if (!authToken) {
-    console.log(chalk.red('❌ Not authenticated. Run: waymaker-aads login'));
+    console.log(chalk.red('❌ Not authenticated. Run: waymaker-rana login'));
     return;
   }
 
@@ -56,7 +56,7 @@ async function listTeamMembers(token: string) {
     console.log(chalk.bold.cyan('\n👥 Team Members\n'));
 
     if (members.length === 0) {
-      console.log(chalk.gray('No team members yet. Add members to collaborate on AADS standards.'));
+      console.log(chalk.gray('No team members yet. Add members to collaborate on RANA standards.'));
       return;
     }
 

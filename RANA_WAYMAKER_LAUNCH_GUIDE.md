@@ -1,4 +1,4 @@
-# AADS + Waymaker Agency Services - Complete Launch Guide
+# RANA + Waymaker Agency Services - Complete Launch Guide
 
 **Date:** November 8, 2025
 **Status:** ✅ READY TO LAUNCH
@@ -24,14 +24,14 @@
 
 ---
 
-### 2. ✅ AADS Open Source Framework
-**Location:** `/Users/ashleykays/aads-framework/`
+### 2. ✅ RANA Open Source Framework
+**Location:** `/Users/ashleykays/rana-framework/`
 
 **Structure:**
 ```
-aads-framework/
+rana-framework/
 ├── tools/
-│   ├── cli/                    # @aads/cli (open source)
+│   ├── cli/                    # @rana/cli (open source)
 │   │   ├── src/
 │   │   │   ├── cli.ts
 │   │   │   └── commands/
@@ -39,7 +39,7 @@ aads-framework/
 │   │   │       ├── check.ts
 │   │   │       └── deploy.ts
 │   │   └── package.json
-│   └── waymaker-aads-pro/      # @waymaker/aads-pro (premium)
+│   └── waymaker-rana-pro/      # @waymaker/rana-pro (premium)
 │       ├── src/
 │       │   ├── cli.ts
 │       │   └── commands/
@@ -147,7 +147,7 @@ We're building production-ready applications using AI-native development.
 What makes us different:
 • 5x faster than traditional agencies
 • AI acceleration + human expertise
-• Built on AADS framework (open source)
+• Built on RANA framework (open source)
 • Enterprise-grade quality
 
 Services:
@@ -181,7 +181,7 @@ We combine the best of both worlds.
 
 3/ AI handles 80% of implementation
 Senior engineers handle architecture
-AADS framework prevents AI mistakes
+RANA framework prevents AI mistakes
 Result: Fast + Quality
 
 4/ Services:
@@ -191,11 +191,11 @@ Result: Fast + Quality
 • Technical Rescue: $6K+
 • Enterprise: $40K/month
 
-5/ Built with AADS - our open source framework that makes AI write production code
+5/ Built with RANA - our open source framework that makes AI write production code
 
 We're open sourcing it because we believe the whole industry needs this
 
-Check it out: github.com/aads-dev/aads-framework
+Check it out: github.com/rana-dev/rana-framework
 
 6/ First 3 clients get 20% off
 
@@ -221,7 +221,7 @@ What we offer:
 • Feature Sprints ($8K, 2 weeks)
 • AI Integration ($12K, 3 weeks)
 
-We're using a framework called AADS that prevents the common AI coding
+We're using a framework called RANA that prevents the common AI coding
 mistakes. I actually built Bettr using this approach.
 
 Looking for first 3 clients (offering 20% founding client discount).
@@ -245,7 +245,7 @@ that's 5x faster than traditional dev WITHOUT the broken code problem.
 Now offering it as a service:
 • MVP Development: 4 weeks
 • Feature Sprints: 2 weeks
-• Built with AADS framework (open sourcing it)
+• Built with RANA framework (open sourcing it)
 
 First 3 clients get 20% off.
 
@@ -263,47 +263,47 @@ framework I developed. Now offering it as agency services + open sourcing
 the framework.
 
 [Share the story of building Bettr]
-[Explain AADS framework]
+[Explain RANA framework]
 [Link to services page]
 ```
 
 ---
 
-### Week 2: AADS Open Source Launch
+### Week 2: RANA Open Source Launch
 
-#### Day 8-10: Prepare AADS for GitHub
+#### Day 8-10: Prepare RANA for GitHub
 
 **1. Test CLI Locally**
 ```bash
-cd /Users/ashleykays/aads-framework/tools/cli
+cd /Users/ashleykays/rana-framework/tools/cli
 npm install
 npm run build
 npm link
 
 # Test commands
 cd ~/Desktop/test-project
-aads init
-aads check
+rana init
+rana check
 ```
 
 **2. Create GitHub Repository**
 ```bash
 # Option A: Personal (quick start)
-github.com/yourusername/aads-framework
+github.com/yourusername/rana-framework
 
 # Option B: Organization (recommended)
 # 1. Create organization: github.com/organizations/new
-#    Name: aads-dev
-# 2. Create repo: aads-dev/aads-framework
+#    Name: rana-dev
+# 2. Create repo: rana-dev/rana-framework
 ```
 
 **3. Push to GitHub**
 ```bash
-cd /Users/ashleykays/aads-framework
+cd /Users/ashleykays/rana-framework
 git init
 git add .
-git commit -m "Initial commit: AADS framework with Waymaker Pro"
-git remote add origin git@github.com:aads-dev/aads-framework.git
+git commit -m "Initial commit: RANA framework with Waymaker Pro"
+git remote add origin git@github.com:rana-dev/rana-framework.git
 git push -u origin main
 ```
 
@@ -325,13 +325,13 @@ Topics: ai, development, framework, code-quality, ai-assisted-development,
 **2. Create npm Organization** (optional but recommended)
 ```bash
 npm login
-npm org create aads
+npm org create rana
 # Costs $7/month for private packages (public is free)
 ```
 
 **3. Publish Core CLI**
 ```bash
-cd /Users/ashleykays/aads-framework/tools/cli
+cd /Users/ashleykays/rana-framework/tools/cli
 
 # Update package.json author and URLs
 npm publish --access public
@@ -339,29 +339,29 @@ npm publish --access public
 
 **Verify:**
 ```bash
-npm install -g @aads/cli
-aads --version
+npm install -g @rana/cli
+rana --version
 ```
 
 **4. Publish Waymaker Pro** (optional for now)
 ```bash
-cd /Users/ashleykays/aads-framework/tools/waymaker-aads-pro
+cd /Users/ashleykays/rana-framework/tools/waymaker-rana-pro
 npm publish --access public
 ```
 
 ---
 
-#### Day 13-14: Launch AADS Publicly
+#### Day 13-14: Launch RANA Publicly
 
 **1. Hacker News Submission**
 ```
-Title: AADS – AI-Assisted Development Standard (open source)
+Title: RANA – AI-Assisted Development Standard (open source)
 
-URL: https://github.com/aads-dev/aads-framework
+URL: https://github.com/rana-dev/rana-framework
 
 Text:
 Hi HN! I built Bettr (my SaaS) using AI assistance, but struggled with
-AI writing broken code. So I created AADS - a framework that makes AI
+AI writing broken code. So I created RANA - a framework that makes AI
 write production-quality code.
 
 Key features:
@@ -378,12 +378,12 @@ Would love feedback from the community!
 
 **2. ProductHunt Launch**
 ```
-Title: AADS - Make AI write production-quality code
+Title: RANA - Make AI write production-quality code
 
 Tagline: Open source framework ensuring AI assistants write code that actually works
 
 Description:
-Tired of AI coding assistants writing broken code? AADS (AI-Assisted
+Tired of AI coding assistants writing broken code? RANA (AI-Assisted
 Development Standard) defines quality gates and best practices that
 prevent common AI mistakes.
 
@@ -392,7 +392,7 @@ prevent common AI mistakes.
 ✅ Works with any AI (Claude, GPT, Copilot)
 ✅ Used in production by Waymaker
 
-Get Started: npm install -g @aads/cli
+Get Started: npm install -g @rana/cli
 ```
 
 **3. Dev.to Article**
@@ -400,7 +400,7 @@ Get Started: npm install -g @aads/cli
 Title: How I Built a SaaS in 4 Weeks Using AI (And Actually Deployed It)
 
 [Share the full story]
-[Introduce AADS framework]
+[Introduce RANA framework]
 [Show before/after code examples]
 [Link to GitHub + Agency services]
 ```
@@ -431,7 +431,7 @@ Title: How I Built a SaaS in 4 Weeks Using AI (And Actually Deployed It)
 ### Month 6
 - **Goal:** $150K-$300K/month revenue
 - **Team:** You + 2-3 contractors
-- **AADS CLI:** 1K+ downloads, building brand
+- **RANA CLI:** 1K+ downloads, building brand
 
 ---
 
@@ -446,7 +446,7 @@ Title: How I Built a SaaS in 4 Weeks Using AI (And Actually Deployed It)
 - [ ] LinkedIn/Twitter posts published
 - [ ] Emailed 50+ people in network
 
-### AADS Metrics (Week 2-4)
+### RANA Metrics (Week 2-4)
 - [ ] GitHub repo public
 - [ ] npm package published
 - [ ] 100+ GitHub stars (first month)
@@ -475,7 +475,7 @@ Title: How I Built a SaaS in 4 Weeks Using AI (And Actually Deployed It)
 - [ ] Posted in 3 communities
 - [ ] 10 discovery calls booked
 
-### AADS Framework (Priority 2)
+### RANA Framework (Priority 2)
 - [x] Core CLI completed
 - [x] Waymaker Pro CLI completed
 - [x] "Sponsored by Waymaker" branding added
@@ -510,7 +510,7 @@ Title: How I Built a SaaS in 4 Weeks Using AI (And Actually Deployed It)
 - [ ] Project management (Linear)
 - [ ] Analytics (Google Analytics)
 
-### AADS Tools
+### RANA Tools
 - [ ] GitHub account
 - [ ] npm account
 - [ ] Dev.to account
@@ -571,7 +571,7 @@ Title: How I Built a SaaS in 4 Weeks Using AI (And Actually Deployed It)
 5. ✅ Book first discovery call
 
 **Everything else can happen in parallel:**
-- AADS GitHub/npm launch (Week 2)
+- RANA GitHub/npm launch (Week 2)
 - Marketing content creation (ongoing)
 - Process refinement (as you go)
 
@@ -579,10 +579,10 @@ Title: How I Built a SaaS in 4 Weeks Using AI (And Actually Deployed It)
 
 ## 📧 Support & Questions
 
-**AADS Framework:**
-- Docs: (create at aads.dev)
-- GitHub: github.com/aads-dev/aads-framework
-- Issues: github.com/aads-dev/aads-framework/issues
+**RANA Framework:**
+- Docs: (create at rana.dev)
+- GitHub: github.com/rana-dev/rana-framework
+- Issues: github.com/rana-dev/rana-framework/issues
 
 **Waymaker Agency:**
 - Website: waymaker.com/services

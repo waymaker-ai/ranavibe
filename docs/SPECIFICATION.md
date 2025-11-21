@@ -1,4 +1,4 @@
-# AADS Specification v1.0.0
+# RANA Specification v1.0.0
 
 **Status:** Draft
 **Version:** 1.0.0
@@ -9,7 +9,7 @@
 
 ## Abstract
 
-This document defines the AI-Assisted Development Standard (AADS), a comprehensive framework for ensuring production-quality code from AI coding assistants. AADS provides standards, workflows, quality gates, and tooling that work universally across tech stacks, IDEs, and AI assistants.
+This document defines the AI-Assisted Development Standard (RANA), a comprehensive framework for ensuring production-quality code from AI coding assistants. RANA provides standards, workflows, quality gates, and tooling that work universally across tech stacks, IDEs, and AI assistants.
 
 ---
 
@@ -17,17 +17,17 @@ This document defines the AI-Assisted Development Standard (AADS), a comprehensi
 
 ### 1.1 Purpose
 
-AADS addresses the critical gap in AI-assisted development: while AI assistants can generate code quickly, they often produce:
+RANA addresses the critical gap in AI-assisted development: while AI assistants can generate code quickly, they often produce:
 - Mock data instead of real implementations
 - Code that breaks existing functionality
 - Code without proper testing
 - Code that never reaches production
 
-AADS provides a comprehensive standard that ensures AI-generated code meets production-quality requirements.
+RANA provides a comprehensive standard that ensures AI-generated code meets production-quality requirements.
 
 ### 1.2 Scope
 
-AADS covers the entire development lifecycle:
+RANA covers the entire development lifecycle:
 - Research and planning
 - Implementation standards
 - Testing requirements
@@ -53,13 +53,13 @@ AADS covers the entire development lifecycle:
 
 ### 2.1 Configuration File
 
-AADS uses `.aads.yml` as the standard configuration file location.
+RANA uses `.rana.yml` as the standard configuration file location.
 
 **Rationale:** Follows established patterns (.gitignore, .eslintrc, etc.)
 
 **Structure:**
 ```yaml
-version: string          # AADS version (semver)
+version: string          # RANA version (semver)
 project: object          # Project metadata
 standards: object        # Development standards
 quality_gates: object    # Quality requirements
@@ -79,7 +79,7 @@ Quality gates are checkpoints that must pass before proceeding to the next phase
 
 ### 2.3 Development Phases
 
-AADS defines seven development phases:
+RANA defines seven development phases:
 
 1. **Understanding:** Clarify requirements
 2. **Research:** Find existing implementations
@@ -96,17 +96,17 @@ AADS defines seven development phases:
 ### 3.1 File Format
 
 **Format:** YAML
-**File name:** `.aads.yml`
+**File name:** `.rana.yml`
 **Location:** Project root
 
 ### 3.2 Schema Definition
 
 ```yaml
-# AADS Configuration Schema v1.0.0
+# RANA Configuration Schema v1.0.0
 
 version: string
   # Required
-  # AADS specification version
+  # RANA specification version
   # Format: semver (e.g., "1.0.0")
   # Example: "1.0.0"
 
@@ -338,7 +338,7 @@ tools: object
 
     name: string
       # CLI package name
-      # Example: "@aads/cli"
+      # Example: "@rana/cli"
 
     version: string
       # CLI version
@@ -402,7 +402,7 @@ const users = await userService.getUsers();
 - **Integration:** Test API endpoints with real database
 - **E2E:** Test user flows end-to-end
 
-**Minimum coverage:** As specified in `.aads.yml` (default: 80%)
+**Minimum coverage:** As specified in `.rana.yml` (default: 80%)
 
 **Rationale:** Tests prevent regressions and document behavior.
 
@@ -574,25 +574,25 @@ Detailed phase specifications in separate document: `WORKFLOW_GUIDE.md`
 
 ### 7.1 CLI Tool
 
-AADS provides an official CLI tool: `@aads/cli`
+RANA provides an official CLI tool: `@rana/cli`
 
 **Commands:**
-- `aads init` - Initialize AADS in a project
-- `aads check` - Check compliance with standards
-- `aads validate` - Validate `.aads.yml` configuration
-- `aads flow <type> <name>` - Start a workflow
-- `aads deploy` - Deploy with verification
+- `rana init` - Initialize RANA in a project
+- `rana check` - Check compliance with standards
+- `rana validate` - Validate `.rana.yml` configuration
+- `rana flow <type> <name>` - Start a workflow
+- `rana deploy` - Deploy with verification
 
 **Installation:**
 ```bash
-npm install -g @aads/cli
+npm install -g @rana/cli
 ```
 
 ### 7.2 IDE Extensions
 
 Official IDE extensions available for:
-- VS Code: `aads-vscode`
-- JetBrains IDEs: `aads-jetbrains`
+- VS Code: `rana-vscode`
+- JetBrains IDEs: `rana-jetbrains`
 
 **Features:**
 - Real-time compliance checking
@@ -605,25 +605,25 @@ Official IDE extensions available for:
 
 **GitHub Action:**
 ```yaml
-- uses: aads/check-compliance@v1
+- uses: rana/check-compliance@v1
   with:
-    config: .aads.yml
+    config: .rana.yml
 ```
 
 **GitLab CI:**
 ```yaml
-aads-check:
+rana-check:
   script:
-    - npx @aads/cli check
+    - npx @rana/cli check
 ```
 
 ---
 
 ## 8. Integration with AI Assistants
 
-### 8.1 How AI Assistants Use AADS
+### 8.1 How AI Assistants Use RANA
 
-1. **Read Configuration:** AI reads `.aads.yml` at project start
+1. **Read Configuration:** AI reads `.rana.yml` at project start
 2. **Follow Standards:** AI follows defined principles and quality gates
 3. **Use Instructions:** AI references `instructions_path` document
 4. **Check Compliance:** AI verifies quality gates before marking tasks complete
@@ -631,9 +631,9 @@ aads-check:
 ### 8.2 AI Assistant Prompt Template
 
 ```
-You are assisting with development on a project that follows AADS.
+You are assisting with development on a project that follows RANA.
 
-Configuration: [contents of .aads.yml]
+Configuration: [contents of .rana.yml]
 Instructions: [contents of instructions_path]
 Checklist: [contents of checklist_path]
 
@@ -651,7 +651,7 @@ Mark task complete only when all quality gates pass.
 
 ### 8.3 Supported AI Assistants
 
-AADS is designed to work with any AI assistant:
+RANA is designed to work with any AI assistant:
 - Claude (Anthropic)
 - ChatGPT (OpenAI)
 - GitHub Copilot
@@ -666,7 +666,7 @@ AADS is designed to work with any AI assistant:
 ### 9.1 Compliance Levels
 
 **Level 1: Minimal**
-- `.aads.yml` file present
+- `.rana.yml` file present
 - Core principles defined
 - Basic quality gates
 
@@ -685,7 +685,7 @@ AADS is designed to work with any AI assistant:
 ### 9.2 Compliance Verification
 
 **Automated:**
-- `aads check` command
+- `rana check` command
 - CI/CD integration
 - Pre-commit hooks
 
@@ -710,17 +710,17 @@ quality_gates:
 
 ### 10.2 Language-Specific Extensions
 
-Language-specific guides can extend AADS:
-- AADS for React
-- AADS for Python/Django
-- AADS for Ruby/Rails
+Language-specific guides can extend RANA:
+- RANA for React
+- RANA for Python/Django
+- RANA for Ruby/Rails
 
 ### 10.3 Industry-Specific Extensions
 
 Industry-specific extensions can add requirements:
-- AADS for E-commerce (PCI compliance)
-- AADS for Healthcare (HIPAA compliance)
-- AADS for Finance (SOC 2 compliance)
+- RANA for E-commerce (PCI compliance)
+- RANA for Healthcare (HIPAA compliance)
+- RANA for Finance (SOC 2 compliance)
 
 ---
 
@@ -728,14 +728,14 @@ Industry-specific extensions can add requirements:
 
 ### 11.1 Semantic Versioning
 
-AADS follows semantic versioning (semver):
+RANA follows semantic versioning (semver):
 - **Major:** Breaking changes to schema or workflow
 - **Minor:** New features, backward compatible
 - **Patch:** Bug fixes, clarifications
 
 ### 11.2 Version Compatibility
 
-Projects specify AADS version in `.aads.yml`:
+Projects specify RANA version in `.rana.yml`:
 
 ```yaml
 version: "1.0.0"
@@ -747,23 +747,23 @@ Tools check version compatibility and warn if mismatch.
 
 ## 12. Migration
 
-### 12.1 Adopting AADS
+### 12.1 Adopting RANA
 
 For existing projects:
 
-1. Run `aads init`
-2. Review generated `.aads.yml`
+1. Run `rana init`
+2. Review generated `.rana.yml`
 3. Customize for your project
 4. Start using with new features
 5. Gradually adopt for existing code
 
 ### 12.2 Migrating Between Versions
 
-When AADS versions change:
+When RANA versions change:
 
 1. Read migration guide
-2. Update `.aads.yml` version
-3. Run `aads validate`
+2. Update `.rana.yml` version
+3. Run `rana validate`
 4. Fix any compatibility issues
 5. Update tooling (CLI, extensions)
 
@@ -773,7 +773,7 @@ When AADS versions change:
 
 ### 13.1 Governance
 
-AADS is community-driven:
+RANA is community-driven:
 - **RFC Process:** Major changes require RFC
 - **Core Team:** Maintainers guide direction
 - **Community Input:** Anyone can propose changes
@@ -794,28 +794,28 @@ See `CONTRIBUTING.md` for guidelines.
 
 ## 14. License
 
-AADS specification is licensed under CC BY 4.0.
+RANA specification is licensed under CC BY 4.0.
 
-AADS tooling is licensed under MIT.
+RANA tooling is licensed under MIT.
 
 ---
 
 ## 15. References
 
-- AADS Website: https://aads.dev
-- GitHub Repository: https://github.com/yourusername/aads-framework
-- Discord Community: https://discord.gg/aads
-- Twitter: @aads_dev
+- RANA Website: https://rana.dev
+- GitHub Repository: https://github.com/yourusername/rana-framework
+- Discord Community: https://discord.gg/rana
+- Twitter: @rana_dev
 
 ---
 
-## Appendix A: Example .aads.yml
+## Appendix A: Example .rana.yml
 
-See `templates/react-typescript/.aads.yml` for React example.
+See `templates/react-typescript/.rana.yml` for React example.
 
-See `templates/nextjs-supabase/.aads.yml` for Next.js example.
+See `templates/nextjs-supabase/.rana.yml` for Next.js example.
 
-See `templates/vue-firebase/.aads.yml` for Vue example.
+See `templates/vue-firebase/.rana.yml` for Vue example.
 
 ---
 
@@ -835,7 +835,7 @@ See `docs/WORKFLOW_GUIDE.md`
 
 ---
 
-**AADS Specification v1.0.0**
+**RANA Specification v1.0.0**
 **Status:** Draft
 **Last Updated:** 2025-11-05
 

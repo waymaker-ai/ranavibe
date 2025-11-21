@@ -1,7 +1,7 @@
 version: "1.0.0"
 
 project:
-  name: "React TypeScript AADS Example"
+  name: "React TypeScript RANA Example"
   type: "frontend"
   languages:
     - "typescript"
