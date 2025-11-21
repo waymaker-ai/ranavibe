@@ -1,0 +1,92 @@
+version: "1.0.0"
+
+project:
+  name: "React TypeScript AADS Example"
+  type: "frontend"
+  languages:
+    - "typescript"
+  frameworks:
+    frontend: "react"
+
+standards:
+  principles:
+    - search_before_create
+    - real_data_only
+    - test_everything
+    - design_system_compliance
+    - deploy_to_production
+
+  patterns:
+    frontend_framework: "react"
+    state_management: "useState/useReducer"
+    api_calls: "fetch with error handling"
+    styling: "CSS modules / Tailwind"
+    testing: "vitest + testing-library"
+
+  code_quality:
+    typescript:
+      strict_mode: true
+      no_any_types: true
+    general:
+      no_console_log_in_production: true
+      comprehensive_error_handling: true
+      loading_states_required: true
+      empty_states_required: true
+
+quality_gates:
+  pre_implementation:
+    - name: "Search for existing components"
+      description: "Check src/components/ for similar functionality"
+      required: true
+    - name: "Review existing hooks"
+      description: "Check src/hooks/ for reusable logic"
+      required: true
+
+  implementation:
+    - name: "TypeScript strict mode compliance"
+      description: "No 'any' types, proper type definitions"
+      required: true
+    - name: "Error handling implemented"
+      description: "Try-catch blocks, error states"
+      required: true
+    - name: "Loading states implemented"
+      description: "Show loading indicators during async operations"
+      required: true
+    - name: "Empty states implemented"
+      description: "Handle no-data scenarios"
+      required: true
+    - name: "Real data implementation"
+      description: "No mock data, connect to real API"
+      required: true
+
+  testing:
+    - name: "Component tests written"
+      description: "Test rendering, interactions, states"
+      required: true
+    - name: "Manual testing completed"
+      description: "Test in browser"
+      required: true
+
+  deployment:
+    - name: "Build succeeds"
+      description: "npm run build completes without errors"
+      required: true
+    - name: "Code committed to git"
+      description: "All changes committed"
+      required: true
+
+ai_assistant:
+  rules:
+    - "ALWAYS search src/components/ before creating new components"
+    - "NEVER use mock data - use real API calls"
+    - "NEVER use 'any' type in TypeScript"
+    - "ALWAYS add error handling for async operations"
+    - "ALWAYS add loading states"
+    - "ALWAYS handle empty data states"
+    - "Features are NOT done until tested and deployed"
+
+deployment:
+  frontend:
+    platform: "vercel"
+    build_command: "npm run build"
+    auto_deploy: true

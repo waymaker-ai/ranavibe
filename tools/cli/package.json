@@ -1,0 +1,60 @@
+{
+  "name": "@aads/cli",
+  "version": "0.1.0",
+  "description": "CLI tool for AI-Assisted Development Standard (AADS)",
+  "main": "dist/index.js",
+  "bin": {
+    "aads": "dist/cli.js"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/cli.js",
+    "test": "vitest",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "aads",
+    "ai",
+    "development",
+    "standards",
+    "code-quality",
+    "ai-assistant",
+    "claude",
+    "gpt",
+    "copilot"
+  ],
+  "author": "AADS Contributors",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aads-dev/aads-framework.git",
+    "directory": "tools/cli"
+  },
+  "bugs": {
+    "url": "https://github.com/aads-dev/aads-framework/issues"
+  },
+  "homepage": "https://aads.dev",
+  "funding": {
+    "type": "individual",
+    "url": "https://waymaker.com/aads"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^11.1.0",
+    "inquirer": "^9.2.12",
+    "js-yaml": "^4.1.0",
+    "ora": "^8.0.1"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^9.0.7",
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^20.10.5",
+    "typescript": "^5.3.3",
+    "vitest": "^1.0.4"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

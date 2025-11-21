@@ -1,0 +1,119 @@
+# AADS Configuration for AADS Framework
+# This is a self-referential example of AADS in use
+
+version: 1.0.0
+
+project:
+  name: "AADS Framework"
+  type: "tooling"
+  description: "AI-Assisted Development Standard - Universal framework for production-quality AI development"
+  languages:
+    - "typescript"
+    - "markdown"
+
+standards:
+  # Core principles
+  principles:
+    - search_before_create
+    - real_data_only
+    - test_everything
+    - deploy_to_production
+    - documentation_required
+
+  # Code quality
+  code_quality:
+    typescript_strict: true
+    no_any_types: true
+    meaningful_names: true
+    comments_for_complex_logic: true
+
+  # Testing requirements
+  testing:
+    manual_testing_required: true
+    unit_tests_required: true
+    integration_tests_required: false  # Not needed for CLI tool
+    e2e_tests_required: false  # Not applicable
+    coverage_threshold: 80
+
+  # Documentation
+  documentation:
+    readme_required: true
+    api_docs_required: true
+    examples_required: true
+    changelog_required: true
+
+# Quality gates
+quality_gates:
+  # Pre-implementation
+  pre_implementation:
+    - check_existing_code
+    - review_documentation
+    - understand_requirements
+    - plan_architecture
+
+  # Implementation
+  implementation:
+    - typescript_strict_mode
+    - no_any_types
+    - error_handling_required
+    - meaningful_variable_names
+    - dry_principle
+
+  # Testing
+  testing:
+    - manual_testing_complete
+    - unit_tests_passing
+    - coverage_meets_threshold
+
+  # Deployment
+  deployment:
+    - git_commit_required
+    - version_bumped
+    - changelog_updated
+    - npm_publish_verified
+
+# Deployment configuration
+deployment:
+  npm:
+    enabled: true
+    package_name: "@aads/cli"
+    registry: "https://registry.npmjs.org/"
+
+  github:
+    enabled: true
+    auto_release: true
+    release_notes: true
+
+# AI Assistant Configuration
+ai_assistant:
+  instructions_path: "docs/AGENT_INSTRUCTIONS.md"
+  checklist_path: "docs/DEVELOPMENT_CHECKLIST.md"
+
+  # Enforce rules
+  enforce:
+    - no_mock_data
+    - real_implementations_only
+    - existing_patterns_first
+    - test_before_commit
+    - deploy_after_test
+
+# Tooling
+tools:
+  cli:
+    name: "@aads/cli"
+    version: "0.1.0"
+    commands:
+      - init
+      - check
+      - validate
+      - deploy
+
+  documentation:
+    framework: "Nextra"
+    url: "https://aads.dev"
+
+# Community
+community:
+  discord: "https://discord.gg/aads"
+  twitter: "@aads_dev"
+  github_discussions: true
