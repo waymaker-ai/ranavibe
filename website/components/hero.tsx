@@ -101,10 +101,13 @@ export function Hero() {
             className="mt-16 text-left"
           >
             <div className="code-block font-mono text-sm">
-              <div className="text-foreground-secondary">$ npx @rana/cli init</div>
-              <div className="mt-2 text-gradient-from">✓ Created RANA project</div>
-              <div className="text-gradient-to">✓ Installed dependencies</div>
-              <div className="text-foreground-secondary mt-2">$ npm run dev</div>
+              <div className="text-foreground-secondary">$ npm install @rana/helpers @rana/prompts @rana/rag</div>
+              <div className="mt-2 text-gradient-from">✓ Installed RANA 2025 packages</div>
+              <div className="text-foreground-secondary mt-2">{`import { summarize, translate } from '@rana/helpers';`}</div>
+              <div className="text-foreground-secondary">{`import { PromptManager } from '@rana/prompts';`}</div>
+              <div className="text-foreground-secondary">{`import { RAGPresets } from '@rana/rag';`}</div>
+              <div className="mt-2 text-gradient-to">{`// One-line AI operations`}</div>
+              <div className="text-foreground-secondary">{`const summary = await summarize(document);`}</div>
             </div>
           </motion.div>
         </div>
