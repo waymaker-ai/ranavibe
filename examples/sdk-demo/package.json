@@ -1,0 +1,24 @@
+{
+  "name": "rana-sdk-demo",
+  "version": "1.0.0",
+  "description": "Complete demo of RANA SDK features",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx src/core-examples.ts",
+    "react": "vite",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@rana/core": "^2.0.0",
+    "@rana/react": "^2.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.55",
+    "@types/react-dom": "^18.2.19",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.12"
+  }
+}

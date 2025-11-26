@@ -14,6 +14,17 @@ import {
 
 const features = [
   {
+    icon: Gauge,
+    title: '70% Cost Savings',
+    description: 'Automatic cost reduction through intelligent model routing, caching, prompt optimization, and real-time cost tracking dashboards.',
+    highlight: true,
+  },
+  {
+    icon: Lock,
+    title: 'Zero Vendor Lock-in',
+    description: 'Switch between 9 LLM providers in one line. OpenAI, Anthropic, Google, xAI, Mistral, Cohere, Together, Groq, Ollama.',
+  },
+  {
     icon: Shield,
     title: 'Enterprise Security',
     description: 'Built-in OWASP Top 10 protection, GDPR compliance tools, PII detection, and rate limiting for production-grade security.',
@@ -30,28 +41,18 @@ const features = [
   },
   {
     icon: Code2,
-    title: 'Built for Developers',
-    description: '100% TypeScript with full type inference, comprehensive docs, and patterns proven in production by real development teams.',
-  },
-  {
-    icon: Gauge,
-    title: 'Cost Optimization',
-    description: 'Automatic 70% cost reduction through intelligent model routing, caching, and real-time cost tracking dashboards.',
-  },
-  {
-    icon: Lock,
-    title: 'Zero Vendor Lock-in',
-    description: 'Switch between 9 LLM providers in one line. OpenAI, Anthropic, Google, xAI, Mistral, Cohere, Together, Groq, Ollama.',
+    title: 'Process Intelligence',
+    description: 'Track development velocity, DORA metrics, and legacy code analysis. AI-powered insights for continuous improvement.',
   },
   {
     icon: Search,
     title: 'Production-Ready',
-    description: 'Deploy in 5 minutes with built-in monitoring, error handling, rate limiting, and comprehensive testing frameworks.',
+    description: 'Deploy in 5 minutes with built-in monitoring, error handling, rate limiting, and 25+ CLI commands for automation.',
   },
   {
     icon: Smartphone,
-    title: 'Waymaker Services',
-    description: 'Optional expert implementation, training, and enterprise support services from the team behind RANA.',
+    title: 'Training & Services',
+    description: 'Optional certification programs, team workshops, and enterprise implementation from the team behind RANA.',
   },
 ];
 

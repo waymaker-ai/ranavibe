@@ -1,7 +1,7 @@
 {
   "name": "@rana/cli",
   "version": "0.1.0",
-  "description": "CLI tool for AI-Assisted Development Standard (RANA)",
+  "description": "CLI tool for Rapid AI Native Architecture (RANA)",
   "main": "dist/index.js",
   "bin": {
     "rana": "dist/cli.js"
@@ -29,11 +29,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rana-dev/rana-framework.git",
+    "url": "git+https://github.com/waymaker/rana.git",
     "directory": "tools/cli"
   },
   "bugs": {
-    "url": "https://github.com/rana-dev/rana-framework/issues"
+    "url": "https://github.com/waymaker/rana/issues"
   },
   "homepage": "https://rana.dev",
   "funding": {
@@ -41,11 +41,14 @@
     "url": "https://waymaker.com/rana"
   },
   "dependencies": {
+    "@types/prompts": "^2.4.9",
     "chalk": "^5.3.0",
     "commander": "^11.1.0",
+    "glob": "^13.0.0",
     "inquirer": "^9.2.12",
     "js-yaml": "^4.1.0",
-    "ora": "^8.0.1"
+    "ora": "^8.0.1",
+    "prompts": "^2.4.2"
   },
   "devDependencies": {
     "@types/inquirer": "^9.0.7",

@@ -4,7 +4,7 @@ This file provides guidance to WARP (warp.dev) when working with code in this re
 
 ## Project Overview
 
-**RANA Framework** (AI-Assisted Development Standard) - A universal framework that ensures AI coding assistants produce production-quality code. This is a documentation and tooling project that provides standards, workflows, quality gates, and CLI tools for AI-assisted development.
+**RANA Framework** (Rapid AI Native Architecture) - A universal framework that ensures AI coding assistants produce production-quality code. This is a documentation and tooling project that provides standards, workflows, quality gates, and CLI tools for AI-assisted development.
 
 ## Repository Structure
 
@@ -33,13 +33,19 @@ npm run build
 # Run CLI in development mode (watch for changes)
 npm run dev
 
-# Test the CLI locally
+# Test the CLI locally (run individual commands)
 npm run start -- init
 npm run start -- check
 npm run start -- deploy
+npm run start -- validate
+npm run start -- config
+npm run start -- status
 
 # Run tests
 npm test
+
+# Run tests in watch mode
+npm test -- --watch
 
 # Build Waymaker Pro version
 cd tools/waymaker-rana-pro
@@ -63,6 +69,21 @@ cd examples/react-typescript
 npm install
 npm run dev
 npm run build
+
+# Run tests in example project
+npm test
+
+# Run tests with UI
+npm run test:ui
+
+# Generate test coverage
+npm run coverage
+
+# Lint the example project
+npm run lint
+
+# Type-check without emitting files
+npm run type-check
 ```
 
 ## Architecture
@@ -77,15 +98,24 @@ The CLI is built with TypeScript and uses:
 - **Ora**: Loading spinners and progress indicators
 
 **Main commands:**
-- `init` - Creates `.rana.yml` and documentation structure
-- `check` - Validates compliance with RANA standards
-- `deploy` - Handles deployment with verification workflow
+- `init` - Creates `.rana.yml` and documentation structure (supports --template and --force flags)
+- `check` - Validates compliance with RANA standards (supports --verbose and --fix flags)
+- `deploy` - Handles deployment with verification workflow (supports --verify and --skip-tests flags)
 - `validate` - Validates `.rana.yml` configuration
 - `config` - Shows current configuration
 - `status` - Shows project RANA status
 
 **Command implementation pattern:**
 Each command is in `src/commands/` and exports an async function that takes options. The main CLI file (`src/cli.ts`) registers these commands with Commander.
+
+**Check command specifics:**
+The `check` command scans for:
+- Configuration validity
+- Mock data patterns (mockData, dummyData, fakeData)
+- TypeScript strict mode compliance
+- Usage of `any` types
+- Console.log statements in production code
+- Git status (uncommitted changes)
 
 ### Configuration System
 
@@ -117,13 +147,21 @@ When working on this codebase, follow these RANA principles (defined in `.rana.y
 ## TypeScript Configuration
 
 - **Strict mode enabled**: No `any` types allowed
-- **Target**: ES2020
-- **Module**: ESNext with `.js` extensions (for ESM compatibility)
+- **Target**: ES2022 (CLI tools), ES2020 (documentation)
+- **Module**: ESNext
+- **Module resolution**: Node
+- **ESM compatibility**: All imports use `.js` extensions (TypeScript ESM requirement)
 - **Engines**: Node.js >= 18.0.0
+- **Declaration files**: Generated with source maps for better IDE support
 
 ## Testing
 
-The project uses **Vitest** for testing. Tests should be placed alongside source files with `.test.ts` extension.
+The project uses **Vitest** for testing.
+- Tests should be placed alongside source files with `.test.ts` or `.spec.ts` extension
+- Test files are automatically excluded from builds
+- Run `npm test` in the CLI tool directory or example project
+- React example includes Vitest UI support: `npm run test:ui`
+- Coverage reports available via `npm run coverage` in examples
 
 ## Package Management
 
@@ -142,12 +180,15 @@ When updating docs:
 ## CLI Development Workflow
 
 When adding a new CLI command:
-1. Create command file in `src/commands/[name].ts`
-2. Export async function that accepts options object
-3. Register command in `src/cli.ts` with description and options
-4. Add command to help text and documentation
-5. Test manually with `npm run start -- [command]`
-6. Build with `npm run build` before publishing
+1. Create command file in `tools/cli/src/commands/[name].ts`
+2. Export async function that accepts options object (typed interface)
+3. Import and register command in `src/cli.ts` with Commander
+4. Add command options and flags (e.g., `--verbose`, `--fix`)
+5. Use Ora for spinners, Chalk for colors, Inquirer for prompts
+6. Test manually: `npm run start -- [command]` from tools/cli
+7. Add error handling with descriptive messages
+8. Update this WARP.md file with new command details
+9. Build with `npm run build` before publishing
 
 ## Package Publishing
 
@@ -177,9 +218,11 @@ When adding a new CLI command:
 
 - **No mock data**: Always use real implementations, even in examples
 - **TypeScript strict mode**: No `any` types, proper type definitions required
-- **Error handling**: All async operations must have try-catch blocks
-- **Loading states**: UI components must show loading indicators
-- **ESM modules**: Use `.js` extensions in imports for ESM compatibility
+- **Error handling**: All async operations must have try-catch blocks with user-friendly messages
+- **Loading states**: UI components must show loading indicators; CLI uses Ora spinners
+- **ESM modules**: Use `.js` extensions in imports for ESM compatibility (e.g., `import { foo } from './bar.js'`)
+- **File operations**: Use `fs/promises` for async file operations, check existence with try-catch on `fs.access()`
+- **User feedback**: CLI must provide clear, colored output using Chalk (cyan for info, yellow for warnings, red for errors, green for success)
 
 ## Project Status
 

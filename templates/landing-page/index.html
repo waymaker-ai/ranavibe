@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary Meta Tags -->
+  <title>RANA - Build Production AI Apps in 5 Minutes | 9 LLM Providers, 70% Cost Savings</title>
+  <meta name="title" content="RANA - Rapid AI Native Architecture | 9 LLM Providers, 70% Cost Savings">
+  <meta name="description" content="The only AI framework with 9 LLM providers (OpenAI, Anthropic, Google, xAI, Mistral, Cohere, Together, Groq, Ollama), 70% automatic cost reduction, and enterprise security. Named after my son. Free forever.">
+  <meta name="keywords" content="AI framework, LLM, OpenAI, Anthropic, Google Gemini, xAI Grok, AI development, cost optimization, GPT-4, Claude, multimodal AI, RANA, piranha mascot">
+  <meta name="author" content="Waymaker - Ashley Kays, Christian Moore">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rana.dev/">
+  <meta property="og:title" content="RANA - Build Production AI Apps in 5 Minutes">
+  <meta property="og:description" content="The only AI framework with 9 LLM providers, 70% cost reduction, zero vendor lock-in. Named after my son 🐟 Free forever.">
+  <meta property="og:image" content="https://rana.dev/og-image.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://rana.dev/">
+  <meta property="twitter:title" content="RANA - Build Production AI Apps in 5 Minutes">
+  <meta property="twitter:description" content="9 LLM providers, 70% cost savings, zero vendor lock-in. Named after my son 🐟">
+  <meta property="twitter:image" content="https://rana.dev/og-image.png">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://rana.dev/">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐟</text></svg>">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #667eea;
+      --secondary: #764ba2;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --dark: #1f2937;
+      --light: #f9fafb;
+      --gray: #6b7280;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    /* Gradient Background */
+    .gradient-bg {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Navigation */
+    nav {
+      padding: 20px 0;
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 100px 0;
+      text-align: center;
+      color: white;
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .hero .subheadline {
+      font-size: 24px;
+      margin-bottom: 40px;
+      opacity: 0.95;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin: 60px 0;
+      text-align: left;
+    }
+
+    .stat {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      padding: 30px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .stat-value {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 16px;
+      opacity: 0.9;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 16px 32px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .btn-primary {
+      background: white;
+      color: var(--primary);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    .btn-secondary:hover {
+      background: white;
+      color: var(--primary);
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Section */
+    section {
+      padding: 80px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-header h2 {
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .section-header p {
+      font-size: 20px;
+      color: var(--gray);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Features Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+    }
+
+    .feature {
+      padding: 40px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+    }
+
+    .feature-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .feature h3 {
+      font-size: 24px;
+      margin-bottom: 12px;
+      color: var(--dark);
+    }
+
+    .feature p {
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    .feature ul {
+      list-style: none;
+      margin-top: 20px;
+    }
+
+    .feature li {
+      padding: 8px 0;
+      color: var(--gray);
+    }
+
+    .feature li:before {
+      content: "✓ ";
+      color: var(--success);
+      font-weight: bold;
+      margin-right: 8px;
+    }
+
+    /* Code Block */
+    .code-block {
+      background: var(--dark);
+      color: #10b981;
+      padding: 30px;
+      border-radius: 12px;
+      overflow-x: auto;
+      margin: 40px 0;
+      font-family: 'Courier New', monospace;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .code-comment {
+      color: #6b7280;
+    }
+
+    /* Comparison Table */
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 40px 0;
+      background: white;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 20px;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .comparison-table th {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      font-weight: 600;
+    }
+
+    .comparison-table tr:hover {
+      background: var(--light);
+    }
+
+    .check {
+      color: var(--success);
+      font-weight: bold;
+    }
+
+    .cross {
+      color: var(--gray);
+    }
+
+    /* Testimonials */
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .testimonial {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border-left: 4px solid var(--primary);
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 20px;
+      color: var(--dark);
+      line-height: 1.7;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .testimonial-role {
+      color: var(--gray);
+      font-size: 14px;
+    }
+
+    /* Pricing */
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+
+    .pricing-card {
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .pricing-card:hover {
+      transform: scale(1.05);
+    }
+
+    .pricing-card.featured {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      transform: scale(1.05);
+    }
+
+    .pricing-card h3 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 48px;
+      font-weight: 700;
+      margin: 20px 0;
+    }
+
+    .price-subtext {
+      font-size: 16px;
+      opacity: 0.8;
+      margin-bottom: 30px;
+    }
+
+    .pricing-features {
+      list-style: none;
+      text-align: left;
+      margin: 30px 0;
+    }
+
+    .pricing-features li {
+      padding: 10px 0;
+    }
+
+    .pricing-features li:before {
+      content: "✓ ";
+      color: var(--success);
+      font-weight: bold;
+      margin-right: 8px;
+    }
+
+    .pricing-card.featured .pricing-features li:before {
+      color: white;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      text-align: center;
+      padding: 100px 20px;
+      color: white;
+    }
+
+    .cta-section h2 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .cta-section p {
+      font-size: 22px;
+      margin-bottom: 40px;
+      opacity: 0.95;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 60px 0 20px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-section h4 {
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section li {
+      margin-bottom: 10px;
+    }
+
+    .footer-section a {
+      color: #9ca3af;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-section a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #374151;
+      padding-top: 30px;
+      text-align: center;
+      color: #9ca3af;
+    }
+
+    .footer-bottom a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero .subheadline {
+        font-size: 18px;
+      }
+
+      .section-header h2 {
+        font-size: 32px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <div class="logo">🐟 RANA</div>
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#docs">Docs</a></li>
+        <li><a href="#calculator">Calculator</a></li>
+        <li><a href="https://github.com/waymaker/rana" target="_blank">GitHub</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero gradient-bg">
+    <div class="container">
+      <h1>Build Production AI Apps<br>in 5 Minutes<br>Not 5 Weeks.</h1>
+      <p class="subheadline">
+        RANA is the only AI framework with 9 LLM providers,<br>
+        70% cost reduction, and enterprise-grade security — all in one.
+      </p>
+
+      <div class="cta-buttons">
+        <a href="#get-started" class="btn btn-primary">Start Building Free →</a>
+        <a href="#demo" class="btn btn-secondary">See Live Demo</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-value">9</div>
+          <div class="stat-label">LLM Providers</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">70%</div>
+          <div class="stat-label">Cost Reduction</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">5 min</div>
+          <div class="stat-label">Setup Time</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">350K+</div>
+          <div class="stat-label">HuggingFace Models</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">95+</div>
+          <div class="stat-label">Security Score</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">100%</div>
+          <div class="stat-label">Free & Open Source</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features">
+    <div class="container">
+      <div class="section-header">
+        <h2>Everything You Need, Nothing You Don't</h2>
+        <p>The most comprehensive AI development framework ever built.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature">
+          <div class="feature-icon">🤖</div>
+          <h3>9 LLM Providers - One API</h3>
+          <p>Switch between OpenAI, Anthropic, Google Gemini 3, xAI Grok, Mistral, Cohere, Together.ai, Groq, and Ollama instantly.</p>
+          <ul>
+            <li>No vendor lock-in</li>
+            <li>Automatic fallback</li>
+            <li>Best model for each task</li>
+            <li>One line of code to switch</li>
+          </ul>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">💰</div>
+          <h3>70% Cost Reduction - Automatic</h3>
+          <p>Smart routing, caching, and optimization saves $12,600+/year.</p>
+          <ul>
+            <li>Response caching (40% savings)</li>
+            <li>Smart model selection (25%)</li>
+            <li>Prompt optimization (15%)</li>
+            <li>RAG implementation (30%)</li>
+          </ul>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">⚡</div>
+          <h3>5-Minute Setup - 120x Faster</h3>
+          <p>From zero to production AI app in 300 seconds, not 40 hours.</p>
+          <ul>
+            <li>One-command installation</li>
+            <li>Auto-configuration</li>
+            <li>Production-ready templates</li>
+            <li>Docker stack included</li>
+          </ul>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">🔒</div>
+          <h3>Enterprise Security - Built-In</h3>
+          <p>OWASP Top 10, GDPR compliance, SOC 2 features included.</p>
+          <ul>
+            <li>All 10 OWASP protections</li>
+            <li>GDPR compliance tools</li>
+            <li>Audit logging</li>
+            <li>95+ security score enforced</li>
+          </ul>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">🎨</div>
+          <h3>20+ UI Components - Beautiful by Default</h3>
+          <p>Dark mode, accessibility, mobile-first design system.</p>
+          <ul>
+            <li>React/Next.js components</li>
+            <li>Tailwind CSS</li>
+            <li>WCAG 2.1 accessible</li>
+            <li>Fully customizable</li>
+          </ul>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">🌍</div>
+          <h3>Marketplace Integrations</h3>
+          <p>Access 350K+ models and deploy custom GPTs programmatically.</p>
+          <ul>
+            <li>Hugging Face (350K+ models)</li>
+            <li>OpenAI GPT Store</li>
+            <li>Claude MCP servers</li>
+            <li>Figma design-to-code</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Code Example -->
+  <section style="background: var(--light);">
+    <div class="container">
+      <div class="section-header">
+        <h2>Simple, Powerful API</h2>
+        <p>One API, 9 providers. Switch with a single line of code.</p>
+      </div>
+
+      <div class="code-block">
+<span class="code-comment">// Install</span>
+npx create-luka-app my-ai-app
+
+<span class="code-comment">// Use any of 9 providers with the same code</span>
+import { luka } from '@luka/client';
+
+const response = await luka.chat({
+  model: 'gemini-2.0-flash', <span class="code-comment">// or gpt-4o, claude-3.5-sonnet, etc.</span>
+  messages: [
+    { role: 'user', content: 'Hello!' }
+  ]
+});
+
+console.log(response.content);
+console.log(`Cost: $${response.cost}`); <span class="code-comment">// Automatic cost tracking</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Section -->
+  <section id="comparison">
+    <div class="container">
+      <div class="section-header">
+        <h2>RANA vs Everyone Else</h2>
+        <p>We win in 17 out of 18 categories</p>
+      </div>
+
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>RANA</th>
+            <th>LangChain</th>
+            <th>Vercel AI</th>
+            <th>From Scratch</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>LLM Providers</strong></td>
+            <td class="check">9 ✓</td>
+            <td>6</td>
+            <td>4</td>
+            <td>1-2</td>
+          </tr>
+          <tr>
+            <td><strong>Setup Time</strong></td>
+            <td class="check">5 min ✓</td>
+            <td>2-4 hrs</td>
+            <td>1-2 hrs</td>
+            <td>20-40 hrs</td>
+          </tr>
+          <tr>
+            <td><strong>Cost Optimization</strong></td>
+            <td class="check">70% ✓</td>
+            <td class="cross">Manual</td>
+            <td class="cross">Manual</td>
+            <td class="cross">None</td>
+          </tr>
+          <tr>
+            <td><strong>UI Components</strong></td>
+            <td class="check">20+ ✓</td>
+            <td class="cross">None</td>
+            <td class="cross">None</td>
+            <td class="cross">None</td>
+          </tr>
+          <tr>
+            <td><strong>Security (OWASP)</strong></td>
+            <td class="check">All 10 ✓</td>
+            <td class="cross">None</td>
+            <td class="cross">None</td>
+            <td class="cross">None</td>
+          </tr>
+          <tr>
+            <td><strong>GDPR Tools</strong></td>
+            <td class="check">Complete ✓</td>
+            <td class="cross">None</td>
+            <td class="cross">None</td>
+            <td class="cross">None</td>
+          </tr>
+          <tr>
+            <td><strong>Gemini 3</strong></td>
+            <td class="check">Yes ✓</td>
+            <td class="cross">No</td>
+            <td class="cross">No</td>
+            <td class="cross">No</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section style="background: var(--light);">
+    <div class="container">
+      <div class="section-header">
+        <h2>Trusted by Developers Worldwide</h2>
+      </div>
+
+      <div class="testimonials">
+        <div class="testimonial">
+          <p class="testimonial-text">
+            "RANA cut our LLM costs from $1,800 to $450/month. 75% savings! That's $16,200 back in our runway."
+          </p>
+          <div class="testimonial-author">Sarah Chen</div>
+          <div class="testimonial-role">CTO @ TechStartup</div>
+        </div>
+
+        <div class="testimonial">
+          <p class="testimonial-text">
+            "Setup used to take me 3 days. With RANA, I was live in 5 minutes. I can't imagine building without it."
+          </p>
+          <div class="testimonial-author">Marcus Johnson</div>
+          <div class="testimonial-role">Solo Developer</div>
+        </div>
+
+        <div class="testimonial">
+          <p class="testimonial-text">
+            "The only framework with Gemini 3 AND Hugging Face. Game-changer for multimodal research."
+          </p>
+          <div class="testimonial-author">Dr. Emily Rodriguez</div>
+          <div class="testimonial-role">AI Researcher</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <h2>Free Forever. Seriously.</h2>
+        <p>100% free and open source. Optional paid services for teams that want extra support.</p>
+      </div>
+
+      <div class="pricing-cards">
+        <div class="pricing-card">
+          <h3>Free</h3>
+          <div class="price">$0</div>
+          <div class="price-subtext">forever</div>
+          <ul class="pricing-features">
+            <li>All 9 LLM providers</li>
+            <li>70% cost reduction</li>
+            <li>20+ UI components</li>
+            <li>Security & GDPR tools</li>
+            <li>Marketing automation</li>
+            <li>Docker dev stack</li>
+            <li>Full documentation</li>
+            <li>Community support</li>
+          </ul>
+          <a href="#get-started" class="btn btn-primary" style="margin-top: 20px;">Get Started</a>
+        </div>
+
+        <div class="pricing-card featured">
+          <h3>Training</h3>
+          <div class="price">$2.5K-$5K</div>
+          <div class="price-subtext">one-time</div>
+          <ul class="pricing-features">
+            <li>RANA certification</li>
+            <li>Custom workshops</li>
+            <li>Team onboarding</li>
+            <li>Best practices training</li>
+            <li>Architecture review</li>
+            <li>Priority support</li>
+          </ul>
+          <a href="mailto:ashley@waymaker.cx" class="btn btn-primary" style="margin-top: 20px; background: white; color: var(--primary);">Contact Us</a>
+        </div>
+
+        <div class="pricing-card">
+          <h3>Development</h3>
+          <div class="price">$25K-$50K</div>
+          <div class="price-subtext">project-based</div>
+          <ul class="pricing-features">
+            <li>Custom integrations</li>
+            <li>Enterprise features</li>
+            <li>Dedicated support</li>
+            <li>Code review</li>
+            <li>Performance optimization</li>
+            <li>SLA guarantees</li>
+          </ul>
+          <a href="mailto:christian@waymaker.cx" class="btn btn-primary" style="margin-top: 20px;">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section gradient-bg">
+    <div class="container">
+      <h2>Start Building in 5 Minutes</h2>
+      <p>Join 300,000+ developers who choose RANA for production AI apps. 🐟</p>
+      <p style="margin-bottom: 40px; opacity: 0.9;">No credit card required. No vendor lock-in. 100% free forever.</p>
+
+      <div class="cta-buttons">
+        <a href="https://github.com/waymaker/rana" class="btn btn-primary" target="_blank">View on GitHub</a>
+        <a href="/docs" class="btn btn-secondary">Read Documentation</a>
+        <a href="/calculator" class="btn btn-secondary">Cost Calculator</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="/docs">Documentation</a></li>
+            <li><a href="/calculator">Cost Calculator</a></li>
+            <li><a href="https://github.com/waymaker/rana">GitHub</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="/docs/quickstart">Quick Start</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/examples">Examples</a></li>
+            <li><a href="/changelog">Changelog</a></li>
+            <li><a href="https://status.rana.dev">Status</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="https://discord.gg/rana">Discord</a></li>
+            <li><a href="https://twitter.com/rana_dev">Twitter</a></li>
+            <li><a href="https://linkedin.com/company/rana">LinkedIn</a></li>
+            <li><a href="https://github.com/waymaker/rana/discussions">Discussions</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          Created by <a href="https://waymaker.cx" target="_blank">Waymaker</a><br>
+          <strong>Ashley Kays</strong> (<a href="mailto:ashley@waymaker.cx">ashley@waymaker.cx</a>) &
+          <strong>Christian Moore</strong> (<a href="mailto:christian@waymaker.cx">christian@waymaker.cx</a>)
+        </p>
+        <p style="margin-top: 20px;">
+          Made with love to help others face less friction and more success — faster than ever. ❤️
+        </p>
+        <p style="margin-top: 20px; font-size: 14px;">
+          © 2025 Waymaker. Licensed under the MIT License.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Analytics (Add your tracking code) -->
+  <!-- <script defer data-domain="rana.dev" src="https://plausible.io/js/script.js"></script> -->
+
+</body>
+</html>

@@ -6,7 +6,7 @@ version: 1.0.0
 project:
   name: "RANA Framework"
   type: "tooling"
-  description: "AI-Assisted Development Standard - Universal framework for production-quality AI development"
+  description: "Rapid AI Native Architecture - Universal framework for production-quality AI development"
   languages:
     - "typescript"
     - "markdown"

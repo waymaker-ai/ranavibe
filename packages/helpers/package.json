@@ -1,0 +1,49 @@
+{
+  "name": "@rana/helpers",
+  "version": "1.0.0",
+  "description": "Quick LLM helpers - One-line AI functions for common tasks",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "rana",
+    "llm",
+    "ai",
+    "helpers",
+    "summarize",
+    "translate",
+    "classify",
+    "extract",
+    "sentiment",
+    "openai",
+    "anthropic"
+  ],
+  "author": "Waymaker",
+  "license": "MIT",
+  "dependencies": {
+    "@rana/core": "^2.0.0",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3",
+    "vitest": "^1.3.1"
+  },
+  "peerDependencies": {
+    "typescript": ">=5.0.0"
+  }
+}

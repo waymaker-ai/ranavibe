@@ -43,7 +43,7 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-lg md:text-xl text-foreground-secondary text-balance mb-10 max-w-2xl mx-auto"
           >
-            The only AI framework with enterprise security, multi-agent orchestration, and MCP server creation. Built by developers, for developers.
+            Production-ready AI apps in 5 minutes. <span className="text-foreground font-semibold">70% automatic cost reduction</span>. 9 LLM providers. Enterprise security built-in.
           </motion.p>
 
           {/* CTAs */}
@@ -68,24 +68,28 @@ export function Hero() {
             </Link>
           </motion.div>
 
-          {/* Stats */}
+          {/* Stats - Updated with cost savings prominence */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto"
+            className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto"
           >
-            <div className="text-center">
-              <div className="text-3xl font-bold gradient-text">Enterprise</div>
-              <div className="text-sm text-foreground-secondary mt-1">Security Built-in</div>
+            <div className="text-center p-4 rounded-lg bg-background-secondary border border-border">
+              <div className="text-3xl md:text-4xl font-bold gradient-text">70%</div>
+              <div className="text-sm text-foreground-secondary mt-1">Cost Savings</div>
             </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold gradient-text">Multi-Agent</div>
-              <div className="text-sm text-foreground-secondary mt-1">Orchestration</div>
+            <div className="text-center p-4 rounded-lg bg-background-secondary border border-border">
+              <div className="text-3xl md:text-4xl font-bold gradient-text">120x</div>
+              <div className="text-sm text-foreground-secondary mt-1">Faster Development</div>
             </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold gradient-text">MCP</div>
-              <div className="text-sm text-foreground-secondary mt-1">Server Creation</div>
+            <div className="text-center p-4 rounded-lg bg-background-secondary border border-border">
+              <div className="text-3xl md:text-4xl font-bold gradient-text">9</div>
+              <div className="text-sm text-foreground-secondary mt-1">LLM Providers</div>
+            </div>
+            <div className="text-center p-4 rounded-lg bg-background-secondary border border-border">
+              <div className="text-3xl md:text-4xl font-bold gradient-text">5min</div>
+              <div className="text-sm text-foreground-secondary mt-1">To Production</div>
             </div>
           </motion.div>
 

@@ -18,7 +18,7 @@ interface CheckResult {
 }
 
 export async function checkCommand(options: CheckOptions) {
-  console.log(chalk.bold.cyan('\n= Checking RANA compliance...\n'));
+  console.log(chalk.bold.cyan('\n🔍 Checking RANA compliance...\n'));
 
   const results: CheckResult[] = [];
 
@@ -104,7 +104,7 @@ export async function checkCommand(options: CheckOptions) {
     if (error.code === 'ENOENT') {
       spinner.fail('.rana.yml not found');
       console.log(chalk.yellow('\n�  No .rana.yml configuration found'));
-      console.log(chalk.gray('   Run ') + chalk.cyan('rana init') + chalk.gray(' to initialize RANA\n'));
+      console.log(chalk.gray('   Run ') + chalk.cyan('aads init') + chalk.gray(' to initialize RANA\n'));
       process.exit(1);
     } else {
       spinner.fail('Error during check');
