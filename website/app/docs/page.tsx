@@ -1,0 +1,97 @@
+'use client';
+
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { Book, Zap, Package, Terminal, ArrowRight } from 'lucide-react';
+
+const sections = [
+  {
+    icon: Zap,
+    title: 'Quick Start',
+    description: 'Get up and running with RANA in 5 minutes',
+    href: '/docs/quick-start',
+  },
+  {
+    icon: Package,
+    title: 'Packages',
+    description: 'Learn about @rana/helpers, @rana/prompts, and @rana/rag',
+    href: '/docs/packages',
+  },
+  {
+    icon: Terminal,
+    title: 'CLI Reference',
+    description: 'Complete guide to all 25+ CLI commands',
+    href: '/docs/cli',
+  },
+  {
+    icon: Book,
+    title: 'API Reference',
+    description: 'Full API documentation for all packages',
+    href: '/docs/api',
+  },
+];
+
+export default function DocsPage() {
+  return (
+    <div className="py-16 md:py-24">
+      <div className="container-wide">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="max-w-3xl mx-auto text-center mb-16"
+        >
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Documentation</h1>
+          <p className="text-lg text-foreground-secondary">
+            Everything you need to build production AI applications with RANA
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          {sections.map((section, index) => (
+            <motion.div
+              key={section.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <Link
+                href={section.href}
+                className="card hover:border-foreground/20 group flex flex-col h-full"
+              >
+                <div className="mb-4 p-3 rounded-lg bg-background-secondary w-fit group-hover:bg-gradient-subtle transition-colors">
+                  <section.icon className="h-6 w-6" />
+                </div>
+                <h2 className="text-xl font-semibold mb-2 group-hover:text-gradient-from transition-colors">
+                  {section.title}
+                </h2>
+                <p className="text-foreground-secondary text-sm mb-4 flex-grow">
+                  {section.description}
+                </p>
+                <div className="flex items-center text-sm font-medium text-gradient-from">
+                  Read more
+                  <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Quick Install */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          className="mt-16 max-w-2xl mx-auto"
+        >
+          <h2 className="text-2xl font-bold mb-4 text-center">Quick Install</h2>
+          <div className="code-block font-mono text-sm">
+            <div className="text-foreground-secondary"># Install all RANA packages</div>
+            <div className="mt-2">npm install @rana/core @rana/helpers @rana/prompts @rana/rag</div>
+            <div className="mt-4 text-foreground-secondary"># Or install the CLI globally</div>
+            <div className="mt-2">npm install -g @rana/cli</div>
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  );
+}
