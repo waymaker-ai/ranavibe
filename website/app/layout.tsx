@@ -10,26 +10,26 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: {
-    default: 'RANA Framework - Enterprise AI with Multi-Agent Orchestration',
+    default: 'RANA - Build Production AI Apps in Minutes',
     template: '%s | RANA Framework',
   },
-  description: 'The only AI framework with enterprise security, multi-agent orchestration, and MCP server creation. Built by developers, for developers. Backed by Waymaker expert implementation services.',
-  keywords: ['AI', 'React', 'Framework', 'Agents', 'LLM', 'TypeScript', 'Next.js', 'Enterprise Security', 'Multi-Agent', 'MCP Server', 'Waymaker'],
+  description: 'Production-ready AI development framework with 70% cost reduction. Includes @rana/helpers, @rana/prompts, @rana/rag packages. 9 LLM providers, enterprise security, and 25+ CLI commands.',
+  keywords: ['AI', 'LLM', 'RAG', 'OpenAI', 'Anthropic', 'Claude', 'GPT', 'React', 'TypeScript', 'Cost Optimization', 'Prompt Management', 'Enterprise AI', 'Waymaker'],
   authors: [{ name: 'Waymaker AI' }],
   creator: 'Waymaker AI',
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://rana.cx',
-    title: 'RANA Framework - Enterprise AI with Multi-Agent Orchestration',
-    description: 'The only AI framework with enterprise security, multi-agent orchestration, and MCP server creation. Built by developers, for developers.',
+    title: 'RANA - Build Production AI Apps in Minutes',
+    description: 'Production-ready AI development framework with 70% cost reduction. 9 LLM providers, enterprise security, and React hooks included.',
     siteName: 'RANA Framework',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'RANA Framework - Enterprise AI with Multi-Agent Orchestration',
-    description: 'The only AI framework with enterprise security, multi-agent orchestration, and MCP server creation. Built by developers, for developers.',
-    creator: '@waymakerAI',
+    title: 'RANA - Build Production AI Apps in Minutes',
+    description: 'Production-ready AI framework with 70% cost reduction. @rana/helpers, @rana/prompts, @rana/rag packages for AI development.',
+    creator: '@waylokai',
   },
   robots: {
     index: true,

@@ -13,8 +13,8 @@
     }
   },
   "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts",
-    "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "build": "tsup src/index.ts --format cjs,esm --dts --external openai --external @anthropic-ai/sdk --external @google/generative-ai",
+    "dev": "tsup src/index.ts --format cjs,esm --dts --watch --external openai --external @anthropic-ai/sdk --external @google/generative-ai",
     "test": "vitest",
     "typecheck": "tsc --noEmit"
   },
@@ -45,6 +45,17 @@
   },
   "peerDependencies": {
     "typescript": ">=5.0.0"
+  },
+  "peerDependenciesMeta": {
+    "openai": {
+      "optional": true
+    },
+    "@anthropic-ai/sdk": {
+      "optional": true
+    },
+    "@google/generative-ai": {
+      "optional": true
+    }
   },
   "repository": {
     "type": "git",
