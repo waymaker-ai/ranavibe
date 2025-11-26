@@ -45,5 +45,10 @@
   },
   "peerDependencies": {
     "typescript": ">=5.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/waymaker-ai/ranavibe.git",
+    "directory": "packages/helpers"
   }
 }
