@@ -1,0 +1,172 @@
+# LUKA - Docker Compose Development Environment
+# Complete local stack with all services
+
+version: '3.8'
+
+services:
+  # Supabase PostgreSQL with pgvector
+  postgres:
+    image: supabase/postgres:15.1.0.147
+    container_name: luka-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-luka-dev-password}
+      POSTGRES_DB: ${POSTGRES_DB:-luka}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Supabase Studio
+  studio:
+    image: supabase/studio:20231123-64a766c
+    container_name: luka-studio
+    ports:
+      - "3001:3000"
+    environment:
+      SUPABASE_URL: http://kong:8000
+      STUDIO_PG_META_URL: http://meta:8080
+    depends_on:
+      - postgres
+
+  # Redis for caching
+  redis:
+    image: redis:7-alpine
+    container_name: luka-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  # Ollama for local LLM models
+  ollama:
+    image: ollama/ollama:latest
+    container_name: luka-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+    environment:
+      - OLLAMA_KEEP_ALIVE=24h
+    command: serve
+
+  # Next.js Development Server
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: luka-app
+    ports:
+      - "3000:3000"
+    environment:
+      # Database
+      DATABASE_URL: postgresql://postgres:${POSTGRES_PASSWORD:-luka-dev-password}@postgres:5432/${POSTGRES_DB:-luka}
+      NEXT_PUBLIC_SUPABASE_URL: ${NEXT_PUBLIC_SUPABASE_URL}
+      SUPABASE_SERVICE_ROLE_KEY: ${SUPABASE_SERVICE_ROLE_KEY}
+
+      # LLM APIs
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY}
+      XAI_API_KEY: ${XAI_API_KEY}
+      MISTRAL_API_KEY: ${MISTRAL_API_KEY}
+      COHERE_API_KEY: ${COHERE_API_KEY}
+      TOGETHER_API_KEY: ${TOGETHER_API_KEY}
+      GROQ_API_KEY: ${GROQ_API_KEY}
+
+      # Local services
+      REDIS_URL: redis://redis:6379
+      OLLAMA_URL: http://ollama:11434
+
+      # Node
+      NODE_ENV: development
+    volumes:
+      - ./templates/nextjs-supabase:/app
+      - /app/node_modules
+      - /app/.next
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      ollama:
+        condition: service_started
+    command: npm run dev
+
+  # Qdrant Vector Database (alternative to pgvector)
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: luka-qdrant
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - qdrant-data:/qdrant/storage
+
+  # MinIO for S3-compatible object storage
+  minio:
+    image: minio/minio:latest
+    container_name: luka-minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-luka-admin}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-luka-password}
+    volumes:
+      - minio-data:/data
+    command: server /data --console-address ":9001"
+
+  # Prometheus for monitoring (optional)
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: luka-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    profiles:
+      - monitoring
+
+  # Grafana for dashboards (optional)
+  grafana:
+    image: grafana/grafana:latest
+    container_name: luka-grafana
+    ports:
+      - "3002:3000"
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_PASSWORD:-admin}
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./docker/grafana/dashboards:/etc/grafana/provisioning/dashboards
+    profiles:
+      - monitoring
+    depends_on:
+      - prometheus
+
+volumes:
+  postgres-data:
+  redis-data:
+  ollama-data:
+  qdrant-data:
+  minio-data:
+  prometheus-data:
+  grafana-data:
+
+networks:
+  default:
+    name: luka-network

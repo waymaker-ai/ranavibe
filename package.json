@@ -1,0 +1,72 @@
+{
+  "name": "rana-monorepo",
+  "version": "2.0.0",
+  "private": true,
+  "description": "RANA - Rapid AI Native Architecture monorepo",
+  "scripts": {
+    "setup": "bash setup.sh",
+    "build": "npm run build:core && npm run build:helpers && npm run build:prompts && npm run build:rag && npm run build:react && npm run build:cli",
+    "build:core": "cd packages/core && npm run build",
+    "build:helpers": "cd packages/helpers && npm run build",
+    "build:prompts": "cd packages/prompts && npm run build",
+    "build:rag": "cd packages/rag && npm run build",
+    "build:react": "cd packages/react && npm run build",
+    "build:cli": "cd tools/cli && npm run build",
+    "clean": "npm run clean:core && npm run clean:helpers && npm run clean:prompts && npm run clean:rag && npm run clean:react && npm run clean:cli",
+    "clean:core": "cd packages/core && rm -rf dist node_modules",
+    "clean:helpers": "cd packages/helpers && rm -rf dist node_modules",
+    "clean:prompts": "cd packages/prompts && rm -rf dist node_modules",
+    "clean:rag": "cd packages/rag && rm -rf dist node_modules",
+    "clean:react": "cd packages/react && rm -rf dist node_modules",
+    "clean:cli": "cd tools/cli && rm -rf dist node_modules",
+    "test": "npm run test:core && npm run test:helpers && npm run test:prompts && npm run test:rag && npm run test:react",
+    "test:core": "cd packages/core && npm test",
+    "test:helpers": "cd packages/helpers && npm test",
+    "test:prompts": "cd packages/prompts && npm test",
+    "test:rag": "cd packages/rag && npm test",
+    "test:react": "cd packages/react && npm test",
+    "typecheck": "npm run typecheck:core && npm run typecheck:helpers && npm run typecheck:prompts && npm run typecheck:rag && npm run typecheck:react && npm run typecheck:cli",
+    "typecheck:core": "cd packages/core && npm run typecheck",
+    "typecheck:helpers": "cd packages/helpers && npm run typecheck",
+    "typecheck:prompts": "cd packages/prompts && npm run typecheck",
+    "typecheck:rag": "cd packages/rag && npm run typecheck",
+    "typecheck:react": "cd packages/react && npm run typecheck",
+    "typecheck:cli": "cd tools/cli && npm run typecheck",
+    "dev:example": "cd examples/sdk-demo && npm run dev",
+    "link:packages": "cd packages/core && npm link && cd ../helpers && npm link @rana/core && npm link && cd ../prompts && npm link @rana/core && npm link && cd ../rag && npm link @rana/core && npm link && cd ../react && npm link @rana/core && npm link",
+    "publish:all": "npm run build && npm run publish:core && npm run publish:helpers && npm run publish:prompts && npm run publish:rag && npm run publish:react",
+    "publish:core": "cd packages/core && npm publish --access public",
+    "publish:helpers": "cd packages/helpers && npm publish --access public",
+    "publish:prompts": "cd packages/prompts && npm publish --access public",
+    "publish:rag": "cd packages/rag && npm publish --access public",
+    "publish:react": "cd packages/react && npm publish --access public"
+  },
+  "workspaces": [
+    "packages/*",
+    "tools/*",
+    "examples/*"
+  ],
+  "keywords": [
+    "ai",
+    "llm",
+    "anthropic",
+    "openai",
+    "gemini",
+    "grok",
+    "react",
+    "hooks",
+    "rag",
+    "prompts",
+    "cost-optimization",
+    "sdk"
+  ],
+  "author": "Waymaker <ashley@waymaker.cx>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/waymaker/ranavibe"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
+}

@@ -1,0 +1,279 @@
+/**
+ * Provider Manager
+ * Manages connections to different LLM providers
+ */
+
+import type {
+  RanaChatRequest,
+  RanaChatResponse,
+  RanaStreamChunk,
+  LLMProvider,
+} from '../types';
+import { RanaAuthError, RanaError } from '../types';
+
+export class ProviderManager {
+  private apiKeys: Record<string, string>;
+  private clients: Map<LLMProvider, any> = new Map();
+
+  constructor(providers: Record<string, string>) {
+    this.apiKeys = providers;
+  }
+
+  /**
+   * Make a chat request to the specified provider
+   */
+  async chat(
+    provider: LLMProvider,
+    request: RanaChatRequest
+  ): Promise<RanaChatResponse> {
+    const client = await this.getClient(provider);
+    const startTime = Date.now();
+
+    try {
+      let response: any;
+
+      switch (provider) {
+        case 'anthropic':
+          response = await this.chatAnthropic(client, request);
+          break;
+        case 'openai':
+          response = await this.chatOpenAI(client, request);
+          break;
+        case 'google':
+          response = await this.chatGoogle(client, request);
+          break;
+        default:
+          throw new RanaError(
+            `Provider ${provider} not yet implemented`,
+            'PROVIDER_NOT_IMPLEMENTED',
+            provider
+          );
+      }
+
+      const latency_ms = Date.now() - startTime;
+
+      return {
+        ...response,
+        latency_ms,
+        created_at: new Date(),
+        cached: false,
+      };
+    } catch (error: any) {
+      if (error.status === 401 || error.message?.includes('API key')) {
+        throw new RanaAuthError(provider, error);
+      }
+      throw error;
+    }
+  }
+
+  /**
+   * Stream chat responses
+   */
+  async *stream(
+    provider: LLMProvider,
+    request: RanaChatRequest
+  ): AsyncGenerator<RanaStreamChunk> {
+    const client = await this.getClient(provider);
+
+    // Implementation for streaming
+    // This would use the provider's streaming API
+    yield {
+      id: 'stream-1',
+      provider,
+      model: request.model || 'unknown',
+      delta: '',
+      done: true,
+    };
+  }
+
+  /**
+   * Get or create client for provider
+   */
+  private async getClient(provider: LLMProvider): Promise<any> {
+    if (this.clients.has(provider)) {
+      return this.clients.get(provider);
+    }
+
+    const apiKey = this.apiKeys[provider];
+    if (!apiKey) {
+      throw new RanaAuthError(provider, { message: 'API key not configured' });
+    }
+
+    let client: any;
+
+    switch (provider) {
+      case 'anthropic': {
+        const Anthropic = await import('@anthropic-ai/sdk');
+        client = new Anthropic.default({ apiKey });
+        break;
+      }
+      case 'openai': {
+        const OpenAI = await import('openai');
+        client = new OpenAI.default({ apiKey });
+        break;
+      }
+      case 'google': {
+        const { GoogleGenerativeAI } = await import('@google/generative-ai');
+        client = new GoogleGenerativeAI(apiKey);
+        break;
+      }
+      default:
+        throw new RanaError(
+          `Provider ${provider} not supported`,
+          'PROVIDER_NOT_SUPPORTED',
+          provider
+        );
+    }
+
+    this.clients.set(provider, client);
+    return client;
+  }
+
+  /**
+   * Anthropic-specific chat implementation
+   */
+  private async chatAnthropic(
+    client: any,
+    request: RanaChatRequest
+  ): Promise<Partial<RanaChatResponse>> {
+    const response = await client.messages.create({
+      model: request.model || 'claude-3-5-sonnet-20241022',
+      messages: request.messages,
+      max_tokens: request.max_tokens || 1024,
+      temperature: request.temperature ?? 0.7,
+      tools: request.tools,
+    });
+
+    return {
+      id: response.id,
+      provider: 'anthropic',
+      model: response.model,
+      content: response.content[0].text,
+      role: 'assistant',
+      usage: {
+        prompt_tokens: response.usage.input_tokens,
+        completion_tokens: response.usage.output_tokens,
+        total_tokens: response.usage.input_tokens + response.usage.output_tokens,
+      },
+      cost: this.calculateCost('anthropic', response.model, response.usage),
+      finish_reason: response.stop_reason,
+      raw: response,
+    };
+  }
+
+  /**
+   * OpenAI-specific chat implementation
+   */
+  private async chatOpenAI(
+    client: any,
+    request: RanaChatRequest
+  ): Promise<Partial<RanaChatResponse>> {
+    const response = await client.chat.completions.create({
+      model: request.model || 'gpt-4o',
+      messages: request.messages,
+      max_tokens: request.max_tokens,
+      temperature: request.temperature,
+      tools: request.tools,
+    });
+
+    const choice = response.choices[0];
+
+    return {
+      id: response.id,
+      provider: 'openai',
+      model: response.model,
+      content: choice.message.content || '',
+      role: 'assistant',
+      tool_calls: choice.message.tool_calls,
+      usage: {
+        prompt_tokens: response.usage?.prompt_tokens || 0,
+        completion_tokens: response.usage?.completion_tokens || 0,
+        total_tokens: response.usage?.total_tokens || 0,
+      },
+      cost: this.calculateCost('openai', response.model, response.usage),
+      finish_reason: choice.finish_reason,
+      raw: response,
+    };
+  }
+
+  /**
+   * Google-specific chat implementation
+   */
+  private async chatGoogle(
+    client: any,
+    request: RanaChatRequest
+  ): Promise<Partial<RanaChatResponse>> {
+    const model = client.getGenerativeModel({
+      model: request.model || 'gemini-2.0-flash-exp',
+    });
+
+    const result = await model.generateContent({
+      contents: request.messages.map((m: any) => ({
+        role: m.role === 'assistant' ? 'model' : 'user',
+        parts: [{ text: m.content }],
+      })),
+    });
+
+    const response = result.response;
+
+    return {
+      id: crypto.randomUUID(),
+      provider: 'google',
+      model: request.model || 'gemini-2.0-flash-exp',
+      content: response.text(),
+      role: 'assistant',
+      usage: {
+        prompt_tokens: response.usageMetadata?.promptTokenCount || 0,
+        completion_tokens: response.usageMetadata?.candidatesTokenCount || 0,
+        total_tokens: response.usageMetadata?.totalTokenCount || 0,
+      },
+      cost: this.calculateCost('google', request.model || 'gemini-2.0-flash-exp', {
+        promptTokenCount: response.usageMetadata?.promptTokenCount || 0,
+        candidatesTokenCount: response.usageMetadata?.candidatesTokenCount || 0,
+      }),
+      finish_reason: 'stop',
+      raw: response,
+    };
+  }
+
+  /**
+   * Calculate cost based on provider and usage
+   */
+  private calculateCost(
+    provider: LLMProvider,
+    model: string,
+    usage: any
+  ): { prompt_cost: number; completion_cost: number; total_cost: number } {
+    // Pricing per 1M tokens (as of 2025)
+    const pricing: Record<string, { input: number; output: number }> = {
+      // Anthropic
+      'claude-3-5-sonnet-20241022': { input: 3.0, output: 15.0 },
+      'claude-3-5-haiku-20241022': { input: 0.8, output: 4.0 },
+      'claude-3-opus-20240229': { input: 15.0, output: 75.0 },
+
+      // OpenAI
+      'gpt-4o': { input: 2.5, output: 10.0 },
+      'gpt-4o-mini': { input: 0.15, output: 0.6 },
+      'gpt-4-turbo': { input: 10.0, output: 30.0 },
+
+      // Google
+      'gemini-2.0-flash-exp': { input: 0.0, output: 0.0 }, // Free during preview
+      'gemini-1.5-pro': { input: 1.25, output: 5.0 },
+      'gemini-1.5-flash': { input: 0.075, output: 0.3 },
+    };
+
+    const modelPricing = pricing[model] || { input: 0, output: 0 };
+
+    const promptTokens = usage.input_tokens || usage.prompt_tokens || usage.promptTokenCount || 0;
+    const completionTokens = usage.output_tokens || usage.completion_tokens || usage.candidatesTokenCount || 0;
+
+    const prompt_cost = (promptTokens / 1_000_000) * modelPricing.input;
+    const completion_cost = (completionTokens / 1_000_000) * modelPricing.output;
+
+    return {
+      prompt_cost,
+      completion_cost,
+      total_cost: prompt_cost + completion_cost,
+    };
+  }
+}

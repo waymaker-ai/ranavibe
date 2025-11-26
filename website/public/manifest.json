@@ -1,0 +1,62 @@
+{
+  "name": "RANA Framework",
+  "short_name": "RANA",
+  "description": "Professional AI agent framework for React applications",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["development", "productivity", "utilities"],
+  "shortcuts": [
+    {
+      "name": "Quick Start",
+      "short_name": "Quick Start",
+      "description": "Get started with RANA in 5 minutes",
+      "url": "/docs/quick-start",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Training",
+      "short_name": "Training",
+      "description": "Learn RANA framework",
+      "url": "/training",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "API Reference",
+      "short_name": "API",
+      "description": "Browse API documentation",
+      "url": "/docs/api",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshot-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/screenshot-narrow.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ]
+}

@@ -289,7 +289,7 @@ We train your team, document everything, and ensure smooth handoff.
 A: We're 5x faster because we use AI for implementation while senior engineers handle architecture. You get a full team (engineering, design, QA) for less than one senior developer's salary.
 
 **Q: What's RANA and why does it matter?**
-A: RANA (AI-Assisted Development Standard) is our open-source framework that ensures AI writes production-quality code. It's like having a quality control system that prevents AI mistakes before they happen.
+A: RANA (Rapid AI Native Architecture) is our open-source framework that ensures AI writes production-quality code. It's like having a quality control system that prevents AI mistakes before they happen.
 
 **Q: Do I own the code?**
 A: Yes, 100%. Full ownership, no licensing fees, clean handoff. You can take it anywhere.

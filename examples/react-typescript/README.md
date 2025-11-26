@@ -5,7 +5,7 @@ This is a complete example showing how to use RANA with a React + TypeScript pro
 ## What's Included
 
 - ✅ Complete `.rana.yml` configuration
-- ✅ RANA documentation in `docs/rana/`
+- ✅ RANA documentation in `docs/aads/`
 - ✅ TypeScript strict mode enabled
 - ✅ Example React components following RANA
 - ✅ Real API integration (no mocks)
@@ -22,7 +22,7 @@ npm install
 npm run dev
 
 # Check RANA compliance
-rana check
+aads check
 
 # Build for production
 npm run build
@@ -83,7 +83,7 @@ const users: User[] = await userService.getUsers();
 ```
 react-typescript/
 ├── .rana.yml                    # RANA configuration
-├── docs/rana/
+├── docs/aads/
 │   ├── AGENT_INSTRUCTIONS.md    # Development rules
 │   └── DEVELOPMENT_CHECKLIST.md # Quality checklist
 ├── src/

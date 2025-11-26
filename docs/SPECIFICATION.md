@@ -9,7 +9,7 @@
 
 ## Abstract
 
-This document defines the AI-Assisted Development Standard (RANA), a comprehensive framework for ensuring production-quality code from AI coding assistants. RANA provides standards, workflows, quality gates, and tooling that work universally across tech stacks, IDEs, and AI assistants.
+This document defines the Rapid AI Native Architecture (RANA), a comprehensive framework for ensuring production-quality code from AI coding assistants. RANA provides standards, workflows, quality gates, and tooling that work universally across tech stacks, IDEs, and AI assistants.
 
 ---
 
@@ -338,7 +338,7 @@ tools: object
 
     name: string
       # CLI package name
-      # Example: "@rana/cli"
+      # Example: "@aads/cli"
 
     version: string
       # CLI version
@@ -574,25 +574,25 @@ Detailed phase specifications in separate document: `WORKFLOW_GUIDE.md`
 
 ### 7.1 CLI Tool
 
-RANA provides an official CLI tool: `@rana/cli`
+RANA provides an official CLI tool: `@aads/cli`
 
 **Commands:**
-- `rana init` - Initialize RANA in a project
-- `rana check` - Check compliance with standards
-- `rana validate` - Validate `.rana.yml` configuration
-- `rana flow <type> <name>` - Start a workflow
-- `rana deploy` - Deploy with verification
+- `aads init` - Initialize RANA in a project
+- `aads check` - Check compliance with standards
+- `aads validate` - Validate `.rana.yml` configuration
+- `aads flow <type> <name>` - Start a workflow
+- `aads deploy` - Deploy with verification
 
 **Installation:**
 ```bash
-npm install -g @rana/cli
+npm install -g @aads/cli
 ```
 
 ### 7.2 IDE Extensions
 
 Official IDE extensions available for:
-- VS Code: `rana-vscode`
-- JetBrains IDEs: `rana-jetbrains`
+- VS Code: `aads-vscode`
+- JetBrains IDEs: `aads-jetbrains`
 
 **Features:**
 - Real-time compliance checking
@@ -605,16 +605,16 @@ Official IDE extensions available for:
 
 **GitHub Action:**
 ```yaml
-- uses: rana/check-compliance@v1
+- uses: aads/check-compliance@v1
   with:
     config: .rana.yml
 ```
 
 **GitLab CI:**
 ```yaml
-rana-check:
+aads-check:
   script:
-    - npx @rana/cli check
+    - npx @aads/cli check
 ```
 
 ---
@@ -685,7 +685,7 @@ RANA is designed to work with any AI assistant:
 ### 9.2 Compliance Verification
 
 **Automated:**
-- `rana check` command
+- `aads check` command
 - CI/CD integration
 - Pre-commit hooks
 
@@ -751,7 +751,7 @@ Tools check version compatibility and warn if mismatch.
 
 For existing projects:
 
-1. Run `rana init`
+1. Run `aads init`
 2. Review generated `.rana.yml`
 3. Customize for your project
 4. Start using with new features
@@ -763,7 +763,7 @@ When RANA versions change:
 
 1. Read migration guide
 2. Update `.rana.yml` version
-3. Run `rana validate`
+3. Run `aads validate`
 4. Fix any compatibility issues
 5. Update tooling (CLI, extensions)
 
@@ -803,9 +803,9 @@ RANA tooling is licensed under MIT.
 ## 15. References
 
 - RANA Website: https://rana.dev
-- GitHub Repository: https://github.com/yourusername/rana-framework
-- Discord Community: https://discord.gg/rana
-- Twitter: @rana_dev
+- GitHub Repository: https://github.com/yourusername/aads-framework
+- Discord Community: https://discord.gg/aads
+- Twitter: @aads_dev
 
 ---
 

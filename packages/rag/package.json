@@ -1,0 +1,81 @@
+{
+  "name": "@rana/rag",
+  "version": "1.0.0",
+  "description": "Advanced RAG (Retrieval Augmented Generation) for RANA Framework",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./chunkers": {
+      "import": "./dist/chunking/index.mjs",
+      "require": "./dist/chunking/index.js",
+      "types": "./dist/chunking/index.d.ts"
+    },
+    "./retrievers": {
+      "import": "./dist/retrieval/index.mjs",
+      "require": "./dist/retrieval/index.js",
+      "types": "./dist/retrieval/index.d.ts"
+    },
+    "./rerankers": {
+      "import": "./dist/reranking/index.mjs",
+      "require": "./dist/reranking/index.js",
+      "types": "./dist/reranking/index.d.ts"
+    },
+    "./react": {
+      "import": "./dist/react/index.mjs",
+      "require": "./dist/react/index.js",
+      "types": "./dist/react/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "test": "vitest",
+    "lint": "eslint src/",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@rana/core": "^2.0.0",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/react": "^18.2.0",
+    "react": "^18.2.0",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.0",
+    "vitest": "^1.0.0"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "keywords": [
+    "rana",
+    "rag",
+    "retrieval",
+    "augmented",
+    "generation",
+    "llm",
+    "ai",
+    "vector",
+    "search",
+    "embeddings"
+  ],
+  "author": "RANA Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/waymaker-ai/ranavibe.git",
+    "directory": "packages/rag"
+  }
+}

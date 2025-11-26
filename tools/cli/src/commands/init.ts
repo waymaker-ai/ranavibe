@@ -62,10 +62,10 @@ export async function initCommand(options: InitOptions) {
   spinner.succeed('.rana.yml created successfully');
 
   // Create docs directory
-  spinner.start('Creating docs/rana/ directory...');
-  const docsPath = path.join(process.cwd(), 'docs', 'rana');
+  spinner.start('Creating docs/aads/ directory...');
+  const docsPath = path.join(process.cwd(), 'docs', 'aads');
   await fs.mkdir(docsPath, { recursive: true });
-  spinner.succeed('docs/rana/ directory created');
+  spinner.succeed('docs/aads/ directory created');
 
   // Copy documentation templates
   spinner.start('Copying documentation templates...');
@@ -76,14 +76,14 @@ export async function initCommand(options: InitOptions) {
   console.log(chalk.bold.green('\n✅ RANA initialized successfully!\n'));
   console.log(chalk.gray('Files created:'));
   console.log(chalk.gray('  📄 .rana.yml'));
-  console.log(chalk.gray('  📁 docs/rana/'));
-  console.log(chalk.gray('  📝 docs/rana/AGENT_INSTRUCTIONS.md'));
-  console.log(chalk.gray('  ✅ docs/rana/DEVELOPMENT_CHECKLIST.md\n'));
+  console.log(chalk.gray('  📁 docs/aads/'));
+  console.log(chalk.gray('  📝 docs/aads/AGENT_INSTRUCTIONS.md'));
+  console.log(chalk.gray('  ✅ docs/aads/DEVELOPMENT_CHECKLIST.md\n'));
 
   console.log(chalk.bold.white('Next steps:'));
   console.log(chalk.gray('  1. Review and customize .rana.yml'));
-  console.log(chalk.gray('  2. Update docs/rana/AGENT_INSTRUCTIONS.md with project-specific rules'));
-  console.log(chalk.gray('  3. Run ') + chalk.cyan('rana check') + chalk.gray(' to verify setup'));
+  console.log(chalk.gray('  2. Update docs/aads/AGENT_INSTRUCTIONS.md with project-specific rules'));
+  console.log(chalk.gray('  3. Run ') + chalk.cyan('aads check') + chalk.gray(' to verify setup'));
   console.log(chalk.gray('  4. Share .rana.yml with your AI assistant\n'));
 
   console.log(chalk.bold.cyan('💡 Pro Tip:'));
@@ -274,14 +274,14 @@ function generateConfig(projectInfo: ProjectConfig, template: string): any {
 
   // Add language-specific rules
   if (projectInfo.languages.includes('typescript')) {
-    baseConfig.standards.code_quality['typescript'] = {
+    (baseConfig.standards.code_quality as Record<string, unknown>)['typescript'] = {
       strict_mode: true,
       no_any_types: true,
     };
   }
 
   if (projectInfo.languages.includes('python')) {
-    baseConfig.standards.code_quality['python'] = {
+    (baseConfig.standards.code_quality as Record<string, unknown>)['python'] = {
       type_hints: true,
       pep8_compliance: true,
     };
