@@ -43,7 +43,7 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-lg md:text-xl text-foreground-secondary text-balance mb-10 max-w-2xl mx-auto"
           >
-            Professional AI agent framework for React applications. Production-ready architecture with type safety, security, and scalability built-in.
+            The only AI framework with enterprise security, multi-agent orchestration, and MCP server creation. Built by developers, for developers.
           </motion.p>
 
           {/* CTAs */}
@@ -76,16 +76,16 @@ export function Hero() {
             className="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto"
           >
             <div className="text-center">
-              <div className="text-3xl font-bold gradient-text">10x</div>
-              <div className="text-sm text-foreground-secondary mt-1">Faster Development</div>
+              <div className="text-3xl font-bold gradient-text">Enterprise</div>
+              <div className="text-sm text-foreground-secondary mt-1">Security Built-in</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold gradient-text">100%</div>
-              <div className="text-sm text-foreground-secondary mt-1">Type Safe</div>
+              <div className="text-3xl font-bold gradient-text">Multi-Agent</div>
+              <div className="text-sm text-foreground-secondary mt-1">Orchestration</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold gradient-text">50+</div>
-              <div className="text-sm text-foreground-secondary mt-1">Built-in Features</div>
+              <div className="text-3xl font-bold gradient-text">MCP</div>
+              <div className="text-sm text-foreground-secondary mt-1">Server Creation</div>
             </div>
           </motion.div>
 

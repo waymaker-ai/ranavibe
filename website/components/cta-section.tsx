@@ -22,7 +22,7 @@ export function CTASection() {
             Ready to build your AI agent?
           </h2>
           <p className="text-lg text-foreground-secondary mb-8 max-w-2xl mx-auto text-balance">
-            Start building production-ready AI agents in minutes with our comprehensive training and documentation.
+            Start building production-ready AI agents in minutes with our comprehensive training and documentation. Need expert help? Waymaker offers implementation services.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -37,6 +37,14 @@ export function CTASection() {
               className="btn-secondary px-6 py-3 text-base"
             >
               Start Training
+            </Link>
+            <Link
+              href="https://waymaker.cx"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary px-6 py-3 text-base"
+            >
+              Waymaker Services
             </Link>
           </div>
         </motion.div>
