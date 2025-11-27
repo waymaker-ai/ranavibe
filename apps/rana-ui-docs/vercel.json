@@ -1,7 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": "nextjs",
-  "buildCommand": "cd ../.. && pnpm install && pnpm --filter @rana/ui build && pnpm --filter @rana/ui-docs build",
-  "installCommand": "pnpm install --no-frozen-lockfile || true",
-  "outputDirectory": ".next"
+  "buildCommand": "cd ../.. && pnpm install && pnpm --filter @rana/ui build && cd apps/rana-ui-docs && pnpm build",
+  "installCommand": "cd ../.. && pnpm install",
+  "framework": "nextjs"
 }
