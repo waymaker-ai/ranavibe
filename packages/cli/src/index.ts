@@ -8,6 +8,7 @@ import {
   QualityGateChecker,
   REPMValidator,
   TemplateManager,
+  DesignSystemChecker,
 } from '@rana/core';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -320,6 +321,157 @@ program
       }
     } catch (error) {
       spinner.fail(chalk.red('Failed to generate report'));
+      console.error(chalk.red(error instanceof Error ? error.message : String(error)));
+      process.exit(1);
+    }
+  });
+
+// Command: check-design-system
+program
+  .command('check-design-system')
+  .description('Check design system compliance')
+  .option('-c, --config <path>', 'Path to .rana.yml file')
+  .action(async (options) => {
+    try {
+      const configPath = options.config || ConfigParser.findConfig();
+      if (!configPath) {
+        console.error(chalk.red('No .rana.yml file found'));
+        process.exit(1);
+      }
+
+      const config = ConfigParser.parse(configPath);
+
+      if (!config.standards?.design_system?.enabled) {
+        console.log(chalk.yellow('⚠️  Design system not enabled in .rana.yml\n'));
+        console.log(chalk.gray('Add this to your .rana.yml:\n'));
+        console.log(chalk.gray('standards:'));
+        console.log(chalk.gray('  design_system:'));
+        console.log(chalk.gray('    enabled: true\n'));
+        return;
+      }
+
+      const spinner = ora('Checking design system compliance...').start();
+      const checker = new DesignSystemChecker(config);
+      const result = await checker.check();
+      spinner.stop();
+
+      console.log(chalk.blue.bold('\n📊 Design System Compliance Report\n'));
+      console.log(chalk.gray('Coverage:'), chalk.white(`${result.componentsCovered}/${result.totalComponents} (${result.coveragePercent}%)`));
+      console.log(chalk.gray('Status:'), result.passed ? chalk.green('✅ Passed') : chalk.red('❌ Failed'));
+      console.log();
+
+      if (result.violations.length === 0) {
+        console.log(chalk.green.bold('✅ No violations found!\n'));
+        return;
+      }
+
+      const errors = result.violations.filter(v => v.severity === 'error');
+      const warnings = result.violations.filter(v => v.severity === 'warning');
+
+      if (errors.length > 0) {
+        console.log(chalk.red.bold(`❌ Errors (${errors.length}):\n`));
+        errors.slice(0, 10).forEach(v => {
+          console.log(chalk.red(`  ${v.file}${v.line ? ':' + v.line : ''}`));
+          console.log(chalk.gray(`  Rule: ${v.rule}`));
+          console.log(chalk.gray(`  ${v.message}`));
+          if (v.autofix) {
+            console.log(chalk.blue(`  Autofix: ${v.autofix}`));
+          }
+          console.log();
+        });
+
+        if (errors.length > 10) {
+          console.log(chalk.gray(`  ... and ${errors.length - 10} more\n`));
+        }
+      }
+
+      if (warnings.length > 0) {
+        console.log(chalk.yellow.bold(`⚠️  Warnings (${warnings.length}):\n`));
+        warnings.slice(0, 5).forEach(v => {
+          console.log(chalk.yellow(`  ${v.file}${v.line ? ':' + v.line : ''}`));
+          console.log(chalk.gray(`  ${v.message}`));
+          console.log();
+        });
+
+        if (warnings.length > 5) {
+          console.log(chalk.gray(`  ... and ${warnings.length - 5} more\n`));
+        }
+      }
+
+      console.log(chalk.gray('Run `rana design-violations --fix` to auto-fix some issues\n'));
+
+      if (!result.passed) {
+        process.exit(1);
+      }
+    } catch (error) {
+      console.error(chalk.red(error instanceof Error ? error.message : String(error)));
+      process.exit(1);
+    }
+  });
+
+// Command: design-coverage
+program
+  .command('design-coverage')
+  .description('Show design system coverage statistics')
+  .option('-c, --config <path>', 'Path to .rana.yml file')
+  .option('--threshold <number>', 'Fail if coverage is below threshold', '0')
+  .action(async (options) => {
+    try {
+      const configPath = options.config || ConfigParser.findConfig();
+      if (!configPath) {
+        console.error(chalk.red('No .rana.yml file found'));
+        process.exit(1);
+      }
+
+      const config = ConfigParser.parse(configPath);
+      const checker = new DesignSystemChecker(config);
+      const result = await checker.check();
+
+      console.log(chalk.blue.bold('\n📈 Design System Coverage\n'));
+      console.log(chalk.gray('Components using design system:'), chalk.white(`${result.componentsCovered}/${result.totalComponents}`));
+      console.log(chalk.gray('Coverage:'), chalk.white(`${result.coveragePercent}%`));
+      console.log();
+
+      const threshold = parseInt(options.threshold);
+      if (result.coveragePercent < threshold) {
+        console.log(chalk.red(`❌ Coverage ${result.coveragePercent}% is below threshold ${threshold}%\n`));
+        process.exit(1);
+      } else {
+        console.log(chalk.green(`✅ Coverage meets threshold (${threshold}%)\n`));
+      }
+    } catch (error) {
+      console.error(chalk.red(error instanceof Error ? error.message : String(error)));
+      process.exit(1);
+    }
+  });
+
+// Command: design-violations
+program
+  .command('design-violations')
+  .description('Show all design system violations')
+  .option('-c, --config <path>', 'Path to .rana.yml file')
+  .option('--fix', 'Attempt to auto-fix violations')
+  .action(async (options) => {
+    try {
+      const configPath = options.config || ConfigParser.findConfig();
+      if (!configPath) {
+        console.error(chalk.red('No .rana.yml file found'));
+        process.exit(1);
+      }
+
+      const config = ConfigParser.parse(configPath);
+      const checker = new DesignSystemChecker(config);
+      const result = await checker.check();
+
+      const report = await checker.generateReport();
+      console.log(report);
+
+      if (options.fix) {
+        console.log(chalk.blue('\n🔧 Auto-fixing violations...\n'));
+        console.log(chalk.yellow('Note: Auto-fix is not yet implemented.'));
+        console.log(chalk.gray('Manual fixes required for most violations.\n'));
+      }
+    } catch (error) {
       console.error(chalk.red(error instanceof Error ? error.message : String(error)));
       process.exit(1);
     }

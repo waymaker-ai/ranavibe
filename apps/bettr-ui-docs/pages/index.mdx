@@ -1,0 +1,75 @@
+# Bettr UI
+
+**Beautiful glass morphism component library for React**
+
+Bettr UI is a collection of beautifully designed React components with glass morphism effects, gradients, and modern aesthetics built with Tailwind CSS.
+
+## Features
+
+✨ **Glass Morphism** - Beautiful frosted glass effects
+🎨 **Gradients** - Vibrant gradient backgrounds
+🎯 **Variants** - Multiple styles for every component
+♿ **Accessible** - WCAG 2.1 AA compliant
+🎭 **Dark Mode** - Full dark mode support
+⚡ **Fast** - Optimized for performance
+📦 **Tree-shakeable** - Only import what you need
+
+## Installation
+
+```bash
+npm install @bettr/ui class-variance-authority clsx tailwind-merge
+```
+
+Or use the CLI:
+
+```bash
+npx @bettr/ui-cli init
+npx @bettr/ui-cli add glass-card
+```
+
+## Quick Start
+
+```tsx
+import { GlassCard, GradientButton } from '@bettr/ui'
+
+export default function App() {
+  return (
+    <GlassCard variant="tinted" padding="lg">
+      <h1>Welcome to Bettr UI</h1>
+      <GradientButton variant="purple">
+        Get Started
+      </GradientButton>
+    </GlassCard>
+  )
+}
+```
+
+## Components
+
+- [Glass Card](/components/glass-card) - Frosted glass card component
+- [Gradient Button](/components/gradient-button) - Button with gradient backgrounds
+- [Icon Circle](/components/icon-circle) - Circular icon container
+- [Feature Badge](/components/feature-badge) - Badge for highlighting features
+- [Clean Mode Card](/components/clean-mode-card) - Minimal card component
+
+## CLI
+
+Bettr UI comes with a powerful CLI for managing components:
+
+```bash
+# Initialize
+bettr-ui init
+
+# Add components
+bettr-ui add glass-card gradient-button
+
+# List all components
+bettr-ui list
+
+# Add all components
+bettr-ui add --all
+```
+
+## License
+
+MIT © Waymaker
