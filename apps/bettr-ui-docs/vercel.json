@@ -1,6 +1,6 @@
 {
-  "buildCommand": "pnpm --filter @bettr/ui-docs build",
-  "installCommand": "pnpm install",
+  "buildCommand": "cd ../.. && pnpm --filter @bettr/ui build && pnpm --filter @bettr/ui-docs build",
+  "installCommand": "cd ../.. && pnpm install",
   "framework": "nextjs",
   "outputDirectory": "apps/bettr-ui-docs/.next"
 }
