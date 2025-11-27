@@ -13,7 +13,7 @@ interface AnalyticsConfig {
   sampleRate?: number;
 }
 
-interface ExecutionRecord {
+export interface ExecutionRecord {
   promptId: string;
   version: string;
   latencyMs: number;
