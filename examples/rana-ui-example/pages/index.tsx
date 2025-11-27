@@ -11,7 +11,7 @@ import {
   CleanModeCardHeader,
   CleanModeCardTitle,
   CleanModeCardContent,
-} from '@bettr/ui';
+} from '@rana/ui';
 
 export default function Home() {
   return (
@@ -20,7 +20,7 @@ export default function Home() {
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 bg-clip-text text-transparent">
-            Bettr UI Examples
+            RANA UI Examples
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-400">
             Beautiful glass morphism components for React
@@ -223,7 +223,7 @@ export default function Home() {
               href="https://github.com/waymaker-ai/ranavibe"
               className="text-purple-600 dark:text-purple-400 hover:underline"
             >
-              Bettr UI
+              RANA UI
             </a>{' '}
             and RANA
           </p>

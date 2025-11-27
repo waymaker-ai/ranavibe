@@ -16,22 +16,22 @@ const __dirname = dirname(__filename);
 const program = new Command();
 
 program
-  .name('bettr-ui')
-  .description('CLI for installing Bettr UI components')
+  .name('rana-ui')
+  .description('CLI for installing RANA UI components')
   .version('0.1.0');
 
 // Command: init
 program
   .command('init')
-  .description('Initialize Bettr UI in your project')
+  .description('Initialize RANA UI in your project')
   .option('-y, --yes', 'Skip prompts and use defaults')
   .action(async (options) => {
-    console.log(chalk.blue.bold('\n✨ Welcome to Bettr UI!\n'));
+    console.log(chalk.blue.bold('\n✨ Welcome to RANA UI!\n'));
 
     // Check if already initialized
-    const configPath = path.join(process.cwd(), 'bettr-ui.json');
+    const configPath = path.join(process.cwd(), 'rana-ui.json');
     if (fs.existsSync(configPath)) {
-      console.log(chalk.yellow('⚠️  Bettr UI is already initialized in this project.\n'));
+      console.log(chalk.yellow('⚠️  RANA UI is already initialized in this project.\n'));
       const { overwrite } = await prompts({
         type: 'confirm',
         name: 'overwrite',
@@ -133,9 +133,9 @@ program
       spinner.succeed(chalk.green('All dependencies found!'));
     }
 
-    console.log(chalk.green.bold('\n✅ Bettr UI initialized successfully!\n'));
+    console.log(chalk.green.bold('\n✅ RANA UI initialized successfully!\n'));
     console.log(chalk.gray('Next steps:'));
-    console.log(chalk.gray('  1. Run `bettr-ui add glass-card` to add a component'));
+    console.log(chalk.gray('  1. Run `rana-ui add glass-card` to add a component'));
     console.log(chalk.gray('  2. Import and use in your app'));
     console.log(chalk.gray('  3. Customize styles in Tailwind config\n'));
   });
@@ -148,10 +148,10 @@ program
   .option('-o, --overwrite', 'Overwrite existing files')
   .action(async (components: string[], options) => {
     // Load config
-    const configPath = path.join(process.cwd(), 'bettr-ui.json');
+    const configPath = path.join(process.cwd(), 'rana-ui.json');
     if (!fs.existsSync(configPath)) {
-      console.error(chalk.red('❌ Bettr UI not initialized!'));
-      console.log(chalk.gray('\nRun `bettr-ui init` first.\n'));
+      console.error(chalk.red('❌ RANA UI not initialized!'));
+      console.log(chalk.gray('\nRun `rana-ui init` first.\n'));
       return;
     }
 
@@ -248,7 +248,7 @@ program
     }
 
     // Copy component files
-    const componentsDir = path.resolve(__dirname, '../../bettr-ui/src');
+    const componentsDir = path.resolve(__dirname, '../../rana-ui/src');
 
     for (const name of Array.from(allComponents)) {
       const component = getComponent(name);
@@ -303,7 +303,7 @@ program
   .command('list')
   .description('List all available components')
   .action(() => {
-    console.log(chalk.blue.bold('\n📦 Available Bettr UI Components:\n'));
+    console.log(chalk.blue.bold('\n📦 Available RANA UI Components:\n'));
 
     const components = getAllComponents();
     components.forEach((component) => {

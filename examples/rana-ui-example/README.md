@@ -1,6 +1,6 @@
-# Bettr UI Example
+# RANA UI Example
 
-This is an example project showing how to use Bettr UI components in a Next.js application.
+This is an example project showing how to use RANA UI components in a Next.js application.
 
 ## Getting Started
 
@@ -27,7 +27,7 @@ pnpm dev
 ## Project Structure
 
 ```
-bettr-ui-example/
+rana-ui-example/
 ├── pages/
 │   └── index.tsx          # Main example page
 ├── styles/
@@ -38,5 +38,5 @@ bettr-ui-example/
 
 ## Learn More
 
-- [Bettr UI Documentation](../../apps/bettr-ui-docs)
+- [RANA UI Documentation](../../apps/rana-ui-docs)
 - [RANA Framework](../../README.md)

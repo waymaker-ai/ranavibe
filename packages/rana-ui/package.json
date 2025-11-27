@@ -1,7 +1,7 @@
 {
-  "name": "@bettr/ui",
+  "name": "@rana/ui",
   "version": "0.1.0",
-  "description": "Bettr UI - Beautiful glass morphism component library for React",
+  "description": "RANA UI - Beautiful glass morphism component library for React",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -44,7 +44,7 @@
     "ui",
     "design-system",
     "glass-morphism",
-    "bettr",
+    "rana",
     "tailwind"
   ],
   "author": "Waymaker <support@waymaker.cx>",
@@ -52,6 +52,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/waymaker-ai/ranavibe.git",
-    "directory": "packages/bettr-ui"
+    "directory": "packages/rana-ui"
   }
 }

@@ -1,9 +1,9 @@
 {
-  "name": "@bettr/ui-cli",
+  "name": "@rana/ui-cli",
   "version": "0.1.0",
-  "description": "CLI tool for installing Bettr UI components",
+  "description": "CLI tool for installing RANA UI components",
   "bin": {
-    "bettr-ui": "./dist/index.js"
+    "rana-ui": "./dist/index.js"
   },
   "main": "./dist/index.js",
   "type": "module",
@@ -27,7 +27,7 @@
     "typescript": "^5.3.3"
   },
   "keywords": [
-    "bettr",
+    "rana",
     "ui",
     "cli",
     "components",

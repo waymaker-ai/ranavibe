@@ -1,6 +1,6 @@
 /**
  * Component Registry
- * Metadata for all available Bettr UI components
+ * Metadata for all available RANA UI components
  */
 
 export interface ComponentFile {

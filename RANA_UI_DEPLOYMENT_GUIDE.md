@@ -1,22 +1,22 @@
-# Bettr UI Deployment Guide
+# RANA UI Deployment Guide
 
 ## ✅ What's Complete
 
-### 1. **@bettr/ui** - Component Library ✅
+### 1. **@rana/ui** - Component Library ✅
 - 5 glass morphism components with CVA variants
 - Full TypeScript + Tailwind CSS support
 - Copy-paste model (users own the code)
 - Built and tested locally
 
-### 2. **@bettr/ui-cli** - CLI Tool ✅
-- `bettr-ui init` - Project initialization
-- `bettr-ui add [components]` - Install components
-- `bettr-ui list` - List available components
+### 2. **@rana/ui-cli** - CLI Tool ✅
+- `rana-ui init` - Project initialization
+- `rana-ui add [components]` - Install components
+- `rana-ui list` - List available components
 - Component registry system
 - Automatic dependency resolution
 - Built and ready to use
 
-### 3. **bettr-ui-docs** - Documentation Site ✅
+### 3. **rana-ui-docs** - Documentation Site ✅
 - Nextra-based documentation
 - Live component examples
 - API reference tables
@@ -24,7 +24,7 @@
 - Runs locally on port 3001
 - Code pushed to GitHub
 
-### 4. **bettr-ui-example** - Example Project ✅
+### 4. **rana-ui-example** - Example Project ✅
 - Full Next.js demonstration
 - All 5 components showcased
 - Responsive design
@@ -49,7 +49,7 @@
 
 ### Vercel Deployment (Manual Configuration Required)
 
-The bettr-ui-docs site requires manual Vercel dashboard configuration because it's part of a pnpm monorepo with workspace dependencies.
+The rana-ui-docs site requires manual Vercel dashboard configuration because it's part of a pnpm monorepo with workspace dependencies.
 
 #### **Steps to Deploy via Vercel Dashboard:**
 
@@ -60,10 +60,10 @@ The bettr-ui-docs site requires manual Vercel dashboard configuration because it
 
 3. **Configure the project:**
    - **Framework Preset:** Next.js
-   - **Root Directory:** `apps/bettr-ui-docs`
+   - **Root Directory:** `apps/rana-ui-docs`
    - **Build Command:**
      ```bash
-     cd ../.. && pnpm install && pnpm --filter @bettr/ui build && pnpm --filter @bettr/ui-docs build
+     cd ../.. && pnpm install && pnpm --filter @rana/ui build && pnpm --filter @rana/ui-docs build
      ```
    - **Install Command:**
      ```bash
@@ -91,8 +91,8 @@ Vercel CLI has limitations with pnpm workspace monorepos:
 ```bash
 cd /Users/ashleykays/ranavibe
 pnpm install
-pnpm --filter @bettr/ui build
-pnpm --filter @bettr/ui-docs dev
+pnpm --filter @rana/ui build
+pnpm --filter @rana/ui-docs dev
 ```
 
 Visit: http://localhost:3001
@@ -101,8 +101,8 @@ Visit: http://localhost:3001
 ```bash
 cd /Users/ashleykays/ranavibe
 pnpm install
-pnpm --filter @bettr/ui build
-pnpm --filter bettr-ui-example dev
+pnpm --filter @rana/ui build
+pnpm --filter rana-ui-example dev
 ```
 
 Visit: http://localhost:3002
@@ -110,36 +110,36 @@ Visit: http://localhost:3002
 ### Use the CLI Tool:
 ```bash
 cd /Users/ashleykays/ranavibe
-pnpm --filter @bettr/ui-cli build
+pnpm --filter @rana/ui-cli build
 cd ../.. # go to any Next.js project
-node /Users/ashleykays/ranavibe/packages/bettr-ui-cli/dist/index.js init
-node /Users/ashleykays/ranavibe/packages/bettr-ui-cli/dist/index.js list
-node /Users/ashleykays/ranavibe/packages/bettr-ui-cli/dist/index.js add glass-card
+node /Users/ashleykays/ranavibe/packages/rana-ui-cli/dist/index.js init
+node /Users/ashleykays/ranavibe/packages/rana-ui-cli/dist/index.js list
+node /Users/ashleykays/ranavibe/packages/rana-ui-cli/dist/index.js add glass-card
 ```
 
 ---
 
 ## 📦 Optional: Publish to npm
 
-To make @bettr/ui and @bettr/ui-cli available publicly:
+To make @rana/ui and @rana/ui-cli available publicly:
 
 1. **Update package.json files** (remove `private: true`)
 2. **Build packages:**
    ```bash
-   pnpm --filter @bettr/ui build
-   pnpm --filter @bettr/ui-cli build
+   pnpm --filter @rana/ui build
+   pnpm --filter @rana/ui-cli build
    ```
 
 3. **Publish to npm:**
    ```bash
-   cd packages/bettr-ui && npm publish --access public
-   cd ../bettr-ui-cli && npm publish --access public
+   cd packages/rana-ui && npm publish --access public
+   cd ../rana-ui-cli && npm publish --access public
    ```
 
 4. **Update docs to use published version:**
    ```json
    "dependencies": {
-     "@bettr/ui": "^0.1.0"
+     "@rana/ui": "^0.1.0"
    }
    ```
 
@@ -149,10 +149,10 @@ To make @bettr/ui and @bettr/ui-cli available publicly:
 
 | Component | Status | Location |
 |-----------|--------|----------|
-| @bettr/ui | ✅ Complete | `packages/bettr-ui/` |
-| @bettr/ui-cli | ✅ Complete | `packages/bettr-ui-cli/` |
-| Documentation | ✅ Complete | `apps/bettr-ui-docs/` |
-| Example | ✅ Complete | `examples/bettr-ui-example/` |
+| @rana/ui | ✅ Complete | `packages/rana-ui/` |
+| @rana/ui-cli | ✅ Complete | `packages/rana-ui-cli/` |
+| Documentation | ✅ Complete | `apps/rana-ui-docs/` |
+| Example | ✅ Complete | `examples/rana-ui-example/` |
 | RANA Integration | ✅ Complete | `packages/core/src/design-system/` |
 | Local Testing | ✅ Working | Run with pnpm commands above |
 | GitHub | ✅ Pushed | `implementation-2025-v2` branch |
