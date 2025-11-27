@@ -1,0 +1,445 @@
+# RANA Configuration for Bettr
+# Rapid AI Native Architecture v1.0
+# This file defines standards, patterns, and quality gates for AI-assisted development
+
+version: "1.0.0"
+
+project:
+  name: "Bettr"
+  type: "fullstack"
+  description: "Intelligent productivity and goal management platform"
+  languages:
+    - "typescript"
+    - "python"
+  frameworks:
+    frontend: "react"
+    backend: "fastapi"
+    database: "postgresql"
+
+# Core RANA Principles
+standards:
+  principles:
+    - search_before_create      # Always check if logic/patterns already exist
+    - real_data_only            # No mock data in production code
+    - test_everything           # Manual + automated testing required
+    - design_system_compliance  # Always use design system components
+    - deploy_to_production      # Features aren't done until deployed
+    - preserve_existing_code    # Don't break what's working
+    - type_safety_strict        # TypeScript strict mode, no 'any' types
+    - error_handling_required   # Comprehensive error handling
+
+  # Design system configuration
+  design_system:
+    enabled: true
+    documentation: "docs/DESIGN_SYSTEM_PROMPT.md"
+    components:
+      path: "frontend/src/components/design-system"
+      required_imports:
+        - "GlassCard"
+        - "GradientButton"
+        - "IconCircle"
+        - "FeatureBadge"
+        - "CleanModeCard"
+      style_tokens:
+        colors:
+          light_background: "from-orange-50 via-pink-50 to-purple-50"
+          dark_background: "bg-black"
+          card_light: "bg-white border-2 border-gray-200"
+          card_dark: "bg-gray-900/80 backdrop-blur-xl border border-gray-800/50"
+        gradients:
+          - "from-purple-600 to-pink-600"
+          - "from-orange-500 to-pink-500"
+          - "from-blue-500 to-cyan-500"
+          - "from-green-500 to-emerald-500"
+        spacing:
+          section_padding: "py-24"
+          container: "max-w-7xl mx-auto px-4"
+          border_radius: "rounded-xl"
+
+  # Tech stack patterns (must use these)
+  patterns:
+    # Frontend patterns
+    authentication: "AuthContext + authenticatedFetch"
+    api_calls: "apiGet/apiPost/apiPut/apiDelete from services"
+    state_management: "React Context API"
+    routing: "React Router v6"
+    forms: "Controlled components with validation"
+    styling: "Tailwind CSS + design system"
+    animations: "Framer Motion"
+
+    # Backend patterns
+    api_framework: "FastAPI with async/await"
+    authentication_backend: "Supabase JWT + auth_dependencies.py"
+    database_access: "asyncpg with connection pooling"
+    api_responses: "Standardized JSON responses with error handling"
+
+    # Database patterns
+    database: "Supabase PostgreSQL"
+    migrations: "SQL files in backend/migrations/"
+    queries: "Typed service layer functions"
+
+    # Testing patterns
+    testing_framework: "Playwright for E2E"
+    test_location: "frontend/e2e/"
+    manual_testing: "Required before deployment"
+
+    # Deployment patterns
+    frontend_platform: "Vercel"
+    backend_platform: "Railway"
+    database_platform: "Supabase"
+
+  # Code quality rules
+  code_quality:
+    typescript:
+      strict_mode: true
+      no_any_types: true
+      no_explicit_any: true
+      explicit_return_types: false  # Optional but recommended
+
+    python:
+      type_hints: true
+      async_preferred: true
+      pep8_compliance: true
+
+    general:
+      no_console_log_in_production: true
+      comprehensive_error_handling: true
+      loading_states_required: true
+      empty_states_required: true
+      dark_mode_support: true
+      mobile_responsive: true
+      accessibility_required: true
+
+  # File organization rules
+  file_structure:
+    services: "frontend/src/services/"
+    components: "frontend/src/components/"
+    pages: "frontend/src/pages/"
+    hooks: "frontend/src/hooks/"
+    utils: "frontend/src/lib/"
+    types: "frontend/src/types/"
+    api_routes: "backend/routes/"
+    api_logic: "backend/api/"
+    migrations: "backend/migrations/"
+
+# Quality gates that must pass before deployment
+quality_gates:
+  # Pre-implementation checks
+  pre_implementation:
+    - name: "Strategic validation (REPM)"
+      description: "For major features: validate outcome → monetization → GTM → UX first"
+      required_for: "major_features"
+      reference: "docs/REVERSE_ENGINEERING_PRODUCT_METHODOLOGY.md"
+      phases:
+        - "Define desired outcome (success metrics)"
+        - "Validate monetization model (unit economics)"
+        - "Design go-to-market strategy (distribution)"
+        - "Map user experience journey (activation)"
+        - "Design product (feature prioritization)"
+        - "Plan build (technical approach)"
+        - "Validate idea (go/no-go decision)"
+
+    - name: "Search for existing implementations"
+      description: "Use Grep/Explore to find existing code patterns"
+      required: true
+
+    - name: "Review relevant documentation"
+      description: "Check docs/ directory for feature guides"
+      required: true
+
+    - name: "Understand existing architecture"
+      description: "Review services, components, and API endpoints"
+      required: true
+
+    - name: "Identify reusable patterns"
+      description: "Don't reinvent - use existing patterns"
+      required: true
+
+  # Implementation checks
+  implementation:
+    - name: "TypeScript strict mode compliance"
+      description: "No 'any' types, proper type definitions"
+      required: true
+
+    - name: "Design system component usage"
+      description: "Use GlassCard, GradientButton, etc."
+      required: true
+
+    - name: "Error handling implemented"
+      description: "Try-catch blocks, user-friendly error messages"
+      required: true
+
+    - name: "Loading states implemented"
+      description: "Show loading indicators during async operations"
+      required: true
+
+    - name: "Empty states implemented"
+      description: "Handle no-data scenarios gracefully"
+      required: true
+
+    - name: "Dark mode support"
+      description: "All UI works in both light and dark mode"
+      required: true
+
+    - name: "Mobile responsive"
+      description: "Works on mobile, tablet, and desktop"
+      required: true
+
+    - name: "Real data implementation"
+      description: "No mock data, connect to real APIs/database"
+      required: true
+
+    - name: "Existing patterns followed"
+      description: "Code matches existing codebase patterns"
+      required: true
+
+  # Testing checks
+  testing:
+    - name: "Manual testing completed"
+      description: "Test all user flows manually"
+      required: true
+
+    - name: "Edge cases tested"
+      description: "Test error states, empty states, loading states"
+      required: true
+
+    - name: "Cross-browser testing"
+      description: "Test in Chrome, Firefox, Safari"
+      required: false
+
+    - name: "E2E tests written"
+      description: "Playwright tests for critical flows"
+      required: false  # Recommended but not always blocking
+
+  # Deployment checks
+  deployment:
+    - name: "Database migration created"
+      description: "If schema changes, create migration in backend/migrations/"
+      required_if: "schema_changes"
+
+    - name: "Migration tested locally"
+      description: "Run migration against local/staging database"
+      required_if: "schema_changes"
+
+    - name: "Code committed to git"
+      description: "All changes committed with descriptive message"
+      required: true
+
+    - name: "Frontend deployed to Vercel"
+      description: "Deploy and verify frontend works"
+      required: true
+
+    - name: "Backend deployed to Railway"
+      description: "Deploy and verify backend works"
+      required: true
+
+    - name: "Production verification"
+      description: "Test feature in production environment"
+      required: true
+
+    - name: "Rollback plan identified"
+      description: "Know how to rollback if something breaks"
+      required: true
+
+# Deployment configuration
+deployment:
+  frontend:
+    platform: "vercel"
+    url: "https://bettr.cc"
+    auto_deploy: true
+    branch: "main"
+    build_command: "npm run build"
+
+  backend:
+    platform: "railway"
+    url: "https://bettr-backend.railway.app"
+    auto_deploy: true
+    branch: "main"
+
+  database:
+    platform: "supabase"
+    host: "db.ihojffjglwrughdsskfz.supabase.co"
+    migrations_path: "backend/migrations/"
+    migration_command: "PGPASSWORD=$SUPABASE_PASSWORD psql -h $SUPABASE_HOST -p 5432 -U postgres -d postgres -f"
+
+# AI Assistant configuration
+ai_assistant:
+  # Primary instructions
+  instructions_path: "docs/AGENT_INSTRUCTIONS.md"
+  checklist_path: "docs/AGENT_DEVELOPMENT_CHECKLIST.md"
+  design_system_path: "docs/DESIGN_SYSTEM_PROMPT.md"
+  workflow_path: "docs/DEVELOPMENT_WORKFLOW_FLOWCHART.md"
+
+  # Behavioral rules for AI
+  rules:
+    # Strategic validation
+    - "For MAJOR FEATURES: validate REPM phases before implementation"
+    - "Major features = new revenue streams, products, pricing changes, market segments"
+    - "Reference docs/REVERSE_ENGINEERING_PRODUCT_METHODOLOGY.md for strategy validation"
+
+    # Search and research
+    - "ALWAYS search codebase before implementing new features"
+    - "NEVER assume - verify existing implementations"
+    - "Use Grep/Explore agents for finding existing code"
+
+    # Code quality
+    - "NEVER use 'any' type in TypeScript"
+    - "NEVER create mock data in production code"
+    - "NEVER skip error handling"
+    - "ALWAYS add loading and empty states"
+    - "ALWAYS support dark mode"
+    - "ALWAYS make UI responsive"
+
+    # Patterns and architecture
+    - "ALWAYS use existing service patterns (apiGet, apiPost, etc.)"
+    - "ALWAYS import design system components"
+    - "NEVER create new patterns when existing ones work"
+    - "ALWAYS follow existing file structure"
+
+    # Safety
+    - "NEVER delete code without understanding dependencies"
+    - "NEVER modify authentication/security code without extreme caution"
+    - "ALWAYS test changes manually before committing"
+    - "ALWAYS verify backwards compatibility"
+
+    # Deployment
+    - "Features are NOT done until deployed to production"
+    - "ALWAYS create database migrations for schema changes"
+    - "ALWAYS test migrations before deploying"
+    - "ALWAYS verify in production after deployment"
+
+    # Communication
+    - "Explain what you're doing and why"
+    - "Reference file paths and line numbers"
+    - "Show before/after for changes"
+    - "Provide rollback steps if needed"
+
+  # Enforcement level
+  enforce:
+    no_mock_data: "error"           # Block deployment if mock data found
+    design_system_compliance: "warning"  # Warn but don't block
+    existing_patterns_only: "warning"    # Warn but don't block
+    production_deployment: "error"       # Must deploy to production
+
+# High-risk areas requiring extra caution
+high_risk_areas:
+  - path: "frontend/src/contexts/AuthContext.tsx"
+    reason: "Authentication - breaks login if modified incorrectly"
+
+  - path: "backend/api/auth_dependencies.py"
+    reason: "Backend authentication - security critical"
+
+  - path: "backend/migrations/*"
+    reason: "Database schema - can corrupt data if wrong"
+
+  - path: "frontend/src/config/routes.tsx"
+    reason: "Routing - breaks navigation if incorrect"
+
+  - path: "backend/api/stripe_*.py"
+    reason: "Payment processing - financial impact"
+
+  - path: "frontend/src/services/supabase.ts"
+    reason: "Database connection - affects all data access"
+
+# Documentation requirements
+documentation:
+  required_for_new_features:
+    - "Update relevant doc in docs/ if architectural change"
+    - "Add JSDoc comments for complex functions"
+    - "Update README if user-facing feature"
+    - "Add inline comments for non-obvious logic"
+
+  code_comments:
+    when_required:
+      - "Complex algorithms or logic"
+      - "Workarounds for bugs or limitations"
+      - "Security-sensitive code"
+      - "Performance optimizations"
+    when_not_required:
+      - "Self-explanatory code"
+      - "Standard patterns already documented"
+
+# Success metrics
+metrics:
+  code_quality:
+    - "Zero TypeScript 'any' types in new code"
+    - "100% design system component usage"
+    - "All features deployed to production within 24 hours"
+    - "Zero production bugs from new features"
+
+  velocity:
+    - "Features completed end-to-end (including deployment)"
+    - "Time from idea to production"
+    - "Reduction in bugs requiring fixes"
+
+# Major features requiring REPM validation
+major_features:
+  definition: "Features that significantly impact business model or user experience"
+  triggers:
+    - "New revenue streams or monetization models"
+    - "New user-facing products or offerings"
+    - "Significant pricing or packaging changes"
+    - "New market segments or customer types"
+    - "Platform pivots or major repositioning"
+    - "New business lines (e.g., adding agency services)"
+
+  process:
+    - "Review docs/REVERSE_ENGINEERING_PRODUCT_METHODOLOGY.md"
+    - "Complete 7-phase REPM validation"
+    - "Document go/no-go decision with evidence"
+    - "Only proceed with implementation if validated"
+
+  examples:
+    major:
+      - "Adding white-label offering to business model"
+      - "Launching affiliate/reseller program"
+      - "Creating new pricing tier or business model"
+      - "Targeting enterprise vs individual customers"
+    not_major:
+      - "Adding new UI components to design system"
+      - "Refactoring existing features"
+      - "Bug fixes or performance improvements"
+      - "Minor feature enhancements"
+
+# Project-specific context
+context:
+  app_type: "Productivity and goal management SaaS"
+  users: "Entrepreneurs, creators, side-hustlers"
+  scale: "150+ pages, 100+ services, 30+ API endpoints"
+  status: "Production with active users"
+
+  key_features:
+    - "Checkpoints (progress snapshots)"
+    - "Pipeline Pro (visual planning)"
+    - "OKR Management"
+    - "Task Intelligence"
+    - "AI Builder"
+    - "Analytics Dashboard"
+    - "Second Brain (knowledge management)"
+
+  integrations:
+    - "Stripe (payments)"
+    - "Supabase (database + auth)"
+    - "OpenAI (AI features)"
+    - "Vercel (frontend hosting)"
+    - "Railway (backend hosting)"
+
+# Notes for AI assistants
+assistant_notes: |
+  This is a PRODUCTION application with REAL USERS. Every change you make
+  affects real people. Your changes must be:
+
+  1. SAFE - Don't break existing functionality
+  2. TESTED - Verify everything works before deploying
+  3. COMPLETE - Features aren't done until in production
+  4. DOCUMENTED - Explain non-obvious decisions
+  5. REVERSIBLE - Know how to undo if needed
+
+  When in doubt:
+  - ASK before making risky changes
+  - SEARCH before creating new patterns
+  - TEST before deploying
+  - VERIFY after deployment
+
+  Remember: "Move fast and break things" is NOT our philosophy.
+  Our philosophy is "Move fast and BUILD things that work."

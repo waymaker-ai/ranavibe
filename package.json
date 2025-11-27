@@ -1,0 +1,49 @@
+{
+  "name": "rana-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "RANA - Rapid AI Native Architecture. Quality gates and strategic validation for AI-assisted development.",
+  "author": "Waymaker <support@waymaker.cx>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/waymaker-ai/ranavibe.git"
+  },
+  "bugs": {
+    "url": "https://github.com/waymaker-ai/ranavibe/issues"
+  },
+  "homepage": "https://rana.cx",
+  "keywords": [
+    "rana",
+    "ai",
+    "development",
+    "quality-gates",
+    "validation",
+    "repm",
+    "ai-assisted",
+    "claude",
+    "chatgpt",
+    "mcp"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "clean": "turbo run clean && rm -rf node_modules .turbo",
+    "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,md,json}\""
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "eslint": "^8.55.0",
+    "prettier": "^3.1.0",
+    "turbo": "^1.11.0",
+    "typescript": "^5.3.3"
+  },
+  "packageManager": "pnpm@8.12.0",
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  }
+}
