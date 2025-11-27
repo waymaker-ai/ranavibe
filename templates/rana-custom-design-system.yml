@@ -1,0 +1,343 @@
+# RANA Configuration with Custom Design System
+# Copy this template and customize for your project
+
+version: "1.0.0"
+
+project:
+  name: "YourProject"
+  type: "webapp"
+  description: "Your app with custom design system"
+  languages:
+    - "typescript"
+    - "css"
+
+# Design System Configuration
+standards:
+  principles:
+    - search_before_create
+    - real_data_only
+    - test_everything
+    - design_system_compliance  # ← Enforce design system usage
+    - deploy_to_production
+
+  # Your Custom Design System
+  design_system:
+    enabled: true
+    name: "YourUI"  # Your component library name
+    version: "1.0.0"
+
+    # Component library configuration
+    library:
+      type: "custom"  # or "shadcn", "chakra", "mantine"
+      cli_command: "npx your-ui add"  # Installation command
+      documentation: "https://ui.yoursite.com"
+
+    # Component paths
+    components:
+      path: "src/components/ui"  # Where components live
+      required_usage: true  # Enforce usage across project
+
+      # Required base components (must be available)
+      required_imports:
+        - "Button"
+        - "Input"
+        - "Card"
+        - "Dialog"
+        - "Select"
+        - "Textarea"
+        - "Badge"
+        - "Alert"
+
+      # Optional advanced components
+      optional_imports:
+        - "DataTable"
+        - "Calendar"
+        - "Chart"
+        - "CommandMenu"
+
+    # Design tokens (your brand)
+    style_tokens:
+      # Colors (use CSS variables)
+      colors:
+        # Semantic colors
+        primary: "hsl(var(--primary))"
+        secondary: "hsl(var(--secondary))"
+        accent: "hsl(var(--accent))"
+        destructive: "hsl(var(--destructive))"
+        success: "hsl(var(--success))"
+        warning: "hsl(var(--warning))"
+        info: "hsl(var(--info))"
+
+        # Neutrals
+        background: "hsl(var(--background))"
+        foreground: "hsl(var(--foreground))"
+        muted: "hsl(var(--muted))"
+        muted_foreground: "hsl(var(--muted-foreground))"
+        border: "hsl(var(--border))"
+
+        # Component-specific
+        card_background: "hsl(var(--card))"
+        popover_background: "hsl(var(--popover))"
+
+      # Typography
+      typography:
+        font_family:
+          sans: "var(--font-sans)"
+          mono: "var(--font-mono)"
+          heading: "var(--font-heading)"
+
+        font_sizes:
+          xs: "0.75rem"      # 12px
+          sm: "0.875rem"     # 14px
+          base: "1rem"       # 16px
+          lg: "1.125rem"     # 18px
+          xl: "1.25rem"      # 20px
+          "2xl": "1.5rem"    # 24px
+          "3xl": "1.875rem"  # 30px
+          "4xl": "2.25rem"   # 36px
+
+        font_weights:
+          normal: "400"
+          medium: "500"
+          semibold: "600"
+          bold: "700"
+
+        line_heights:
+          tight: "1.25"
+          normal: "1.5"
+          relaxed: "1.75"
+
+      # Spacing (4px grid system)
+      spacing:
+        unit: "0.25rem"  # 4px
+        scale:
+          0: "0"
+          1: "0.25rem"   # 4px
+          2: "0.5rem"    # 8px
+          3: "0.75rem"   # 12px
+          4: "1rem"      # 16px
+          5: "1.25rem"   # 20px
+          6: "1.5rem"    # 24px
+          8: "2rem"      # 32px
+          10: "2.5rem"   # 40px
+          12: "3rem"     # 48px
+          16: "4rem"     # 64px
+
+      # Border radius
+      border_radius:
+        none: "0"
+        sm: "0.125rem"    # 2px
+        default: "0.25rem"  # 4px
+        md: "0.375rem"    # 6px
+        lg: "0.5rem"      # 8px
+        xl: "0.75rem"     # 12px
+        "2xl": "1rem"     # 16px
+        full: "9999px"
+
+      # Shadows
+      shadows:
+        sm: "0 1px 2px 0 rgb(0 0 0 / 0.05)"
+        default: "0 1px 3px 0 rgb(0 0 0 / 0.1)"
+        md: "0 4px 6px -1px rgb(0 0 0 / 0.1)"
+        lg: "0 10px 15px -3px rgb(0 0 0 / 0.1)"
+        xl: "0 20px 25px -5px rgb(0 0 0 / 0.1)"
+
+      # Animations
+      animations:
+        duration:
+          fast: "150ms"
+          normal: "300ms"
+          slow: "500ms"
+        easing:
+          default: "cubic-bezier(0.4, 0, 0.2, 1)"
+          in: "cubic-bezier(0.4, 0, 1, 1)"
+          out: "cubic-bezier(0, 0, 0.2, 1)"
+          in_out: "cubic-bezier(0.4, 0, 0.2, 1)"
+
+    # Component variants (your patterns)
+    component_patterns:
+      button:
+        default_variant: "default"
+        variants:
+          - default
+          - destructive
+          - outline
+          - ghost
+          - link
+        sizes:
+          - sm
+          - md
+          - lg
+          - icon
+
+      card:
+        default_variant: "default"
+        variants:
+          - default
+          - outlined
+          - elevated
+          - interactive
+
+      input:
+        default_variant: "default"
+        variants:
+          - default
+          - error
+          - success
+
+    # Accessibility requirements (WCAG 2.1 AA)
+    accessibility:
+      wcag_level: "AA"
+      contrast_ratio:
+        normal_text: 4.5
+        large_text: 3
+      keyboard_navigation: true
+      screen_reader_support: true
+      focus_visible: true
+      aria_labels_required: true
+
+# Quality Gates with Design System Enforcement
+quality_gates:
+  pre_implementation:
+    - name: "Search design system components"
+      description: "Check if component exists in design system before creating custom"
+      required: true
+      check_command: "grep -r 'export.*Component' src/components/ui/"
+
+    - name: "Review design system documentation"
+      description: "Read component docs and usage examples"
+      required: true
+
+  implementation:
+    - name: "Use design system components only"
+      description: "All UI must import from @/components/ui/*"
+      required: true
+      validation:
+        - "No direct <button> tags with className"
+        - "No direct <input> tags with className"
+        - "No inline styles (style={{}})"
+        - "All colors use CSS variables"
+        - "Spacing uses 4px grid (multiples of 4)"
+
+    - name: "No hardcoded design values"
+      description: "Use design tokens from theme/config"
+      required: true
+      forbidden_patterns:
+        - "#[0-9a-fA-F]{6}"  # Hex colors
+        - "rgb\\("            # RGB colors
+        - "[0-9]+px"          # Direct px values (except in theme)
+
+    - name: "Accessibility compliance"
+      description: "All components meet WCAG 2.1 AA standards"
+      required: true
+      checks:
+        - "Proper ARIA labels"
+        - "Keyboard navigation"
+        - "Focus states visible"
+        - "Color contrast ≥4.5:1"
+
+  testing:
+    - name: "Design system visual testing"
+      description: "Test component in light/dark modes"
+      required: true
+
+    - name: "Accessibility audit"
+      description: "Run axe-core or similar a11y testing"
+      required: true
+      tool: "jest-axe"
+
+  deployment:
+    - name: "Design system version locked"
+      description: "Pin design system version for consistency"
+      required: true
+
+# Tool Integration
+tools:
+  design_system:
+    checker: "rana check-design-system"
+    coverage: "rana design-coverage"
+    violations: "rana design-violations --fix"
+
+  accessibility:
+    audit: "npm run a11y-audit"
+    report: "npm run a11y-report"
+
+# AI Assistant Instructions
+ai_assistant:
+  design_system_rules:
+    - "NEVER create custom button/input/card components"
+    - "ALWAYS import from @/components/ui/"
+    - "NEVER use inline styles or hardcoded colors"
+    - "ALWAYS use design tokens (CSS variables)"
+    - "CHECK design system docs before building UI"
+
+  example_patterns:
+    button: |
+      // ✅ Correct
+      import { Button } from '@/components/ui/button';
+
+      <Button variant="outline" size="lg">
+        Click me
+      </Button>
+
+      // ❌ Wrong
+      <button className="px-4 py-2 bg-blue-500 text-white rounded">
+        Click me
+      </button>
+
+    card: |
+      // ✅ Correct
+      import { Card, CardHeader, CardContent } from '@/components/ui/card';
+
+      <Card>
+        <CardHeader>Title</CardHeader>
+        <CardContent>Content</CardContent>
+      </Card>
+
+      // ❌ Wrong
+      <div className="border rounded-lg p-4 shadow-sm">
+        <h2>Title</h2>
+        <p>Content</p>
+      </div>
+
+    colors: |
+      // ✅ Correct
+      className="bg-primary text-primary-foreground"
+      className="border-border bg-background"
+
+      // ❌ Wrong
+      className="bg-blue-500 text-white"
+      style={{ backgroundColor: '#3B82F6' }}
+
+# Deployment
+deployment:
+  checks:
+    - name: "Design system consistency"
+      command: "rana check-design-system"
+      fail_on_error: true
+
+    - name: "Accessibility compliance"
+      command: "npm run a11y-audit"
+      fail_on_error: true
+
+    - name: "Visual regression tests"
+      command: "npm run visual-test"
+      fail_on_error: false  # Warning only
+
+# Examples Directory
+examples:
+  - name: "Button variations"
+    path: "examples/buttons.tsx"
+    description: "All button variants and sizes"
+
+  - name: "Form components"
+    path: "examples/forms.tsx"
+    description: "Input, Select, Textarea usage"
+
+  - name: "Card layouts"
+    path: "examples/cards.tsx"
+    description: "Card component patterns"
+
+  - name: "Dark mode"
+    path: "examples/dark-mode.tsx"
+    description: "Theme switching examples"
