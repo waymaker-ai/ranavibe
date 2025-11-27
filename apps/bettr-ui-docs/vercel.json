@@ -1,6 +1,5 @@
 {
-  "buildCommand": "cd ../.. && pnpm --filter @bettr/ui build && pnpm --filter @bettr/ui-docs build",
-  "installCommand": "cd ../.. && pnpm install",
-  "framework": "nextjs",
-  "outputDirectory": "apps/bettr-ui-docs/.next"
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "cd ../.. && pnpm install && pnpm --filter @bettr/ui build && pnpm --filter @bettr/ui-docs build",
+  "installCommand": "pnpm install --no-frozen-lockfile || true"
 }
