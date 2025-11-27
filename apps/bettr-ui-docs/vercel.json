@@ -1,5 +1,6 @@
 {
-  "buildCommand": "cd ../.. && pnpm install && pnpm --filter @bettr/ui build && cd apps/bettr-ui-docs && pnpm build",
-  "installCommand": "pnpm install --shamefully-hoist",
-  "framework": "nextjs"
+  "buildCommand": "pnpm --filter @bettr/ui-docs build",
+  "installCommand": "pnpm install",
+  "framework": "nextjs",
+  "outputDirectory": "apps/bettr-ui-docs/.next"
 }
