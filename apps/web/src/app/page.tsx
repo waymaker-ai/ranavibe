@@ -41,14 +41,44 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Why RANA Section */}
+      <section className="container mx-auto px-4 py-16 bg-white dark:bg-gray-800">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-6">Why RANA?</h2>
+          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
+            90% of AI-generated code needs fixes. RANA ensures production-quality from the start.
+          </p>
+          <div className="grid md:grid-cols-3 gap-6 text-left">
+            <div className="p-6 bg-gray-50 dark:bg-gray-900 rounded-lg">
+              <h3 className="font-bold mb-2">⚡ Ship Faster</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                No rework cycles. Production-ready code first time, every time.
+              </p>
+            </div>
+            <div className="p-6 bg-gray-50 dark:bg-gray-900 rounded-lg">
+              <h3 className="font-bold mb-2">🎯 Build Right</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                Strategic validation prevents bad ideas, validates good ones.
+              </p>
+            </div>
+            <div className="p-6 bg-gray-50 dark:bg-gray-900 rounded-lg">
+              <h3 className="font-bold mb-2">🚀 Scale Confidently</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                Consistent quality gates and design system across your team.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Features Section */}
       <section className="container mx-auto px-4 py-20">
-        <h2 className="text-4xl font-bold text-center mb-12">Two-Layer Framework</h2>
+        <h2 className="text-4xl font-bold text-center mb-12">Complete Framework</h2>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-12">
           <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
             <div className="text-4xl mb-4">🎯</div>
-            <h3 className="text-2xl font-bold mb-4">RANA Quality Gates</h3>
+            <h3 className="text-2xl font-bold mb-4">Quality Gates</h3>
             <p className="text-gray-600 dark:text-gray-300 mb-4">
               Tactical execution framework ensuring production-quality code at every phase
             </p>
@@ -75,6 +105,63 @@ export default function Home() {
               <li>✅ Build planning</li>
               <li>✅ GO/NO-GO decision</li>
             </ul>
+          </div>
+        </div>
+
+        {/* Additional Features Grid */}
+        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
+            <div className="text-3xl mb-3">🛠️</div>
+            <h3 className="text-xl font-bold mb-2">Powerful CLI</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+              9 commands for project init, validation, quality gates, REPM, and design system compliance
+            </p>
+            <code className="text-xs bg-gray-100 dark:bg-gray-900 px-2 py-1 rounded">rana check pre</code>
+          </div>
+
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
+            <div className="text-3xl mb-3">🎨</div>
+            <h3 className="text-xl font-bold mb-2">UI Component Library</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+              Beautiful glass morphism components with gradients, built with Tailwind CSS
+            </p>
+            <code className="text-xs bg-gray-100 dark:bg-gray-900 px-2 py-1 rounded">rana-ui add glass-card</code>
+          </div>
+
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
+            <div className="text-3xl mb-3">📏</div>
+            <h3 className="text-xl font-bold mb-2">Design System Checker</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+              Automated design system compliance checking with coverage metrics and violation reports
+            </p>
+            <code className="text-xs bg-gray-100 dark:bg-gray-900 px-2 py-1 rounded">rana design-coverage</code>
+          </div>
+
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
+            <div className="text-3xl mb-3">🔌</div>
+            <h3 className="text-xl font-bold mb-2">Claude Code Integration</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+              MCP server with 6 tools, 3 resources, and guided prompts for seamless Claude integration
+            </p>
+            <code className="text-xs bg-gray-100 dark:bg-gray-900 px-2 py-1 rounded">@rana/mcp-server</code>
+          </div>
+
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
+            <div className="text-3xl mb-3">📦</div>
+            <h3 className="text-xl font-bold mb-2">TypeScript SDK</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+              Programmatic access to all RANA features for custom integrations and automation
+            </p>
+            <code className="text-xs bg-gray-100 dark:bg-gray-900 px-2 py-1 rounded">@rana/sdk</code>
+          </div>
+
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
+            <div className="text-3xl mb-3">📚</div>
+            <h3 className="text-xl font-bold mb-2">Complete Documentation</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+              11 comprehensive guides including quick start, REPM methodology, and prompt library
+            </p>
+            <code className="text-xs bg-gray-100 dark:bg-gray-900 px-2 py-1 rounded">docs.rana.cx</code>
           </div>
         </div>
       </section>
