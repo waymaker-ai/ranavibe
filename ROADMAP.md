@@ -6,28 +6,29 @@
 *Make the basics exceptional*
 
 ### 1.1 Developer Experience Polish
-- [ ] `rana learn` - Interactive tutorial command
+- [x] `rana learn` - Interactive tutorial command
 - [ ] Better error messages with actionable fixes
-- [ ] `rana doctor` - Diagnose common issues
+- [x] `rana doctor` - Diagnose common issues
 - [ ] Auto-completion for all CLI commands
-- [ ] `rana playground` - REPL for testing prompts
+- [x] `rana playground` - REPL for testing prompts
+- [x] `create-rana-app` - Single command project scaffold
 
 ### 1.2 Testing Framework (`@rana/testing`)
-- [ ] `aiTest()` - Test runner for AI code
-- [ ] `semanticMatch()` - Fuzzy semantic comparison
-- [ ] `toPassRegression()` - Regression testing
-- [ ] `toCostLessThan()` - Cost assertions
-- [ ] `toRespondWithin()` - Latency assertions
-- [ ] `toMostlyBe()` - Statistical assertions
-- [ ] Snapshot testing for prompts
+- [x] `aiTest()` - Test runner for AI code
+- [x] `semanticMatch()` - Fuzzy semantic comparison
+- [x] `toPassRegression()` - Regression testing
+- [x] `toCostLessThan()` - Cost assertions
+- [x] `toRespondWithin()` - Latency assertions
+- [x] `toMostlyBe()` - Statistical assertions
+- [x] Snapshot testing for prompts
 
 ### 1.3 Cost Management
-- [ ] Real-time cost tracking dashboard
-- [ ] Budget limits with hard stops
+- [x] Real-time cost tracking dashboard
+- [x] Budget limits with hard stops
 - [ ] Cost alerts (Slack, email, webhook)
 - [ ] Cost optimization suggestions
-- [ ] Per-request cost prediction
-- [ ] Cost comparison between models
+- [x] Per-request cost prediction
+- [x] Cost comparison between models
 
 ### 1.4 Local Development
 - [ ] Ollama integration out of the box
@@ -62,8 +63,8 @@
 - [ ] API key rotation
 
 ### 2.4 Memory & Context (`@rana/memory`)
-- [ ] Sliding window memory
-- [ ] Automatic summarization
+- [x] Sliding window memory
+- [x] Automatic summarization
 - [ ] Long-term vector memory
 - [ ] Entity extraction
 - [ ] Memory sharing between agents
@@ -86,8 +87,8 @@
 - [ ] Sentry error reporting
 
 ### 3.3 MCP Support
-- [ ] MCP server creation
-- [ ] MCP client connection
+- [x] MCP server creation
+- [x] MCP client connection
 - [ ] MCP testing utilities
 - [ ] MCP registry
 
