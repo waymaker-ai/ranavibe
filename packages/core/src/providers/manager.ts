@@ -42,6 +42,9 @@ export class ProviderManager {
         case 'google':
           response = await this.chatGoogle(client, request);
           break;
+        case 'ollama':
+          response = await this.chatOllama(client, request);
+          break;
         default:
           throw new RanaError(
             `Provider ${provider} not yet implemented`,
@@ -95,7 +98,9 @@ export class ProviderManager {
     }
 
     const apiKey = this.apiKeys[provider];
-    if (!apiKey) {
+
+    // Ollama doesn't require an API key
+    if (!apiKey && provider !== 'ollama') {
       throw new RanaAuthError(provider, { message: 'API key not configured' });
     }
 
@@ -115,6 +120,12 @@ export class ProviderManager {
       case 'google': {
         const { GoogleGenerativeAI } = await import('@google/generative-ai');
         client = new GoogleGenerativeAI(apiKey);
+        break;
+      }
+      case 'ollama': {
+        // Ollama uses the API key field as the base URL (default: http://localhost:11434)
+        const baseUrl = apiKey || 'http://localhost:11434';
+        client = { baseUrl };
         break;
       }
       default:
@@ -233,6 +244,64 @@ export class ProviderManager {
       }),
       finish_reason: 'stop',
       raw: response,
+    };
+  }
+
+  /**
+   * Ollama-specific chat implementation (local models)
+   */
+  private async chatOllama(
+    client: { baseUrl: string },
+    request: RanaChatRequest
+  ): Promise<Partial<RanaChatResponse>> {
+    const model = request.model || 'llama3.2';
+
+    const response = await fetch(`${client.baseUrl}/api/chat`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model,
+        messages: request.messages.map((m: any) => ({
+          role: m.role,
+          content: typeof m.content === 'string' ? m.content : JSON.stringify(m.content),
+        })),
+        stream: false,
+        options: {
+          temperature: request.temperature ?? 0.7,
+          num_predict: request.max_tokens,
+        },
+      }),
+    });
+
+    if (!response.ok) {
+      const error = await response.text();
+      throw new RanaError(
+        `Ollama error: ${error}`,
+        'OLLAMA_ERROR',
+        'ollama'
+      );
+    }
+
+    const data = await response.json();
+
+    // Estimate tokens (Ollama provides eval_count)
+    const promptTokens = data.prompt_eval_count || 0;
+    const completionTokens = data.eval_count || 0;
+
+    return {
+      id: crypto.randomUUID(),
+      provider: 'ollama',
+      model,
+      content: data.message?.content || '',
+      role: 'assistant',
+      usage: {
+        prompt_tokens: promptTokens,
+        completion_tokens: completionTokens,
+        total_tokens: promptTokens + completionTokens,
+      },
+      cost: { prompt_cost: 0, completion_cost: 0, total_cost: 0 }, // Local = free!
+      finish_reason: 'stop',
+      raw: data,
     };
   }
 

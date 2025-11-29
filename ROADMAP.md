@@ -31,10 +31,10 @@
 - [x] Cost comparison between models
 
 ### 1.4 Local Development
-- [ ] Ollama integration out of the box
+- [x] Ollama integration out of the box
 - [ ] Environment-based model selection
-- [ ] Local model recommendations
-- [ ] Automatic model download
+- [x] Local model recommendations
+- [x] Automatic model download
 
 ## Phase 2: Production Ready (Weeks 5-8)
 *Make production deployment trivial*

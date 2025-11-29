@@ -594,6 +594,46 @@ program
   });
 
 // ============================================================================
+// LOCAL DEVELOPMENT (Ollama)
+// ============================================================================
+
+// Ollama Status
+program
+  .command('ollama')
+  .description('Check Ollama status for local AI development')
+  .action(async () => {
+    const { ollamaCommand } = await import('./commands/ollama.js');
+    await ollamaCommand();
+  });
+
+// Ollama Models
+program
+  .command('ollama:models')
+  .description('List installed Ollama models')
+  .action(async () => {
+    const { ollamaModelsCommand } = await import('./commands/ollama.js');
+    await ollamaModelsCommand();
+  });
+
+// Ollama Pull
+program
+  .command('ollama:pull <model>')
+  .description('Pull/download an Ollama model')
+  .action(async (model: string) => {
+    const { ollamaPullCommand } = await import('./commands/ollama.js');
+    await ollamaPullCommand(model);
+  });
+
+// Ollama Test
+program
+  .command('ollama:test [model]')
+  .description('Test an Ollama model')
+  .action(async (model?: string) => {
+    const { ollamaTestCommand } = await import('./commands/ollama.js');
+    await ollamaTestCommand(model);
+  });
+
+// ============================================================================
 // DIAGNOSTIC COMMANDS
 // ============================================================================
 
