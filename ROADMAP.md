@@ -7,7 +7,7 @@
 
 ### 1.1 Developer Experience Polish
 - [x] `rana learn` - Interactive tutorial command
-- [ ] Better error messages with actionable fixes
+- [x] Better error messages with actionable fixes
 - [x] `rana doctor` - Diagnose common issues
 - [x] Auto-completion for all CLI commands
 - [x] `rana playground` - REPL for testing prompts
