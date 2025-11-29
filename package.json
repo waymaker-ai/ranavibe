@@ -5,7 +5,8 @@
   "description": "RANA - Rapid AI Native Architecture monorepo",
   "scripts": {
     "setup": "bash setup.sh",
-    "build": "npm run build:core && npm run build:helpers && npm run build:prompts && npm run build:rag && npm run build:react && npm run build:cli",
+    "build": "npm run build:core && npm run build:helpers && npm run build:prompts && npm run build:rag && npm run build:react && npm run build:testing && npm run build:cli",
+    "build:testing": "cd packages/testing && npm run build",
     "build:core": "cd packages/core && npm run build",
     "build:helpers": "cd packages/helpers && npm run build",
     "build:prompts": "cd packages/prompts && npm run build",

@@ -97,15 +97,44 @@ program
     await checkCommand({ fix: true });
   });
 
-// Test - Run all tests
+// Test - Run AI-native tests
 program
-  .command('test')
-  .description('Run all tests')
+  .command('test [pattern]')
+  .description('Run AI-native tests with semantic matching and cost tracking')
   .option('-c, --coverage', 'Show coverage report')
-  .action(async (options) => {
-    console.log(chalk.cyan('\n🧪 Running tests...\n'));
-    // Would integrate with test runner
-    console.log(chalk.green('✓ All tests passed\n'));
+  .option('-w, --watch', 'Watch mode - rerun on changes')
+  .option('-v, --verbose', 'Verbose output')
+  .option('--update-baselines', 'Update regression baselines')
+  .option('--update-snapshots', 'Update semantic snapshots')
+  .option('--max-cost <amount>', 'Maximum cost budget for test run', parseFloat)
+  .option('--parallel', 'Run tests in parallel')
+  .action(async (pattern, options) => {
+    const { testCommand, watchTests } = await import('./commands/test.js');
+    if (options.watch) {
+      await watchTests(pattern);
+    } else {
+      await testCommand(pattern, options);
+    }
+  });
+
+// Test: Generate test file
+program
+  .command('test:generate <file>')
+  .alias('test:gen')
+  .description('Generate a test file for a source file')
+  .option('-t, --type <type>', 'Test type (unit, integration, e2e)', 'unit')
+  .action(async (file, options) => {
+    const { generateTest } = await import('./commands/test.js');
+    await generateTest(file, options);
+  });
+
+// Test: List baselines
+program
+  .command('test:baselines')
+  .description('List all regression test baselines')
+  .action(async () => {
+    const { listBaselines } = await import('./commands/test.js');
+    await listBaselines();
   });
 
 // Migrate - Smart database migration (auto-detects)
@@ -486,6 +515,62 @@ program
     await costCompare();
   });
 
+// ============================================================================
+// BUDGET ENFORCEMENT COMMANDS
+// Hard limits on AI spending
+// ============================================================================
+
+// Budget Status
+program
+  .command('budget')
+  .description('View current budget status and spending')
+  .action(async () => {
+    const { budgetCommand } = await import('./commands/budget.js');
+    await budgetCommand();
+  });
+
+// Budget Set
+program
+  .command('budget:set')
+  .description('Set spending budget with hard limits')
+  .option('-l, --limit <amount>', 'Maximum budget amount ($)', parseFloat)
+  .option('-p, --period <period>', 'Budget period (hourly, daily, weekly, monthly, total)')
+  .option('-a, --action <action>', 'Action when exceeded (block, warn, log)')
+  .option('-w, --warning <percent>', 'Warning threshold percentage', parseInt)
+  .option('-b, --bypass', 'Allow critical requests to bypass budget')
+  .option('-i, --interactive', 'Interactive setup mode')
+  .action(async (options) => {
+    const { setBudgetCommand } = await import('./commands/budget.js');
+    await setBudgetCommand(options);
+  });
+
+// Budget Clear
+program
+  .command('budget:clear')
+  .description('Remove budget enforcement')
+  .action(async () => {
+    const { clearBudgetCommand } = await import('./commands/budget.js');
+    await clearBudgetCommand();
+  });
+
+// Budget Reset
+program
+  .command('budget:reset')
+  .description('Reset current period spending to $0')
+  .action(async () => {
+    const { resetBudgetCommand } = await import('./commands/budget.js');
+    await resetBudgetCommand();
+  });
+
+// Budget Preset
+program
+  .command('budget:preset <preset>')
+  .description('Apply a budget preset (testing, development, staging, production)')
+  .action(async (preset: string) => {
+    const { budgetPresetCommand } = await import('./commands/budget.js');
+    await budgetPresetCommand(preset);
+  });
+
 // Benchmark Run
 program
   .command('benchmark:run')
@@ -718,6 +803,41 @@ program
   .action(async () => {
     const { monitorStatus } = await import('./commands/health.js');
     await monitorStatus();
+  });
+
+// ============================================================================
+// LEARNING & SCAFFOLDING
+// Rails-like developer experience
+// ============================================================================
+
+// Learn - Interactive tutorials
+program
+  .command('learn [topic]')
+  .description('Interactive tutorials for learning RANA')
+  .action(async (topic) => {
+    const { learnCommand } = await import('./commands/learn.js');
+    await learnCommand(topic);
+  });
+
+// Learn: List all lessons
+program
+  .command('learn:list')
+  .description('List all available lessons')
+  .action(async () => {
+    const { listLessons } = await import('./commands/learn.js');
+    listLessons();
+  });
+
+// New - Scaffolding generator (Rails-like)
+program
+  .command('new <type> [name]')
+  .description('Generate new components (chatbot, rag, agent, api)')
+  .option('-p, --provider <provider>', 'LLM provider to use', 'openai')
+  .option('-m, --model <model>', 'Model to use')
+  .option('-d, --dir <directory>', 'Output directory')
+  .action(async (type, name, options) => {
+    const { newCommand } = await import('./commands/new.js');
+    await newCommand(type, name, options);
   });
 
 // ============================================================================

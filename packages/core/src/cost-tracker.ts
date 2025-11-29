@@ -1,15 +1,43 @@
 /**
- * Cost Tracking Module
- * Tracks LLM usage and cost savings
+ * Cost Tracking Module with Budget Enforcement
+ * Tracks LLM usage, cost savings, and enforces spending limits
  */
 
-import type { RanaChatResponse, CostStats, CostBreakdown, LLMProvider } from './types';
+import type {
+  RanaChatResponse,
+  CostStats,
+  CostBreakdown,
+  LLMProvider,
+  BudgetConfig,
+  BudgetPeriod,
+} from './types';
+import { RanaBudgetExceededError, RanaBudgetWarningError } from './types';
+
+export interface CostTrackingConfig {
+  enabled?: boolean;
+  log_to_console?: boolean;
+  save_to_db?: boolean;
+  budget?: BudgetConfig;
+}
+
+export interface BudgetStatus {
+  spent: number;
+  limit: number;
+  remaining: number;
+  percentUsed: number;
+  period: BudgetPeriod;
+  periodStart: Date;
+  periodEnd: Date;
+  isExceeded: boolean;
+  isWarning: boolean;
+}
 
 export class CostTracker {
   private costs: RanaChatResponse[] = [];
-  private config: any;
+  private config: CostTrackingConfig;
+  private warningEmitted: boolean = false;
 
-  constructor(config: any) {
+  constructor(config: CostTrackingConfig = {}) {
     this.config = config;
   }
 
@@ -103,6 +131,173 @@ export class CostTracker {
    */
   reset(): void {
     this.costs = [];
+    this.warningEmitted = false;
+  }
+
+  // ============================================================================
+  // Budget Enforcement
+  // ============================================================================
+
+  /**
+   * Check if budget allows a request
+   * Call this BEFORE making an API call
+   * @throws RanaBudgetExceededError if budget is exceeded and action is 'block'
+   */
+  checkBudget(options: { critical?: boolean } = {}): void {
+    const budget = this.config.budget;
+    if (!budget) return;
+
+    // Allow critical requests to bypass if configured
+    if (options.critical && budget.allowCriticalBypass) {
+      return;
+    }
+
+    const status = this.getBudgetStatus();
+    if (!status) return;
+
+    // Check if exceeded
+    if (status.isExceeded) {
+      if (budget.onExceeded) {
+        budget.onExceeded(status.spent, status.limit);
+      }
+
+      switch (budget.action) {
+        case 'block':
+          throw new RanaBudgetExceededError(
+            status.spent,
+            status.limit,
+            status.period
+          );
+        case 'warn':
+          console.warn(
+            `[RANA BUDGET WARNING] Budget exceeded: $${status.spent.toFixed(4)} / $${status.limit.toFixed(2)}`
+          );
+          break;
+        case 'log':
+          console.log(
+            `[RANA BUDGET] Exceeded: $${status.spent.toFixed(4)} / $${status.limit.toFixed(2)}`
+          );
+          break;
+      }
+      return;
+    }
+
+    // Check for warning threshold
+    const warningThreshold = budget.warningThreshold ?? 80;
+    if (status.percentUsed >= warningThreshold && !this.warningEmitted) {
+      this.warningEmitted = true;
+
+      if (budget.onWarning) {
+        budget.onWarning(status.spent, status.limit, status.percentUsed);
+      }
+
+      console.warn(
+        `[RANA BUDGET WARNING] ${status.percentUsed.toFixed(1)}% of budget used ` +
+          `($${status.spent.toFixed(4)} / $${status.limit.toFixed(2)})`
+      );
+    }
+  }
+
+  /**
+   * Get current budget status
+   */
+  getBudgetStatus(): BudgetStatus | null {
+    const budget = this.config.budget;
+    if (!budget) return null;
+
+    const { start, end } = this.getPeriodBounds(budget.period);
+    const periodCosts = this.costs.filter(
+      (c) => c.created_at >= start && c.created_at <= end
+    );
+
+    const spent = periodCosts.reduce((sum, c) => sum + c.cost.total_cost, 0);
+    const remaining = Math.max(0, budget.limit - spent);
+    const percentUsed = budget.limit > 0 ? (spent / budget.limit) * 100 : 0;
+    const warningThreshold = budget.warningThreshold ?? 80;
+
+    return {
+      spent,
+      limit: budget.limit,
+      remaining,
+      percentUsed,
+      period: budget.period,
+      periodStart: start,
+      periodEnd: end,
+      isExceeded: spent >= budget.limit,
+      isWarning: percentUsed >= warningThreshold,
+    };
+  }
+
+  /**
+   * Estimate if a request will exceed budget
+   * @param estimatedCost Estimated cost of the upcoming request
+   */
+  willExceedBudget(estimatedCost: number): boolean {
+    const status = this.getBudgetStatus();
+    if (!status) return false;
+    return status.spent + estimatedCost > status.limit;
+  }
+
+  /**
+   * Update budget configuration
+   */
+  setBudget(budget: BudgetConfig): void {
+    this.config.budget = budget;
+    this.warningEmitted = false;
+  }
+
+  /**
+   * Remove budget enforcement
+   */
+  clearBudget(): void {
+    this.config.budget = undefined;
+    this.warningEmitted = false;
+  }
+
+  /**
+   * Get period bounds based on budget period
+   */
+  private getPeriodBounds(period: BudgetPeriod): { start: Date; end: Date } {
+    const now = new Date();
+    const start = new Date(now);
+    const end = new Date(now);
+
+    switch (period) {
+      case 'hourly':
+        start.setMinutes(0, 0, 0);
+        end.setMinutes(59, 59, 999);
+        break;
+
+      case 'daily':
+        start.setHours(0, 0, 0, 0);
+        end.setHours(23, 59, 59, 999);
+        break;
+
+      case 'weekly':
+        const dayOfWeek = start.getDay();
+        start.setDate(start.getDate() - dayOfWeek);
+        start.setHours(0, 0, 0, 0);
+        end.setDate(start.getDate() + 6);
+        end.setHours(23, 59, 59, 999);
+        break;
+
+      case 'monthly':
+        start.setDate(1);
+        start.setHours(0, 0, 0, 0);
+        end.setMonth(end.getMonth() + 1);
+        end.setDate(0);
+        end.setHours(23, 59, 59, 999);
+        break;
+
+      case 'total':
+        // For total, start from beginning of time
+        start.setTime(0);
+        // End is far future
+        end.setFullYear(9999);
+        break;
+    }
+
+    return { start, end };
   }
 
   /**

@@ -9,8 +9,8 @@
     "dev": "npx tsx watch index.ts"
   },
   "dependencies": {
-    "@rana/core": "workspace:*",
-    "@rana/rag": "workspace:*"
+    "@rana/core": "file:../../packages/core",
+    "@rana/rag": "file:../../packages/rag"
   },
   "devDependencies": {
     "tsx": "^4.7.0",

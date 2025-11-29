@@ -63,6 +63,9 @@ export class RanaClient {
     const processedRequest = await this.runBeforeRequestHooks(request);
 
     try {
+      // Check budget BEFORE making any API call
+      this.costTracker.checkBudget({ critical: processedRequest.critical });
+
       // Check cache first
       if (processedRequest.cache !== false && this.config.cache?.enabled) {
         const cached = await this.cache.get(processedRequest);
@@ -115,6 +118,9 @@ export class RanaClient {
   ): AsyncGenerator<RanaStreamChunk> {
     const request = this.normalizeRequest(input);
     request.stream = true;
+
+    // Check budget BEFORE streaming
+    this.costTracker.checkBudget({ critical: request.critical });
 
     const processedRequest = await this.runBeforeRequestHooks(request);
     const { provider, model } = this.selectOptimalProvider(processedRequest);
@@ -178,6 +184,13 @@ export class RanaClient {
       reset: () => this.costTracker.reset(),
       total: this.costTracker.getTotalCost(),
       saved: this.costTracker.getTotalSaved(),
+      // Budget enforcement methods
+      budget: () => this.costTracker.getBudgetStatus(),
+      setBudget: (config: Parameters<typeof this.costTracker.setBudget>[0]) =>
+        this.costTracker.setBudget(config),
+      clearBudget: () => this.costTracker.clearBudget(),
+      willExceed: (estimatedCost: number) =>
+        this.costTracker.willExceedBudget(estimatedCost),
     };
   }
 

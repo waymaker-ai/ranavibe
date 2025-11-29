@@ -53,9 +53,12 @@ export type {
   ToolDefinition,
   ToolCall,
 
-  // Cost types
+  // Cost & Budget types
   CostStats,
   CostBreakdown,
+  BudgetConfig,
+  BudgetPeriod,
+  BudgetAction,
 
   // Plugin types
   RanaPlugin,
@@ -74,10 +77,12 @@ export {
   RanaAuthError,
   RanaRateLimitError,
   RanaNetworkError,
+  RanaBudgetExceededError,
+  RanaBudgetWarningError,
 } from './types';
 
 // Utilities
-export { CostTracker } from './cost-tracker';
+export { CostTracker, BudgetStatus, CostTrackingConfig } from './cost-tracker';
 export { CacheManager } from './cache-legacy';
 export { ProviderManager } from './providers/manager';
 
@@ -201,3 +206,15 @@ export {
   setGlobalCostStore,
 } from './persistence';
 export type { CostStoreConfig } from './persistence';
+
+// Memory Management (Context Compression)
+export { MemoryManager, createMemoryManager } from './memory';
+export type {
+  CompressionStrategy,
+  MessageImportance,
+  CompressedMessage,
+  MemoryWindowConfig,
+  CompressionResult,
+  MemoryStats,
+  MemoryState,
+} from './memory';

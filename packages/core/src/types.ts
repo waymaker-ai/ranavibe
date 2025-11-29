@@ -122,6 +122,8 @@ export interface RanaChatRequest {
   optimize?: 'cost' | 'speed' | 'quality' | 'balanced';
   cache?: boolean;
   fallback?: LLMProvider[];
+  /** Mark as critical to bypass budget enforcement (requires allowCriticalBypass) */
+  critical?: boolean;
 
   // Streaming
   stream?: boolean;
@@ -227,6 +229,8 @@ export interface RanaConfig {
     enabled: boolean;
     log_to_console?: boolean;
     save_to_db?: boolean;
+    /** Budget enforcement configuration */
+    budget?: BudgetConfig;
   };
 
   // Rate limiting
@@ -243,8 +247,29 @@ export interface RanaConfig {
 }
 
 // ============================================================================
-// Cost Types
+// Cost & Budget Types
 // ============================================================================
+
+export type BudgetPeriod = 'hourly' | 'daily' | 'weekly' | 'monthly' | 'total';
+
+export type BudgetAction = 'block' | 'warn' | 'log';
+
+export interface BudgetConfig {
+  /** Maximum amount to spend per period */
+  limit: number;
+  /** Time period for budget reset */
+  period: BudgetPeriod;
+  /** What to do when budget is exceeded */
+  action: BudgetAction;
+  /** Percentage at which to start warning (e.g., 80 = 80%) */
+  warningThreshold?: number;
+  /** Callback when budget warning is triggered */
+  onWarning?: (spent: number, limit: number, percent: number) => void;
+  /** Callback when budget is exceeded */
+  onExceeded?: (spent: number, limit: number) => void;
+  /** Allow critical requests to bypass budget (for emergency overrides) */
+  allowCriticalBypass?: boolean;
+}
 
 export interface CostBreakdown {
   provider: LLMProvider;
@@ -322,6 +347,43 @@ export class RanaNetworkError extends RanaError {
       details
     );
     this.name = 'RanaNetworkError';
+  }
+}
+
+export class RanaBudgetExceededError extends RanaError {
+  constructor(
+    public currentSpent: number,
+    public budgetLimit: number,
+    public budgetPeriod: BudgetPeriod,
+    details?: any
+  ) {
+    super(
+      `Budget exceeded: $${currentSpent.toFixed(4)} spent (limit: $${budgetLimit.toFixed(2)} per ${budgetPeriod}). ` +
+        `API calls are blocked. Reset budget or increase limit with rana config:set --budget`,
+      'BUDGET_EXCEEDED',
+      undefined,
+      402,
+      details
+    );
+    this.name = 'RanaBudgetExceededError';
+  }
+}
+
+export class RanaBudgetWarningError extends RanaError {
+  constructor(
+    public currentSpent: number,
+    public budgetLimit: number,
+    public percentUsed: number,
+    details?: any
+  ) {
+    super(
+      `Budget warning: ${percentUsed.toFixed(1)}% used ($${currentSpent.toFixed(4)} of $${budgetLimit.toFixed(2)}).`,
+      'BUDGET_WARNING',
+      undefined,
+      undefined,
+      details
+    );
+    this.name = 'RanaBudgetWarningError';
   }
 }
 
