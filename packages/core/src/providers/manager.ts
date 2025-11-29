@@ -282,7 +282,11 @@ export class ProviderManager {
       );
     }
 
-    const data = await response.json();
+    const data = await response.json() as {
+      message?: { content: string };
+      prompt_eval_count?: number;
+      eval_count?: number;
+    };
 
     // Estimate tokens (Ollama provides eval_count)
     const promptTokens = data.prompt_eval_count || 0;

@@ -25,14 +25,14 @@
 ### 1.3 Cost Management
 - [x] Real-time cost tracking dashboard
 - [x] Budget limits with hard stops
-- [ ] Cost alerts (Slack, email, webhook)
+- [x] Cost alerts (Slack, email, webhook)
 - [ ] Cost optimization suggestions
 - [x] Per-request cost prediction
 - [x] Cost comparison between models
 
 ### 1.4 Local Development
 - [x] Ollama integration out of the box
-- [ ] Environment-based model selection
+- [x] Environment-based model selection
 - [x] Local model recommendations
 - [x] Automatic model download
 

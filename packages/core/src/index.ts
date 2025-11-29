@@ -218,3 +218,22 @@ export type {
   MemoryStats,
   MemoryState,
 } from './memory';
+
+// Environment-Based Model Selection
+export {
+  getModelForEnv,
+  getAllModelsForEnv,
+  getBestModelForEnv,
+  getCurrentEnv,
+  setModelOverrides,
+  isOllamaAvailable,
+  envModels,
+  printEnvModelConfig,
+} from './env-models';
+export type {
+  ModelPurpose,
+  Environment,
+  ModelConfig,
+  EnvModelConfig,
+  EnvAwareConfig,
+} from './env-models';

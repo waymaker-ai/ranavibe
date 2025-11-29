@@ -571,6 +571,69 @@ program
     await budgetPresetCommand(preset);
   });
 
+// ============================================================================
+// COST ALERTS
+// Notifications for budget thresholds via Slack, Discord, email, webhooks
+// ============================================================================
+
+// Alerts Setup
+program
+  .command('alerts')
+  .alias('alerts:setup')
+  .description('Setup cost alerts (Slack, Discord, email, webhooks)')
+  .action(async () => {
+    const { alertsSetupCommand } = await import('./commands/alerts.js');
+    await alertsSetupCommand();
+  });
+
+// Alerts Add
+program
+  .command('alerts:add <type> <target>')
+  .description('Add a new alert (slack, discord, email, webhook)')
+  .action(async (type: string, target: string) => {
+    const { alertsAddCommand } = await import('./commands/alerts.js');
+    await alertsAddCommand(type, target);
+  });
+
+// Alerts List
+program
+  .command('alerts:list')
+  .description('List all configured alerts')
+  .action(async () => {
+    const { alertsListCommand } = await import('./commands/alerts.js');
+    await alertsListCommand();
+  });
+
+// Alerts Test
+program
+  .command('alerts:test [id]')
+  .description('Test configured alerts')
+  .action(async (id?: string) => {
+    const { alertsTestCommand } = await import('./commands/alerts.js');
+    await alertsTestCommand(id);
+  });
+
+// Alerts Remove
+program
+  .command('alerts:remove <id>')
+  .description('Remove an alert')
+  .action(async (id: string) => {
+    const { alertsRemoveCommand } = await import('./commands/alerts.js');
+    await alertsRemoveCommand(id);
+  });
+
+// Alerts Threshold
+program
+  .command('alerts:threshold')
+  .description('Set alert thresholds')
+  .option('-w, --warning <percent>', 'Warning threshold percentage', parseInt)
+  .option('-c, --critical <percent>', 'Critical threshold percentage', parseInt)
+  .option('--cooldown <minutes>', 'Minutes between alerts', parseInt)
+  .action(async (options) => {
+    const { alertsThresholdCommand } = await import('./commands/alerts.js');
+    await alertsThresholdCommand(options);
+  });
+
 // Benchmark Run
 program
   .command('benchmark:run')
