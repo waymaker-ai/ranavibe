@@ -1,0 +1,245 @@
+# RANA Quality Gate Workflow
+# Runs security audit, SEO check, and LLM cost analysis on every PR
+#
+# Usage: Copy this file to your repository's .github/workflows/ directory
+# Or reference it from another workflow:
+#
+#   jobs:
+#     quality-gate:
+#       uses: waymaker-ai/rana/.github/workflows/rana-quality-gate.yml@main
+#       with:
+#         security: true
+#         seo: true
+#         llm: true
+#         cost-budget: 500
+
+name: RANA Quality Gate
+
+on:
+  pull_request:
+    branches: [main, master]
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+    inputs:
+      security:
+        description: 'Run security audit'
+        type: boolean
+        default: true
+      seo:
+        description: 'Run SEO check'
+        type: boolean
+        default: true
+      llm:
+        description: 'Run LLM cost analysis'
+        type: boolean
+        default: true
+
+jobs:
+  quality-gate:
+    name: RANA Quality Gate
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install RANA CLI
+        run: npm install -g @rana/cli || true
+
+      # Security Audit
+      - name: 🔒 Security Audit
+        id: security
+        if: github.event.inputs.security != 'false'
+        run: |
+          echo "Running RANA Security Audit..."
+          set +e
+
+          # Run audit and capture output
+          rana security:audit 2>&1 | tee security-output.txt
+          exit_code=${PIPESTATUS[0]}
+
+          # Parse results
+          if grep -q "CRITICAL" security-output.txt; then
+            echo "status=critical" >> $GITHUB_OUTPUT
+          elif grep -q "WARNING" security-output.txt; then
+            echo "status=warning" >> $GITHUB_OUTPUT
+          else
+            echo "status=passed" >> $GITHUB_OUTPUT
+          fi
+
+          # Extract score if available
+          score=$(grep -oP 'Score: \K\d+' security-output.txt || echo "100")
+          echo "score=$score" >> $GITHUB_OUTPUT
+
+          exit $exit_code
+        continue-on-error: true
+
+      # SEO Check
+      - name: 🔍 SEO Check
+        id: seo
+        if: github.event.inputs.seo != 'false'
+        run: |
+          echo "Running RANA SEO Check..."
+          set +e
+
+          rana seo:check 2>&1 | tee seo-output.txt
+          exit_code=${PIPESTATUS[0]}
+
+          # Parse results
+          score=$(grep -oP 'Score: \K\d+' seo-output.txt || echo "0")
+          echo "score=$score" >> $GITHUB_OUTPUT
+
+          if [ "$score" -ge 80 ]; then
+            echo "status=passed" >> $GITHUB_OUTPUT
+          elif [ "$score" -ge 60 ]; then
+            echo "status=warning" >> $GITHUB_OUTPUT
+          else
+            echo "status=failed" >> $GITHUB_OUTPUT
+          fi
+        continue-on-error: true
+
+      # LLM Cost Analysis
+      - name: 💰 LLM Cost Analysis
+        id: llm
+        if: github.event.inputs.llm != 'false'
+        run: |
+          echo "Running RANA LLM Cost Analysis..."
+          set +e
+
+          rana llm:analyze 2>&1 | tee llm-output.txt
+
+          # Extract cost estimate
+          cost=$(grep -oP '\$[\d,]+' llm-output.txt | head -1 | tr -d '$,' || echo "0")
+          echo "cost=$cost" >> $GITHUB_OUTPUT
+        continue-on-error: true
+
+      # Generate Summary
+      - name: 📊 Generate Summary
+        id: summary
+        run: |
+          echo "## 🐟 RANA Quality Gate Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Check | Status | Score |" >> $GITHUB_STEP_SUMMARY
+          echo "|-------|--------|-------|" >> $GITHUB_STEP_SUMMARY
+
+          # Security
+          sec_status="${{ steps.security.outputs.status || 'skipped' }}"
+          sec_score="${{ steps.security.outputs.score || 'N/A' }}"
+          if [ "$sec_status" == "passed" ]; then
+            echo "| 🔒 Security | ✅ Passed | $sec_score/100 |" >> $GITHUB_STEP_SUMMARY
+          elif [ "$sec_status" == "warning" ]; then
+            echo "| 🔒 Security | ⚠️ Warning | $sec_score/100 |" >> $GITHUB_STEP_SUMMARY
+          elif [ "$sec_status" == "critical" ]; then
+            echo "| 🔒 Security | ❌ Critical | $sec_score/100 |" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "| 🔒 Security | ⏭️ Skipped | - |" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          # SEO
+          seo_status="${{ steps.seo.outputs.status || 'skipped' }}"
+          seo_score="${{ steps.seo.outputs.score || 'N/A' }}"
+          if [ "$seo_status" == "passed" ]; then
+            echo "| 🔍 SEO | ✅ Passed | $seo_score/100 |" >> $GITHUB_STEP_SUMMARY
+          elif [ "$seo_status" == "warning" ]; then
+            echo "| 🔍 SEO | ⚠️ Warning | $seo_score/100 |" >> $GITHUB_STEP_SUMMARY
+          elif [ "$seo_status" == "failed" ]; then
+            echo "| 🔍 SEO | ❌ Failed | $seo_score/100 |" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "| 🔍 SEO | ⏭️ Skipped | - |" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          # LLM Cost
+          llm_cost="${{ steps.llm.outputs.cost || '0' }}"
+          echo "| 💰 LLM Cost | 📊 \$$llm_cost/mo | - |" >> $GITHUB_STEP_SUMMARY
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "---" >> $GITHUB_STEP_SUMMARY
+          echo "🐟 *Powered by [RANA](https://rana.dev)*" >> $GITHUB_STEP_SUMMARY
+
+          # Determine overall status
+          overall="passed"
+          if [ "${{ steps.security.outputs.status }}" == "critical" ]; then
+            overall="failed"
+          fi
+          echo "overall=$overall" >> $GITHUB_OUTPUT
+
+      # Comment on PR
+      - name: 💬 Comment on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const secStatus = '${{ steps.security.outputs.status }}' || 'skipped';
+            const secScore = '${{ steps.security.outputs.score }}' || 'N/A';
+            const seoStatus = '${{ steps.seo.outputs.status }}' || 'skipped';
+            const seoScore = '${{ steps.seo.outputs.score }}' || 'N/A';
+            const llmCost = '${{ steps.llm.outputs.cost }}' || '0';
+
+            const getEmoji = (status) => {
+              switch(status) {
+                case 'passed': return '✅';
+                case 'warning': return '⚠️';
+                case 'critical':
+                case 'failed': return '❌';
+                default: return '⏭️';
+              }
+            };
+
+            const body = `## 🐟 RANA Quality Gate Results
+
+            | Check | Status | Score |
+            |-------|--------|-------|
+            | 🔒 Security | ${getEmoji(secStatus)} ${secStatus} | ${secScore}/100 |
+            | 🔍 SEO | ${getEmoji(seoStatus)} ${seoStatus} | ${seoScore}/100 |
+            | 💰 LLM Cost | 📊 Estimated | $${llmCost}/month |
+
+            ${secStatus === 'critical' ? '### ⚠️ Security issues must be fixed before merging!' : ''}
+
+            ---
+            🐟 *Powered by [RANA](https://rana.dev)*`;
+
+            // Find existing comment
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+
+            const existingComment = comments.find(c => c.body.includes('RANA Quality Gate'));
+
+            if (existingComment) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existingComment.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body,
+              });
+            }
+
+      # Fail if critical issues
+      - name: Check Result
+        if: steps.summary.outputs.overall == 'failed'
+        run: |
+          echo "::error::RANA Quality Gate failed due to critical issues"
+          exit 1

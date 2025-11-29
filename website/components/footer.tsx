@@ -113,6 +113,9 @@ export function Footer() {
               © {new Date().getFullYear()} Waymaker AI. MIT License.
             </span>
           </div>
+          <div className="text-sm text-foreground-secondary">
+            Created by Ashley Kays, Christian Moore & Charles Kays
+          </div>
 
           <div className="flex items-center space-x-6">
             {/* Twitter/X */}

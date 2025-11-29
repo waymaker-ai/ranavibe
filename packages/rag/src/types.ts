@@ -34,8 +34,19 @@ export interface ChunkerOptions {
   splitOn?: 'sentences' | 'paragraphs' | 'tokens';
   preserveContext?: boolean;
   language?: string;
+  chunkSize?: number;
+  overlap?: number;
   minChunkSize?: number;
   maxChunkSize?: number;
+  // Allow additional properties from specific chunker types
+  preserveFunctions?: boolean;
+  preserveClasses?: boolean;
+  includeComments?: boolean;
+  preserveHeaders?: boolean;
+  preserveCodeBlocks?: boolean;
+  preserveLists?: boolean;
+  similarityThreshold?: number;
+  sentenceModel?: string;
 }
 
 export interface SemanticChunkerOptions extends ChunkerOptions {
@@ -50,7 +61,7 @@ export interface MarkdownChunkerOptions extends ChunkerOptions {
 }
 
 export interface CodeChunkerOptions extends ChunkerOptions {
-  language: string;
+  language?: string;
   preserveFunctions?: boolean;
   preserveClasses?: boolean;
   includeComments?: boolean;
@@ -64,33 +75,34 @@ export interface RetrieverConfig {
 }
 
 export interface RetrieverOptions {
+  topK?: number;
   similarityThreshold?: number;
   filters?: Record<string, unknown>;
   includeMetadata?: boolean;
 }
 
 export interface VectorRetrieverOptions extends RetrieverOptions {
-  index: string;
+  index?: string;
   model?: string;
   namespace?: string;
 }
 
 export interface KeywordRetrieverOptions extends RetrieverOptions {
-  algorithm: 'bm25' | 'tfidf';
+  algorithm?: 'bm25' | 'tfidf';
   stemming?: boolean;
   stopWords?: string[];
 }
 
 export interface HybridRetrieverOptions extends RetrieverOptions {
-  vector: {
-    topK: number;
+  vector?: {
+    topK?: number;
     similarityThreshold?: number;
   };
-  keyword: {
-    topK: number;
+  keyword?: {
+    topK?: number;
     algorithm?: 'bm25' | 'tfidf';
   };
-  fusion: 'reciprocal-rank-fusion' | 'weighted' | 'max';
+  fusion?: 'reciprocal-rank-fusion' | 'weighted' | 'max';
   weights?: { vector: number; keyword: number };
 }
 
@@ -109,13 +121,20 @@ export interface RerankerConfig {
 }
 
 export interface RerankerOptions {
+  topK?: number;
   model?: string;
   batchSize?: number;
   maxConcurrency?: number;
+  // Allow properties from specific reranker types
+  lambda?: number;
+  similarityMetric?: 'cosine' | 'euclidean';
+  normalize?: boolean;
+  temperature?: number;
+  prompt?: string;
 }
 
 export interface CrossEncoderRerankerOptions extends RerankerOptions {
-  model: string;
+  model?: string;
   normalize?: boolean;
 }
 

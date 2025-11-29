@@ -78,8 +78,21 @@ export {
 
 // Utilities
 export { CostTracker } from './cost-tracker';
-export { CacheManager } from './cache';
+export { CacheManager } from './cache-legacy';
 export { ProviderManager } from './providers/manager';
+
+// Modern Cache System
+export {
+  CacheProvider,
+  CacheConfig,
+  CacheEntry,
+  CacheStats,
+  MemoryCache,
+  RedisCache,
+  FileCache,
+  createCache,
+} from './cache';
+export type { RedisConfig, CacheType } from './cache';
 
 // Plugin helpers
 export { definePlugin } from './plugins/helpers';
@@ -122,3 +135,69 @@ export {
   getTemplate,
   getStrategy,
 } from './presets';
+
+// Agent Framework
+export {
+  // Base Agent
+  BaseAgent,
+  AgentConfig,
+  AgentState,
+  AgentMessage,
+  Tool,
+  ToolCall as AgentToolCall,
+  ToolResult,
+  AgentEventType,
+  AgentEvent,
+  // LLM Agent
+  LLMAgent,
+  LLMAgentConfig,
+  createAgent,
+  // Orchestrator
+  Orchestrator,
+  OrchestratorConfig,
+  AgentRegistration,
+  TaskResult,
+  OrchestratorState,
+  createOrchestrator,
+  // Tools
+  ToolRegistry,
+  webSearchTool,
+  calculatorTool,
+  dateTimeTool,
+  jsonTool,
+  memoryTool,
+  createTool,
+  createDefaultToolRegistry,
+  createWebSearchTool,
+  configureWebSearch,
+  // Web Search
+  webSearch,
+  tavilySearch,
+  braveSearch,
+  serperSearch,
+  SearchResult,
+  SearchResponse,
+  WebSearchConfig,
+  // Streaming Agent
+  StreamingAgent,
+  createStreamingAgent,
+  createStreamingAdapter,
+  AgentStreamChunk,
+  StreamingLLMConfig,
+  StreamingLLMClient,
+} from './agents';
+
+// Persistence (Cost Storage)
+export {
+  CostStore,
+  CostRecord,
+  CostQuery,
+  CostSummary,
+  FileCostStore,
+  SQLiteCostStore,
+  PostgresCostStore,
+  createCostStore,
+  getGlobalCostStore,
+  setGlobalCostStore,
+} from './persistence';
+export type { CostStoreConfig } from './persistence';

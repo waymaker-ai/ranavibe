@@ -16,7 +16,7 @@ import type {
   RanaError,
 } from './types';
 import { CostTracker } from './cost-tracker';
-import { CacheManager } from './cache';
+import { CacheManager } from './cache-legacy';
 import { ProviderManager } from './providers/manager';
 
 export class RanaClient {

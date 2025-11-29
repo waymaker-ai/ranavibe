@@ -1,0 +1,165 @@
+name: 'RANA Check'
+description: 'Run RANA quality gates including security audit, SEO check, and LLM cost analysis'
+author: 'Waymaker'
+
+branding:
+  icon: 'shield'
+  color: 'blue'
+
+inputs:
+  security:
+    description: 'Run security audit'
+    required: false
+    default: 'true'
+  seo:
+    description: 'Run SEO check'
+    required: false
+    default: 'true'
+  llm:
+    description: 'Run LLM cost analysis'
+    required: false
+    default: 'true'
+  cost-budget:
+    description: 'Maximum monthly LLM cost budget (fails if exceeded)'
+    required: false
+    default: ''
+  fail-on-warning:
+    description: 'Fail the check if there are warnings'
+    required: false
+    default: 'false'
+
+outputs:
+  security-score:
+    description: 'Security audit score (0-100)'
+    value: ${{ steps.security.outputs.score }}
+  seo-score:
+    description: 'SEO check score (0-100)'
+    value: ${{ steps.seo.outputs.score }}
+  estimated-cost:
+    description: 'Estimated monthly LLM cost'
+    value: ${{ steps.llm.outputs.cost }}
+  passed:
+    description: 'Whether all checks passed'
+    value: ${{ steps.summary.outputs.passed }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Install RANA CLI
+      shell: bash
+      run: |
+        npm install -g @rana/cli || npm install -g ./tools/cli
+
+    - name: Run Security Audit
+      id: security
+      if: inputs.security == 'true'
+      shell: bash
+      run: |
+        echo "🔒 Running RANA Security Audit..."
+        set +e
+        output=$(rana security:audit 2>&1)
+        exit_code=$?
+        echo "$output"
+
+        # Extract score from output
+        score=$(echo "$output" | grep -oP 'Score: \K\d+' || echo "0")
+        echo "score=$score" >> $GITHUB_OUTPUT
+
+        if [ $exit_code -ne 0 ]; then
+          echo "::error::Security audit failed"
+          echo "security_failed=true" >> $GITHUB_ENV
+        fi
+
+    - name: Run SEO Check
+      id: seo
+      if: inputs.seo == 'true'
+      shell: bash
+      run: |
+        echo "🔍 Running RANA SEO Check..."
+        set +e
+        output=$(rana seo:check 2>&1)
+        exit_code=$?
+        echo "$output"
+
+        # Extract score from output
+        score=$(echo "$output" | grep -oP 'Score: \K\d+' || echo "0")
+        echo "score=$score" >> $GITHUB_OUTPUT
+
+        if [ $exit_code -ne 0 ] && [ "${{ inputs.fail-on-warning }}" == "true" ]; then
+          echo "::warning::SEO check has warnings"
+          echo "seo_warning=true" >> $GITHUB_ENV
+        fi
+
+    - name: Run LLM Cost Analysis
+      id: llm
+      if: inputs.llm == 'true'
+      shell: bash
+      run: |
+        echo "💰 Running RANA LLM Cost Analysis..."
+        set +e
+        output=$(rana llm:analyze 2>&1)
+        echo "$output"
+
+        # Extract estimated cost from output
+        cost=$(echo "$output" | grep -oP '\$[\d,]+\.?\d*' | head -1 | tr -d '$,' || echo "0")
+        echo "cost=$cost" >> $GITHUB_OUTPUT
+
+        # Check against budget
+        if [ -n "${{ inputs.cost-budget }}" ]; then
+          budget="${{ inputs.cost-budget }}"
+          if (( $(echo "$cost > $budget" | bc -l) )); then
+            echo "::error::Estimated LLM cost ($cost) exceeds budget ($budget)"
+            echo "cost_exceeded=true" >> $GITHUB_ENV
+          fi
+        fi
+
+    - name: Summary
+      id: summary
+      shell: bash
+      run: |
+        echo "## RANA Quality Gate Results" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+
+        if [ "${{ inputs.security }}" == "true" ]; then
+          echo "### 🔒 Security Audit" >> $GITHUB_STEP_SUMMARY
+          echo "Score: ${{ steps.security.outputs.score }}/100" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+        fi
+
+        if [ "${{ inputs.seo }}" == "true" ]; then
+          echo "### 🔍 SEO Check" >> $GITHUB_STEP_SUMMARY
+          echo "Score: ${{ steps.seo.outputs.score }}/100" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+        fi
+
+        if [ "${{ inputs.llm }}" == "true" ]; then
+          echo "### 💰 LLM Cost Analysis" >> $GITHUB_STEP_SUMMARY
+          echo "Estimated Cost: \$${{ steps.llm.outputs.cost }}/month" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+        fi
+
+        # Determine if passed
+        passed="true"
+        if [ "$security_failed" == "true" ]; then
+          passed="false"
+        fi
+        if [ "$cost_exceeded" == "true" ]; then
+          passed="false"
+        fi
+        if [ "$seo_warning" == "true" ] && [ "${{ inputs.fail-on-warning }}" == "true" ]; then
+          passed="false"
+        fi
+
+        echo "passed=$passed" >> $GITHUB_OUTPUT
+
+        if [ "$passed" == "false" ]; then
+          echo "### ❌ Quality Gate Failed" >> $GITHUB_STEP_SUMMARY
+          exit 1
+        else
+          echo "### ✅ Quality Gate Passed" >> $GITHUB_STEP_SUMMARY
+        fi

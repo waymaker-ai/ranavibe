@@ -53,6 +53,7 @@ export class RefineSynthesizer implements Synthesizer {
 
       // Track if this chunk contributed to the answer
       if (this.chunkWasUsed(refined, chunk.content, currentAnswer)) {
+        const { chunkIndex: _existingIndex, ...restMetadata } = chunk.metadata;
         citations.push({
           text: chunk.content.slice(0, 200),
           source: chunk.metadata.source || `Chunk ${i + 1}`,
@@ -60,7 +61,7 @@ export class RefineSynthesizer implements Synthesizer {
           chunkId: chunk.id,
           metadata: {
             chunkIndex: i,
-            ...chunk.metadata,
+            ...restMetadata,
           },
         });
       }

@@ -20,7 +20,7 @@ export class CodeChunker implements Chunker {
    */
   async chunk(code: string, options: CodeChunkerOptions): Promise<Chunk[]> {
     const {
-      language,
+      language = 'typescript',
       chunkSize = 1024,
       overlap = 0,
       preserveFunctions = true,
@@ -31,7 +31,7 @@ export class CodeChunker implements Chunker {
     } = options;
 
     // 1. Parse code into declarations
-    const declarations = this.parseCode(code, language);
+    const declarations = this.parseCode(code, language as string);
 
     // 2. Create chunks from declarations
     const chunks: Chunk[] = [];
@@ -39,14 +39,14 @@ export class CodeChunker implements Chunker {
     for (const decl of declarations) {
       // If declaration fits in a chunk, add it
       if (decl.text.length <= maxChunkSize) {
-        chunks.push(this.createChunk(decl, chunks.length, language));
+        chunks.push(this.createChunk(decl, chunks.length, language as string));
       } else {
         // Split large declarations
         const subChunks = this.splitLargeDeclaration(decl, {
           chunkSize,
           maxChunkSize,
           minChunkSize,
-          language,
+          language: language as string,
         });
         chunks.push(...subChunks);
       }
@@ -59,7 +59,7 @@ export class CodeChunker implements Chunker {
         overlap,
         minChunkSize,
         maxChunkSize,
-        language,
+        language: language as string,
       });
     }
 

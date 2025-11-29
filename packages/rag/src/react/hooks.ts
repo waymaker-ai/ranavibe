@@ -2,7 +2,7 @@
  * React Hooks for RAG
  */
 
-import { useState, useCallback, useRef, useEffect } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import type { RAGPipeline, RAGResult, QueryOptions, Citation, StreamChunk } from '../types';
 
 // Global pipeline instance
@@ -113,10 +113,10 @@ export function useRAGStream(pipeline?: RAGPipeline) {
 
           switch (chunk.type) {
             case 'content':
-              setChunks(prev => [...prev, chunk.data as string]);
+              setChunks((prev: string[]) => [...prev, chunk.data as string]);
               break;
             case 'citation':
-              setCitations(prev => [...prev, chunk.data as Citation]);
+              setCitations((prev: Citation[]) => [...prev, chunk.data as Citation]);
               break;
             case 'metadata':
               if (typeof chunk.data === 'object' && chunk.data && 'stage' in chunk.data) {
@@ -216,7 +216,7 @@ export function useRAGIndex(pipeline?: RAGPipeline) {
 
       try {
         await activePipeline.delete(ids);
-        setDocumentCount(prev => Math.max(0, prev - ids.length));
+        setDocumentCount((prev: number) => Math.max(0, prev - ids.length));
       } catch (err) {
         const error = err instanceof Error ? err : new Error('Delete failed');
         setError(error);
@@ -253,5 +253,5 @@ export function RAGProvider({ pipeline, children }: RAGProviderProps) {
     initRAGPipeline(pipeline);
   }, [pipeline]);
 
-  return <>{children}</>;
+  return React.createElement(React.Fragment, null, children);
 }

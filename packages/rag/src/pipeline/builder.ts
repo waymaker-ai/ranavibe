@@ -235,9 +235,9 @@ export class RAGPipelineImpl implements RAGPipeline {
       let docChunks: Chunk[];
 
       if (this.config.chunker.type === 'code' && 'language' in this.config.chunker) {
-        docChunks = await this.chunker.chunk(doc.content, this.config.chunker.options);
+        docChunks = await this.chunker.chunk(doc.content, this.config.chunker.options || {});
       } else {
-        docChunks = await this.chunker.chunk(doc.content, this.config.chunker.options);
+        docChunks = await this.chunker.chunk(doc.content, this.config.chunker.options || {});
       }
 
       // Add document metadata to chunks

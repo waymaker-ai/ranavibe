@@ -49,6 +49,25 @@ export { VectorRetriever, vectorRetriever } from './retrieval/vector';
 export { KeywordRetriever, keywordRetriever } from './retrieval/keyword';
 export { HybridRetriever, hybridRetriever } from './retrieval/hybrid';
 
+// Vector Database Integrations
+export { PineconeRetriever, pineconeRetriever } from './retrieval/pinecone';
+export type { PineconeConfig } from './retrieval/pinecone';
+export { ChromaRetriever, chromaRetriever } from './retrieval/chroma';
+export type { ChromaConfig } from './retrieval/chroma';
+export { QdrantRetriever, qdrantRetriever } from './retrieval/qdrant';
+export type { QdrantConfig } from './retrieval/qdrant';
+
+// Embeddings
+export {
+  createEmbeddings,
+  OpenAIEmbeddings,
+  CohereEmbeddings,
+  VoyageEmbeddings,
+  GoogleEmbeddings,
+  MockEmbeddings,
+} from './embeddings/index';
+export type { EmbeddingProvider } from './embeddings/index';
+
 // Reranking
 export { rerankers } from './reranking/index';
 export { CrossEncoderReranker, crossEncoderReranker } from './reranking/cross-encoder';

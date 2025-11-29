@@ -36,6 +36,22 @@ program
 // ONE-WORD SHORTCUTS (New!)
 // ============================================================================
 
+// Playground - Interactive demo
+program
+  .command('playground')
+  .alias('play')
+  .description('Interactive playground to try RANA features')
+  .option('--demo', 'Run demo mode without API keys')
+  .action(async (options) => {
+    if (options.demo) {
+      const { playgroundDemo } = await import('./commands/playground.js');
+      await playgroundDemo();
+    } else {
+      const { playgroundCommand } = await import('./commands/playground.js');
+      await playgroundCommand();
+    }
+  });
+
 // Dashboard - Real-time cost monitoring
 program
   .command('dashboard')
@@ -125,7 +141,29 @@ program
   .description('Deploy with RANA verification workflow')
   .option('--verify', 'Verify deployment in production')
   .option('--skip-tests', 'Skip testing phase (not recommended)')
+  .option('--skip-build', 'Skip build phase')
+  .option('--skip-security', 'Skip security audit')
+  .option('--prod', 'Deploy to production')
+  .option('-p, --platform <platform>', 'Deployment platform (vercel, railway, docker)')
   .action(deployCommand);
+
+// Deploy Status
+program
+  .command('deploy:status')
+  .description('Show deployment history and status')
+  .action(async () => {
+    const { deployStatus } = await import('./commands/deploy.js');
+    await deployStatus();
+  });
+
+// Deploy Rollback
+program
+  .command('deploy:rollback')
+  .description('Rollback to previous deployment')
+  .action(async () => {
+    const { deployRollback } = await import('./commands/deploy.js');
+    await deployRollback();
+  });
 
 // Validate command
 program
@@ -143,6 +181,67 @@ program
   .action(async () => {
     const { showConfig } = await import('./commands/config.js');
     await showConfig();
+  });
+
+// Config: Set API Key
+program
+  .command('config:set')
+  .description('Configure API key for a provider')
+  .option('-p, --provider <provider>', 'Provider name (openai, anthropic, google, etc.)')
+  .option('-k, --key <key>', 'API key value')
+  .action(async (options) => {
+    const { configSet } = await import('./commands/config.js');
+    await configSet(options);
+  });
+
+// Config: List API Keys
+program
+  .command('config:list')
+  .alias('config:keys')
+  .description('List all configured API keys')
+  .action(async () => {
+    const { configList } = await import('./commands/config.js');
+    await configList();
+  });
+
+// Config: Validate API Keys
+program
+  .command('config:validate')
+  .description('Validate configured API keys')
+  .option('-p, --provider <provider>', 'Provider to validate')
+  .action(async (options) => {
+    const { configValidate } = await import('./commands/config.js');
+    await configValidate(options);
+  });
+
+// Config: Remove API Key
+program
+  .command('config:remove')
+  .description('Remove an API key')
+  .option('-p, --provider <provider>', 'Provider to remove')
+  .action(async (options) => {
+    const { configRemove } = await import('./commands/config.js');
+    await configRemove(options);
+  });
+
+// Config: Export Keys to .env
+program
+  .command('config:export')
+  .description('Export API keys to .env file')
+  .option('-f, --file <file>', 'Output file (default: .env.rana)')
+  .action(async (options) => {
+    const { configExport } = await import('./commands/config.js');
+    await configExport(options);
+  });
+
+// Config: Import Keys from .env
+program
+  .command('config:import')
+  .description('Import API keys from .env file')
+  .option('-f, --file <file>', 'Input file (default: .env)')
+  .action(async (options) => {
+    const { configImport } = await import('./commands/config.js');
+    await configImport(options);
   });
 
 // Status command
@@ -462,6 +561,200 @@ program
   .action(async () => {
     const { generateInteractive } = await import('./commands/generate.js');
     await generateInteractive();
+  });
+
+// ============================================================================
+// PROMPT MANAGEMENT COMMANDS (New!)
+// Enterprise prompt management via CLI
+// ============================================================================
+
+// Prompt Create
+program
+  .command('prompt:create')
+  .description('Create a new prompt template')
+  .option('-i, --id <id>', 'Prompt ID')
+  .option('-t, --template <template>', 'Prompt template')
+  .option('-f, --file <file>', 'Load template from file')
+  .option('-m, --model <model>', 'Default model')
+  .option('-p, --provider <provider>', 'Default provider')
+  .action(async (options) => {
+    const { promptCreate } = await import('./commands/prompt.js');
+    await promptCreate(options);
+  });
+
+// Prompt List
+program
+  .command('prompt:list')
+  .alias('prompts')
+  .description('List all registered prompts')
+  .option('-v, --verbose', 'Show detailed information')
+  .action(async (options) => {
+    const { promptList } = await import('./commands/prompt.js');
+    await promptList(options);
+  });
+
+// Prompt Test
+program
+  .command('prompt:test <id>')
+  .description('Test a prompt with sample variables')
+  .option('-v, --variables <vars>', 'Variables as key=value,key2=value2')
+  .option('-d, --dry-run', 'Preview without executing')
+  .action(async (id, options) => {
+    const { promptTest } = await import('./commands/prompt.js');
+    await promptTest(id, options);
+  });
+
+// Prompt Protect
+program
+  .command('prompt:protect')
+  .description('Configure prompt protection (injection detection, PII masking)')
+  .option('-e, --enable', 'Enable protection')
+  .option('-d, --disable', 'Disable protection')
+  .option('-s, --status', 'Show current status')
+  .action(async (options) => {
+    const { promptProtect } = await import('./commands/prompt.js');
+    await promptProtect(options);
+  });
+
+// Prompt Delete
+program
+  .command('prompt:delete <id>')
+  .description('Delete a prompt')
+  .action(async (id) => {
+    const { promptDelete } = await import('./commands/prompt.js');
+    await promptDelete(id);
+  });
+
+// Prompt Export
+program
+  .command('prompt:export')
+  .description('Export all prompts to a file')
+  .option('-o, --output <file>', 'Output file path')
+  .action(async (options) => {
+    const { promptExport } = await import('./commands/prompt.js');
+    await promptExport(options);
+  });
+
+// Prompt Import
+program
+  .command('prompt:import <file>')
+  .description('Import prompts from a file')
+  .action(async (file) => {
+    const { promptImport } = await import('./commands/prompt.js');
+    await promptImport(file);
+  });
+
+// Prompt Templates
+program
+  .command('prompt:templates')
+  .description('Show built-in prompt templates')
+  .action(async () => {
+    const { promptTemplates } = await import('./commands/prompt.js');
+    await promptTemplates();
+  });
+
+// ============================================================================
+// WIZARD COMMANDS
+// Step-by-step guided setup for beginners
+// ============================================================================
+
+// Full Wizard
+program
+  .command('wizard')
+  .description('Step-by-step guided setup (10 minutes)')
+  .action(async () => {
+    const { wizardCommand } = await import('./commands/wizard.js');
+    await wizardCommand();
+  });
+
+// Quick Wizard
+program
+  .command('wizard:quick')
+  .alias('quick-start')
+  .description('Quick setup with recommended defaults')
+  .action(async () => {
+    const { wizardQuickCommand } = await import('./commands/wizard.js');
+    await wizardQuickCommand();
+  });
+
+// ============================================================================
+// HEALTH & MONITORING COMMANDS
+// Uptime checks, health endpoints, monitoring integration
+// ============================================================================
+
+// Health Check
+program
+  .command('health:check')
+  .description('Check health of all endpoints')
+  .option('-u, --url <url>', 'Base URL to check')
+  .option('-v, --verbose', 'Show detailed output')
+  .action(async (options) => {
+    const { healthCheck } = await import('./commands/health.js');
+    await healthCheck(options);
+  });
+
+// Health Setup
+program
+  .command('health:setup')
+  .description('Add health endpoint to your app')
+  .action(async () => {
+    const { healthSetup } = await import('./commands/health.js');
+    await healthSetup();
+  });
+
+// Monitor Setup
+program
+  .command('monitor:setup')
+  .description('Setup external monitoring (BetterStack, UptimeRobot)')
+  .action(async () => {
+    const { monitorSetup } = await import('./commands/health.js');
+    await monitorSetup();
+  });
+
+// Monitor Status
+program
+  .command('monitor:status')
+  .description('Check monitoring status')
+  .action(async () => {
+    const { monitorStatus } = await import('./commands/health.js');
+    await monitorStatus();
+  });
+
+// ============================================================================
+// DOCKER COMMANDS
+// Container build and deployment
+// ============================================================================
+
+// Docker Build
+program
+  .command('docker:build')
+  .description('Build Docker image for your app')
+  .option('-t, --tag <tag>', 'Image tag', 'latest')
+  .option('-p, --push', 'Push to registry after build')
+  .action(async (options) => {
+    const { dockerBuild } = await import('./commands/docker.js');
+    await dockerBuild(options);
+  });
+
+// Docker Push
+program
+  .command('docker:push')
+  .description('Push Docker image to registry')
+  .option('-t, --tag <tag>', 'Image tag', 'latest')
+  .option('-r, --registry <registry>', 'Docker registry')
+  .action(async (options) => {
+    const { dockerPush } = await import('./commands/docker.js');
+    await dockerPush(options);
+  });
+
+// Docker Run
+program
+  .command('docker:run')
+  .description('Run app in Docker locally')
+  .option('-p, --port <port>', 'Port to expose', '3000')
+  .action(async (options) => {
+    const { dockerRun } = await import('./commands/docker.js');
+    await dockerRun(options);
   });
 
 // Show banner before help

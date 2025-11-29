@@ -7,33 +7,33 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.js"
     },
     "./chunkers": {
+      "types": "./dist/chunking/index.d.ts",
       "import": "./dist/chunking/index.mjs",
-      "require": "./dist/chunking/index.js",
-      "types": "./dist/chunking/index.d.ts"
+      "require": "./dist/chunking/index.js"
     },
     "./retrievers": {
+      "types": "./dist/retrieval/index.d.ts",
       "import": "./dist/retrieval/index.mjs",
-      "require": "./dist/retrieval/index.js",
-      "types": "./dist/retrieval/index.d.ts"
+      "require": "./dist/retrieval/index.js"
     },
     "./rerankers": {
+      "types": "./dist/reranking/index.d.ts",
       "import": "./dist/reranking/index.mjs",
-      "require": "./dist/reranking/index.js",
-      "types": "./dist/reranking/index.d.ts"
+      "require": "./dist/reranking/index.js"
     },
     "./react": {
+      "types": "./dist/react/index.d.ts",
       "import": "./dist/react/index.mjs",
-      "require": "./dist/react/index.js",
-      "types": "./dist/react/index.d.ts"
+      "require": "./dist/react/index.js"
     }
   },
   "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "build": "tsup",
     "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
     "test": "vitest",
     "lint": "eslint src/",
