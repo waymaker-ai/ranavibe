@@ -917,6 +917,56 @@ program
     await dockerRun(options);
   });
 
+// ============================================================================
+// SHELL COMPLETION
+// Auto-completion for bash, zsh, and fish
+// ============================================================================
+
+// Completion - Show setup instructions
+program
+  .command('completion')
+  .description('Setup shell auto-completion (bash, zsh, fish)')
+  .action(async () => {
+    const { completionCommand } = await import('./commands/completion.js');
+    await completionCommand();
+  });
+
+// Completion: Bash
+program
+  .command('completion:bash')
+  .description('Generate bash completion script')
+  .action(async () => {
+    const { completionBashCommand } = await import('./commands/completion.js');
+    await completionBashCommand();
+  });
+
+// Completion: Zsh
+program
+  .command('completion:zsh')
+  .description('Generate zsh completion script')
+  .action(async () => {
+    const { completionZshCommand } = await import('./commands/completion.js');
+    await completionZshCommand();
+  });
+
+// Completion: Fish
+program
+  .command('completion:fish')
+  .description('Generate fish completion script')
+  .action(async () => {
+    const { completionFishCommand } = await import('./commands/completion.js');
+    await completionFishCommand();
+  });
+
+// Completion: Install
+program
+  .command('completion:install')
+  .description('Auto-install completion for your shell')
+  .action(async () => {
+    const { completionInstallCommand } = await import('./commands/completion.js');
+    await completionInstallCommand();
+  });
+
 // Show banner before help
 program.on('--help', () => {
   console.log(banner);

@@ -9,7 +9,7 @@
 - [x] `rana learn` - Interactive tutorial command
 - [ ] Better error messages with actionable fixes
 - [x] `rana doctor` - Diagnose common issues
-- [ ] Auto-completion for all CLI commands
+- [x] Auto-completion for all CLI commands
 - [x] `rana playground` - REPL for testing prompts
 - [x] `create-rana-app` - Single command project scaffold
 
