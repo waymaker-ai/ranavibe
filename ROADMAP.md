@@ -89,8 +89,8 @@
 ### 3.3 MCP Support
 - [x] MCP server creation
 - [x] MCP client connection
-- [ ] MCP testing utilities
-- [ ] MCP registry
+- [x] MCP testing utilities
+- [x] MCP registry
 
 ## Phase 4: Launch (Week 13)
 *Go public with a bang*

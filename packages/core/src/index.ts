@@ -754,3 +754,113 @@ export type {
   Span as SentrySpan,
   LLMContext,
 } from './integrations';
+
+// ============================================================================
+// MCP (Model Context Protocol)
+// ============================================================================
+
+// MCP Server
+export {
+  MCPServer,
+  MCPServerError,
+  createMCPServer,
+  text as mcpText,
+  image as mcpImage,
+  resource as mcpResource,
+  toolResult,
+  toolError,
+} from './mcp';
+export type {
+  ToolDefinition as MCPToolDefinition,
+  ResourceDefinition as MCPResourceDefinition,
+  PromptDefinition as MCPPromptDefinition,
+} from './mcp';
+
+// MCP Client
+export { MCPClient, MCPClientError, createMCPClient } from './mcp';
+
+// MCP Testing
+export {
+  MockTransport,
+  createMockTransportPair,
+  createMCPTestHarness,
+  MCPTestClient,
+  createMCPTestClient,
+  createMCPAssertions,
+  runToolTests,
+  formatToolTestResults,
+  createMCPSnapshot,
+  compareMCPSnapshots,
+  MockToolBuilder,
+  mockTools,
+  MCPTestError,
+} from './mcp';
+export type {
+  MCPTestHarness,
+  MCPAssertions,
+  ToolTestCase,
+  ToolTestResult,
+  MCPSnapshot,
+  MCPSnapshotDiff,
+} from './mcp';
+
+// MCP Registry
+export {
+  MCPRegistry,
+  createMCPRegistry,
+  createOfficialRegistry,
+  createFullRegistry,
+  generateMCPConfig,
+  formatRegistry,
+  officialServers,
+  communityServers,
+} from './mcp';
+export type {
+  MCPServerEntry,
+  RegistrySearchOptions,
+  MCPClientConfig,
+} from './mcp';
+
+// MCP Types
+export type {
+  JsonRpcRequest,
+  JsonRpcResponse,
+  JsonRpcError,
+  JsonRpcNotification,
+  MCPCapabilities,
+  MCPServerInfo,
+  MCPClientInfo,
+  MCPTool,
+  MCPToolInputSchema,
+  MCPPropertySchema,
+  MCPToolCall,
+  MCPToolResult,
+  MCPResource,
+  MCPResourceTemplate,
+  MCPResourceContents,
+  MCPPrompt,
+  MCPPromptArgument,
+  MCPPromptMessage,
+  MCPGetPromptResult,
+  MCPContent,
+  MCPTextContent,
+  MCPImageContent,
+  MCPEmbeddedResource,
+  MCPLogLevel,
+  MCPLogMessage,
+  MCPSamplingMessage,
+  MCPSamplingRequest,
+  MCPModelPreferences,
+  MCPModelHint,
+  MCPSamplingResult,
+  MCPProgressNotification,
+  MCPRoot,
+  MCPToolHandler,
+  MCPResourceHandler,
+  MCPPromptHandler,
+  MCPSamplingHandler,
+  MCPTransport,
+  MCPTransportOptions,
+  MCPServerOptions,
+  MCPClientOptions,
+} from './mcp';
