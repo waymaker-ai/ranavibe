@@ -635,3 +635,122 @@ export type {
   EmailPluginConfig,
   EmailHandler,
 } from './plugins/email';
+
+// ============================================================================
+// Integrations
+// ============================================================================
+
+// Hugging Face
+export {
+  HuggingFaceProvider,
+  HuggingFaceError,
+  ModelLoadingError,
+  createHuggingFaceProvider,
+  createHuggingFaceEmbeddings,
+  POPULAR_MODELS,
+} from './integrations';
+export type {
+  HuggingFaceTask,
+  HuggingFaceConfig,
+  GenerationOptions,
+  EmbeddingOptions as HFEmbeddingOptions,
+  ClassificationOptions,
+  SummarizationOptions,
+  QAOptions,
+  TranslationOptions,
+  GenerationResult,
+  EmbeddingResult,
+  ClassificationResult,
+  SummarizationResult,
+  QAResult,
+  TranslationResult,
+  StreamChunk as HFStreamChunk,
+  ModelInfo,
+} from './integrations';
+
+// Vercel
+export {
+  VercelClient,
+  VercelError,
+  createVercelClient,
+  createVercelConfig,
+  createRanaVercelConfig,
+  deployToVercel,
+  getDeployButton,
+  generateDeployReadme,
+} from './integrations';
+export type {
+  VercelFramework,
+  VercelRegion,
+  VercelConfigOptions,
+  VercelJson,
+  CronJob,
+  Rewrite,
+  Redirect,
+  Header,
+  GitSettings,
+  VercelDeployOptions,
+  Deployment,
+  DeploymentStatus,
+  BuildLog,
+  Project as VercelProject,
+  Domain,
+} from './integrations';
+
+// Supabase
+export {
+  SupabaseVectorStore,
+  SupabaseVectorError,
+  createSupabaseVectorStore,
+  createAndInitSupabaseVectorStore,
+  getSupabaseSetupSQL,
+} from './integrations';
+export type {
+  SupabaseConfig,
+  EmbeddingProvider as SupabaseEmbeddingProvider,
+  Document as SupabaseDocument,
+  SearchOptions as SupabaseSearchOptions,
+  HybridSearchOptions,
+  SearchResult as SupabaseSearchResult,
+  SupabaseVectorStats,
+} from './integrations';
+
+// Weights & Biases
+export {
+  WandbTracker,
+  WandbRun,
+  WandbError,
+  createWandbTracker,
+  createRanaWandbMiddleware,
+  withExperiment,
+} from './integrations';
+export type {
+  WandbConfig,
+  RunConfig,
+  LogData,
+  PromptVersion,
+  TableData,
+  ImageData,
+  RunSummary,
+  Artifact,
+  RanaWandbMiddleware,
+} from './integrations';
+
+// Sentry
+export {
+  SentryIntegration,
+  createSentryIntegration,
+  initSentry,
+  withSentry,
+} from './integrations';
+export type {
+  SentryConfig,
+  SentryLevel,
+  SentryEvent,
+  SentryUser,
+  Breadcrumb as SentryBreadcrumb,
+  CaptureOptions,
+  Transaction as SentryTransaction,
+  Span as SentrySpan,
+  LLMContext,
+} from './integrations';

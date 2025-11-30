@@ -80,11 +80,11 @@
 - [x] `@rana/docs` - Documentation chatbot
 
 ### 3.2 Integrations
-- [ ] Hugging Face models
-- [ ] Vercel one-click deploy
-- [ ] Supabase vector store
-- [ ] Weights & Biases tracking
-- [ ] Sentry error reporting
+- [x] Hugging Face models
+- [x] Vercel one-click deploy
+- [x] Supabase vector store
+- [x] Weights & Biases tracking
+- [x] Sentry error reporting
 
 ### 3.3 MCP Support
 - [x] MCP server creation
