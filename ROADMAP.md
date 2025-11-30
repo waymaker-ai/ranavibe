@@ -65,9 +65,9 @@
 ### 2.4 Memory & Context (`@rana/memory`)
 - [x] Sliding window memory
 - [x] Automatic summarization
-- [ ] Long-term vector memory
-- [ ] Entity extraction
-- [ ] Memory sharing between agents
+- [x] Long-term vector memory
+- [x] Entity extraction
+- [x] Memory sharing between agents
 
 ## Phase 3: Ecosystem (Weeks 9-12)
 *Build the plugin ecosystem*

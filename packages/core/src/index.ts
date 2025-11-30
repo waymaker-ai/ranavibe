@@ -271,7 +271,7 @@ export {
 } from './persistence';
 export type { CostStoreConfig } from './persistence';
 
-// Memory Management (Context Compression)
+// Memory Management (Context Compression & Vector Memory)
 export { MemoryManager, createMemoryManager } from './memory';
 export type {
   CompressionStrategy,
@@ -281,6 +281,57 @@ export type {
   CompressionResult,
   MemoryStats,
   MemoryState,
+} from './memory';
+
+// Vector Memory
+export {
+  VectorMemory,
+  InMemoryVectorBackend,
+  FileVectorBackend,
+  createVectorMemory,
+  createInMemoryVectorMemory,
+  createFileVectorMemory,
+  cosineSimilarity,
+  euclideanDistance,
+  euclideanToSimilarity,
+  dotProduct,
+  normalize,
+  calculateSimilarity,
+} from './memory';
+export type {
+  VectorMemoryEntry,
+  VectorSearchResult,
+  VectorMemoryBackend,
+  EmbeddingProvider,
+  VectorMemoryConfig,
+  VectorMemoryStats,
+  SimilarityMetric,
+} from './memory';
+
+// Entity Extraction
+export { EntityExtractor, createEntityExtractor } from './memory';
+export type {
+  EntityType,
+  ConfidenceScore,
+  Entity,
+  EntityContext,
+  EntityRelationship,
+  EntityGraph,
+  ExtractionResult,
+  EntityTimelineEvent,
+  EntityExtractorConfig,
+} from './memory';
+
+// Shared Memory
+export { SharedMemory, createSharedMemory } from './memory';
+export type {
+  PermissionLevel,
+  ConflictStrategy,
+  MemoryEntry,
+  NamespaceConfig,
+  AccessLogEntry,
+  SubscriptionCallback,
+  BroadcastMessage,
 } from './memory';
 
 // Environment-Based Model Selection
