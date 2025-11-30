@@ -124,6 +124,8 @@ export interface RanaChatRequest {
   fallback?: LLMProvider[];
   /** Mark as critical to bypass budget enforcement (requires allowCriticalBypass) */
   critical?: boolean;
+  /** Queue priority (high, normal, low) - only used when queue is enabled */
+  priority?: 'high' | 'normal' | 'low';
 
   // Streaming
   stream?: boolean;
@@ -159,6 +161,14 @@ export interface RanaChatResponse {
   // Performance metrics
   latency_ms: number;
   cached: boolean;
+
+  // Retry metadata (if retries were attempted)
+  retry?: {
+    retryCount: number;
+    totalRetryTime: number;
+    retryDelays: number[];
+    lastRetryError?: string;
+  };
 
   // Raw response
   raw: any;
@@ -211,6 +221,20 @@ export interface RanaConfig {
     optimize?: 'cost' | 'speed' | 'quality' | 'balanced';
   };
 
+  // Fallback configuration
+  fallback?: {
+    /** Ordered list of providers to try (in priority order) */
+    order: LLMProvider[];
+    /** Callback when falling back from one provider to another */
+    onFallback?: (from: LLMProvider, to: LLMProvider, error: Error) => void;
+    /** Maximum number of retry attempts per provider (default: 1) */
+    maxRetries?: number;
+    /** Delay between retries in milliseconds (default: 0) */
+    retryDelay?: number;
+    /** Whether to track fallback attempts (default: true) */
+    trackAttempts?: boolean;
+  };
+
   // Caching
   cache?: {
     enabled: boolean;
@@ -237,6 +261,62 @@ export interface RanaConfig {
   rate_limit?: {
     enabled: boolean;
     max_requests_per_minute?: number;
+    /** Per-provider rate limit configurations */
+    providers?: {
+      [provider: string]: {
+        /** Requests per minute limit */
+        requestsPerMinute?: number;
+        /** Requests per second limit */
+        requestsPerSecond?: number;
+      };
+    };
+    /** Enable auto-throttling based on provider feedback (default: true) */
+    autoThrottle?: boolean;
+    /** Maximum queue size (default: 100) */
+    maxQueueSize?: number;
+  };
+
+  // Retry configuration
+  retry?: {
+    enabled?: boolean;
+    maxRetries?: number;
+    baseDelay?: number;
+    maxDelay?: number;
+    retryOn?: ('rate_limit' | 'timeout' | 'server_error' | 'network_error' | 'service_unavailable')[];
+    jitter?: boolean;
+    backoffMultiplier?: number;
+  };
+
+  // Circuit breaker for provider reliability
+  circuitBreaker?: {
+    /** Enable/disable circuit breaker @default true */
+    enabled?: boolean;
+    /** Number of consecutive failures before opening circuit @default 5 */
+    failureThreshold?: number;
+    /** Failure rate percentage (0-100) to open circuit @default 50 */
+    failureRateThreshold?: number;
+    /** Time window in ms to calculate failure rate @default 60000 */
+    failureRateWindow?: number;
+    /** Time in ms before attempting to recover @default 30000 */
+    resetTimeout?: number;
+    /** Number of successful requests in HALF_OPEN before closing @default 2 */
+    successThreshold?: number;
+    /** Callback when circuit state changes */
+    onStateChange?: (provider: LLMProvider, from: string, to: string) => void;
+    /** Callback when circuit opens */
+    onOpen?: (provider: LLMProvider, failures: number) => void;
+    /** Callback when circuit closes */
+    onClose?: (provider: LLMProvider) => void;
+  };
+
+  // Request queue
+  queue?: {
+    enabled?: boolean;
+    maxConcurrency?: number;
+    defaultPriority?: 'high' | 'normal' | 'low';
+    timeout?: number;
+    onQueueChange?: (stats: any) => void;
+    debug?: boolean;
   };
 
   // Logging

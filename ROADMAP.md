@@ -40,11 +40,11 @@
 *Make production deployment trivial*
 
 ### 2.1 Reliability
-- [ ] Automatic fallbacks between providers
-- [ ] Circuit breaker pattern
-- [ ] Retry with exponential backoff
-- [ ] Rate limit handling
-- [ ] Request queuing
+- [x] Automatic fallbacks between providers
+- [x] Circuit breaker pattern
+- [x] Retry with exponential backoff
+- [x] Rate limit handling
+- [x] Request queuing
 
 ### 2.2 Observability (`@rana/observability`)
 - [ ] Built-in tracing dashboard

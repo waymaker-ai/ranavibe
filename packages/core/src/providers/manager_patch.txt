@@ -1,0 +1,29 @@
+--- Add import
+import { CircuitBreaker, type CircuitBreakerConfig } from './circuit-breaker';
+
+--- Add to ProviderManagerConfig interface
+  circuitBreaker?: CircuitBreakerConfig;
+
+--- Add to class properties
+  private circuitBreaker: CircuitBreaker;
+
+--- In constructor after retry config
+      // Initialize circuit breaker
+      this.circuitBreaker = new CircuitBreaker(fullConfig.circuitBreaker);
+    } else {
+      // Old API - just providers
+      this.apiKeys = config as Record<string, string>;
+      this.circuitBreaker = new CircuitBreaker();
+
+--- Wrap executeChat in circuit breaker
+    return this.circuitBreaker.execute(provider, async () => {
+      ... existing code ...
+    });
+
+--- Add getter method before calculateCost
+  /**
+   * Get circuit breaker instance for direct access
+   */
+  getCircuitBreaker(): CircuitBreaker {
+    return this.circuitBreaker;
+  }

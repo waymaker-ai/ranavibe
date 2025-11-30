@@ -18,19 +18,40 @@ import type {
 import { CostTracker } from './cost-tracker';
 import { CacheManager } from './cache-legacy';
 import { ProviderManager } from './providers/manager';
+import { FallbackManager, type FallbackResponse } from './providers/fallback';
 
 export class RanaClient {
   private config: RanaConfig;
   private costTracker: CostTracker;
   private cache: CacheManager;
   private providers: ProviderManager;
+  private fallbackManager: FallbackManager | null = null;
   private plugins: RanaPlugin[] = [];
 
   constructor(config: RanaConfig) {
     this.config = this.normalizeConfig(config);
     this.costTracker = new CostTracker(config.cost_tracking);
     this.cache = new CacheManager(config.cache);
-    this.providers = new ProviderManager(config.providers);
+
+    // Pass queue, retry, rate limit, and circuit breaker config to ProviderManager
+    this.providers = new ProviderManager({
+      providers: config.providers,
+      queue: config.queue,
+      retry: config.retry,
+      rateLimit: config.rate_limit ? {
+        enabled: config.rate_limit.enabled,
+        providers: config.rate_limit.providers,
+        autoThrottle: config.rate_limit.autoThrottle,
+        maxQueueSize: config.rate_limit.maxQueueSize,
+      } : undefined,
+      circuitBreaker: config.circuitBreaker,
+    });
+
+    // Initialize fallback manager if configured
+    if (this.config.fallback) {
+      this.fallbackManager = new FallbackManager(this.providers, this.config.fallback);
+    }
+
     this.log('info', 'RANA client initialized');
   }
 
@@ -75,15 +96,34 @@ export class RanaClient {
         }
       }
 
-      // Select provider and model based on optimization strategy
-      const { provider, model } = this.selectOptimalProvider(processedRequest);
+      let response: RanaChatResponse;
 
-      // Make the LLM call
-      const response = await this.providers.chat(provider, {
-        ...processedRequest,
-        provider,
-        model,
-      });
+      // Use fallback manager if configured, otherwise use direct provider call
+      if (this.fallbackManager) {
+        // Use fallback system with automatic retry and provider switching
+        const fallbackResponse = await this.fallbackManager.chat(processedRequest);
+        response = fallbackResponse;
+
+        // Log fallback metadata if fallback was used
+        if (fallbackResponse.fallbackMetadata.usedFallback) {
+          this.log(
+            'info',
+            `Fallback used: ${fallbackResponse.fallbackMetadata.attemptedProviders.join(' -> ')} ` +
+            `(${fallbackResponse.fallbackMetadata.totalAttempts} attempts)`
+          );
+        }
+      } else {
+        // Original behavior: select optimal provider and make the call
+        const { provider, model } = this.selectOptimalProvider(processedRequest);
+
+        response = await this.providers.chat(provider, {
+          ...processedRequest,
+          provider,
+          model,
+        }, {
+          priority: processedRequest.priority,
+        });
+      }
 
       // Track cost
       await this.costTracker.track(response);
@@ -195,6 +235,51 @@ export class RanaClient {
   }
 
   // ============================================================================
+  // Queue Management
+  // ============================================================================
+
+  /**
+   * Get queue statistics and management methods
+   *
+   * @example
+   * const stats = rana.queue.stats();
+   * console.log(`Queue: ${stats.pending} pending, ${stats.processing} processing`);
+   */
+  get queue() {
+    return {
+      stats: () => this.providers.getQueueStats(),
+      enabled: () => this.providers.isQueueEnabled(),
+      instance: () => this.providers.getQueue(),
+    };
+  }
+
+  // ============================================================================
+  // Circuit Breaker Management
+  // ============================================================================
+
+  /**
+   * Get circuit breaker statistics and management methods
+   *
+   * @example
+   * const breaker = rana.circuitBreaker;
+   * const state = breaker.getState('anthropic');
+   * const stats = breaker.getStats('anthropic');
+   * console.log(`${state}: ${stats.failureRate}% failure rate`);
+   */
+  get circuitBreaker() {
+    const breaker = this.providers.getCircuitBreaker();
+    return {
+      getState: (provider: LLMProvider) => breaker.getState(provider),
+      getStats: (provider: LLMProvider) => breaker.getStats(provider),
+      getAllStats: () => breaker.getAllStats(),
+      reset: (provider: LLMProvider) => breaker.reset(provider),
+      resetAll: () => breaker.resetAll(),
+      configure: (config: Parameters<typeof breaker.configure>[0]) => breaker.configure(config),
+      instance: () => breaker,
+    };
+  }
+
+  // ============================================================================
   // Plugin System
   // ============================================================================
 
@@ -300,11 +385,23 @@ export class RanaClient {
         ...config.cost_tracking,
       },
       rate_limit: config.rate_limit,
+      retry: {
+        enabled: config.retry?.enabled ?? true,
+        maxRetries: config.retry?.maxRetries ?? 3,
+        baseDelay: config.retry?.baseDelay ?? 1000,
+        maxDelay: config.retry?.maxDelay ?? 30000,
+        jitter: config.retry?.jitter ?? true,
+        backoffMultiplier: config.retry?.backoffMultiplier ?? 2,
+        retryOn: config.retry?.retryOn ?? ['rate_limit', 'timeout', 'server_error', 'network_error'],
+        ...config.retry,
+      },
+      queue: config.queue,
       logging: {
         level: config.logging?.level || 'info',
         enabled: config.logging?.enabled ?? true,
         ...config.logging,
       },
+      fallback: config.fallback,
     };
   }
 

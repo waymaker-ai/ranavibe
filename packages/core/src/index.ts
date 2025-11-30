@@ -86,6 +86,70 @@ export { CostTracker, BudgetStatus, CostTrackingConfig } from './cost-tracker';
 export { CacheManager } from './cache-legacy';
 export { ProviderManager } from './providers/manager';
 
+// Retry utilities
+export {
+  withRetry,
+  createRetryWrapper,
+  classifyError,
+  shouldRetryError,
+  calculateDelay,
+  getProviderRetryConfig,
+  DEFAULT_RETRY_CONFIG,
+} from './providers/retry';
+export type {
+  RetryConfig,
+  RetryableErrorType,
+  RetryMetadata,
+  RetryResult,
+} from './providers/retry';
+
+// Rate Limiting
+export {
+  RateLimiter,
+  createRateLimiter,
+} from './providers/rate-limiter';
+export type {
+  RateLimitConfig,
+  ProviderRateLimitConfig,
+  RateLimiterOptions,
+  RateLimitHeaders,
+} from './providers/rate-limiter';
+
+// Provider Fallback System
+export {
+  FallbackManager,
+  createFallbackManager,
+  FallbackConfig,
+  FallbackMetadata,
+  FallbackResponse,
+  ProviderRetryConfig,
+} from './providers/fallback';
+
+// Circuit Breaker
+export {
+  CircuitBreaker,
+  CircuitBreakerError,
+  createCircuitBreaker,
+} from './providers/circuit-breaker';
+export type {
+  CircuitBreakerConfig,
+  CircuitState,
+} from './providers/circuit-breaker';
+
+// Request Queue
+export {
+  RequestQueue,
+  createRequestQueue,
+} from './providers/queue';
+export type {
+  QueuePriority,
+  QueueConfig,
+  QueueStats,
+  QueueEvent,
+  QueueEventType,
+  QueuedRequest,
+} from './providers/queue';
+
 // Modern Cache System
 export {
   CacheProvider,

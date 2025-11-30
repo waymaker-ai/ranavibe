@@ -9,14 +9,73 @@ import type {
   RanaStreamChunk,
   LLMProvider,
 } from '../types';
-import { RanaAuthError, RanaError } from '../types';
+import { RanaAuthError, RanaError, RanaRateLimitError } from '../types';
+import { RequestQueue, QueueConfig, QueuePriority } from './queue';
+import { RateLimiter, type RateLimiterOptions } from './rate-limiter';
+import {
+  withRetry,
+  getProviderRetryConfig,
+  type RetryConfig,
+} from './retry';
+import { CircuitBreaker } from './circuit-breaker';
+
+export interface ProviderManagerConfig {
+  providers: Record<string, string>;
+  queue?: QueueConfig & {
+    enabled?: boolean;
+  };
+  rateLimit?: RateLimiterOptions & {
+    enabled?: boolean;
+  };
+  retry?: Partial<RetryConfig> & {
+    enabled?: boolean;
+  };
+  circuitBreaker?: any; // Circuit breaker config - using any for now to avoid circular dependency
+}
 
 export class ProviderManager {
   private apiKeys: Record<string, string>;
   private clients: Map<LLMProvider, any> = new Map();
+  private queue?: RequestQueue;
+  private queueEnabled: boolean = false;
+  private rateLimiter?: RateLimiter;
+  private rateLimitEnabled: boolean = false;
+  private retryConfig?: Partial<RetryConfig>;
+  private retryEnabled: boolean = true; // Enabled by default
+  private circuitBreaker: CircuitBreaker;
 
-  constructor(providers: Record<string, string>) {
-    this.apiKeys = providers;
+  constructor(config: Record<string, string> | ProviderManagerConfig) {
+    // Support both old API (just providers) and new API (with queue/rate limit config)
+    if ('providers' in config) {
+      // New API with full config
+      const fullConfig = config as ProviderManagerConfig;
+      this.apiKeys = fullConfig.providers;
+
+      if (fullConfig.queue?.enabled) {
+        this.queueEnabled = true;
+        this.queue = new RequestQueue({
+          ...fullConfig.queue,
+          executor: (provider, request) => this.executeChat(provider, request),
+        });
+      }
+
+      if (fullConfig.rateLimit?.enabled) {
+        this.rateLimitEnabled = true;
+        this.rateLimiter = new RateLimiter(fullConfig.rateLimit);
+      }
+
+      if (fullConfig.retry) {
+        this.retryEnabled = fullConfig.retry.enabled !== false; // Default to true
+        this.retryConfig = fullConfig.retry;
+      }
+
+      // Initialize circuit breaker
+      this.circuitBreaker = new CircuitBreaker(fullConfig.circuitBreaker);
+    } else {
+      // Old API - just providers
+      this.apiKeys = config as Record<string, string>;
+      this.circuitBreaker = new CircuitBreaker();
+    }
   }
 
   /**
@@ -24,34 +83,121 @@ export class ProviderManager {
    */
   async chat(
     provider: LLMProvider,
+    request: RanaChatRequest,
+    options?: {
+      priority?: QueuePriority;
+      timeout?: number;
+      bypassQueue?: boolean;
+    }
+  ): Promise<RanaChatResponse> {
+    // If queue is enabled and not bypassed, enqueue the request
+    if (this.queueEnabled && this.queue && !options?.bypassQueue) {
+      // Enqueue returns a promise that will be resolved when the request is processed
+      // The executor callback we passed in the constructor will handle the actual execution
+      return this.queue.enqueue(provider, request, {
+        priority: options?.priority,
+        timeout: options?.timeout,
+      });
+    }
+
+    // Direct execution (no queue or bypassed)
+    return this.executeChat(provider, request);
+  }
+
+  /**
+   * Execute a chat request directly (internal method)
+   */
+  private async executeChat(
+    provider: LLMProvider,
     request: RanaChatRequest
   ): Promise<RanaChatResponse> {
-    const client = await this.getClient(provider);
-    const startTime = Date.now();
-
-    try {
-      let response: any;
-
-      switch (provider) {
-        case 'anthropic':
-          response = await this.chatAnthropic(client, request);
-          break;
-        case 'openai':
-          response = await this.chatOpenAI(client, request);
-          break;
-        case 'google':
-          response = await this.chatGoogle(client, request);
-          break;
-        case 'ollama':
-          response = await this.chatOllama(client, request);
-          break;
-        default:
-          throw new RanaError(
-            `Provider ${provider} not yet implemented`,
-            'PROVIDER_NOT_IMPLEMENTED',
-            provider
-          );
+    // Wrap the entire execution in circuit breaker for resilience
+    return this.circuitBreaker.execute(provider, async () => {
+      // Acquire rate limit permission before making the request
+      if (this.rateLimitEnabled && this.rateLimiter) {
+        await this.rateLimiter.acquire(provider);
       }
+
+      const startTime = Date.now();
+
+    // Prepare retry configuration for this provider
+    const providerRetryDefaults = getProviderRetryConfig(provider);
+    const retryConfig: Partial<RetryConfig> = {
+      ...providerRetryDefaults,
+      ...this.retryConfig,
+      onRetry: (error, attempt, delay) => {
+        // Log retry attempts if configured
+        console.log(
+          `[RANA Retry] ${provider} - Attempt ${attempt} failed, retrying in ${delay}ms. Error: ${error.message}`
+        );
+        // Call user-provided callback if exists
+        if (this.retryConfig?.onRetry) {
+          this.retryConfig.onRetry(error, attempt, delay);
+        }
+      },
+    };
+
+    // Execute with or without retry based on configuration
+    const executeRequest = async () => {
+      const client = await this.getClient(provider);
+
+      try {
+        let response: any;
+        let rawResponse: any;
+
+        switch (provider) {
+          case 'anthropic':
+            response = await this.chatAnthropic(client, request);
+            rawResponse = response.raw;
+            break;
+          case 'openai':
+            response = await this.chatOpenAI(client, request);
+            rawResponse = response.raw;
+            break;
+          case 'google':
+            response = await this.chatGoogle(client, request);
+            rawResponse = response.raw;
+            break;
+          case 'ollama':
+            response = await this.chatOllama(client, request);
+            rawResponse = response.raw;
+            break;
+          default:
+            throw new RanaError(
+              `Provider ${provider} not yet implemented`,
+              'PROVIDER_NOT_IMPLEMENTED',
+              provider
+            );
+        }
+
+        // Parse rate limit headers if rate limiting is enabled
+        if (this.rateLimitEnabled && this.rateLimiter && rawResponse) {
+          this.parseRateLimitHeaders(provider, rawResponse);
+        }
+
+        return response;
+      } catch (error: any) {
+        // Handle rate limit errors
+        if (error.status === 429 || error.code === 'rate_limit_exceeded') {
+          // Parse rate limit info from error response
+          if (this.rateLimitEnabled && this.rateLimiter && error.headers) {
+            this.parseRateLimitHeaders(provider, error.headers);
+          }
+          throw new RanaRateLimitError(provider, error);
+        }
+        if (error.status === 401 || error.message?.includes('API key')) {
+          throw new RanaAuthError(provider, error);
+        }
+        throw error;
+      }
+    };
+
+    // Execute with retry if enabled
+    if (this.retryEnabled) {
+      const { result: response, metadata } = await withRetry(
+        executeRequest,
+        retryConfig
+      );
 
       const latency_ms = Date.now() - startTime;
 
@@ -60,13 +206,29 @@ export class ProviderManager {
         latency_ms,
         created_at: new Date(),
         cached: false,
+        // Include retry metadata if retries were attempted
+        ...(metadata.retryCount > 0 && {
+          retry: {
+            retryCount: metadata.retryCount,
+            totalRetryTime: metadata.totalRetryTime,
+            retryDelays: metadata.retryDelays,
+            lastRetryError: metadata.lastRetryError,
+          },
+        }),
       };
-    } catch (error: any) {
-      if (error.status === 401 || error.message?.includes('API key')) {
-        throw new RanaAuthError(provider, error);
-      }
-      throw error;
+    } else {
+      // Execute without retry
+      const response = await executeRequest();
+      const latency_ms = Date.now() - startTime;
+
+      return {
+        ...response,
+        latency_ms,
+        created_at: new Date(),
+        cached: false,
+      };
     }
+    }); // End circuit breaker execution
   }
 
   /**
@@ -348,5 +510,75 @@ export class ProviderManager {
       completion_cost,
       total_cost: prompt_cost + completion_cost,
     };
+  }
+
+  /**
+   * Get the request queue instance
+   */
+  getQueue(): RequestQueue | undefined {
+    return this.queue;
+  }
+
+  /**
+   * Get queue statistics
+   */
+  getQueueStats() {
+    return this.queue?.getStats();
+  }
+
+  /**
+   * Check if queue is enabled
+   */
+  isQueueEnabled(): boolean {
+    return this.queueEnabled;
+  }
+
+  /**
+   * Get circuit breaker instance for direct access
+   */
+  getCircuitBreaker(): CircuitBreaker {
+    return this.circuitBreaker;
+  }
+
+  /**
+   * Parse rate limit headers from provider responses
+   */
+  private parseRateLimitHeaders(provider: LLMProvider, response: any): void {
+    if (!this.rateLimiter) return;
+
+    // Try to extract headers from different response formats
+    let headers: Record<string, string | string[] | undefined> = {};
+
+    // Handle different response structures
+    if (response.headers) {
+      headers = response.headers;
+    } else if (response._headers) {
+      headers = response._headers;
+    } else if (response.response?.headers) {
+      headers = response.response.headers;
+    }
+
+    this.rateLimiter.parseRateLimitHeaders(provider, headers);
+  }
+
+  /**
+   * Get rate limit status for a provider
+   */
+  getRateLimitStatus(provider: LLMProvider) {
+    return this.rateLimiter?.getStatus(provider);
+  }
+
+  /**
+   * Check if rate limiting is enabled
+   */
+  isRateLimitEnabled(): boolean {
+    return this.rateLimitEnabled;
+  }
+
+  /**
+   * Get the rate limiter instance
+   */
+  getRateLimiter(): RateLimiter | undefined {
+    return this.rateLimiter;
   }
 }
