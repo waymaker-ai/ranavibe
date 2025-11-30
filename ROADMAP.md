@@ -47,12 +47,12 @@
 - [x] Request queuing
 
 ### 2.2 Observability (`@rana/observability`)
-- [ ] Built-in tracing dashboard
-- [ ] OpenTelemetry export
-- [ ] Request/response logging
-- [ ] Token usage analytics
-- [ ] Error tracking integration
-- [ ] Performance monitoring
+- [x] Built-in tracing dashboard
+- [x] OpenTelemetry export
+- [x] Request/response logging
+- [x] Token usage analytics
+- [x] Error tracking integration
+- [x] Performance monitoring
 
 ### 2.3 Security (`@rana/security`)
 - [ ] Prompt injection detection
