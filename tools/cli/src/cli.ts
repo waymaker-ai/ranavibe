@@ -929,6 +929,59 @@ program
   });
 
 // ============================================================================
+// DOCUMENTATION MANAGEMENT
+// AI collaboration and document health tools
+// ============================================================================
+
+// Docs Check - Document health
+program
+  .command('docs:check')
+  .description('Check document health and frontmatter')
+  .action(async () => {
+    const { docsCheckCommand } = await import('./commands/docs.js');
+    await docsCheckCommand();
+  });
+
+// Docs List - List all documents
+program
+  .command('docs:list')
+  .alias('docs')
+  .description('List all project documents with status')
+  .option('-a, --all', 'Include deprecated documents')
+  .action(async (options) => {
+    const { docsListCommand } = await import('./commands/docs.js');
+    await docsListCommand(options);
+  });
+
+// Docs Status - Project status summary
+program
+  .command('docs:status')
+  .description('Show project status summary')
+  .action(async () => {
+    const { docsStatusCommand } = await import('./commands/docs.js');
+    await docsStatusCommand();
+  });
+
+// Docs Archive - Archive deprecated docs
+program
+  .command('docs:archive')
+  .description('Archive deprecated documents')
+  .option('-d, --dry-run', 'Preview without making changes')
+  .action(async (options) => {
+    const { docsArchiveCommand } = await import('./commands/docs.js');
+    await docsArchiveCommand(options);
+  });
+
+// Docs Validate - Validate frontmatter
+program
+  .command('docs:validate')
+  .description('Validate document frontmatter')
+  .action(async () => {
+    const { docsValidateCommand } = await import('./commands/docs.js');
+    await docsValidateCommand();
+  });
+
+// ============================================================================
 // LEARNING & SCAFFOLDING
 // Rails-like developer experience
 // ============================================================================
