@@ -26,7 +26,7 @@
 - [x] Real-time cost tracking dashboard
 - [x] Budget limits with hard stops
 - [x] Cost alerts (Slack, email, webhook)
-- [ ] Cost optimization suggestions
+- [x] Cost optimization suggestions
 - [x] Per-request cost prediction
 - [x] Cost comparison between models
 

@@ -515,6 +515,26 @@ program
     await costCompare();
   });
 
+// Cost Optimize
+program
+  .command('cost:optimize')
+  .description('Get cost optimization suggestions based on usage')
+  .option('-a, --apply', 'Apply optimization suggestions')
+  .option('-d, --detailed', 'Show detailed analysis')
+  .action(async (options) => {
+    const { costOptimizeCommand } = await import('./commands/cost-optimize.js');
+    await costOptimizeCommand(options);
+  });
+
+// Cost Tips
+program
+  .command('cost:tips')
+  .description('Quick cost-saving tips')
+  .action(async () => {
+    const { costTipsCommand } = await import('./commands/cost-optimize.js');
+    await costTipsCommand();
+  });
+
 // ============================================================================
 // BUDGET ENFORCEMENT COMMANDS
 // Hard limits on AI spending
