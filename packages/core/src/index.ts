@@ -166,6 +166,51 @@ export type { RedisConfig, CacheType } from './cache';
 // Plugin helpers
 export { definePlugin } from './plugins/helpers';
 
+// Slack Plugin
+export {
+  SlackBot,
+  createSlackPlugin,
+  slackPlugin,
+} from './plugins/slack';
+export type {
+  SlackConfig,
+  SlackMessage,
+  SlackCommand,
+  SlackBlock,
+  SlackAttachment,
+  SlackInteraction,
+  MessageHandler,
+  CommandHandler,
+  InteractionHandler,
+  EventHandler,
+} from './plugins/slack';
+
+// Voice Plugin
+export {
+  VoicePlugin,
+  createVoicePlugin,
+  useVoicePlugin,
+  createAudioBuffer,
+  validateVoiceProvider,
+  getRecommendedSampleRate,
+  estimateAudioDuration,
+} from './plugins/voice';
+export type {
+  VoiceProvider,
+  AudioFormat,
+  VoiceQuality,
+  VADState,
+  VoiceConfig,
+  AudioBuffer,
+  TranscriptionResult,
+  SynthesisResult,
+  Voice,
+  VoiceSession,
+  VoiceSessionStats,
+  CustomVoiceProvider,
+  VADResult,
+} from './plugins/voice';
+
 // Config helpers
 export { defineConfig } from './config';
 
@@ -530,3 +575,63 @@ export type {
   LoggingMiddleware,
   LogContext,
 } from './observability';
+
+// Discord Plugin
+export {
+  DiscordPlugin,
+  createDiscordPlugin,
+} from './plugins/discord';
+export type {
+  DiscordPluginConfig,
+  DiscordBotConfig,
+  DiscordMessage,
+  DiscordChannel,
+  DiscordInteraction,
+  DiscordEmbed,
+  DiscordButton,
+  DiscordSlashCommand,
+  DiscordPresence,
+  DiscordRateLimitConfig,
+  DiscordMessageHandler,
+  DiscordCommandHandler,
+  DiscordButtonHandler,
+} from './plugins/discord';
+
+// Docs Plugin
+export {
+  DocsPlugin,
+  createDocsPlugin,
+} from './plugins/docs';
+export type {
+  DocsPluginConfig,
+  DocumentSource,
+  DocumentChunk,
+  SourceCitation,
+  DocsAnswer,
+  SourceType,
+  IngestionProgress,
+} from './plugins/docs';
+
+// Email Plugin
+export {
+  EmailPlugin,
+  createEmailPlugin,
+} from './plugins/email';
+export type {
+  EmailProvider,
+  EmailPriority,
+  EmailCategory,
+  EmailAddress,
+  EmailAttachment,
+  Email,
+  EmailClassification,
+  EmailSummary,
+  EmailReply,
+  IMAPConfig,
+  SMTPConfig,
+  GmailConfig,
+  OutlookConfig,
+  EmailFilter,
+  EmailPluginConfig,
+  EmailHandler,
+} from './plugins/email';

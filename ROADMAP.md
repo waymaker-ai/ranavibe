@@ -73,11 +73,11 @@
 *Build the plugin ecosystem*
 
 ### 3.1 Official Plugins
-- [ ] `@rana/slack` - Slack bot framework
-- [ ] `@rana/discord` - Discord integration
-- [ ] `@rana/voice` - Voice assistants
-- [ ] `@rana/email` - Email processing
-- [ ] `@rana/docs` - Documentation chatbot
+- [x] `@rana/slack` - Slack bot framework
+- [x] `@rana/discord` - Discord integration
+- [x] `@rana/voice` - Voice assistants
+- [x] `@rana/email` - Email processing
+- [x] `@rana/docs` - Documentation chatbot
 
 ### 3.2 Integrations
 - [ ] Hugging Face models
