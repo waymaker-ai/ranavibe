@@ -351,6 +351,72 @@ export {
   RequestResponseLogger,
   createLoggingMiddleware,
 } from './observability';
+
+// Security - Content Filtering, Audit Logging & Prompt Injection Detection
+export {
+  // Content Filtering
+  ContentFilter,
+  createContentFilter,
+  isContentSafe,
+  assertContentSafe,
+  ContentFilterError,
+  ContentBlockedError,
+  // Audit Logging
+  AuditLogger,
+  createAuditLogger,
+  getGlobalAuditLogger,
+  setGlobalAuditLogger,
+  hashApiKey,
+  detectPII,
+  detectInjectionAttempt,
+  // Prompt Injection Detection
+  PromptInjectionDetector,
+  createInjectionDetector,
+  detectInjection,
+  // PII Detection & Redaction
+  PIIDetector,
+  createPIIDetector,
+  detectPIIAdvanced,
+  redactPII,
+  maskPII,
+  validateCreditCard,
+  detectCreditCardType,
+} from './security';
+export type {
+  // Content Filtering Types
+  FilterAction,
+  FilterCategory,
+  FilterSeverity,
+  FilterViolation,
+  FilterResult,
+  FilterPattern,
+  ContentFilterConfig,
+  // Audit Logging Types
+  AuditEventType,
+  AuditOutcome,
+  SecurityEventSeverity,
+  AuditEntry,
+  SecurityEvent,
+  AccessPattern,
+  AuditLoggerConfig,
+  AuditDestination,
+  AuditStore,
+  AuditQueryFilter,
+  // Prompt Injection Detection Types
+  SensitivityLevel,
+  RiskLevel,
+  InjectionDetectionResult,
+  PromptInjectionDetectorConfig,
+  // PII Detection Types
+  PIIType,
+  PIIMode,
+  PIIRegion,
+  PIIDetection,
+  PIIResult,
+  CustomPattern,
+  PIIDetectorConfig,
+} from './security';
+
 export type {
   // Performance Monitoring Types
   LatencyMetrics,

@@ -55,12 +55,12 @@
 - [x] Performance monitoring
 
 ### 2.3 Security (`@rana/security`)
-- [ ] Prompt injection detection
-- [ ] PII detection and redaction
-- [ ] Content filtering
-- [ ] Audit logging
-- [ ] Rate limiting per user
-- [ ] API key rotation
+- [x] Prompt injection detection
+- [x] PII detection and redaction
+- [x] Content filtering
+- [x] Audit logging
+- [x] Rate limiting per user
+- [x] API key rotation
 
 ### 2.4 Memory & Context (`@rana/memory`)
 - [x] Sliding window memory
