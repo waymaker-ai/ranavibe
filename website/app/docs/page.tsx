@@ -5,7 +5,8 @@ import { motion } from 'framer-motion';
 import {
   Book, Zap, Package, Terminal, ArrowRight, GitCompare, BookOpen,
   Brain, Layers, Building2, Shield, Activity, FlaskConical,
-  Database, RefreshCw, Puzzle, Link2, Bot, DollarSign, Workflow, Settings
+  Database, RefreshCw, Puzzle, Link2, Bot, DollarSign, Workflow, Settings,
+  GraduationCap, HelpCircle
 } from 'lucide-react';
 
 const sections = [
@@ -117,6 +118,18 @@ const sections = [
     description: 'Providers, storage, security, and performance settings',
     href: '/docs/configuration',
   },
+  {
+    icon: GraduationCap,
+    title: 'Tutorials',
+    description: 'Step-by-step guides to build real-world AI apps',
+    href: '/docs/tutorials',
+  },
+  {
+    icon: HelpCircle,
+    title: 'Troubleshooting',
+    description: 'Common issues, FAQ, and getting help',
+    href: '/docs/troubleshooting',
+  },
 ];
 
 const resources = [
@@ -125,6 +138,12 @@ const resources = [
     title: 'Comparisons',
     description: 'See how RANA compares to LangChain, Vercel AI SDK, and more',
     href: '/compare',
+  },
+  {
+    icon: RefreshCw,
+    title: 'Migration Guide',
+    description: 'Migrate from LangChain, Vercel AI SDK, or OpenAI SDK',
+    href: '/docs/migration',
   },
   {
     icon: BookOpen,
