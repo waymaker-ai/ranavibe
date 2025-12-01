@@ -864,3 +864,103 @@ export type {
   MCPServerOptions,
   MCPClientOptions,
 } from './mcp';
+
+// ============================================================================
+// AI-Native Features (Phase 5.1)
+// ============================================================================
+
+// Prompt Optimizer
+export {
+  PromptOptimizer,
+  createPromptOptimizer,
+  getGlobalOptimizer,
+  optimizePrompt,
+  compressPrompt,
+} from './ai-native';
+export type {
+  OptimizationStrategy,
+  OptimizationGoal,
+  OptimizationResult,
+  FewShotExample,
+  PromptTemplate,
+  PromptVersion as OptimizerPromptVersion,
+  PromptOptimizerConfig,
+} from './ai-native';
+
+// Hallucination Detector
+export {
+  HallucinationDetector,
+  createHallucinationDetector,
+  getGlobalHallucinationDetector,
+  detectHallucinations,
+  hasHallucinations,
+} from './ai-native';
+export type {
+  HallucinationType,
+  SeverityLevel as HallucinationSeverity,
+  HallucinationInstance,
+  HallucinationResult,
+  GroundingContext,
+  EntityInfo as HallucinationEntityInfo,
+  HallucinationDetectorConfig,
+} from './ai-native';
+
+// Confidence Scorer
+export {
+  ConfidenceScorer,
+  createConfidenceScorer,
+  getGlobalConfidenceScorer,
+  scoreConfidence,
+  isConfident,
+} from './ai-native';
+export type {
+  ConfidenceLevel,
+  ConfidenceScore as AIConfidenceScore,
+  ConfidenceFactor,
+  ConsistencyCheckResult,
+  ConfidenceScorerConfig,
+} from './ai-native';
+
+// Fact Verifier
+export {
+  FactVerifier,
+  createFactVerifier,
+  getGlobalFactVerifier,
+  verifyFacts,
+  extractClaims,
+} from './ai-native';
+export type {
+  ClaimType,
+  VerificationStatus,
+  Claim,
+  VerificationSource,
+  VerificationEvidence,
+  ClaimVerification,
+  VerificationResult,
+  KnowledgeEntry,
+  FactVerifierConfig,
+} from './ai-native';
+
+// Quality Scorer
+export {
+  QualityScorer,
+  createQualityScorer,
+  getGlobalQualityScorer,
+  scoreQuality,
+  getQualityLevel,
+} from './ai-native';
+export type {
+  QualityDimension,
+  QualityLevel,
+  QualityScore,
+  QualityEvaluation,
+  QualityScorerConfig,
+} from './ai-native';
+
+// Comprehensive Analysis
+export {
+  analyzeResponse,
+  isTrustworthy,
+  isQualityResponse,
+} from './ai-native';
+export type { ComprehensiveAnalysis } from './ai-native';
