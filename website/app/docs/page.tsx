@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Book, Zap, Package, Terminal, ArrowRight, GitCompare, BookOpen } from 'lucide-react';
+import { Book, Zap, Package, Terminal, ArrowRight, GitCompare, BookOpen, Brain, Layers, Building2 } from 'lucide-react';
 
 const sections = [
   {
@@ -28,6 +28,24 @@ const sections = [
     title: 'API Reference',
     description: 'Full API documentation for all packages',
     href: '/docs/api',
+  },
+  {
+    icon: Brain,
+    title: 'AI-Native Features',
+    description: 'Hallucination detection, confidence scoring, fact verification',
+    href: '/docs/ai-native',
+  },
+  {
+    icon: Layers,
+    title: 'Multi-Modal',
+    description: 'Image, audio, and video understanding and generation',
+    href: '/docs/multi-modal',
+  },
+  {
+    icon: Building2,
+    title: 'Enterprise',
+    description: 'SSO, RBAC, compliance, self-hosted, and SLA support',
+    href: '/docs/enterprise',
   },
 ];
 
@@ -61,7 +79,7 @@ export default function DocsPage() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {sections.map((section, index) => (
             <motion.div
               key={section.title}
