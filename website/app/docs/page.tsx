@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Book, Zap, Package, Terminal, ArrowRight } from 'lucide-react';
+import { Book, Zap, Package, Terminal, ArrowRight, GitCompare, BookOpen } from 'lucide-react';
 
 const sections = [
   {
@@ -28,6 +28,21 @@ const sections = [
     title: 'API Reference',
     description: 'Full API documentation for all packages',
     href: '/docs/api',
+  },
+];
+
+const resources = [
+  {
+    icon: GitCompare,
+    title: 'Comparisons',
+    description: 'See how RANA compares to LangChain, Vercel AI SDK, and more',
+    href: '/compare',
+  },
+  {
+    icon: BookOpen,
+    title: 'Case Studies',
+    description: 'Real-world examples of teams using RANA in production',
+    href: '/case-studies',
   },
 ];
 
@@ -89,6 +104,37 @@ export default function DocsPage() {
             <div className="mt-2">npm install @rana/core @rana/helpers @rana/prompts @rana/rag</div>
             <div className="mt-4 text-foreground-secondary"># Or install the CLI globally</div>
             <div className="mt-2">npm install -g @rana/cli</div>
+          </div>
+        </motion.div>
+
+        {/* Additional Resources */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+          className="mt-16 max-w-4xl mx-auto"
+        >
+          <h2 className="text-2xl font-bold mb-6 text-center">Additional Resources</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {resources.map((resource, index) => (
+              <Link
+                key={resource.title}
+                href={resource.href}
+                className="card hover:border-foreground/20 group flex items-start gap-4"
+              >
+                <div className="p-3 rounded-lg bg-background-secondary group-hover:bg-gradient-subtle transition-colors">
+                  <resource.icon className="h-5 w-5" />
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-1 group-hover:text-gradient-from transition-colors">
+                    {resource.title}
+                  </h3>
+                  <p className="text-sm text-foreground-secondary">
+                    {resource.description}
+                  </p>
+                </div>
+              </Link>
+            ))}
           </div>
         </motion.div>
       </div>

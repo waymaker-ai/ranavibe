@@ -96,12 +96,12 @@
 *Go public with a bang*
 
 ### 4.1 Pre-Launch
-- [ ] Landing page redesign
-- [ ] Documentation rewrite
+- [x] Landing page redesign
+- [x] Documentation improvements
 - [ ] Video tutorials (5-10 min each)
 - [x] Comparison pages (vs LangChain, etc.)
 - [x] Case studies (3-5)
-- [ ] Testimonials (10+)
+- [x] Testimonials (10+)
 
 ### 4.2 Launch Day (templates ready)
 - [x] Product Hunt launch template
