@@ -1220,3 +1220,241 @@ export {
   initializeEnterprise,
 } from './enterprise';
 export type { EnterpriseConfig } from './enterprise';
+
+// ============================================================================
+// Model Router/Gateway (Phase 3.1)
+// ============================================================================
+
+export {
+  ModelRouter,
+  ModelRegistry,
+  createModelRouter,
+  createModelRegistry,
+  getGlobalRouter,
+  route,
+} from './router';
+export type {
+  RoutingStrategy,
+  TaskType,
+  ModelCapabilities,
+  ModelDefinition,
+  ModelPricing,
+  RoutingConstraints,
+  RoutingFeedback,
+  RoutingDecision,
+  RoutingRule,
+  ModelRouterConfig,
+} from './router';
+
+// ============================================================================
+// Agent Debugger (Phase 3.1)
+// ============================================================================
+
+export {
+  AgentDebugger,
+  createAgentDebugger,
+  getGlobalDebugger,
+  debug,
+} from './debugger';
+export type {
+  DebugEventType,
+  BreakpointType,
+  DebugEvent,
+  LLMRequestEvent,
+  LLMResponseEvent,
+  ToolCallEvent,
+  ToolResultEvent,
+  ThinkingEvent,
+  StateChangeEvent,
+  ErrorEvent,
+  Breakpoint,
+  StateSnapshot,
+  DebugSession,
+  DecisionTree,
+  DecisionNode,
+  TokenBreakdown,
+  ReplayOptions,
+  AgentDebuggerConfig,
+} from './debugger';
+
+// ============================================================================
+// Structured Output (Phase 3.1)
+// ============================================================================
+
+export {
+  StructuredOutput,
+  SchemaValidator,
+  createStructuredOutput,
+  createSchemaValidator,
+  generateStructured,
+  zodToJsonSchema,
+  jsonSchemaToTypeScript,
+} from './structured';
+export type {
+  SchemaType,
+  SchemaProperty,
+  SchemaDefinition,
+  ValidationError as StructuredValidationError,
+  ValidationResult as StructuredValidationResult,
+  PartialParseResult,
+  OutputFormat,
+  FormatOptions,
+  ExtractionField,
+  ExtractionSchema,
+  RetryStrategy as StructuredRetryStrategy,
+  RetryConfig as StructuredRetryConfig,
+  RetryResult as StructuredRetryResult,
+  StructuredOutputConfig,
+  GenerationRequest,
+  GenerationResult as StructuredGenerationResult,
+  ZodSchema,
+  ZodToJsonSchemaOptions,
+} from './structured';
+
+// ============================================================================
+// Fine-Tuning Pipeline (Phase 3.1)
+// ============================================================================
+
+export {
+  FineTuner,
+  createFineTuner,
+  prepareDataset,
+} from './finetuning';
+export type {
+  FineTuneProvider,
+  DatasetFormat,
+  JobStatus,
+  DatasetExample,
+  DatasetConfig,
+  Dataset,
+  TrainingConfig,
+  FineTuneJob,
+  ModelVersion,
+  FineTunerConfig,
+} from './finetuning';
+
+// ============================================================================
+// Collaboration (Prompt Versioning) (Phase 3.1)
+// ============================================================================
+
+export {
+  PromptLibrary,
+  createPromptLibrary,
+  getGlobalPromptLibrary,
+} from './collaboration';
+export type {
+  PromptStatus,
+  PromptMetadata,
+  PromptVersion as CollabPromptVersion,
+  Prompt,
+  PromptDiff,
+  ReviewComment,
+  ReviewRequest,
+  LibraryConfig,
+} from './collaboration';
+
+// ============================================================================
+// Edge/Offline Support (Phase 3.1)
+// ============================================================================
+
+export {
+  EdgeRuntime,
+  ModelManager,
+  HybridRuntime,
+  OfflineQueue,
+  createEdgeRuntime,
+  createModelManager,
+  createHybridRuntime,
+  createOfflineQueue,
+  getGlobalModelManager,
+  runLocal,
+} from './edge';
+export type {
+  EdgeBackend,
+  QuantizationType,
+  ExecutionProvider,
+  ModelInfo as EdgeModelInfo,
+  ONNXOptions,
+  LlamaCppOptions,
+  TransformersJsOptions,
+  EdgeRuntimeConfig,
+  GenerateOptions as EdgeGenerateOptions,
+  GenerateResult as EdgeGenerateResult,
+  StreamChunk as EdgeStreamChunk,
+  EmbeddingOptions as EdgeEmbeddingOptions,
+  EmbeddingResult as EdgeEmbeddingResult,
+  ModelDownloadProgress,
+  PrebuiltModel,
+  HybridConfig,
+  QueuedRequest as EdgeQueuedRequest,
+} from './edge';
+
+// ============================================================================
+// Real-time Voice (Phase 3.1)
+// ============================================================================
+
+export {
+  VoiceSession as RealtimeVoiceSession,
+  AudioRecorder,
+  AudioPlayer,
+  VoiceActivityDetector,
+  WebRTCManager,
+  createVoiceSession as createRealtimeVoiceSession,
+  createAudioRecorder,
+  createAudioPlayer,
+  createVAD,
+  createWebRTCManager,
+  getGlobalVoiceSession,
+  startVoiceChat,
+} from './realtime';
+export type {
+  VoiceProvider as RealtimeVoiceProvider,
+  Voice as RealtimeVoice,
+  AudioFormat as RealtimeAudioFormat,
+  ConnectionState,
+  TurnDetectionMode,
+  VoiceSessionConfig,
+  RTCConfigurationLite,
+  TranscriptEvent,
+  ResponseEvent,
+  FunctionCall as VoiceFunctionCall,
+  ConversationItem,
+  VoiceMetrics,
+  Tool as VoiceTool,
+  VADConfig,
+  WebRTCConfig,
+} from './realtime';
+
+// ============================================================================
+// Advanced RAG (Phase 3.1)
+// ============================================================================
+
+export {
+  AdvancedRAG,
+  SelfCorrectingRAG,
+  QueryOptimizer,
+  createAdvancedRAG,
+  createSelfCorrectingRAG,
+  createQueryOptimizer,
+  createMultiModalRetriever,
+  getGlobalAdvancedRAG,
+} from './rag-advanced';
+export type {
+  Modality,
+  VerificationStrategy,
+  CorrectionStrategy,
+  MultiModalDocument,
+  MultiModalChunk,
+  MultiModalQuery,
+  MultiModalResult,
+  MultiModalCitation,
+  EmbedderConfig,
+  AdvancedRAGConfig,
+  SelfCorrectingConfig,
+  SelfCorrectingQuery,
+  VerificationResult as RAGVerificationResult,
+  VerificationIssue,
+  CorrectionAttempt,
+  SelfCorrectingResult,
+  QueryOptimizerConfig,
+} from './rag-advanced';

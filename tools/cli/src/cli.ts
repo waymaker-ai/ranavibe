@@ -1103,6 +1103,446 @@ program
     await completionInstallCommand();
   });
 
+// ============================================================================
+// MODEL ROUTER COMMANDS (Phase 3.1)
+// Smart routing across LLM providers
+// ============================================================================
+
+// Router Status
+program
+  .command('router')
+  .alias('router:status')
+  .description('Show model router status and routing decisions')
+  .option('-v, --verbose', 'Show detailed routing history')
+  .action(async (options) => {
+    const { routerStatusCommand } = await import('./commands/router.js');
+    await routerStatusCommand(options);
+  });
+
+// Router Test
+program
+  .command('router:test')
+  .description('Test routing decisions with a sample request')
+  .option('-m, --message <message>', 'Test message to route')
+  .option('-t, --task <type>', 'Task type (chat, code, analysis, creative, data)')
+  .option('-c, --constraints <json>', 'Routing constraints as JSON')
+  .action(async (options) => {
+    const { routerTestCommand } = await import('./commands/router.js');
+    await routerTestCommand(options);
+  });
+
+// Router Compare
+program
+  .command('router:compare')
+  .description('Compare routing strategies')
+  .option('-s, --strategies <list>', 'Strategies to compare (comma-separated)')
+  .action(async (options) => {
+    const { routerCompareCommand } = await import('./commands/router.js');
+    await routerCompareCommand(options);
+  });
+
+// Router Config
+program
+  .command('router:config')
+  .description('Configure model router')
+  .option('--strategy <strategy>', 'Default strategy (cost, quality, latency, balanced, adaptive)')
+  .option('--fallback', 'Enable automatic fallback')
+  .option('--learning', 'Enable adaptive learning')
+  .action(async (options) => {
+    const { routerConfigCommand } = await import('./commands/router.js');
+    await routerConfigCommand(options);
+  });
+
+// ============================================================================
+// AGENT DEBUGGER COMMANDS (Phase 3.1)
+// Step-through debugging for AI agents
+// ============================================================================
+
+// Debug Agent
+program
+  .command('debug <agent>')
+  .description('Start debugging session for an agent')
+  .option('-b, --breakpoints <list>', 'Set breakpoints (comma-separated event types)')
+  .option('-s, --step', 'Step-by-step mode')
+  .option('-w, --watch <vars>', 'Watch variables (comma-separated)')
+  .action(async (agent, options) => {
+    const { debugAgentCommand } = await import('./commands/debug.js');
+    await debugAgentCommand(agent, options);
+  });
+
+// Debug Replay
+program
+  .command('debug:replay <session>')
+  .description('Replay a debug session')
+  .option('-s, --speed <speed>', 'Replay speed (0.5x, 1x, 2x, instant)', '1x')
+  .option('-p, --pause <step>', 'Pause at step number', parseInt)
+  .action(async (session, options) => {
+    const { debugReplayCommand } = await import('./commands/debug.js');
+    await debugReplayCommand(session, options);
+  });
+
+// Debug Visualize
+program
+  .command('debug:visualize <session>')
+  .alias('debug:viz')
+  .description('Visualize agent decision tree')
+  .option('-o, --output <file>', 'Output file (html, svg, mermaid)')
+  .option('-d, --depth <number>', 'Max tree depth', parseInt)
+  .action(async (session, options) => {
+    const { debugVisualizeCommand } = await import('./commands/debug.js');
+    await debugVisualizeCommand(session, options);
+  });
+
+// Debug Sessions
+program
+  .command('debug:sessions')
+  .description('List recent debug sessions')
+  .option('-n, --number <count>', 'Number of sessions to show', parseInt)
+  .action(async (options) => {
+    const { debugSessionsCommand } = await import('./commands/debug.js');
+    await debugSessionsCommand(options);
+  });
+
+// ============================================================================
+// STRUCTURED OUTPUT COMMANDS (Phase 3.1)
+// Schema validation and structured generation
+// ============================================================================
+
+// Structured Generate
+program
+  .command('structured <schema>')
+  .alias('gen:struct')
+  .description('Generate structured output from a schema')
+  .option('-p, --prompt <prompt>', 'Generation prompt')
+  .option('-m, --model <model>', 'Model to use')
+  .option('-r, --retries <count>', 'Max retries for validation', parseInt)
+  .option('-o, --output <file>', 'Output file')
+  .action(async (schema, options) => {
+    const { structuredGenerateCommand } = await import('./commands/structured.js');
+    await structuredGenerateCommand(schema, options);
+  });
+
+// Structured Validate
+program
+  .command('structured:validate <file>')
+  .description('Validate data against a schema')
+  .option('-s, --schema <schema>', 'Schema file (JSON Schema or Zod)')
+  .option('-p, --partial', 'Allow partial matches')
+  .action(async (file, options) => {
+    const { structuredValidateCommand } = await import('./commands/structured.js');
+    await structuredValidateCommand(file, options);
+  });
+
+// Structured Schema
+program
+  .command('structured:schema <file>')
+  .description('Generate schema from sample data')
+  .option('-o, --output <format>', 'Output format (jsonschema, zod, typescript)', 'jsonschema')
+  .action(async (file, options) => {
+    const { structuredSchemaCommand } = await import('./commands/structured.js');
+    await structuredSchemaCommand(file, options);
+  });
+
+// ============================================================================
+// FINE-TUNING COMMANDS (Phase 3.1)
+// Dataset preparation and model training
+// ============================================================================
+
+// Fine-tune Start
+program
+  .command('finetune <dataset>')
+  .alias('ft')
+  .description('Start a fine-tuning job')
+  .option('-m, --model <model>', 'Base model to fine-tune', 'gpt-4o-mini')
+  .option('-p, --provider <provider>', 'Provider (openai, anthropic, together)', 'openai')
+  .option('-e, --epochs <count>', 'Number of epochs', parseInt)
+  .option('-s, --suffix <suffix>', 'Model name suffix')
+  .action(async (dataset, options) => {
+    const { finetuneStartCommand } = await import('./commands/finetune.js');
+    await finetuneStartCommand(dataset, options);
+  });
+
+// Fine-tune Status
+program
+  .command('finetune:status [jobId]')
+  .alias('ft:status')
+  .description('Check fine-tuning job status')
+  .option('-w, --watch', 'Watch mode - auto-refresh status')
+  .action(async (jobId, options) => {
+    const { finetuneStatusCommand } = await import('./commands/finetune.js');
+    await finetuneStatusCommand(jobId, options);
+  });
+
+// Fine-tune Datasets
+program
+  .command('finetune:datasets')
+  .alias('ft:data')
+  .description('List and manage fine-tuning datasets')
+  .option('-v, --validate', 'Validate datasets')
+  .action(async (options) => {
+    const { fineTuneListCommand } = await import('./commands/finetune.js');
+    await fineTuneListCommand(options);
+  });
+
+// Fine-tune Prepare
+program
+  .command('finetune:prepare <source>')
+  .alias('ft:prep')
+  .description('Prepare a dataset for fine-tuning')
+  .option('-f, --format <format>', 'Format (chat, completion, instruction)', 'chat')
+  .option('-s, --split <ratio>', 'Train/validation split ratio', '0.9')
+  .option('-o, --output <file>', 'Output file')
+  .action(async (source, options) => {
+    const { fineTunePrepareCommand } = await import('./commands/finetune.js');
+    await fineTunePrepareCommand(source, options);
+  });
+
+// Fine-tune Compare
+program
+  .command('finetune:compare <versions>')
+  .alias('ft:cmp')
+  .description('Compare fine-tuned model versions')
+  .option('-p, --prompts <file>', 'Test prompts file')
+  .action(async (versions, options) => {
+    const { finetuneCompareCommand } = await import('./commands/finetune.js');
+    await finetuneCompareCommand(versions, options);
+  });
+
+// ============================================================================
+// PROMPT VERSIONING COMMANDS (Phase 3.1)
+// Git-like prompt collaboration
+// ============================================================================
+
+// Prompt Version
+program
+  .command('prompt:version <id>')
+  .alias('prompt:v')
+  .description('Show prompt version history')
+  .option('-d, --diff <versions>', 'Show diff between versions (e.g., "1:2")')
+  .action(async (id, options) => {
+    const { promptVersionCommand } = await import('./commands/prompt-collab.js');
+    await promptVersionCommand(id, options);
+  });
+
+// Prompt Commit
+program
+  .command('prompt:commit <id>')
+  .description('Commit prompt changes with message')
+  .option('-m, --message <message>', 'Commit message')
+  .action(async (id, options) => {
+    const { promptCommitCommand } = await import('./commands/prompt-collab.js');
+    await promptCommitCommand(id, options);
+  });
+
+// Prompt Review
+program
+  .command('prompt:review <id>')
+  .description('Request or complete a prompt review')
+  .option('-r, --reviewers <list>', 'Reviewers (comma-separated)')
+  .option('-a, --approve', 'Approve the prompt')
+  .option('-c, --comment <text>', 'Add review comment')
+  .action(async (id, options) => {
+    const { promptReviewCommand } = await import('./commands/prompt-collab.js');
+    await promptReviewCommand(id, options);
+  });
+
+// Prompt Publish
+program
+  .command('prompt:publish <id>')
+  .description('Publish a prompt version to production')
+  .option('-v, --version <number>', 'Version to publish', parseInt)
+  .action(async (id, options) => {
+    const { promptPublishCommand } = await import('./commands/prompt-collab.js');
+    await promptPublishCommand(id, options);
+  });
+
+// Prompt Rollback
+program
+  .command('prompt:rollback <id>')
+  .description('Rollback to a previous prompt version')
+  .option('-v, --version <number>', 'Version to rollback to', parseInt)
+  .action(async (id, options) => {
+    const { promptRollbackCommand } = await import('./commands/prompt-collab.js');
+    await promptRollbackCommand(id, options);
+  });
+
+// ============================================================================
+// EDGE/OFFLINE COMMANDS (Phase 3.1)
+// Local model execution with ONNX and llama.cpp
+// ============================================================================
+
+// Edge Status
+program
+  .command('edge')
+  .alias('edge:status')
+  .description('Show edge runtime status and loaded models')
+  .action(async () => {
+    const { edgeStatusCommand } = await import('./commands/edge.js');
+    await edgeStatusCommand();
+  });
+
+// Edge Models
+program
+  .command('edge:models')
+  .description('List available edge models')
+  .option('-i, --installed', 'Show only installed models')
+  .action(async (options) => {
+    const { edgeModelsCommand } = await import('./commands/edge.js');
+    await edgeModelsCommand(options);
+  });
+
+// Edge Download
+program
+  .command('edge:download <model>')
+  .alias('edge:pull')
+  .description('Download a model for edge inference')
+  .option('-q, --quantization <type>', 'Quantization type (q4, q8, f16)')
+  .action(async (model, options) => {
+    const { edgeDownloadCommand } = await import('./commands/edge.js');
+    await edgeDownloadCommand(model, options);
+  });
+
+// Edge Run
+program
+  .command('edge:run <model>')
+  .description('Run inference with an edge model')
+  .option('-p, --prompt <prompt>', 'Input prompt')
+  .option('-f, --file <file>', 'Input from file')
+  .option('-t, --tokens <count>', 'Max tokens', parseInt)
+  .option('-s, --stream', 'Stream output')
+  .action(async (model, options) => {
+    const { edgeRunCommand } = await import('./commands/edge.js');
+    await edgeRunCommand(model, options);
+  });
+
+// Edge Benchmark
+program
+  .command('edge:benchmark <model>')
+  .alias('edge:bench')
+  .description('Benchmark edge model performance')
+  .option('-i, --iterations <count>', 'Number of iterations', parseInt)
+  .action(async (model, options) => {
+    const { edgeBenchmarkCommand } = await import('./commands/edge.js');
+    await edgeBenchmarkCommand(model, options);
+  });
+
+// ============================================================================
+// REAL-TIME VOICE COMMANDS (Phase 3.1)
+// Voice conversations with AI
+// ============================================================================
+
+// Voice Start
+program
+  .command('voice')
+  .alias('voice:start')
+  .description('Start a voice conversation with AI')
+  .option('-m, --model <model>', 'Model to use (gpt-4o-realtime-preview)')
+  .option('-v, --voice <voice>', 'Voice (alloy, echo, nova, shimmer)', 'alloy')
+  .option('-p, --push-to-talk', 'Use push-to-talk mode')
+  .action(async (options) => {
+    const { voiceStartCommand } = await import('./commands/voice.js');
+    await voiceStartCommand(options);
+  });
+
+// Voice Test
+program
+  .command('voice:test')
+  .description('Test microphone and audio setup')
+  .action(async () => {
+    const { voiceTestCommand } = await import('./commands/voice.js');
+    await voiceTestCommand();
+  });
+
+// Voice Transcribe
+program
+  .command('voice:transcribe <file>')
+  .description('Transcribe an audio file')
+  .option('-m, --model <model>', 'Transcription model', 'whisper-1')
+  .option('-l, --language <lang>', 'Language code')
+  .option('-f, --format <format>', 'Output format (text, srt, vtt)', 'text')
+  .option('-o, --output <file>', 'Output file')
+  .action(async (file, options) => {
+    const { voiceTranscribeCommand } = await import('./commands/voice.js');
+    await voiceTranscribeCommand(file, options);
+  });
+
+// Voice Speak
+program
+  .command('voice:speak <text>')
+  .alias('tts')
+  .description('Convert text to speech')
+  .option('-v, --voice <voice>', 'Voice to use', 'alloy')
+  .option('-m, --model <model>', 'TTS model', 'tts-1')
+  .option('-o, --output <file>', 'Output file')
+  .option('-p, --play', 'Play audio immediately')
+  .action(async (text, options) => {
+    const { voiceSpeakCommand } = await import('./commands/voice.js');
+    await voiceSpeakCommand(text, options);
+  });
+
+// ============================================================================
+// ADVANCED RAG COMMANDS (Phase 3.1)
+// Multi-modal RAG and self-correcting retrieval
+// ============================================================================
+
+// RAG Index
+program
+  .command('rag:index <source>')
+  .description('Index documents for RAG')
+  .option('-t, --type <type>', 'Source type (folder, file, url, github)')
+  .option('-c, --chunker <type>', 'Chunker (semantic, recursive, markdown)', 'semantic')
+  .option('-m, --modalities <list>', 'Modalities (text, image, table)', 'text')
+  .action(async (source, options) => {
+    const { ragIndexCommand } = await import('./commands/rag.js');
+    await ragIndexCommand(source, options);
+  });
+
+// RAG Query
+program
+  .command('rag:query <question>')
+  .alias('rag')
+  .description('Query your indexed documents')
+  .option('-k, --topk <count>', 'Number of results', parseInt)
+  .option('-v, --verify', 'Enable answer verification')
+  .option('-c, --citations', 'Include citations')
+  .option('-i, --images', 'Include images in results')
+  .action(async (question, options) => {
+    const { ragQueryCommand } = await import('./commands/rag.js');
+    await ragQueryCommand(question, options);
+  });
+
+// RAG Status
+program
+  .command('rag:status')
+  .description('Show RAG index status')
+  .action(async () => {
+    const { ragStatusCommand } = await import('./commands/rag.js');
+    await ragStatusCommand();
+  });
+
+// RAG Eval
+program
+  .command('rag:eval <testset>')
+  .description('Evaluate RAG performance')
+  .option('-m, --metrics <list>', 'Metrics (relevance, faithfulness, answer)', 'all')
+  .action(async (testset, options) => {
+    const { ragEvalCommand } = await import('./commands/rag.js');
+    await ragEvalCommand(testset, options);
+  });
+
+// RAG Config
+program
+  .command('rag:config')
+  .description('Configure RAG pipeline')
+  .option('--retriever <type>', 'Retriever type (vector, hybrid, multi-vector)')
+  .option('--reranker <type>', 'Reranker type (cross-encoder, llm, diversity)')
+  .option('--synthesizer <type>', 'Synthesizer type (refine, tree-summarize, compact)')
+  .option('--self-correct', 'Enable self-correcting RAG')
+  .action(async (options) => {
+    const { ragConfigCommand } = await import('./commands/rag.js');
+    await ragConfigCommand(options);
+  });
+
 // Show banner before help
 program.on('--help', () => {
   console.log(banner);

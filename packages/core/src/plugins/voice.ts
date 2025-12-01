@@ -657,7 +657,7 @@ export class VoicePlugin {
       // Node.js Buffer
       audioData = new Uint8Array(audio.data as any);
     }
-    const blob = new Blob([audioData], { type: audio.mimeType || 'audio/wav' });
+    const blob = new Blob([audioData as unknown as BlobPart], { type: audio.mimeType || 'audio/wav' });
     formData.append('file', blob, `audio.${audio.format}`);
     formData.append('model', 'whisper-1');
 
