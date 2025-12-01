@@ -135,11 +135,11 @@
 - [x] Video understanding
 
 ### 5.3 Enterprise
-- [ ] SSO/SAML
-- [ ] Role-based access
-- [ ] Compliance reporting
-- [ ] Self-hosted option
-- [ ] SLA support
+- [x] SSO/SAML
+- [x] Role-based access
+- [x] Compliance reporting
+- [x] Self-hosted option
+- [x] SLA support
 
 ---
 

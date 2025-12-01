@@ -1095,3 +1095,128 @@ export {
   getGlobalMultiModal,
 } from './multi-modal';
 export type { MultiModalConfig } from './multi-modal';
+
+// ============================================================================
+// Enterprise Features (Phase 5.3)
+// ============================================================================
+
+// SSO/SAML
+export {
+  SSOManager,
+  SSOMemoryStorage,
+  createSSOManager,
+} from './enterprise';
+export type {
+  SSOProvider,
+  IdentityProvider,
+  SAMLConfig,
+  OIDCConfig,
+  SSOUser,
+  SSOSession,
+  AuthenticationResult,
+  SSOProviderConfig,
+  SSOManagerConfig,
+  SSOStorageAdapter,
+} from './enterprise';
+
+// RBAC
+export {
+  RBACManager,
+  MemoryRBACStorage,
+  createRBACManager,
+  SYSTEM_ROLES,
+} from './enterprise';
+export type {
+  Permission,
+  ResourceType,
+  Action as RBACAction,
+  Role,
+  Policy,
+  PolicyCondition,
+  UserRoleAssignment,
+  AccessCheckResult,
+  RBACContext,
+  RBACAuditLogEntry,
+  RBACConfig,
+  RBACStorageAdapter,
+} from './enterprise';
+
+// Compliance
+export {
+  ComplianceManager,
+  MemoryComplianceStorage,
+  createComplianceManager,
+} from './enterprise';
+export type {
+  ComplianceStandard,
+  DataCategory,
+  RetentionAction,
+  AuditEvent,
+  DataInventoryItem,
+  RetentionPolicy,
+  DataSubjectRequest,
+  ComplianceReport,
+  ComplianceControl,
+  ComplianceFinding,
+  ComplianceManagerConfig,
+  ComplianceStorageAdapter,
+  AuditQuery,
+} from './enterprise';
+
+// Self-Hosted
+export {
+  SelfHostedManager,
+  createSelfHostedManager,
+  createMinimalConfig,
+  createAirGappedConfig,
+} from './enterprise';
+export type {
+  DeploymentMode,
+  ComponentStatus,
+  DeploymentConfig,
+  ComponentConfig,
+  NetworkingConfig,
+  StorageConfig as SelfHostedStorageConfig,
+  SecurityConfig,
+  TelemetryConfig as SelfHostedTelemetryConfig,
+  TelemetryExporter,
+  ModelEndpoint,
+  VectorStoreEndpoint,
+  HealthStatus,
+  SelfHostedConfig,
+} from './enterprise';
+
+// SLA Support
+export {
+  SLAManager,
+  MemorySLAStorage,
+  createSLAManager,
+  SLA_TEMPLATES,
+} from './enterprise';
+export type {
+  SLOType,
+  TimeWindow as SLATimeWindow,
+  AlertSeverity,
+  SLODefinition,
+  SLOStatus,
+  SLADefinition,
+  SLAPenalty,
+  SLAReport,
+  SLABreach,
+  AppliedPenalty,
+  MetricDataPoint,
+  AlertRule,
+  AlertChannel,
+  Alert as SLAAlert,
+  SLAManagerConfig,
+  SLAStorageAdapter,
+} from './enterprise';
+
+// Unified Enterprise
+export {
+  Enterprise,
+  createEnterprise,
+  getGlobalEnterprise,
+  initializeEnterprise,
+} from './enterprise';
+export type { EnterpriseConfig } from './enterprise';
