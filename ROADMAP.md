@@ -128,11 +128,11 @@
 - [x] Response quality scoring
 
 ### 5.2 Multi-Modal
-- [ ] Image understanding
-- [ ] Image generation
-- [ ] Audio transcription
-- [ ] Text-to-speech
-- [ ] Video understanding
+- [x] Image understanding
+- [x] Image generation
+- [x] Audio transcription
+- [x] Text-to-speech
+- [x] Video understanding
 
 ### 5.3 Enterprise
 - [ ] SSO/SAML

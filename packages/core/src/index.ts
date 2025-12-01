@@ -964,3 +964,134 @@ export {
   isQualityResponse,
 } from './ai-native';
 export type { ComprehensiveAnalysis } from './ai-native';
+
+// ============================================================================
+// Multi-Modal Features (Phase 5.2)
+// ============================================================================
+
+// Image Understanding
+export {
+  ImageUnderstanding,
+  createImageUnderstanding,
+  getGlobalImageUnderstanding,
+  analyzeImage,
+  askAboutImage,
+  extractTextFromImage,
+} from './multi-modal';
+export type {
+  ImageBoundingBox,
+  DetectedObject,
+  SceneDescription,
+  ExtractedText,
+  ImageClassification,
+  ImageAnalysisResult,
+  VisualQAResult,
+  ImageUnderstandingConfig,
+  ImageInput,
+} from './multi-modal';
+
+// Image Generation
+export {
+  ImageGenerator,
+  createImageGenerator,
+  getGlobalImageGenerator,
+  generateImage,
+  generateSingleImage,
+  editImage,
+  upscaleImage,
+} from './multi-modal';
+export type {
+  ImageSize,
+  ImageQuality as ImageGenQuality,
+  ImageStyle,
+  OutputFormat as ImageOutputFormat,
+  GeneratedImage,
+  GenerationOptions as ImageGenerationOptions,
+  EditOptions as ImageEditOptions,
+  VariationOptions,
+  UpscaleOptions,
+  StyleTransferOptions,
+  ImageGenerationConfig,
+} from './multi-modal';
+
+// Audio Transcription
+export {
+  AudioTranscriber,
+  RealtimeTranscriptionSession,
+  createAudioTranscriber,
+  getGlobalAudioTranscriber,
+  transcribeAudio,
+  transcribeToText,
+  transcribeToSRT,
+  transcribeToVTT,
+} from './multi-modal';
+export type {
+  AudioFormat as SpeechAudioFormat,
+  TranscriptionModel,
+  Word,
+  Segment,
+  Speaker as TranscriptionSpeaker,
+  TranscriptionResult as SpeechTranscriptionResult,
+  TranscriptionOptions,
+  RealtimeTranscriptionOptions,
+  TranscriptionEvent,
+  TranscriptionEventHandler,
+  AudioTranscriptionConfig,
+  AudioInput,
+} from './multi-modal';
+
+// Text-to-Speech
+export {
+  TextToSpeech,
+  createTextToSpeech,
+  getGlobalTextToSpeech,
+  speak,
+  speakToFile,
+  getVoices,
+  speakStream,
+} from './multi-modal';
+export type {
+  VoiceGender,
+  TTSAudioQuality,
+  OutputAudioFormat,
+  Voice as TTSVoice,
+  SpeechOptions,
+  SpeechResult,
+  SSMLOptions,
+  VoiceCloningOptions,
+  ClonedVoice,
+  TextToSpeechConfig,
+} from './multi-modal';
+
+// Video Understanding
+export {
+  VideoUnderstanding,
+  createVideoUnderstanding,
+  getGlobalVideoUnderstanding,
+  analyzeVideo,
+  askAboutVideo,
+  searchVideo,
+  summarizeVideo,
+  transcribeVideo,
+} from './multi-modal';
+export type {
+  Frame,
+  VideoBoundingBox,
+  TrackedObject,
+  Scene,
+  Action,
+  VideoMetadata,
+  VideoAnalysisResult,
+  VideoQAResult,
+  VideoSearchResult,
+  VideoUnderstandingConfig,
+  VideoInput,
+} from './multi-modal';
+
+// Unified Multi-Modal
+export {
+  MultiModal,
+  createMultiModal,
+  getGlobalMultiModal,
+} from './multi-modal';
+export type { MultiModalConfig } from './multi-modal';
