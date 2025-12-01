@@ -2,7 +2,11 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Book, Zap, Package, Terminal, ArrowRight, GitCompare, BookOpen, Brain, Layers, Building2 } from 'lucide-react';
+import {
+  Book, Zap, Package, Terminal, ArrowRight, GitCompare, BookOpen,
+  Brain, Layers, Building2, Shield, Activity, FlaskConical,
+  Database, RefreshCw, Puzzle, Link2
+} from 'lucide-react';
 
 const sections = [
   {
@@ -47,6 +51,48 @@ const sections = [
     description: 'SSO, RBAC, compliance, self-hosted, and SLA support',
     href: '/docs/enterprise',
   },
+  {
+    icon: Shield,
+    title: 'Security',
+    description: 'Prompt injection detection, PII redaction, rate limiting',
+    href: '/docs/security',
+  },
+  {
+    icon: Activity,
+    title: 'Observability',
+    description: 'Tracing, metrics, logging, and OpenTelemetry support',
+    href: '/docs/observability',
+  },
+  {
+    icon: FlaskConical,
+    title: 'Testing',
+    description: 'Semantic matching, statistical assertions, cost tracking',
+    href: '/docs/testing',
+  },
+  {
+    icon: RefreshCw,
+    title: 'Reliability',
+    description: 'Retries, circuit breakers, fallbacks, health checks',
+    href: '/docs/reliability',
+  },
+  {
+    icon: Database,
+    title: 'Memory & Context',
+    description: 'Conversation memory, semantic search, compression',
+    href: '/docs/memory',
+  },
+  {
+    icon: Puzzle,
+    title: 'Plugins',
+    description: 'Slack, Discord, voice, email, and document processing',
+    href: '/docs/plugins',
+  },
+  {
+    icon: Link2,
+    title: 'Integrations',
+    description: 'Hugging Face, Supabase, W&B, Sentry, MCP support',
+    href: '/docs/integrations',
+  },
 ];
 
 const resources = [
@@ -79,7 +125,7 @@ export default function DocsPage() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {sections.map((section, index) => (
             <motion.div
               key={section.title}
