@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import {
   Book, Zap, Package, Terminal, ArrowRight, GitCompare, BookOpen,
   Brain, Layers, Building2, Shield, Activity, FlaskConical,
-  Database, RefreshCw, Puzzle, Link2
+  Database, RefreshCw, Puzzle, Link2, Bot, DollarSign, Workflow, Settings
 } from 'lucide-react';
 
 const sections = [
@@ -20,6 +20,18 @@ const sections = [
     title: 'Packages',
     description: 'Learn about @rana/helpers, @rana/prompts, and @rana/rag',
     href: '/docs/packages',
+  },
+  {
+    icon: Bot,
+    title: 'Agents',
+    description: 'Build autonomous AI agents with tools and memory',
+    href: '/docs/agents',
+  },
+  {
+    icon: Workflow,
+    title: 'Workflows',
+    description: 'Multi-step pipelines with branching and parallelism',
+    href: '/docs/workflows',
   },
   {
     icon: Terminal,
@@ -82,6 +94,12 @@ const sections = [
     href: '/docs/memory',
   },
   {
+    icon: DollarSign,
+    title: 'Cost Management',
+    description: 'Track, optimize, and control AI spending',
+    href: '/docs/cost-management',
+  },
+  {
     icon: Puzzle,
     title: 'Plugins',
     description: 'Slack, Discord, voice, email, and document processing',
@@ -92,6 +110,12 @@ const sections = [
     title: 'Integrations',
     description: 'Hugging Face, Supabase, W&B, Sentry, MCP support',
     href: '/docs/integrations',
+  },
+  {
+    icon: Settings,
+    title: 'Configuration',
+    description: 'Providers, storage, security, and performance settings',
+    href: '/docs/configuration',
   },
 ];
 
