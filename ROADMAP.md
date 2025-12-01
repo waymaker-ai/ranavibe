@@ -99,17 +99,17 @@
 - [ ] Landing page redesign
 - [ ] Documentation rewrite
 - [ ] Video tutorials (5-10 min each)
-- [ ] Comparison pages (vs LangChain, etc.)
-- [ ] Case studies (3-5)
+- [x] Comparison pages (vs LangChain, etc.)
+- [x] Case studies (3-5)
 - [ ] Testimonials (10+)
 
-### 4.2 Launch Day
-- [ ] Product Hunt launch
-- [ ] Hacker News "Show HN"
-- [ ] Twitter/X announcement
-- [ ] Reddit (r/programming, r/MachineLearning)
-- [ ] Dev.to article
-- [ ] YouTube video
+### 4.2 Launch Day (templates ready)
+- [x] Product Hunt launch template
+- [x] Hacker News "Show HN" template
+- [x] Twitter/X announcement thread
+- [x] Reddit posts (r/programming, r/MachineLearning, r/typescript, r/webdev)
+- [x] Dev.to article
+- [x] YouTube video script
 
 ### 4.3 Post-Launch
 - [ ] Respond to all feedback
