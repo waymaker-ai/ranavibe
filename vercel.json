@@ -1,6 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "installCommand": "pnpm install --no-frozen-lockfile --filter=@rana/web --filter=@rana/ui --filter=@rana/ui-cli",
-  "buildCommand": "cd apps/web && pnpm run build",
-  "outputDirectory": "apps/web/.next"
+  "buildCommand": "pnpm run build --filter=@rana/web",
+  "installCommand": "pnpm install"
 }
