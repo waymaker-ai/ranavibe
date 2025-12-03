@@ -254,16 +254,26 @@ export default function Home() {
       <footer className="border-t border-gray-200 dark:border-gray-800 py-12">
         <div className="container mx-auto px-4 text-center text-gray-600 dark:text-gray-400">
           <p className="mb-4">
-            Built by{' '}
+            Created with ❤️ by{' '}
+            <a
+              href="https://betr.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:underline"
+            >
+              betr.ai
+            </a>
+            {' '}and{' '}
             <a
               href="https://waymaker.cx"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
-              Waymaker AI
+              waymaker.cx
             </a>
           </p>
+          <p className="mb-4 text-sm">With special support from the team</p>
           <div className="flex gap-6 justify-center">
             <a href="https://github.com/waymaker-ai/ranavibe" className="hover:text-blue-600">
               GitHub
