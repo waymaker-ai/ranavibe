@@ -1,0 +1,79 @@
+import { GradientButton } from '@rana/ui'
+
+# Gradient Button
+
+Beautiful button component with gradient backgrounds and multiple variants.
+
+## Installation
+
+```bash
+npx @rana/ui-cli add gradient-button
+```
+
+## Usage
+
+```tsx
+import { GradientButton } from '@/components/ui/gradient-button'
+
+export default function Example() {
+  return (
+    <GradientButton variant="purple">
+      Click me
+    </GradientButton>
+  )
+}
+```
+
+## Examples
+
+### Variants
+
+<div className="mt-6 flex flex-wrap gap-4">
+  <GradientButton variant="purple">Purple</GradientButton>
+  <GradientButton variant="orange">Orange</GradientButton>
+  <GradientButton variant="blue">Blue</GradientButton>
+  <GradientButton variant="green">Green</GradientButton>
+  <GradientButton variant="outline">Outline</GradientButton>
+  <GradientButton variant="ghost">Ghost</GradientButton>
+</div>
+
+### Sizes
+
+<div className="mt-6 flex flex-wrap items-center gap-4">
+  <GradientButton size="sm">Small</GradientButton>
+  <GradientButton size="md">Medium</GradientButton>
+  <GradientButton size="lg">Large</GradientButton>
+  <GradientButton size="xl">Extra Large</GradientButton>
+</div>
+
+### With Animation
+
+<div className="mt-6 flex flex-wrap gap-4">
+  <GradientButton animation="glow">Glow Effect</GradientButton>
+  <GradientButton animation="pulse">Pulse</GradientButton>
+</div>
+
+### Disabled State
+
+<div className="mt-6">
+  <GradientButton disabled>Disabled Button</GradientButton>
+</div>
+
+## API Reference
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `'purple' \| 'orange' \| 'blue' \| 'green' \| 'outline' \| 'ghost'` | `'purple'` | Button style variant |
+| `size` | `'sm' \| 'md' \| 'lg' \| 'xl' \| 'icon'` | `'md'` | Button size |
+| `animation` | `'none' \| 'pulse' \| 'bounce' \| 'glow'` | `'none'` | Animation effect |
+| `disabled` | `boolean` | `false` | Disable button |
+
+## Accessibility
+
+- Proper button semantics
+- Focus visible states
+- Keyboard accessible
+- Disabled state handling
+- WCAG 2.1 AA compliant

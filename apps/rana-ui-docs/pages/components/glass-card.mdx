@@ -1,0 +1,107 @@
+import { GlassCard, GlassCardHeader, GlassCardTitle, GlassCardDescription, GlassCardContent } from '@rana/ui'
+
+# Glass Card
+
+Beautiful glass morphism card component with multiple variants and customization options.
+
+## Installation
+
+```bash
+npx @rana/ui-cli add glass-card
+```
+
+## Usage
+
+```tsx
+import { GlassCard, GlassCardHeader, GlassCardTitle, GlassCardContent } from '@/components/ui/glass-card'
+
+export default function Example() {
+  return (
+    <GlassCard>
+      <GlassCardHeader>
+        <GlassCardTitle>Card Title</GlassCardTitle>
+      </GlassCardHeader>
+      <GlassCardContent>
+        Card content goes here
+      </GlassCardContent>
+    </GlassCard>
+  )
+}
+```
+
+## Examples
+
+### Default
+
+<div className="mt-6 p-8 bg-gradient-to-br from-purple-100 via-pink-100 to-orange-100 dark:from-purple-950 dark:via-pink-950 dark:to-orange-950 rounded-xl">
+  <GlassCard>
+    <GlassCardHeader>
+      <GlassCardTitle>Default Glass Card</GlassCardTitle>
+      <GlassCardDescription>Beautiful frosted glass effect</GlassCardDescription>
+    </GlassCardHeader>
+    <GlassCardContent>
+      <p className="text-gray-600 dark:text-gray-400">
+        This card uses the default glass morphism style with subtle backdrop blur.
+      </p>
+    </GlassCardContent>
+  </GlassCard>
+</div>
+
+### Tinted
+
+<div className="mt-6 p-8 bg-gradient-to-br from-purple-100 via-pink-100 to-orange-100 dark:from-purple-950 dark:via-pink-950 dark:to-orange-950 rounded-xl">
+  <GlassCard variant="tinted">
+    <GlassCardHeader>
+      <GlassCardTitle>Tinted Glass Card</GlassCardTitle>
+      <GlassCardDescription>Gradient-tinted glass effect</GlassCardDescription>
+    </GlassCardHeader>
+    <GlassCardContent>
+      <p className="text-gray-600 dark:text-gray-400">
+        This variant adds a beautiful gradient tint to the glass effect.
+      </p>
+    </GlassCardContent>
+  </GlassCard>
+</div>
+
+### With Hover Effect
+
+<div className="mt-6 p-8 bg-gradient-to-br from-purple-100 via-pink-100 to-orange-100 dark:from-purple-950 dark:via-pink-950 dark:to-orange-950 rounded-xl">
+  <GlassCard hover="lift" shadow="xl">
+    <GlassCardHeader>
+      <GlassCardTitle>Interactive Card</GlassCardTitle>
+      <GlassCardDescription>Hover to see the lift effect</GlassCardDescription>
+    </GlassCardHeader>
+    <GlassCardContent>
+      <p className="text-gray-600 dark:text-gray-400">
+        This card lifts up when you hover over it with enhanced shadow.
+      </p>
+    </GlassCardContent>
+  </GlassCard>
+</div>
+
+## API Reference
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `'default' \| 'frosted' \| 'tinted' \| 'translucent'` | `'default'` | Glass style variant |
+| `padding` | `'none' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` | Internal padding |
+| `rounded` | `'none' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'` | `'lg'` | Border radius |
+| `shadow` | `'none' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` | Shadow size |
+| `hover` | `'none' \| 'lift' \| 'glow' \| 'scale'` | `'none'` | Hover animation |
+
+### Subcomponents
+
+- `GlassCardHeader` - Header section
+- `GlassCardTitle` - Title with gradient text
+- `GlassCardDescription` - Subtitle text
+- `GlassCardContent` - Main content area
+- `GlassCardFooter` - Footer section
+
+## Accessibility
+
+- Proper semantic HTML structure
+- Keyboard navigation support
+- Screen reader friendly
+- WCAG 2.1 AA compliant

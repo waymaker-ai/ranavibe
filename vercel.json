@@ -1,6 +1,5 @@
 {
-  "buildCommand": "echo 'No build needed'",
-  "outputDirectory": "website",
-  "cleanUrls": true,
-  "trailingSlash": false
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "cd apps/web && pnpm run build",
+  "outputDirectory": "apps/web/.next"
 }

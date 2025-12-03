@@ -1,0 +1,57 @@
+{
+  "name": "@rana/ui",
+  "version": "0.1.0",
+  "description": "RANA UI - Beautiful glass morphism component library for React",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./components/*": {
+      "require": "./dist/components/*.js",
+      "import": "./dist/components/*.mjs",
+      "types": "./dist/components/*.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts src/components/**/*.tsx --format cjs,esm --dts --external react",
+    "dev": "tsup src/index.ts src/components/**/*.tsx --format cjs,esm --dts --external react --watch",
+    "lint": "eslint src/",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "tailwind-merge": "^2.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "ui",
+    "design-system",
+    "glass-morphism",
+    "rana",
+    "tailwind"
+  ],
+  "author": "Waymaker <support@waymaker.cx>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/waymaker-ai/ranavibe.git",
+    "directory": "packages/rana-ui"
+  }
+}

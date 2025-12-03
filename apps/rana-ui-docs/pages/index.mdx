@@ -1,0 +1,110 @@
+# RANA UI
+
+**Beautiful glass morphism component library for React**
+
+RANA UI is a collection of beautifully designed React components with glass morphism effects, gradients, and modern aesthetics built with Tailwind CSS. Part of the RANA (Rapid AI Native Architecture) ecosystem.
+
+## Features
+
+✨ **Glass Morphism** - Beautiful frosted glass effects
+🎨 **Gradients** - Vibrant gradient backgrounds
+🎯 **Variants** - Multiple styles for every component
+♿ **Accessible** - WCAG 2.1 AA compliant
+🎭 **Dark Mode** - Full dark mode support
+⚡ **Fast** - Optimized for performance
+📦 **Tree-shakeable** - Only import what you need
+🛠️ **CLI Tool** - Easy component installation
+📏 **Design System** - Consistent patterns across your app
+
+## Installation
+
+```bash
+npm install @rana/ui class-variance-authority clsx tailwind-merge
+```
+
+Or use the CLI:
+
+```bash
+npx @rana/ui-cli init
+npx @rana/ui-cli add glass-card
+```
+
+## Quick Start
+
+```tsx
+import { GlassCard, GradientButton } from '@rana/ui'
+
+export default function App() {
+  return (
+    <GlassCard variant="tinted" padding="lg">
+      <h1>Welcome to RANA UI</h1>
+      <GradientButton variant="purple">
+        Get Started
+      </GradientButton>
+    </GlassCard>
+  )
+}
+```
+
+## Available Components
+
+- **[Glass Card](/components/glass-card)** - Frosted glass card with multiple variants (clear, tinted, vibrant)
+- **[Gradient Button](/components/gradient-button)** - Button with gradient backgrounds (purple, blue, green, orange)
+- **[Icon Circle](/components/icon-circle)** - Circular icon container with glass effect
+- **[Feature Badge](/components/feature-badge)** - Badge for highlighting features
+- **[Clean Mode Card](/components/clean-mode-card)** - Minimal card component for clean layouts
+
+All components support:
+- TypeScript with full type definitions
+- Tailwind CSS utility classes
+- Dark mode out of the box
+- CVA (Class Variance Authority) for variants
+- Customizable via props
+
+## CLI Commands
+
+RANA UI comes with a powerful CLI for managing components:
+
+### Initialize Project
+```bash
+rana-ui init
+```
+Sets up RANA UI configuration, creates component directories, and checks dependencies.
+
+### Add Components
+```bash
+# Add specific components
+rana-ui add glass-card gradient-button
+
+# Interactive selection
+rana-ui add
+
+# Add all components
+rana-ui add --all
+
+# Overwrite existing files
+rana-ui add glass-card --overwrite
+```
+
+### List Components
+```bash
+rana-ui list
+```
+Shows all available components with descriptions.
+
+## RANA Framework
+
+RANA UI is part of the larger RANA ecosystem which includes:
+
+- **Quality Gates** - Ensure production-quality code at every phase
+- **REPM Validation** - Strategic validation for major features
+- **CLI Tools** - 9+ commands for project management and validation
+- **MCP Server** - Claude Code integration with 6 tools and guided prompts
+- **Design System Checker** - Automated compliance checking
+- **TypeScript SDK** - Programmatic access to all features
+
+Learn more at [github.com/waymaker-ai/ranavibe](https://github.com/waymaker-ai/ranavibe)
+
+## License
+
+MIT © Waymaker
