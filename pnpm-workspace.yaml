@@ -1,4 +1,9 @@
 packages:
   - 'packages/*'
   - 'apps/*'
-  - 'examples/*'
+  - 'examples/rana-ui-example'
+  - '!examples/rag-app'
+  - '!examples/react-typescript'
+  - '!examples/chatbot'
+  - '!examples/multi-agent'
+  - '!examples/sdk-demo'
