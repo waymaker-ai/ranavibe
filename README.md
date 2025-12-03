@@ -604,6 +604,7 @@ Learn more: [RANA_MONETIZATION_STRATEGY.md](RANA_MONETIZATION_STRATEGY.md#-mit-l
 
 **Built with:** Next.js, Supabase, TypeScript, Tailwind CSS
 **Developed with:** Claude Code (Anthropic)
+**Sponsored by:** [betr.ai](https://betr.ai)
 
 **Special thanks to:**
 - OpenAI, Anthropic, Google, xAI, Mistral, Cohere, Together.ai, Groq, Ollama
