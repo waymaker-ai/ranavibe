@@ -248,7 +248,16 @@ export default function Home() {
             </a>
           </p>
           <p className="text-gray-600 dark:text-gray-400 text-sm mt-1">
-            With special support from the team
+            Sponsored by{' '}
+            <a
+              href="https://betr.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-purple-600 dark:text-purple-400 hover:underline"
+            >
+              betr.ai
+            </a>
+            {' '}· With special support from the team
           </p>
         </footer>
       </div>

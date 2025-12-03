@@ -273,7 +273,18 @@ export default function Home() {
               waymaker.cx
             </a>
           </p>
-          <p className="mb-4 text-sm">With special support from the team</p>
+          <p className="mb-4 text-sm">
+            Sponsored by{' '}
+            <a
+              href="https://betr.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:underline"
+            >
+              betr.ai
+            </a>
+            {' '}· With special support from the team
+          </p>
           <div className="flex gap-6 justify-center">
             <a href="https://github.com/waymaker-ai/ranavibe" className="hover:text-blue-600">
               GitHub
