@@ -1,0 +1,54 @@
+{
+  "polyfillFiles": [
+    "static/chunks/polyfills-42372ed130431b0a.js"
+  ],
+  "devFiles": [],
+  "ampDevFiles": [],
+  "lowPriorityFiles": [
+    "static/cI5NQyZuV2MTO8q7-BchN/_buildManifest.js",
+    "static/cI5NQyZuV2MTO8q7-BchN/_ssgManifest.js"
+  ],
+  "rootMainFiles": [],
+  "pages": {
+    "/": [
+      "static/chunks/webpack-6ef43a8d4a395f49.js",
+      "static/chunks/framework-e0f347a11a70369e.js",
+      "static/chunks/main-21c09b00c2881710.js",
+      "static/css/1b75bb7537b53e78.css",
+      "static/chunks/256-089a348c82bd9f91.js",
+      "static/chunks/pages/index-11c5cd48fad4b689.js"
+    ],
+    "/_app": [
+      "static/chunks/webpack-6ef43a8d4a395f49.js",
+      "static/chunks/framework-e0f347a11a70369e.js",
+      "static/chunks/main-21c09b00c2881710.js",
+      "static/css/b1cf48896c329c38.css",
+      "static/chunks/pages/_app-fa6b4a52b2e67f06.js"
+    ],
+    "/_error": [
+      "static/chunks/webpack-6ef43a8d4a395f49.js",
+      "static/chunks/framework-e0f347a11a70369e.js",
+      "static/chunks/main-21c09b00c2881710.js",
+      "static/chunks/pages/_error-76432aaee52bd33d.js"
+    ],
+    "/components/glass-card": [
+      "static/chunks/webpack-6ef43a8d4a395f49.js",
+      "static/chunks/framework-e0f347a11a70369e.js",
+      "static/chunks/main-21c09b00c2881710.js",
+      "static/css/1b75bb7537b53e78.css",
+      "static/chunks/256-089a348c82bd9f91.js",
+      "static/chunks/466-7dfbb8a428b2ccc2.js",
+      "static/chunks/pages/components/glass-card-6bc6a9a24cb56094.js"
+    ],
+    "/components/gradient-button": [
+      "static/chunks/webpack-6ef43a8d4a395f49.js",
+      "static/chunks/framework-e0f347a11a70369e.js",
+      "static/chunks/main-21c09b00c2881710.js",
+      "static/css/1b75bb7537b53e78.css",
+      "static/chunks/256-089a348c82bd9f91.js",
+      "static/chunks/466-7dfbb8a428b2ccc2.js",
+      "static/chunks/pages/components/gradient-button-9a81db683c3d4088.js"
+    ]
+  },
+  "ampFirstPages": []
+}

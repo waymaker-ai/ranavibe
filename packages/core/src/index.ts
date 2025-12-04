@@ -637,6 +637,26 @@ export type {
 } from './plugins/email';
 
 // ============================================================================
+// RANA Core Features (Config, Quality Gates, REPM, etc.)
+// ============================================================================
+
+// Configuration Parser
+export { ConfigParser, RanaConfigSchema } from './config/index.js';
+export type { QualityGate } from './config/index.js';
+
+// Quality Gates
+export { QualityGateChecker } from './quality-gates/index.js';
+
+// REPM Validator
+export { REPMValidator } from './repm/index.js';
+
+// Design System Checker
+export { DesignSystemChecker } from './design-system/index.js';
+
+// Template Manager
+export { TemplateManager } from './templates/index.js';
+
+// ============================================================================
 // Integrations
 // ============================================================================
 
