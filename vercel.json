@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "echo 'No build needed - static HTML site'",
-  "outputDirectory": "website",
-  "cleanUrls": true,
-  "trailingSlash": false
+  "framework": "nextjs",
+  "buildCommand": "cd apps/rana-ui-docs && cd ../.. && pnpm install && pnpm --filter @rana/ui build && pnpm --filter @rana/ui-docs build",
+  "installCommand": "cd apps/rana-ui-docs && cd ../.. && pnpm install",
+  "outputDirectory": "apps/rana-ui-docs/.next"
 }
