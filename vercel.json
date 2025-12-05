@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "nextjs",
-  "buildCommand": "pnpm install && pnpm --filter @rana/ui build && pnpm --filter @rana/ui-docs build",
-  "installCommand": "pnpm install",
-  "outputDirectory": "apps/rana-ui-docs/.next"
+  "buildCommand": "cd website && npm install && npm run build",
+  "installCommand": "cd website && npm install",
+  "outputDirectory": "website/.next"
 }

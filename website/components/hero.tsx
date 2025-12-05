@@ -43,7 +43,7 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-lg md:text-xl text-foreground-secondary text-balance mb-10 max-w-2xl mx-auto"
           >
-            Production-ready AI apps in 5 minutes. <span className="text-foreground font-semibold">70% automatic cost reduction</span>. 9 LLM providers. Enterprise security built-in.
+            Professional AI agent framework for React applications. Production-ready architecture with type safety, security, and scalability built-in.
           </motion.p>
 
           {/* CTAs */}
@@ -68,28 +68,24 @@ export function Hero() {
             </Link>
           </motion.div>
 
-          {/* Stats - Updated with cost savings prominence */}
+          {/* Stats */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto"
+            className="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto"
           >
-            <div className="text-center p-4 rounded-lg bg-background-secondary border border-border">
-              <div className="text-3xl md:text-4xl font-bold gradient-text">70%</div>
-              <div className="text-sm text-foreground-secondary mt-1">Cost Savings</div>
-            </div>
-            <div className="text-center p-4 rounded-lg bg-background-secondary border border-border">
-              <div className="text-3xl md:text-4xl font-bold gradient-text">120x</div>
+            <div className="text-center">
+              <div className="text-3xl font-bold gradient-text">10x</div>
               <div className="text-sm text-foreground-secondary mt-1">Faster Development</div>
             </div>
-            <div className="text-center p-4 rounded-lg bg-background-secondary border border-border">
-              <div className="text-3xl md:text-4xl font-bold gradient-text">9</div>
-              <div className="text-sm text-foreground-secondary mt-1">LLM Providers</div>
+            <div className="text-center">
+              <div className="text-3xl font-bold gradient-text">100%</div>
+              <div className="text-sm text-foreground-secondary mt-1">Type Safe</div>
             </div>
-            <div className="text-center p-4 rounded-lg bg-background-secondary border border-border">
-              <div className="text-3xl md:text-4xl font-bold gradient-text">5min</div>
-              <div className="text-sm text-foreground-secondary mt-1">To Production</div>
+            <div className="text-center">
+              <div className="text-3xl font-bold gradient-text">50+</div>
+              <div className="text-sm text-foreground-secondary mt-1">Built-in Features</div>
             </div>
           </motion.div>
 
@@ -101,13 +97,10 @@ export function Hero() {
             className="mt-16 text-left"
           >
             <div className="code-block font-mono text-sm">
-              <div className="text-foreground-secondary">$ npm install @rana/helpers @rana/prompts @rana/rag</div>
-              <div className="mt-2 text-gradient-from">✓ Installed RANA 2025 packages</div>
-              <div className="text-foreground-secondary mt-2">{`import { summarize, translate } from '@rana/helpers';`}</div>
-              <div className="text-foreground-secondary">{`import { PromptManager } from '@rana/prompts';`}</div>
-              <div className="text-foreground-secondary">{`import { RAGPresets } from '@rana/rag';`}</div>
-              <div className="mt-2 text-gradient-to">{`// One-line AI operations`}</div>
-              <div className="text-foreground-secondary">{`const summary = await summarize(document);`}</div>
+              <div className="text-foreground-secondary">$ npx @rana/cli init</div>
+              <div className="mt-2 text-gradient-from">✓ Created RANA project</div>
+              <div className="text-gradient-to">✓ Installed dependencies</div>
+              <div className="text-foreground-secondary mt-2">$ npm run dev</div>
             </div>
           </motion.div>
         </div>

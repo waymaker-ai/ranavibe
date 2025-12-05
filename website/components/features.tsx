@@ -14,45 +14,44 @@ import {
 
 const features = [
   {
-    icon: Gauge,
-    title: '70% Cost Savings',
-    description: 'Automatic cost reduction through intelligent model routing, caching, prompt optimization, and real-time cost tracking dashboards.',
-    highlight: true,
-  },
-  {
-    icon: Lock,
-    title: 'Zero Vendor Lock-in',
-    description: 'Switch between 9 LLM providers in one line. OpenAI, Anthropic, Google, xAI, Mistral, Cohere, Together, Groq, Ollama.',
+    icon: Zap,
+    title: 'Lightning Fast',
+    description: 'Optimized performance with streaming responses and intelligent caching.',
   },
   {
     icon: Shield,
-    title: 'Enterprise Security',
-    description: 'Built-in OWASP Top 10 protection, GDPR compliance tools, PII detection, and rate limiting for production-grade security.',
-  },
-  {
-    icon: Zap,
-    title: 'Multi-Agent Orchestration',
-    description: 'Coordinate multiple AI agents seamlessly with built-in state management and intelligent routing between specialized agents.',
-  },
-  {
-    icon: Database,
-    title: 'MCP Server Creation',
-    description: 'Create Model Context Protocol (MCP) servers to standardize AI integration and enable powerful context-aware applications.',
+    title: 'Security First',
+    description: 'Built-in security framework with input validation, rate limiting, and encryption.',
   },
   {
     icon: Code2,
-    title: 'Process Intelligence',
-    description: 'Track development velocity, DORA metrics, and legacy code analysis. AI-powered insights for continuous improvement.',
+    title: 'Type Safe',
+    description: '100% TypeScript with full type inference and autocompletion.',
   },
   {
-    icon: Search,
-    title: 'Production-Ready',
-    description: 'Deploy in 5 minutes with built-in monitoring, error handling, rate limiting, and 25+ CLI commands for automation.',
+    icon: Database,
+    title: 'Database Ready',
+    description: 'Supabase integration with migrations, RLS policies, and real-time subscriptions.',
   },
   {
     icon: Smartphone,
-    title: 'Training & Services',
-    description: 'Optional certification programs, team workshops, and enterprise implementation from the team behind RANA.',
+    title: 'Mobile First',
+    description: 'Responsive components with touch targets and WCAG accessibility standards.',
+  },
+  {
+    icon: Search,
+    title: 'SEO Optimized',
+    description: 'Meta tags, structured data, sitemaps, and Core Web Vitals optimization.',
+  },
+  {
+    icon: Lock,
+    title: 'Authentication',
+    description: 'Multi-provider auth with session management and role-based access control.',
+  },
+  {
+    icon: Gauge,
+    title: 'Cost Efficient',
+    description: 'LLM optimization with prompt caching, streaming, and intelligent model selection.',
   },
 ];
 
@@ -68,7 +67,7 @@ export function Features() {
             transition={{ duration: 0.5 }}
             className="text-3xl md:text-5xl font-bold mb-4"
           >
-            Why RANA is Different
+            Everything you need to build AI agents
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -77,7 +76,7 @@ export function Features() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-lg text-foreground-secondary max-w-2xl mx-auto"
           >
-            The only framework combining enterprise security, multi-agent orchestration, and MCP server capabilities
+            Production-ready features that scale with your application
           </motion.p>
         </div>
 

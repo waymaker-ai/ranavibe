@@ -1,5 +1,6 @@
+'use client';
+
 import { WifiOff } from 'lucide-react';
-import Link from 'next/link';
 
 export default function OfflinePage() {
   return (
@@ -13,9 +14,12 @@ export default function OfflinePage() {
           It looks like you&apos;ve lost your internet connection. Some cached pages
           may still be available.
         </p>
-        <Link href="/" className="btn-primary px-6 py-3 inline-block">
-          Go Home
-        </Link>
+        <button
+          onClick={() => window.location.reload()}
+          className="btn-primary px-6 py-3"
+        >
+          Try Again
+        </button>
       </div>
     </div>
   );

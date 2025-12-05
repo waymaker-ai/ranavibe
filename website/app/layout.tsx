@@ -10,26 +10,26 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: {
-    default: 'RANA - Build Production AI Apps in Minutes',
+    default: 'RANA Framework - React Agent Next Architecture',
     template: '%s | RANA Framework',
   },
-  description: 'Production-ready AI development framework with 70% cost reduction. Includes @rana/helpers, @rana/prompts, @rana/rag packages. 9 LLM providers, enterprise security, and 25+ CLI commands.',
-  keywords: ['AI', 'LLM', 'RAG', 'OpenAI', 'Anthropic', 'Claude', 'GPT', 'React', 'TypeScript', 'Cost Optimization', 'Prompt Management', 'Enterprise AI', 'Waymaker'],
+  description: 'Professional AI agent framework for React applications. Build production-ready AI agents with type safety, security, and scalability.',
+  keywords: ['AI', 'React', 'Framework', 'Agents', 'LLM', 'TypeScript', 'Next.js'],
   authors: [{ name: 'Waymaker AI' }],
   creator: 'Waymaker AI',
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://rana.cx',
-    title: 'RANA - Build Production AI Apps in Minutes',
-    description: 'Production-ready AI development framework with 70% cost reduction. 9 LLM providers, enterprise security, and React hooks included.',
+    title: 'RANA Framework',
+    description: 'Professional AI agent framework for React applications',
     siteName: 'RANA Framework',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'RANA - Build Production AI Apps in Minutes',
-    description: 'Production-ready AI framework with 70% cost reduction. @rana/helpers, @rana/prompts, @rana/rag packages for AI development.',
-    creator: '@waylokai',
+    title: 'RANA Framework',
+    description: 'Professional AI agent framework for React applications',
+    creator: '@waymakerAI',
   },
   robots: {
     index: true,
