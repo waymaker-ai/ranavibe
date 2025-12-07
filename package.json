@@ -26,29 +26,11 @@
     "mcp"
   ],
   "scripts": {
-    "vercel-build": "cd website && npm install && npm run build",
-    "dev": "cd website && npm run dev",
-    "build": "cd website && npm install && npm run build",
-    "start": "cd website && npm start",
-    "test": "turbo run test",
-    "lint": "turbo run lint",
-    "clean": "turbo run clean && rm -rf node_modules .turbo",
     "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,md,json}\""
   },
-  "dependencies": {
-    "next": "^14.2.0",
-    "react": "^18.3.0",
-    "react-dom": "^18.3.0"
-  },
   "devDependencies": {
-    "@types/node": "^20.10.0",
-    "@types/react": "^18.3.0",
-    "@types/react-dom": "^18.3.0",
-    "eslint": "^8.55.0",
-    "prettier": "^3.1.0",
-    "turbo": "^1.11.0",
-    "typescript": "^5.3.3"
+    "prettier": "^3.1.0"
   },
   "packageManager": "pnpm@8.12.0",
   "engines": {
