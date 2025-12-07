@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - RANA</title>
+    <meta name="description" content="Complete documentation for RANA - Rapid AI Native Architecture">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .docs-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: var(--spacing-lg);
+            max-width: 1400px;
+            margin: 100px auto 0;
+            padding: var(--spacing-lg) var(--spacing-md);
+        }
+
+        .docs-sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .docs-nav {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: var(--spacing-md);
+        }
+
+        .docs-nav h3 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--secondary-color);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .docs-nav ul {
+            list-style: none;
+        }
+
+        .docs-nav ul li {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .docs-nav a {
+            color: var(--primary-color);
+            font-size: 0.95rem;
+            display: block;
+            padding: var(--spacing-xs);
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+
+        .docs-nav a:hover {
+            background: rgba(0, 0, 0, 0.05);
+            opacity: 1;
+        }
+
+        .docs-content {
+            max-width: 900px;
+        }
+
+        .docs-content section {
+            margin-bottom: var(--spacing-xl);
+            padding-bottom: var(--spacing-xl);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .docs-content section:last-child {
+            border-bottom: none;
+        }
+
+        .docs-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .docs-content h2 {
+            font-size: 2rem;
+            margin-top: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+            color: var(--primary-color);
+        }
+
+        .docs-content h3 {
+            font-size: 1.5rem;
+            margin-top: var(--spacing-md);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .docs-content h4 {
+            font-size: 1.2rem;
+            margin-top: var(--spacing-md);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .note {
+            background: #FFF8E1;
+            border-left: 4px solid #FFC107;
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+            border-radius: 4px;
+        }
+
+        .tip {
+            background: #E8F5E9;
+            border-left: 4px solid #4CAF50;
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+            border-radius: 4px;
+        }
+
+        .warning {
+            background: #FFEBEE;
+            border-left: 4px solid #F44336;
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+            border-radius: 4px;
+        }
+
+        .command-list {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+
+        .command-item {
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .command-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .command-item code {
+            background: white;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: 4px;
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            .docs-container {
+                grid-template-columns: 1fr;
+            }
+
+            .docs-sidebar {
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-content">
+            <div class="logo">RANA</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="index.html#how-it-works">How It Works</a></li>
+                <li><a href="documentation.html">Documentation</a></li>
+                <li><a href="index.html#install" class="cta-button">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="docs-container">
+        <aside class="docs-sidebar">
+            <nav class="docs-nav">
+                <h3>Getting Started</h3>
+                <ul>
+                    <li><a href="#introduction">Introduction</a></li>
+                    <li><a href="#installation">Installation</a></li>
+                    <li><a href="#quick-start">Quick Start</a></li>
+                </ul>
+
+                <h3>Configuration</h3>
+                <ul>
+                    <li><a href="#config-basics">Configuration Basics</a></li>
+                    <li><a href="#principles">Principles</a></li>
+                    <li><a href="#quality-gates">Quality Gates</a></li>
+                    <li><a href="#workflows">Workflows</a></li>
+                </ul>
+
+                <h3>CLI Reference</h3>
+                <ul>
+                    <li><a href="#cli-commands">Commands</a></li>
+                    <li><a href="#cli-options">Options</a></li>
+                </ul>
+
+                <h3>Guides</h3>
+                <ul>
+                    <li><a href="#ai-assistants">AI Assistants</a></li>
+                    <li><a href="#best-practices">Best Practices</a></li>
+                    <li><a href="#troubleshooting">Troubleshooting</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="docs-content">
+            <section id="introduction">
+                <h1>RANA Documentation</h1>
+                <p>Welcome to the RANA (Rapid AI Native Architecture) documentation. RANA is a comprehensive framework that ensures AI coding assistants produce production-quality code.</p>
+
+                <h2>What is RANA?</h2>
+                <p>RANA is like ESLint for your entire AI-assisted development workflow. It provides:</p>
+                <ul>
+                    <li><strong>Development principles</strong> that guide AI assistants to follow best practices</li>
+                    <li><strong>Quality gates</strong> that catch common mistakes before they reach production</li>
+                    <li><strong>Workflows</strong> that ensure features are complete, tested, and deployed</li>
+                    <li><strong>Universal standards</strong> that work with any tech stack, IDE, or AI assistant</li>
+                </ul>
+
+                <div class="tip">
+                    <strong>💡 Tip:</strong> RANA works with any AI assistant including Claude, ChatGPT, GitHub Copilot, Cursor, and more.
+                </div>
+            </section>
+
+            <section id="installation">
+                <h2>Installation</h2>
+                <p>Install the RANA CLI globally using npm:</p>
+                <pre><code>npm install -g @rana/cli</code></pre>
+
+                <h3>Requirements</h3>
+                <ul>
+                    <li>Node.js 16.x or higher</li>
+                    <li>npm or yarn package manager</li>
+                    <li>Git (for deployment workflows)</li>
+                </ul>
+
+                <h3>Verify Installation</h3>
+                <p>After installation, verify it's working:</p>
+                <pre><code>rana --version</code></pre>
+            </section>
+
+            <section id="quick-start">
+                <h2>Quick Start</h2>
+                <p>Get started with RANA in your project in under 60 seconds:</p>
+
+                <h3>Step 1: Initialize RANA</h3>
+                <p>Navigate to your project directory and run:</p>
+                <pre><code>cd your-project
+rana init</code></pre>
+                <p>This creates a <code>.rana.yml</code> configuration file with smart defaults for your project.</p>
+
+                <h3>Step 2: Configure Standards</h3>
+                <p>Edit <code>.rana.yml</code> to match your project's needs. The default configuration includes:</p>
+                <pre><code>version: 1.0.0
+
+project:
+  name: "Your Project"
+  type: "fullstack"
+
+standards:
+  principles:
+    - search_before_create
+    - real_data_only
+    - test_everything
+    - deploy_to_production
+
+quality_gates:
+  implementation:
+    - no_mock_data
+    - error_handling_required
+    - loading_states_required
+
+  testing:
+    - manual_testing_required
+    - e2e_tests_required
+
+  deployment:
+    - git_commit_required
+    - production_verification</code></pre>
+
+                <h3>Step 3: Start Building</h3>
+                <p>Use RANA workflows to guide your AI assistant:</p>
+                <pre><code>rana flow feature "Add user authentication"</code></pre>
+
+                <div class="note">
+                    <strong>📝 Note:</strong> Your AI assistant will automatically read and follow the RANA configuration when working in your project.
+                </div>
+            </section>
+
+            <section id="config-basics">
+                <h2>Configuration Basics</h2>
+                <p>The <code>.rana.yml</code> file is the heart of RANA. It defines your project's standards, quality gates, and workflows.</p>
+
+                <h3>File Structure</h3>
+                <p>A typical RANA configuration includes:</p>
+                <ul>
+                    <li><strong>version:</strong> RANA spec version (currently 1.0.0)</li>
+                    <li><strong>project:</strong> Project metadata and settings</li>
+                    <li><strong>standards:</strong> Development principles and requirements</li>
+                    <li><strong>quality_gates:</strong> Automated checks and validations</li>
+                    <li><strong>deployment:</strong> Deployment and verification settings</li>
+                    <li><strong>ai_assistant:</strong> Instructions for AI assistants</li>
+                </ul>
+
+                <h3>Project Configuration</h3>
+                <pre><code>project:
+  name: "My Awesome App"
+  type: "fullstack"  # Options: frontend, backend, fullstack, mobile, cli
+  description: "Brief description of your project"
+  languages:
+    - "typescript"
+    - "react"
+  tech_stack:
+    frontend: "React + TypeScript"
+    backend: "Node.js + Express"
+    database: "PostgreSQL"</code></pre>
+            </section>
+
+            <section id="principles">
+                <h2>Development Principles</h2>
+                <p>RANA enforces five core principles that guide AI assistants to produce production-quality code:</p>
+
+                <h3>1. Search Before Creating</h3>
+                <p>AI assistants must search for existing implementations before creating new ones. This prevents code duplication and ensures consistency.</p>
+                <pre><code>standards:
+  principles:
+    - search_before_create</code></pre>
+                <p><strong>What it prevents:</strong></p>
+                <ul>
+                    <li>Duplicate components, utilities, and functions</li>
+                    <li>Inconsistent patterns across the codebase</li>
+                    <li>Reinventing existing solutions</li>
+                </ul>
+
+                <h3>2. Real Data Only</h3>
+                <p>No mock data, no placeholders. Every implementation must use real APIs, databases, and services.</p>
+                <pre><code>standards:
+  principles:
+    - real_data_only
+
+quality_gates:
+  implementation:
+    - no_mock_data</code></pre>
+                <p><strong>What it prevents:</strong></p>
+                <ul>
+                    <li>Mock data arrays in production code</li>
+                    <li>Placeholder text and fake user data</li>
+                    <li>Commented-out "TODO: connect to real API"</li>
+                </ul>
+
+                <h3>3. Test Everything</h3>
+                <p>Features must be tested both manually and with automated tests before they're considered complete.</p>
+                <pre><code>standards:
+  principles:
+    - test_everything
+  testing:
+    manual_testing_required: true
+    unit_tests_required: true
+    e2e_tests_required: true
+    coverage_threshold: 80</code></pre>
+                <p><strong>What it ensures:</strong></p>
+                <ul>
+                    <li>Manual testing steps documented and completed</li>
+                    <li>Unit tests for business logic</li>
+                    <li>End-to-end tests for critical user flows</li>
+                    <li>Code coverage meets threshold</li>
+                </ul>
+
+                <h3>4. Design System Compliance</h3>
+                <p>AI assistants must use existing design system components and follow established patterns.</p>
+                <pre><code>standards:
+  design_system:
+    path: "src/components/design-system"
+    enforce_usage: true
+    document_path: "docs/DESIGN_SYSTEM.md"</code></pre>
+                <p><strong>What it ensures:</strong></p>
+                <ul>
+                    <li>Consistent UI/UX across the application</li>
+                    <li>Reusable component patterns</li>
+                    <li>Brand compliance and accessibility</li>
+                </ul>
+
+                <h3>5. Deploy to Production</h3>
+                <p>Features aren't done until they're deployed, verified, and working in production.</p>
+                <pre><code>standards:
+  principles:
+    - deploy_to_production
+
+quality_gates:
+  deployment:
+    - git_commit_required
+    - production_verification
+    - smoke_tests_passing</code></pre>
+                <p><strong>What it ensures:</strong></p>
+                <ul>
+                    <li>Code is committed to version control</li>
+                    <li>Changes are deployed to production</li>
+                    <li>Production verification confirms it works</li>
+                    <li>Rollback plan is in place</li>
+                </ul>
+            </section>
+
+            <section id="quality-gates">
+                <h2>Quality Gates</h2>
+                <p>Quality gates are automated checks that prevent common AI mistakes. They're organized by development phase:</p>
+
+                <h3>Pre-Implementation Gates</h3>
+                <pre><code>quality_gates:
+  pre_implementation:
+    - check_existing_code
+    - review_documentation
+    - understand_requirements
+    - plan_architecture</code></pre>
+
+                <h3>Implementation Gates</h3>
+                <pre><code>quality_gates:
+  implementation:
+    - no_mock_data
+    - error_handling_required
+    - loading_states_required
+    - typescript_strict_mode
+    - meaningful_variable_names
+    - dry_principle</code></pre>
+
+                <h3>Testing Gates</h3>
+                <pre><code>quality_gates:
+  testing:
+    - manual_testing_complete
+    - unit_tests_passing
+    - integration_tests_passing
+    - e2e_tests_passing
+    - coverage_meets_threshold</code></pre>
+
+                <h3>Deployment Gates</h3>
+                <pre><code>quality_gates:
+  deployment:
+    - git_commit_required
+    - version_bumped
+    - changelog_updated
+    - production_verification
+    - smoke_tests_passing</code></pre>
+
+                <div class="warning">
+                    <strong>⚠️ Warning:</strong> Quality gates are enforced automatically. If any gate fails, the AI assistant should stop and resolve the issue before proceeding.
+                </div>
+            </section>
+
+            <section id="workflows">
+                <h2>Workflows</h2>
+                <p>RANA provides predefined workflows for common development tasks:</p>
+
+                <h3>Feature Workflow</h3>
+                <pre><code>rana flow feature "Add user dashboard"</code></pre>
+                <p>This workflow guides AI through:</p>
+                <ol>
+                    <li>Planning and architecture</li>
+                    <li>Implementation with quality checks</li>
+                    <li>Testing (manual and automated)</li>
+                    <li>Deployment and verification</li>
+                </ol>
+
+                <h3>Bug Fix Workflow</h3>
+                <pre><code>rana flow bugfix "Fix login error on mobile"</code></pre>
+                <p>This workflow includes:</p>
+                <ol>
+                    <li>Reproducing the bug</li>
+                    <li>Identifying root cause</li>
+                    <li>Implementing fix</li>
+                    <li>Testing across environments</li>
+                    <li>Deploying and verifying</li>
+                </ol>
+
+                <h3>Refactor Workflow</h3>
+                <pre><code>rana flow refactor "Optimize API calls"</code></pre>
+                <p>Ensures refactoring doesn't break functionality:</p>
+                <ol>
+                    <li>Document current behavior</li>
+                    <li>Run existing tests</li>
+                    <li>Make improvements</li>
+                    <li>Verify tests still pass</li>
+                    <li>Performance comparison</li>
+                </ol>
+            </section>
+
+            <section id="cli-commands">
+                <h2>CLI Commands</h2>
+                <p>Complete reference for RANA CLI commands:</p>
+
+                <div class="command-list">
+                    <div class="command-item">
+                        <h4><code>rana init</code></h4>
+                        <p>Initialize RANA in your project. Creates a <code>.rana.yml</code> configuration file with smart defaults.</p>
+                        <pre><code>rana init
+rana init --template react
+rana init --template nextjs</code></pre>
+                    </div>
+
+                    <div class="command-item">
+                        <h4><code>rana check</code></h4>
+                        <p>Check compliance with RANA standards. Validates your code against quality gates.</p>
+                        <pre><code>rana check
+rana check --verbose
+rana check --fix</code></pre>
+                    </div>
+
+                    <div class="command-item">
+                        <h4><code>rana validate</code></h4>
+                        <p>Validate your <code>.rana.yml</code> configuration file for syntax and completeness.</p>
+                        <pre><code>rana validate
+rana validate --strict</code></pre>
+                    </div>
+
+                    <div class="command-item">
+                        <h4><code>rana flow</code></h4>
+                        <p>Start a development workflow. Guides AI through complete feature development.</p>
+                        <pre><code>rana flow feature "description"
+rana flow bugfix "description"
+rana flow refactor "description"</code></pre>
+                    </div>
+
+                    <div class="command-item">
+                        <h4><code>rana deploy</code></h4>
+                        <p>Deploy with verification. Ensures deployment succeeds and production works.</p>
+                        <pre><code>rana deploy
+rana deploy --verify
+rana deploy --environment staging</code></pre>
+                    </div>
+
+                    <div class="command-item">
+                        <h4><code>rana config</code></h4>
+                        <p>Show current configuration and settings.</p>
+                        <pre><code>rana config
+rana config --json
+rana config show standards</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section id="cli-options">
+                <h2>CLI Options</h2>
+                <p>Global options available for all commands:</p>
+
+                <h3>Common Options</h3>
+                <ul>
+                    <li><code>--verbose</code> - Show detailed output and logs</li>
+                    <li><code>--quiet</code> - Suppress non-essential output</li>
+                    <li><code>--config &lt;path&gt;</code> - Use custom config file path</li>
+                    <li><code>--help</code> - Show help for a command</li>
+                    <li><code>--version</code> - Show RANA version</li>
+                </ul>
+
+                <h3>Configuration Options</h3>
+                <ul>
+                    <li><code>--template &lt;name&gt;</code> - Use a specific template</li>
+                    <li><code>--strict</code> - Enable strict validation mode</li>
+                    <li><code>--fix</code> - Automatically fix issues where possible</li>
+                </ul>
+            </section>
+
+            <section id="ai-assistants">
+                <h2>Working with AI Assistants</h2>
+                <p>RANA is designed to work seamlessly with any AI coding assistant.</p>
+
+                <h3>Supported AI Assistants</h3>
+                <ul>
+                    <li><strong>Claude (Anthropic)</strong> - Full support via .clauderules or direct instructions</li>
+                    <li><strong>ChatGPT (OpenAI)</strong> - Full support via custom instructions or project files</li>
+                    <li><strong>GitHub Copilot</strong> - Supported via workspace settings</li>
+                    <li><strong>Cursor</strong> - Native support via .cursorrules</li>
+                    <li><strong>Replit AI</strong> - Supported via project configuration</li>
+                    <li><strong>Any LLM-based assistant</strong> - Works with any tool that can read project files</li>
+                </ul>
+
+                <h3>How AI Assistants Use RANA</h3>
+                <p>AI assistants automatically detect and follow RANA configuration:</p>
+                <ol>
+                    <li>Read <code>.rana.yml</code> configuration at project start</li>
+                    <li>Follow defined principles and quality gates</li>
+                    <li>Execute workflows step by step</li>
+                    <li>Validate compliance before moving to next phase</li>
+                    <li>Report completion with verification evidence</li>
+                </ol>
+
+                <div class="tip">
+                    <strong>💡 Pro Tip:</strong> You can reference specific RANA principles when instructing your AI assistant:
+                    "Please follow the search_before_create principle and check for existing authentication components."
+                </div>
+
+                <h3>Custom AI Instructions</h3>
+                <p>Add custom instructions for your AI assistant:</p>
+                <pre><code>ai_assistant:
+  instructions_path: "docs/AGENT_INSTRUCTIONS.md"
+  checklist_path: "docs/DEVELOPMENT_CHECKLIST.md"
+  enforce:
+    - no_mock_data
+    - real_implementations_only
+    - existing_patterns_first</code></pre>
+            </section>
+
+            <section id="best-practices">
+                <h2>Best Practices</h2>
+
+                <h3>1. Start with Smart Defaults</h3>
+                <p>Use <code>rana init</code> to generate a configuration with sensible defaults, then customize as needed.</p>
+
+                <h3>2. Document Your Design System</h3>
+                <p>Create a <code>DESIGN_SYSTEM.md</code> file documenting your components, patterns, and styles. AI assistants will follow it automatically.</p>
+
+                <h3>3. Keep Quality Gates Reasonable</h3>
+                <p>Don't enable every possible quality gate. Start with essentials and add more as your team matures.</p>
+
+                <h3>4. Use Workflows Consistently</h3>
+                <p>Always use <code>rana flow</code> commands for features and bugs. This ensures consistent process across your team.</p>
+
+                <h3>5. Verify Before Merging</h3>
+                <p>Run <code>rana check</code> before creating pull requests to catch issues early.</p>
+
+                <h3>6. Update Configuration Regularly</h3>
+                <p>As your project evolves, update <code>.rana.yml</code> to reflect new patterns, requirements, and standards.</p>
+
+                <div class="note">
+                    <strong>📝 Team Tip:</strong> Add RANA checks to your CI/CD pipeline to enforce standards automatically.
+                </div>
+            </section>
+
+            <section id="troubleshooting">
+                <h2>Troubleshooting</h2>
+
+                <h3>AI Assistant Not Following Standards</h3>
+                <p><strong>Problem:</strong> AI creates mock data or ignores design system.</p>
+                <p><strong>Solution:</strong></p>
+                <ul>
+                    <li>Verify <code>.rana.yml</code> exists in project root</li>
+                    <li>Run <code>rana validate</code> to check configuration</li>
+                    <li>Explicitly reference RANA principles in your prompts</li>
+                    <li>Check if AI assistant has file reading permissions</li>
+                </ul>
+
+                <h3>Quality Gates Failing</h3>
+                <p><strong>Problem:</strong> <code>rana check</code> reports failures.</p>
+                <p><strong>Solution:</strong></p>
+                <ul>
+                    <li>Run <code>rana check --verbose</code> for detailed errors</li>
+                    <li>Use <code>rana check --fix</code> to auto-fix where possible</li>
+                    <li>Review quality_gates configuration for strictness</li>
+                </ul>
+
+                <h3>CLI Command Not Found</h3>
+                <p><strong>Problem:</strong> Terminal doesn't recognize <code>rana</code> command.</p>
+                <p><strong>Solution:</strong></p>
+                <pre><code># Reinstall globally
+npm install -g @rana/cli
+
+# Verify installation
+which rana
+rana --version</code></pre>
+
+                <h3>Configuration Not Loading</h3>
+                <p><strong>Problem:</strong> Changes to <code>.rana.yml</code> don't take effect.</p>
+                <p><strong>Solution:</strong></p>
+                <ul>
+                    <li>Validate YAML syntax: <code>rana validate</code></li>
+                    <li>Check file location (must be in project root)</li>
+                    <li>Restart your AI assistant or IDE</li>
+                    <li>Clear any caches: <code>rana config --clear-cache</code></li>
+                </ul>
+
+                <h3>Need More Help?</h3>
+                <p>If you're still having issues:</p>
+                <ul>
+                    <li>📖 Check the <a href="https://github.com/ashleykays/rana-framework">GitHub repository</a></li>
+                    <li>💬 Join our <a href="https://discord.gg/rana">Discord community</a></li>
+                    <li>🐛 Report issues on <a href="https://github.com/ashleykays/rana-framework/issues">GitHub Issues</a></li>
+                    <li>📧 Email support: <a href="mailto:support@rana.dev">support@rana.dev</a></li>
+                </ul>
+            </section>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>RANA</h4>
+                    <p>Production-quality AI development framework</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="documentation.html">Documentation</a></li>
+                        <li><a href="https://github.com/ashleykays/rana-framework">GitHub</a></li>
+                        <li><a href="index.html#install">Quick Start</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="https://discord.gg/rana">Discord</a></li>
+                        <li><a href="https://twitter.com/rana_dev">Twitter</a></li>
+                        <li><a href="mailto:support@rana.dev">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">MIT License</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 RANA. Created by Ashley Kays & Christian Moore. Sponsored by Waymaker.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

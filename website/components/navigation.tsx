@@ -9,8 +9,9 @@ import { useState, useEffect } from 'react';
 
 const links = [
   { href: '/docs', label: 'Docs' },
+  { href: '/compare', label: 'Compare' },
+  { href: '/case-studies', label: 'Case Studies' },
   { href: '/training', label: 'Training' },
-  { href: '/examples', label: 'Examples' },
   { href: '/pricing', label: 'Pricing' },
 ];
 
@@ -83,7 +84,7 @@ export function Navigation() {
 
             {/* GitHub link */}
             <Link
-              href="https://github.com/ashleykays/ranavibe"
+              href="https://github.com/waymaker-ai/ranavibe"
               target="_blank"
               rel="noopener noreferrer"
               className="hidden md:inline-flex btn-secondary px-4 py-2"
@@ -136,7 +137,7 @@ export function Navigation() {
               ))}
               <div className="flex flex-col space-y-2 px-4 pt-2">
                 <Link
-                  href="https://github.com/ashleykays/ranavibe"
+                  href="https://github.com/waymaker-ai/ranavibe"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-secondary px-4 py-2 text-center"
