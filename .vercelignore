@@ -1,4 +1,4 @@
 packages/*
-apps/rana-ui-docs
+apps/*
 examples/*
-!apps/web
+!website
