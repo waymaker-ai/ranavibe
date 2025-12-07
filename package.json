@@ -26,6 +26,7 @@
     "mcp"
   ],
   "scripts": {
+    "vercel-build": "cd website && npm install && npm run build",
     "dev": "cd website && npm run dev",
     "build": "cd website && npm install && npm run build",
     "start": "cd website && npm start",
