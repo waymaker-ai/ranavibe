@@ -1,6 +1,7 @@
 packages:
   - 'packages/*'
   - 'apps/*'
+  - 'website'
   - 'examples/rana-ui-example'
   - '!examples/rag-app'
   - '!examples/react-typescript'
