@@ -90,5 +90,40 @@ export {
   getRAGPipeline,
 } from './react/hooks';
 
+// Knowledge Base
+export {
+  KnowledgeBase,
+  createKnowledgeBase,
+  FileLoader,
+  URLLoader,
+  GitHubLoader,
+  DirectoryLoader,
+  JSONLoader,
+  createLoader,
+  expandDirectorySource,
+  SupabaseVectorStore,
+  createSupabaseVectorStore,
+  SUPABASE_SETUP_SQL,
+} from './knowledge-base/index';
+export type {
+  VectorStore,
+  EmbeddingProvider,
+  Loader,
+  KnowledgeBaseConfig,
+  VectorStoreConfig,
+  EmbeddingConfig,
+  ChunkingConfig as KBChunkingConfig,
+  AccessControlConfig,
+  MetadataSchema,
+  KBDocument,
+  IngestionSource,
+  IngestionOptions,
+  IngestionResult,
+  KBSearchOptions,
+  KBSearchResult,
+  KBStats,
+  SupabaseVectorStoreConfig,
+} from './knowledge-base/index';
+
 // Types
 export * from './types';

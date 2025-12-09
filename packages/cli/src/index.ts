@@ -13,12 +13,20 @@ import {
 import * as fs from 'fs';
 import * as path from 'path';
 
+// Import command modules
+import { registerFeatureCommands } from './commands/feature.js';
+import { registerSecurityCommands } from './commands/security.js';
+
 const program = new Command();
 
 program
   .name('rana')
-  .description('RANA CLI - Rapid AI Native Architecture quality gates and REPM validation')
-  .version('0.1.0');
+  .description('RANA CLI - Guardrails, VibeSpecs, and feature workflows for AI-assisted development')
+  .version('1.0.0');
+
+// Register command modules
+registerFeatureCommands(program);
+registerSecurityCommands(program);
 
 // Command: init
 program

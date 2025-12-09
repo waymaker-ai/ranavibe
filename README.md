@@ -1,331 +1,488 @@
-# RANA: Rapid AI Native Architecture
+# RANA
 
-> **Production-ready AI apps in 5 minutes. 120x faster development. 70% cost reduction.**
+**Guardrails & Guidance for AI-Assisted Development**
 
-[![GitHub Stars](https://img.shields.io/github/stars/waymaker/rana?style=social)](https://github.com/waymaker/rana)
+> **RANA is a free, open-source, integration-friendly guardrail layer for AI-assisted development.**
+> It plugs into your existing stack (Vercel AI SDK, Supabase, LangChain, CrewAI, etc.) and makes sure agents **don't trash your codebase, ignore your design system and business rules, ship mock-only work, or waste your time and budget.**
+
+RANA's job is to be the **safety harness and brain coach for AI agents** so they build **real, safe, on-spec product work** — not cute demos that create mess.
+
+Everything else (RAG, specs, flows, integrations) exists to support that.
+
+- Free and open source
+- Bring-your-own LLM providers and tools
+- Designed for real products, not toy demos
+
+[![GitHub Stars](https://img.shields.io/github/stars/waymaker-ai/ranavibe?style=social)](https://github.com/waymaker-ai/ranavibe)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![npm version](https://badge.fury.io/js/%40rana%2Fcli.svg)](https://badge.fury.io/js/%40rana%2Fcli)
-
-**RANA v2.0** is the most comprehensive framework for building production-ready AI applications with 9 LLM providers, automatic cost optimization, and enterprise-grade security.
-
-🐟 **Named after my son** (like a piranha!) — Made with love to help you succeed faster ❤️
+[![npm version](https://badge.fury.io/js/%40rana%2Fcore.svg)](https://badge.fury.io/js/%40rana%2Fcore)
 
 ---
 
-## 🎉 What's New in 2025
+## Reality Over Hype (No "30-Minute Production" Myth)
 
-RANA 2025 introduces three powerful new packages:
+AI frameworks love to promise:
 
-### @rana/helpers - One-Line AI Functions
+> "Ship a production-ready product in 30 minutes."
 
-```typescript
-import { summarize, translate, classify, extract } from '@rana/helpers';
+**RANA is deliberately not that.**
 
-const summary = await summarize(longText, { style: 'brief' });
-const french = await translate(text, { to: 'french' });
-const category = await classify(email, ['spam', 'ham', 'promo']);
-const data = await extract(invoice, { total: 'number', date: 'string' });
-```
+You can't build a real, scalable, secure product in 30 minutes — not if you care about:
 
-### @rana/prompts - Enterprise Prompt Management
+- security and privacy
+- real databases and real users
+- code quality, tests, and reviews
+- uptime, monitoring, and incident response
+- business rules, compliance, and long-term maintainability
 
-```typescript
-import { PromptManager } from '@rana/prompts';
+**RANA refuses that hype.**
 
-const pm = new PromptManager({ workspace: 'my-app' });
-await pm.register('greeting', { template: 'Hello {{name}}!' });
-const result = await pm.execute('greeting', { variables: { name: 'World' } });
+Instead, RANA's promise is:
 
-// A/B test your prompts
-await pm.createABTest('greeting', {
-  variants: [{ name: 'formal', template: '...' }, { name: 'casual', template: '...' }],
-  metric: 'user_satisfaction'
-});
-```
+> **RANA helps AI-assisted development move faster *without* becoming sloppier — by stopping agents from doing things no responsible engineer would do.**
 
-### @rana/rag - Advanced Retrieval Augmented Generation
+Not "magic production in 30 minutes," but:
 
-```typescript
-import { RAGPresets } from '@rana/rag';
+- less rework
+- fewer messes
+- fewer "WTF did this agent just change?" moments
+- more signal, less chaos
 
-const pipeline = RAGPresets.balanced();
-await pipeline.index(documents);
-const result = await pipeline.query({ query: 'How do I authenticate?' });
-console.log(result.answer, result.citations);
-```
+RANA focuses on:
 
-### Natural Language Code Generation
+- turning **feature ideas → clear specs → safe draft implementations**
+- enforcing **design systems, business rules, and engineering hygiene**
+- integrating into real stacks (Vercel AI SDK, Supabase, LangChain, CrewAI, etc.)
+- helping humans **ship real features faster** instead of cleaning up after reckless agents
+
+**You still need engineers, reviews, and real operations.**
+RANA just makes the AI-powered parts safer, sharper, and less painful.
+
+---
+
+## Core Guardrails
+
+RANA is an **integration-friendly guardrail & guidance layer** for AI agents working in real codebases and products.
+
+### 1. Stop Bad Agent Behavior
+
+- Don't break the codebase
+- Don't secretly add features without asking
+- Don't duplicate existing features
+- Don't randomly refactor everything
+- Don't trash the design system or UX patterns
+- Don't use mock/demo data in production
+- Don't "fake done" when nothing is wired to real systems
+
+### 2. Enforce Good Engineering & Product Hygiene
+
+- Use **real DB models and APIs**, not invented ones
+- Follow the **design system** and shared UX patterns
+- Follow **business rules, constraints, and specs**
+- **Ask clarifying questions** when requirements are incomplete
+- Always **surface what changed and why**
+- Encourage **tests, checks, and safe PRs** — not "oops I pushed to main"
+
+### 3. Real Features, Not Just Demos
+
+- Turn feature ideas into:
+  - a clear spec
+  - a task chain / flow
+  - scoped code changes that compile and pass checks
+- Make sure the agent **helps** the dev, not slows them down
+
+### 4. Save Time & Money by Avoiding Chaos
+
+- Less throwaway agent output
+- Less "fix what the agent just broke"
+- Less "start from scratch because the prototype is unusable"
+- More consistent, trustworthy AI-assisted work
+
+---
+
+## What RANA *Is* / *Isn't*
+
+### RANA *is*:
+
+- **Free & open source**
+  Built to be inspected, forked, extended, and improved by the community.
+
+- **A guardrail + guidance layer for AI-assisted development**
+  Keeps agents from breaking your app, your rules, or your budget.
+
+- **Integration-friendly**
+  Plugs into your existing stack:
+  - Vercel AI SDK
+  - Supabase
+  - LangChain / LangGraph
+  - CrewAI
+  - MCP / IDE integrations
+
+- **Spec-driven**
+  Uses:
+  - **VibeSpecs** → how agents should behave (tone, constraints, allowed actions, design/DB rules)
+  - **FlowSpecs** → how work is broken into steps (clarify → plan → implement → test → review)
+
+  Specs live as **plain config in your repo**, so other tools can read and honor the same rules.
+
+- **Focused on real product work**
+  Designed for **real stacks, real DBs, real users**, not toy examples.
+
+---
+
+### RANA is *not*:
+
+- **A "ship-a-startup-in-30-minutes" magic button**
+  It won't pretend you can build a full, scalable production product in half an hour.
+
+- **A replacement for your engineers or your stack**
+  It doesn't replace Vercel AI SDK, Supabase, LangChain, CrewAI, or your CI/CD.
+  It complements them with guardrails and guidance.
+
+- **A walled-garden orchestrator**
+  It isn't trying to be "the only way to run agents or graphs."
+  It feeds better context, rules, and checks into the tools you already use.
+
+- **A sandbox for throwaway prototypes**
+  It's not about "cool toy demos."
+  RANA is meant for **serious apps** where breaking things has real cost.
+
+---
+
+## Quickstart
+
+RANA is designed to sit *under* the tools you already use.
+
+### 1. Install
 
 ```bash
-rana generate "create a React component for user dashboard"
-rana generate "make an API endpoint for authentication"
-rana generate "build a custom hook for fetching data"
+# Core library + CLI
+npm install @rana/core
+npm install --save-dev @rana/cli
 ```
 
----
-
-## What is RANA?
-
-RANA gives you everything needed to build modern AI applications:
-
-- ✅ **9 LLM Providers** - OpenAI, Anthropic, Google Gemini, xAI Grok, Mistral, Cohere, Together.ai, Groq, Ollama
-- ✅ **70% Cost Reduction** - Automatic caching, smart routing, prompt optimization
-- ✅ **5-Minute Setup** - Production-ready Next.js + Supabase template
-- ✅ **Enterprise Security** - OWASP Top 10 + GDPR compliance built-in
-- ✅ **30+ CLI Commands** - Automate everything from database to deployment
-- ✅ **Unified API** - One interface for all providers, zero vendor lock-in
-- ✅ **Production-Ready** - SEO, mobile-first, PWA, rate limiting configured
-- ✅ **New: Quick Helpers** - 10 one-line AI functions
-- ✅ **New: Prompt Management** - Versioning, A/B testing, analytics
-- ✅ **New: Advanced RAG** - Hybrid retrieval, re-ranking, citations
-
-**Result:** Build AI apps 120x faster with 70% less cost. No vendor lock-in. Ever.
-
----
-
-## Quick Start
-
-### Option 1: Use the Template (5 minutes)
+Or with pnpm:
 
 ```bash
-# Clone production-ready template
-npx create-rana-app my-app
-cd my-app
-
-# Add API keys to .env.local
-cp .env.example .env.local
-# Edit .env.local with your provider keys
-
-# Run development server
-npm run dev
+pnpm add @rana/core
+pnpm add -D @rana/cli
 ```
 
-**Open http://localhost:3000 - you have a working AI app!** 🎉
+### 2. Initialize RANA in your app
 
-### Option 2: Add to Existing Project
+From your app root (for example, a Vercel AI SDK + Supabase app):
 
 ```bash
-# Install RANA CLI
-npm install -g @rana/cli
-
-# Initialize in your project
-cd your-project
-rana init
-
-# Setup frameworks
-rana llm:setup       # Configure LLM providers
-rana db:setup        # Database
-rana security:setup  # Security
-
-# Start developing
-npm run dev
+npx rana init
 ```
 
-**See [START_HERE.md](START_HERE.md) for complete guide.**
+This will:
+- create a basic `.rana.yml` config
+- add example VibeSpecs (behavior/constraints)
+- optionally add package.json scripts for `rana check`, `rana feature:new`, etc.
 
----
+### 3. Configure providers and basic rules
 
-## Why RANA Wins
-
-| RANA | vs | Competitors |
-|------|----|-------|
-| **9 LLM providers** | > | 4-6 providers |
-| **5 min setup** | vs | 40 hours manual |
-| **70% cost savings** | vs | Manual optimization |
-| **Security built-in** | vs | You build it |
-| **No vendor lock-in** | vs | Stuck with one provider |
-| **$0 forever** | vs | Paid tiers |
-
-**RANA wins 17/18 categories vs LangChain, Haystack, Semantic Kernel** 🏆
-
-Full comparison: [RANA_WHITEPAPER.md](RANA_WHITEPAPER.md)
-
----
-
-## The 9 LLM Providers
-
-**Switch providers in ONE line of code:**
+Example `rana.config.ts`:
 
 ```typescript
-import { UnifiedLLMClient } from '@rana/core';
+import { defineConfig } from '@rana/core';
 
-const rana = new UnifiedLLMClient({
+export default defineConfig({
   providers: {
-    openai: process.env.OPENAI_API_KEY,
-    anthropic: process.env.ANTHROPIC_API_KEY,
-    google: process.env.GOOGLE_AI_API_KEY,
-    xai: process.env.XAI_API_KEY,
-    mistral: process.env.MISTRAL_API_KEY,
-    cohere: process.env.COHERE_API_KEY,
-    together: process.env.TOGETHER_API_KEY,
-    groq: process.env.GROQ_API_KEY,
-    ollama: 'http://localhost:11434'
-  }
-});
+    openai: {
+      apiKey: process.env.OPENAI_API_KEY!,
+      models: ['gpt-4.1-mini', 'gpt-4.1', 'gpt-4o-mini'],
+    },
+    anthropic: {
+      apiKey: process.env.ANTHROPIC_API_KEY!,
+      models: ['claude-3-5-sonnet-20241022'],
+    },
+  },
 
-// Same code works with ANY provider
-const response = await rana.chat({
-  provider: 'anthropic',  // or 'openai', 'google', etc.
-  model: 'claude-3-5-sonnet-20241022',
-  messages: [{ role: 'user', content: 'Hello!' }]
-});
+  routing: {
+    defaultProvider: 'openai',
+    rules: [
+      { match: 'light', provider: 'openai', model: 'gpt-4.1-mini' },
+      { match: 'heavy', provider: 'anthropic', model: 'claude-3-5-sonnet-20241022' },
+    ],
+  },
 
-// Or let RANA choose the best provider automatically
-const optimized = await rana.chat({
-  messages: [{ role: 'user', content: 'Summarize this' }],
-  optimize: 'cost'  // Uses Gemini Flash ($0.10/1M) instead of GPT-4 ($5/1M)
+  guardrails: {
+    disallowMockDataInProd: true,
+    requireTestsForFeatureWork: true,
+    requireBranchPerFeature: true,
+  },
 });
 ```
 
-**No more vendor lock-in. No more rewriting code. Switch providers in seconds.**
+### 4. Use RANA in your server code
+
+Example with a Vercel AI SDK–style handler:
+
+```typescript
+// app/api/rana-chat/route.ts
+import { NextRequest, NextResponse } from 'next/server';
+import { createRana } from '@rana/core';
+import config from '../../../rana.config';
+
+const rana = createRana(config);
+
+export async function POST(req: NextRequest) {
+  const body = await req.json();
+  const { messages } = body;
+
+  const result = await rana.chat({
+    messages,
+    vibe: 'default', // refers to a VibeSpec in config/vibes/default.yml
+  });
+
+  return NextResponse.json(result);
+}
+```
+
+You still use your usual stack (Vercel AI SDK + Supabase, LangChain, CrewAI, etc.)—
+RANA just centralizes providers, routing, and guardrails underneath.
 
 ---
 
-## 70% Cost Reduction (Automatic)
+## Feature Flow: From Idea → Spec → Branch → Safe Draft
 
-**Before RANA:** $1,800/month on OpenAI GPT-4
-**After RANA:** $450/month (mixed providers)
-**Savings:** $16,200/year 💰
+RANA's flagship experience is a **feature flow** that helps agents work in your codebase without wrecking it.
 
-### How RANA Saves Money:
+Instead of "ship a startup in 30 minutes," RANA focuses on:
 
-1. **Response Caching (40% savings)**
-   - Cache identical queries
-   - Serve from Redis in < 10ms
-   - Zero cost for cache hits
+> **Feature idea → spec → branch → draft implementation + tests + checks**
+> under your rules, using your stack.
 
-2. **Smart Model Selection (25% savings)**
-   - Simple tasks → Gemini Flash ($0.10/1M)
-   - Complex tasks → Claude/GPT-4 ($3-5/1M)
-   - Automatic task analysis
-
-3. **Prompt Optimization (15% savings)**
-   - Remove wasted tokens
-   - Template reuse
-   - Stop sequences
-
-4. **RAG Implementation (30% savings)**
-   - Vector search (Pinecone, Weaviate, Supabase)
-   - Only send relevant context
-   - 20x smaller context windows
-
-**Total: 70% average cost reduction**
+### CLI Overview
 
 ```bash
-# See your savings in real-time
-rana llm:analyze
-
-# Apply optimizations
-rana llm:optimize --all
-
-# Compare providers for your use case
-rana llm:compare
+npx rana init            # one-time setup in your app
+rana feature:new         # turn a feature idea into a clear spec
+rana feature:implement   # create a branch + safe draft changes
+rana check               # run safety gates (tests, lint, design, mock-data checks)
 ```
+
+### Step 1: `rana feature:new` — Guided Spec, Not Guesswork
+
+You start with a human-sized idea, e.g.:
+> "Add a 'team billing' settings page so admins can upgrade from monthly to annual."
+
+Then run:
+
+```bash
+rana feature:new
+```
+
+RANA will:
+
+1. **Ask clarifying questions:**
+   - What user roles can see this?
+   - What is the source of truth for billing (Stripe, internal, etc.)?
+   - What routes / pages will this affect?
+   - What are the acceptance criteria?
+
+2. **Search your codebase & knowledge base** for similar features:
+   - "Looks like you already have `BillingSettingsPage` and `SubscriptionCard`."
+   - "Do you want to extend these, or create something new?"
+
+3. **Produce a structured feature spec**, e.g. `specs/feature-team-billing.yml`:
+   - summary
+   - user stories
+   - acceptance criteria
+   - affected routes / modules
+   - data sources / APIs
+   - constraints (design system, business rules, security notes)
+
+This spec becomes the **source of truth** for any later agent work.
+
+### Step 2: `rana feature:implement` — Branch + Scoped Changes
+
+Once the spec looks good, you run:
+
+```bash
+rana feature:implement specs/feature-team-billing.yml
+```
+
+RANA will:
+
+1. **Create a feature branch**, e.g. `feat/team-billing`.
+
+2. **Propose a changeset** (what files/dirs it wants to touch) and ask you to confirm:
+   - `app/settings/billing/page.tsx`
+   - `components/Billing/PlanSelector.tsx`
+   - `lib/billing/upgradeToAnnual.ts`
+   - `tests/billing/teamBilling.test.ts`
+
+3. **Use the spec + your VibeSpecs** to guide agents to:
+   - extend existing components instead of inventing new patterns,
+   - use your design system (`@/components/ui/*`, tokens, layouts),
+   - call real DB/APIs, not mocks, in production code paths,
+   - add or update tests for new behavior.
+
+**RANA does not merge or deploy.**
+It prepares a draft commit/PR that you can review, edit, and ship.
+
+### Step 3: `rana check` — Don't Let Agents Cowboy-Code
+
+Before you open a PR, or as part of CI, run:
+
+```bash
+rana check
+```
+
+By default, `rana check` can be wired to:
+
+- compile / typecheck (e.g. `tsc`, Next.js build)
+- run tests (`npm test`, vitest, etc.)
+- run lint (eslint, biome, etc.)
+- enforce RANA-specific guardrails, such as:
+  - No mock/demo data in production code
+  - No inline hex colors / raw CSS if you use a design system
+  - No unauthorized large refactors or file renames
+  - No changes outside the declared changeset / scope
+
+If any of these fail, the run is considered **unsafe**, and RANA will tell you why.
+
+**The goal is not "perfect code with no humans," but:**
+
+> "A good draft, in the right place, that doesn't wreck your repo — much faster than starting from a blank file."
 
 ---
 
-## Enterprise Security (Built-In)
+## VibeSpecs: Declarative Agent Behavior
 
-**Security Score: 96/100** (third-party audit)
+VibeSpecs define **how agents should behave** — their tone, constraints, allowed actions, and rules.
 
-### OWASP Top 10 Protection:
-- ✅ Broken Access Control → RBAC built-in
-- ✅ Cryptographic Failures → TLS 1.3, encrypted keys
-- ✅ Injection → Input sanitization
-- ✅ Insecure Design → Secure defaults
-- ✅ Security Misconfiguration → Auto-configured
-- ✅ Vulnerable Components → Monthly audits
-- ✅ Auth Failures → JWT + API key rotation
-- ✅ Data Integrity → Audit logging
-- ✅ Logging Failures → Tamper-proof logs
-- ✅ SSRF → URL validation
+Example `config/vibes/customer-support.yml`:
 
-### GDPR Compliance:
-- ✅ Right to Access → Export user data
-- ✅ Right to Erasure → Delete all data
-- ✅ PII Detection → Auto-mask emails, SSNs, etc.
-- ✅ Data Retention → Configurable policies
-- ✅ Consent Management → Built-in
+```yaml
+id: customer_support_eu
+name: "EU Customer Support Assistant"
+description: >
+  Handles EU customer questions about orders, shipping, and refunds.
+  Never invents policies or numbers.
 
-```bash
-# Run security audit
-rana security:audit
+vibe:
+  tone: "calm, factual, friendly, professional"
+  constraints:
+    - "Never invent policies, prices, or numbers."
+    - "Only answer using documents from the knowledge base."
+    - "If unsure, escalate to human support."
+    - "Always provide citation for policy-related answers."
+  allowedActions:
+    - "escalate_to_human"
+    - "create_ticket"
+    - "lookup_order"
+  disallowedActions:
+    - "issue_refund"
+    - "modify_billing"
+    - "delete_account"
 
-# Auto-fix issues
-rana security:audit --fix
+rag:
+  kbId: "policies_eu"
+  topK: 6
+  rerank: true
+
+llm:
+  provider: "anthropic"
+  model: "claude-3-5-sonnet-20241022"
+  temperature: 0.1
+
+security:
+  piiRedaction: true
+  promptInjectionDetection: true
+  maxToolCalls: 5
 ```
 
-**Full details:** [docs/SECURITY_FRAMEWORK_GUIDE.md](docs/SECURITY_FRAMEWORK_GUIDE.md)
+Specs live as **plain config in your repo**, so:
+- other tools can read and honor the same rules
+- you can version control behavior changes
+- agents inherit constraints automatically
 
 ---
 
-## What's Included
+## Using RANA with LangChain
 
-### 🤖 Unified LLM Client
-- 9 providers, one API
-- Streaming support
-- Function calling (tools)
-- Multimodal (text, image, audio, video)
-- Automatic retries & error handling
+RANA is **not** trying to replace LangChain.
+Instead, it acts as a **guardrail + provider layer** underneath it.
 
-### 🗄️ Database Framework
-- Supabase or Prisma integration
-- Row-Level Security (RLS) patterns
-- Migration management
-- Type-safe queries
+### Wrap RANA as a LangChain ChatModel
 
-```bash
-rana db:setup    # Interactive wizard
-rana db:migrate  # Run migrations
-rana db:studio   # Visual editor
+```typescript
+import { RanaChatModel } from '@rana/langchain';
+import { createRana } from '@rana/core';
+
+const rana = createRana(config);
+
+const model = new RanaChatModel({
+  rana,
+  vibe: 'feature_work', // uses VibeSpec: design system, DB rules, etc.
+});
+
+// Use in LangChain chains
+const chain = prompt.pipe(model).pipe(outputParser);
+const result = await chain.invoke({ input: 'Help me add a settings page' });
 ```
 
-### 🔒 Security Framework
-- Authentication (Supabase/NextAuth/Clerk)
-- Rate limiting (per IP, per route)
-- Security headers (CSP, HSTS, etc.)
-- Input validation patterns
+### Key idea:
 
-```bash
-rana security:audit      # 10+ security checks
-rana security:audit --fix # Auto-fix issues
+- **LangChain** stays your orchestrator
+- **RANA** provides:
+  - provider routing (OpenAI/Anthropic/etc.)
+  - VibeSpec (design system rules, "ask before acting", no mock data, etc.)
+  - logging, cost-awareness, and optional checks
+
+---
+
+## Using RANA with CrewAI
+
+RANA plays nicely with CrewAI: **CrewAI owns the crew/graph orchestration; RANA provides the LLM + guardrails + context rules.**
+
+### Wrap RANA as a CrewAI-compatible LLM
+
+```typescript
+import { createRanaCrewModel } from '@rana/crewai';
+import { createRana } from '@rana/core';
+
+const rana = createRana(config);
+
+const ranaLLM = createRanaCrewModel({
+  rana,
+  vibe: 'feature_work', // agent inherits RANA's feature-work guardrails
+});
+
+// Use with CrewAI agents
+const featureAgent = new Agent({
+  name: 'Feature Implementer',
+  role: 'Implement features safely in an existing codebase.',
+  llm: ranaLLM,
+});
 ```
 
-### 💰 Cost Optimization
-- Response caching (Redis)
-- Smart model selection
-- Prompt optimization
-- Real-time cost tracking
+### Key idea:
 
-```bash
-rana llm:analyze         # Cost analysis
-rana llm:optimize --all  # Apply optimizations
-rana llm:cost-estimate   # Estimate costs
-```
+- **CrewAI** defines who the agents are and how they coordinate
+- **RANA** defines:
+  - how each agent should behave (via VibeSpecs)
+  - which providers/models to use
+  - what constraints apply (no mock data, DS rules, ask-before-acting, etc.)
 
-### 🔍 SEO Framework
-- Dynamic sitemap generation
-- Meta tags + Open Graph
-- Structured data (JSON-LD)
-- Robots.txt configuration
-- PWA manifest
+---
 
-```bash
-rana seo:check           # Validate SEO
-rana seo:generate --all  # Generate all files
-```
+## Packages
 
-### 📱 Mobile Framework
-- Touch-optimized components (44px minimum)
-- PWA support with service worker
-- Responsive design utilities
-- Mobile navigation patterns
-- Gesture support
-
-```bash
-rana mobile:validate     # Check compliance
-rana mobile:test         # Test viewports
-```
+| Package | Description |
+|---------|-------------|
+| `@rana/core` | Unified LLM client, cost tracking, plugins, security |
+| `@rana/cli` | CLI for init, check, feature flows, deploy |
+| `@rana/rag` | RAG pipeline: chunking, retrieval, reranking, synthesis |
+| `@rana/agents` | Agent Development Kit (ADK): BaseAgent, tools, vibes |
+| `@rana/langchain` | LangChain adapter |
+| `@rana/crewai` | CrewAI adapter |
+| `@rana/mcp` | Model Context Protocol server & client |
+| `@rana/react` | React hooks for chat, RAG, streaming |
 
 ---
 
@@ -333,311 +490,146 @@ rana mobile:test         # Test viewports
 
 ### Core Commands
 ```bash
-rana init                # Initialize RANA
-rana check               # Check compliance
-rana check --fix         # Auto-fix issues
-rana deploy              # Deploy to production
-rana status              # Show project status
+rana init                # Initialize RANA in your project
+rana check               # Run safety gates (tests, lint, guardrails)
+rana check --fix         # Auto-fix issues where possible
 ```
 
-### LLM Commands (6 commands)
+### Feature Commands
+```bash
+rana feature:new         # Guided spec creation from an idea
+rana feature:implement   # Branch + scoped implementation
+```
+
+### LLM Commands
 ```bash
 rana llm:setup           # Configure providers
-rana llm:analyze         # Cost analysis
-rana llm:optimize        # Apply optimizations
-rana llm:compare         # Compare providers
-rana llm:cost-estimate   # Estimate costs
-rana llm:test            # Test providers
+rana llm:analyze         # Cost and usage analysis
+rana llm:compare         # Compare providers for your use case
 ```
 
-### Database (6 commands)
+### Database Commands
 ```bash
 rana db:setup            # Setup wizard
 rana db:migrate          # Run migrations
-rana db:seed             # Seed data
-rana db:reset            # Reset database
-rana db:studio           # Visual editor
-rana db:status           # Show status
+rana db:check            # Validate schema
 ```
 
-### Security (2 commands)
+### Security Commands
 ```bash
-rana security:audit      # Security scan
-rana security:setup      # Setup wizard
+rana security:audit      # Run security scan
+rana security:setup      # Setup security config
 ```
 
-### SEO (4 commands)
+### Agent Commands
 ```bash
-rana seo:check           # Validate SEO
-rana seo:generate        # Generate files
-rana seo:analyze         # Analyze pages
-rana seo:setup           # Setup wizard
+rana agent:new           # Scaffold a new agent
+rana agent:test          # Run agent tests
+rana agent:serve         # Start agent as API server
 ```
 
-### Mobile (3 commands)
+### Vibe Commands
 ```bash
-rana mobile:validate     # Check compliance
-rana mobile:test         # Test viewports
-rana mobile:setup        # Setup wizard
+rana vibe:new            # Create new VibeSpec
+rana vibe:validate       # Validate VibeSpec YAML
+rana vibe:compile        # Show compiled system prompt
 ```
-
-**Total: 22+ commands**
-
-See [CLI_COMMANDS_REFERENCE.md](CLI_COMMANDS_REFERENCE.md) for complete documentation.
-
----
-
-## Real-World Results
-
-### Case Study: E-Commerce Customer Support
-- **Before:** $22,500/month (OpenAI only)
-- **After:** $6,750/month (RANA optimized)
-- **Savings:** $189,000/year (70% reduction)
-- **Setup time:** 60 hours → 30 minutes
-
-### Case Study: SaaS Content Generation
-- **Before:** $18,000/month (GPT-4o only)
-- **After:** $5,400/month (Claude + Gemini + GPT)
-- **Savings:** $151,200/year (70% reduction)
-- **Quality:** +25% improvement (task-specific models)
-
-### Case Study: Healthcare AI Assistant
-- **Before:** $12,000/month (Azure OpenAI)
-- **After:** $3,600/month (Azure + Ollama)
-- **Savings:** $100,800/year (70% reduction)
-- **Audit prep:** 100 hours → 10 hours (90% reduction)
-
-**Full case studies:** [RANA_WHITEPAPER.md](RANA_WHITEPAPER.md#8-case-studies)
-
----
-
-## Template Features
-
-The Next.js + Supabase template includes:
-
-- ✅ **9 LLM providers** configured
-- ✅ **Working authentication** flow
-- ✅ **AI chat endpoint** with caching & cost tracking
-- ✅ **Database** with Row-Level Security
-- ✅ **Rate limiting** (100 req/min per IP)
-- ✅ **Security headers** (CSP, HSTS, etc.)
-- ✅ **SEO files** (sitemap, robots.txt, manifest)
-- ✅ **Mobile-first** components
-- ✅ **TypeScript** throughout
-- ✅ **Tailwind CSS** with utilities
-- ✅ **Production deployment** ready
-
-**Location:** `/templates/nextjs-supabase/`
 
 ---
 
 ## Documentation
 
 ### Getting Started
-- **[START_HERE.md](START_HERE.md)** - Navigation hub (start here!)
-- **[QUICK_REFERENCE.md](QUICK_REFERENCE.md)** - One-page cheat sheet
+- **[START_HERE.md](START_HERE.md)** - Navigation hub
 - **[QUICK_START_GUIDE.md](QUICK_START_GUIDE.md)** - 5-minute tutorial
-- **[CLI_COMMANDS_REFERENCE.md](CLI_COMMANDS_REFERENCE.md)** - All commands
-
-### Core Guides
-- **[RANA_WHITEPAPER.md](RANA_WHITEPAPER.md)** - Technical whitepaper (50 pages)
-- **[RANA_MONETIZATION_STRATEGY.md](RANA_MONETIZATION_STRATEGY.md)** - Business model
+- **[docs/rana-os-spec.md](docs/rana-os-spec.md)** - Full API specification
 
 ### Framework Guides
-- **[LLM_OPTIMIZATION_GUIDE.md](docs/LLM_OPTIMIZATION_GUIDE.md)** - Cost optimization
-- **[SECURITY_FRAMEWORK_GUIDE.md](docs/SECURITY_FRAMEWORK_GUIDE.md)** - Security patterns
-- **[DATABASE_INTEGRATION_GUIDE.md](docs/DATABASE_INTEGRATION_GUIDE.md)** - Database setup
-- **[SEO_FRAMEWORK_GUIDE.md](docs/SEO_FRAMEWORK_GUIDE.md)** - SEO automation
-- **[MOBILE_FIRST_COMPONENT_SYSTEM.md](docs/MOBILE_FIRST_COMPONENT_SYSTEM.md)** - Mobile patterns
+- **[docs/LLM_OPTIMIZATION_GUIDE.md](docs/LLM_OPTIMIZATION_GUIDE.md)** - Cost optimization
+- **[docs/SECURITY_FRAMEWORK_GUIDE.md](docs/SECURITY_FRAMEWORK_GUIDE.md)** - Security patterns
+- **[docs/AGENT_DEVELOPMENT_KIT_GUIDE.md](docs/AGENT_DEVELOPMENT_KIT_GUIDE.md)** - Build AI agents
+- **[docs/MCP_INTEGRATION_GUIDE.md](docs/MCP_INTEGRATION_GUIDE.md)** - MCP integration
 
-### Advanced
-- **[AGENT_DEVELOPMENT_KIT_GUIDE.md](docs/AGENT_DEVELOPMENT_KIT_GUIDE.md)** - Build AI agents
-- **[MCP_INTEGRATION_GUIDE.md](docs/MCP_INTEGRATION_GUIDE.md)** - Claude MCP integration
-- **[DEPLOYMENT_INTEGRATION_GUIDE.md](docs/DEPLOYMENT_INTEGRATION_GUIDE.md)** - Deploy anywhere
-- **[PROCESS_INTELLIGENCE_GUIDE.md](docs/PROCESS_INTELLIGENCE_GUIDE.md)** - Velocity & legacy analysis
-- **[TRAINING_CERTIFICATION.md](docs/TRAINING_CERTIFICATION.md)** - Training programs
+### Technical
+- **[RANA_WHITEPAPER.md](RANA_WHITEPAPER.md)** - Technical whitepaper
+- **[CLI_COMMANDS_REFERENCE.md](CLI_COMMANDS_REFERENCE.md)** - All CLI commands
 
 ---
 
-## Why "RANA"?
+## Free & Open Source
 
-**RANA = Rapid AI Native Architecture**
+RANA is **free and open source**.
 
-Also named after my son's nickname (like a piranha 🐟) — Made with love to help you succeed faster ❤️
+- No per-seat license
+- No proprietary runtime lock-in
+- You control:
+  - your models and providers
+  - your data and logs
+  - your CI/CD and deployment pipeline
 
-### The Cute Piranha Mascot
+Use RANA as:
 
-**Why a piranha?**
-- **Fast** (like RANA's 5-minute setup)
-- **Efficient** (like 70% cost savings)
-- **Powerful** (like 9 LLM providers)
-- **Cute** (memorable branding)
+- a drop-in guardrail layer in your existing projects
+- a foundation for your own internal AI dev tools
+- a place to contribute better patterns for safe, AI-assisted development
 
-Coming soon: Official RANA piranha mascot logo!
-
----
-
-## Pricing
-
-**RANA is FREE forever.** (MIT license)
-
-### What's Free:
-- ✅ Framework & CLI
-- ✅ All features
-- ✅ 9 LLM providers
-- ✅ Security & optimization
-- ✅ Templates & components
-- ✅ Documentation
-- ✅ Community support
-- ✅ Open source code
-
-### Optional Services (by Waymaker):
-- **Training** - $2,500-$5,000 (individual/team workshops)
-- **Implementation** - $5,000-$25,000 (we integrate RANA for you)
-- **Custom Development** - $25,000-$150,000 (we build your AI app)
-- **Enterprise Support** - $5,000-$50,000/year (priority support, SLA)
-
-**You pay $0 for RANA. You pay only if you want our help.**
-
-Learn more: [RANA_MONETIZATION_STRATEGY.md](RANA_MONETIZATION_STRATEGY.md)
+**License:** MIT
 
 ---
 
-## Community
+## Contributing
 
-### Get Help
-- **Discord:** https://discord.gg/rana
-- **GitHub Issues:** https://github.com/waymaker/rana/issues
-- **GitHub Discussions:** https://github.com/waymaker/rana/discussions
-- **Email:** ashley@waymaker.cx or christian@waymaker.cx
+We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for:
 
-### Contributing
-- **GitHub:** https://github.com/waymaker/rana
-- **Contributing Guide:** [CONTRIBUTING.md](CONTRIBUTING.md)
-- **Code of Conduct:** [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
-- **License:** MIT
+- Where to start (guardrails, vibes, flows, integrations)
+- Code style expectations
+- Vision guidelines (to avoid turning RANA into Another Orchestrator™)
 
-### Social
-- **Twitter:** @rana_dev
-- **LinkedIn:** https://linkedin.com/company/rana
-- **YouTube:** RANA Tutorials (coming soon)
-- **Dev.to:** https://dev.to/rana
+**Key areas for contribution:**
 
----
-
-## Roadmap
-
-### ✅ v2.0 (Current - January 2025)
-- 9 LLM providers
-- 70% cost reduction
-- Enterprise security
-- 22+ CLI commands
-- Complete documentation
-- Next.js + Supabase template
-
-### 🔄 v2.1 (Q1 2025)
-- [ ] Python SDK
-- [ ] Go SDK
-- [ ] VS Code extension (RANA Studio)
-- [ ] Web dashboard (usage analytics)
-- [ ] Video tutorials (10 episodes)
-
-### 📅 v2.2 (Q2 2025)
-- [ ] SSO/SAML integration
-- [ ] On-premise deployment
-- [ ] Advanced monitoring
-- [ ] Custom model fine-tuning
-- [ ] SOC 2 Type 1 certification
-
-### 🎯 v3.0 (Q3-Q4 2025)
-- [ ] RANA Cloud (managed hosting)
-- [ ] Plugin marketplace
-- [ ] Mobile SDKs (React Native, Flutter)
-- [ ] Edge runtime support
-- [ ] AI agent orchestration
-
-**Full roadmap:** [RANA_WHITEPAPER.md](RANA_WHITEPAPER.md#10-roadmap--governance)
-
----
-
-## Success Stories
-
-> "RANA cut our AI costs by 70% in the first month. The automatic fallback to Gemini Flash for simple queries alone saved us $10K/month."
-> — *CTO, E-Commerce Company*
-
-> "We deployed a production AI app in 30 minutes instead of 2 weeks. The 9 providers mean we're never locked into one vendor."
-> — *Founder, SaaS Startup*
-
-> "RANA's built-in security and compliance tools saved us 100 hours of audit prep. The automatic PII masking is a game-changer for HIPAA."
-> — *Chief Medical Officer, Healthcare Platform*
-
-> "RANA made AI features financially possible for our open-source project. Groq's free tier + RANA's smart routing = affordable AI for everyone."
-> — *Maintainer, DevTools Project*
-
----
-
-## License
-
-MIT License - see [LICENSE](LICENSE) file for details.
-
-**What this means:**
-- ✅ Use commercially (free forever)
-- ✅ Modify and distribute
-- ✅ Private use
-- ✅ No warranty (use at your own risk)
-
-**Protected by trademark:**
-- "RANA" name
-- Piranha logo (coming soon)
-
-Learn more: [RANA_MONETIZATION_STRATEGY.md](RANA_MONETIZATION_STRATEGY.md#-mit-license---what-it-means)
+1. **Guardrails & Checks** - New safety rules and validation
+2. **VibeSpecs & FlowSpecs** - Reusable behavior definitions
+3. **Integrations** - LangChain, CrewAI, MCP, IDE plugins
+4. **Documentation & Examples** - Tutorials and sample apps
 
 ---
 
 ## Credits
 
-**Created by:** [Waymaker](https://waymaker.cx)
+**Created by:**
 - **Ashley Kays** - Creator, Product & Strategy
 - **Christian Moore** - Creator, Engineering & Architecture
 
-**Named after:** Ashley's son (RANA = his nickname, like a piranha 🐟)
+**Organizations:**
+- [Waymaker.cx](https://waymaker.cx)
+- [Betr.ai](https://betr.ai)
 
-**Built with:** Next.js, Supabase, TypeScript, Tailwind CSS
-**Developed with:** Claude Code (Anthropic)
-**Sponsored by:** [betr.ai](https://betr.ai)
-
-**Special thanks to:**
-- OpenAI, Anthropic, Google, xAI, Mistral, Cohere, Together.ai, Groq, Ollama
-- The open source community
-- Early adopters and contributors
+**Named after:** Ashley's son (RANA = his nickname, like a piranha)
 
 ---
 
-## Get Started Now
+## Get Started
 
 ```bash
-# Production-ready AI app in 5 minutes
-npx create-rana-app my-app
-cd my-app
-npm run dev
+# Install
+npm install @rana/core @rana/cli
+
+# Initialize in your project
+npx rana init
+
+# Create your first feature spec
+rana feature:new
+
+# Run safety checks
+rana check
 ```
 
-**Or explore the docs:**
-- [START_HERE.md](START_HERE.md) - Complete navigation
-- [QUICK_REFERENCE.md](QUICK_REFERENCE.md) - One-page cheat sheet
-- [RANA_WHITEPAPER.md](RANA_WHITEPAPER.md) - Technical details
-
-**Questions?** Join our [Discord](https://discord.gg/rana) or email us:
-- ashley@waymaker.cx
-- christian@waymaker.cx
+**Questions?**
+- GitHub Issues: https://github.com/waymaker-ai/ranavibe/issues
+- Email: ashley@waymaker.cx or christian@waymaker.cx
 
 ---
 
-**⭐ Star us on GitHub if RANA helps you!**
+**RANA** - Guardrails & Guidance for AI-Assisted Development
 
-**🐟 Made with love to help you succeed faster ❤️**
-
----
-
-**RANA** - Rapid AI Native Architecture
-https://rana.dev
+*Made with love to help you build real products, safely.*

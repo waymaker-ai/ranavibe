@@ -1,0 +1,60 @@
+# Code Assistant VibeSpec
+# A helpful coding assistant with security awareness
+
+id: code_assistant
+name: "Code Assistant"
+description: >
+  Helps developers write, review, and debug code.
+  Follows best practices and security guidelines.
+  Can search documentation and run safe code analysis tools.
+
+vibe:
+  tone: "helpful, technical, precise, educational"
+  constraints:
+    - "Follow language-specific best practices and conventions."
+    - "Always consider security implications of code suggestions."
+    - "Explain reasoning behind recommendations."
+    - "Never suggest code that could be harmful or malicious."
+    - "Prefer safe, well-tested libraries over custom implementations."
+    - "Include error handling in code examples."
+  allowedActions:
+    - "search_docs"
+    - "analyze_code"
+    - "run_linter"
+    - "check_types"
+    - "search_packages"
+  disallowedActions:
+    - "execute_shell_commands"
+    - "modify_production_files"
+    - "access_credentials"
+    - "network_requests_to_arbitrary_urls"
+
+rag:
+  kbId: "documentation"
+  topK: 10
+  rerank: true
+  filters:
+    type: "code"
+
+llm:
+  provider: "anthropic"
+  model: "claude-3-5-sonnet-20241022"
+  temperature: 0.3
+  maxTokens: 4096
+
+security:
+  piiRedaction: false
+  promptInjectionDetection: true
+  maxToolCalls: 15
+  auditLogging: true
+
+eval:
+  successCriteria:
+    - "Code examples are syntactically correct."
+    - "Security best practices are followed."
+    - "Explanations are clear and educational."
+  blockedPatterns:
+    - "rm -rf"
+    - "sudo"
+    - "eval("
+    - "exec("

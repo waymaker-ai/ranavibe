@@ -1,24 +1,52 @@
 # Contributing to RANA
 
-Thank you for your interest in contributing to RANA! This guide will help you get started.
+Thank you for your interest in contributing to RANA!
 
 ---
 
-## 🎯 Ways to Contribute
+## Vision
 
-There are many ways to contribute to RANA:
+RANA exists to **prevent AI-assisted dev chaos**, not to orchestrate it. We believe:
 
-1. **Report bugs** - Found a bug? Let us know!
-2. **Suggest features** - Have an idea? We'd love to hear it!
-3. **Write code** - Fix bugs or implement features
-4. **Improve docs** - Help make our documentation better
-5. **Write examples** - Share how you're using RANA
-6. **Answer questions** - Help others in Discord/GitHub
-7. **Spread the word** - Star us on GitHub, tweet about us
+- AI assistants should **enhance** existing workflows, not replace them
+- Safety rails matter more than speed
+- Integration > reinvention
+- Practical tooling > impressive demos
+
+If that resonates with you, welcome!
 
 ---
 
-## 🚀 Getting Started
+## Ways to Contribute
+
+### 1. Guardrails
+- Improve existing safety checks
+- Add new detection patterns (PII, secrets, injection)
+- Propose constraint configurations
+
+### 2. VibeSpecs
+- Submit example `.yml` configs for common use cases
+- Improve the VibeSpec schema
+- Build tooling around spec validation
+
+### 3. Integrations
+- Improve LangChain/CrewAI adapters
+- Add support for new frameworks
+- Build MCP tool providers
+
+### 4. Docs
+- Improve README clarity
+- Add real-world examples
+- Document edge cases and gotchas
+
+### 5. Core Improvements
+- Bug fixes
+- Performance optimizations
+- Type safety improvements
+
+---
+
+## Getting Started
 
 ### 1. Fork and Clone
 
@@ -28,20 +56,17 @@ git clone https://github.com/YOUR_USERNAME/rana.git
 cd rana
 
 # Add upstream remote
-git remote add upstream https://github.com/waymaker/rana.git
+git remote add upstream https://github.com/AshleyMcKays/rana.git
 ```
 
 ### 2. Install Dependencies
 
 ```bash
-# Run the setup script
-bash setup.sh
+# Install all workspace dependencies
+pnpm install
 
-# Or manually:
-npm install
-cd packages/core && npm install && npm run build
-cd ../react && npm install && npm run build
-cd ../..
+# Build all packages
+pnpm build
 ```
 
 ### 3. Create a Branch
@@ -56,91 +81,45 @@ git checkout -b fix/bug-description
 
 ---
 
-## 💻 Development Workflow
+## Code Style
 
-### Project Structure
-
-```
-rana/
-├── packages/
-│   ├── core/          # @rana/core - Main SDK
-│   ├── react/         # @rana/react - React hooks
-│   └── ...
-├── tools/
-│   └── cli/           # @rana/cli - CLI tools
-├── examples/          # Example projects
-├── docs/              # Documentation
-└── tests/             # Tests
-```
-
-### Building Packages
-
-```bash
-# Build all packages
-npm run build
-
-# Build specific package
-npm run build:core
-npm run build:react
-npm run build:cli
-```
-
-### Running Tests
-
-```bash
-# Run all tests
-npm test
-
-# Run specific package tests
-npm run test:core
-npm run test:react
-```
-
-### Type Checking
-
-```bash
-# Check all packages
-npm run typecheck
-
-# Check specific package
-npm run typecheck:core
-```
+- **TypeScript** for all code
+- **Full type annotations** - no implicit `any`
+- **Single quotes** for strings
+- **2 spaces** for indentation
+- **Descriptive names** over comments
+- **JSDoc** for public APIs
 
 ---
 
-## 📝 Coding Standards
+## Design Guidelines
 
-### TypeScript
+### Avoid Building "Another Orchestrator"
 
-- Use TypeScript for all code
-- Provide full type annotations
-- Export all public types
+RANA is a **guardrail layer**, not an orchestration framework. When contributing:
 
-### Code Style
+- Don't add features that duplicate LangChain/CrewAI/AutoGen functionality
+- Focus on safety, validation, and integration
+- Keep the API surface minimal
+- Prefer composition over inheritance
 
-- Use 2 spaces for indentation
-- Use single quotes for strings
-- Use descriptive variable names
-- Add comments for complex logic
+### Keep It Integration-Friendly
 
-### Documentation
-
-- Add JSDoc comments to all public APIs
-- Include examples in JSDoc
-- Update README when adding features
+- Adapters should be thin wrappers
+- Don't force users into RANA-specific patterns
+- Support existing tools, don't replace them
 
 ---
 
-## ✨ Submitting Pull Requests
+## Submitting Pull Requests
 
 ### PR Checklist
 
 - [ ] Code follows style guidelines
-- [ ] All tests pass
-- [ ] Types check
-- [ ] Builds successfully
-- [ ] Documentation updated
-- [ ] CHANGELOG.md updated
+- [ ] All tests pass (`pnpm test`)
+- [ ] Types check (`pnpm typecheck`)
+- [ ] Builds successfully (`pnpm build`)
+- [ ] Documentation updated if needed
 
 ### PR Title Format
 
@@ -148,16 +127,30 @@ npm run typecheck:core
 feat: Add support for new feature
 fix: Resolve bug description
 docs: Update documentation
+refactor: Improve code structure
 ```
 
 ---
 
-## 📞 Contact
+## Non-Goals (Out of Scope)
 
-- **Email**: ashley@waymaker.cx
-- **Discord**: https://discord.gg/rana
-- **GitHub**: https://github.com/waymaker/rana
+We intentionally **don't** want to:
+
+- Build a full agent orchestration framework
+- Compete with LangChain/CrewAI/AutoGen
+- Create a "do everything" monolith
+- Add features that compromise simplicity
+
+If your contribution heads in these directions, we'll likely suggest a different approach or politely decline.
 
 ---
 
-**Happy coding! 🚀**
+## Contact
+
+- **GitHub Issues**: For bugs and feature requests
+- **Discussions**: For questions and ideas
+- **Email**: ashley@waymaker.cx
+
+---
+
+**Thanks for helping make AI-assisted development safer!**

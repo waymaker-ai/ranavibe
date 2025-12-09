@@ -1,0 +1,51 @@
+{
+  "name": "@rana/langchain",
+  "version": "1.0.0",
+  "description": "LangChain adapter for RANA Framework",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@rana/core": "workspace:*"
+  },
+  "peerDependencies": {
+    "@langchain/core": ">=0.1.0",
+    "langchain": ">=0.1.0"
+  },
+  "peerDependenciesMeta": {
+    "@langchain/core": {
+      "optional": true
+    },
+    "langchain": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.0",
+    "vitest": "^1.0.0"
+  },
+  "keywords": [
+    "rana",
+    "langchain",
+    "llm",
+    "ai",
+    "adapter"
+  ],
+  "author": "RANA Team",
+  "license": "MIT"
+}
