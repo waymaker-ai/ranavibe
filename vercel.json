@@ -9,5 +9,19 @@
         "installCommand": "cd .. && npx pnpm install --no-frozen-lockfile"
       }
     }
+  ],
+  "routes": [
+    {
+      "src": "/website/_next/(.*)",
+      "dest": "/website/_next/$1"
+    },
+    {
+      "src": "/website/(.*)",
+      "dest": "/website/$1"
+    },
+    {
+      "src": "/((?!website).*)",
+      "dest": "/website/$1"
+    }
   ]
 }
