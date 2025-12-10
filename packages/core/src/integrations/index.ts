@@ -281,3 +281,16 @@ export type {
   CreatePageOptions,
   UpdatePageOptions,
 } from './notion';
+
+// Google Antigravity
+export {
+  AntigravityIntegration,
+  createAntigravityIntegration,
+  setupAntigravity,
+} from './antigravity';
+export type {
+  AntigravityConfig,
+  AntigravityAgent,
+  AgentOutput,
+  ValidationResult,
+} from './antigravity';

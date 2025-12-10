@@ -14,45 +14,45 @@ import {
 
 const features = [
   {
-    icon: Gauge,
-    title: '70% Cost Savings',
-    description: 'Automatic cost reduction through intelligent model routing, caching, prompt optimization, and real-time cost tracking dashboards.',
+    icon: Shield,
+    title: 'Security Guardrails',
+    description: 'OWASP Top 10 protection, GDPR compliance, PII detection, and prompt injection defense built into every request.',
     highlight: true,
   },
   {
+    icon: Code2,
+    title: 'Design System Enforcement',
+    description: 'Automatically enforce your design library usage and component patterns. No more inconsistent UIs.',
+  },
+  {
+    icon: Database,
+    title: 'Prompt Management',
+    description: 'Version control for prompts, A/B testing, analytics, and team collaboration. Manage AI behavior like code.',
+  },
+  {
+    icon: Zap,
+    title: 'Real Data Only',
+    description: 'Framework prevents fake/mock data in production. Connect to real databases and APIs with type-safe queries.',
+  },
+  {
     icon: Lock,
+    title: 'Controlled Features',
+    description: 'Quality gates prevent unauthorized feature additions. Every change must meet your standards before deployment.',
+  },
+  {
+    icon: Gauge,
+    title: 'Works With Your Tools',
+    description: 'Use Rana with Cursor, Windsurf, Google Antigravity, Claude Code, or any IDE. Complementary, not competitive.',
+  },
+  {
+    icon: Search,
     title: 'Zero Vendor Lock-in',
     description: 'Switch between 9 LLM providers in one line. OpenAI, Anthropic, Google, xAI, Mistral, Cohere, Together, Groq, Ollama.',
   },
   {
-    icon: Shield,
-    title: 'Enterprise Security',
-    description: 'Built-in OWASP Top 10 protection, GDPR compliance tools, PII detection, and rate limiting for production-grade security.',
-  },
-  {
-    icon: Zap,
-    title: 'Multi-Agent Orchestration',
-    description: 'Coordinate multiple AI agents seamlessly with built-in state management and intelligent routing between specialized agents.',
-  },
-  {
-    icon: Database,
-    title: 'MCP Server Creation',
-    description: 'Create Model Context Protocol (MCP) servers to standardize AI integration and enable powerful context-aware applications.',
-  },
-  {
-    icon: Code2,
-    title: 'Process Intelligence',
-    description: 'Track development velocity, DORA metrics, and legacy code analysis. AI-powered insights for continuous improvement.',
-  },
-  {
-    icon: Search,
-    title: 'Production-Ready',
-    description: 'Deploy in 5 minutes with built-in monitoring, error handling, rate limiting, and 25+ CLI commands for automation.',
-  },
-  {
     icon: Smartphone,
-    title: 'Training & Services',
-    description: 'Optional certification programs, team workshops, and enterprise implementation from the team behind RANA.',
+    title: '70% Cost Savings',
+    description: 'Automatic cost reduction through intelligent model routing, caching, prompt optimization, and budget enforcement.',
   },
 ];
 
@@ -68,7 +68,7 @@ export function Features() {
             transition={{ duration: 0.5 }}
             className="text-3xl md:text-5xl font-bold mb-4"
           >
-            Why RANA is Different
+            The Guardrails You Need
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -77,7 +77,7 @@ export function Features() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-lg text-foreground-secondary max-w-2xl mx-auto"
           >
-            The only framework combining enterprise security, multi-agent orchestration, and MCP server capabilities
+            A framework that works WITH your tools to enforce security, consistency, and quality at every step
           </motion.p>
         </div>
 

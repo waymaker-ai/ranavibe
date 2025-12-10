@@ -32,8 +32,8 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-balance mb-6"
           >
-            Build AI Agents{' '}
-            <span className="gradient-text">The Right Way</span>
+            Build AI Apps{' '}
+            <span className="gradient-text">With Guardrails</span>
           </motion.h1>
 
           {/* Description */}
@@ -43,7 +43,7 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-lg md:text-xl text-foreground-secondary text-balance mb-10 max-w-2xl mx-auto"
           >
-            Production-ready AI apps in 5 minutes. <span className="text-foreground font-semibold">70% automatic cost reduction</span>. 9 LLM providers. Enterprise security built-in.
+            A framework for building with <span className="text-foreground font-semibold">security, design consistency, prompt management, and real data</span>. Works with Cursor, Windsurf, Antigravity, and all your favorite tools.
           </motion.p>
 
           {/* CTAs */}

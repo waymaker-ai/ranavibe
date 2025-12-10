@@ -657,6 +657,23 @@ export { DesignSystemChecker } from './design-system/index.js';
 export { TemplateManager } from './templates/index.js';
 
 // ============================================================================
+// API Key Management (Free vs Paid Tiers)
+// ============================================================================
+
+export {
+  ApiKeyManager,
+  createApiKeyManagerFromEnv,
+  createFreeTierConfig,
+  createWaymakerProConfig,
+  createEnterpriseConfig,
+} from './api-keys';
+export type {
+  TierType,
+  ApiKeyConfig,
+  ApiKeySource,
+} from './api-keys';
+
+// ============================================================================
 // Integrations
 // ============================================================================
 
