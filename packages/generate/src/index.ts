@@ -27,6 +27,8 @@ export { CodeGenerator, codeGenerator } from './engine/generator';
 
 // Quality exports
 export { QualityValidator, qualityValidator } from './quality/validator';
+export { AutoFixer, autoFixer } from './quality/auto-fixer';
+export type { FixResult } from './quality/auto-fixer';
 
 // Template exports
 export {
@@ -125,6 +127,7 @@ import { ImplementationPlanner } from './engine/planner';
 import { ContextAnalyzer } from './engine/context-analyzer';
 import { CodeGenerator } from './engine/generator';
 import { QualityValidator } from './quality/validator';
+import { AutoFixer, FixResult } from './quality/auto-fixer';
 import type {
   GeneratedFile,
   ParsedIntent,
@@ -145,6 +148,8 @@ export interface GenerateConfig {
   includeDocs?: boolean;
   /** Run security audit */
   securityAudit?: boolean;
+  /** Auto-fix issues after generation */
+  autoFix?: boolean;
   /** LLM provider for enhanced generation */
   llmProvider?: {
     complete(prompt: string): Promise<string>;
@@ -257,18 +262,45 @@ export async function validateCode(
 }
 
 /**
- * Generate code from a natural language description (all-in-one)
- *
- * This is the main entry point for code generation. It combines
- * intent parsing, planning, generation, and validation.
+ * Fix issues in generated code automatically
  *
  * @example
  * ```typescript
- * const result = await generate('User authentication with OAuth');
+ * const validation = await validateCode(files);
+ * if (!validation.passed) {
+ *   const fixResults = await fixCode(files, validation);
+ *   console.log(fixResults.map(r => r.changes));
+ * }
+ * ```
+ */
+export async function fixCode(
+  files: GeneratedFile[],
+  validation: ValidationResult,
+  config?: GenerateConfig
+): Promise<FixResult[]> {
+  const fixer = new AutoFixer({
+    llmProvider: config?.llmProvider,
+  });
+
+  return fixer.fix(files, validation.errors, validation.warnings);
+}
+
+/**
+ * Generate code from a natural language description (all-in-one)
  *
- * console.log(result.files);      // Generated files
+ * This is the main entry point for code generation. It combines
+ * intent parsing, planning, generation, validation, and optional auto-fixing.
+ *
+ * @example
+ * ```typescript
+ * const result = await generate('User authentication with OAuth', {
+ *   autoFix: true, // Auto-fix any issues found
+ * });
+ *
+ * console.log(result.files);      // Generated files (possibly fixed)
  * console.log(result.plan);       // Implementation plan
  * console.log(result.validation); // Quality check results
+ * console.log(result.fixes);      // Applied fixes (if autoFix enabled)
  * ```
  */
 export async function generate(
@@ -279,6 +311,7 @@ export async function generate(
   plan: ImplementationPlan;
   files: GeneratedFile[];
   validation: ValidationResult;
+  fixes?: FixResult[];
 }> {
   // Step 1: Parse intent
   const intent = await parseIntent(description, config);
@@ -287,12 +320,31 @@ export async function generate(
   const plan = await createPlan(intent, config);
 
   // Step 3: Generate code
-  const files = await generateFromPlan(plan, config);
+  let files = await generateFromPlan(plan, config);
 
   // Step 4: Validate
-  const validation = await validateCode(files, config);
+  let validation = await validateCode(files, config);
 
-  return { intent, plan, files, validation };
+  // Step 5: Auto-fix if enabled and issues found
+  let fixes: FixResult[] | undefined;
+  if (config?.autoFix && !validation.passed) {
+    fixes = await fixCode(files, validation, config);
+
+    // Update files with fixed versions
+    const fixedFiles = fixes.filter(f => f.fixed).map(f => f.file);
+    if (fixedFiles.length > 0) {
+      // Replace files with fixed versions
+      files = files.map(file => {
+        const fixed = fixedFiles.find(f => f.path === file.path);
+        return fixed || file;
+      });
+
+      // Re-validate after fixes
+      validation = await validateCode(files, config);
+    }
+  }
+
+  return { intent, plan, files, validation, fixes };
 }
 
 /**

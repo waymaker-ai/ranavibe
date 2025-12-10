@@ -2075,6 +2075,1021 @@ describe('useLocalStorage', () => {
 });
 
 // ============================================================================
+// ADDITIONAL COMPONENT TEMPLATES
+// ============================================================================
+
+/**
+ * React Skeleton Loading Component
+ */
+templates.set('react-skeleton', {
+  id: 'react-skeleton',
+  name: 'React Skeleton Loader',
+  description: 'Animated skeleton placeholders for loading states',
+  category: 'component',
+  framework: ['react', 'next'],
+  tags: ['skeleton', 'loading', 'placeholder', 'ui'],
+  code: `import { cn } from '@/lib/utils';
+
+export interface SkeletonProps extends React.HTMLAttributes<HTMLDivElement> {
+  variant?: 'text' | 'circular' | 'rectangular' | 'rounded';
+  width?: string | number;
+  height?: string | number;
+  animation?: 'pulse' | 'wave' | 'none';
+}
+
+export function Skeleton({
+  className,
+  variant = 'text',
+  width,
+  height,
+  animation = 'pulse',
+  ...props
+}: SkeletonProps) {
+  const variantStyles = {
+    text: 'h-4 rounded',
+    circular: 'rounded-full',
+    rectangular: '',
+    rounded: 'rounded-md',
+  };
+
+  const animationStyles = {
+    pulse: 'animate-pulse',
+    wave: 'relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent',
+    none: '',
+  };
+
+  return (
+    <div
+      className={cn(
+        'bg-gray-200 dark:bg-gray-700',
+        variantStyles[variant],
+        animationStyles[animation],
+        className
+      )}
+      style={{
+        width: width ?? (variant === 'circular' ? 40 : '100%'),
+        height: height ?? (variant === 'circular' ? 40 : undefined),
+      }}
+      aria-hidden="true"
+      {...props}
+    />
+  );
+}
+
+// Preset skeleton components
+export function SkeletonText({ lines = 3 }: { lines?: number }) {
+  return (
+    <div className="space-y-2">
+      {Array.from({ length: lines }).map((_, i) => (
+        <Skeleton
+          key={i}
+          variant="text"
+          width={i === lines - 1 ? '60%' : '100%'}
+        />
+      ))}
+    </div>
+  );
+}
+
+export function SkeletonCard() {
+  return (
+    <div className="rounded-lg border p-4 space-y-4">
+      <Skeleton variant="rectangular" height={200} className="rounded-md" />
+      <Skeleton variant="text" width="60%" />
+      <SkeletonText lines={2} />
+      <div className="flex gap-2">
+        <Skeleton variant="rounded" width={80} height={32} />
+        <Skeleton variant="rounded" width={80} height={32} />
+      </div>
+    </div>
+  );
+}
+
+export function SkeletonAvatar({ size = 40 }: { size?: number }) {
+  return <Skeleton variant="circular" width={size} height={size} />;
+}
+
+export function SkeletonTableRow({ columns = 4 }: { columns?: number }) {
+  return (
+    <tr>
+      {Array.from({ length: columns }).map((_, i) => (
+        <td key={i} className="px-4 py-3">
+          <Skeleton variant="text" />
+        </td>
+      ))}
+    </tr>
+  );
+}
+
+export default Skeleton;
+`,
+  tests: `import { describe, it, expect } from 'vitest';
+import { render, screen } from '@testing-library/react';
+import { Skeleton, SkeletonCard, SkeletonText } from './Skeleton';
+
+describe('Skeleton', () => {
+  it('renders with default props', () => {
+    render(<Skeleton data-testid="skeleton" />);
+    expect(screen.getByTestId('skeleton')).toBeInTheDocument();
+  });
+
+  it('renders circular variant', () => {
+    render(<Skeleton variant="circular" data-testid="skeleton" />);
+    expect(screen.getByTestId('skeleton')).toHaveClass('rounded-full');
+  });
+
+  it('is hidden from screen readers', () => {
+    render(<Skeleton data-testid="skeleton" />);
+    expect(screen.getByTestId('skeleton')).toHaveAttribute('aria-hidden', 'true');
+  });
+});
+
+describe('SkeletonCard', () => {
+  it('renders card skeleton', () => {
+    render(<SkeletonCard />);
+    expect(document.querySelector('.rounded-lg')).toBeInTheDocument();
+  });
+});
+
+describe('SkeletonText', () => {
+  it('renders specified number of lines', () => {
+    render(<SkeletonText lines={5} />);
+    const skeletons = document.querySelectorAll('[aria-hidden="true"]');
+    expect(skeletons).toHaveLength(5);
+  });
+});
+`,
+  documentation: '# Skeleton\n\nLoading placeholder components.',
+  variables: [],
+  examples: [],
+});
+
+/**
+ * React Toast Notification Component
+ */
+templates.set('react-toast', {
+  id: 'react-toast',
+  name: 'React Toast Notifications',
+  description: 'Toast notification system with queue management',
+  category: 'component',
+  framework: ['react', 'next'],
+  tags: ['toast', 'notification', 'alert', 'ui'],
+  code: `'use client';
+
+import { createContext, useContext, useReducer, useCallback, useEffect } from 'react';
+import { createPortal } from 'react-dom';
+
+// Types
+export type ToastType = 'success' | 'error' | 'warning' | 'info';
+
+export interface Toast {
+  id: string;
+  type: ToastType;
+  title: string;
+  message?: string;
+  duration?: number;
+  action?: {
+    label: string;
+    onClick: () => void;
+  };
+}
+
+interface ToastState {
+  toasts: Toast[];
+}
+
+type ToastAction =
+  | { type: 'ADD'; toast: Toast }
+  | { type: 'REMOVE'; id: string }
+  | { type: 'CLEAR' };
+
+// Reducer
+function toastReducer(state: ToastState, action: ToastAction): ToastState {
+  switch (action.type) {
+    case 'ADD':
+      return { toasts: [...state.toasts, action.toast].slice(-5) }; // Max 5 toasts
+    case 'REMOVE':
+      return { toasts: state.toasts.filter((t) => t.id !== action.id) };
+    case 'CLEAR':
+      return { toasts: [] };
+    default:
+      return state;
+  }
+}
+
+// Context
+interface ToastContextValue {
+  toasts: Toast[];
+  addToast: (toast: Omit<Toast, 'id'>) => string;
+  removeToast: (id: string) => void;
+  clearToasts: () => void;
+}
+
+const ToastContext = createContext<ToastContextValue | null>(null);
+
+// Provider
+export function ToastProvider({ children }: { children: React.ReactNode }) {
+  const [state, dispatch] = useReducer(toastReducer, { toasts: [] });
+
+  const addToast = useCallback((toast: Omit<Toast, 'id'>) => {
+    const id = Math.random().toString(36).substring(2, 9);
+    dispatch({ type: 'ADD', toast: { ...toast, id } });
+    return id;
+  }, []);
+
+  const removeToast = useCallback((id: string) => {
+    dispatch({ type: 'REMOVE', id });
+  }, []);
+
+  const clearToasts = useCallback(() => {
+    dispatch({ type: 'CLEAR' });
+  }, []);
+
+  return (
+    <ToastContext.Provider value={{ toasts: state.toasts, addToast, removeToast, clearToasts }}>
+      {children}
+      <ToastContainer />
+    </ToastContext.Provider>
+  );
+}
+
+// Hook
+export function useToast() {
+  const context = useContext(ToastContext);
+  if (!context) {
+    throw new Error('useToast must be used within ToastProvider');
+  }
+
+  return {
+    ...context,
+    success: (title: string, message?: string) =>
+      context.addToast({ type: 'success', title, message }),
+    error: (title: string, message?: string) =>
+      context.addToast({ type: 'error', title, message, duration: 5000 }),
+    warning: (title: string, message?: string) =>
+      context.addToast({ type: 'warning', title, message }),
+    info: (title: string, message?: string) =>
+      context.addToast({ type: 'info', title, message }),
+  };
+}
+
+// Toast Container
+function ToastContainer() {
+  const { toasts } = useContext(ToastContext)!;
+
+  if (typeof document === 'undefined') return null;
+
+  return createPortal(
+    <div
+      className="fixed bottom-4 right-4 z-50 flex flex-col gap-2"
+      role="region"
+      aria-label="Notifications"
+    >
+      {toasts.map((toast) => (
+        <ToastItem key={toast.id} toast={toast} />
+      ))}
+    </div>,
+    document.body
+  );
+}
+
+// Single Toast Item
+function ToastItem({ toast }: { toast: Toast }) {
+  const { removeToast } = useContext(ToastContext)!;
+
+  useEffect(() => {
+    const duration = toast.duration ?? 3000;
+    if (duration > 0) {
+      const timer = setTimeout(() => removeToast(toast.id), duration);
+      return () => clearTimeout(timer);
+    }
+  }, [toast.id, toast.duration, removeToast]);
+
+  const typeStyles = {
+    success: 'bg-green-50 border-green-200 text-green-800',
+    error: 'bg-red-50 border-red-200 text-red-800',
+    warning: 'bg-yellow-50 border-yellow-200 text-yellow-800',
+    info: 'bg-blue-50 border-blue-200 text-blue-800',
+  };
+
+  const icons = {
+    success: '✓',
+    error: '✕',
+    warning: '⚠',
+    info: 'ℹ',
+  };
+
+  return (
+    <div
+      className={\`flex items-start gap-3 p-4 rounded-lg border shadow-lg min-w-[300px] max-w-[400px] animate-in slide-in-from-right \${typeStyles[toast.type]}\`}
+      role="alert"
+      aria-live="polite"
+    >
+      <span className="text-lg" aria-hidden="true">{icons[toast.type]}</span>
+      <div className="flex-1">
+        <p className="font-medium">{toast.title}</p>
+        {toast.message && <p className="text-sm mt-1 opacity-90">{toast.message}</p>}
+        {toast.action && (
+          <button
+            onClick={toast.action.onClick}
+            className="text-sm font-medium underline mt-2"
+          >
+            {toast.action.label}
+          </button>
+        )}
+      </div>
+      <button
+        onClick={() => removeToast(toast.id)}
+        className="text-current opacity-60 hover:opacity-100"
+        aria-label="Dismiss notification"
+      >
+        ×
+      </button>
+    </div>
+  );
+}
+
+export default ToastProvider;
+`,
+  tests: `import { describe, it, expect, vi } from 'vitest';
+import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { ToastProvider, useToast } from './Toast';
+
+function TestComponent() {
+  const { success, error } = useToast();
+  return (
+    <div>
+      <button onClick={() => success('Success!')}>Show Success</button>
+      <button onClick={() => error('Error!')}>Show Error</button>
+    </div>
+  );
+}
+
+describe('Toast', () => {
+  it('shows toast when triggered', async () => {
+    const user = userEvent.setup();
+    render(
+      <ToastProvider>
+        <TestComponent />
+      </ToastProvider>
+    );
+
+    await user.click(screen.getByText('Show Success'));
+    expect(screen.getByText('Success!')).toBeInTheDocument();
+  });
+
+  it('removes toast when dismiss clicked', async () => {
+    const user = userEvent.setup();
+    render(
+      <ToastProvider>
+        <TestComponent />
+      </ToastProvider>
+    );
+
+    await user.click(screen.getByText('Show Success'));
+    await user.click(screen.getByLabelText('Dismiss notification'));
+
+    await waitFor(() => {
+      expect(screen.queryByText('Success!')).not.toBeInTheDocument();
+    });
+  });
+});
+`,
+  documentation: '# Toast\n\nNotification system with queue.',
+  variables: [],
+  examples: [],
+});
+
+/**
+ * React Search Component
+ */
+templates.set('react-search', {
+  id: 'react-search',
+  name: 'React Search Input',
+  description: 'Search input with debounce and suggestions',
+  category: 'component',
+  framework: ['react', 'next'],
+  tags: ['search', 'input', 'autocomplete', 'ui'],
+  code: `'use client';
+
+import { useState, useEffect, useRef, useCallback } from 'react';
+
+export interface SearchResult {
+  id: string;
+  label: string;
+  description?: string;
+  href?: string;
+}
+
+export interface {{componentName}}Props {
+  placeholder?: string;
+  onSearch: (query: string) => Promise<SearchResult[]> | SearchResult[];
+  onSelect?: (result: SearchResult) => void;
+  debounceMs?: number;
+  minChars?: number;
+  className?: string;
+}
+
+export function {{componentName}}({
+  placeholder = 'Search...',
+  onSearch,
+  onSelect,
+  debounceMs = 300,
+  minChars = 2,
+  className,
+}: {{componentName}}Props) {
+  const [query, setQuery] = useState('');
+  const [results, setResults] = useState<SearchResult[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(-1);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const listRef = useRef<HTMLUListElement>(null);
+
+  // Debounced search
+  useEffect(() => {
+    if (query.length < minChars) {
+      setResults([]);
+      setOpen(false);
+      return;
+    }
+
+    const timer = setTimeout(async () => {
+      setLoading(true);
+      try {
+        const searchResults = await onSearch(query);
+        setResults(searchResults);
+        setOpen(searchResults.length > 0);
+        setActiveIndex(-1);
+      } catch (error) {
+        console.error('Search error:', error);
+        setResults([]);
+      } finally {
+        setLoading(false);
+      }
+    }, debounceMs);
+
+    return () => clearTimeout(timer);
+  }, [query, onSearch, debounceMs, minChars]);
+
+  // Keyboard navigation
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      if (!open) return;
+
+      switch (e.key) {
+        case 'ArrowDown':
+          e.preventDefault();
+          setActiveIndex((i) => Math.min(i + 1, results.length - 1));
+          break;
+        case 'ArrowUp':
+          e.preventDefault();
+          setActiveIndex((i) => Math.max(i - 1, 0));
+          break;
+        case 'Enter':
+          e.preventDefault();
+          if (activeIndex >= 0 && results[activeIndex]) {
+            handleSelect(results[activeIndex]);
+          }
+          break;
+        case 'Escape':
+          setOpen(false);
+          inputRef.current?.blur();
+          break;
+      }
+    },
+    [open, results, activeIndex]
+  );
+
+  const handleSelect = (result: SearchResult) => {
+    setQuery(result.label);
+    setOpen(false);
+    onSelect?.(result);
+    inputRef.current?.blur();
+  };
+
+  // Close on click outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (!listRef.current?.contains(e.target as Node) &&
+          !inputRef.current?.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  return (
+    <div className={\`relative \${className}\`}>
+      <div className="relative">
+        <input
+          ref={inputRef}
+          type="search"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          onKeyDown={handleKeyDown}
+          onFocus={() => results.length > 0 && setOpen(true)}
+          placeholder={placeholder}
+          className="w-full px-4 py-2 pl-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          role="combobox"
+          aria-expanded={open}
+          aria-controls="search-results"
+          aria-activedescendant={activeIndex >= 0 ? \`result-\${activeIndex}\` : undefined}
+        />
+        <svg
+          className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+          />
+        </svg>
+        {loading && (
+          <div className="absolute right-3 top-1/2 -translate-y-1/2">
+            <div className="animate-spin h-4 w-4 border-2 border-blue-500 border-t-transparent rounded-full" />
+          </div>
+        )}
+      </div>
+
+      {open && results.length > 0 && (
+        <ul
+          ref={listRef}
+          id="search-results"
+          role="listbox"
+          className="absolute z-50 w-full mt-1 bg-white border rounded-lg shadow-lg max-h-60 overflow-auto"
+        >
+          {results.map((result, index) => (
+            <li
+              key={result.id}
+              id={\`result-\${index}\`}
+              role="option"
+              aria-selected={index === activeIndex}
+              onClick={() => handleSelect(result)}
+              onMouseEnter={() => setActiveIndex(index)}
+              className={\`px-4 py-2 cursor-pointer \${
+                index === activeIndex ? 'bg-blue-50' : 'hover:bg-gray-50'
+              }\`}
+            >
+              <div className="font-medium">{result.label}</div>
+              {result.description && (
+                <div className="text-sm text-gray-500">{result.description}</div>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+export default {{componentName}};
+`,
+  tests: `import { describe, it, expect, vi } from 'vitest';
+import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { {{componentName}} } from './{{componentName}}';
+
+const mockResults = [
+  { id: '1', label: 'Result 1', description: 'Description 1' },
+  { id: '2', label: 'Result 2', description: 'Description 2' },
+];
+
+describe('{{componentName}}', () => {
+  it('renders search input', () => {
+    render(<{{componentName}} onSearch={vi.fn()} />);
+    expect(screen.getByRole('combobox')).toBeInTheDocument();
+  });
+
+  it('shows results after typing', async () => {
+    const onSearch = vi.fn().mockResolvedValue(mockResults);
+    const user = userEvent.setup();
+    render(<{{componentName}} onSearch={onSearch} debounceMs={0} />);
+
+    await user.type(screen.getByRole('combobox'), 'test');
+
+    await waitFor(() => {
+      expect(screen.getByText('Result 1')).toBeInTheDocument();
+    });
+  });
+
+  it('calls onSelect when result clicked', async () => {
+    const onSearch = vi.fn().mockResolvedValue(mockResults);
+    const onSelect = vi.fn();
+    const user = userEvent.setup();
+    render(<{{componentName}} onSearch={onSearch} onSelect={onSelect} debounceMs={0} />);
+
+    await user.type(screen.getByRole('combobox'), 'test');
+    await waitFor(() => screen.getByText('Result 1'));
+    await user.click(screen.getByText('Result 1'));
+
+    expect(onSelect).toHaveBeenCalledWith(mockResults[0]);
+  });
+});
+`,
+  documentation: '# {{componentName}}\n\nSearch with autocomplete.',
+  variables: [
+    { name: 'componentName', type: 'string', description: 'Component name', required: true },
+  ],
+  examples: [
+    { description: 'Global search', variables: { componentName: 'SearchInput' } },
+  ],
+});
+
+/**
+ * React Pagination Component
+ */
+templates.set('react-pagination', {
+  id: 'react-pagination',
+  name: 'React Pagination',
+  description: 'Accessible pagination with page numbers',
+  category: 'component',
+  framework: ['react', 'next'],
+  tags: ['pagination', 'navigation', 'ui'],
+  code: `export interface PaginationProps {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+  siblingCount?: number;
+  className?: string;
+}
+
+export function Pagination({
+  currentPage,
+  totalPages,
+  onPageChange,
+  siblingCount = 1,
+  className,
+}: PaginationProps) {
+  // Generate page numbers array
+  const getPageNumbers = () => {
+    const pages: (number | 'ellipsis')[] = [];
+
+    // Always show first page
+    pages.push(1);
+
+    // Calculate range around current page
+    const rangeStart = Math.max(2, currentPage - siblingCount);
+    const rangeEnd = Math.min(totalPages - 1, currentPage + siblingCount);
+
+    // Add ellipsis after first page if needed
+    if (rangeStart > 2) {
+      pages.push('ellipsis');
+    }
+
+    // Add pages in range
+    for (let i = rangeStart; i <= rangeEnd; i++) {
+      pages.push(i);
+    }
+
+    // Add ellipsis before last page if needed
+    if (rangeEnd < totalPages - 1) {
+      pages.push('ellipsis');
+    }
+
+    // Always show last page if more than 1 page
+    if (totalPages > 1) {
+      pages.push(totalPages);
+    }
+
+    return pages;
+  };
+
+  if (totalPages <= 1) return null;
+
+  const pages = getPageNumbers();
+
+  return (
+    <nav
+      className={\`flex items-center justify-center gap-1 \${className}\`}
+      aria-label="Pagination"
+    >
+      <button
+        onClick={() => onPageChange(currentPage - 1)}
+        disabled={currentPage === 1}
+        className="px-3 py-2 rounded-md border hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+        aria-label="Previous page"
+      >
+        ←
+      </button>
+
+      {pages.map((page, index) =>
+        page === 'ellipsis' ? (
+          <span key={\`ellipsis-\${index}\`} className="px-3 py-2">
+            …
+          </span>
+        ) : (
+          <button
+            key={page}
+            onClick={() => onPageChange(page)}
+            className={\`px-3 py-2 rounded-md border \${
+              page === currentPage
+                ? 'bg-blue-600 text-white border-blue-600'
+                : 'hover:bg-gray-50'
+            }\`}
+            aria-label={\`Page \${page}\`}
+            aria-current={page === currentPage ? 'page' : undefined}
+          >
+            {page}
+          </button>
+        )
+      )}
+
+      <button
+        onClick={() => onPageChange(currentPage + 1)}
+        disabled={currentPage === totalPages}
+        className="px-3 py-2 rounded-md border hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+        aria-label="Next page"
+      >
+        →
+      </button>
+    </nav>
+  );
+}
+
+export default Pagination;
+`,
+  tests: `import { describe, it, expect, vi } from 'vitest';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { Pagination } from './Pagination';
+
+describe('Pagination', () => {
+  it('renders nothing for single page', () => {
+    const { container } = render(
+      <Pagination currentPage={1} totalPages={1} onPageChange={vi.fn()} />
+    );
+    expect(container).toBeEmptyDOMElement();
+  });
+
+  it('renders page numbers', () => {
+    render(<Pagination currentPage={1} totalPages={5} onPageChange={vi.fn()} />);
+    expect(screen.getByText('1')).toBeInTheDocument();
+    expect(screen.getByText('5')).toBeInTheDocument();
+  });
+
+  it('calls onPageChange when clicked', async () => {
+    const onPageChange = vi.fn();
+    const user = userEvent.setup();
+    render(<Pagination currentPage={1} totalPages={5} onPageChange={onPageChange} />);
+
+    await user.click(screen.getByText('3'));
+    expect(onPageChange).toHaveBeenCalledWith(3);
+  });
+
+  it('disables previous on first page', () => {
+    render(<Pagination currentPage={1} totalPages={5} onPageChange={vi.fn()} />);
+    expect(screen.getByLabelText('Previous page')).toBeDisabled();
+  });
+
+  it('disables next on last page', () => {
+    render(<Pagination currentPage={5} totalPages={5} onPageChange={vi.fn()} />);
+    expect(screen.getByLabelText('Next page')).toBeDisabled();
+  });
+});
+`,
+  documentation: '# Pagination\n\nPage navigation component.',
+  variables: [],
+  examples: [],
+});
+
+/**
+ * React Infinite Scroll Hook
+ */
+templates.set('hook-infinite-scroll', {
+  id: 'hook-infinite-scroll',
+  name: 'useInfiniteScroll Hook',
+  description: 'Hook for infinite scroll loading',
+  category: 'utility',
+  framework: ['react', 'next'],
+  tags: ['hook', 'infinite-scroll', 'loading', 'performance'],
+  code: `import { useState, useEffect, useRef, useCallback } from 'react';
+
+export interface UseInfiniteScrollOptions<T> {
+  fetchFn: (page: number) => Promise<{ data: T[]; hasMore: boolean }>;
+  initialPage?: number;
+  threshold?: number;
+}
+
+export interface UseInfiniteScrollReturn<T> {
+  items: T[];
+  loading: boolean;
+  error: Error | null;
+  hasMore: boolean;
+  loadMore: () => void;
+  reset: () => void;
+  sentinelRef: React.RefObject<HTMLDivElement>;
+}
+
+export function useInfiniteScroll<T>({
+  fetchFn,
+  initialPage = 1,
+  threshold = 100,
+}: UseInfiniteScrollOptions<T>): UseInfiniteScrollReturn<T> {
+  const [items, setItems] = useState<T[]>([]);
+  const [page, setPage] = useState(initialPage);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+  const [hasMore, setHasMore] = useState(true);
+  const sentinelRef = useRef<HTMLDivElement>(null);
+  const observerRef = useRef<IntersectionObserver | null>(null);
+
+  // Fetch data
+  const fetchData = useCallback(async () => {
+    if (loading || !hasMore) return;
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      const result = await fetchFn(page);
+      setItems((prev) => [...prev, ...result.data]);
+      setHasMore(result.hasMore);
+      setPage((p) => p + 1);
+    } catch (err) {
+      setError(err instanceof Error ? err : new Error('Failed to fetch'));
+    } finally {
+      setLoading(false);
+    }
+  }, [fetchFn, page, loading, hasMore]);
+
+  // Initial load
+  useEffect(() => {
+    fetchData();
+  }, []); // Only run once on mount
+
+  // Set up intersection observer
+  useEffect(() => {
+    if (observerRef.current) {
+      observerRef.current.disconnect();
+    }
+
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && hasMore && !loading) {
+          fetchData();
+        }
+      },
+      {
+        rootMargin: \`\${threshold}px\`,
+      }
+    );
+
+    if (sentinelRef.current) {
+      observerRef.current.observe(sentinelRef.current);
+    }
+
+    return () => {
+      observerRef.current?.disconnect();
+    };
+  }, [fetchData, hasMore, loading, threshold]);
+
+  // Reset function
+  const reset = useCallback(() => {
+    setItems([]);
+    setPage(initialPage);
+    setHasMore(true);
+    setError(null);
+  }, [initialPage]);
+
+  // Manual load more
+  const loadMore = useCallback(() => {
+    if (!loading && hasMore) {
+      fetchData();
+    }
+  }, [fetchData, loading, hasMore]);
+
+  return {
+    items,
+    loading,
+    error,
+    hasMore,
+    loadMore,
+    reset,
+    sentinelRef,
+  };
+}
+
+export default useInfiniteScroll;
+
+// Usage example component
+export function InfiniteList<T>({
+  fetchFn,
+  renderItem,
+  keyExtractor,
+  loadingComponent,
+  emptyComponent,
+}: {
+  fetchFn: (page: number) => Promise<{ data: T[]; hasMore: boolean }>;
+  renderItem: (item: T, index: number) => React.ReactNode;
+  keyExtractor: (item: T) => string;
+  loadingComponent?: React.ReactNode;
+  emptyComponent?: React.ReactNode;
+}) {
+  const { items, loading, error, hasMore, sentinelRef } = useInfiniteScroll<T>({
+    fetchFn,
+  });
+
+  if (error) {
+    return (
+      <div role="alert" className="text-red-600 p-4">
+        Error: {error.message}
+      </div>
+    );
+  }
+
+  if (!loading && items.length === 0) {
+    return <>{emptyComponent || <p className="text-gray-500 p-4">No items found</p>}</>;
+  }
+
+  return (
+    <div>
+      {items.map((item, index) => (
+        <div key={keyExtractor(item)}>{renderItem(item, index)}</div>
+      ))}
+
+      {/* Sentinel element for intersection observer */}
+      <div ref={sentinelRef} aria-hidden="true" />
+
+      {loading && (loadingComponent || (
+        <div className="flex justify-center p-4">
+          <div className="animate-spin h-6 w-6 border-2 border-blue-500 border-t-transparent rounded-full" />
+        </div>
+      ))}
+
+      {!hasMore && items.length > 0 && (
+        <p className="text-center text-gray-500 p-4">No more items</p>
+      )}
+    </div>
+  );
+}
+`,
+  tests: `import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { renderHook, waitFor, act } from '@testing-library/react';
+import { useInfiniteScroll } from './useInfiniteScroll';
+
+describe('useInfiniteScroll', () => {
+  const mockFetchFn = vi.fn();
+
+  beforeEach(() => {
+    vi.resetAllMocks();
+    mockFetchFn.mockResolvedValue({
+      data: [{ id: 1 }, { id: 2 }],
+      hasMore: true,
+    });
+  });
+
+  it('fetches initial data', async () => {
+    const { result } = renderHook(() =>
+      useInfiniteScroll({ fetchFn: mockFetchFn })
+    );
+
+    await waitFor(() => {
+      expect(result.current.items).toHaveLength(2);
+    });
+  });
+
+  it('sets hasMore correctly', async () => {
+    mockFetchFn.mockResolvedValue({ data: [{ id: 1 }], hasMore: false });
+
+    const { result } = renderHook(() =>
+      useInfiniteScroll({ fetchFn: mockFetchFn })
+    );
+
+    await waitFor(() => {
+      expect(result.current.hasMore).toBe(false);
+    });
+  });
+
+  it('resets state when reset called', async () => {
+    const { result } = renderHook(() =>
+      useInfiniteScroll({ fetchFn: mockFetchFn })
+    );
+
+    await waitFor(() => {
+      expect(result.current.items).toHaveLength(2);
+    });
+
+    act(() => {
+      result.current.reset();
+    });
+
+    expect(result.current.items).toHaveLength(0);
+  });
+});
+`,
+  documentation: '# useInfiniteScroll\n\nInfinite scroll loading hook.',
+  variables: [],
+  examples: [],
+});
+
+// ============================================================================
 // HELPER FUNCTIONS
 // ============================================================================
 
