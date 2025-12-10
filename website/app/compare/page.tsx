@@ -10,6 +10,18 @@ const comparisons = [
     description: 'See how RANA provides LangChain functionality with 90% less code',
   },
   {
+    name: 'MetaGPT',
+    slug: 'metagpt',
+    tagline: 'Multi-agent orchestration in TypeScript',
+    description: 'Get MetaGPT patterns with simpler APIs and better state management',
+  },
+  {
+    name: 'CrewAI',
+    slug: 'crewai',
+    tagline: 'True parallel execution and consensus',
+    description: 'CrewAI patterns with transactional state and TypeScript support',
+  },
+  {
     name: 'Vercel AI SDK',
     slug: 'vercel-ai-sdk',
     tagline: 'Full-featured and production-ready',
@@ -69,63 +81,72 @@ export default function ComparePage() {
             Quick Comparison
           </h2>
           <div className="overflow-x-auto">
-            <table className="w-full text-left">
+            <table className="w-full text-left text-sm">
               <thead>
                 <tr className="border-b border-gray-800">
-                  <th className="py-4 px-4 font-semibold">Feature</th>
-                  <th className="py-4 px-4 font-semibold text-center">RANA</th>
-                  <th className="py-4 px-4 font-semibold text-center">LangChain</th>
-                  <th className="py-4 px-4 font-semibold text-center">Vercel AI</th>
+                  <th className="py-4 px-3 font-semibold">Feature</th>
+                  <th className="py-4 px-3 font-semibold text-center">RANA</th>
+                  <th className="py-4 px-3 font-semibold text-center">LangChain</th>
+                  <th className="py-4 px-3 font-semibold text-center">CrewAI</th>
+                  <th className="py-4 px-3 font-semibold text-center">MetaGPT</th>
                 </tr>
               </thead>
               <tbody className="text-gray-400">
                 <tr className="border-b border-gray-800/50">
-                  <td className="py-4 px-4">TypeScript-first</td>
-                  <td className="py-4 px-4 text-center text-green-400">✓</td>
-                  <td className="py-4 px-4 text-center text-yellow-400">Partial</td>
-                  <td className="py-4 px-4 text-center text-green-400">✓</td>
+                  <td className="py-3 px-3">TypeScript-first</td>
+                  <td className="py-3 px-3 text-center text-green-400">✓</td>
+                  <td className="py-3 px-3 text-center text-yellow-400">Partial</td>
+                  <td className="py-3 px-3 text-center text-red-400">✗</td>
+                  <td className="py-3 px-3 text-center text-red-400">✗</td>
                 </tr>
                 <tr className="border-b border-gray-800/50">
-                  <td className="py-4 px-4">Multi-provider</td>
-                  <td className="py-4 px-4 text-center text-green-400">✓</td>
-                  <td className="py-4 px-4 text-center text-green-400">✓</td>
-                  <td className="py-4 px-4 text-center text-green-400">✓</td>
+                  <td className="py-3 px-3">Multi-agent orchestration</td>
+                  <td className="py-3 px-3 text-center text-green-400">✓</td>
+                  <td className="py-3 px-3 text-center text-yellow-400">Limited</td>
+                  <td className="py-3 px-3 text-center text-green-400">✓</td>
+                  <td className="py-3 px-3 text-center text-green-400">✓</td>
                 </tr>
                 <tr className="border-b border-gray-800/50">
-                  <td className="py-4 px-4">Built-in testing</td>
-                  <td className="py-4 px-4 text-center text-green-400">✓</td>
-                  <td className="py-4 px-4 text-center text-red-400">✗</td>
-                  <td className="py-4 px-4 text-center text-red-400">✗</td>
+                  <td className="py-3 px-3">Parallel execution</td>
+                  <td className="py-3 px-3 text-center text-green-400">✓</td>
+                  <td className="py-3 px-3 text-center text-yellow-400">Manual</td>
+                  <td className="py-3 px-3 text-center text-yellow-400">Limited</td>
+                  <td className="py-3 px-3 text-center text-yellow-400">Limited</td>
                 </tr>
                 <tr className="border-b border-gray-800/50">
-                  <td className="py-4 px-4">Cost tracking</td>
-                  <td className="py-4 px-4 text-center text-green-400">✓</td>
-                  <td className="py-4 px-4 text-center text-red-400">✗</td>
-                  <td className="py-4 px-4 text-center text-red-400">✗</td>
+                  <td className="py-3 px-3">Consensus voting</td>
+                  <td className="py-3 px-3 text-center text-green-400">✓</td>
+                  <td className="py-3 px-3 text-center text-red-400">✗</td>
+                  <td className="py-3 px-3 text-center text-red-400">✗</td>
+                  <td className="py-3 px-3 text-center text-red-400">✗</td>
                 </tr>
                 <tr className="border-b border-gray-800/50">
-                  <td className="py-4 px-4">Prompt injection detection</td>
-                  <td className="py-4 px-4 text-center text-green-400">✓</td>
-                  <td className="py-4 px-4 text-center text-red-400">✗</td>
-                  <td className="py-4 px-4 text-center text-red-400">✗</td>
+                  <td className="py-3 px-3">Cost tracking</td>
+                  <td className="py-3 px-3 text-center text-green-400">✓</td>
+                  <td className="py-3 px-3 text-center text-red-400">✗</td>
+                  <td className="py-3 px-3 text-center text-red-400">✗</td>
+                  <td className="py-3 px-3 text-center text-red-400">✗</td>
                 </tr>
                 <tr className="border-b border-gray-800/50">
-                  <td className="py-4 px-4">MCP support</td>
-                  <td className="py-4 px-4 text-center text-green-400">✓</td>
-                  <td className="py-4 px-4 text-center text-red-400">✗</td>
-                  <td className="py-4 px-4 text-center text-red-400">✗</td>
+                  <td className="py-3 px-3">Prompt injection detection</td>
+                  <td className="py-3 px-3 text-center text-green-400">✓</td>
+                  <td className="py-3 px-3 text-center text-red-400">✗</td>
+                  <td className="py-3 px-3 text-center text-red-400">✗</td>
+                  <td className="py-3 px-3 text-center text-red-400">✗</td>
                 </tr>
                 <tr className="border-b border-gray-800/50">
-                  <td className="py-4 px-4">Lines of code (hello world)</td>
-                  <td className="py-4 px-4 text-center text-green-400">3</td>
-                  <td className="py-4 px-4 text-center text-yellow-400">15+</td>
-                  <td className="py-4 px-4 text-center text-green-400">5</td>
+                  <td className="py-3 px-3">MCP support</td>
+                  <td className="py-3 px-3 text-center text-green-400">✓</td>
+                  <td className="py-3 px-3 text-center text-red-400">✗</td>
+                  <td className="py-3 px-3 text-center text-red-400">✗</td>
+                  <td className="py-3 px-3 text-center text-red-400">✗</td>
                 </tr>
                 <tr>
-                  <td className="py-4 px-4">Bundle size</td>
-                  <td className="py-4 px-4 text-center text-green-400">~50KB</td>
-                  <td className="py-4 px-4 text-center text-red-400">~500KB</td>
-                  <td className="py-4 px-4 text-center text-green-400">~30KB</td>
+                  <td className="py-3 px-3">Transactional state</td>
+                  <td className="py-3 px-3 text-center text-green-400">✓</td>
+                  <td className="py-3 px-3 text-center text-red-400">✗</td>
+                  <td className="py-3 px-3 text-center text-red-400">✗</td>
+                  <td className="py-3 px-3 text-center text-red-400">✗</td>
                 </tr>
               </tbody>
             </table>
