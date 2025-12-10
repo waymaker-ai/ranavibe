@@ -2,13 +2,14 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Heart, Users, Sparkles, Shield, Palette, Zap } from 'lucide-react';
+import { Heart, Users, Sparkles, Shield, Palette, Zap, Linkedin } from 'lucide-react';
 
 const team = [
   {
     name: 'Ashley Kays',
     role: 'Creator & Lead',
     company: 'Waymaker.cx / Betr.ai',
+    linkedin: 'https://linkedin.com/in/ashleykaysdesigner',
   },
   {
     name: 'Christian Moore',
@@ -19,6 +20,7 @@ const team = [
     name: 'Joshua Schrager',
     role: 'Co-Creator',
     company: 'Core Development',
+    linkedin: 'https://www.linkedin.com/in/joshschrager/',
   },
 ];
 
@@ -171,6 +173,17 @@ export default function AboutPage() {
                 <h3 className="text-lg font-semibold">{member.name}</h3>
                 <p className="text-foreground-secondary text-sm">{member.role}</p>
                 <p className="text-foreground-secondary text-xs mt-1">{member.company}</p>
+                {member.linkedin && (
+                  <Link
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 mt-3 text-sm text-foreground-secondary hover:text-foreground transition-colors"
+                  >
+                    <Linkedin className="h-4 w-4" />
+                    <span>LinkedIn</span>
+                  </Link>
+                )}
               </motion.div>
             ))}
           </div>
