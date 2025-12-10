@@ -16,17 +16,19 @@ import * as path from 'path';
 // Import command modules
 import { registerFeatureCommands } from './commands/feature.js';
 import { registerSecurityCommands } from './commands/security.js';
+import { registerGenerateCommands } from './commands/generate.js';
 
 const program = new Command();
 
 program
   .name('rana')
-  .description('RANA CLI - Guardrails, VibeSpecs, and feature workflows for AI-assisted development')
+  .description('RANA CLI - Guardrails, VibeSpecs, code generation, and feature workflows for AI-assisted development')
   .version('1.0.0');
 
 // Register command modules
 registerFeatureCommands(program);
 registerSecurityCommands(program);
+registerGenerateCommands(program);
 
 // Command: init
 program
