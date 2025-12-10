@@ -18,6 +18,8 @@ import { registerFeatureCommands } from './commands/feature.js';
 import { registerSecurityCommands } from './commands/security.js';
 import { registerGenerateCommands } from './commands/generate.js';
 import { registerMCPCommands } from './commands/mcp.js';
+import { registerPromptCommands } from './commands/prompts.js';
+import { registerPlaygroundCommands } from './commands/playground.js';
 
 const program = new Command();
 
@@ -31,6 +33,8 @@ registerFeatureCommands(program);
 registerSecurityCommands(program);
 registerGenerateCommands(program);
 registerMCPCommands(program);
+registerPromptCommands(program);
+registerPlaygroundCommands(program);
 
 // Command: init
 program
