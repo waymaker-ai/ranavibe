@@ -115,6 +115,41 @@ export type {
   LockInfo,
 } from './state-manager';
 
+// Export messaging module
+export {
+  MessageBroker,
+  createChannel,
+  createMessageBroker,
+  createRequestChannel,
+  MessageBuilders,
+} from './messaging';
+
+export type {
+  TypedMessage,
+  MessageHeaders,
+  MessageMetadata,
+  MessageEnvelope,
+  DeliveryStatus,
+  Acknowledgment,
+  Channel,
+  ChannelType,
+  ChannelSchema,
+  ChannelOptions,
+  RetryOptions,
+  Subscription,
+  MessageHandler,
+  HandlerContext,
+  MessageFilter,
+  SubscriptionOptions,
+  Route,
+  MessageTransform,
+  RoutingTable,
+  MessageBrokerOptions,
+  SendOptions,
+  MessageBrokerStats,
+  ChannelStats,
+} from './messaging';
+
 // ============================================================================
 // Convenience Factories
 // ============================================================================

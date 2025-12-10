@@ -1,10 +1,14 @@
 import { Template } from '../types';
+import { registerAdvancedTemplates, advancedTemplates } from './advanced';
 
 // ============================================================================
-// Template Registry - 20+ code generation templates
+// Template Registry - 30+ code generation templates
 // ============================================================================
 
 const templates: Map<string, Template> = new Map();
+
+// Register advanced templates
+registerAdvancedTemplates(templates);
 
 // ============================================================================
 // REACT COMPONENT TEMPLATES
@@ -3142,5 +3146,6 @@ export function searchTemplates(query: string): Template[] {
   );
 }
 
-export { templates };
+export { templates, advancedTemplates };
 export type { Template };
+export * from './advanced';
