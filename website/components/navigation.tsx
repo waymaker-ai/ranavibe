@@ -13,6 +13,7 @@ const links = [
   { href: '/case-studies', label: 'Case Studies' },
   { href: '/training', label: 'Training' },
   { href: '/pricing', label: 'Pricing' },
+  { href: '/about', label: 'About' },
 ];
 
 export function Navigation() {
