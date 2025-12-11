@@ -109,6 +109,9 @@ export function Footer() {
         <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center space-x-2">
             <span className="font-bold gradient-text">RANA</span>
+            <span className="px-2 py-0.5 text-xs font-semibold rounded-full bg-gradient-to-r from-gradient-from to-gradient-to text-white">
+              BETA
+            </span>
             <span className="text-sm text-foreground-secondary">
               © {new Date().getFullYear()} Waymaker AI. MIT License.
             </span>

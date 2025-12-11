@@ -39,6 +39,9 @@ export function Navigation() {
             >
               RANA
             </motion.div>
+            <span className="px-2 py-0.5 text-xs font-semibold rounded-full bg-gradient-to-r from-gradient-from to-gradient-to text-white">
+              BETA
+            </span>
           </Link>
 
           {/* Desktop Navigation */}

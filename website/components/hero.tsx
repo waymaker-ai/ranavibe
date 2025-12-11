@@ -22,7 +22,7 @@ export function Hero() {
             className="inline-flex items-center space-x-2 px-4 py-1.5 mb-8 rounded-full border border-border bg-background-secondary"
           >
             <Sparkles className="h-4 w-4 text-gradient-from" />
-            <span className="text-sm font-medium">Introducing RANA Framework 2.0</span>
+            <span className="text-sm font-medium">Introducing RANA Framework 2.0 - Beta</span>
           </motion.div>
 
           {/* Heading */}
