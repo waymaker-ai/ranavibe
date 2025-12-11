@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Bot, Wrench, MessageSquare, GitBranch, Repeat, Zap } from 'lucide-react';
+import { ArrowLeft, Bot, Wrench, MessageSquare, GitBranch, Repeat, Zap, Radio, Send } from 'lucide-react';
 
 const features = [
   {
@@ -214,6 +214,69 @@ for await (const chunk of stream) {
     console.log(\`Using tool: \${chunk.tool}\`);
   }
 }`,
+  },
+  {
+    icon: Radio,
+    title: 'Agent Messaging Protocol',
+    description: 'Type-safe pub/sub and request/response communication between agents',
+    code: `import { createMessageBroker, createChannel } from '@rana/agents';
+
+// Create a message broker
+const broker = createMessageBroker({
+  deliveryGuarantee: 'at-least-once',
+  enableRetry: true,
+  maxRetries: 3
+});
+
+// Define typed channels
+const taskChannel = createChannel<{ task: string; priority: number }>({
+  name: 'tasks',
+  type: 'topic',
+  schema: { task: 'string', priority: 'number' }
+});
+
+// Subscribe to messages
+broker.subscribe(taskChannel, async (message, context) => {
+  console.log(\`Received task: \${message.payload.task}\`);
+  await context.acknowledge();
+});
+
+// Publish messages with priority
+await broker.publish(taskChannel, {
+  task: 'Analyze user data',
+  priority: 1
+}, { priority: 'high' });`,
+  },
+  {
+    icon: Send,
+    title: 'Request/Response Channels',
+    description: 'Synchronous request-response patterns for agent coordination',
+    code: `import { createRequestChannel, createMessageBroker } from '@rana/agents';
+
+// Create request/response channel
+const queryChannel = createRequestChannel<
+  { query: string },
+  { results: string[]; count: number }
+>({
+  name: 'search-queries',
+  timeout: 5000
+});
+
+// Register handler (responder agent)
+broker.registerHandler(queryChannel, async (request) => {
+  const results = await searchDatabase(request.payload.query);
+  return {
+    results: results.map(r => r.title),
+    count: results.length
+  };
+});
+
+// Send request and await response (requester agent)
+const response = await broker.request(queryChannel, {
+  query: 'AI research papers'
+});
+
+console.log(\`Found \${response.count} results\`);`,
   },
 ];
 

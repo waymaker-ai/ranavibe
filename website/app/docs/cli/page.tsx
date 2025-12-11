@@ -14,6 +14,9 @@ const commands = [
       { cmd: 'rana deploy', desc: 'Deploy with verification workflow' },
       { cmd: 'rana status', desc: 'Show project status' },
       { cmd: 'rana doctor', desc: 'Diagnose project setup' },
+      { cmd: 'rana playground', desc: 'Interactive testing playground' },
+      { cmd: 'rana demo', desc: 'Run quick feature demo' },
+      { cmd: 'rana quickstart', desc: 'Show quickstart guide' },
     ],
   },
   {
@@ -22,6 +25,29 @@ const commands = [
       { cmd: 'rana generate "<prompt>"', desc: 'Generate code from natural language' },
       { cmd: 'rana generate:templates', desc: 'List available templates' },
       { cmd: 'rana generate:interactive', desc: 'Interactive code generation' },
+    ],
+  },
+  {
+    category: 'Prompt Management',
+    items: [
+      { cmd: 'rana prompts save', desc: 'Save a new prompt with metadata' },
+      { cmd: 'rana prompts list', desc: 'List saved prompts with filters' },
+      { cmd: 'rana prompts use <name>', desc: 'Get and use a saved prompt' },
+      { cmd: 'rana prompts analyze', desc: 'Analyze prompt quality score' },
+      { cmd: 'rana prompts improve', desc: 'Get AI improvement suggestions' },
+      { cmd: 'rana prompts compare <a> <b>', desc: 'Compare two prompts side-by-side' },
+      { cmd: 'rana prompts export', desc: 'Export prompts to JSON' },
+      { cmd: 'rana prompts import', desc: 'Import prompts from file' },
+    ],
+  },
+  {
+    category: 'MCP Servers',
+    items: [
+      { cmd: 'rana mcp:create', desc: 'Create new MCP server from template' },
+      { cmd: 'rana mcp:list', desc: 'List installed MCP servers' },
+      { cmd: 'rana mcp:install', desc: 'Install MCP server from npm/git' },
+      { cmd: 'rana mcp:configure', desc: 'Configure MCP server settings' },
+      { cmd: 'rana mcp:test', desc: 'Test MCP server tools' },
     ],
   },
   {
