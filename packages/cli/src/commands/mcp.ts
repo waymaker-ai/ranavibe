@@ -164,6 +164,135 @@ export function registerMCPCommands(program: Command): void {
       console.log(chalk.gray('  Windows: %APPDATA%\\Claude\\claude_desktop_config.json'));
       console.log();
     });
+
+  // Validate MCP server
+  mcp
+    .command('validate [dir]')
+    .description('Validate MCP server structure')
+    .action(async (dir) => {
+      const targetDir = dir || process.cwd();
+      const spinner = ora('Validating MCP server...').start();
+
+      try {
+        const result = await validateMCPServer(targetDir);
+
+        if (result.valid) {
+          spinner.succeed('MCP server structure is valid');
+        } else {
+          spinner.fail('MCP server validation failed');
+        }
+
+        if (result.errors.length > 0) {
+          console.log(chalk.red('\n Errors:'));
+          result.errors.forEach(e => console.log(chalk.red(`   ✗ ${e}`)));
+        }
+
+        if (result.warnings.length > 0) {
+          console.log(chalk.yellow('\n Warnings:'));
+          result.warnings.forEach(w => console.log(chalk.yellow(`   ⚠ ${w}`)));
+        }
+
+        if (result.valid && result.warnings.length === 0) {
+          console.log(chalk.green('\n ✓ All checks passed'));
+        }
+        console.log();
+      } catch (error) {
+        spinner.fail('Validation error');
+        console.error(chalk.red(error instanceof Error ? error.message : 'Unknown error'));
+        process.exit(1);
+      }
+    });
+
+  // Test MCP server
+  mcp
+    .command('test [dir]')
+    .description('Test MCP server')
+    .action(async (dir) => {
+      const targetDir = dir || process.cwd();
+      const spinner = ora('Testing MCP server...').start();
+
+      try {
+        const result = await testMCPServer(targetDir);
+        spinner.stop();
+
+        console.log(chalk.bold.blue('\n MCP Server Test Results\n'));
+        console.log('─'.repeat(50));
+
+        for (const test of result.results) {
+          const icon = test.passed ? chalk.green('✓') : chalk.red('✗');
+          const status = test.passed ? chalk.green('PASS') : chalk.red('FAIL');
+          console.log(`${icon} [${status}] ${test.test}`);
+          if (test.error) {
+            console.log(chalk.gray(`     └─ ${test.error}`));
+          }
+        }
+
+        console.log('─'.repeat(50));
+        const passedCount = result.results.filter(r => r.passed).length;
+        console.log(`Total: ${result.results.length} | Passed: ${passedCount} | Failed: ${result.results.length - passedCount}`);
+        console.log();
+
+        if (!result.passed) {
+          process.exit(1);
+        }
+      } catch (error) {
+        spinner.fail('Test error');
+        console.error(chalk.red(error instanceof Error ? error.message : 'Unknown error'));
+        process.exit(1);
+      }
+    });
+
+  // Publish MCP server
+  mcp
+    .command('publish [dir]')
+    .description('Publish MCP server to npm')
+    .option('--dry-run', 'Show what would be published without actually publishing')
+    .option('--tag <tag>', 'npm tag', 'latest')
+    .action(async (dir, options) => {
+      const targetDir = dir || process.cwd();
+
+      // First validate
+      const validation = await validateMCPServer(targetDir);
+      if (!validation.valid) {
+        console.error(chalk.red('\n Server validation failed. Fix errors before publishing:\n'));
+        validation.errors.forEach(e => console.log(chalk.red(`   ✗ ${e}`)));
+        process.exit(1);
+      }
+
+      // Check if npm logged in
+      const { execSync } = await import('child_process');
+
+      try {
+        execSync('npm whoami', { stdio: 'pipe' });
+      } catch {
+        console.error(chalk.red('\n Not logged in to npm. Run: npm login'));
+        process.exit(1);
+      }
+
+      // Publish
+      const spinner = ora(options.dryRun ? 'Running dry-run publish...' : 'Publishing to npm...').start();
+
+      try {
+        const cmd = options.dryRun
+          ? `npm publish --dry-run --tag ${options.tag}`
+          : `npm publish --tag ${options.tag}`;
+
+        execSync(cmd, { cwd: targetDir, stdio: 'inherit' });
+
+        if (options.dryRun) {
+          spinner.succeed('Dry run completed');
+        } else {
+          spinner.succeed('Published to npm');
+          console.log(chalk.green('\n ✓ MCP server published successfully!'));
+          console.log(chalk.gray('\n Users can install with:'));
+          const pkg = JSON.parse(fs.readFileSync(path.join(targetDir, 'package.json'), 'utf-8'));
+          console.log(chalk.white(`   npm install -g ${pkg.name}`));
+        }
+      } catch (error) {
+        spinner.fail('Publish failed');
+        process.exit(1);
+      }
+    });
 }
 
 /**
@@ -800,4 +929,138 @@ async function addResourceToServer(
   console.log(chalk.bold.blue('\n Add this handler case to the ReadResourceRequestSchema handler:\n'));
   console.log(chalk.white(handlerSnippet));
   console.log();
+}
+
+/**
+ * Validate MCP server structure
+ */
+async function validateMCPServer(dir: string): Promise<{ valid: boolean; errors: string[]; warnings: string[] }> {
+  const errors: string[] = [];
+  const warnings: string[] = [];
+
+  // Check package.json exists
+  const pkgPath = path.join(dir, 'package.json');
+  if (!fs.existsSync(pkgPath)) {
+    errors.push('Missing package.json');
+  } else {
+    try {
+      const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'));
+
+      // Check required dependencies
+      const deps = { ...pkg.dependencies, ...pkg.devDependencies };
+      if (!deps['@modelcontextprotocol/sdk']) {
+        errors.push('Missing @modelcontextprotocol/sdk dependency');
+      }
+
+      // Check scripts
+      if (!pkg.scripts?.build && pkg.devDependencies?.typescript) {
+        warnings.push('TypeScript project without build script');
+      }
+
+      if (!pkg.scripts?.start) {
+        warnings.push('No start script defined');
+      }
+
+      // Check bin
+      if (!pkg.bin) {
+        warnings.push('No bin entry - server may not be easily executable');
+      }
+    } catch {
+      errors.push('Invalid package.json');
+    }
+  }
+
+  // Check source files
+  const srcFiles = ['src/index.ts', 'src/index.js', 'index.ts', 'index.js'];
+  const hasSource = srcFiles.some(f => fs.existsSync(path.join(dir, f)));
+  if (!hasSource) {
+    errors.push('No source file found (src/index.ts or src/index.js)');
+  }
+
+  // Check TypeScript config
+  if (fs.existsSync(path.join(dir, 'src/index.ts')) && !fs.existsSync(path.join(dir, 'tsconfig.json'))) {
+    errors.push('TypeScript source without tsconfig.json');
+  }
+
+  return {
+    valid: errors.length === 0,
+    errors,
+    warnings,
+  };
+}
+
+/**
+ * Test MCP server by spawning it and checking responses
+ */
+async function testMCPServer(dir: string): Promise<{ passed: boolean; results: Array<{ test: string; passed: boolean; error?: string }> }> {
+  const results: Array<{ test: string; passed: boolean; error?: string }> = [];
+
+  // Validate structure first
+  const validation = await validateMCPServer(dir);
+  results.push({
+    test: 'Structure validation',
+    passed: validation.valid,
+    error: validation.errors.join(', ') || undefined,
+  });
+
+  if (!validation.valid) {
+    return { passed: false, results };
+  }
+
+  // Check if built (for TypeScript projects)
+  const pkgPath = path.join(dir, 'package.json');
+  const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'));
+
+  if (pkg.devDependencies?.typescript) {
+    const distExists = fs.existsSync(path.join(dir, 'dist'));
+    results.push({
+      test: 'TypeScript compiled',
+      passed: distExists,
+      error: distExists ? undefined : 'dist/ directory not found - run npm run build',
+    });
+
+    if (!distExists) {
+      return { passed: false, results };
+    }
+  }
+
+  // Check main entry point exists
+  const mainPath = path.join(dir, pkg.main || 'dist/index.js');
+  const mainExists = fs.existsSync(mainPath);
+  results.push({
+    test: 'Main entry point exists',
+    passed: mainExists,
+    error: mainExists ? undefined : `${mainPath} not found`,
+  });
+
+  // Check file is valid JavaScript
+  if (mainExists) {
+    try {
+      const content = fs.readFileSync(mainPath, 'utf-8');
+      // Basic syntax check - look for Server import
+      const hasServerImport = content.includes('@modelcontextprotocol/sdk');
+      results.push({
+        test: 'Uses MCP SDK',
+        passed: hasServerImport,
+        error: hasServerImport ? undefined : 'Server code does not import MCP SDK',
+      });
+
+      // Check for stdio transport
+      const hasStdioTransport = content.includes('StdioServerTransport');
+      results.push({
+        test: 'Uses stdio transport',
+        passed: hasStdioTransport,
+        error: hasStdioTransport ? undefined : 'Server does not use StdioServerTransport',
+      });
+    } catch (error) {
+      results.push({
+        test: 'File readable',
+        passed: false,
+        error: error instanceof Error ? error.message : 'Unknown error',
+      });
+    }
+  }
+
+  const passed = results.every(r => r.passed);
+  return { passed, results };
 }

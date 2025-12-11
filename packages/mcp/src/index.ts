@@ -41,6 +41,42 @@ export { MCPClient, createMCPClient } from './client';
 export { MCPServer, createRanaMCPServer } from './server';
 export type { ToolHandler, ResourceHandler, MCPServerOptions } from './server';
 
+// Scaffolding
+export { scaffoldMCPServer, TEMPLATES, mcpTemplates } from './scaffold';
+export type {
+  MCPServerTemplate,
+  ToolDefinition,
+  ParameterDefinition,
+  ResourceDefinition,
+  PromptDefinition,
+  EnvVar,
+  ScaffoldOptions,
+  ScaffoldResult,
+  GeneratedFile,
+} from './scaffold';
+
+// Testing
+export {
+  createMockServer,
+  runToolTests,
+  assertToolExists,
+  assertResourceExists,
+  assertToolSuccess,
+  assertResultContains,
+  generateToolTestCases,
+  generateMockArgs,
+  formatTestResults,
+  createSnapshot,
+  compareSnapshot,
+} from './testing';
+export type {
+  MockMCPServer,
+  TestResult,
+  TestSuiteResult,
+  ToolTestCase,
+  Snapshot,
+} from './testing';
+
 // Types
 export type {
   // Core MCP types
