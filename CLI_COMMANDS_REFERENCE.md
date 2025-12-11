@@ -1,7 +1,7 @@
 # RANA CLI Commands Reference
 
-**Version:** 2.1
-**Last Updated:** 2025-11-26
+**Version:** 2.2
+**Last Updated:** 2025-12-11
 
 ---
 
@@ -497,6 +497,178 @@ rana mobile:setup            # Configure mobile features
 
 ---
 
+## 🎮 Playground Commands ⭐ NEW
+
+### `rana playground`
+Interactive REPL for testing RANA features
+```bash
+rana playground              # Start interactive playground
+```
+
+**Available REPL Commands:**
+- `template <name>` - Load quick template (agent, tool, orchestrator, mcp, security)
+- `run <file>` - Execute TypeScript/JavaScript file
+- `save <name>` - Save current code snippet
+- `load <name>` - Load saved snippet
+- `list` - List saved snippets
+- `context` - Show current variables
+- `reset` - Reset session
+- `history` - Show command history
+- `export` - Export session
+- `help` - Show help
+- `exit` - Exit playground
+
+### `rana demo`
+Run quick feature demonstration
+```bash
+rana demo                    # Show RANA features in action
+```
+
+### `rana quickstart`
+Show interactive quickstart guide
+```bash
+rana quickstart              # Step-by-step getting started
+```
+
+---
+
+## 📝 Prompt Management Commands ⭐ NEW
+
+### `rana prompts save`
+Save a new prompt
+```bash
+rana prompts save            # Interactive prompt creation
+```
+
+**Prompts Include:**
+- Name and description
+- Category (agent, generation, mcp, system, task, custom)
+- Tags for organization
+- Variable placeholders ({{variable}})
+
+### `rana prompts list`
+List all saved prompts
+```bash
+rana prompts list            # All prompts
+rana prompts list --category agent  # Filter by category
+rana prompts list --search "code"   # Search prompts
+```
+
+### `rana prompts use <name>`
+Get and use a saved prompt
+```bash
+rana prompts use my-prompt   # Copy to clipboard
+rana prompts use my-prompt --vars name=John,role=dev  # With variables
+```
+
+### `rana prompts analyze`
+Analyze prompt quality
+```bash
+rana prompts analyze my-prompt  # Quality analysis
+```
+
+**Metrics:**
+- Clarity score (0-100)
+- Specificity score (0-100)
+- Actionability score (0-100)
+- Estimated tokens
+- Issues and suggestions
+
+### `rana prompts improve`
+Get AI-powered improvement suggestions
+```bash
+rana prompts improve my-prompt  # Get suggestions
+rana prompts improve my-prompt --apply  # Apply changes
+```
+
+### `rana prompts compare <a> <b>`
+Compare two prompts side-by-side
+```bash
+rana prompts compare old-prompt new-prompt
+```
+
+### `rana prompts import/export`
+Import and export prompts
+```bash
+rana prompts export --output prompts.json
+rana prompts export --category agent --output agent-prompts.json
+rana prompts import team-prompts.json
+rana prompts import prompts.json --strategy merge
+```
+
+### `rana prompts analytics`
+View prompt usage analytics
+```bash
+rana prompts analytics       # Usage statistics
+```
+
+---
+
+## 🔧 Code Generation Commands
+
+### `rana generate <description>`
+Generate code from natural language
+```bash
+rana generate "create a login form with email and password"
+rana generate --template react-component "UserProfile"
+rana generate --dry-run "button component"  # Preview only
+rana generate --output ./src/components "modal"
+```
+
+### `rana templates`
+List available code generation templates
+```bash
+rana templates               # All templates
+rana templates --category react  # Filter by category
+rana templates --search "form"   # Search templates
+```
+
+**Available Templates (30+):**
+- React: component, form, modal, data-table, hook
+- Next.js: api-route, server-action, page, layout
+- State: zustand-store, react-context, tanstack-query
+- Testing: vitest-component, playwright-e2e, vitest-hook
+- Database: prisma-model, drizzle-schema, supabase-migration
+- Utilities: error-boundary, loading-skeleton, utility-hook
+
+### `rana explain <file>`
+Explain code in a file
+```bash
+rana explain ./src/utils/auth.ts  # Get code explanation
+```
+
+---
+
+## 🔌 MCP Commands
+
+### `rana mcp create <name>`
+Create a new MCP server
+```bash
+rana mcp create my-server    # Interactive MCP server creation
+rana mcp create my-server --template database  # From template
+```
+
+**Templates:**
+- `database` - Database operations (PostgreSQL, MySQL, SQLite)
+- `github` - GitHub integration
+- `search` - Semantic search
+- `slack` - Slack integration
+- `notion` - Notion integration
+
+### `rana mcp add-tool <name>`
+Add a tool to MCP server
+```bash
+rana mcp add-tool search     # Interactive tool creation
+```
+
+### `rana mcp add-resource <name>`
+Add a resource to MCP server
+```bash
+rana mcp add-resource users  # Interactive resource creation
+```
+
+---
+
 ## 🎯 Command Categories Summary
 
 ### Database (6 commands)
@@ -541,6 +713,31 @@ rana mobile:setup            # Configure mobile features
 
 ### Diagnostics (1 command) ⭐ NEW
 - `doctor` - Diagnose project setup
+
+### Playground (3 commands) ⭐ NEW
+- `playground` - Interactive REPL
+- `demo` - Quick demo
+- `quickstart` - Getting started guide
+
+### Prompts (8 commands) ⭐ NEW
+- `prompts save` - Save prompt
+- `prompts list` - List prompts
+- `prompts use` - Use prompt
+- `prompts analyze` - Quality analysis
+- `prompts improve` - AI improvements
+- `prompts compare` - Compare prompts
+- `prompts import/export` - Share prompts
+- `prompts analytics` - Usage stats
+
+### Code Generation (3 commands)
+- `generate` - Generate code from description
+- `templates` - List templates
+- `explain` - Explain code
+
+### MCP (3 commands)
+- `mcp create` - Create MCP server
+- `mcp add-tool` - Add tool
+- `mcp add-resource` - Add resource
 
 ### Core (6 commands)
 - `init` - Initialize project
@@ -693,10 +890,10 @@ rana seo:check --fix
 
 ## 📊 Command Statistics
 
-**Total Commands:** 30+
-**Code Generated:** ~3,500 lines
-**Frameworks Covered:** 8 (Database, Security, LLM, SEO, Mobile, Process Intelligence, Cost/Benchmarking, Diagnostics)
-**Auto-fixes Available:** 20+
+**Total Commands:** 47+
+**Code Generated:** ~5,000 lines
+**Frameworks Covered:** 12 (Database, Security, LLM, SEO, Mobile, Process Intelligence, Cost/Benchmarking, Diagnostics, Playground, Prompts, Code Generation, MCP)
+**Auto-fixes Available:** 25+
 **Interactive Wizards:** 7
 **Quality Checks:** 60+
 
