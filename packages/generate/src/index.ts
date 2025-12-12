@@ -24,11 +24,21 @@ export { IntentParser, intentParser } from './engine/parser';
 export { ImplementationPlanner, implementationPlanner } from './engine/planner';
 export { ContextAnalyzer, contextAnalyzer } from './engine/context-analyzer';
 export { CodeGenerator, codeGenerator } from './engine/generator';
+export { GenerationExplainer, generationExplainer } from './engine/explainer';
+export type { GenerationExplanation, FileExplanation, SecurityExplanation } from './engine/explainer';
 
 // Quality exports
 export { QualityValidator, qualityValidator } from './quality/validator';
 export { AutoFixer, autoFixer } from './quality/auto-fixer';
 export type { FixResult } from './quality/auto-fixer';
+
+// Cache exports
+export { LLMCache, createCachedProvider, llmCache } from './cache/llm-cache';
+export type { CacheConfig, CacheStats, CachedLLMProvider } from './cache/llm-cache';
+
+// Analytics exports
+export { GenerationAnalytics, generationAnalytics } from './analytics/tracker';
+export type { GenerationEvent, AnalyticsSummary, TrackerConfig } from './analytics/tracker';
 
 // Template exports
 export {
@@ -150,6 +160,12 @@ export interface GenerateConfig {
   securityAudit?: boolean;
   /** Auto-fix issues after generation */
   autoFix?: boolean;
+  /** Include detailed explanations of generation decisions */
+  explain?: boolean;
+  /** Track analytics for this generation (default: true) */
+  trackAnalytics?: boolean;
+  /** Enable LLM response caching for cost optimization */
+  enableCache?: boolean;
   /** LLM provider for enhanced generation */
   llmProvider?: {
     complete(prompt: string): Promise<string>;
@@ -295,12 +311,15 @@ export async function fixCode(
  * ```typescript
  * const result = await generate('User authentication with OAuth', {
  *   autoFix: true, // Auto-fix any issues found
+ *   explain: true, // Include explanations
+ *   trackAnalytics: true, // Track generation analytics
  * });
  *
- * console.log(result.files);      // Generated files (possibly fixed)
- * console.log(result.plan);       // Implementation plan
- * console.log(result.validation); // Quality check results
- * console.log(result.fixes);      // Applied fixes (if autoFix enabled)
+ * console.log(result.files);       // Generated files (possibly fixed)
+ * console.log(result.plan);        // Implementation plan
+ * console.log(result.validation);  // Quality check results
+ * console.log(result.explanation); // Why decisions were made
+ * console.log(result.fixes);       // Applied fixes (if autoFix enabled)
  * ```
  */
 export async function generate(
@@ -311,8 +330,14 @@ export async function generate(
   plan: ImplementationPlan;
   files: GeneratedFile[];
   validation: ValidationResult;
+  explanation?: import('./engine/explainer').GenerationExplanation;
   fixes?: FixResult[];
+  duration: number;
+  cacheHit: boolean;
 }> {
+  const startTime = Date.now();
+  let cacheHit = false;
+
   // Step 1: Parse intent
   const intent = await parseIntent(description, config);
 
@@ -344,7 +369,72 @@ export async function generate(
     }
   }
 
-  return { intent, plan, files, validation, fixes };
+  // Step 6: Generate explanation if requested
+  let explanation: import('./engine/explainer').GenerationExplanation | undefined;
+  if (config?.explain) {
+    const { GenerationExplainer } = await import('./engine/explainer');
+    const explainer = new GenerationExplainer();
+    explanation = explainer.explain(intent, plan, files, validation);
+  }
+
+  const duration = Date.now() - startTime;
+
+  // Step 7: Track analytics if enabled
+  if (config?.trackAnalytics !== false) {
+    const { generationAnalytics } = await import('./analytics/tracker');
+    await generationAnalytics.trackGeneration({
+      description,
+      framework: intent.framework,
+      entities: intent.entities.map(e => e.name),
+      filesGenerated: files.length,
+      linesGenerated: files.reduce((sum, f) => sum + f.content.split('\n').length, 0),
+      duration,
+      success: validation.passed,
+      validationScore: validation.score,
+      errors: validation.errors.map(e => e.message),
+      warnings: validation.warnings.map(w => w.message),
+      cacheHit,
+      estimatedCost: 0.05, // Estimate based on typical generation
+    }).catch(() => {}); // Don't fail generation if analytics fails
+  }
+
+  return { intent, plan, files, validation, explanation, fixes, duration, cacheHit };
+}
+
+/**
+ * Explain a previous generation result
+ *
+ * @example
+ * ```typescript
+ * const result = await generate('User login form');
+ * const explanation = explainGeneration(result);
+ * console.log(explanation.formatMarkdown());
+ * ```
+ */
+export function explainGeneration(result: {
+  intent: ParsedIntent;
+  plan: ImplementationPlan;
+  files: GeneratedFile[];
+  validation?: ValidationResult;
+}): import('./engine/explainer').GenerationExplanation {
+  const { GenerationExplainer } = require('./engine/explainer');
+  const explainer = new GenerationExplainer();
+  return explainer.explain(result.intent, result.plan, result.files, result.validation);
+}
+
+/**
+ * Get generation analytics summary
+ *
+ * @example
+ * ```typescript
+ * const stats = await getGenerationStats(30); // Last 30 days
+ * console.log(stats.successRate);
+ * console.log(stats.totalCost);
+ * ```
+ */
+export async function getGenerationStats(days: number = 30): Promise<import('./analytics/tracker').AnalyticsSummary> {
+  const { generationAnalytics } = await import('./analytics/tracker');
+  return generationAnalytics.getSummary(days);
 }
 
 /**

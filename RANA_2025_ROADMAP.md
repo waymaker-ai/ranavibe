@@ -306,9 +306,9 @@ This roadmap outlines the strategic implementation plan for transforming RANA in
 ### Must Have (P0) - Q1-Q2 2025
 1. **Quick LLM Helpers** - Immediate DX improvement [DONE]
 2. **Prompt Management** - Team collaboration essential [DONE]
-3. **Natural Language Code Gen** - Biggest competitive gap [TODO]
+3. **Natural Language Code Gen** - Biggest competitive gap [DONE - core complete]
 4. **Advanced RAG** - AI app foundation [DONE]
-5. **MCP Server Creation** - Strategic differentiator [TODO]
+5. **MCP Server Creation** - Strategic differentiator [DONE]
 6. **SOC 2 Type 1** - Enterprise requirement [TODO - H2]
 
 ### Should Have (P1) - H2 2025
