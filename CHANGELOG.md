@@ -11,6 +11,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+**MCP Server Creation (P0 Complete)**
+- `scaffoldMCPServer()` generates complete MCP server projects
+- 6 built-in templates: database, api, filesystem, github, slack, minimal
+- Testing utilities: `createMockServer`, `runToolTests`, assertions
+- 5 example servers: weather, notes, calculator, system-info, time
+- Auto-generated package.json, tsconfig, README, tests, Dockerfile
+
+**Interactive Code Generation Wizards**
+- Full wizard (`rana generate wizard`) - guided entry to all options
+- Database schema wizard - Prisma, Drizzle, TypeORM, Mongoose support
+- API wizard - REST, GraphQL, tRPC with framework selection
+- Component wizard - UI, feature, page, layout types
+- Form wizard - React Hook Form, Formik with validation
+- Auth wizard - NextAuth, Clerk, Supabase, Firebase, custom JWT
+- Dashboard wizard - charts, widgets, real-time features
+
 **Prompt Management System (`rana prompts`)**
 - Save/retrieve prompts with categories, tags, and variables
 - Built-in templates for agents, code generation, MCP, and code review
@@ -53,6 +69,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Error Boundary
 
 ### CLI Commands Added
+
+**MCP Commands**
+- `rana mcp create` - Create MCP servers from templates
+- `rana mcp validate` - Validate MCP server structure
+- `rana mcp test` - Test MCP server
+- `rana mcp publish` - Publish to npm
+- `rana mcp templates` - List available templates
+- `rana mcp config` - Generate Claude Desktop config
+- `rana mcp add-tool` - Add tool to existing server
+- `rana mcp add-resource` - Add resource to existing server
+
+**Generate Commands**
+- `rana generate wizard` - Full interactive wizard
+- `rana generate schema` - Database schema wizard
+- `rana generate api` - API generation wizard
+- `rana generate component` - Component generation wizard
+
+**Prompt Commands**
 - `rana prompts save` - Save prompts with metadata
 - `rana prompts list` - List and filter saved prompts
 - `rana prompts use <name>` - Retrieve and use prompts
@@ -60,10 +94,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `rana prompts improve` - Get AI suggestions
 - `rana prompts compare` - Compare prompts side-by-side
 - `rana prompts export/import` - Share prompts
+
+**Playground Commands**
 - `rana playground` - Interactive testing environment
 - `rana demo` - Quick feature demonstration
 - `rana quickstart` - Getting started guide
-- `rana mcp:create` - Create MCP servers from templates
+
+### Documentation
+- MCP Server Creation Guide
+- Code Generation Wizards Guide
+- Updated roadmap with completion status
 
 ---
 
