@@ -1,4 +1,4 @@
-import { RanaConfig, QualityGate } from '../config';
+import { RanaConfig, QualityGate } from '../config/index';
 
 export interface QualityGateResult {
   gate: QualityGate;

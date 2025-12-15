@@ -6,7 +6,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { glob } from 'glob';
-import type { RanaConfig } from '../config';
+import type { RanaConfig } from '../config/index';
 
 export interface DesignSystemViolation {
   file: string;

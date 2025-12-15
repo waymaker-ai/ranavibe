@@ -1,5 +1,5 @@
 {
-  "name": "@rana/core",
+  "name": "@ranavibe/core",
   "version": "2.0.0",
   "description": "RANA Core SDK - Unified LLM client with cost optimization",
   "main": "dist/index.js",
@@ -12,8 +12,12 @@
       "require": "./dist/index.js"
     }
   },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts --skipNodeModulesBundle",
+    "build": "tsup src/index.ts --format cjs,esm --dts",
     "build:no-dts": "tsup src/index.ts --format cjs,esm",
     "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
     "test": "vitest",
@@ -30,8 +34,20 @@
     "cost-optimization",
     "unified-api"
   ],
-  "author": "Waymaker",
+  "author": "Waymaker <support@waymaker.cx>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/waymaker-ai/ranavibe.git",
+    "directory": "packages/core"
+  },
+  "homepage": "https://rana.cx",
+  "bugs": {
+    "url": "https://github.com/waymaker-ai/ranavibe/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.20.0",
     "@google/generative-ai": "^0.2.1",

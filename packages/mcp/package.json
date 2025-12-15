@@ -1,5 +1,5 @@
 {
-  "name": "@rana/mcp",
+  "name": "@ranavibe/mcp",
   "version": "2.0.0",
   "description": "Model Context Protocol (MCP) support for RANA - Connect AI to tools and data",
   "main": "dist/index.js",
@@ -43,6 +43,19 @@
     "vitest": "^1.6.0"
   },
   "peerDependencies": {
-    "@rana/core": "^2.0.0"
+    "@ranavibe/core": "^2.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/waymaker-ai/ranavibe.git",
+    "directory": "packages/mcp"
+  },
+  "homepage": "https://rana.cx",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
   }
 }

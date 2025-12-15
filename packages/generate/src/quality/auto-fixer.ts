@@ -191,7 +191,7 @@ export class AutoFixer {
 
       if (srcMatch) {
         const filename = srcMatch[1].split('/').pop()?.replace(/\.[^.]+$/, '') || '';
-        altText = filename.replace(/[-_]/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+        altText = filename.replace(/[-_]/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
       }
 
       return `<img${attrs} alt="${altText || 'Image'}"${closing}`;
@@ -358,7 +358,7 @@ const RequestSchema = z.object({
       if (placeholderMatch) {
         label = placeholderMatch[1];
       } else if (nameMatch) {
-        label = nameMatch[1].replace(/[-_]/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+        label = nameMatch[1].replace(/[-_]/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
       } else if (typeMatch) {
         const type = typeMatch[1];
         if (type === 'email') label = 'Email';

@@ -1,10 +1,10 @@
 /**
- * @rana/rag - Advanced RAG (Retrieval Augmented Generation)
+ * @ranavibe/rag - Advanced RAG (Retrieval Augmented Generation)
  * Intelligent chunking, hybrid retrieval, re-ranking, and synthesis
  *
  * @example
  * ```typescript
- * import { createRAGPipeline, RAGPresets, chunkers, retrievers, rerankers } from '@rana/rag';
+ * import { createRAGPipeline, RAGPresets, chunkers, retrievers, rerankers } from '@ranavibe/rag';
  *
  * // Use a preset
  * const pipeline = RAGPresets.balanced();
@@ -66,7 +66,6 @@ export {
   GoogleEmbeddings,
   MockEmbeddings,
 } from './embeddings/index';
-export type { EmbeddingProvider } from './embeddings/index';
 
 // Reranking
 export { rerankers } from './reranking/index';

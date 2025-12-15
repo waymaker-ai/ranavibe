@@ -1,7 +1,7 @@
 {
-  "name": "@rana/react",
+  "name": "@ranavibe/react",
   "version": "2.0.0",
-  "description": "React hooks for RANA - Rapid AI Native Architecture",
+  "description": "React hooks and components for RANA - Rapid AI Native Architecture",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -12,6 +12,10 @@
       "require": "./dist/index.js"
     }
   },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts",
     "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
@@ -25,8 +29,17 @@
     "llm",
     "ai"
   ],
-  "author": "Waymaker",
+  "author": "Waymaker <support@waymaker.cx>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/waymaker-ai/ranavibe.git",
+    "directory": "packages/react"
+  },
+  "homepage": "https://rana.cx",
+  "publishConfig": {
+    "access": "public"
+  },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0"
   },

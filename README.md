@@ -15,7 +15,7 @@ Everything else (RAG, specs, flows, integrations) exists to support that.
 
 [![GitHub Stars](https://img.shields.io/github/stars/waymaker-ai/ranavibe?style=social)](https://github.com/waymaker-ai/ranavibe)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![npm version](https://badge.fury.io/js/%40rana%2Fcore.svg)](https://badge.fury.io/js/%40rana%2Fcore)
+[![npm version](https://badge.fury.io/js/%40ranavibe%2Fcore.svg)](https://www.npmjs.com/package/@ranavibe/core)
 
 ---
 
@@ -157,15 +157,15 @@ RANA is designed to sit *under* the tools you already use.
 
 ```bash
 # Core library + CLI
-npm install @rana/core
-npm install --save-dev @rana/cli
+npm install @ranavibe/core
+npm install --save-dev @ranavibe/cli
 ```
 
 Or with pnpm:
 
 ```bash
-pnpm add @rana/core
-pnpm add -D @rana/cli
+pnpm add @ranavibe/core
+pnpm add -D @ranavibe/cli
 ```
 
 ### 2. Initialize RANA in your app
@@ -186,7 +186,7 @@ This will:
 Example `rana.config.ts`:
 
 ```typescript
-import { defineConfig } from '@rana/core';
+import { defineConfig } from '@ranavibe/core';
 
 export default defineConfig({
   providers: {
@@ -223,7 +223,7 @@ Example with a Vercel AI SDK–style handler:
 ```typescript
 // app/api/rana-chat/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { createRana } from '@rana/core';
+import { createRana } from '@ranavibe/core';
 import config from '../../../rana.config';
 
 const rana = createRana(config);
@@ -411,8 +411,8 @@ Instead, it acts as a **guardrail + provider layer** underneath it.
 ### Wrap RANA as a LangChain ChatModel
 
 ```typescript
-import { RanaChatModel } from '@rana/langchain';
-import { createRana } from '@rana/core';
+import { RanaChatModel } from '@ranavibe/langchain';
+import { createRana } from '@ranavibe/core';
 
 const rana = createRana(config);
 
@@ -443,8 +443,8 @@ RANA plays nicely with CrewAI: **CrewAI owns the crew/graph orchestration; RANA 
 ### Wrap RANA as a CrewAI-compatible LLM
 
 ```typescript
-import { createRanaCrewModel } from '@rana/crewai';
-import { createRana } from '@rana/core';
+import { createRanaCrewModel } from '@ranavibe/crewai';
+import { createRana } from '@ranavibe/core';
 
 const rana = createRana(config);
 
@@ -475,14 +475,14 @@ const featureAgent = new Agent({
 
 | Package | Description |
 |---------|-------------|
-| `@rana/core` | Unified LLM client, cost tracking, plugins, security |
-| `@rana/cli` | CLI for init, check, feature flows, deploy |
-| `@rana/rag` | RAG pipeline: chunking, retrieval, reranking, synthesis |
-| `@rana/agents` | Agent Development Kit (ADK): BaseAgent, tools, vibes |
-| `@rana/langchain` | LangChain adapter |
-| `@rana/crewai` | CrewAI adapter |
-| `@rana/mcp` | Model Context Protocol server & client |
-| `@rana/react` | React hooks for chat, RAG, streaming |
+| `@ranavibe/core` | Unified LLM client, cost tracking, plugins, security |
+| `@ranavibe/cli` | CLI for init, check, feature flows, deploy |
+| `@ranavibe/rag` | RAG pipeline: chunking, retrieval, reranking, synthesis |
+| `@ranavibe/agents` | Agent Development Kit (ADK): BaseAgent, tools, vibes |
+| `@ranavibe/langchain` | LangChain adapter |
+| `@ranavibe/crewai` | CrewAI adapter |
+| `@ranavibe/mcp` | Model Context Protocol server & client |
+| `@ranavibe/react` | React hooks for chat, RAG, streaming |
 
 ---
 
@@ -612,7 +612,7 @@ We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for:
 
 ```bash
 # Install
-npm install @rana/core @rana/cli
+npm install @ranavibe/core @ranavibe/cli
 
 # Initialize in your project
 npx rana init

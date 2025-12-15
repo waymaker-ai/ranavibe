@@ -1,5 +1,5 @@
 /**
- * @rana/agents/tools
+ * @ranavibe/agents/tools
  * Common tools and tool utilities
  */
 
@@ -131,12 +131,13 @@ export const dateTimeTool = createTool({
           return { ok: false, error: 'value, amount, and unit required for add' };
         }
         const date = new Date(value);
-        const ms = {
+        const msPerUnit: Record<string, number> = {
           days: 86400000,
           hours: 3600000,
           minutes: 60000,
           seconds: 1000,
-        }[unit] || 0;
+        };
+        const ms = msPerUnit[unit as string] || 0;
         date.setTime(date.getTime() + amount * ms);
         return { ok: true, data: { iso: date.toISOString(), unix: date.getTime() } };
 

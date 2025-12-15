@@ -11,7 +11,7 @@
  *
  * @example
  * ```typescript
- * import { MessageBroker, createChannel } from '@rana/agents';
+ * import { MessageBroker, createChannel } from '@ranavibe/agents';
  *
  * const broker = new MessageBroker();
  *
@@ -443,10 +443,10 @@ export class MessageBroker {
       if (filter.predicate && !filter.predicate(msg as TypedMessage<T>)) return;
 
       return handler(msg as TypedMessage<T>, ctx);
-    }, options);
+    }, options) as Subscription<T>;
 
     subscription.filter = filter;
-    return subscription as Subscription<T>;
+    return subscription;
   }
 
   unsubscribe(channel: string, agentId: string): boolean {

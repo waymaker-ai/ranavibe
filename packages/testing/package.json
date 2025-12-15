@@ -1,5 +1,5 @@
 {
-  "name": "@rana/testing",
+  "name": "@ranavibe/testing",
   "version": "1.0.0",
   "description": "AI-native testing framework - Test AI code like regular code",
   "main": "dist/index.js",
@@ -46,14 +46,22 @@
     "vitest": "^1.6.0"
   },
   "peerDependencies": {
-    "@rana/core": "^2.0.0"
+    "@ranavibe/core": "^2.0.0"
   },
   "peerDependenciesMeta": {
-    "@rana/core": {
+    "@ranavibe/core": {
       "optional": true
     }
   },
   "engines": {
     "node": ">=18.0.0"
+  },
+  "homepage": "https://rana.cx",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
   }
 }

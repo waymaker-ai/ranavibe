@@ -350,14 +350,15 @@ export interface Template {
   id: string;
   name: string;
   description: string;
-  category: 'component' | 'api' | 'database' | 'auth' | 'payment' | 'utility' | 'security';
+  category: 'component' | 'api' | 'database' | 'auth' | 'payment' | 'utility' | 'security' | 'test' | 'state' | 'data';
   framework: Framework[];
   tags: string[];
   code: string;
-  tests: string;
-  documentation: string;
-  variables: TemplateVariable[];
-  examples: TemplateExample[];
+  tests?: string;
+  documentation?: string;
+  variables: (string | TemplateVariable)[];
+  examples?: TemplateExample[];
+  dependencies?: string[];
 }
 
 export interface TemplateVariable {

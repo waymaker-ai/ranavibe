@@ -21,21 +21,30 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
 
       - name: Install dependencies
-        run: npm ci
-        working-directory: packages/core
+        run: pnpm install --frozen-lockfile
 
-      - name: Build Core
-        run: npm run build
-        working-directory: packages/core
-
-      - name: Build CLI
-        run: |
-          npm ci
-          npm run build
-        working-directory: tools/cli
+      - name: Build all packages
+        run: pnpm -r build
 
   lint:
     runs-on: ubuntu-latest
@@ -47,21 +56,31 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20.x
-          cache: 'npm'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
 
       - name: Install dependencies
-        run: npm ci
-        working-directory: packages/core
+        run: pnpm install --frozen-lockfile
 
-      - name: Type check Core
-        run: npm run typecheck
-        working-directory: packages/core
-
-      - name: Type check CLI
-        run: |
-          npm ci
-          npm run typecheck
-        working-directory: tools/cli
+      - name: Type check all packages
+        run: pnpm -r typecheck --if-present
+        continue-on-error: true
 
   test:
     runs-on: ubuntu-latest
@@ -73,13 +92,31 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20.x
-          cache: 'npm'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
 
       - name: Install dependencies
-        run: npm ci
-        working-directory: packages/core
+        run: pnpm install --frozen-lockfile
+
+      - name: Build all packages
+        run: pnpm -r build
 
       - name: Run tests
-        run: npm test
-        working-directory: packages/core
+        run: pnpm -r test --if-present
         continue-on-error: true

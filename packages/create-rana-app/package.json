@@ -7,6 +7,11 @@
   },
   "main": "dist/index.js",
   "type": "module",
+  "files": [
+    "dist",
+    "templates",
+    "README.md"
+  ],
   "scripts": {
     "build": "tsup src/index.ts --format esm",
     "dev": "tsup src/index.ts --format esm --watch",
@@ -21,12 +26,16 @@
     "cli",
     "generator"
   ],
-  "author": "Waymaker",
+  "author": "Waymaker <support@waymaker.cx>",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/waymaker-ai/ranavibe.git",
     "directory": "packages/create-rana-app"
+  },
+  "homepage": "https://rana.cx",
+  "bugs": {
+    "url": "https://github.com/waymaker-ai/ranavibe/issues"
   },
   "dependencies": {
     "chalk": "^5.3.0",

@@ -7,6 +7,75 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.1.1] - 2025-12-14
+
+### Published to npm
+
+Initial public release to npm under the `@ranavibe` organization.
+
+**Published Packages:**
+
+| Package | Version | Description |
+|---------|---------|-------------|
+| `@ranavibe/core` | 2.0.0 | Unified LLM client with cost optimization, provider routing, and guardrails |
+| `@ranavibe/agents` | 1.0.0 | Agent Development Kit (ADK) with presets, tools, and orchestration |
+| `@ranavibe/rag` | 1.0.0 | RAG pipeline: chunking, retrieval, reranking, knowledge base |
+| `@ranavibe/mcp` | 2.0.0 | Model Context Protocol server & client implementation |
+| `@ranavibe/helpers` | 1.0.0 | Quick LLM helpers for common tasks (summarize, translate, classify, etc.) |
+| `@ranavibe/prompts` | 1.0.0 | Enterprise prompt management with versioning and A/B testing |
+| `@ranavibe/generate` | 1.0.0 | Natural language code generation with templates and wizards |
+| `@ranavibe/react` | 2.0.0 | React hooks and components for chat, RAG, and streaming |
+| `@ranavibe/testing` | 1.0.0 | AI-native testing framework with semantic assertions |
+| `@ranavibe/cli` | 1.0.0 | CLI for init, check, feature flows, and development workflows |
+| `@ranavibe/sdk` | 0.1.0 | SDK for programmatic access to quality gates and REPM validation |
+| `@ranavibe/ui` | 0.1.0 | Glass morphism component library for React |
+| `@ranavibe/ui-cli` | 0.1.0 | CLI tool for installing RANA UI components |
+| `@ranavibe/crewai` | 1.0.0 | CrewAI adapter for RANA |
+| `@ranavibe/langchain` | 1.0.0 | LangChain adapter for RANA |
+| `@ranavibe/mcp-server` | 0.1.0 | MCP server for Claude integration |
+| `create-rana-app` | 2.0.0 | CLI to scaffold new RANA applications |
+
+### Installation
+
+```bash
+# Core package
+npm install @ranavibe/core
+
+# Create new app
+npx create-rana-app my-app
+
+# Full stack
+npm install @ranavibe/core @ranavibe/agents @ranavibe/rag @ranavibe/react
+```
+
+### Infrastructure
+
+- Configured all packages for npm publishing with proper `files`, `exports`, and `publishConfig`
+- Updated GitHub Actions CI/CD workflows for pnpm monorepo
+- Added automated npm release workflow (`.github/workflows/release.yml`)
+- Added release script (`scripts/release.sh`)
+
+### Fixed
+
+- TypeScript errors in `packages/core/src/quality-gates/index.ts`
+- TypeScript errors in `packages/core/src/design-system/index.ts`
+- Missing exports in `packages/core/src/index.ts` for REPM types
+- Duplicate export in `packages/rag/src/index.ts`
+- Type issues in `packages/agents/src/tools/index.ts`
+- Type issues in `packages/agents/src/orchestration/messaging.ts`
+- Property name mismatches in `packages/agents/src/middleware/vibe-enforcer.ts`
+- Implicit any types in `packages/generate/src/quality/auto-fixer.ts`
+- Template interface flexibility in `packages/generate/src/types.ts`
+- Package references from `@rana/ui` to `@ranavibe/ui` in docs
+
+### Version Strategy
+
+**Stable (1.0.0+):** `core`, `mcp`, `react`, `agents`, `rag`, `helpers`, `prompts`, `generate`, `testing`, `cli`, `crewai`, `langchain`, `create-rana-app`
+
+**Pre-release (0.x.x):** `sdk`, `ui`, `ui-cli`, `mcp-server`
+
+---
+
 ## [2.1.0] - 2025-12-11
 
 ### Added
@@ -243,10 +312,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Links
 
-- **Repository:** https://github.com/waymaker-ai/aads-framework
-- **Documentation:** https://github.com/waymaker-ai/aads-framework/tree/main/docs
-- **Issues:** https://github.com/waymaker-ai/aads-framework/issues
-- **Discussions:** https://github.com/waymaker-ai/aads-framework/discussions
+- **Repository:** https://github.com/waymaker-ai/ranavibe
+- **Documentation:** https://rana.cx
+- **npm Organization:** https://www.npmjs.com/org/ranavibe
+- **Issues:** https://github.com/waymaker-ai/ranavibe/issues
+- **Discussions:** https://github.com/waymaker-ai/ranavibe/discussions
 
 ---
 

@@ -1,5 +1,5 @@
 {
-  "name": "@rana/rag",
+  "name": "@ranavibe/rag",
   "version": "1.0.0",
   "description": "Advanced RAG (Retrieval Augmented Generation) for RANA Framework",
   "main": "dist/index.js",
@@ -45,7 +45,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@rana/core": "^2.0.0",
+    "@ranavibe/core": "^2.0.0",
     "@supabase/supabase-js": "^2.39.0",
     "zod": "^3.22.4"
   },
@@ -83,5 +83,13 @@
     "type": "git",
     "url": "https://github.com/waymaker-ai/ranavibe.git",
     "directory": "packages/rag"
+  },
+  "homepage": "https://rana.cx",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "@rana/generate",
+  "name": "@ranavibe/generate",
   "version": "1.0.0",
   "description": "Natural language code generation for RANA Framework",
   "main": "dist/index.js",
@@ -39,8 +39,8 @@
   "author": "Waymaker",
   "license": "MIT",
   "dependencies": {
-    "@rana/core": "^2.0.0",
-    "@rana/helpers": "^1.0.0",
+    "@ranavibe/core": "^2.0.0",
+    "@ranavibe/helpers": "^1.0.0",
     "chalk": "^5.3.0",
     "commander": "^12.0.0",
     "glob": "^10.3.10",
@@ -63,5 +63,13 @@
     "type": "git",
     "url": "https://github.com/waymaker-ai/ranavibe.git",
     "directory": "packages/generate"
+  },
+  "homepage": "https://rana.cx",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "@rana/ui",
+  "name": "@ranavibe/ui",
   "version": "0.1.0",
   "description": "RANA UI - Beautiful glass morphism component library for React",
   "main": "./dist/index.js",
@@ -53,5 +53,13 @@
     "type": "git",
     "url": "https://github.com/waymaker-ai/ranavibe.git",
     "directory": "packages/rana-ui"
+  },
+  "homepage": "https://rana.cx",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -64,8 +64,8 @@ export class VibeEnforcer {
     };
 
     // Build action sets for O(1) lookup
-    this.allowedActions = new Set(this.config.vibeConfig.allowed || []);
-    this.disallowedActions = new Set(this.config.vibeConfig.disallowed || []);
+    this.allowedActions = new Set(this.config.vibeConfig.allowedActions || []);
+    this.disallowedActions = new Set(this.config.vibeConfig.disallowedActions || []);
 
     // Build topic patterns
     this.disallowedTopics = (this.config.vibeConfig.constraints || [])

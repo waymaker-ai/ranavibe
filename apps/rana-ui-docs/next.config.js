@@ -5,5 +5,5 @@ const withNextra = require('nextra')({
 
 module.exports = withNextra({
   reactStrictMode: true,
-  transpilePackages: ['@rana/ui'],
+  transpilePackages: ['@ranavibe/ui'],
 })

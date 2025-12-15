@@ -1,10 +1,10 @@
 /**
- * @rana/core
+ * @ranavibe/core
  * Core SDK for RANA - Rapid AI Native Architecture
  *
  * @example
  * ```typescript
- * import { createRana } from '@rana/core';
+ * import { createRana } from '@ranavibe/core';
  *
  * const rana = createRana({
  *   providers: {
@@ -646,9 +646,11 @@ export type { QualityGate } from './config/index.js';
 
 // Quality Gates
 export { QualityGateChecker } from './quality-gates/index.js';
+export type { PhaseResults, QualityGateResult } from './quality-gates/index.js';
 
 // REPM Validator
-export { REPMValidator } from './repm/index.js';
+export { REPMValidator, REPM_PHASES } from './repm/index.js';
+export type { REPMPhase } from './repm/index.js';
 
 // Design System Checker
 export { DesignSystemChecker } from './design-system/index.js';

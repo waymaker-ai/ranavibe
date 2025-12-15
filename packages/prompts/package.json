@@ -1,5 +1,5 @@
 {
-  "name": "@rana/prompts",
+  "name": "@ranavibe/prompts",
   "version": "1.0.0",
   "description": "Enterprise prompt management with versioning, A/B testing, and analytics",
   "main": "dist/index.js",
@@ -31,7 +31,7 @@
   "author": "Waymaker",
   "license": "MIT",
   "dependencies": {
-    "@rana/core": "^2.0.0",
+    "@ranavibe/core": "^2.0.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
@@ -54,5 +54,13 @@
     "type": "git",
     "url": "https://github.com/waymaker-ai/ranavibe.git",
     "directory": "packages/prompts"
+  },
+  "homepage": "https://rana.cx",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
   }
 }

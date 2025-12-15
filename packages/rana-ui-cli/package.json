@@ -1,5 +1,5 @@
 {
-  "name": "@rana/ui-cli",
+  "name": "@ranavibe/ui-cli",
   "version": "0.1.0",
   "description": "CLI tool for installing RANA UI components",
   "bin": {
@@ -7,6 +7,10 @@
   },
   "main": "./dist/index.js",
   "type": "module",
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
@@ -34,5 +38,14 @@
     "design-system"
   ],
   "author": "Waymaker <support@waymaker.cx>",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/waymaker-ai/ranavibe.git",
+    "directory": "packages/rana-ui-cli"
+  },
+  "homepage": "https://rana.cx",
+  "publishConfig": {
+    "access": "public"
+  }
 }
