@@ -9,7 +9,7 @@
  *
  * @example
  * ```typescript
- * import { PromptInjectionDetector } from '@rana/core';
+ * import { PromptInjectionDetector } from '@ranavibe/core';
  *
  * const detector = new PromptInjectionDetector({ sensitivity: 'high' });
  * const result = detector.detect('Ignore all previous instructions and...');
@@ -73,7 +73,7 @@ const INJECTION_PATTERNS = {
     /show\s+(me\s+)?(your|the)\s+(system\s+)?(prompt|instructions|directives)/gi,
     /what\s+(is|are)\s+your\s+(system\s+)?(prompt|instructions|directives)/gi,
     /reveal\s+(your|the)\s+(system\s+)?(prompt|instructions|configuration)/gi,
-    /print\s+(your|the)\s+(system\s+)?(prompt|instructions|configuration)/gi,
+    /print\s+(your|the)\s+(system\s+|original\s+)?(prompt|instructions|configuration)/gi,
     /output\s+(your|the)\s+(system\s+)?(prompt|instructions|configuration)/gi,
     /display\s+(your|the)\s+(system\s+)?(prompt|instructions|configuration)/gi,
     /repeat\s+(your|the)\s+(original\s+)?(prompt|instructions|directives)/gi,
@@ -260,11 +260,11 @@ export class PromptInjectionDetector {
       }
     }
 
-    // Check custom patterns
+    // Check custom patterns - treat as high priority (user-defined threats)
     for (const pattern of this.config.customPatterns) {
       if (pattern.test(text)) {
         matched.push('custom');
-        score += 0.3;
+        score += 0.55; // Custom patterns should have significant weight
         pattern.lastIndex = 0;
       }
     }
@@ -285,17 +285,19 @@ export class PromptInjectionDetector {
    * Get weight for different pattern categories
    */
   private getCategoryWeight(category: string): number {
+    // Weights calibrated to produce confidence > 0.5 for high-risk patterns
+    // Pattern score * 0.7 (pattern weight in confidence calc) should exceed detection threshold
     const weights: Record<string, number> = {
-      directInjection: 0.45,
-      systemLeakage: 0.42,
-      jailbreak: 0.45,
-      roleManipulation: 0.35,
-      obfuscation: 0.35,
-      delimiterInjection: 0.40,
-      contextManipulation: 0.35,
+      directInjection: 0.75,   // High risk - direct instruction override
+      systemLeakage: 0.75,     // High risk - system prompt extraction
+      jailbreak: 0.75,         // High risk - bypass safety measures
+      roleManipulation: 0.50,  // Medium risk - identity manipulation
+      obfuscation: 0.45,       // Medium risk - encoding/obfuscation
+      delimiterInjection: 0.55, // Medium-high risk - structure manipulation
+      contextManipulation: 0.45, // Medium risk - context framing
     };
 
-    return weights[category] || 0.25;
+    return weights[category] || 0.35;
   }
 
   /**

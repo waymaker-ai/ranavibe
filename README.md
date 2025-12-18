@@ -486,6 +486,84 @@ const featureAgent = new Agent({
 
 ---
 
+## Feature Maturity Status
+
+**Honest assessment** of what's production-ready vs experimental.
+
+### Production Ready (Stable)
+
+These features are tested, documented, and suitable for production use:
+
+| Feature | Package | Status |
+|---------|---------|--------|
+| LLM Client (multi-provider) | `core` | Stable |
+| Cost Tracking & Budgets | `core` | Stable |
+| Provider Fallback | `core` | Stable |
+| Retry with Exponential Backoff | `core` | Stable |
+| Rate Limiting | `core` | Stable |
+| Circuit Breaker | `core` | Stable |
+| Response Caching | `core` | Stable |
+| Prompt Injection Detection | `core` | Stable |
+| PII Detection & Redaction | `core` | Stable |
+| Content Filtering | `core` | Stable |
+| Audit Logging | `core` | Stable |
+| Memory Management | `core` | Stable |
+| Config Parsing | `core` | Stable |
+
+### Beta (Functional, Needs Validation)
+
+These features work but may have edge cases or need more real-world testing:
+
+| Feature | Package | Notes |
+|---------|---------|-------|
+| RAG Pipeline | `rag` | Core retrieval works; some advanced features need validation |
+| Agent Framework | `agents` | Base agents work; orchestration patterns need more testing |
+| MCP Server/Client | `mcp` | Protocol implemented; needs broader compatibility testing |
+| React Hooks | `react` | Core hooks work; streaming needs edge case testing |
+| LangChain Adapter | `langchain` | Basic integration works |
+| CrewAI Adapter | `crewai` | Basic integration works |
+| Quick LLM Helpers | `helpers` | All helpers functional |
+| Prompt Management | `prompts` | Core versioning works |
+| Code Generation | `generate` | Templates work; AI generation needs tuning |
+
+### Experimental (Use With Caution)
+
+These features are implemented but not production-hardened:
+
+| Feature | Package | Notes |
+|---------|---------|-------|
+| Voice/Real-time | `core` | API defined; needs real provider testing |
+| Video Understanding | `core` | Stub implementation |
+| Image Generation | `core` | Stub implementation |
+| Fine-tuning Pipeline | `core` | API defined; provider integration incomplete |
+| Enterprise SSO/RBAC | `core` | Structure in place; not battle-tested |
+| Edge/Offline Runtime | `core` | Architecture defined; limited testing |
+| Advanced RAG (Self-Correcting) | `core` | Experimental algorithms |
+| Model Router | `core` | Basic routing works; ML routing experimental |
+| Agent Debugger | `core` | Basic tracing works; advanced features incomplete |
+
+### Known Limitations
+
+1. **No Production Deployments Yet**: RANA has not been deployed at scale in production environments. Use with appropriate caution.
+
+2. **Integration Testing**: While unit tests pass, end-to-end integration testing with all providers is ongoing.
+
+3. **Documentation Gaps**: Some advanced features lack comprehensive documentation.
+
+4. **CLI Commands**: Many CLI commands are implemented but not all have been thoroughly tested in diverse project structures.
+
+### What We'd Recommend
+
+For a new project today, we recommend using:
+
+- `@ranavibe/core` for LLM client, cost tracking, security features
+- `@ranavibe/helpers` for quick LLM tasks
+- `@ranavibe/prompts` for prompt versioning
+
+Other packages are suitable for experimentation and early adoption but should be validated for your specific use case.
+
+---
+
 ## CLI Commands
 
 ### Core Commands

@@ -298,8 +298,10 @@ export class ContentFilter {
         index = searchContent.indexOf(searchPattern, index + 1);
       }
     } else {
-      // RegExp pattern
-      const regex = new RegExp(pattern.pattern, 'g');
+      // RegExp pattern - preserve original flags and ensure 'g' for iteration
+      const originalFlags = pattern.pattern.flags;
+      const flags = originalFlags.includes('g') ? originalFlags : originalFlags + 'g';
+      const regex = new RegExp(pattern.pattern.source, flags);
       let match: RegExpExecArray | null;
 
       while ((match = regex.exec(content)) !== null) {
@@ -353,21 +355,29 @@ export class ContentFilter {
       return 'log';
     }
 
-    // Check for category-specific actions
-    for (const violation of violations) {
-      const categoryAction = this.config.categoryActions[violation.category];
-      if (categoryAction) {
-        // Return most restrictive action
-        if (categoryAction === 'block') return 'block';
-      }
-    }
-
     // Check for critical severity - always block
     if (violations.some(v => v.severity === 'critical')) {
       return 'block';
     }
 
-    return this.config.defaultAction;
+    // Check for category-specific actions - find most restrictive
+    const actionPriority: Record<FilterAction, number> = {
+      'log': 0,
+      'warn': 1,
+      'redact': 2,
+      'block': 3,
+    };
+
+    let mostRestrictiveAction: FilterAction = this.config.defaultAction;
+
+    for (const violation of violations) {
+      const categoryAction = this.config.categoryActions[violation.category];
+      if (categoryAction && actionPriority[categoryAction] > actionPriority[mostRestrictiveAction]) {
+        mostRestrictiveAction = categoryAction;
+      }
+    }
+
+    return mostRestrictiveAction;
   }
 
   /**
@@ -537,7 +547,7 @@ export class ContentFilter {
 // ============================================================================
 
 export class ContentFilterError extends RanaError {
-  constructor(message: string, details?: any) {
+  constructor(message: string, details?: unknown) {
     super(message, 'CONTENT_FILTER_ERROR', undefined, undefined, details);
     this.name = 'ContentFilterError';
   }
@@ -546,7 +556,7 @@ export class ContentFilterError extends RanaError {
 export class ContentBlockedError extends RanaError {
   constructor(
     public violations: FilterViolation[],
-    details?: any
+    details?: unknown
   ) {
     super(
       `Content blocked due to policy violations: ${violations.map(v => v.category).join(', ')}`,

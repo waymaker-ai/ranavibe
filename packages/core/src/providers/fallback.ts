@@ -79,7 +79,7 @@ export class FallbackManager {
   constructor(providerManager: ProviderManager, config: FallbackConfig) {
     this.providerManager = providerManager;
     this.config = {
-      maxRetries: 1,
+      maxRetries: 0, // Default to no retries - just fallback to next provider
       retryDelay: 0,
       trackAttempts: true,
       ...config,

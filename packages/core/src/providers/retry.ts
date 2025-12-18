@@ -291,11 +291,8 @@ export async function withRetry<T>(
         throw error;
       }
 
-      // This was a retry attempt (not the initial try)
-      if (attempt > 0) {
-        metadata.retryCount++;
-      }
-
+      // We're about to make a retry attempt - increment the count
+      metadata.retryCount++;
       metadata.lastRetryError = error.message || String(error);
 
       // Calculate delay before next retry

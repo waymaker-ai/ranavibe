@@ -9,6 +9,35 @@
 // ============================================================================
 
 /**
+ * Interface for Redis client operations needed by the rate limiter
+ * This allows any Redis client implementation (ioredis, node-redis, etc.)
+ */
+export interface RedisClientLike {
+  /** Get members of a sorted set by score range */
+  zrangebyscore(key: string, min: number | string, max: number | string): Promise<string[]>;
+  /** Add member to sorted set with score */
+  zadd(key: string, score: number, member: string): Promise<number>;
+  /** Set key expiration in seconds */
+  expire(key: string, seconds: number): Promise<number>;
+  /** Remove members of sorted set by score range */
+  zremrangebyscore(key: string, min: number | string, max: number | string): Promise<number>;
+  /** Delete one or more keys */
+  del(...keys: string[]): Promise<number>;
+  /** Find keys matching pattern */
+  keys(pattern: string): Promise<string[]>;
+}
+
+/**
+ * Type for limit status used in getStatus response
+ */
+interface LimitStatus {
+  minute?: { used: number; limit: number; remaining: number };
+  hour?: { used: number; limit: number; remaining: number };
+  day?: { used: number; limit: number; remaining: number };
+  burst?: { used: number; limit: number; remaining: number };
+}
+
+/**
  * Rate limit tier configuration
  */
 export interface RateLimitTier {
@@ -261,10 +290,10 @@ class MemoryStorageBackend implements StorageBackend {
  * Note: Requires redis client to be provided externally
  */
 class RedisStorageBackend implements StorageBackend {
-  private redisClient: any;
+  private redisClient: RedisClientLike;
   private keyPrefix: string;
 
-  constructor(redisClient: any, keyPrefix: string = 'rana:ratelimit:') {
+  constructor(redisClient: RedisClientLike, keyPrefix: string = 'rana:ratelimit:') {
     this.redisClient = redisClient;
     this.keyPrefix = keyPrefix;
   }
@@ -391,7 +420,7 @@ export class UserRateLimiter {
   private storage: StorageBackend;
   private tierAssignments: Map<string, string> = new Map();
 
-  constructor(config: UserRateLimitConfig, redisClient?: any) {
+  constructor(config: UserRateLimitConfig, redisClient?: RedisClientLike) {
     this.config = config;
 
     // Initialize storage backend
@@ -634,7 +663,7 @@ export class UserRateLimiter {
     const identifierString = this.getIdentifierString(identifier);
     const tier = this.getTier(identifierString);
 
-    const limits: any = {};
+    const limits: LimitStatus = {};
 
     // Check minute limit
     if (tier.requestsPerMinute) {
@@ -796,7 +825,7 @@ export class UserRateLimiter {
  */
 export function createUserRateLimiter(
   config: UserRateLimitConfig,
-  redisClient?: any
+  redisClient?: RedisClientLike
 ): UserRateLimiter {
   return new UserRateLimiter(config, redisClient);
 }

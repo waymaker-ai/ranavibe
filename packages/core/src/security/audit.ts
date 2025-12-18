@@ -434,7 +434,7 @@ export class AuditLogger {
 
     // Sanitize and redact
     if (this.config.hashSensitiveData) {
-      auditEntry.metadata = this.redactSensitiveData(auditEntry.metadata);
+      auditEntry.metadata = this.redactSensitiveData(auditEntry.metadata) as Record<string, unknown> | undefined;
     }
 
     // Add tamper detection
@@ -586,15 +586,15 @@ export class AuditLogger {
     return user_id;
   }
 
-  private redactSensitiveData(data: any): any {
+  private redactSensitiveData(data: unknown): unknown {
     if (!data || typeof data !== 'object') return data;
 
     if (Array.isArray(data)) {
       return data.map(item => this.redactSensitiveData(item));
     }
 
-    const redacted: any = {};
-    for (const [key, value] of Object.entries(data)) {
+    const redacted: Record<string, unknown> = {};
+    for (const [key, value] of Object.entries(data as Record<string, unknown>)) {
       const keyLower = key.toLowerCase();
 
       if (this.config.redactFields.some(field => keyLower.includes(field.toLowerCase()))) {
@@ -609,7 +609,8 @@ export class AuditLogger {
   }
 
   private computeHash(entry: Partial<AuditEntry>): string {
-    const { hash, previous_hash, ...dataToHash } = entry as any;
+    // Omit hash and previous_hash fields for computing the hash
+    const { hash: _hash, previous_hash: _prevHash, ...dataToHash } = entry as Partial<AuditEntry> & { hash?: string; previous_hash?: string };
     const data = JSON.stringify(dataToHash, Object.keys(dataToHash).sort());
 
     if (this.config.signEntries && this.config.signingKey) {

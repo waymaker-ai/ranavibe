@@ -384,7 +384,7 @@ export class RanaError extends Error {
     public code: string,
     public provider?: LLMProvider,
     public statusCode?: number,
-    public details?: any
+    public details?: unknown
   ) {
     super(message);
     this.name = 'RanaError';
@@ -392,7 +392,7 @@ export class RanaError extends Error {
 }
 
 export class RanaAuthError extends RanaError {
-  constructor(provider: LLMProvider, details?: any) {
+  constructor(provider: LLMProvider, details?: unknown) {
     super(
       `Authentication failed for ${provider}. Check your API key.`,
       'AUTH_ERROR',
@@ -405,7 +405,7 @@ export class RanaAuthError extends RanaError {
 }
 
 export class RanaRateLimitError extends RanaError {
-  constructor(provider: LLMProvider, details?: any) {
+  constructor(provider: LLMProvider, details?: unknown) {
     super(
       `Rate limit exceeded for ${provider}. Please wait or upgrade your plan.`,
       'RATE_LIMIT_ERROR',
@@ -418,7 +418,7 @@ export class RanaRateLimitError extends RanaError {
 }
 
 export class RanaNetworkError extends RanaError {
-  constructor(provider: LLMProvider, details?: any) {
+  constructor(provider: LLMProvider, details?: unknown) {
     super(
       `Network error when connecting to ${provider}. Check your connection.`,
       'NETWORK_ERROR',
@@ -435,7 +435,7 @@ export class RanaBudgetExceededError extends RanaError {
     public currentSpent: number,
     public budgetLimit: number,
     public budgetPeriod: BudgetPeriod,
-    details?: any
+    details?: unknown
   ) {
     super(
       `Budget exceeded: $${currentSpent.toFixed(4)} spent (limit: $${budgetLimit.toFixed(2)} per ${budgetPeriod}). ` +
@@ -454,7 +454,7 @@ export class RanaBudgetWarningError extends RanaError {
     public currentSpent: number,
     public budgetLimit: number,
     public percentUsed: number,
-    details?: any
+    details?: unknown
   ) {
     super(
       `Budget warning: ${percentUsed.toFixed(1)}% used ($${currentSpent.toFixed(4)} of $${budgetLimit.toFixed(2)}).`,
