@@ -9,20 +9,38 @@ import {
   Smartphone,
   Search,
   Lock,
-  Gauge
+  Gauge,
+  Scale,
+  Layers,
+  FileCheck,
+  AlertTriangle
 } from 'lucide-react';
 
 const features = [
   {
     icon: Shield,
-    title: 'Security Guardrails',
-    description: 'OWASP Top 10 protection, GDPR compliance, PII detection, and prompt injection defense built into every request.',
+    title: 'Built-in Compliance',
+    description: 'Automatic HIPAA, SEC, GDPR, CCPA enforcement. PII detection, redaction, audit trails, and disclaimers out of the box.',
     highlight: true,
+    isNew: true,
+  },
+  {
+    icon: Scale,
+    title: 'Dynamic Guidelines',
+    description: 'Context-aware behavioral control with priority-based rules. 8+ presets for medical, financial, legal, and brand guidelines.',
+    isNew: true,
+  },
+  {
+    icon: Layers,
+    title: '400K Token Contexts',
+    description: 'Handle massive codebases efficiently. Smart chunking, caching, and optimization reduce 2.5M tokens to 400K with 70% cost savings.',
+    isNew: true,
   },
   {
     icon: Code2,
-    title: 'Design System Enforcement',
-    description: 'Automatically enforce your design library usage and component patterns. No more inconsistent UIs.',
+    title: 'Advanced Code Generation',
+    description: 'Generate complete CRUD APIs, database schemas, and smart file integration for Next.js, Express, Fastify, Prisma, and Drizzle.',
+    isNew: true,
   },
   {
     icon: Database,
@@ -36,13 +54,13 @@ const features = [
   },
   {
     icon: Lock,
-    title: 'Controlled Features',
-    description: 'Quality gates prevent unauthorized feature additions. Every change must meet your standards before deployment.',
+    title: 'Quality Gates',
+    description: 'Automated enforcement of security, compliance, and quality standards. Every change must pass before deployment.',
   },
   {
     icon: Gauge,
     title: 'Works With Your Tools',
-    description: 'Use Rana with Cursor, Windsurf, Google Antigravity, Claude Code, or any IDE. Complementary, not competitive.',
+    description: 'Use RANA with Cursor, Windsurf, Google Antigravity, Claude Code, or any IDE. Complementary, not competitive.',
   },
   {
     icon: Search,
@@ -52,7 +70,18 @@ const features = [
   {
     icon: Smartphone,
     title: '70% Cost Savings',
-    description: 'Automatic cost reduction through intelligent model routing, caching, prompt optimization, and budget enforcement.',
+    description: 'Automatic cost reduction through intelligent model routing, caching, prompt optimization, and context optimization.',
+  },
+  {
+    icon: FileCheck,
+    title: 'Enterprise RAG',
+    description: 'Advanced retrieval with semantic chunking, hybrid search, cross-encoder re-ranking, and streaming responses.',
+  },
+  {
+    icon: AlertTriangle,
+    title: 'Violation Tracking',
+    description: 'Real-time monitoring of compliance violations, guideline breaches, and security issues with comprehensive audit logs.',
+    isNew: true,
   },
 ];
 
@@ -68,7 +97,7 @@ export function Features() {
             transition={{ duration: 0.5 }}
             className="text-3xl md:text-5xl font-bold mb-4"
           >
-            The Guardrails You Need
+            Enterprise-Grade AI Framework
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -77,7 +106,7 @@ export function Features() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-lg text-foreground-secondary max-w-2xl mx-auto"
           >
-            A framework that works WITH your tools to enforce security, consistency, and quality at every step
+            The only TypeScript framework with built-in compliance, guidelines, and 400K context optimization
           </motion.p>
         </div>
 
@@ -89,8 +118,15 @@ export function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.05 }}
-              className="card hover:border-foreground/10 group"
+              className="card hover:border-foreground/10 group relative"
             >
+              {feature.isNew && (
+                <div className="absolute top-4 right-4">
+                  <span className="px-2 py-0.5 text-[10px] font-bold rounded-full bg-gradient-to-r from-gradient-from to-gradient-to text-white">
+                    NEW
+                  </span>
+                </div>
+              )}
               <div className="mb-4 p-3 rounded-lg bg-background w-fit group-hover:bg-gradient-subtle transition-colors">
                 <feature.icon className="h-6 w-6" />
               </div>

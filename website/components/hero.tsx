@@ -22,7 +22,7 @@ export function Hero() {
             className="inline-flex items-center space-x-2 px-4 py-1.5 mb-8 rounded-full border border-border bg-background-secondary"
           >
             <Sparkles className="h-4 w-4 text-gradient-from" />
-            <span className="text-sm font-medium">Introducing RANA Framework 2.0 - Beta</span>
+            <span className="text-sm font-medium">New: RANA 2.1 with Compliance & Guidelines</span>
           </motion.div>
 
           {/* Heading */}
@@ -32,8 +32,8 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-balance mb-6"
           >
-            Build AI Apps{' '}
-            <span className="gradient-text">With Guardrails</span>
+            The Only Framework{' '}
+            <span className="gradient-text">With Built-in Compliance</span>
           </motion.h1>
 
           {/* Description */}
@@ -43,7 +43,7 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-lg md:text-xl text-foreground-secondary text-balance mb-10 max-w-2xl mx-auto"
           >
-            A framework for building with <span className="text-foreground font-semibold">security, design consistency, prompt management, and real data</span>. Works with Cursor, Windsurf, Antigravity, and all your favorite tools.
+            Production-ready TypeScript framework with <span className="text-foreground font-semibold">HIPAA, SEC, GDPR compliance, dynamic guidelines, 400K context optimization</span>, and 70% cost savings. Works with Cursor, Windsurf, Antigravity, and all your favorite tools.
           </motion.p>
 
           {/* CTAs */}
@@ -80,12 +80,12 @@ export function Hero() {
               <div className="text-sm text-foreground-secondary mt-1">Cost Savings</div>
             </div>
             <div className="text-center p-4 rounded-lg bg-background-secondary border border-border">
-              <div className="text-3xl md:text-4xl font-bold gradient-text">120x</div>
-              <div className="text-sm text-foreground-secondary mt-1">Faster Development</div>
+              <div className="text-3xl md:text-4xl font-bold gradient-text">400K</div>
+              <div className="text-sm text-foreground-secondary mt-1">Token Context</div>
             </div>
             <div className="text-center p-4 rounded-lg bg-background-secondary border border-border">
-              <div className="text-3xl md:text-4xl font-bold gradient-text">9</div>
-              <div className="text-sm text-foreground-secondary mt-1">LLM Providers</div>
+              <div className="text-3xl md:text-4xl font-bold gradient-text">17+</div>
+              <div className="text-sm text-foreground-secondary mt-1">Packages</div>
             </div>
             <div className="text-center p-4 rounded-lg bg-background-secondary border border-border">
               <div className="text-3xl md:text-4xl font-bold gradient-text">5min</div>
@@ -101,13 +101,13 @@ export function Hero() {
             className="mt-16 text-left"
           >
             <div className="code-block font-mono text-sm">
-              <div className="text-foreground-secondary">$ npm install @rana/helpers @rana/prompts @rana/rag</div>
-              <div className="mt-2 text-gradient-from">✓ Installed RANA 2025 packages</div>
-              <div className="text-foreground-secondary mt-2">{`import { summarize, translate } from '@rana/helpers';`}</div>
-              <div className="text-foreground-secondary">{`import { PromptManager } from '@rana/prompts';`}</div>
-              <div className="text-foreground-secondary">{`import { RAGPresets } from '@rana/rag';`}</div>
-              <div className="mt-2 text-gradient-to">{`// One-line AI operations`}</div>
-              <div className="text-foreground-secondary">{`const summary = await summarize(document);`}</div>
+              <div className="text-foreground-secondary">$ npm install @rana/compliance @rana/guidelines @rana/context-optimizer</div>
+              <div className="mt-2 text-gradient-from">✓ Installed RANA 2.1 packages</div>
+              <div className="text-foreground-secondary mt-2">{`import { ComplianceEnforcer, PresetRules } from '@rana/compliance';`}</div>
+              <div className="text-foreground-secondary">{`import { GuidelineManager, Conditions } from '@rana/guidelines';`}</div>
+              <div className="text-foreground-secondary">{`import { ContextOptimizer } from '@rana/context-optimizer';`}</div>
+              <div className="mt-2 text-gradient-to">{`// HIPAA-compliant AI with built-in guardrails`}</div>
+              <div className="text-foreground-secondary">{`const enforcer = new ComplianceEnforcer([PresetRules.hipaa()]);`}</div>
             </div>
           </motion.div>
         </div>

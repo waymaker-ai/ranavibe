@@ -2,9 +2,100 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { ArrowLeft, Sparkles, Brain, Search } from 'lucide-react';
+import { ArrowLeft, Sparkles, Brain, Search, Shield, Scale, Layers } from 'lucide-react';
 
 const packages = [
+  {
+    name: '@rana/compliance',
+    icon: Shield,
+    description: 'Automatic HIPAA, SEC, GDPR, CCPA compliance enforcement',
+    npm: 'npm install @rana/compliance',
+    isNew: true,
+    functions: [
+      { name: 'ComplianceEnforcer', desc: 'Main enforcement engine' },
+      { name: 'PresetRules.hipaa()', desc: 'HIPAA compliance preset' },
+      { name: 'PresetRules.sec()', desc: 'SEC/FINRA compliance' },
+      { name: 'PresetRules.gdpr()', desc: 'GDPR compliance' },
+      { name: 'PresetRules.ccpa()', desc: 'CCPA compliance' },
+      { name: 'enforce()', desc: 'Enforce compliance on requests' },
+      { name: 'getViolations()', desc: 'Get violation history' },
+      { name: 'detectPII()', desc: 'Detect PII in content' },
+    ],
+    example: `import { ComplianceEnforcer, PresetRules } from '@rana/compliance';
+
+const enforcer = new ComplianceEnforcer([
+  PresetRules.hipaa(),
+  PresetRules.gdpr()
+]);
+
+const result = await enforcer.enforce({
+  request: userMessage,
+  response: aiResponse
+});
+
+if (result.action === 'block') {
+  console.log('Compliance violation:', result.violations);
+}`,
+  },
+  {
+    name: '@rana/guidelines',
+    icon: Scale,
+    description: 'Dynamic behavioral control with context-aware rules',
+    npm: 'npm install @rana/guidelines',
+    isNew: true,
+    functions: [
+      { name: 'GuidelineManager', desc: 'Main manager class' },
+      { name: 'createGuideline()', desc: 'Create custom guidelines' },
+      { name: 'PresetGuidelines', desc: '8+ preset guidelines' },
+      { name: 'Conditions', desc: 'Condition builders' },
+      { name: 'match()', desc: 'Match guidelines to context' },
+      { name: 'validate()', desc: 'Validate responses' },
+      { name: 'getAnalytics()', desc: 'View guideline analytics' },
+    ],
+    example: `import { GuidelineManager, PresetGuidelines, Conditions } from '@rana/guidelines';
+
+const manager = new GuidelineManager();
+
+await manager.addGuideline(
+  PresetGuidelines.noMedicalAdvice()
+);
+
+const matched = await manager.match({
+  topic: 'medical',
+  message: 'I have a headache'
+});
+
+console.log(matched); // Returns matching guidelines`,
+  },
+  {
+    name: '@rana/context-optimizer',
+    icon: Layers,
+    description: 'Handle 400K+ token contexts with 70% cost savings',
+    npm: 'npm install @rana/context-optimizer',
+    isNew: true,
+    functions: [
+      { name: 'ContextOptimizer', desc: 'Main optimizer class' },
+      { name: 'optimize()', desc: 'Optimize context size' },
+      { name: 'prioritizeFiles()', desc: 'File prioritization' },
+      { name: 'chunkRepository()', desc: 'Smart chunking' },
+      { name: 'scoreQuality()', desc: 'Content quality scoring' },
+      { name: 'getCacheStats()', desc: 'Cache statistics' },
+    ],
+    example: `import { ContextOptimizer } from '@rana/context-optimizer';
+
+const optimizer = new ContextOptimizer({
+  strategy: 'hybrid',
+  maxTokens: 400000
+});
+
+const result = await optimizer.optimize({
+  files: repositoryFiles,
+  query: 'Explain the authentication flow'
+});
+
+console.log(result.tokens); // ~400K tokens (from 2.5M)
+console.log(result.costSavings); // ~70%`,
+  },
   {
     name: '@rana/helpers',
     icon: Sparkles,
@@ -99,7 +190,7 @@ export default function PackagesPage() {
         >
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Packages</h1>
           <p className="text-lg text-foreground-secondary mb-12">
-            Three powerful packages that work together or standalone
+            Six powerful packages with built-in compliance, guidelines, and context optimization
           </p>
         </motion.div>
 
@@ -110,14 +201,21 @@ export default function PackagesPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="card"
+              className="card relative"
             >
               <div className="flex items-start gap-4 mb-6">
                 <div className="p-3 rounded-lg bg-gradient-subtle">
                   <pkg.icon className="h-6 w-6" />
                 </div>
-                <div>
-                  <h2 className="text-2xl font-bold font-mono">{pkg.name}</h2>
+                <div className="flex-1">
+                  <div className="flex items-center gap-3">
+                    <h2 className="text-2xl font-bold font-mono">{pkg.name}</h2>
+                    {pkg.isNew && (
+                      <span className="px-3 py-1 text-xs font-bold rounded-full bg-gradient-to-r from-gradient-from to-gradient-to text-white">
+                        NEW
+                      </span>
+                    )}
+                  </div>
                   <p className="text-foreground-secondary">{pkg.description}</p>
                 </div>
               </div>
