@@ -1,0 +1,45 @@
+{
+  "name": "@rana/context-optimizer",
+  "version": "1.0.0",
+  "description": "Extended context optimization for RANA - Efficiently handle 400K+ token contexts",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "rana",
+    "context",
+    "optimization",
+    "llm",
+    "extended-context",
+    "400k",
+    "cost-optimization"
+  ],
+  "author": "Waymaker",
+  "license": "MIT",
+  "dependencies": {
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.5.0",
+    "vitest": "^1.6.0"
+  },
+  "peerDependencies": {
+    "@rana/core": "^2.0.0"
+  }
+}

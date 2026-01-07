@@ -31,7 +31,7 @@ console.log(templates);
 
 ## Features
 
-### Natural Language Generation
+### 🎯 Natural Language Generation
 
 ```typescript
 // Simple description
@@ -47,6 +47,149 @@ const table = await generate(`
   - Export to CSV
 `);
 ```
+
+### 🚀 Advanced API Generation ⭐ NEW!
+
+Generate complete CRUD APIs with authentication, validation, and rate limiting:
+
+```typescript
+import { APIGenerator, type CRUDSpec } from '@rana/generate';
+
+const userAPI: CRUDSpec = {
+  entity: 'User',
+  fields: [
+    { name: 'email', type: 'email', required: true, unique: true },
+    { name: 'name', type: 'string', required: true },
+    { name: 'age', type: 'number', required: false },
+  ],
+  operations: ['create', 'read', 'update', 'delete', 'list'],
+  authentication: true,
+};
+
+// Generate Next.js API with full CRUD
+const apiCode = APIGenerator.generateCRUD(userAPI, {
+  framework: 'next',
+  apiType: 'rest',
+  includeValidation: true,
+  includeAuth: true,
+  includeRateLimit: true,
+});
+
+// Generate GraphQL schema and resolvers
+const { schema, resolvers } = APIGenerator.generateGraphQL(userAPI);
+```
+
+**Supports:**
+- ✅ Next.js App Router (GET, POST, PUT, DELETE with route.ts)
+- ✅ Express.js routing
+- ✅ Fastify routing
+- ✅ GraphQL schema + resolvers
+- ✅ Automatic Zod validation
+- ✅ Rate limiting
+- ✅ Authentication middleware
+- ✅ Pagination, sorting, search
+- ✅ Error handling & logging
+
+### 🗄️ Database Schema Generation ⭐ NEW!
+
+Generate schemas for Prisma, Drizzle, or raw SQL:
+
+```typescript
+import { DatabaseGenerator, type Entity } from '@rana/generate';
+
+const userEntity: Entity = {
+  name: 'User',
+  fields: [
+    { name: 'email', type: 'string', required: true, unique: true },
+    { name: 'name', type: 'string', required: true },
+    { name: 'age', type: 'int', required: false },
+  ],
+  relations: [
+    { type: 'one-to-many', target: 'Post' },
+  ],
+};
+
+// Prisma schema
+const prismaSchema = DatabaseGenerator.generatePrismaSchema(userEntity, {
+  orm: 'prisma',
+  includeTimestamps: true,
+  includeSoftDelete: true,
+  includeIndexes: true,
+});
+
+// Drizzle schema (PostgreSQL)
+const drizzleSchema = DatabaseGenerator.generateDrizzleSchema(userEntity, {
+  orm: 'drizzle',
+  database: 'postgresql',
+});
+
+// Raw SQL migration
+const sqlMigration = DatabaseGenerator.generateSQLMigration(userEntity, {
+  orm: 'sql',
+  database: 'postgresql', // or 'mysql', 'sqlite'
+});
+```
+
+**Supports:**
+- ✅ Prisma ORM with relations, indexes, timestamps
+- ✅ Drizzle ORM (PostgreSQL, MySQL, SQLite)
+- ✅ Raw SQL migrations with up/down scripts
+- ✅ Soft deletes
+- ✅ Auto-generated indexes
+- ✅ Timestamps (createdAt, updatedAt)
+- ✅ One-to-one, one-to-many, many-to-many relations
+
+### 📁 Smart File Integration ⭐ NEW!
+
+Automatically determine where files should go and manage imports:
+
+```typescript
+import { FileIntegrator, analyzeCodebase } from '@rana/generate';
+
+// Analyze your codebase
+const context = await analyzeCodebase('./my-project');
+
+// Generate some files
+const files = await generate('user profile component');
+
+// Integrate into codebase
+const integrator = new FileIntegrator({
+  autoImport: true,
+  autoExport: true,
+  resolveConflicts: 'ask', // or 'rename', 'overwrite', 'skip'
+});
+
+const result = await integrator.integrate(files, context);
+
+console.log(result.placements);
+// [
+//   {
+//     file: { ... },
+//     path: 'src/components/UserProfile.tsx',
+//     imports: ['react', '@/lib/api'],
+//     exports: ['UserProfile'],
+//     modifications: [
+//       { file: 'src/components/index.ts', type: 'add-export', ... }
+//     ]
+//   }
+// ]
+
+console.log(result.conflicts);
+// [ { path: '...', type: 'exists', resolution: 'ask', message: '...' } ]
+
+console.log(result.suggestions);
+// [ 'Install missing dependencies: npm install react-query zod' ]
+```
+
+**Features:**
+- ✅ Framework-aware file placement (Next.js, React, Express)
+- ✅ Smart path detection (components, pages, API routes, utils, hooks)
+- ✅ Auto-add to barrel exports (index.ts files)
+- ✅ Detect naming conflicts
+- ✅ Suggest missing npm dependencies
+- ✅ Organize and sort imports
+- ✅ Remove duplicate imports
+- ✅ Path alias conversion (@/ notation)
 
 ### Template-Based Generation
 

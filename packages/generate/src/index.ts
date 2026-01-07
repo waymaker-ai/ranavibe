@@ -26,6 +26,12 @@ export { ContextAnalyzer, contextAnalyzer } from './engine/context-analyzer';
 export { CodeGenerator, codeGenerator } from './engine/generator';
 export { GenerationExplainer, generationExplainer } from './engine/explainer';
 export type { GenerationExplanation, FileExplanation, SecurityExplanation } from './engine/explainer';
+export { APIGenerator } from './engine/api-generator';
+export type { APIGeneratorConfig, CRUDSpec } from './engine/api-generator';
+export { DatabaseGenerator } from './engine/database-generator';
+export type { DatabaseGeneratorConfig } from './engine/database-generator';
+export { FileIntegrator } from './engine/file-integrator';
+export type { FileIntegratorConfig } from './engine/file-integrator';
 
 // Quality exports
 export { QualityValidator, qualityValidator } from './quality/validator';
@@ -450,6 +456,30 @@ export async function getGenerationStats(days: number = 30): Promise<import('./a
 export async function analyzeCodebase(cwd: string): Promise<CodebaseContext> {
   const analyzer = new ContextAnalyzer();
   return analyzer.analyze(cwd);
+}
+
+/**
+ * Integrate generated files into existing codebase
+ *
+ * @example
+ * ```typescript
+ * import { FileIntegrator } from '@rana/generate';
+ *
+ * const integrator = new FileIntegrator();
+ * const result = await integrator.integrate(files, context);
+ *
+ * console.log(result.placements); // Where files will be placed
+ * console.log(result.conflicts); // Any conflicts detected
+ * console.log(result.suggestions); // Integration suggestions
+ * ```
+ */
+export async function integrateFiles(
+  files: GeneratedFile[],
+  context: CodebaseContext,
+  config?: import('./engine/file-integrator').FileIntegratorConfig
+): Promise<import('./types').IntegrationResult> {
+  const integrator = new (await import('./engine/file-integrator')).FileIntegrator(config);
+  return integrator.integrate(files, context);
 }
 
 // Default export

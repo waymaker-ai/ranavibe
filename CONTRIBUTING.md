@@ -1,17 +1,21 @@
-# Contributing to RANA
+# Contributing to RANA 🚀
 
-Thank you for your interest in contributing to RANA!
+Thank you for your interest in contributing to RANA! We're building the most helpful, accessible AI framework for developers.
+
+**RANA succeeds when developers succeed.** Every contribution, big or small, helps make AI development better for everyone.
 
 ---
 
 ## Vision
 
-RANA exists to **prevent AI-assisted dev chaos**, not to orchestrate it. We believe:
+RANA is a **comprehensive AI development framework** that emphasizes:
 
-- AI assistants should **enhance** existing workflows, not replace them
-- Safety rails matter more than speed
-- Integration > reinvention
-- Practical tooling > impressive demos
+- **Quality & Compliance**: Built-in HIPAA, SEC, GDPR enforcement
+- **Production-Ready**: Enterprise-grade from day one
+- **Developer Experience**: TypeScript-first, great docs, helpful community
+- **Safety & Guidelines**: Dynamic behavioral control, compliance automation
+- **Cost Optimization**: 70% savings through smart routing and caching
+- **Zero Vendor Lock-in**: 9 LLM providers, provider-agnostic
 
 If that resonates with you, welcome!
 
@@ -19,30 +23,59 @@ If that resonates with you, welcome!
 
 ## Ways to Contribute
 
-### 1. Guardrails
-- Improve existing safety checks
-- Add new detection patterns (PII, secrets, injection)
-- Propose constraint configurations
+You don't need to be an expert! Here are many ways to help:
 
-### 2. VibeSpecs
-- Submit example `.yml` configs for common use cases
-- Improve the VibeSpec schema
-- Build tooling around spec validation
+### 1. Help Others (Most Valuable!)
+- Answer questions in [Discussions](https://github.com/waymaker-ai/ranavibe/discussions)
+- Help troubleshoot issues
+- Share your knowledge and experience
+- Write blog posts and tutorials
 
-### 3. Integrations
-- Improve LangChain/CrewAI adapters
-- Add support for new frameworks
-- Build MCP tool providers
+### 2. Improve Documentation
+- Fix typos and unclear explanations
+- Add code examples
+- Create tutorials and guides
+- Record video tutorials
 
-### 4. Docs
-- Improve README clarity
-- Add real-world examples
-- Document edge cases and gotchas
+### 3. Report Bugs
+- Found a bug? Report it with reproduction steps
+- Include error messages and environment details
 
-### 5. Core Improvements
-- Bug fixes
-- Performance optimizations
-- Type safety improvements
+### 4. Create Templates
+- Healthcare chatbot (HIPAA-compliant)
+- Financial advisor (SEC-compliant)
+- Customer support bot
+- Industry-specific examples
+
+### 5. Enhance Compliance
+- Add new compliance rules (@rana/compliance)
+- Improve PII detection patterns
+- Add industry-specific regulations
+- Test compliance enforcement
+
+### 6. Improve Guidelines
+- Create preset guidelines (@rana/guidelines)
+- Add condition builders
+- Improve matching logic
+- Build analytics features
+
+### 7. Optimize Context Handling
+- Enhance context optimization strategies (@rana/context-optimizer)
+- Improve file prioritization
+- Add better summarization
+- Test with large codebases
+
+### 8. Build MCP Servers
+- Create new MCP connectors
+- Improve existing servers
+- Test MCP integrations
+- Document MCP usage
+
+### 9. Write Code
+- Fix bugs across packages
+- Implement new features
+- Improve performance
+- Add comprehensive tests
 
 ---
 
@@ -94,20 +127,28 @@ git checkout -b fix/bug-description
 
 ## Design Guidelines
 
-### Avoid Building "Another Orchestrator"
+### Build for Production
 
-RANA is a **guardrail layer**, not an orchestration framework. When contributing:
+RANA is a **comprehensive AI development framework** that emphasizes quality, compliance, and developer experience:
 
-- Don't add features that duplicate LangChain/CrewAI/AutoGen functionality
-- Focus on safety, validation, and integration
-- Keep the API surface minimal
-- Prefer composition over inheritance
+- Focus on features that make production deployment easier
+- Prioritize safety, validation, and monitoring
+- Build with enterprise requirements in mind (HIPAA, SEC, GDPR)
+- Keep the API surface intuitive and TypeScript-first
 
 ### Keep It Integration-Friendly
 
 - Adapters should be thin wrappers
 - Don't force users into RANA-specific patterns
-- Support existing tools, don't replace them
+- Support existing tools and frameworks (LangChain, CrewAI, AutoGen)
+- Work seamlessly with any LLM provider
+
+### Quality Standards
+
+- Full TypeScript type safety (no `any`)
+- Comprehensive error handling
+- Performance optimization (70% cost savings is our benchmark)
+- Complete documentation with real-world examples
 
 ---
 
@@ -132,16 +173,27 @@ refactor: Improve code structure
 
 ---
 
-## Non-Goals (Out of Scope)
+## What We Value
 
-We intentionally **don't** want to:
+We prioritize contributions that:
 
-- Build a full agent orchestration framework
-- Compete with LangChain/CrewAI/AutoGen
-- Create a "do everything" monolith
-- Add features that compromise simplicity
+- **Help developers succeed** - Make AI development easier and safer
+- **Solve real problems** - Address actual production needs
+- **Maintain quality** - TypeScript-first, well-tested, documented
+- **Enable compliance** - HIPAA, SEC, GDPR, industry regulations
+- **Reduce costs** - Smart optimization and caching strategies
+- **Stay flexible** - Work with any LLM, integrate with any tool
 
-If your contribution heads in these directions, we'll likely suggest a different approach or politely decline.
+## Out of Scope
+
+We intentionally avoid:
+
+- Vendor lock-in or proprietary features
+- Features that compromise developer experience
+- Duplicating existing tools when integration is better
+- Adding complexity without clear value
+
+If your contribution doesn't align with our values, we'll work with you to find a better approach.
 
 ---
 
@@ -153,4 +205,28 @@ If your contribution heads in these directions, we'll likely suggest a different
 
 ---
 
-**Thanks for helping make AI-assisted development safer!**
+## Recognition & Community
+
+### RANA Champions Program
+
+We celebrate contributors who:
+
+- Help others in Discussions and Discord
+- Create tutorials and educational content
+- Build templates and starter projects
+- Report and fix bugs
+- Improve documentation
+- Share RANA with others
+
+**Benefits:**
+- Featured in our newsletter and social media
+- Early access to new features
+- Co-creation opportunities
+- Direct access to core team
+- Recognition in our Hall of Fame
+
+[Learn more about the Champions Program](./docs/COMMUNITY_GROWTH_STRATEGY.md#rana-champions-program)
+
+---
+
+**Thanks for helping make AI development better for everyone!** 🚀

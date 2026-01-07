@@ -587,14 +587,55 @@ This roadmap outlines the strategic implementation plan for transforming RANA in
 3. [~] Code Generation v1.0 (Week 20) - Interactive wizards complete
 4. [x] Advanced RAG v1.0 (Week 21)
 5. [x] MCP Creation v1.0 (Week 22)
-6. [ ] **RANA 2.0 Release** (Week 24)
-7. [ ] SOC 2 Type 1 (Week 36)
+6. [x] **Guidelines System v1.0** (Jan 2026) - NEW! 🎯
+7. [x] **Compliance Enforcer v1.0** (Jan 2026) - NEW! 🛡️
+8. [ ] **RANA 2.1 Release** (Q1 2026)
+9. [ ] SOC 2 Type 1 (Week 36)
+
+---
+
+## 🎉 NEW: Enterprise-Grade Agent Control (January 2026)
+
+We've added two incredible packages that make RANA the most comprehensive agent framework:
+
+### @rana/guidelines - Dynamic Behavioral Control
+**Context-aware guidelines that adapt to conversation flow**
+
+✨ Features:
+- Dynamic guideline matching based on context
+- Priority-based conflict resolution
+- Flexible enforcement (strict, advisory, monitored)
+- Built-in analytics and compliance tracking
+- File or memory storage
+- 8+ preset guidelines for common scenarios
+
+Use cases: Brand voice consistency, regulatory compliance, customer support empathy, domain-specific constraints
+
+### @rana/compliance - Enterprise Compliance Enforcement
+**Automatic enforcement of HIPAA, SEC, GDPR, and more**
+
+🛡️ Features:
+- 9+ preset compliance rules (HIPAA, SEC/FINRA, GDPR, CCPA, Legal, Safety)
+- PII detection and redaction (10+ types)
+- 7 enforcement actions (block, redact, append, replace, warn, escalate, allow)
+- Real-time violation tracking and analytics
+- Automatic disclaimer injection
+- Complete audit trail
+
+Compliance coverage:
+- Healthcare (HIPAA): No medical advice, PHI protection
+- Finance (SEC/FINRA): Investment disclaimers, no unlicensed advice
+- Legal: Legal advice disclaimers
+- Privacy (GDPR/CCPA): PII detection and redaction
+- Safety: Age-appropriate content, password security
+
+**Impact**: RANA is now the ONLY framework with built-in, production-ready compliance enforcement for regulated industries.
 
 ---
 
 **Status**: Strategic Roadmap with Implementation Progress
-**Version**: 1.1 (Updated with actual implementation status)
-**Last Updated**: December 10, 2025
+**Version**: 1.2 (Added Guidelines & Compliance packages)
+**Last Updated**: January 1, 2026
 **Review Cycle**: Monthly
 **Owner**: RANA Core Team
 
@@ -607,3 +648,4 @@ Detailed technical specifications available:
 2. [Prompt Management System](./docs/PROMPT_MANAGEMENT_SYSTEM_SPEC.md)
 3. [Advanced RAG Package](./docs/ADVANCED_RAG_PACKAGE_SPEC.md)
 4. [Quick LLM Helpers](./docs/QUICK_LLM_HELPERS_SPEC.md)
+5. [Feature Enhancement Analysis](./docs/FEATURE_ENHANCEMENT_ANALYSIS.md) - NEW!

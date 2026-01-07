@@ -1,0 +1,44 @@
+{
+  "name": "@rana/guidelines",
+  "version": "1.0.0",
+  "description": "Dynamic guideline management for RANA agents - Context-aware behavioral rules",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "rana",
+    "guidelines",
+    "ai-safety",
+    "agent-control",
+    "compliance",
+    "behavioral-rules"
+  ],
+  "author": "Waymaker",
+  "license": "MIT",
+  "dependencies": {
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.5.0",
+    "vitest": "^1.6.0"
+  },
+  "peerDependencies": {
+    "@rana/core": "^2.0.0"
+  }
+}
