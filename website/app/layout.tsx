@@ -6,6 +6,7 @@ import { Navigation } from '@/components/navigation';
 import { Footer } from '@/components/footer';
 import { PWAInstall } from '@/components/pwa-install';
 import { PWAInitializer } from '@/components/pwa-initializer';
+import { Analytics } from '@/components/analytics';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -73,6 +74,7 @@ export default function RootLayout({
           <Footer />
           <PWAInstall />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
