@@ -1,0 +1,53 @@
+{
+  "name": "rana-guardrails",
+  "displayName": "RANA Guardrails",
+  "description": "AI guardrails for VS Code - PII scanning, injection detection, compliance checking, cost tracking",
+  "version": "1.0.0",
+  "publisher": "waymaker",
+  "engines": { "vscode": "^1.85.0" },
+  "categories": ["Linters", "Other"],
+  "activationEvents": ["onLanguage:typescript", "onLanguage:javascript", "onLanguage:python", "onCommand:rana.scan"],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      { "command": "rana.scan", "title": "RANA: Scan Current File" },
+      { "command": "rana.scanWorkspace", "title": "RANA: Scan Workspace" },
+      { "command": "rana.showDashboard", "title": "RANA: Show Dashboard" },
+      { "command": "rana.checkCompliance", "title": "RANA: Check Compliance" },
+      { "command": "rana.estimateCost", "title": "RANA: Estimate Cost" }
+    ],
+    "configuration": {
+      "title": "RANA Guardrails",
+      "properties": {
+        "rana.enableInlineScan": { "type": "boolean", "default": true, "description": "Enable real-time inline scanning" },
+        "rana.piiMode": { "type": "string", "enum": ["detect", "redact", "block"], "default": "detect" },
+        "rana.injectionSensitivity": { "type": "string", "enum": ["low", "medium", "high"], "default": "medium" },
+        "rana.approvedModels": { "type": "array", "default": [], "description": "Approved model names" },
+        "rana.complianceFrameworks": { "type": "array", "default": ["safety"], "description": "Active compliance frameworks" }
+      }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        { "id": "rana", "title": "RANA Guardrails", "icon": "$(shield)" }
+      ]
+    },
+    "views": {
+      "rana": [
+        { "id": "rana.findings", "name": "Findings" },
+        { "id": "rana.policies", "name": "Policies" },
+        { "id": "rana.dashboard", "name": "Dashboard" }
+      ]
+    }
+  },
+  "scripts": {
+    "build": "tsup src/extension.ts --format cjs --external vscode",
+    "watch": "tsup src/extension.ts --format cjs --external vscode --watch",
+    "package": "npx vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "^20.10.0",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3"
+  }
+}
