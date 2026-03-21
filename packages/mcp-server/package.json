@@ -1,6 +1,6 @@
 {
   "name": "@ranavibe/mcp-server",
-  "version": "0.1.0",
+  "version": "2.1.0",
   "description": "RANA MCP server for Claude integration",
   "bin": {
     "rana-mcp": "./dist/index.js"

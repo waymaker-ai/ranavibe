@@ -1,0 +1,40 @@
+name: 'RANA AI Guardrails'
+description: 'Scan your codebase for AI security, compliance, and cost issues'
+branding:
+  icon: 'shield'
+  color: 'green'
+inputs:
+  scan-path:
+    description: 'Path to scan'
+    default: '.'
+  rules:
+    description: 'Comma-separated rules to enable (default: all)'
+    default: 'all'
+  fail-on:
+    description: 'Severity to fail on (critical, high, medium, low, none)'
+    default: 'high'
+  config:
+    description: 'Path to .rana.yml config'
+    default: '.rana.yml'
+  comment-on-pr:
+    description: 'Whether to comment on PRs with results'
+    default: 'true'
+  github-token:
+    description: 'GitHub token for PR comments'
+    default: '${{ github.token }}'
+  approved-models:
+    description: 'Comma-separated list of approved models'
+    default: ''
+  budget-limit:
+    description: 'Monthly budget limit in USD'
+    default: ''
+outputs:
+  findings:
+    description: 'Number of findings'
+  critical:
+    description: 'Number of critical findings'
+  passed:
+    description: 'Whether the scan passed'
+runs:
+  using: 'node20'
+  main: 'dist/cli.js'
