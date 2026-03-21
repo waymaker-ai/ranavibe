@@ -82,7 +82,7 @@ export class MemoryStorage implements StorageInterface {
 
     const values: number[] = [];
     for (const event of events) {
-      const val = getNestedValue(event, options.field);
+      const val = getNestedValue(event as unknown as Record<string, unknown>, options.field);
       if (typeof val === 'number') {
         values.push(val);
       }

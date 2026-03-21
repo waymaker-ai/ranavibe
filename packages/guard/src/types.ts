@@ -36,7 +36,7 @@ export interface CheckResult {
   blocked: boolean;
   reason?: string;
   warnings: string[];
-  ppiFindings: PIIFinding[];
+  piiFindings: PIIFinding[];
   injectionFindings: InjectionFinding[];
   toxicityFindings: ToxicityFinding[];
   redacted?: string;
@@ -145,8 +145,8 @@ export interface GuardReport {
   blocked: number;
   warned: number;
   passed: number;
-  ppiRedacted: number;
-  ppiByType: Record<string, number>;
+  piiRedacted: number;
+  piiByType: Record<string, number>;
   injectionAttempts: number;
   injectionByCategory: Record<string, number>;
   toxicityFound: number;

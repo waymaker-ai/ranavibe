@@ -26,7 +26,7 @@ export class WebhookReporter {
       safe: result.safe,
       blocked: result.blocked,
       reason: result.reason,
-      piiCount: result.ppiFindings.length,
+      piiCount: result.piiFindings.length,
       injectionFindings: result.injectionFindings.length,
       toxicityFindings: result.toxicityFindings.length,
       warnings: result.warnings,

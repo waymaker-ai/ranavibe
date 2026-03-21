@@ -66,11 +66,13 @@ function resolveGuards(guards: GuardConfig | boolean): GuardConfig {
       pii: { mode: 'redact', onDetection: 'redact' },
       injection: { sensitivity: 'medium', onDetection: 'block' },
       cost: { budgetPeriod: 'day', warningThreshold: 0.8 },
-      compliance: false,
       contentFilter: true,
       audit: { destination: 'console' },
       rateLimit: { maxRequests: 100, windowMs: 60000 },
     };
+  }
+  if (guards === false) {
+    return {};
   }
   return guards;
 }
@@ -106,20 +108,23 @@ export function createGuardedAgent(config: GuardedAgentConfig): GuardedAgent {
       let outputTokens = 0;
 
       try {
-        const sdk = await import('@anthropic-ai/sdk');
-        const client = new sdk.default();
+        // Dynamic import to support optional peer dependency
+        // @ts-ignore - optional peer dependency
+        const sdk = await (Function('return import("@anthropic-ai/sdk")')()) as any;
+        const AnthropicClass = sdk.default || sdk.Anthropic || sdk;
+        const client = new AnthropicClass();
 
         const response = await client.messages.create({
           model: config.model,
           max_tokens: 4096,
           system: config.instructions || 'You are a helpful assistant.',
-          messages: [{ role: 'user', content: processedInput }],
+          messages: [{ role: 'user' as const, content: processedInput }],
         });
 
-        inputTokens = response.usage?.input_tokens || 0;
-        outputTokens = response.usage?.output_tokens || 0;
+        inputTokens = (response as any).usage?.input_tokens || 0;
+        outputTokens = (response as any).usage?.output_tokens || 0;
 
-        output = response.content
+        output = ((response as any).content || [])
           .filter((b: any) => b.type === 'text')
           .map((b: any) => b.text)
           .join('\n');

@@ -98,6 +98,7 @@ export class BudgetEnforcer {
       period: this.config.period,
       remaining: Math.max(0, this.config.limit - spent),
       warning: spent + additionalCost >= this.config.limit * this.config.warningThreshold,
+      periodStart: this.periodStart,
     };
   }
 

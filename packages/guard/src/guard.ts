@@ -215,7 +215,7 @@ export function createGuard(options: GuardOptions = {}): Guard {
       blocked,
       reason,
       warnings,
-      ppiFindings: piiFindings,
+      piiFindings: piiFindings,
       injectionFindings,
       toxicityFindings,
       redacted,

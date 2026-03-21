@@ -25,9 +25,9 @@ export function reportCheck(result: CheckResult): void {
     console.log(`  ${COLORS.red}Reason: ${result.reason}${COLORS.reset}`);
   }
 
-  if (result.ppiFindings.length > 0) {
-    console.log(`  ${COLORS.magenta}PII Found: ${result.ppiFindings.length} item(s)${COLORS.reset}`);
-    for (const f of result.ppiFindings) {
+  if (result.piiFindings.length > 0) {
+    console.log(`  ${COLORS.magenta}PII Found: ${result.piiFindings.length} item(s)${COLORS.reset}`);
+    for (const f of result.piiFindings) {
       console.log(`    - ${f.type} (confidence: ${(f.confidence * 100).toFixed(0)}%)`);
     }
   }
@@ -64,7 +64,7 @@ export function reportSummary(report: GuardReport): void {
     ['Passed', `${COLORS.green}${report.passed}${COLORS.reset}`],
     ['Blocked', report.blocked > 0 ? `${COLORS.red}${report.blocked}${COLORS.reset}` : '0'],
     ['Warnings', report.warned > 0 ? `${COLORS.yellow}${report.warned}${COLORS.reset}` : '0'],
-    ['PII Redacted', report.ppiRedacted.toString()],
+    ['PII Redacted', report.piiRedacted.toString()],
     ['Injection Attempts', report.injectionAttempts > 0 ? `${COLORS.red}${report.injectionAttempts}${COLORS.reset}` : '0'],
     ['Toxicity Found', report.toxicityFound.toString()],
     ['Total Cost', `$${report.totalCost.toFixed(4)}`],

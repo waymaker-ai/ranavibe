@@ -134,11 +134,11 @@ export class RanaDashboard {
 
   // Metric calculators exposed as a namespace
   readonly metrics: {
-    cost: (query?: MetricQuery) => Promise<ReturnType<CostMetricsCalculator['calculate']>>;
-    security: (query?: MetricQuery) => Promise<ReturnType<SecurityMetricsCalculator['calculate']>>;
-    compliance: (query?: MetricQuery) => Promise<ReturnType<ComplianceMetricsCalculator['calculate']>>;
-    performance: (query?: MetricQuery) => Promise<ReturnType<PerformanceMetricsCalculator['calculate']>>;
-    usage: (query?: MetricQuery) => Promise<ReturnType<UsageMetricsCalculator['calculate']>>;
+    cost: (query?: MetricQuery) => ReturnType<CostMetricsCalculator['calculate']>;
+    security: (query?: MetricQuery) => ReturnType<SecurityMetricsCalculator['calculate']>;
+    compliance: (query?: MetricQuery) => ReturnType<ComplianceMetricsCalculator['calculate']>;
+    performance: (query?: MetricQuery) => ReturnType<PerformanceMetricsCalculator['calculate']>;
+    usage: (query?: MetricQuery) => ReturnType<UsageMetricsCalculator['calculate']>;
   };
 
   constructor(options: RanaDashboardOptions = {}) {

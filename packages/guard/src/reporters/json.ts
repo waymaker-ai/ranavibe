@@ -15,7 +15,7 @@ export class JsonReporter {
       safe: result.safe,
       blocked: result.blocked,
       reason: result.reason,
-      piiCount: result.ppiFindings.length,
+      piiCount: result.piiFindings.length,
       injectionScore: result.injectionFindings.reduce((s, f) => s + f.score, 0),
       toxicityCount: result.toxicityFindings.length,
       warnings: result.warnings,
