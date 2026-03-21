@@ -2,7 +2,7 @@
 
 ## Overview
 
-Successfully implemented a comprehensive PII (Personally Identifiable Information) detection and redaction system for RANA security at `/packages/core/src/security/pii.ts`.
+Successfully implemented a comprehensive PII (Personally Identifiable Information) detection and redaction system for CoFounder security at `/packages/core/src/security/pii.ts`.
 
 ## Files Created
 
@@ -120,7 +120,7 @@ Added to main exports with proper organization under the Security section.
 
 ### Usage Example
 ```typescript
-import { createPIIDetector, redactPII, maskPII } from '@rana/core';
+import { createPIIDetector, redactPII, maskPII } from '@cofounder/core';
 
 // Basic usage
 const detector = createPIIDetector();
@@ -206,13 +206,13 @@ interface PIIDetection {
 - **Efficient Matching** - Optimized regex patterns for each region
 - **Memory Efficient** - No persistent state per detection
 
-## Integration with RANA Ecosystem
+## Integration with CoFounder Ecosystem
 
-The PII module integrates seamlessly with existing RANA security features:
+The PII module integrates seamlessly with existing CoFounder security features:
 
 ### With Audit Logger
 ```typescript
-import { createAuditLogger, redactPII } from '@rana/core';
+import { createAuditLogger, redactPII } from '@cofounder/core';
 
 const auditLogger = createAuditLogger();
 auditLogger.logAction('user_action', redactPII(userId), { ... });
@@ -220,7 +220,7 @@ auditLogger.logAction('user_action', redactPII(userId), { ... });
 
 ### With Content Filter
 ```typescript
-import { createContentFilter, createPIIDetector } from '@rana/core';
+import { createContentFilter, createPIIDetector } from '@cofounder/core';
 
 const contentFilter = createContentFilter();
 const piiDetector = createPIIDetector();
@@ -244,7 +244,7 @@ const hasPII = piiDetector.hasPII(text);
 - **Documentation** - Comprehensive JSDoc comments
 - **Examples** - 15 working examples
 - **Tests** - 42 test cases, 100% passing
-- **Linting** - Follows existing RANA code style
+- **Linting** - Follows existing CoFounder code style
 - **Modular** - Clean separation of concerns
 
 ## Notable Implementation Details
@@ -299,7 +299,7 @@ If needed in the future, consider:
 
 ## Conclusion
 
-The PII detection and redaction module is fully implemented, tested, and documented. It provides enterprise-grade PII protection with a simple, intuitive API that integrates seamlessly with the existing RANA security framework.
+The PII detection and redaction module is fully implemented, tested, and documented. It provides enterprise-grade PII protection with a simple, intuitive API that integrates seamlessly with the existing CoFounder security framework.
 
 All requirements have been met:
 - ✓ Comprehensive PII detection (7 types)

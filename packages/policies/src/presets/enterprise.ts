@@ -16,7 +16,7 @@ export const enterprisePolicy: Policy = {
       'Balanced enterprise policy combining AI safety guardrails, GDPR-style privacy protections, ' +
       'comprehensive PII detection and redaction, cost controls, model governance, and access ' +
       'management. Suitable as a baseline for most enterprise AI deployments.',
-    author: 'ranavibe',
+    author: 'cofounder',
     tags: ['enterprise', 'default', 'safety', 'privacy', 'pii', 'governance'],
     framework: 'Enterprise',
   },

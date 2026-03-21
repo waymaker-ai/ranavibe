@@ -1,18 +1,18 @@
 /**
- * @rana/mcp
- * Model Context Protocol (MCP) support for RANA
+ * @cofounder/mcp
+ * Model Context Protocol (MCP) support for CoFounder
  *
  * MCP enables AI models to connect to external tools and data sources
  * in a standardized way.
  *
  * @example
  * ```typescript
- * import { createMCPClient, createRanaMCPServer } from '@rana/mcp';
+ * import { createMCPClient, createRanaMCPServer } from '@cofounder/mcp';
  *
  * // Client: Connect to MCP servers
  * const client = createMCPClient({
  *   servers: [
- *     { name: 'rana', type: 'builtin' },
+ *     { name: 'cofounder', type: 'builtin' },
  *     { name: 'filesystem', type: 'stdio', command: 'mcp-server-filesystem' },
  *   ]
  * });
@@ -28,7 +28,7 @@
  *   arguments: { path: '/path/to/file' }
  * });
  *
- * // Server: Expose RANA as an MCP server
+ * // Server: Expose CoFounder as an MCP server
  * const server = createRanaMCPServer();
  * await server.start();
  * ```

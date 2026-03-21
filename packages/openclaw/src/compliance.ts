@@ -1,7 +1,7 @@
 // ---------------------------------------------------------------------------
-// @ranavibe/openclaw - Lightweight compliance checks (zero dependencies)
+// @cofounder/openclaw - Lightweight compliance checks (zero dependencies)
 // ---------------------------------------------------------------------------
-// Subset of @ranavibe/policies compliance rules, inline for zero-dep usage.
+// Subset of @cofounder/policies compliance rules, inline for zero-dep usage.
 // Covers HIPAA, GDPR, CCPA, SEC, PCI, FERPA, SOX frameworks.
 // ---------------------------------------------------------------------------
 

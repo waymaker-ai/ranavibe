@@ -226,7 +226,7 @@ function calculateCost(model: string, inputTokens: number, outputTokens: number)
  * Generate unique request ID
  */
 function generateRequestId(): string {
-  return `rana_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
+  return `cofounder_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
 }
 
 /**

@@ -1,11 +1,11 @@
 /**
- * React Hooks for RANA
- * React-friendly hooks for using RANA in your components
+ * React Hooks for CoFounder
+ * React-friendly hooks for using CoFounder in your components
  */
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 import type {
-  RanaClient,
+  CoFounderClient,
   RanaChatRequest,
   RanaChatResponse,
   Message,
@@ -15,7 +15,7 @@ import type {
 } from './types';
 
 // ============================================================================
-// useRanaChat Hook
+// useCoFounderChat Hook
 // ============================================================================
 
 export interface UseRanaChatOptions {
@@ -39,12 +39,12 @@ export interface UseRanaChatReturn {
 }
 
 /**
- * Hook for making chat requests with RANA
+ * Hook for making chat requests with CoFounder
  *
  * @example
  * ```tsx
  * function ChatComponent() {
- *   const { chat, response, loading, error, cost } = useRanaChat(rana, {
+ *   const { chat, response, loading, error, cost } = useCoFounderChat(cofounder, {
  *     provider: 'anthropic',
  *     optimize: 'cost'
  *   });
@@ -64,8 +64,8 @@ export interface UseRanaChatReturn {
  * }
  * ```
  */
-export function useRanaChat(
-  client: RanaClient,
+export function useCoFounderChat(
+  client: CoFounderClient,
   options: UseRanaChatOptions = {}
 ): UseRanaChatReturn {
   const [response, setResponse] = useState<RanaChatResponse | null>(null);
@@ -135,7 +135,7 @@ export function useRanaChat(
 }
 
 // ============================================================================
-// useRanaStream Hook
+// useCoFounderStream Hook
 // ============================================================================
 
 export interface UseRanaStreamReturn {
@@ -148,12 +148,12 @@ export interface UseRanaStreamReturn {
 }
 
 /**
- * Hook for streaming chat responses with RANA
+ * Hook for streaming chat responses with CoFounder
  *
  * @example
  * ```tsx
  * function StreamingChat() {
- *   const { stream, content, loading, done } = useRanaStream(rana);
+ *   const { stream, content, loading, done } = useCoFounderStream(cofounder);
  *
  *   const handleSend = async () => {
  *     await stream('Tell me a story');
@@ -168,8 +168,8 @@ export interface UseRanaStreamReturn {
  * }
  * ```
  */
-export function useRanaStream(
-  client: RanaClient,
+export function useCoFounderStream(
+  client: CoFounderClient,
   options: UseRanaChatOptions = {}
 ): UseRanaStreamReturn {
   const [content, setContent] = useState('');
@@ -229,7 +229,7 @@ export function useRanaStream(
 }
 
 // ============================================================================
-// useRanaCost Hook
+// useCoFounderCost Hook
 // ============================================================================
 
 export interface UseRanaCostReturn {
@@ -239,12 +239,12 @@ export interface UseRanaCostReturn {
 }
 
 /**
- * Hook for tracking RANA costs
+ * Hook for tracking CoFounder costs
  *
  * @example
  * ```tsx
  * function CostDashboard() {
- *   const { stats, loading, refresh } = useRanaCost(rana);
+ *   const { stats, loading, refresh } = useCoFounderCost(cofounder);
  *
  *   if (loading) return <Spinner />;
  *   if (!stats) return null;
@@ -259,7 +259,7 @@ export interface UseRanaCostReturn {
  * }
  * ```
  */
-export function useRanaCost(client: RanaClient): UseRanaCostReturn {
+export function useCoFounderCost(client: CoFounderClient): UseRanaCostReturn {
   const [stats, setStats] = useState<CostStats | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -285,7 +285,7 @@ export function useRanaCost(client: RanaClient): UseRanaCostReturn {
 }
 
 // ============================================================================
-// useRanaOptimize Hook
+// useCoFounderOptimize Hook
 // ============================================================================
 
 export interface UseRanaOptimizeReturn {
@@ -302,7 +302,7 @@ export interface UseRanaOptimizeReturn {
  * @example
  * ```tsx
  * function OptimizationPanel() {
- *   const { savings, recommendations } = useRanaOptimize(rana);
+ *   const { savings, recommendations } = useCoFounderOptimize(cofounder);
  *
  *   return (
  *     <div>
@@ -317,7 +317,7 @@ export interface UseRanaOptimizeReturn {
  * }
  * ```
  */
-export function useRanaOptimize(client: RanaClient): UseRanaOptimizeReturn {
+export function useCoFounderOptimize(client: CoFounderClient): UseRanaOptimizeReturn {
   const [savings, setSavings] = useState({ total: 0, percentage: 0 });
   const [recommendations, setRecommendations] = useState<string[]>([]);
 
@@ -356,7 +356,7 @@ export function useRanaOptimize(client: RanaClient): UseRanaOptimizeReturn {
 }
 
 // ============================================================================
-// useRanaConversation Hook
+// useCoFounderConversation Hook
 // ============================================================================
 
 export interface UseRanaConversationReturn {
@@ -369,12 +369,12 @@ export interface UseRanaConversationReturn {
 }
 
 /**
- * Hook for managing a conversation with RANA
+ * Hook for managing a conversation with CoFounder
  *
  * @example
  * ```tsx
  * function ChatInterface() {
- *   const { messages, sendMessage, loading } = useRanaConversation(rana);
+ *   const { messages, sendMessage, loading } = useCoFounderConversation(cofounder);
  *
  *   const handleSend = async (text: string) => {
  *     await sendMessage(text);
@@ -393,8 +393,8 @@ export interface UseRanaConversationReturn {
  * }
  * ```
  */
-export function useRanaConversation(
-  client: RanaClient,
+export function useCoFounderConversation(
+  client: CoFounderClient,
   options: UseRanaChatOptions = {}
 ): UseRanaConversationReturn {
   const [messages, setMessages] = useState<Message[]>([]);

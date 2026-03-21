@@ -2,10 +2,10 @@
  * Token Analytics Usage Examples
  *
  * This file demonstrates how to use the TokenAnalytics class
- * for tracking and analyzing LLM token usage in RANA.
+ * for tracking and analyzing LLM token usage in CoFounder.
  */
 
-import { createRana } from '../client';
+import { createCoFounder } from '../client';
 import {
   TokenAnalytics,
   createMemoryAnalytics,
@@ -20,8 +20,8 @@ import {
 async function example1_basicUsage() {
   console.log('\n=== Example 1: Basic In-Memory Analytics ===\n');
 
-  // Create a RANA client
-  const rana = createRana({
+  // Create a CoFounder client
+  const cofounder = createCoFounder({
     providers: {
       anthropic: process.env.ANTHROPIC_API_KEY,
       openai: process.env.OPENAI_API_KEY,
@@ -32,11 +32,11 @@ async function example1_basicUsage() {
   const analytics = createMemoryAnalytics();
 
   // Make some requests
-  const response1 = await rana.chat('Hello, how are you?');
+  const response1 = await cofounder.chat('Hello, how are you?');
 
-  const response2 = await rana.chat('What is the capital of France?');
+  const response2 = await cofounder.chat('What is the capital of France?');
 
-  const response3 = await rana.chat('Explain quantum computing in simple terms.');
+  const response3 = await cofounder.chat('Explain quantum computing in simple terms.');
 
   // Track responses
   await analytics.track(response1);
@@ -86,7 +86,7 @@ async function example1_basicUsage() {
 async function example2_filePersistence() {
   console.log('\n=== Example 2: File-Based Persistence ===\n');
 
-  const filePath = './rana-analytics.json';
+  const filePath = './cofounder-analytics.json';
 
   // Create analytics with file persistence
   const analytics = createFileAnalytics(filePath, {
@@ -99,15 +99,15 @@ async function example2_filePersistence() {
   await analytics.load();
   console.log(`Loaded ${analytics.getRecordCount()} existing records`);
 
-  // Create RANA client
-  const rana = createRana({
+  // Create CoFounder client
+  const cofounder = createCoFounder({
     providers: {
       anthropic: process.env.ANTHROPIC_API_KEY,
     },
   });
 
   // Make requests
-  const response = await rana.chat('Hello!');
+  const response = await cofounder.chat('Hello!');
   await analytics.track(response);
 
   // Save to file (auto-save is enabled by default)
@@ -132,7 +132,7 @@ async function example3_timeRangeQueries() {
   const analytics = createMemoryAnalytics();
 
   // Simulate tracking over multiple days
-  const rana = createRana({
+  const cofounder = createCoFounder({
     providers: {
       anthropic: process.env.ANTHROPIC_API_KEY,
     },
@@ -140,7 +140,7 @@ async function example3_timeRangeQueries() {
 
   // Make some requests
   for (let i = 0; i < 5; i++) {
-    const response = await rana.chat(`Request ${i + 1}`);
+    const response = await cofounder.chat(`Request ${i + 1}`);
     await analytics.track(response);
   }
 
@@ -183,7 +183,7 @@ async function example4_costAnalysis() {
   console.log('\n=== Example 4: Cost Analysis ===\n');
 
   const analytics = createMemoryAnalytics();
-  const rana = createRana({
+  const cofounder = createCoFounder({
     providers: {
       anthropic: process.env.ANTHROPIC_API_KEY,
       openai: process.env.OPENAI_API_KEY,
@@ -191,13 +191,13 @@ async function example4_costAnalysis() {
   });
 
   // Make requests
-  const response1 = await rana.chat('Hello!');
+  const response1 = await cofounder.chat('Hello!');
   await analytics.track(response1);
 
-  const response2 = await rana.chat('How are you?');
+  const response2 = await cofounder.chat('How are you?');
   await analytics.track(response2);
 
-  const response3 = await rana.chat('What is AI?');
+  const response3 = await cofounder.chat('What is AI?');
   await analytics.track(response3);
 
   // Get cost breakdown
@@ -232,8 +232,8 @@ async function example5_integrationWithCostTracker() {
 
   const analytics = createMemoryAnalytics();
 
-  // Create RANA client with cost tracking
-  const rana = createRana({
+  // Create CoFounder client with cost tracking
+  const cofounder = createCoFounder({
     providers: {
       anthropic: process.env.ANTHROPIC_API_KEY,
     },
@@ -252,12 +252,12 @@ async function example5_integrationWithCostTracker() {
   // Make some requests
   const responses = [];
   for (let i = 0; i < 3; i++) {
-    const response = await rana.chat(`Request ${i + 1}`);
+    const response = await cofounder.chat(`Request ${i + 1}`);
     responses.push(response);
     await analytics.track(response);
   }
 
-  // Note: CostTracker is internal to RANA client
+  // Note: CostTracker is internal to CoFounder client
   // We can use analytics to get usage statistics
   console.log('\nUsage tracked by analytics:');
   console.log(`  Requests: ${responses.length}`);
@@ -280,13 +280,13 @@ async function example6_exportImport() {
 
   // Create and populate analytics
   const analytics1 = createMemoryAnalytics();
-  const rana = createRana({
+  const cofounder = createCoFounder({
     providers: {
       anthropic: process.env.ANTHROPIC_API_KEY,
     },
   });
 
-  const response = await rana.chat('Hello!');
+  const response = await cofounder.chat('Hello!');
   await analytics1.track(response);
 
   // Export to JSON
@@ -315,7 +315,7 @@ async function example6_exportImport() {
 async function example7_autoSave() {
   console.log('\n=== Example 7: Auto-Save with Intervals ===\n');
 
-  const filePath = './rana-analytics-autosave.json';
+  const filePath = './cofounder-analytics-autosave.json';
 
   // Create analytics with auto-save every 30 seconds
   const analytics = createAutoSaveAnalytics(filePath, 30000, {
@@ -325,7 +325,7 @@ async function example7_autoSave() {
 
   console.log('Analytics will auto-save every 30 seconds to', filePath);
 
-  const rana = createRana({
+  const cofounder = createCoFounder({
     providers: {
       anthropic: process.env.ANTHROPIC_API_KEY,
     },
@@ -333,7 +333,7 @@ async function example7_autoSave() {
 
   // Make requests
   for (let i = 0; i < 3; i++) {
-    const response = await rana.chat(`Request ${i + 1}`);
+    const response = await cofounder.chat(`Request ${i + 1}`);
     await analytics.track(response);
     console.log(`Tracked request ${i + 1}`);
   }

@@ -6,7 +6,7 @@ import { ArrowLeft, ExternalLink } from 'lucide-react';
 
 const apiSections = [
   {
-    package: '@rana/helpers',
+    package: '@cofounder/helpers',
     exports: [
       {
         name: 'summarize',
@@ -49,7 +49,7 @@ const apiSections = [
     ],
   },
   {
-    package: '@rana/prompts',
+    package: '@cofounder/prompts',
     exports: [
       {
         name: 'PromptManager',
@@ -83,7 +83,7 @@ const apiSections = [
     ],
   },
   {
-    package: '@rana/rag',
+    package: '@cofounder/rag',
     exports: [
       {
         name: 'RAGPresets',
@@ -139,7 +139,7 @@ export default function APIPage() {
         >
           <h1 className="text-4xl md:text-5xl font-bold mb-4">API Reference</h1>
           <p className="text-lg text-foreground-secondary mb-12">
-            Complete API documentation for all RANA packages
+            Complete API documentation for all CoFounder packages
           </p>
         </motion.div>
 
@@ -197,7 +197,7 @@ export default function APIPage() {
           className="mt-12 text-center"
         >
           <Link
-            href="https://github.com/waymaker-ai/ranavibe"
+            href="https://github.com/waymaker-ai/cofounder"
             target="_blank"
             className="btn-secondary px-6 py-3 inline-flex items-center"
           >

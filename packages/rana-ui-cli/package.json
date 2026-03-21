@@ -1,9 +1,9 @@
 {
-  "name": "@ranavibe/ui-cli",
+  "name": "@cofounder/ui-cli",
   "version": "0.1.0",
-  "description": "CLI tool for installing RANA UI components",
+  "description": "CLI tool for installing CoFounder UI components",
   "bin": {
-    "rana-ui": "./dist/index.js"
+    "cofounder-ui": "./dist/index.js"
   },
   "main": "./dist/index.js",
   "type": "module",
@@ -31,7 +31,7 @@
     "typescript": "^5.3.3"
   },
   "keywords": [
-    "rana",
+    "cofounder",
     "ui",
     "cli",
     "components",
@@ -41,10 +41,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/waymaker-ai/ranavibe.git",
-    "directory": "packages/rana-ui-cli"
+    "url": "https://github.com/waymaker-ai/cofounder.git",
+    "directory": "packages/cofounder-ui-cli"
   },
-  "homepage": "https://rana.cx",
+  "homepage": "https://cofounder.cx",
   "publishConfig": {
     "access": "public"
   }

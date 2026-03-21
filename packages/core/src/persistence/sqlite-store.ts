@@ -32,7 +32,7 @@ export class SQLiteCostStore implements CostStore {
   private dbPath: string;
 
   constructor(dbPath?: string) {
-    this.dbPath = dbPath || (process.env.HOME || process.env.USERPROFILE || '.') + '/.rana/costs.db';
+    this.dbPath = dbPath || (process.env.HOME || process.env.USERPROFILE || '.') + '/.cofounder/costs.db';
   }
 
   async initialize(): Promise<void> {

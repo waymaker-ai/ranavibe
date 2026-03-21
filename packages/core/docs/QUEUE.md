@@ -1,6 +1,6 @@
 # Request Queue
 
-The RANA Request Queue provides intelligent request management with priority-based queuing, concurrency control, and timeout handling.
+The CoFounder Request Queue provides intelligent request management with priority-based queuing, concurrency control, and timeout handling.
 
 ## Features
 
@@ -13,12 +13,12 @@ The RANA Request Queue provides intelligent request management with priority-bas
 
 ## Configuration
 
-Add queue configuration when creating your RANA client:
+Add queue configuration when creating your CoFounder client:
 
 ```typescript
-import { createRana } from '@rana/core';
+import { createCoFounder } from '@cofounder/core';
 
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: {
     anthropic: process.env.ANTHROPIC_API_KEY,
     openai: process.env.OPENAI_API_KEY,
@@ -53,19 +53,19 @@ const rana = createRana({
 
 ```typescript
 // High priority request - processed first
-const urgentResponse = await rana.chat({
+const urgentResponse = await cofounder.chat({
   messages: [{ role: 'user', content: 'Urgent question!' }],
   priority: 'high',
 });
 
 // Normal priority request
-const normalResponse = await rana.chat({
+const normalResponse = await cofounder.chat({
   messages: [{ role: 'user', content: 'Regular question' }],
   priority: 'normal',
 });
 
 // Low priority request - processed last
-const backgroundResponse = await rana.chat({
+const backgroundResponse = await cofounder.chat({
   messages: [{ role: 'user', content: 'Background task' }],
   priority: 'low',
 });
@@ -75,7 +75,7 @@ const backgroundResponse = await rana.chat({
 
 ```typescript
 // Get current queue statistics
-const stats = rana.queue.stats();
+const stats = cofounder.queue.stats();
 
 console.log(`Pending: ${stats.pending}`);
 console.log(`Processing: ${stats.processing}`);
@@ -98,7 +98,7 @@ Object.entries(stats.byProvider).forEach(([provider, providerStats]) => {
 Listen to queue events for real-time updates:
 
 ```typescript
-const queue = rana.queue.instance();
+const queue = cofounder.queue.instance();
 
 if (queue) {
   // Request added to queue
@@ -145,7 +145,7 @@ if (queue) {
 
 ```typescript
 // This request will timeout after 10 seconds if not processed
-const response = await rana.chat({
+const response = await cofounder.chat({
   messages: [{ role: 'user', content: 'Quick question' }],
   priority: 'high',
   // Note: timeout is passed through queue config, not directly in request
@@ -155,9 +155,9 @@ const response = await rana.chat({
 #### Check if Queue is Enabled
 
 ```typescript
-if (rana.queue.enabled()) {
+if (cofounder.queue.enabled()) {
   console.log('Queue is enabled');
-  const stats = rana.queue.stats();
+  const stats = cofounder.queue.stats();
   console.log('Current queue size:', stats.pending);
 }
 ```
@@ -165,7 +165,7 @@ if (rana.queue.enabled()) {
 #### Wait for Queue to Empty
 
 ```typescript
-const queue = rana.queue.instance();
+const queue = cofounder.queue.instance();
 if (queue) {
   // Wait for queue to become idle (no pending or processing requests)
   await queue.waitForIdle();
@@ -184,7 +184,7 @@ if (queue) {
 #### Clear Queue
 
 ```typescript
-const queue = rana.queue.instance();
+const queue = cofounder.queue.instance();
 if (queue) {
   // Clear all pending requests (processing requests continue)
   queue.clear();
@@ -235,7 +235,7 @@ The queue ensures that no more than `maxConcurrency` requests are processed conc
 ### Rate Limiting with Queue
 
 ```typescript
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: {
     anthropic: process.env.ANTHROPIC_API_KEY,
   },
@@ -248,7 +248,7 @@ const rana = createRana({
 
 // Send 100 requests - only 3 will process at a time
 const requests = Array.from({ length: 100 }, (_, i) =>
-  rana.chat({
+  cofounder.chat({
     messages: [{ role: 'user', content: `Request ${i}` }],
   })
 );
@@ -261,17 +261,17 @@ console.log(`Processed ${results.length} requests`);
 
 ```typescript
 // Send multiple requests with different priorities
-const highPriority = rana.chat({
+const highPriority = cofounder.chat({
   messages: [{ role: 'user', content: 'Urgent!' }],
   priority: 'high',
 });
 
-const normalPriority = rana.chat({
+const normalPriority = cofounder.chat({
   messages: [{ role: 'user', content: 'Normal' }],
   priority: 'normal',
 });
 
-const lowPriority = rana.chat({
+const lowPriority = cofounder.chat({
   messages: [{ role: 'user', content: 'Background' }],
   priority: 'low',
 });
@@ -289,7 +289,7 @@ import type {
   QueueEvent,
   QueuePriority,
   RequestQueue,
-} from '@rana/core';
+} from '@cofounder/core';
 
 // Queue configuration
 const config: QueueConfig = {
@@ -325,9 +325,9 @@ const event: QueueEvent = {
 
 ### Queue Not Processing Requests
 
-- Check if queue is enabled: `rana.queue.enabled()`
+- Check if queue is enabled: `cofounder.queue.enabled()`
 - Verify concurrency limit is not 0
-- Check queue stats: `rana.queue.stats()`
+- Check queue stats: `cofounder.queue.stats()`
 - Enable debug logging: `queue: { debug: true }`
 
 ### Requests Timing Out

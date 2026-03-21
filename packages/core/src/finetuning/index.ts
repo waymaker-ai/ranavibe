@@ -4,7 +4,7 @@
  *
  * @example
  * ```typescript
- * import { createFineTuner, FineTuneJob } from '@rana/core';
+ * import { createFineTuner, FineTuneJob } from '@cofounder/core';
  *
  * const finetuner = createFineTuner({
  *   provider: 'openai',

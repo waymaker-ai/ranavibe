@@ -1,5 +1,5 @@
 /**
- * @ranavibe/dashboard - Type Definitions
+ * @cofounder/dashboard - Type Definitions
  * AI observability dashboard types
  */
 

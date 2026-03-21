@@ -15,7 +15,7 @@ interface Optimization {
 }
 
 export async function optimizeCommand(options: { all?: boolean; dry?: boolean } = {}) {
-  console.log(chalk.bold.cyan('\n⚡ RANA Optimizer\n'));
+  console.log(chalk.bold.cyan('\n⚡ CoFounder Optimizer\n'));
 
   const optimizations: Optimization[] = [
     {
@@ -115,7 +115,7 @@ export async function optimizeCommand(options: { all?: boolean; dry?: boolean } 
 }
 
 async function enableCaching(): Promise<boolean> {
-  const configPath = 'rana.config.ts';
+  const configPath = 'cofounder.config.ts';
 
   if (!fs.existsSync(configPath)) {
     return false;

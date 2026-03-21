@@ -1,5 +1,5 @@
 /**
- * @ranavibe/streaming - OpenAI Adapter
+ * @cofounder/streaming - OpenAI Adapter
  *
  * Parses OpenAI streaming chat completion responses and extracts text deltas.
  * Handles the choices[0].delta.content format.

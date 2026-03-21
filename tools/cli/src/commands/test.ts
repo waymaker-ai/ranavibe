@@ -1,5 +1,5 @@
 /**
- * RANA Test Command
+ * CoFounder Test Command
  *
  * Run AI-native tests with semantic matching, regression detection,
  * cost assertions, and statistical testing.
@@ -7,19 +7,19 @@
  * @example
  * ```bash
  * # Run all tests
- * rana test
+ * cofounder test
  *
  * # Run specific file
- * rana test src/chat.test.ts
+ * cofounder test src/chat.test.ts
  *
  * # Run with coverage
- * rana test --coverage
+ * cofounder test --coverage
  *
  * # Update baselines
- * rana test --update-baselines
+ * cofounder test --update-baselines
  *
  * # Watch mode
- * rana test --watch
+ * cofounder test --watch
  * ```
  */
 
@@ -46,11 +46,11 @@ export async function testCommand(
   filePattern?: string,
   options: TestOptions = {}
 ): Promise<void> {
-  console.log(chalk.bold.cyan('\n🧪 RANA AI Test Runner\n'));
+  console.log(chalk.bold.cyan('\n🧪 CoFounder AI Test Runner\n'));
 
   // Find test files
   const pattern = filePattern || '**/*.{test,spec}.{ts,tsx,js,jsx}';
-  const ignorePatterns = ['**/node_modules/**', '**/dist/**', '**/.rana/**'];
+  const ignorePatterns = ['**/node_modules/**', '**/dist/**', '**/.cofounder/**'];
 
   console.log(chalk.gray(`Looking for tests matching: ${pattern}`));
 
@@ -65,7 +65,7 @@ export async function testCommand(
     console.log(chalk.gray('\nExample test file:\n'));
     console.log(
       chalk.white(`
-import { describe, aiTest, runTimes } from '@rana/testing';
+import { describe, aiTest, runTimes } from '@cofounder/testing';
 
 describe('My AI Feature', () => {
   aiTest('should work correctly', async ({ expect }) => {
@@ -90,15 +90,15 @@ describe('My AI Feature', () => {
     console.log(chalk.gray(`Cost budget: $${options.maxCost.toFixed(2)}\n`));
   }
 
-  // Dynamic import of @rana/testing
+  // Dynamic import of @cofounder/testing
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let testing: any = null;
 
   try {
-    testing = await (Function('return import("@rana/testing")')() as Promise<unknown>);
+    testing = await (Function('return import("@cofounder/testing")')() as Promise<unknown>);
   } catch {
-    // @rana/testing not installed, use built-in runner
-    console.log(chalk.yellow('Note: @rana/testing not installed, using built-in runner'));
+    // @cofounder/testing not installed, use built-in runner
+    console.log(chalk.yellow('Note: @cofounder/testing not installed, using built-in runner'));
   }
 
   const startTime = Date.now();
@@ -126,8 +126,8 @@ describe('My AI Feature', () => {
 
         // Configure
         testing.configure({
-          baselineDir: '.rana/baselines',
-          snapshotDir: '.rana/snapshots',
+          baselineDir: '.cofounder/baselines',
+          snapshotDir: '.cofounder/snapshots',
           maxTotalCost: options.maxCost,
         });
 
@@ -249,7 +249,7 @@ export async function watchTests(pattern?: string): Promise<void> {
   const watcher = chokidar.watch(
     pattern || ['**/*.test.ts', '**/*.spec.ts', 'src/**/*.ts'],
     {
-      ignored: ['node_modules', 'dist', '.rana'],
+      ignored: ['node_modules', 'dist', '.cofounder'],
       persistent: true,
     }
   );
@@ -294,7 +294,7 @@ export async function generateTest(
  * Tests for ${path.basename(targetFile)}
  */
 
-import { describe, aiTest, runTimes } from '@rana/testing';
+import { describe, aiTest, runTimes } from '@cofounder/testing';
 
 describe('${path.basename(targetFile, path.extname(targetFile))}', () => {
   aiTest('should work correctly', async ({ expect }) => {
@@ -349,7 +349,7 @@ describe('${path.basename(targetFile, path.extname(targetFile))}', () => {
  * Show test coverage report
  */
 export async function showCoverage(): Promise<void> {
-  const coverageDir = path.join(process.cwd(), '.rana', 'coverage');
+  const coverageDir = path.join(process.cwd(), '.cofounder', 'coverage');
 
   if (!fs.existsSync(coverageDir)) {
     console.log(chalk.yellow('No coverage data found. Run tests with --coverage first.'));
@@ -365,7 +365,7 @@ export async function showCoverage(): Promise<void> {
  * List all baselines
  */
 export async function listBaselines(): Promise<void> {
-  const baselineDir = path.join(process.cwd(), '.rana', 'baselines');
+  const baselineDir = path.join(process.cwd(), '.cofounder', 'baselines');
 
   if (!fs.existsSync(baselineDir)) {
     console.log(chalk.yellow('No baselines found.'));

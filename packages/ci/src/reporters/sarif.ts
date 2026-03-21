@@ -108,9 +108,9 @@ export function formatSarif(result: ScanResult): string {
       {
         tool: {
           driver: {
-            name: 'rana-ci',
+            name: 'cofounder-ci',
             semanticVersion: '1.0.0',
-            informationUri: 'https://rana.cx',
+            informationUri: 'https://cofounder.cx',
             rules,
           },
         },

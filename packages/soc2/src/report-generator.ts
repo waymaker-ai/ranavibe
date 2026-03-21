@@ -1,7 +1,7 @@
 /**
  * SOC 2 report generator.
  *
- * Generates SOC 2 Type II style reports from RANA guardrail data,
+ * Generates SOC 2 Type II style reports from CoFounder guardrail data,
  * combining control definitions, evidence, and test results into
  * a comprehensive audit document.
  */
@@ -88,7 +88,7 @@ export function generateSOC2Report(
     overallStatus,
     exceptions,
     metadata: {
-      generator: '@ranavibe/soc2',
+      generator: '@cofounder/soc2',
       format: config.exportFormat,
       auditorName: config.auditorName,
       auditorFirm: config.auditorFirm,
@@ -136,11 +136,11 @@ function attachEvidenceToControls(
 ): void {
   // Map evidence to controls based on source and type
   const sourceMapping: Record<string, string[]> = {
-    'rana-dashboard': ['CC7.2', 'A1.1', 'PI1.1'],
-    'rana-audit-log': ['CC7.1', 'CC7.3', 'CC6.1', 'CC6.2', 'CC6.3'],
-    'rana-policies': ['CC6.6', 'CC6.7', 'CC8.1', 'P3.1', 'P3.2', 'P6.1', 'P6.7', 'C1.1', 'C1.2'],
-    'rana-ci-scans': ['CC6.8', 'CC8.1'],
-    'rana-guards': ['CC6.6', 'CC6.7', 'PI1.1', 'P3.1', 'P6.1', 'C1.1'],
+    'cofounder-dashboard': ['CC7.2', 'A1.1', 'PI1.1'],
+    'cofounder-audit-log': ['CC7.1', 'CC7.3', 'CC6.1', 'CC6.2', 'CC6.3'],
+    'cofounder-policies': ['CC6.6', 'CC6.7', 'CC8.1', 'P3.1', 'P3.2', 'P6.1', 'P6.7', 'C1.1', 'C1.2'],
+    'cofounder-ci-scans': ['CC6.8', 'CC8.1'],
+    'cofounder-guards': ['CC6.6', 'CC6.7', 'PI1.1', 'P3.1', 'P6.1', 'C1.1'],
   };
 
   for (const ev of evidence) {
@@ -250,7 +250,7 @@ function identifyExceptions(
             : `Control ${control.id} (${control.title}) has exceptions. ${details}`,
         remediation:
           control.status === 'not_effective'
-            ? `Implement corrective actions for ${control.title}. Ensure RANA features [${control.ranaMapping.join(', ')}] are properly configured and evidence is collected.`
+            ? `Implement corrective actions for ${control.title}. Ensure CoFounder features [${control.cofounderMapping.join(', ')}] are properly configured and evidence is collected.`
             : `Address exceptions identified in ${control.title}. Review and remediate findings.`,
       });
     }
@@ -300,14 +300,14 @@ function buildSections(config: ReportConfig): SOC2Section[] {
     id: 'methodology',
     title: 'Methodology',
     content:
-      'This report was generated using automated evidence collection from RANA AI guardrail components. ' +
+      'This report was generated using automated evidence collection from CoFounder AI guardrail components. ' +
       'Evidence was gathered from dashboard metrics, audit logs, policy configurations, CI/CD scan results, ' +
       'and guard reports. Each control was evaluated against the collected evidence to determine its effectiveness.',
     subsections: [
       {
         id: 'scope',
         title: 'Scope',
-        content: `The scope of this examination covers the ${config.systemName} system and its RANA guardrail controls ` +
+        content: `The scope of this examination covers the ${config.systemName} system and its CoFounder guardrail controls ` +
           `for the period ${config.auditPeriod.startDate} to ${config.auditPeriod.endDate}. ` +
           `Trust service categories in scope: ${config.trustServiceCategories.join(', ')}.`,
       },

@@ -8,7 +8,7 @@
  *   createAdvancedRAG,
  *   createMultiModalRetriever,
  *   createSelfCorrectingRAG,
- * } from '@rana/core';
+ * } from '@cofounder/core';
  *
  * // Multi-modal RAG with images
  * const mmRAG = createAdvancedRAG({

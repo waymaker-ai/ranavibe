@@ -1,10 +1,10 @@
 /**
- * RANA PII Detection and Redaction
+ * CoFounder PII Detection and Redaction
  * Comprehensive PII detection, redaction, and masking system
  *
  * @example
  * ```typescript
- * import { PIIDetector, createPIIDetector } from '@rana/core';
+ * import { PIIDetector, createPIIDetector } from '@cofounder/core';
  *
  * // Create detector with default settings
  * const detector = createPIIDetector();

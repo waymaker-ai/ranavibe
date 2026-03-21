@@ -1,7 +1,7 @@
 {
-  "name": "@ranavibe/rag",
+  "name": "@cofounder/rag",
   "version": "1.0.0",
-  "description": "Advanced RAG (Retrieval Augmented Generation) for RANA Framework",
+  "description": "Advanced RAG (Retrieval Augmented Generation) for CoFounder Framework",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -45,7 +45,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@ranavibe/core": "^2.0.0",
+    "@cofounder/core": "^2.0.0",
     "@supabase/supabase-js": "^2.39.0",
     "zod": "^3.22.4"
   },
@@ -66,7 +66,7 @@
     }
   },
   "keywords": [
-    "rana",
+    "cofounder",
     "rag",
     "retrieval",
     "augmented",
@@ -77,14 +77,14 @@
     "search",
     "embeddings"
   ],
-  "author": "RANA Team",
+  "author": "CoFounder Team",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/waymaker-ai/ranavibe.git",
+    "url": "https://github.com/waymaker-ai/cofounder.git",
     "directory": "packages/rag"
   },
-  "homepage": "https://rana.cx",
+  "homepage": "https://cofounder.cx",
   "files": [
     "dist",
     "README.md"

@@ -1,7 +1,7 @@
 /**
- * Google Antigravity Integration for RANA
+ * Google Antigravity Integration for CoFounder
  *
- * Enables RANA framework to work seamlessly within Google's Antigravity IDE
+ * Enables CoFounder framework to work seamlessly within Google's Antigravity IDE
  * (announced November 2025 alongside Gemini 3)
  *
  * Antigravity is Google's AI-powered IDE built as a fork of VS Code,
@@ -10,7 +10,7 @@
 
 export interface AntigravityConfig {
   /**
-   * Enable RANA guardrails for Antigravity agents
+   * Enable CoFounder guardrails for Antigravity agents
    */
   enableGuardrails?: boolean;
 
@@ -69,7 +69,7 @@ export interface ValidationResult {
 /**
  * Antigravity Integration Manager
  *
- * Provides RANA guardrails for Google Antigravity agents
+ * Provides CoFounder guardrails for Google Antigravity agents
  */
 export class AntigravityIntegration {
   private config: AntigravityConfig;
@@ -92,7 +92,7 @@ export class AntigravityIntegration {
   }
 
   /**
-   * Validate agent output against RANA guardrails
+   * Validate agent output against CoFounder guardrails
    */
   async validateAgentOutput(output: AgentOutput): Promise<ValidationResult> {
     const errors: string[] = [];
@@ -225,16 +225,16 @@ export class AntigravityIntegration {
   }
 
   /**
-   * Generate Antigravity-compatible RANA config
+   * Generate Antigravity-compatible CoFounder config
    */
   generateConfig(): {
-    '.antigravity/rana.json': any;
+    '.antigravity/cofounder.json': any;
     'README.antigravity.md': string;
   } {
     return {
-      '.antigravity/rana.json': {
+      '.antigravity/cofounder.json': {
         version: '2.0',
-        framework: 'rana',
+        framework: 'cofounder',
         guardrails: {
           enabled: this.config.enableGuardrails,
           security: this.config.securityChecks,
@@ -257,9 +257,9 @@ export class AntigravityIntegration {
    * Generate README for Antigravity integration
    */
   private generateReadme(): string {
-    return `# RANA Framework Integration for Google Antigravity
+    return `# CoFounder Framework Integration for Google Antigravity
 
-This project uses RANA (Rapid AI Native Architecture) to provide guardrails for Google Antigravity agents.
+This project uses CoFounder (Rapid AI Native Architecture) to provide guardrails for Google Antigravity agents.
 
 ## Features
 
@@ -271,11 +271,11 @@ This project uses RANA (Rapid AI Native Architecture) to provide guardrails for 
 
 ## Configuration
 
-RANA is configured via \`.antigravity/rana.json\`:
+CoFounder is configured via \`.antigravity/cofounder.json\`:
 
 \`\`\`json
 {
-  "framework": "rana",
+  "framework": "cofounder",
   "guardrails": {
     "security": ${this.config.securityChecks},
     "designSystem": ${this.config.designSystemValidation},
@@ -286,7 +286,7 @@ RANA is configured via \`.antigravity/rana.json\`:
 
 ## Usage with Antigravity Agents
 
-When Antigravity agents generate code, RANA will:
+When Antigravity agents generate code, CoFounder will:
 
 1. **Validate Security**: Check for common vulnerabilities (XSS, injection, etc.)
 2. **Check Design Compliance**: Ensure design system usage
@@ -295,14 +295,14 @@ When Antigravity agents generate code, RANA will:
 
 ## Learn More
 
-- [RANA Documentation](https://rana.dev/docs)
+- [CoFounder Documentation](https://cofounder.dev/docs)
 - [Google Antigravity](https://antigravity.google/)
 - [Waymaker Pro ($29/mo)](https://waymaker.cx/pricing) - Includes API tokens
 
 ## Support
 
-- GitHub: https://github.com/waymaker/rana
-- Discord: https://discord.gg/rana
+- GitHub: https://github.com/waymaker/cofounder
+- Discord: https://discord.gg/cofounder
 - Email: ashley@waymaker.cx
 `;
   }
@@ -344,7 +344,7 @@ export function createAntigravityIntegration(config?: AntigravityConfig): Antigr
 }
 
 /**
- * Quick setup for Antigravity + RANA
+ * Quick setup for Antigravity + CoFounder
  */
 export async function setupAntigravity(): Promise<{
   integration: AntigravityIntegration;

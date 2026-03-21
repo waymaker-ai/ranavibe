@@ -1,10 +1,10 @@
 /**
- * @rana/mcp/server
+ * @cofounder/mcp/server
  * MCP Server implementation for creating tool servers
  *
  * @example
  * ```typescript
- * import { createMCPServer } from '@rana/core';
+ * import { createMCPServer } from '@cofounder/core';
  *
  * const server = createMCPServer({
  *   name: 'my-tools',

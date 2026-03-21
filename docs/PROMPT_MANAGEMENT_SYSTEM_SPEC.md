@@ -2,12 +2,12 @@
 
 ## Executive Summary
 
-**Feature**: Enterprise Prompt Management System for RANA Framework
+**Feature**: Enterprise Prompt Management System for CoFounder Framework
 **Priority**: P0 (Industry Standard Feature)
 **Impact**: Prompt Engineering, Team Collaboration, Cost Optimization
 **Timeline**: Q1 2025 (6-8 weeks)
 
-This specification defines RANA's prompt management system with versioning, A/B testing, analytics, and collaborative editing. It enables teams to build, test, and optimize prompts systematically rather than through ad-hoc experimentation.
+This specification defines CoFounder's prompt management system with versioning, A/B testing, analytics, and collaborative editing. It enables teams to build, test, and optimize prompts systematically rather than through ad-hoc experimentation.
 
 ---
 
@@ -15,7 +15,7 @@ This specification defines RANA's prompt management system with versioning, A/B 
 
 ### Current State
 
-RANA developers currently:
+CoFounder developers currently:
 - Hardcode prompts directly in application code
 - Have no systematic way to test prompt variations
 - Cannot track which prompts perform best
@@ -26,7 +26,7 @@ RANA developers currently:
 
 ### Competitive Landscape
 
-| Platform | Capability | RANA Gap |
+| Platform | Capability | CoFounder Gap |
 |----------|-----------|----------|
 | **LangSmith** | Prompt versioning & testing | ✗ No equivalent |
 | **PromptLayer** | Prompt analytics & logging | ✗ No equivalent |
@@ -38,7 +38,7 @@ RANA developers currently:
 
 ```typescript
 // Define prompts in centralized registry
-import { definePrompt, usePrompt } from '@rana/prompts';
+import { definePrompt, usePrompt } from '@cofounder/prompts';
 
 // Define prompt with metadata
 export const summarizeArticle = definePrompt({
@@ -95,7 +95,7 @@ const test = await abTest({
 });
 
 // View analytics
-rana prompts analytics summarize-article --last 30d
+cofounder prompts analytics summarize-article --last 30d
 
 ╭────────────────────────────────────────────╮
 │ Prompt: summarize-article v2.1.0          │
@@ -128,7 +128,7 @@ rana prompts analytics summarize-article --last 30d
 ### 1. Core Components
 
 ```
-@rana/prompts
+@cofounder/prompts
 ├── cli/
 │   ├── create.ts             # Create new prompt
 │   ├── test.ts               # Test prompt
@@ -793,7 +793,7 @@ export function usePromptABTest<T = string>(
 
 ```bash
 # Interactive creation
-rana prompts create
+cofounder prompts create
 
 ╭──────────────────────────────────────────╮
 │ Create New Prompt                        │
@@ -820,19 +820,19 @@ Variables:
 Opening editor for prompt template...
 
 ✓ Prompt created: summarize-article v1.0.0
-✓ Saved to: .rana/prompts/summarize-article.yml
+✓ Saved to: .cofounder/prompts/summarize-article.yml
 
 Next steps:
-1. Test prompt: rana prompts test summarize-article
-2. Add examples: rana prompts examples add summarize-article
-3. Deploy: rana prompts deploy summarize-article
+1. Test prompt: cofounder prompts test summarize-article
+2. Add examples: cofounder prompts examples add summarize-article
+3. Deploy: cofounder prompts deploy summarize-article
 ```
 
 ### Test Prompt
 
 ```bash
 # Test with sample input
-rana prompts test summarize-article --input article="Long article text..."
+cofounder prompts test summarize-article --input article="Long article text..."
 
 ╭──────────────────────────────────────────╮
 │ Testing: summarize-article v1.0.0        │
@@ -862,7 +862,7 @@ Would you like to save this as an example? (Y/n)
 
 ```bash
 # Deploy to production
-rana prompts deploy summarize-article --env production
+cofounder prompts deploy summarize-article --env production
 
 ╭──────────────────────────────────────────╮
 │ Deploy Prompt                            │
@@ -888,14 +888,14 @@ Deploying...
 ✓ Version 2.1.0 deployed to production
 ✓ Canary rollout started (10% traffic)
 
-Monitor: rana prompts monitor summarize-article
+Monitor: cofounder prompts monitor summarize-article
 ```
 
 ### Analytics
 
 ```bash
 # View analytics
-rana prompts analytics summarize-article --last 30d --breakdown
+cofounder prompts analytics summarize-article --last 30d --breakdown
 
 ╭────────────────────────────────────────────╮
 │ Prompt Analytics: summarize-article       │
@@ -945,7 +945,7 @@ Export report? (csv/json/pdf)
 
 ```bash
 # Compare two versions
-rana prompts compare summarize-article 2.0.0 2.1.0
+cofounder prompts compare summarize-article 2.0.0 2.1.0
 
 ╭────────────────────────────────────────────╮
 │ Comparing Versions                        │
@@ -1317,7 +1317,7 @@ export interface PromptStorage {
 export class FileStorage implements PromptStorage {
   private basePath: string;
 
-  constructor(basePath: string = '.rana/prompts') {
+  constructor(basePath: string = '.cofounder/prompts') {
     this.basePath = basePath;
   }
 
@@ -1466,10 +1466,10 @@ export interface Review {
 }
 
 // CLI commands
-rana prompts workspace create --name "Content Team"
-rana prompts workspace invite user@example.com --role editor
-rana prompts comment add summarize-article "Consider adding character limits"
-rana prompts review request summarize-article --reviewer john@example.com
+cofounder prompts workspace create --name "Content Team"
+cofounder prompts workspace invite user@example.com --role editor
+cofounder prompts comment add summarize-article "Consider adding character limits"
+cofounder prompts review request summarize-article --reviewer john@example.com
 ```
 
 ---

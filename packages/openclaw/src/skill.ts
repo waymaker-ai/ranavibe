@@ -1,7 +1,7 @@
 // ---------------------------------------------------------------------------
-// @ranavibe/openclaw - OpenClaw Skill
+// @cofounder/openclaw - OpenClaw Skill
 // ---------------------------------------------------------------------------
-// The main RANA OpenClaw skill that registers with OpenClaw's skill system.
+// The main CoFounder OpenClaw skill that registers with OpenClaw's skill system.
 // OpenClaw skills export a manifest and handler functions. This skill adds
 // guardrails (PII, injection, toxicity, compliance, cost) to any OpenClaw agent.
 // ---------------------------------------------------------------------------
@@ -38,7 +38,7 @@ const DEFAULT_CONFIG: Required<OpenClawSkillConfig> = {
   budget: { limit: 10, period: 'day', warningThreshold: 0.8, onExceeded: 'warn' },
   model: 'gpt-4o',
   audit: { enabled: true, level: 'standard', maxEntries: 1000 },
-  blockedMessage: 'This message was blocked by RANA guardrails for safety reasons.',
+  blockedMessage: 'This message was blocked by CoFounder guardrails for safety reasons.',
   guardToolCalls: true,
   allowedChannels: [],
 };
@@ -226,13 +226,13 @@ function guardText(
 // =========================================================================
 
 /**
- * Create a RANA guardrails skill for OpenClaw.
+ * Create a CoFounder guardrails skill for OpenClaw.
  *
  * @example
  * ```typescript
- * import { createRanaSkill } from '@ranavibe/openclaw';
+ * import { createCoFounderSkill } from '@cofounder/openclaw';
  *
- * const ranaSkill = createRanaSkill({
+ * const cofounderSkill = createCoFounderSkill({
  *   pii: 'redact',
  *   injectionSensitivity: 'high',
  *   compliance: ['hipaa', 'gdpr'],
@@ -240,10 +240,10 @@ function guardText(
  * });
  *
  * // Register with OpenClaw
- * agent.use(ranaSkill);
+ * agent.use(cofounderSkill);
  * ```
  */
-export function createRanaSkill(config?: Partial<OpenClawSkillConfig>): OpenClawSkill {
+export function createCoFounderSkill(config?: Partial<OpenClawSkillConfig>): OpenClawSkill {
   const mergedConfig: Required<OpenClawSkillConfig> = {
     ...DEFAULT_CONFIG,
     ...config,
@@ -356,7 +356,7 @@ export function createRanaSkill(config?: Partial<OpenClawSkillConfig>): OpenClaw
   // =========================================================================
 
   const manifest: SkillManifest = {
-    name: 'rana-guardrails',
+    name: 'cofounder-guardrails',
     description: 'AI guardrails - PII detection, prompt injection blocking, compliance enforcement, cost tracking',
     version: '1.0.0',
     author: 'Waymaker',
@@ -519,7 +519,7 @@ export function createRanaSkill(config?: Partial<OpenClawSkillConfig>): OpenClaw
   // =========================================================================
 
   const commands: OpenClawSkill['commands'] = {
-    '/rana-status': async (context: OpenClawContext): Promise<string> => {
+    '/cofounder-status': async (context: OpenClawContext): Promise<string> => {
       const report: GuardReport = {
         totalChecks: stats.totalChecks,
         blocked: stats.blocked,
@@ -546,7 +546,7 @@ export function createRanaSkill(config?: Partial<OpenClawSkillConfig>): OpenClaw
       return formatGuardReport(report, context.channel);
     },
 
-    '/rana-cost': async (context: OpenClawContext): Promise<string> => {
+    '/cofounder-cost': async (context: OpenClawContext): Promise<string> => {
       if (!budgetTracker) {
         return 'Cost tracking is not enabled. Configure a budget to enable cost tracking.';
       }
@@ -564,7 +564,7 @@ export function createRanaSkill(config?: Partial<OpenClawSkillConfig>): OpenClaw
       return formatCostReport(report, context.channel);
     },
 
-    '/rana-compliance': async (context: OpenClawContext): Promise<string> => {
+    '/cofounder-compliance': async (context: OpenClawContext): Promise<string> => {
       if (mergedConfig.compliance.length === 0) {
         return `No compliance frameworks configured. Available: ${getAvailableFrameworks().join(', ')}`;
       }
@@ -584,9 +584,9 @@ export function createRanaSkill(config?: Partial<OpenClawSkillConfig>): OpenClaw
       return formatComplianceReport(report, context.channel);
     },
 
-    '/rana-scan': async (context: OpenClawContext, text: string): Promise<string> => {
+    '/cofounder-scan': async (context: OpenClawContext, text: string): Promise<string> => {
       if (!text || text.trim().length === 0) {
-        return 'Usage: /rana-scan <text to scan>\nScans text for PII, injection attempts, toxicity, and compliance violations.';
+        return 'Usage: /cofounder-scan <text to scan>\nScans text for PII, injection attempts, toxicity, and compliance violations.';
       }
 
       const result = guardText(text, mergedConfig, 'input', null, context);

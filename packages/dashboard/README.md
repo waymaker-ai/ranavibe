@@ -1,6 +1,6 @@
-# @ranavibe/dashboard
+# @cofounder/dashboard
 
-AI observability dashboard for the RANA ecosystem. Track costs, monitor security events, enforce compliance, and analyze performance -- all with zero runtime dependencies.
+AI observability dashboard for the CoFounder ecosystem. Track costs, monitor security events, enforce compliance, and analyze performance -- all with zero runtime dependencies.
 
 ## Features
 
@@ -17,7 +17,7 @@ AI observability dashboard for the RANA ecosystem. Track costs, monitor security
 ## Quick Start
 
 ```ts
-import { RanaDashboard } from '@ranavibe/dashboard';
+import { RanaDashboard } from '@cofounder/dashboard';
 
 const dashboard = new RanaDashboard({
   storage: 'memory',
@@ -84,16 +84,16 @@ const dashboard = new RanaDashboard({
 ```ts
 const dashboard = new RanaDashboard({
   storage: 'file',
-  storagePath: './rana-data',
+  storagePath: './cofounder-data',
 });
 ```
 
-Stores events as JSON files organized by date (`rana-data/YYYY-MM-DD.json`) with atomic writes.
+Stores events as JSON files organized by date (`cofounder-data/YYYY-MM-DD.json`) with atomic writes.
 
 ### Custom
 
 ```ts
-import type { StorageInterface } from '@ranavibe/dashboard';
+import type { StorageInterface } from '@cofounder/dashboard';
 
 class MyStorage implements StorageInterface {
   async store(events) { /* ... */ }
@@ -125,7 +125,7 @@ dashboard.acknowledgeAlert(alertId);
 Each metric calculator can be used standalone:
 
 ```ts
-import { CostMetricsCalculator, MemoryStorage } from '@ranavibe/dashboard';
+import { CostMetricsCalculator, MemoryStorage } from '@cofounder/dashboard';
 
 const storage = new MemoryStorage();
 const costMetrics = new CostMetricsCalculator(storage);
@@ -156,15 +156,15 @@ Standard CSV with proper escaping -- includes id, type, timestamp, datetime, pro
 ### Prometheus
 
 ```
-# HELP rana_cost_total_dollars Total cost in dollars
-# TYPE rana_cost_total_dollars gauge
-rana_cost_total_dollars 42.50
+# HELP cofounder_cost_total_dollars Total cost in dollars
+# TYPE cofounder_cost_total_dollars gauge
+cofounder_cost_total_dollars 42.50
 
-# HELP rana_latency_milliseconds Latency distribution in milliseconds
-# TYPE rana_latency_milliseconds histogram
-rana_latency_milliseconds{quantile="0.5"} 150
-rana_latency_milliseconds{quantile="0.95"} 450
-rana_latency_milliseconds{quantile="0.99"} 820
+# HELP cofounder_latency_milliseconds Latency distribution in milliseconds
+# TYPE cofounder_latency_milliseconds histogram
+cofounder_latency_milliseconds{quantile="0.5"} 150
+cofounder_latency_milliseconds{quantile="0.95"} 450
+cofounder_latency_milliseconds{quantile="0.99"} 820
 ```
 
 ## Event Types

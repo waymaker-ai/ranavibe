@@ -8,8 +8,8 @@ const integrations = [
   {
     icon: Box,
     title: 'Hugging Face',
-    description: 'Use any Hugging Face model with RANA',
-    code: `import { HuggingFaceProvider } from '@rana/integrations/huggingface';
+    description: 'Use any Hugging Face model with CoFounder',
+    code: `import { HuggingFaceProvider } from '@cofounder/integrations/huggingface';
 
 const hf = new HuggingFaceProvider({
   apiKey: process.env.HF_API_KEY,
@@ -37,7 +37,7 @@ const agent = new Agent({
     icon: Database,
     title: 'Supabase',
     description: 'Vector storage and RAG with Supabase',
-    code: `import { SupabaseVectorStore } from '@rana/integrations/supabase';
+    code: `import { SupabaseVectorStore } from '@cofounder/integrations/supabase';
 
 const vectorStore = new SupabaseVectorStore({
   supabaseUrl: process.env.SUPABASE_URL,
@@ -71,7 +71,7 @@ const rag = new RAGPipeline({
     icon: BarChart3,
     title: 'Weights & Biases',
     description: 'Experiment tracking and model monitoring',
-    code: `import { WandBIntegration } from '@rana/integrations/wandb';
+    code: `import { WandBIntegration } from '@cofounder/integrations/wandb';
 
 const wandb = new WandBIntegration({
   apiKey: process.env.WANDB_API_KEY,
@@ -110,7 +110,7 @@ const comparison = await wandb.compareRuns(['run-1', 'run-2']);`,
     icon: AlertCircle,
     title: 'Sentry',
     description: 'Error tracking and performance monitoring',
-    code: `import { SentryIntegration } from '@rana/integrations/sentry';
+    code: `import { SentryIntegration } from '@cofounder/integrations/sentry';
 
 const sentry = new SentryIntegration({
   dsn: process.env.SENTRY_DSN,
@@ -146,8 +146,8 @@ agent.use(sentry.middleware());`,
   {
     icon: Cloud,
     title: 'AWS Bedrock',
-    description: 'Use AWS Bedrock models with RANA',
-    code: `import { BedrockProvider } from '@rana/integrations/aws-bedrock';
+    description: 'Use AWS Bedrock models with CoFounder',
+    code: `import { BedrockProvider } from '@cofounder/integrations/aws-bedrock';
 
 const bedrock = new BedrockProvider({
   region: 'us-east-1',
@@ -183,7 +183,7 @@ for await (const chunk of stream) {
     icon: Link2,
     title: 'MCP (Model Context Protocol)',
     description: 'Connect to any MCP-compatible tool server',
-    code: `import { MCPClient, MCPServer } from '@rana/integrations/mcp';
+    code: `import { MCPClient, MCPServer } from '@cofounder/integrations/mcp';
 
 // Connect to MCP server
 const client = new MCPClient({
@@ -250,11 +250,11 @@ export default function IntegrationsPage() {
             <h1 className="text-4xl md:text-5xl font-bold">Integrations</h1>
           </div>
           <p className="text-lg text-foreground-secondary">
-            Connect RANA with your favorite tools and services. Hugging Face, Supabase,
+            Connect CoFounder with your favorite tools and services. Hugging Face, Supabase,
             Weights & Biases, Sentry, AWS Bedrock, and MCP support.
           </p>
           <div className="mt-4 code-block font-mono text-sm">
-            npm install @rana/integrations
+            npm install @cofounder/integrations
           </div>
         </motion.div>
 

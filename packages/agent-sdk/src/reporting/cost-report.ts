@@ -26,7 +26,7 @@ export function generateCostReport(report: GuardReport, periodDays: number = 1):
 
 export function formatCostReport(data: CostReportData): string {
   const lines = [
-    '=== RANA Cost Report ===',
+    '=== CoFounder Cost Report ===',
     '',
     `Total Cost:          $${data.totalCost.toFixed(4)}`,
     `Requests:            ${data.requestCount}`,

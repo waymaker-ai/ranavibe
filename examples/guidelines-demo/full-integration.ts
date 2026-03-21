@@ -1,13 +1,13 @@
 /**
- * Full Integration Example: Guidelines + Compliance + RANA Core
+ * Full Integration Example: Guidelines + Compliance + CoFounder Core
  *
  * This example shows how to build a production-ready AI agent
  * with comprehensive guidelines and compliance enforcement.
  */
 
-import { createRana } from '@rana/core';
-import { createGuidelineManager, Conditions, PresetGuidelines } from '@rana/guidelines';
-import { createComplianceEnforcer, PresetRules } from '@rana/compliance';
+import { createCoFounder } from '@cofounder/core';
+import { createGuidelineManager, Conditions, PresetGuidelines } from '@cofounder/guidelines';
+import { createComplianceEnforcer, PresetRules } from '@cofounder/compliance';
 
 interface ConversationContext {
   userId: string;
@@ -17,13 +17,13 @@ interface ConversationContext {
 }
 
 class CompliantAIAgent {
-  private rana: any;
+  private cofounder: any;
   private guidelines: any;
   private compliance: any;
 
   constructor() {
-    // Initialize RANA
-    this.rana = createRana({
+    // Initialize CoFounder
+    this.cofounder = createCoFounder({
       providers: {
         anthropic: process.env.ANTHROPIC_API_KEY,
       },
@@ -125,10 +125,10 @@ ${guidelinePrompts ? `Important Guidelines:\n${guidelinePrompts}` : ''}
 
 Always follow these guidelines in your response.`;
 
-    // 3. Generate response with RANA
+    // 3. Generate response with CoFounder
     console.log('\n🤖 Generating response...');
 
-    const response = await this.rana.chat({
+    const response = await this.cofounder.chat({
       messages: [
         { role: 'system', content: systemPrompt },
         { role: 'user', content: message },

@@ -5,7 +5,7 @@ export default function Home() {
       <section className="container mx-auto px-4 py-20">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-green-600 bg-clip-text text-transparent">
-            RANA
+            CoFounder
           </h1>
           <p className="text-2xl text-gray-600 dark:text-gray-300 mb-4">
             Rapid AI Native Architecture
@@ -22,7 +22,7 @@ export default function Home() {
               Get Started
             </a>
             <a
-              href="https://github.com/waymaker-ai/ranavibe"
+              href="https://github.com/waymaker-ai/cofounder"
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-3 border-2 border-blue-600 text-blue-600 dark:text-blue-400 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-800 transition-colors font-semibold"
@@ -33,20 +33,20 @@ export default function Home() {
 
           <div className="bg-gray-800 text-green-400 p-6 rounded-lg font-mono text-left max-w-2xl mx-auto">
             <div className="text-gray-400"># For Claude Desktop (MCP)</div>
-            <div>npm install -g @rana/mcp-server</div>
+            <div>npm install -g @cofounder/mcp-server</div>
             <div className="mt-4 text-gray-400"># For CLI</div>
-            <div>npm install -g @rana/cli</div>
-            <div>rana init</div>
+            <div>npm install -g @cofounder/cli</div>
+            <div>cofounder init</div>
           </div>
         </div>
       </section>
 
-      {/* Why RANA Section */}
+      {/* Why CoFounder Section */}
       <section className="container mx-auto px-4 py-16 bg-white dark:bg-gray-800">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6">Why RANA?</h2>
+          <h2 className="text-3xl font-bold mb-6">Why CoFounder?</h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-            90% of AI-generated code needs fixes. RANA ensures production-quality from the start.
+            90% of AI-generated code needs fixes. CoFounder ensures production-quality from the start.
           </p>
           <div className="grid md:grid-cols-3 gap-6 text-left">
             <div className="p-6 bg-gray-50 dark:bg-gray-900 rounded-lg">
@@ -116,7 +116,7 @@ export default function Home() {
             <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
               9 commands for project init, validation, quality gates, REPM, and design system compliance
             </p>
-            <code className="text-xs bg-gray-100 dark:bg-gray-900 px-2 py-1 rounded">rana check pre</code>
+            <code className="text-xs bg-gray-100 dark:bg-gray-900 px-2 py-1 rounded">cofounder check pre</code>
           </div>
 
           <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
@@ -125,7 +125,7 @@ export default function Home() {
             <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
               Beautiful glass morphism components with gradients, built with Tailwind CSS
             </p>
-            <code className="text-xs bg-gray-100 dark:bg-gray-900 px-2 py-1 rounded">rana-ui add glass-card</code>
+            <code className="text-xs bg-gray-100 dark:bg-gray-900 px-2 py-1 rounded">cofounder-ui add glass-card</code>
           </div>
 
           <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
@@ -134,7 +134,7 @@ export default function Home() {
             <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
               Automated design system compliance checking with coverage metrics and violation reports
             </p>
-            <code className="text-xs bg-gray-100 dark:bg-gray-900 px-2 py-1 rounded">rana design-coverage</code>
+            <code className="text-xs bg-gray-100 dark:bg-gray-900 px-2 py-1 rounded">cofounder design-coverage</code>
           </div>
 
           <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
@@ -143,16 +143,16 @@ export default function Home() {
             <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
               MCP server with 6 tools, 3 resources, and guided prompts for seamless Claude integration
             </p>
-            <code className="text-xs bg-gray-100 dark:bg-gray-900 px-2 py-1 rounded">@rana/mcp-server</code>
+            <code className="text-xs bg-gray-100 dark:bg-gray-900 px-2 py-1 rounded">@cofounder/mcp-server</code>
           </div>
 
           <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
             <div className="text-3xl mb-3">📦</div>
             <h3 className="text-xl font-bold mb-2">TypeScript SDK</h3>
             <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
-              Programmatic access to all RANA features for custom integrations and automation
+              Programmatic access to all CoFounder features for custom integrations and automation
             </p>
-            <code className="text-xs bg-gray-100 dark:bg-gray-900 px-2 py-1 rounded">@rana/sdk</code>
+            <code className="text-xs bg-gray-100 dark:bg-gray-900 px-2 py-1 rounded">@cofounder/sdk</code>
           </div>
 
           <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
@@ -161,7 +161,7 @@ export default function Home() {
             <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
               11 comprehensive guides including quick start, REPM methodology, and prompt library
             </p>
-            <code className="text-xs bg-gray-100 dark:bg-gray-900 px-2 py-1 rounded">docs.rana.cx</code>
+            <code className="text-xs bg-gray-100 dark:bg-gray-900 px-2 py-1 rounded">docs.cofounder.cx</code>
           </div>
         </div>
       </section>
@@ -203,7 +203,7 @@ export default function Home() {
               <li>✅ Self-hosted everything</li>
             </ul>
             <a
-              href="https://github.com/waymaker-ai/ranavibe"
+              href="https://github.com/waymaker-ai/cofounder"
               className="block text-center px-6 py-3 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors font-semibold"
             >
               Get Started
@@ -285,10 +285,10 @@ export default function Home() {
             </a>
           </p>
           <div className="flex gap-6 justify-center">
-            <a href="https://github.com/waymaker-ai/ranavibe" className="hover:text-blue-600">
+            <a href="https://github.com/waymaker-ai/cofounder" className="hover:text-blue-600">
               GitHub
             </a>
-            <a href="https://rana.cx/docs" className="hover:text-blue-600">
+            <a href="https://cofounder.cx/docs" className="hover:text-blue-600">
               Documentation
             </a>
             <a href="https://twitter.com/waymaker_ai" className="hover:text-blue-600">

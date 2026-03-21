@@ -1,4 +1,4 @@
-# SEO Framework Guide for RANA
+# SEO Framework Guide for CoFounder
 
 **Version:** 1.0.0
 **Last Updated:** 2025-11-09
@@ -8,9 +8,9 @@
 
 ## Overview
 
-SEO is the difference between 100 visitors/month and 10,000 visitors/month. This guide provides RANA-compliant SEO patterns that automate optimization, boost Core Web Vitals, and drive organic traffic growth.
+SEO is the difference between 100 visitors/month and 10,000 visitors/month. This guide provides CoFounder-compliant SEO patterns that automate optimization, boost Core Web Vitals, and drive organic traffic growth.
 
-**RANA Principle:** SEO by default. Every page is optimized from day one.
+**CoFounder Principle:** SEO by default. Every page is optimized from day one.
 
 ---
 
@@ -24,7 +24,7 @@ SEO is the difference between 100 visitors/month and 10,000 visitors/month. This
 6. [Sitemap & Robots](#sitemap--robots)
 7. [Analytics & Tracking](#analytics--tracking)
 8. [Performance Optimization](#performance-optimization)
-9. [RANA Quality Gates](#aads-quality-gates)
+9. [CoFounder Quality Gates](#aads-quality-gates)
 
 ---
 
@@ -85,7 +85,7 @@ SEO is the difference between 100 visitors/month and 10,000 visitors/month. This
 import Head from 'next/head';
 
 /**
- * ✅ RANA: Automated SEO meta tags
+ * ✅ CoFounder: Automated SEO meta tags
  */
 
 export interface SEOProps {
@@ -117,7 +117,7 @@ export function SEO({
   const fullUrl = canonical || siteUrl;
   const fullImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
 
-  // ✅ RANA: Validate meta tag lengths
+  // ✅ CoFounder: Validate meta tag lengths
   const titleTruncated = title.length > 60 ? title.slice(0, 57) + '...' : title;
   const descTruncated = description.length > 160 ? description.slice(0, 157) + '...' : description;
 
@@ -194,7 +194,7 @@ import { SEO } from '@/components/SEO';
 import { getPost } from '@/lib/blog';
 
 /**
- * ✅ RANA: Dynamic SEO from database
+ * ✅ CoFounder: Dynamic SEO from database
  */
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
@@ -260,7 +260,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
 // components/StructuredData.tsx
 
 /**
- * ✅ RANA: Structured data for rich search results
+ * ✅ CoFounder: Structured data for rich search results
  */
 
 export interface ArticleSchema {
@@ -407,7 +407,7 @@ export function OrganizationSchema() {
 // lib/analytics/web-vitals.ts
 
 /**
- * ✅ RANA: Monitor Core Web Vitals
+ * ✅ CoFounder: Monitor Core Web Vitals
  */
 
 export interface WebVitalsMetric {
@@ -488,7 +488,7 @@ function WebVitalsScript() {
 
 ```typescript
 /**
- * ✅ RANA: Core Web Vitals optimization strategies
+ * ✅ CoFounder: Core Web Vitals optimization strategies
  */
 
 // 1. LCP (Largest Contentful Paint) - Target: < 2.5s
@@ -549,7 +549,7 @@ worker.postMessage(data);
 import Image from 'next/image';
 
 /**
- * ✅ RANA: Optimized images with lazy loading
+ * ✅ CoFounder: Optimized images with lazy loading
  */
 
 interface OptimizedImageProps {
@@ -607,7 +607,7 @@ function toBase64(str: string) {
 // lib/cloudinary.ts
 
 /**
- * ✅ RANA: Use CDN for image optimization
+ * ✅ CoFounder: Use CDN for image optimization
  */
 
 export function cloudinaryUrl(
@@ -656,7 +656,7 @@ export function cloudinaryUrl(
 // app/sitemap.ts
 
 /**
- * ✅ RANA: Automatic sitemap generation
+ * ✅ CoFounder: Automatic sitemap generation
  */
 
 import { MetadataRoute } from 'next';
@@ -722,7 +722,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 // app/robots.ts
 
 /**
- * ✅ RANA: Robots.txt configuration
+ * ✅ CoFounder: Robots.txt configuration
  */
 
 import { MetadataRoute } from 'next';
@@ -757,7 +757,7 @@ export default function robots(): MetadataRoute.Robots {
 // lib/analytics/ga4.ts
 
 /**
- * ✅ RANA: GA4 analytics setup
+ * ✅ CoFounder: GA4 analytics setup
  */
 
 export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
@@ -841,7 +841,7 @@ function handleSignup() {
 // lib/analytics/plausible.ts
 
 /**
- * ✅ RANA: Privacy-friendly analytics (GDPR compliant)
+ * ✅ CoFounder: Privacy-friendly analytics (GDPR compliant)
  */
 
 export function trackEvent(eventName: string, props?: Record<string, string | number>) {
@@ -877,7 +877,7 @@ import { trackEvent } from '@/lib/analytics/plausible';
 import dynamic from 'next/dynamic';
 
 /**
- * ✅ RANA: Lazy load non-critical components
+ * ✅ CoFounder: Lazy load non-critical components
  */
 
 // Lazy load heavy components
@@ -915,7 +915,7 @@ export default function Dashboard() {
 import { Inter, Playfair_Display } from 'next/font/google';
 
 /**
- * ✅ RANA: Optimized font loading
+ * ✅ CoFounder: Optimized font loading
  */
 
 const inter = Inter({
@@ -949,10 +949,10 @@ export default function RootLayout({ children }) {
 
 ---
 
-## RANA Quality Gates
+## CoFounder Quality Gates
 
 ```yaml
-# .rana.yml SEO quality gates
+# .cofounder.yml SEO quality gates
 
 quality_gates:
   seo:
@@ -996,7 +996,7 @@ quality_gates:
 
 ## SEO Optimization Results
 
-### Before RANA SEO
+### Before CoFounder SEO
 ```
 Organic Traffic: 500 visitors/month
 Page Load Speed: 4.5s
@@ -1005,7 +1005,7 @@ Search Rankings: Page 3-5
 Conversion Rate: 1.2%
 ```
 
-### After RANA SEO
+### After CoFounder SEO
 ```
 Organic Traffic: 1,500 visitors/month (3x increase)
 Page Load Speed: 1.8s (60% faster)
@@ -1029,4 +1029,4 @@ SEO optimization is **critical** for organic growth. Following these patterns ac
 
 ---
 
-*Part of the RANA Framework - Production-Quality AI Development*
+*Part of the CoFounder Framework - Production-Quality AI Development*

@@ -1,5 +1,5 @@
 /**
- * @ranavibe/soc2 - Type definitions for SOC 2 audit evidence generation
+ * @cofounder/soc2 - Type definitions for SOC 2 audit evidence generation
  */
 
 /** Trust Service Categories as defined by AICPA */
@@ -58,7 +58,7 @@ export interface ControlObjective {
   title: string;
   description: string;
   category: TrustServiceCategory;
-  ranaMapping: string[];
+  cofounderMapping: string[];
   evidence: Evidence[];
   status: ComplianceStatus;
   notes?: string;

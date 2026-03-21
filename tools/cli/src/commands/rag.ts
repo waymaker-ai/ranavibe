@@ -59,7 +59,7 @@ export async function ragIndexCommand(
   console.log(`  Last Updated: ${chalk.gray('just now')}`);
 
   console.log(chalk.green('\n✓ Indexing complete'));
-  console.log(chalk.gray(`\nQuery with: rana rag:query "${collection}" -q "your question"\n`));
+  console.log(chalk.gray(`\nQuery with: cofounder rag:query "${collection}" -q "your question"\n`));
 }
 
 export async function ragQueryCommand(
@@ -118,7 +118,7 @@ export async function ragQueryCommand(
   console.log(chalk.bold('\nGenerated Answer:'));
   console.log(chalk.gray('─'.repeat(60)));
   console.log(`
-  The routing system in RANA uses adaptive strategies to intelligently
+  The routing system in CoFounder uses adaptive strategies to intelligently
   dispatch requests to the most appropriate model. It considers factors
   like cost, latency, and quality requirements. The ModelRouter class
   implements this logic with configurable strategies including:
@@ -190,7 +190,7 @@ export async function ragStatusCommand(): Promise<void> {
   console.log(`  ${chalk.green('✓')} Embedding service: ${chalk.green('connected')}`);
   console.log(`  ${chalk.green('✓')} Cache: ${chalk.green('active')}`);
 
-  console.log(chalk.gray('\nView collection details: rana rag:status --collection <name>\n'));
+  console.log(chalk.gray('\nView collection details: cofounder rag:status --collection <name>\n'));
 }
 
 export async function ragEvalCommand(
@@ -244,7 +244,7 @@ export async function ragEvalCommand(
   console.log(`  ${chalk.yellow('→')} Re-ranking could improve precision by ~5%`);
   console.log(`  ${chalk.green('✓')} Faithfulness is excellent - no hallucination issues`);
 
-  console.log(chalk.gray('\nDetailed report: rana rag:eval ' + testset + ' --output report.html\n'));
+  console.log(chalk.gray('\nDetailed report: cofounder rag:eval ' + testset + ' --output report.html\n'));
 }
 
 export async function ragConfigCommand(
@@ -309,8 +309,8 @@ export async function ragConfigCommand(
     console.log('');
   }
 
-  console.log(chalk.gray('Update config: rana rag:config --retriever hybrid'));
-  console.log(chalk.gray('Enable self-correction: rana rag:config --self-correct\n'));
+  console.log(chalk.gray('Update config: cofounder rag:config --retriever hybrid'));
+  console.log(chalk.gray('Enable self-correction: cofounder rag:config --self-correct\n'));
 }
 
 export async function ragDeleteCommand(

@@ -27,7 +27,7 @@ const defaultConfig: BenchmarkConfig = {
  *
  * @example
  * ```typescript
- * import { runBenchmarks } from '@ranavibe/benchmark';
+ * import { runBenchmarks } from '@cofounder/benchmark';
  *
  * const report = await runBenchmarks({
  *   detectors: [

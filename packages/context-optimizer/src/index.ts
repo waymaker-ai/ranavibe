@@ -1,10 +1,10 @@
 /**
- * @rana/context-optimizer
- * Extended context optimization for RANA - Efficiently handle 400K+ token contexts
+ * @cofounder/context-optimizer
+ * Extended context optimization for CoFounder - Efficiently handle 400K+ token contexts
  *
  * @example
  * ```typescript
- * import { createContextOptimizer } from '@rana/context-optimizer';
+ * import { createContextOptimizer } from '@cofounder/context-optimizer';
  *
  * const optimizer = createContextOptimizer({
  *   strategy: 'hybrid',

@@ -1,5 +1,5 @@
 /**
- * Galileo adapter — converts between RANA and Galileo evaluation formats.
+ * Galileo adapter — converts between CoFounder and Galileo evaluation formats.
  */
 
 import type {
@@ -15,10 +15,10 @@ import type {
 } from '../types';
 
 // ---------------------------------------------------------------------------
-// Galileo metric → RANA category mapping
+// Galileo metric → CoFounder category mapping
 // ---------------------------------------------------------------------------
 
-const GALILEO_METRIC_TO_RANA: Record<string, RanaCategory> = {
+const GALILEO_METRIC_TO_CoFounder: Record<string, RanaCategory> = {
   hallucination: 'hallucination',
   factuality: 'hallucination',
   groundedness: 'hallucination',
@@ -35,7 +35,7 @@ const GALILEO_METRIC_TO_RANA: Record<string, RanaCategory> = {
   data_leakage: 'confidential',
 };
 
-const RANA_TO_GALILEO_METRIC: Record<string, string> = {
+const CoFounder_TO_GALILEO_METRIC: Record<string, string> = {
   hallucination: 'hallucination',
   quality: 'completeness',
   toxicity: 'toxicity',
@@ -76,7 +76,7 @@ function policyForCategory(
   policies: PolicyMapping[],
   category: RanaCategory,
 ): PolicyMapping | undefined {
-  return policies.find((p) => p.ranaCategory === category);
+  return policies.find((p) => p.cofounderCategory === category);
 }
 
 // ---------------------------------------------------------------------------
@@ -110,7 +110,7 @@ class GalileoAdapter implements Adapter {
         },
         body: JSON.stringify({
           text,
-          project_name: this.config.projectName ?? 'rana-integration',
+          project_name: this.config.projectName ?? 'cofounder-integration',
         }),
       });
 
@@ -167,18 +167,18 @@ class GalileoAdapter implements Adapter {
   }
 
   /**
-   * Export RANA metrics into Galileo-compatible format.
+   * Export CoFounder metrics into Galileo-compatible format.
    */
   exportPolicies(): ExportResult {
     const galileoMetrics = this.config.policies
       .map((p) => {
-        const galileoMetric = RANA_TO_GALILEO_METRIC[p.ranaCategory];
+        const galileoMetric = CoFounder_TO_GALILEO_METRIC[p.cofounderCategory];
         if (!galileoMetric) return null;
         return {
           metric: galileoMetric,
           threshold: p.threshold ?? 0.5,
           action: p.action,
-          ranaCategory: p.ranaCategory,
+          cofounderCategory: p.cofounderCategory,
         };
       })
       .filter(Boolean);
@@ -186,7 +186,7 @@ class GalileoAdapter implements Adapter {
     return {
       format: 'galileo',
       data: {
-        project_name: this.config.projectName ?? 'rana-integration',
+        project_name: this.config.projectName ?? 'cofounder-integration',
         metrics: galileoMetrics,
         console_url: this.config.consoleUrl,
       },
@@ -195,7 +195,7 @@ class GalileoAdapter implements Adapter {
   }
 
   /**
-   * Import raw Galileo evaluation results into RANA-normalised findings.
+   * Import raw Galileo evaluation results into CoFounder-normalised findings.
    */
   importResults(raw: unknown): ImportResult {
     if (!raw || typeof raw !== 'object') {
@@ -226,10 +226,10 @@ class GalileoAdapter implements Adapter {
     const findings: UnifiedFinding[] = [];
 
     for (const metric of raw.metrics ?? []) {
-      const ranaCategory = GALILEO_METRIC_TO_RANA[metric.name] ?? 'custom';
+      const cofounderCategory = GALILEO_METRIC_TO_CoFounder[metric.name] ?? 'custom';
       const isInverted = !BAD_HIGH_METRICS.has(metric.name);
       const severity = galileoScoreToSeverity(metric.score, isInverted);
-      const policy = policyForCategory(this.config.policies, ranaCategory);
+      const policy = policyForCategory(this.config.policies, cofounderCategory);
       const threshold = policy?.threshold ?? 0.5;
 
       // Determine whether this metric indicates a problem
@@ -241,7 +241,7 @@ class GalileoAdapter implements Adapter {
 
       findings.push({
         source: 'galileo',
-        category: ranaCategory,
+        category: cofounderCategory,
         severity,
         action: policy?.action ?? 'flag',
         message: `Galileo ${metric.name}: ${metric.score.toFixed(2)}${metric.explanation ? ` — ${metric.explanation}` : ''}`,

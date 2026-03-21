@@ -1,6 +1,6 @@
 /**
  * Interactive Playground
- * Try RANA features interactively in the terminal
+ * Try CoFounder features interactively in the terminal
  */
 
 import chalk from 'chalk';
@@ -17,7 +17,7 @@ interface PlaygroundSession {
   totalTokens: number;
 }
 
-const CREDENTIALS_FILE = path.join(os.homedir(), '.rana', 'credentials.json');
+const CREDENTIALS_FILE = path.join(os.homedir(), '.cofounder', 'credentials.json');
 
 const MODELS: Record<string, { display: string; models: { value: string; title: string }[] }> = {
   anthropic: {
@@ -64,16 +64,16 @@ const MODELS: Record<string, { display: string; models: { value: string; title: 
  * Main Playground Command
  */
 export async function playgroundCommand() {
-  console.log(chalk.bold.cyan('\n🎮 RANA Interactive Playground\n'));
-  console.log(chalk.gray('Test RANA capabilities in real-time\n'));
+  console.log(chalk.bold.cyan('\n🎮 CoFounder Interactive Playground\n'));
+  console.log(chalk.gray('Test CoFounder capabilities in real-time\n'));
 
   // Check for configured API keys
   const availableProviders = getAvailableProviders();
 
   if (availableProviders.length === 0) {
     console.log(chalk.yellow('No API keys configured yet.\n'));
-    console.log(chalk.gray('Run `rana config:set` to add your first API key.'));
-    console.log(chalk.gray('Or run `rana playground --demo` to see a demo.\n'));
+    console.log(chalk.gray('Run `cofounder config:set` to add your first API key.'));
+    console.log(chalk.gray('Or run `cofounder playground --demo` to see a demo.\n'));
     return;
   }
 
@@ -214,7 +214,7 @@ async function runCompareMode(providers: string[]) {
 
   if (providers.length < 2) {
     console.log(chalk.yellow('Need at least 2 configured providers to compare.'));
-    console.log(chalk.gray('Run `rana config:set` to add more providers.\n'));
+    console.log(chalk.gray('Run `cofounder config:set` to add more providers.\n'));
     return;
   }
 
@@ -457,8 +457,8 @@ async function runCostMode(providers: string[]) {
   const cheap = comparisons[3].cost;
   const savings = ((expensive - cheap) / expensive * 100).toFixed(0);
 
-  console.log(chalk.bold.green(`💡 RANA auto-routing can save up to ${savings}% by choosing the right model!`));
-  console.log(chalk.gray('\nRun `rana optimize` to apply these optimizations to your project.\n'));
+  console.log(chalk.bold.green(`💡 CoFounder auto-routing can save up to ${savings}% by choosing the right model!`));
+  console.log(chalk.gray('\nRun `cofounder optimize` to apply these optimizations to your project.\n'));
 }
 
 /**
@@ -469,9 +469,9 @@ async function runRAGMode(providers: string[]) {
 
   // Sample documents
   const documents = [
-    { id: '1', title: 'RANA Overview', content: 'RANA is a production-quality AI development framework that supports 9 LLM providers and offers 70% cost reduction through intelligent routing.' },
-    { id: '2', title: 'Cost Optimization', content: 'RANA uses semantic caching, prompt optimization, and smart model selection to reduce costs. It can automatically choose between Claude, GPT-4, Gemini, and open-source models.' },
-    { id: '3', title: 'Agent Framework', content: 'RANA provides an agent framework with tool support. Agents can use tools like calculators, web search, and custom functions to accomplish complex tasks.' },
+    { id: '1', title: 'CoFounder Overview', content: 'CoFounder is a production-quality AI development framework that supports 9 LLM providers and offers 70% cost reduction through intelligent routing.' },
+    { id: '2', title: 'Cost Optimization', content: 'CoFounder uses semantic caching, prompt optimization, and smart model selection to reduce costs. It can automatically choose between Claude, GPT-4, Gemini, and open-source models.' },
+    { id: '3', title: 'Agent Framework', content: 'CoFounder provides an agent framework with tool support. Agents can use tools like calculators, web search, and custom functions to accomplish complex tasks.' },
   ];
 
   console.log(chalk.gray('Sample knowledge base loaded with 3 documents:\n'));
@@ -484,7 +484,7 @@ async function runRAGMode(providers: string[]) {
     type: 'text',
     name: 'query',
     message: 'Ask a question:',
-    initial: 'How does RANA reduce costs?',
+    initial: 'How does CoFounder reduce costs?',
   });
 
   if (!query) return;
@@ -523,7 +523,7 @@ async function runRAGMode(providers: string[]) {
 
   // Simulated answer
   console.log(chalk.bold.green('📝 Answer:\n'));
-  console.log('RANA reduces costs through several key mechanisms:');
+  console.log('CoFounder reduces costs through several key mechanisms:');
   console.log('');
   console.log('1. **Intelligent Model Routing** - Automatically selects the most cost-effective');
   console.log('   model based on task complexity (e.g., GPT-4o Mini for simple tasks)');
@@ -536,7 +536,7 @@ async function runRAGMode(providers: string[]) {
   console.log();
 
   console.log(chalk.gray('─'.repeat(50)));
-  console.log(chalk.gray('Sources: Cost Optimization, RANA Overview'));
+  console.log(chalk.gray('Sources: Cost Optimization, CoFounder Overview'));
   console.log(chalk.gray('Confidence: 94% | Tokens used: 847\n'));
 }
 
@@ -544,8 +544,8 @@ async function runRAGMode(providers: string[]) {
  * Demo Mode - No API keys required
  */
 export async function playgroundDemo() {
-  console.log(chalk.bold.cyan('\n🎮 RANA Playground Demo\n'));
-  console.log(chalk.gray('This demo shows RANA capabilities without requiring API keys.\n'));
+  console.log(chalk.bold.cyan('\n🎮 CoFounder Playground Demo\n'));
+  console.log(chalk.gray('This demo shows CoFounder capabilities without requiring API keys.\n'));
 
   await runCostMode([]);
 }

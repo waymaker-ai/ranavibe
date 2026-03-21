@@ -8,10 +8,10 @@ import { detectModels, estimateTokens, estimateCost, getModelCost } from '../det
 export function registerEstimateCostCommand(
   context: vscode.ExtensionContext
 ): vscode.Disposable {
-  return vscode.commands.registerCommand('rana.estimateCost', async () => {
+  return vscode.commands.registerCommand('cofounder.estimateCost', async () => {
     const editor = vscode.window.activeTextEditor;
     if (!editor) {
-      vscode.window.showWarningMessage('RANA: No active editor for cost estimation.');
+      vscode.window.showWarningMessage('CoFounder: No active editor for cost estimation.');
       return;
     }
 
@@ -35,7 +35,7 @@ export function registerEstimateCostCommand(
 
     if (uniqueModels.length === 0) {
       vscode.window.showInformationMessage(
-        'RANA: No LLM model references found in this file.'
+        'CoFounder: No LLM model references found in this file.'
       );
       return;
     }
@@ -106,7 +106,7 @@ export function registerEstimateCostCommand(
 
     // Show the report
     await vscode.window.showQuickPick(items, {
-      title: 'RANA Cost Estimation',
+      title: 'CoFounder Cost Estimation',
       placeHolder: 'LLM cost breakdown',
     });
 

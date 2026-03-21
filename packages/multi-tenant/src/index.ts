@@ -10,7 +10,7 @@ import { APIServer, createStorage } from './api/server';
 import { ServerConfig } from './types';
 
 /**
- * Multi-tenant policy server for managing RANA policies per-project.
+ * Multi-tenant policy server for managing CoFounder policies per-project.
  *
  * @example
  * ```typescript

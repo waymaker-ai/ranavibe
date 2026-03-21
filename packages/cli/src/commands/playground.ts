@@ -1,6 +1,6 @@
 /**
  * Playground / REPL Command
- * Interactive environment for testing RANA features
+ * Interactive environment for testing CoFounder features
  */
 
 import { Command } from 'commander';
@@ -34,7 +34,7 @@ type PlaygroundCommand = {
 };
 
 // Constants
-const PLAYGROUND_DIR = path.join(os.homedir(), '.rana', 'playground');
+const PLAYGROUND_DIR = path.join(os.homedir(), '.cofounder', 'playground');
 const HISTORY_FILE = path.join(PLAYGROUND_DIR, 'history.json');
 
 // Ensure directories exist
@@ -51,14 +51,14 @@ function generateSessionId(): string {
 
 // Sample code templates for quick testing
 const QUICK_TEMPLATES: Record<string, string> = {
-  agent: `import { createAgent, createRana } from '@rana/agents';
+  agent: `import { createAgent, createCoFounder } from '@cofounder/agents';
 
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: { anthropic: process.env.ANTHROPIC_API_KEY }
 });
 
 const agent = createAgent({
-  rana,
+  cofounder,
   tools: [],
   user: { id: 'user-1', orgId: 'org-1', roles: ['user'] },
 }, {
@@ -74,7 +74,7 @@ const result = await agent.handle({
 
 console.log(result);`,
 
-  tool: `import { createTool } from '@rana/agents';
+  tool: `import { createTool } from '@cofounder/agents';
 
 const myTool = createTool({
   name: 'greet',
@@ -87,7 +87,7 @@ const myTool = createTool({
     },
   },
   handler: async ({ name }) => {
-    return \`Hello, \${name}! Welcome to RANA.\`;
+    return \`Hello, \${name}! Welcome to CoFounder.\`;
   },
 });
 
@@ -95,7 +95,7 @@ const myTool = createTool({
 const result = await myTool.handler({ name: 'Developer' });
 console.log(result);`,
 
-  orchestrator: `import { createOrchestrator, createPipeline } from '@rana/agents';
+  orchestrator: `import { createOrchestrator, createPipeline } from '@cofounder/agents';
 
 const orchestrator = createOrchestrator();
 
@@ -159,7 +159,7 @@ await server.connect(transport);`,
   InjectionDetector,
   PIIDetector,
   wrapToolWithSafety
-} from '@rana/agents';
+} from '@cofounder/agents';
 
 // Detect prompt injection
 const injectionDetector = new InjectionDetector();
@@ -179,7 +179,7 @@ const safeTool = wrapToolWithSafety(myTool, {
   rateLimit: { maxRequests: 10, windowMs: 60000 },
 });`,
 
-  generate: `import { generate, validateCode } from '@rana/generate';
+  generate: `import { generate, validateCode } from '@cofounder/generate';
 
 const result = await generate({
   prompt: 'Create a React button component with loading state',
@@ -283,7 +283,7 @@ const commands: PlaygroundCommand[] = [
       if (QUICK_TEMPLATES[target]) {
         return chalk.yellow('Note: Running templates requires a configured environment.\n') +
                chalk.gray('Copy the template code and run it in your project:\n\n') +
-               chalk.green(`rana playground template ${target}`);
+               chalk.green(`cofounder playground template ${target}`);
       }
 
       // Check if it's a file
@@ -359,33 +359,33 @@ const commands: PlaygroundCommand[] = [
   {
     name: 'quickstart',
     aliases: ['qs', 'start'],
-    description: 'Show quickstart guide for RANA',
+    description: 'Show quickstart guide for CoFounder',
     handler: async () => {
       return `
-${chalk.blue.bold('🚀 RANA Quickstart Guide')}
+${chalk.blue.bold('🚀 CoFounder Quickstart Guide')}
 
 ${chalk.white.bold('1. Initialize a project:')}
-${chalk.green('   rana init')}
+${chalk.green('   cofounder init')}
 
 ${chalk.white.bold('2. Generate code from natural language:')}
-${chalk.green('   rana generate "Create a login form with email validation"')}
+${chalk.green('   cofounder generate "Create a login form with email validation"')}
 
 ${chalk.white.bold('3. Create an MCP server:')}
-${chalk.green('   rana mcp create my-server')}
+${chalk.green('   cofounder mcp create my-server')}
 
 ${chalk.white.bold('4. Save and reuse prompts:')}
-${chalk.green('   rana prompts save')}
-${chalk.green('   rana prompts list')}
-${chalk.green('   rana prompts use "My Prompt"')}
+${chalk.green('   cofounder prompts save')}
+${chalk.green('   cofounder prompts list')}
+${chalk.green('   cofounder prompts use "My Prompt"')}
 
 ${chalk.white.bold('5. Analyze prompt quality:')}
-${chalk.green('   rana prompts analyze')}
+${chalk.green('   cofounder prompts analyze')}
 
 ${chalk.white.bold('6. View templates:')}
-${chalk.green('   rana templates')}
-${chalk.green('   rana mcp templates')}
+${chalk.green('   cofounder templates')}
+${chalk.green('   cofounder mcp templates')}
 
-${chalk.gray('For more help: rana --help')}
+${chalk.gray('For more help: cofounder --help')}
 `;
     },
   },
@@ -395,7 +395,7 @@ ${chalk.gray('For more help: rana --help')}
     description: 'Show links to documentation',
     handler: async () => {
       return `
-${chalk.blue.bold('📖 RANA Documentation')}
+${chalk.blue.bold('📖 CoFounder Documentation')}
 
 ${chalk.white('Core Concepts:')}
   ${chalk.cyan('• Agents')}        - AI agents with tools and guardrails
@@ -404,14 +404,14 @@ ${chalk.white('Core Concepts:')}
   ${chalk.cyan('• Security')}      - Injection detection, PII filtering
 
 ${chalk.white('Packages:')}
-  ${chalk.green('@rana/agents')}   - Agent Development Kit
-  ${chalk.green('@rana/core')}     - Core utilities and configs
-  ${chalk.green('@rana/generate')} - Natural language code generation
-  ${chalk.green('@rana/cli')}      - Command line interface
+  ${chalk.green('@cofounder/agents')}   - Agent Development Kit
+  ${chalk.green('@cofounder/core')}     - Core utilities and configs
+  ${chalk.green('@cofounder/generate')} - Natural language code generation
+  ${chalk.green('@cofounder/cli')}      - Command line interface
 
 ${chalk.white('Quick Links:')}
-  ${chalk.gray('GitHub:')} https://github.com/waymaker-ai/ranavibe
-  ${chalk.gray('Website:')} https://rana.dev
+  ${chalk.gray('GitHub:')} https://github.com/waymaker-ai/cofounder
+  ${chalk.gray('Website:')} https://cofounder.dev
 
 ${chalk.gray('Use `template <name>` to see code examples.')}
 `;
@@ -431,7 +431,7 @@ ${chalk.gray('Use `template <name>` to see code examples.')}
     aliases: ['quit', 'q'],
     description: 'Exit the playground',
     handler: async () => {
-      console.log(chalk.blue('\n👋 Thanks for using RANA Playground!\n'));
+      console.log(chalk.blue('\n👋 Thanks for using CoFounder Playground!\n'));
       process.exit(0);
     },
   },
@@ -460,9 +460,9 @@ async function runInteractivePlayground(): Promise<void> {
   console.log(chalk.blue.bold(`
 ╔═══════════════════════════════════════════════════════════════╗
 ║                                                               ║
-║   ${chalk.white.bold('🐸 RANA Playground')}                                        ║
+║   ${chalk.white.bold('🐸 CoFounder Playground')}                                        ║
 ║                                                               ║
-║   ${chalk.gray('Interactive environment for testing RANA features')}          ║
+║   ${chalk.gray('Interactive environment for testing CoFounder features')}          ║
 ║   ${chalk.gray('Type "help" for commands, "exit" to quit')}                   ║
 ║                                                               ║
 ╚═══════════════════════════════════════════════════════════════╝
@@ -479,7 +479,7 @@ async function runInteractivePlayground(): Promise<void> {
       {
         type: 'input',
         name: 'input',
-        message: chalk.green('rana>'),
+        message: chalk.green('cofounder>'),
         prefix: '',
       },
     ]);
@@ -534,7 +534,7 @@ async function runInteractivePlayground(): Promise<void> {
 
 // Quick demo mode
 async function runQuickDemo(): Promise<void> {
-  console.log(chalk.blue.bold('\n🐸 RANA Quick Demo\n'));
+  console.log(chalk.blue.bold('\n🐸 CoFounder Quick Demo\n'));
 
   const spinner = ora('Setting up demo environment...').start();
   await new Promise(resolve => setTimeout(resolve, 500));
@@ -553,7 +553,7 @@ async function runQuickDemo(): Promise<void> {
   console.log(chalk.gray('...\n'));
 
   console.log(chalk.green.bold('✅ Demo complete!\n'));
-  console.log(chalk.gray('To explore more, run: rana playground\n'));
+  console.log(chalk.gray('To explore more, run: cofounder playground\n'));
 }
 
 // Command Registration
@@ -561,7 +561,7 @@ export function registerPlaygroundCommands(program: Command): void {
   program
     .command('playground')
     .alias('play')
-    .description('Interactive playground for testing RANA features')
+    .description('Interactive playground for testing CoFounder features')
     .option('-d, --demo', 'Run quick demo mode')
     .option('-t, --template <name>', 'Show a specific template')
     .action(async (options) => {
@@ -589,7 +589,7 @@ export function registerPlaygroundCommands(program: Command): void {
   // Quick access commands
   program
     .command('demo')
-    .description('Run a quick demo of RANA features')
+    .description('Run a quick demo of CoFounder features')
     .action(async () => {
       await runQuickDemo();
     });

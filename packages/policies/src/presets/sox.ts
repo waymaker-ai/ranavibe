@@ -15,7 +15,7 @@ export const soxPolicy: Policy = {
       'Policy enforcing Sarbanes-Oxley Act requirements. Covers financial reporting accuracy (Sec 302/906), ' +
       'internal controls over financial reporting (Sec 404), audit trail integrity (Sec 802), ' +
       'record retention (Sec 802), whistleblower protections (Sec 806), and CEO/CFO certifications.',
-    author: 'ranavibe',
+    author: 'cofounder',
     tags: ['finance', 'sox', 'audit', 'compliance', 'internal-controls', 'reporting'],
     framework: 'SOX',
   },

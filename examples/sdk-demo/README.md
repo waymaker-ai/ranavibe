@@ -1,4 +1,4 @@
-# RANA SDK Demo
+# CoFounder SDK Demo
 
 Complete example showing all the new SDK features.
 
@@ -19,13 +19,13 @@ npm run dev
 - Caching
 
 ### 2. **React Hooks** (`src/react-examples.tsx`)
-- `useRanaChat` - Simple chat
-- `useRanaStream` - Streaming chat
-- `useRanaCost` - Cost dashboard
-- `useRanaConversation` - Full conversation
-- `useRanaOptimize` - Optimization suggestions
+- `useCoFounderChat` - Simple chat
+- `useCoFounderStream` - Streaming chat
+- `useCoFounderCost` - Cost dashboard
+- `useCoFounderConversation` - Full conversation
+- `useCoFounderOptimize` - Optimization suggestions
 
-### 3. **Configuration** (`rana.config.ts`)
+### 3. **Configuration** (`cofounder.config.ts`)
 - TypeScript configuration
 - Provider setup
 - Cache configuration
@@ -40,36 +40,36 @@ npm run dev
 ## Quick Start
 
 ```typescript
-import { createRana } from '@rana/core';
+import { createCoFounder } from '@cofounder/core';
 
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: {
     anthropic: process.env.ANTHROPIC_API_KEY,
   }
 });
 
 // Simple usage
-const response = await rana.chat('Hello!');
+const response = await cofounder.chat('Hello!');
 console.log(response.content);
 
 // Fluent API
-const response = await rana
+const response = await cofounder
   .anthropic()
   .optimize('cost')
   .chat('Hello!');
 
 // Cost tracking
-const stats = await rana.cost.stats();
+const stats = await cofounder.cost.stats();
 console.log(`Saved: $${stats.total_saved} (${stats.savings_percentage}%)`);
 ```
 
 ## React Example
 
 ```tsx
-import { useRanaChat } from '@rana/react';
+import { useCoFounderChat } from '@cofounder/react';
 
 function ChatComponent() {
-  const { chat, response, loading, cost } = useRanaChat(rana);
+  const { chat, response, loading, cost } = useCoFounderChat(cofounder);
 
   return (
     <div>
@@ -86,11 +86,11 @@ function ChatComponent() {
 - `src/core-examples.ts` - Core SDK examples
 - `src/react-examples.tsx` - React hooks examples
 - `src/plugins/` - Custom plugins
-- `rana.config.ts` - TypeScript configuration
+- `cofounder.config.ts` - TypeScript configuration
 - `package.json` - Dependencies
 
 ## Learn More
 
-- [RANA SDK Guide](../../RANA_SDK_GUIDE.md)
+- [CoFounder SDK Guide](../../CoFounder_SDK_GUIDE.md)
 - [Core API Reference](../../packages/core/README.md)
 - [React Hooks Reference](../../packages/react/README.md)

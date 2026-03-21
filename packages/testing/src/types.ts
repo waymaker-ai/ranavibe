@@ -1,5 +1,5 @@
 /**
- * @rana/testing - Type Definitions
+ * @cofounder/testing - Type Definitions
  * AI-native testing framework types
  */
 

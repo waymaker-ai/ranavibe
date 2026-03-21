@@ -1,12 +1,12 @@
-# RANA Detection Patterns Reference
+# CoFounder Detection Patterns Reference
 
-This document catalogs every detection pattern used by RANA guardrails, organized by category. Each entry includes the pattern description, what it catches, and example matches.
+This document catalogs every detection pattern used by CoFounder guardrails, organized by category. Each entry includes the pattern description, what it catches, and example matches.
 
 ---
 
 ## PII Patterns
 
-RANA detects personally identifiable information across six regions (US, EU, UK, CA, AU, global). The patterns below represent the full set.
+CoFounder detects personally identifiable information across six regions (US, EU, UK, CA, AU, global). The patterns below represent the full set.
 
 ### 1. Email Address
 - **Pattern**: `[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}`
@@ -147,7 +147,7 @@ RANA detects personally identifiable information across six regions (US, EU, UK,
 
 ## Injection Patterns
 
-RANA uses a multi-layered injection detection system with pattern matching, heuristic scoring, and suspicious token detection. Patterns are organized by attack category.
+CoFounder uses a multi-layered injection detection system with pattern matching, heuristic scoring, and suspicious token detection. Patterns are organized by attack category.
 
 ### Category: Direct Injection (Weight: 0.75 - High Risk)
 
@@ -409,7 +409,7 @@ RANA uses a multi-layered injection detection system with pattern matching, heur
 
 ## API Key Patterns
 
-RANA detects hardcoded API keys and secrets that should never appear in source code or prompts.
+CoFounder detects hardcoded API keys and secrets that should never appear in source code or prompts.
 
 ### 1. OpenAI API Key
 - **Pattern**: `sk-[A-Za-z0-9]{20,}`
@@ -455,7 +455,7 @@ RANA detects hardcoded API keys and secrets that should never appear in source c
 
 ## Toxicity Patterns
 
-RANA detects toxic content across seven categories, each with a severity level.
+CoFounder detects toxic content across seven categories, each with a severity level.
 
 ### 1. Profanity (Severity: Low)
 - **Subcategories**: Common profanity, elongated/repeated-letter variants, common acronyms
@@ -502,7 +502,7 @@ RANA detects toxic content across seven categories, each with a severity level.
 
 ## Heuristic Scoring
 
-In addition to pattern matching, RANA uses heuristic analysis that contributes to overall injection confidence scoring:
+In addition to pattern matching, CoFounder uses heuristic analysis that contributes to overall injection confidence scoring:
 
 | Signal | Points | Max |
 |---|---|---|

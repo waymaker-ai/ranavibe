@@ -2,13 +2,13 @@
   "name": "dashboard-demo",
   "version": "0.0.0",
   "private": true,
-  "description": "Demo of @ranavibe/dashboard - event collection, metrics, alerts, export, and HTTP API",
+  "description": "Demo of @cofounder/dashboard - event collection, metrics, alerts, export, and HTTP API",
   "scripts": {
     "start": "npx tsx index.ts",
     "start:serve": "npx tsx index.ts --serve"
   },
   "dependencies": {
-    "@ranavibe/dashboard": "workspace:*"
+    "@cofounder/dashboard": "workspace:*"
   },
   "devDependencies": {
     "tsx": "^4.7.0"

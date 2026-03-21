@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'RANA vs NeMo Guardrails - Comparison',
-  description: 'Compare RANA and NVIDIA NeMo Guardrails for AI safety and guardrails',
+  title: 'CoFounder vs NeMo Guardrails - Comparison',
+  description: 'Compare CoFounder and NVIDIA NeMo Guardrails for AI safety and guardrails',
 };
 
 export default function NemoGuardrailsComparePage() {
@@ -14,10 +14,10 @@ export default function NemoGuardrailsComparePage() {
         </Link>
 
         <h1 className="text-4xl md:text-5xl font-bold mb-6">
-          RANA vs NeMo Guardrails
+          CoFounder vs NeMo Guardrails
         </h1>
         <p className="text-xl text-gray-400 mb-12">
-          NVIDIA NeMo Guardrails pioneered programmable AI safety. RANA builds on the same
+          NVIDIA NeMo Guardrails pioneered programmable AI safety. CoFounder builds on the same
           principles — PII detection, injection blocking, topical control, content safety —
           then adds compliance frameworks, cost tracking, CI/CD, MCP, and observability.
           TypeScript-first, zero dependencies optional, works with any LLM provider.
@@ -55,8 +55,8 @@ response = rails.generate(
           </div>
 
           <div className="rounded-xl border border-blue-800/50 bg-blue-900/10 p-6">
-            <h3 className="text-lg font-semibold text-blue-400 mb-4">RANA (TypeScript, zero deps)</h3>
-            <pre className="text-sm text-gray-300 overflow-x-auto"><code>{`import { createGuard } from '@ranavibe/guard';
+            <h3 className="text-lg font-semibold text-blue-400 mb-4">CoFounder (TypeScript, zero deps)</h3>
+            <pre className="text-sm text-gray-300 overflow-x-auto"><code>{`import { createGuard } from '@cofounder/guard';
 
 // One line — everything enabled
 const g = createGuard({
@@ -71,7 +71,7 @@ const g = createGuard({
 const client = g.wrap(new Anthropic());
 
 // Or use pre-built compliant agents
-import { createHIPAAAgent } from '@ranavibe/agent-sdk';
+import { createHIPAAAgent } from '@cofounder/agent-sdk';
 const agent = createHIPAAAgent({
   model: 'claude-sonnet-4-6',
   auditPath: './hipaa-audit.log',
@@ -86,7 +86,7 @@ const agent = createHIPAAAgent({
             <thead>
               <tr className="bg-gray-900 border-b border-gray-800">
                 <th className="py-4 px-4 text-left font-semibold">Capability</th>
-                <th className="py-4 px-4 text-center font-semibold">RANA</th>
+                <th className="py-4 px-4 text-center font-semibold">CoFounder</th>
                 <th className="py-4 px-4 text-center font-semibold">NeMo Guardrails</th>
               </tr>
             </thead>
@@ -105,14 +105,14 @@ const agent = createHIPAAAgent({
                 ['CI/CD Integration', '✓ GitHub Action + SARIF', '✗'],
                 ['Observability Dashboard', '✓ metrics, alerts, API', '✗'],
                 ['Declarative Policies', '✓ YAML with 9 presets', '✓ Colang DSL'],
-                ['Zero Dependencies', '✓ @ranavibe/guard', '✗ heavy Python deps'],
+                ['Zero Dependencies', '✓ @cofounder/guard', '✗ heavy Python deps'],
                 ['GPU Acceleration', '✗ not needed (regex-based)', '✓ NIM microservices'],
                 ['Hallucination Detection', '✓ via fact-check rails', '✓ built-in'],
                 ['Multi-provider', '✓ 9+ LLM providers', '✓ OpenAI, NVIDIA'],
-              ].map(([feature, rana, nemo], i) => (
+              ].map(([feature, cofounder, nemo], i) => (
                 <tr key={i} className="border-b border-gray-800/50">
                   <td className="py-3 px-4">{feature}</td>
-                  <td className={`py-3 px-4 text-center ${(rana as string).startsWith('✓') ? 'text-green-400' : (rana as string).startsWith('✗') ? 'text-red-400' : ''}`}>{rana}</td>
+                  <td className={`py-3 px-4 text-center ${(cofounder as string).startsWith('✓') ? 'text-green-400' : (cofounder as string).startsWith('✗') ? 'text-red-400' : ''}`}>{cofounder}</td>
                   <td className={`py-3 px-4 text-center ${(nemo as string).startsWith('✓') ? 'text-green-400' : (nemo as string).startsWith('✗') ? 'text-red-400' : ''}`}>{nemo}</td>
                 </tr>
               ))}
@@ -123,7 +123,7 @@ const agent = createHIPAAAgent({
         {/* When to choose */}
         <div className="grid md:grid-cols-2 gap-8 mb-16">
           <div className="rounded-xl border border-green-800/50 bg-green-900/10 p-6">
-            <h3 className="text-xl font-bold text-green-400 mb-4">Choose RANA when you need:</h3>
+            <h3 className="text-xl font-bold text-green-400 mb-4">Choose CoFounder when you need:</h3>
             <ul className="space-y-2 text-gray-300">
               <li>- TypeScript/Node.js ecosystem</li>
               <li>- Compliance frameworks (HIPAA, GDPR, SEC, PCI)</li>
@@ -152,7 +152,7 @@ const agent = createHIPAAAgent({
             href="/docs/quick-start"
             className="inline-flex items-center px-6 py-3 rounded-lg bg-white text-black font-semibold hover:bg-gray-200 transition-colors"
           >
-            Get Started with RANA &rarr;
+            Get Started with CoFounder &rarr;
           </Link>
         </div>
       </div>

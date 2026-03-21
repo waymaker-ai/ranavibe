@@ -1,5 +1,5 @@
 /**
- * Unit tests for the RANA Tracer
+ * Unit tests for the CoFounder Tracer
  */
 
 import { describe, it, expect, beforeEach } from 'vitest';

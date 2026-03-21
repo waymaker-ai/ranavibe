@@ -1,6 +1,6 @@
 /**
  * Component Registry
- * Metadata for all available RANA UI components
+ * Metadata for all available CoFounder UI components
  */
 
 export interface ComponentFile {

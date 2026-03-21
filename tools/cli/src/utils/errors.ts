@@ -1,5 +1,5 @@
 /**
- * RANA Error Handler
+ * CoFounder Error Handler
  *
  * Provides actionable error messages with fix suggestions
  * Inspired by Elm's friendly compiler errors
@@ -62,9 +62,9 @@ const ERROR_PATTERNS: Array<{
       category: 'auth',
       title: 'API Key Not Configured',
       message: 'No API key found for the requested provider.',
-      suggestion: 'Configure your API key using the RANA CLI:',
-      command: 'rana config:set -p <provider> -k <your-api-key>',
-      docs: 'https://rana.dev/docs/configuration#api-keys',
+      suggestion: 'Configure your API key using the CoFounder CLI:',
+      command: 'cofounder config:set -p <provider> -k <your-api-key>',
+      docs: 'https://cofounder.dev/docs/configuration#api-keys',
     },
   },
   {
@@ -75,8 +75,8 @@ const ERROR_PATTERNS: Array<{
       title: 'Invalid API Key',
       message: 'The provided API key is invalid or expired.',
       suggestion: 'Verify your API key and update it:',
-      command: 'rana config:validate -p <provider>',
-      docs: 'https://rana.dev/docs/configuration#validating-keys',
+      command: 'cofounder config:validate -p <provider>',
+      docs: 'https://cofounder.dev/docs/configuration#validating-keys',
     },
   },
   {
@@ -87,22 +87,22 @@ const ERROR_PATTERNS: Array<{
       title: 'Rate Limited or Quota Exceeded',
       message: 'You have exceeded your API quota or hit rate limits.',
       suggestion: 'Wait a moment and try again, or check your usage:',
-      command: 'rana llm:analyze',
-      docs: 'https://rana.dev/docs/cost-management',
+      command: 'cofounder llm:analyze',
+      docs: 'https://cofounder.dev/docs/cost-management',
     },
   },
 
   // Configuration errors
   {
-    pattern: /\.rana\.yml|rana\.config|config.*not found/i,
+    pattern: /\.cofounder\.yml|cofounder\.config|config.*not found/i,
     error: {
       code: 'CONFIG_001',
       category: 'config',
       title: 'Configuration Not Found',
-      message: 'No RANA configuration file found in this directory.',
-      suggestion: 'Initialize RANA in your project:',
-      command: 'rana init',
-      docs: 'https://rana.dev/docs/quick-start',
+      message: 'No CoFounder configuration file found in this directory.',
+      suggestion: 'Initialize CoFounder in your project:',
+      command: 'cofounder init',
+      docs: 'https://cofounder.dev/docs/quick-start',
     },
   },
   {
@@ -111,10 +111,10 @@ const ERROR_PATTERNS: Array<{
       code: 'CONFIG_002',
       category: 'config',
       title: 'Invalid Configuration File',
-      message: 'The .rana.yml file contains invalid YAML syntax.',
+      message: 'The .cofounder.yml file contains invalid YAML syntax.',
       suggestion: 'Validate your configuration file:',
-      command: 'rana validate',
-      docs: 'https://rana.dev/docs/configuration',
+      command: 'cofounder validate',
+      docs: 'https://cofounder.dev/docs/configuration',
     },
   },
   {
@@ -125,8 +125,8 @@ const ERROR_PATTERNS: Array<{
       title: 'Unknown Provider',
       message: 'The specified LLM provider is not recognized.',
       suggestion: 'View supported providers:',
-      command: 'rana llm:compare',
-      docs: 'https://rana.dev/docs/providers',
+      command: 'cofounder llm:compare',
+      docs: 'https://cofounder.dev/docs/providers',
     },
   },
 
@@ -139,8 +139,8 @@ const ERROR_PATTERNS: Array<{
       title: 'Connection Failed',
       message: 'Could not connect to the API endpoint.',
       suggestion: 'Check your internet connection and try again. For local models:',
-      command: 'rana ollama',
-      docs: 'https://rana.dev/docs/troubleshooting#network',
+      command: 'cofounder ollama',
+      docs: 'https://cofounder.dev/docs/troubleshooting#network',
     },
   },
   {
@@ -151,8 +151,8 @@ const ERROR_PATTERNS: Array<{
       title: 'Request Timeout',
       message: 'The API request took too long and timed out.',
       suggestion: 'Try again or use a faster model:',
-      command: 'rana llm:compare',
-      docs: 'https://rana.dev/docs/performance',
+      command: 'cofounder llm:compare',
+      docs: 'https://cofounder.dev/docs/performance',
     },
   },
   {
@@ -207,8 +207,8 @@ const ERROR_PATTERNS: Array<{
       title: 'Model Not Found',
       message: 'The specified model does not exist or is not accessible.',
       suggestion: 'Check available models:',
-      command: 'rana llm:compare',
-      docs: 'https://rana.dev/docs/models',
+      command: 'cofounder llm:compare',
+      docs: 'https://cofounder.dev/docs/models',
     },
   },
   {
@@ -219,8 +219,8 @@ const ERROR_PATTERNS: Array<{
       title: 'Context Length Exceeded',
       message: 'Your prompt exceeds the model\'s maximum context length.',
       suggestion: 'Reduce your prompt size or use a model with larger context:',
-      command: 'rana llm:compare',
-      docs: 'https://rana.dev/docs/context-management',
+      command: 'cofounder llm:compare',
+      docs: 'https://cofounder.dev/docs/context-management',
     },
   },
   {
@@ -231,7 +231,7 @@ const ERROR_PATTERNS: Array<{
       title: 'Content Filtered',
       message: 'The request was blocked by the provider\'s content filter.',
       suggestion: 'Review your prompt content and try again.',
-      docs: 'https://rana.dev/docs/safety',
+      docs: 'https://cofounder.dev/docs/safety',
     },
   },
 
@@ -244,8 +244,8 @@ const ERROR_PATTERNS: Array<{
       title: 'Ollama Not Running',
       message: 'The Ollama server is not running or not accessible.',
       suggestion: 'Start Ollama and check its status:',
-      command: 'ollama serve && rana ollama',
-      docs: 'https://rana.dev/docs/local-development',
+      command: 'ollama serve && cofounder ollama',
+      docs: 'https://cofounder.dev/docs/local-development',
     },
   },
   {
@@ -256,8 +256,8 @@ const ERROR_PATTERNS: Array<{
       title: 'Ollama Model Not Installed',
       message: 'The requested model is not installed locally.',
       suggestion: 'Pull the model first:',
-      command: 'rana ollama:pull <model-name>',
-      docs: 'https://rana.dev/docs/ollama',
+      command: 'cofounder ollama:pull <model-name>',
+      docs: 'https://cofounder.dev/docs/ollama',
     },
   },
 
@@ -270,8 +270,8 @@ const ERROR_PATTERNS: Array<{
       title: 'Budget Exceeded',
       message: 'You have exceeded your configured spending budget.',
       suggestion: 'Check your budget status and adjust if needed:',
-      command: 'rana budget',
-      docs: 'https://rana.dev/docs/budget-enforcement',
+      command: 'cofounder budget',
+      docs: 'https://cofounder.dev/docs/budget-enforcement',
     },
   },
   {
@@ -282,7 +282,7 @@ const ERROR_PATTERNS: Array<{
       title: 'Approaching Budget Limit',
       message: 'You are approaching your configured spending limit.',
       suggestion: 'Review your usage and consider adjusting your budget:',
-      command: 'rana budget',
+      command: 'cofounder budget',
     },
   },
 
@@ -304,7 +304,7 @@ const ERROR_PATTERNS: Array<{
       code: 'DEP_002',
       category: 'dependency',
       title: 'Node.js Version Incompatible',
-      message: 'RANA requires Node.js 18 or higher.',
+      message: 'CoFounder requires Node.js 18 or higher.',
       suggestion: 'Update Node.js to version 18+:',
       command: 'nvm install 18 && nvm use 18',
       docs: 'https://nodejs.org/en/download',
@@ -365,7 +365,7 @@ export function formatError(error: RanaError): string {
   }
 
   // Help hint
-  lines.push(chalk.gray('  Need help? Run: rana doctor'));
+  lines.push(chalk.gray('  Need help? Run: cofounder doctor'));
   lines.push('');
 
   return lines.join('\n');
@@ -377,7 +377,7 @@ export function formatError(error: RanaError): string {
 function matchError(error: any): RanaError | null {
   const errorString = String(error?.message || error);
 
-  for (const { pattern, error: ranaError } of ERROR_PATTERNS) {
+  for (const { pattern, error: cofounderError } of ERROR_PATTERNS) {
     let matches = false;
 
     if (pattern instanceof RegExp) {
@@ -396,7 +396,7 @@ function matchError(error: any): RanaError | null {
       if (error?.code) context.errorCode = error.code;
 
       return {
-        ...ranaError,
+        ...cofounderError,
         context: Object.keys(context).length > 0 ? context : undefined,
       };
     }
@@ -417,8 +417,8 @@ function createUnknownError(error: any): RanaError {
     title: 'Unexpected Error',
     message: message.slice(0, 200) + (message.length > 200 ? '...' : ''),
     suggestion: 'Try running the doctor command to diagnose issues:',
-    command: 'rana doctor',
-    docs: 'https://rana.dev/docs/troubleshooting',
+    command: 'cofounder doctor',
+    docs: 'https://cofounder.dev/docs/troubleshooting',
     context: error?.stack ? { stack: error.stack.split('\n')[1]?.trim() } : undefined,
   };
 }
@@ -427,8 +427,8 @@ function createUnknownError(error: any): RanaError {
  * Main error handler - converts any error to a friendly message
  */
 export function handleError(error: any): void {
-  const ranaError = matchError(error) || createUnknownError(error);
-  console.error(formatError(ranaError));
+  const cofounderError = matchError(error) || createUnknownError(error);
+  console.error(formatError(cofounderError));
 }
 
 /**
@@ -448,7 +448,7 @@ export function withErrorHandling<T extends (...args: any[]) => Promise<any>>(
 }
 
 /**
- * Create a custom RANA CLI error
+ * Create a custom CoFounder CLI error
  */
 export class RanaCliError extends Error {
   public code: string;
@@ -469,7 +469,7 @@ export class RanaCliError extends Error {
   ) {
     super(message);
     this.name = 'RanaCliError';
-    this.code = options.code || 'RANA_ERROR';
+    this.code = options.code || 'CoFounder_ERROR';
     this.category = options.category || 'unknown';
     this.suggestion = options.suggestion;
     this.command = options.command;
@@ -486,17 +486,17 @@ export const errors = {
       code: 'AUTH_001',
       category: 'auth',
       suggestion: 'Configure your API key:',
-      command: `rana config:set -p ${provider} -k <your-api-key>`,
-      docs: 'https://rana.dev/docs/configuration#api-keys',
+      command: `cofounder config:set -p ${provider} -k <your-api-key>`,
+      docs: 'https://cofounder.dev/docs/configuration#api-keys',
     }),
 
   configNotFound: () =>
-    new RanaCliError('No .rana.yml configuration file found', {
+    new RanaCliError('No .cofounder.yml configuration file found', {
       code: 'CONFIG_001',
       category: 'config',
-      suggestion: 'Initialize RANA in your project:',
-      command: 'rana init',
-      docs: 'https://rana.dev/docs/quick-start',
+      suggestion: 'Initialize CoFounder in your project:',
+      command: 'cofounder init',
+      docs: 'https://cofounder.dev/docs/quick-start',
     }),
 
   budgetExceeded: (spent: number, limit: number) =>
@@ -504,8 +504,8 @@ export const errors = {
       code: 'BUDGET_001',
       category: 'budget',
       suggestion: 'Check your budget status:',
-      command: 'rana budget',
-      docs: 'https://rana.dev/docs/budget-enforcement',
+      command: 'cofounder budget',
+      docs: 'https://cofounder.dev/docs/budget-enforcement',
     }),
 
   modelNotFound: (model: string, provider: string) =>
@@ -513,8 +513,8 @@ export const errors = {
       code: 'PROVIDER_001',
       category: 'provider',
       suggestion: 'Check available models:',
-      command: 'rana llm:compare',
-      docs: 'https://rana.dev/docs/models',
+      command: 'cofounder llm:compare',
+      docs: 'https://cofounder.dev/docs/models',
     }),
 
   ollamaNotRunning: () =>
@@ -522,8 +522,8 @@ export const errors = {
       code: 'OLLAMA_001',
       category: 'provider',
       suggestion: 'Start Ollama:',
-      command: 'ollama serve && rana ollama',
-      docs: 'https://rana.dev/docs/local-development',
+      command: 'ollama serve && cofounder ollama',
+      docs: 'https://cofounder.dev/docs/local-development',
     }),
 };
 

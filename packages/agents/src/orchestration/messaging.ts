@@ -11,7 +11,7 @@
  *
  * @example
  * ```typescript
- * import { MessageBroker, createChannel } from '@ranavibe/agents';
+ * import { MessageBroker, createChannel } from '@cofounder/agents';
  *
  * const broker = new MessageBroker();
  *

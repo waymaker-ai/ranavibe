@@ -1,7 +1,7 @@
 {
-  "name": "@ranavibe/core",
+  "name": "@cofounder/core",
   "version": "2.0.0",
-  "description": "RANA Core SDK - Unified LLM client with cost optimization",
+  "description": "CoFounder Core SDK - Unified LLM client with cost optimization",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -25,7 +25,7 @@
     "prepare": "npm run build:no-dts"
   },
   "keywords": [
-    "rana",
+    "cofounder",
     "llm",
     "ai",
     "openai",
@@ -38,12 +38,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/waymaker-ai/ranavibe.git",
+    "url": "https://github.com/waymaker-ai/cofounder.git",
     "directory": "packages/core"
   },
-  "homepage": "https://rana.cx",
+  "homepage": "https://cofounder.cx",
   "bugs": {
-    "url": "https://github.com/waymaker-ai/ranavibe/issues"
+    "url": "https://github.com/waymaker-ai/cofounder/issues"
   },
   "publishConfig": {
     "access": "public"

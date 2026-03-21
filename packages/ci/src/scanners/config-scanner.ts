@@ -1,6 +1,6 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
-import type { Finding, RanaConfig, Severity } from '../types.js';
+import type { Finding, CoFounderConfig, Severity } from '../types.js';
 
 /** Valid severity values */
 const VALID_SEVERITIES: Severity[] = ['critical', 'high', 'medium', 'low', 'info'];
@@ -16,7 +16,7 @@ const KNOWN_RULES = [
 ];
 
 /**
- * Minimal YAML parser for .rana.yml files.
+ * Minimal YAML parser for .cofounder.yml files.
  * Handles simple key: value, nested objects, and arrays.
  * Zero dependencies -- intentionally limited to the structures we expect.
  */
@@ -108,7 +108,7 @@ function parseValue(value: string): unknown {
 }
 
 /**
- * Validate a .rana.yml config file and return findings for any issues.
+ * Validate a .cofounder.yml config file and return findings for any issues.
  */
 export function validateConfig(configPath: string): Finding[] {
   const findings: Finding[] = [];
@@ -245,12 +245,12 @@ function findKeyLine(content: string, key: string): number {
 }
 
 /**
- * Load and parse .rana.yml configuration
+ * Load and parse .cofounder.yml configuration
  */
-export function loadConfig(configPath: string): RanaConfig | null {
+export function loadConfig(configPath: string): CoFounderConfig | null {
   try {
     const content = fs.readFileSync(path.resolve(configPath), 'utf-8');
-    return parseSimpleYaml(content) as unknown as RanaConfig;
+    return parseSimpleYaml(content) as unknown as CoFounderConfig;
   } catch {
     return null;
   }

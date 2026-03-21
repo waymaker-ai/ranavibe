@@ -1,6 +1,6 @@
 # Phase 3.1 Feature Examples
 
-This directory contains comprehensive examples for all Phase 3.1 advanced features in RANA.
+This directory contains comprehensive examples for all Phase 3.1 advanced features in CoFounder.
 
 ## Examples
 
@@ -19,7 +19,7 @@ This directory contains comprehensive examples for all Phase 3.1 advanced featur
 
 1. Install dependencies:
 ```bash
-npm install @rana/core
+npm install @cofounder/core
 ```
 
 2. Set up environment variables:
@@ -31,8 +31,8 @@ export GOOGLE_API_KEY=your-key
 
 3. For edge/offline examples, download models:
 ```bash
-rana edge:download phi-2-q4
-rana edge:download llama-2-7b-chat-q4
+cofounder edge:download phi-2-q4
+cofounder edge:download llama-2-7b-chat-q4
 ```
 
 ## Running Examples
@@ -96,5 +96,5 @@ For detailed documentation, see:
 
 ## Support
 
-- GitHub Issues: https://github.com/waymaker/rana/issues
-- Documentation: https://rana.dev/docs
+- GitHub Issues: https://github.com/waymaker/cofounder/issues
+- Documentation: https://cofounder.dev/docs

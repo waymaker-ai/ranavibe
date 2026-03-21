@@ -463,7 +463,7 @@ export class GenerationExplainer {
 
     // General tips
     tips.push('Review the generated code before committing - AI-generated code should be verified');
-    tips.push('Run the security audit with "rana security:check" after implementation');
+    tips.push('Run the security audit with "cofounder security:check" after implementation');
 
     return tips;
   }

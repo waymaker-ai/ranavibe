@@ -4,8 +4,8 @@ import { BookOpen, Video, Code, Award } from 'lucide-react';
 const trainingModules = [
   {
     id: 'fundamentals',
-    title: 'RANA Fundamentals',
-    description: 'Learn the core concepts and architecture of the RANA framework',
+    title: 'CoFounder Fundamentals',
+    description: 'Learn the core concepts and architecture of the CoFounder framework',
     duration: '2 hours',
     lessons: 8,
     level: 'Beginner',
@@ -47,10 +47,10 @@ export default function TrainingPage() {
         {/* Header */}
         <div className="mb-16 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            RANA Framework Training
+            CoFounder Framework Training
           </h1>
           <p className="text-lg text-foreground-secondary max-w-2xl mx-auto">
-            Comprehensive training modules to help you master the RANA framework
+            Comprehensive training modules to help you master the CoFounder framework
             and build production-ready AI agents.
           </p>
         </div>

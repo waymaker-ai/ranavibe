@@ -108,8 +108,8 @@ export async function importFromNpm(packageName: string): Promise<PolicyImportRe
 
     const data = await response.json();
 
-    // npm packages store RANA policies under a "rana" or "policies" key
-    const policyData = (data as Record<string, unknown>).rana ?? data;
+    // npm packages store CoFounder policies under a "cofounder" or "policies" key
+    const policyData = (data as Record<string, unknown>).cofounder ?? data;
     const { pkg, warnings, error } = validatePolicyPackage(policyData);
 
     if (error || !pkg) {

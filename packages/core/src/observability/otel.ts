@@ -1,6 +1,6 @@
 /**
- * OpenTelemetry Export for RANA Observability
- * Converts RANA traces and metrics to OpenTelemetry format
+ * OpenTelemetry Export for CoFounder Observability
+ * Converts CoFounder traces and metrics to OpenTelemetry format
  *
  * This module provides optional integration with OpenTelemetry using peer dependencies.
  * Install @opentelemetry/api, @opentelemetry/sdk-trace-base, and @opentelemetry/exporter-trace-otlp-http
@@ -8,10 +8,10 @@
  *
  * @example
  * ```typescript
- * import { createOTelExporter } from '@rana/core';
+ * import { createOTelExporter } from '@cofounder/core';
  *
  * const exporter = createOTelExporter({
- *   serviceName: 'my-rana-service',
+ *   serviceName: 'my-cofounder-service',
  *   endpoint: 'https://otel-collector.example.com/v1/traces',
  *   headers: {
  *     'x-api-key': process.env.OTEL_API_KEY
@@ -20,8 +20,8 @@
  *   batchInterval: 5000
  * });
  *
- * // Use with RANA client
- * const rana = createRana({
+ * // Use with CoFounder client
+ * const cofounder = createCoFounder({
  *   providers: { ... },
  *   plugins: [exporter.asPlugin()]
  * });
@@ -44,7 +44,7 @@ import type {
  * Configuration for OpenTelemetry exporter
  */
 export interface OTelConfig {
-  /** Service name to identify the RANA instance in traces */
+  /** Service name to identify the CoFounder instance in traces */
   serviceName: string;
 
   /** OTLP endpoint URL (HTTP or gRPC) */
@@ -216,7 +216,7 @@ export class OTelExporter {
 
     if (!this.otelAvailable && this.config.enabled) {
       console.warn(
-        '[RANA OTel] OpenTelemetry dependencies not found. Install @opentelemetry/api to enable export.'
+        '[CoFounder OTel] OpenTelemetry dependencies not found. Install @opentelemetry/api to enable export.'
       );
     }
 
@@ -227,7 +227,7 @@ export class OTelExporter {
   }
 
   /**
-   * Record a RANA request/response as an OpenTelemetry span
+   * Record a CoFounder request/response as an OpenTelemetry span
    */
   recordChatSpan(request: RanaChatRequest, response: RanaChatResponse, error?: RanaError): void {
     if (!this.config.enabled || !this.otelAvailable) {
@@ -244,41 +244,41 @@ export class OTelExporter {
     const span: OTelSpan = {
       traceId,
       spanId,
-      name: `rana.chat.${response.provider}`,
+      name: `cofounder.chat.${response.provider}`,
       kind: 'CLIENT',
       startTimeUnixNano: toNano(startTime),
       endTimeUnixNano: toNano(endTime),
       attributes: {
-        // RANA-specific attributes
-        'rana.provider': response.provider,
-        'rana.model': response.model,
-        'rana.request_id': response.id,
-        'rana.cached': response.cached,
-        'rana.finish_reason': response.finish_reason || 'unknown',
+        // CoFounder-specific attributes
+        'cofounder.provider': response.provider,
+        'cofounder.model': response.model,
+        'cofounder.request_id': response.id,
+        'cofounder.cached': response.cached,
+        'cofounder.finish_reason': response.finish_reason || 'unknown',
 
         // Cost attributes
-        'rana.cost.total': response.cost.total_cost,
-        'rana.cost.prompt': response.cost.prompt_cost,
-        'rana.cost.completion': response.cost.completion_cost,
+        'cofounder.cost.total': response.cost.total_cost,
+        'cofounder.cost.prompt': response.cost.prompt_cost,
+        'cofounder.cost.completion': response.cost.completion_cost,
 
         // Usage attributes
-        'rana.usage.prompt_tokens': response.usage.prompt_tokens,
-        'rana.usage.completion_tokens': response.usage.completion_tokens,
-        'rana.usage.total_tokens': response.usage.total_tokens,
+        'cofounder.usage.prompt_tokens': response.usage.prompt_tokens,
+        'cofounder.usage.completion_tokens': response.usage.completion_tokens,
+        'cofounder.usage.total_tokens': response.usage.total_tokens,
 
         // Performance
-        'rana.latency_ms': response.latency_ms,
+        'cofounder.latency_ms': response.latency_ms,
 
         // Request metadata
-        ...(request.temperature && { 'rana.temperature': request.temperature }),
-        ...(request.max_tokens && { 'rana.max_tokens': request.max_tokens }),
-        ...(request.optimize && { 'rana.optimize': request.optimize }),
-        ...(request.user && { 'rana.user': request.user }),
+        ...(request.temperature && { 'cofounder.temperature': request.temperature }),
+        ...(request.max_tokens && { 'cofounder.max_tokens': request.max_tokens }),
+        ...(request.optimize && { 'cofounder.optimize': request.optimize }),
+        ...(request.user && { 'cofounder.user': request.user }),
 
         // Retry metadata (if available)
         ...(response.retry && {
-          'rana.retry_count': response.retry.retryCount,
-          'rana.retry_time_ms': response.retry.totalRetryTime,
+          'cofounder.retry_count': response.retry.retryCount,
+          'cofounder.retry_time_ms': response.retry.totalRetryTime,
         }),
       },
       status: {
@@ -364,7 +364,7 @@ export class OTelExporter {
       this.debug(`Exported ${spanCount} spans`);
     } catch (error) {
       this.config.onExportError?.(error as Error);
-      console.error('[RANA OTel] Export failed:', error);
+      console.error('[CoFounder OTel] Export failed:', error);
     }
   }
 
@@ -375,7 +375,7 @@ export class OTelExporter {
     const resource: OTelResource = {
       attributes: {
         'service.name': this.config.serviceName,
-        'telemetry.sdk.name': 'rana',
+        'telemetry.sdk.name': 'cofounder',
         'telemetry.sdk.language': 'nodejs',
         'telemetry.sdk.version': '2.0.0',
         ...this.config.resourceAttributes,
@@ -389,7 +389,7 @@ export class OTelExporter {
           scopeSpans: [
             {
               scope: {
-                name: '@rana/core',
+                name: '@cofounder/core',
                 version: '2.0.0',
               },
               spans: this.spanBatch,
@@ -457,12 +457,12 @@ export class OTelExporter {
    */
   private debug(message: string): void {
     if (this.config.debug) {
-      console.log(`[RANA OTel] ${message}`);
+      console.log(`[CoFounder OTel] ${message}`);
     }
   }
 
   /**
-   * Convert to a RANA plugin
+   * Convert to a CoFounder plugin
    */
   asPlugin(): RanaPlugin {
     return {
@@ -540,7 +540,7 @@ export function createOTelExporter(config: OTelConfig): OTelExporter {
 export { isOTelAvailable };
 
 /**
- * Create a plugin for easy RANA integration
+ * Create a plugin for easy CoFounder integration
  */
 export function createOTelPlugin(config: OTelConfig): RanaPlugin {
   const exporter = createOTelExporter(config);

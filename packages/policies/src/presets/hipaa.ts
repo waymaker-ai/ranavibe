@@ -31,7 +31,7 @@ export const hipaaPolicy: Policy = {
     description:
       'Policy enforcing HIPAA Privacy and Security Rules. Covers all 18 PHI identifiers, ' +
       'minimum necessary standard, encryption requirements, and audit trail provisions.',
-    author: 'ranavibe',
+    author: 'cofounder',
     tags: ['healthcare', 'hipaa', 'phi', 'compliance', 'privacy'],
     framework: 'HIPAA',
   },

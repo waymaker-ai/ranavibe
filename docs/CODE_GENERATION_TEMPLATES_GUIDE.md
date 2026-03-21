@@ -1,13 +1,13 @@
 # Code Generation Templates Guide
 
-RANA's code generation system provides 30+ templates for common patterns. This guide covers how to use built-in templates and create custom ones.
+CoFounder's code generation system provides 30+ templates for common patterns. This guide covers how to use built-in templates and create custom ones.
 
 ## Overview
 
 The template system provides:
 - **Pre-built Templates** - React, Next.js, API, database, testing patterns
 - **Context-Aware Generation** - Analyzes your codebase for consistent output
-- **Quality Validation** - Generated code passes RANA quality gates
+- **Quality Validation** - Generated code passes CoFounder quality gates
 - **Customization** - Extend or create your own templates
 
 ## Quick Start
@@ -16,22 +16,22 @@ The template system provides:
 
 ```bash
 # Generate from description
-rana generate "create a user profile component with avatar and bio"
+cofounder generate "create a user profile component with avatar and bio"
 
 # List available templates
-rana templates
+cofounder templates
 
 # Generate from specific template
-rana generate --template react-component "UserProfile"
+cofounder generate --template react-component "UserProfile"
 
 # Generate with options
-rana generate --template api-route --method POST "create user"
+cofounder generate --template api-route --method POST "create user"
 ```
 
 ### Using SDK
 
 ```typescript
-import { generate, listTemplates, getTemplate } from '@rana/generate';
+import { generate, listTemplates, getTemplate } from '@cofounder/generate';
 
 // Generate from natural language
 const code = await generate('create a login form with email and password');
@@ -55,7 +55,7 @@ const templates = listTemplates();
 Basic React functional component with TypeScript.
 
 ```bash
-rana generate --template react-component "ProductCard"
+cofounder generate --template react-component "ProductCard"
 ```
 
 Output:
@@ -77,7 +77,7 @@ export function ProductCard({ }: ProductCardProps) {
 Form component with validation and submission.
 
 ```bash
-rana generate --template react-form "ContactForm"
+cofounder generate --template react-form "ContactForm"
 ```
 
 #### `react-modal`
@@ -90,7 +90,7 @@ Data table with sorting, filtering, pagination.
 Custom React hook.
 
 ```bash
-rana generate --template react-hook "useDebounce"
+cofounder generate --template react-hook "useDebounce"
 ```
 
 ### Next.js Templates
@@ -99,7 +99,7 @@ rana generate --template react-hook "useDebounce"
 API route handler with validation.
 
 ```bash
-rana generate --template nextjs-api-route "users/[id]"
+cofounder generate --template nextjs-api-route "users/[id]"
 ```
 
 Output:
@@ -150,7 +150,7 @@ export async function DELETE(
 Server actions for forms and mutations.
 
 ```bash
-rana generate --template nextjs-server-action "createPost"
+cofounder generate --template nextjs-server-action "createPost"
 ```
 
 Output:
@@ -190,7 +190,7 @@ Layout component with providers.
 Zustand store with TypeScript.
 
 ```bash
-rana generate --template zustand-store "cart"
+cofounder generate --template zustand-store "cart"
 ```
 
 Output:
@@ -272,7 +272,7 @@ React Context provider with TypeScript.
 TanStack Query hooks for data fetching.
 
 ```bash
-rana generate --template tanstack-query "users"
+cofounder generate --template tanstack-query "users"
 ```
 
 ### Testing Templates
@@ -281,7 +281,7 @@ rana generate --template tanstack-query "users"
 Vitest component test with React Testing Library.
 
 ```bash
-rana generate --template vitest-component "ProductCard"
+cofounder generate --template vitest-component "ProductCard"
 ```
 
 Output:
@@ -325,7 +325,7 @@ describe('ProductCard', () => {
 Playwright end-to-end test.
 
 ```bash
-rana generate --template playwright-e2e "checkout-flow"
+cofounder generate --template playwright-e2e "checkout-flow"
 ```
 
 #### `vitest-hook`
@@ -351,7 +351,7 @@ Supabase SQL migration.
 Reusable utility hook.
 
 ```bash
-rana generate --template utility-hook "useLocalStorage"
+cofounder generate --template utility-hook "useLocalStorage"
 ```
 
 #### `error-boundary`
@@ -362,11 +362,11 @@ Loading skeleton component.
 
 ### Agent Templates
 
-#### `rana-agent`
-RANA agent with tools.
+#### `cofounder-agent`
+CoFounder agent with tools.
 
 ```bash
-rana generate --template rana-agent "research-agent"
+cofounder generate --template cofounder-agent "research-agent"
 ```
 
 #### `mcp-server`
@@ -406,10 +406,10 @@ Common variables:
 
 ## Context-Aware Generation
 
-RANA analyzes your codebase for consistent output:
+CoFounder analyzes your codebase for consistent output:
 
 ```typescript
-import { generate, analyzeContext } from '@rana/generate';
+import { generate, analyzeContext } from '@cofounder/generate';
 
 // Analyze codebase patterns
 const context = await analyzeContext('./src');
@@ -433,7 +433,7 @@ const code = await generate('user profile component', { context });
 ### Template Structure
 
 ```typescript
-import { Template } from '@rana/generate';
+import { Template } from '@cofounder/generate';
 
 export const myTemplate: Template = {
   id: 'my-custom-template',
@@ -477,13 +477,13 @@ export function {{pascalCase name}}() {
 ### Register Custom Template
 
 ```typescript
-import { registerTemplate } from '@rana/generate';
+import { registerTemplate } from '@cofounder/generate';
 import { myTemplate } from './my-template';
 
 registerTemplate(myTemplate);
 
 // Now available via CLI and SDK
-// rana generate --template my-custom-template "MyComponent"
+// cofounder generate --template my-custom-template "MyComponent"
 ```
 
 ### Template Helpers
@@ -585,7 +585,7 @@ const code = await generate('form with validation');
 
 ```typescript
 // VS Code extension support
-import { generateAtCursor } from '@rana/generate/vscode';
+import { generateAtCursor } from '@cofounder/generate/vscode';
 
 // Generates code at cursor position with context
 await generateAtCursor(editor, 'add error handling');
@@ -595,27 +595,27 @@ await generateAtCursor(editor, 'add error handling');
 
 ```bash
 # Generate from description
-rana generate "description"
+cofounder generate "description"
 
 # Use specific template
-rana generate --template <template-id> "name"
+cofounder generate --template <template-id> "name"
 
 # List templates
-rana templates
-rana templates --category react
-rana templates --search "form"
+cofounder templates
+cofounder templates --category react
+cofounder templates --search "form"
 
 # Preview without writing
-rana generate --dry-run "component"
+cofounder generate --dry-run "component"
 
 # Specify output directory
-rana generate --output ./src/components "component"
+cofounder generate --output ./src/components "component"
 
 # Skip validation
-rana generate --no-validate "quick prototype"
+cofounder generate --no-validate "quick prototype"
 
 # Generate with specific framework context
-rana generate --framework next.js "api route"
+cofounder generate --framework next.js "api route"
 ```
 
 ## Related Documentation

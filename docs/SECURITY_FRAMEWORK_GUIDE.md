@@ -1,4 +1,4 @@
-# Security Framework Guide for RANA
+# Security Framework Guide for CoFounder
 
 **Version:** 1.0.0
 **Last Updated:** 2025-11-09
@@ -8,9 +8,9 @@
 
 ## Overview
 
-Security is **non-negotiable**. One vulnerability can destroy a business. This guide provides RANA-compliant security patterns covering authentication, authorization, API security, data protection, and OWASP Top 10 prevention.
+Security is **non-negotiable**. One vulnerability can destroy a business. This guide provides CoFounder-compliant security patterns covering authentication, authorization, API security, data protection, and OWASP Top 10 prevention.
 
-**RANA Principle:** Security by default. Every feature is secure from day one.
+**CoFounder Principle:** Security by default. Every feature is secure from day one.
 
 ---
 
@@ -26,7 +26,7 @@ Security is **non-negotiable**. One vulnerability can destroy a business. This g
 8. [Secrets Management](#secrets-management)
 9. [Audit Logging](#audit-logging)
 10. [Security Testing](#security-testing)
-11. [RANA Quality Gates](#aads-quality-gates)
+11. [CoFounder Quality Gates](#aads-quality-gates)
 
 ---
 
@@ -95,13 +95,13 @@ Security is **non-negotiable**. One vulnerability can destroy a business. This g
 import { supabase } from '@/lib/supabase/client';
 
 /**
- * ✅ RANA: Secure authentication with Supabase
+ * ✅ CoFounder: Secure authentication with Supabase
  */
 
 export const auth = {
   /**
    * Sign up with email and password
-   * ✅ RANA: Email verification required
+   * ✅ CoFounder: Email verification required
    */
   async signUp(email: string, password: string, metadata?: Record<string, any>) {
     try {
@@ -151,7 +151,7 @@ export const auth = {
 
   /**
    * Sign in with email and password
-   * ✅ RANA: Session management with httpOnly cookies
+   * ✅ CoFounder: Session management with httpOnly cookies
    */
   async signIn(email: string, password: string) {
     try {
@@ -182,7 +182,7 @@ export const auth = {
 
   /**
    * Sign in with OAuth provider
-   * ✅ RANA: Social login (Google, GitHub, etc.)
+   * ✅ CoFounder: Social login (Google, GitHub, etc.)
    */
   async signInWithOAuth(provider: 'google' | 'github' | 'apple') {
     try {
@@ -205,7 +205,7 @@ export const auth = {
 
   /**
    * Sign out
-   * ✅ RANA: Clear all sessions
+   * ✅ CoFounder: Clear all sessions
    */
   async signOut() {
     try {
@@ -227,7 +227,7 @@ export const auth = {
 
   /**
    * Get current session
-   * ✅ RANA: Check auth status
+   * ✅ CoFounder: Check auth status
    */
   async getSession() {
     try {
@@ -242,7 +242,7 @@ export const auth = {
 
   /**
    * Reset password
-   * ✅ RANA: Secure password reset flow
+   * ✅ CoFounder: Secure password reset flow
    */
   async resetPassword(email: string) {
     try {
@@ -263,7 +263,7 @@ export const auth = {
 
   /**
    * Update password
-   * ✅ RANA: Password update with validation
+   * ✅ CoFounder: Password update with validation
    */
   async updatePassword(newPassword: string) {
     try {
@@ -312,7 +312,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 /**
- * ✅ RANA: Middleware for route protection
+ * ✅ CoFounder: Middleware for route protection
  */
 export async function middleware(req: NextRequest) {
   const res = NextResponse.next();
@@ -375,7 +375,7 @@ import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 
 /**
- * ✅ RANA: Server-side auth enforcement
+ * ✅ CoFounder: Server-side auth enforcement
  */
 export async function GET() {
   try {
@@ -423,7 +423,7 @@ export async function GET() {
 // lib/auth/permissions.ts
 
 /**
- * ✅ RANA: RBAC implementation
+ * ✅ CoFounder: RBAC implementation
  */
 
 export type Role = 'user' | 'moderator' | 'admin' | 'superadmin';
@@ -497,7 +497,7 @@ import { useUser } from '@/hooks/useUser';
 import { hasPermission, type Permission } from '@/lib/auth/permissions';
 
 /**
- * ✅ RANA: React hook for permission checking
+ * ✅ CoFounder: React hook for permission checking
  */
 export function usePermissions() {
   const { user } = useUser();
@@ -549,7 +549,7 @@ import { Ratelimit } from '@upstash/ratelimit';
 import { Redis } from '@upstash/redis';
 
 /**
- * ✅ RANA: Rate limiting with Redis
+ * ✅ CoFounder: Rate limiting with Redis
  */
 
 const redis = new Redis({
@@ -623,7 +623,7 @@ export async function POST(request: Request) {
 // lib/security/cors.ts
 
 /**
- * ✅ RANA: Secure CORS configuration
+ * ✅ CoFounder: Secure CORS configuration
  */
 
 export const corsHeaders = {
@@ -675,7 +675,7 @@ export async function POST(request: Request) {
 import { z } from 'zod';
 
 /**
- * ✅ RANA: Input validation schemas
+ * ✅ CoFounder: Input validation schemas
  */
 
 export const CreatePostSchema = z.object({
@@ -741,7 +741,7 @@ export async function POST(request: Request) {
 import crypto from 'crypto';
 
 /**
- * ✅ RANA: Data encryption utilities
+ * ✅ CoFounder: Data encryption utilities
  */
 
 const ALGORITHM = 'aes-256-gcm';
@@ -816,7 +816,7 @@ export async function getSensitiveData(userId: string): Promise<string> {
 // lib/security/pii.ts
 
 /**
- * ✅ RANA: PII (Personally Identifiable Information) handling
+ * ✅ CoFounder: PII (Personally Identifiable Information) handling
  */
 
 // Redact sensitive information from logs
@@ -946,7 +946,7 @@ export async function middleware(request: NextRequest) {
 // next.config.js
 
 /**
- * ✅ RANA: Security headers configuration
+ * ✅ CoFounder: Security headers configuration
  */
 module.exports = {
   async headers() {
@@ -1041,7 +1041,7 @@ NEXTAUTH_URL="http://localhost:3000"
 // lib/env.ts - Type-safe environment variables
 
 /**
- * ✅ RANA: Validate environment variables at startup
+ * ✅ CoFounder: Validate environment variables at startup
  */
 import { z } from 'zod';
 
@@ -1074,7 +1074,7 @@ export const env = envSchema.parse(process.env);
 import { prisma } from '@/lib/prisma';
 
 /**
- * ✅ RANA: Audit logging for security events
+ * ✅ CoFounder: Audit logging for security events
  */
 
 export type AuditAction =
@@ -1126,7 +1126,7 @@ await logAudit('user.login', user.id, {
 // __tests__/security/auth.test.ts
 
 /**
- * ✅ RANA: Security test examples
+ * ✅ CoFounder: Security test examples
  */
 
 describe('Authentication Security', () => {
@@ -1184,10 +1184,10 @@ describe('Authorization Security', () => {
 
 ---
 
-## RANA Quality Gates
+## CoFounder Quality Gates
 
 ```yaml
-# .rana.yml security quality gates
+# .cofounder.yml security quality gates
 
 quality_gates:
   security:
@@ -1248,4 +1248,4 @@ Security is **non-negotiable**. Following these patterns ensures:
 
 ---
 
-*Part of the RANA Framework - Production-Quality AI Development*
+*Part of the CoFounder Framework - Production-Quality AI Development*

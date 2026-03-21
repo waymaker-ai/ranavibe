@@ -65,7 +65,7 @@ export function formatConsole(result: ScanResult): string {
   const lines: string[] = [];
 
   lines.push('');
-  lines.push(colorize('  RANA CI - AI Guardrails Scanner', COLORS.bold + COLORS.cyan));
+  lines.push(colorize('  CoFounder CI - AI Guardrails Scanner', COLORS.bold + COLORS.cyan));
   lines.push(colorize('  ================================', COLORS.dim));
   lines.push('');
 

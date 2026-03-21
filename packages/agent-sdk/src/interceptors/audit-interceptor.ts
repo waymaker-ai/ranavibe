@@ -14,7 +14,7 @@ export class AuditInterceptor implements Interceptor {
     const c = config === true ? {} : config;
     this.config = {
       destination: c.destination || 'console',
-      filePath: c.filePath || './rana-audit.log',
+      filePath: c.filePath || './cofounder-audit.log',
       events: c.events || ['request', 'response', 'tool_call', 'violation', 'cost', 'error'],
       includePayload: c.includePayload ?? false,
       tamperProof: c.tamperProof ?? false,
@@ -86,7 +86,7 @@ export class AuditInterceptor implements Interceptor {
 
     switch (this.config.destination) {
       case 'console':
-        console.log(`[RANA Audit] ${type} ${result} ${ctx.direction} ${event.model || ''} ${violations.length > 0 ? `violations: ${violations.length}` : ''}`);
+        console.log(`[CoFounder Audit] ${type} ${result} ${ctx.direction} ${event.model || ''} ${violations.length > 0 ? `violations: ${violations.length}` : ''}`);
         break;
       case 'file':
         try { appendFileSync(this.config.filePath, JSON.stringify(event) + '\n'); } catch {}

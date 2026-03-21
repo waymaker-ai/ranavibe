@@ -1,4 +1,4 @@
-# RANA Architecture Decision Records
+# CoFounder Architecture Decision Records
 
 > Log of significant technical and product decisions.
 
@@ -24,7 +24,7 @@ Each decision follows the ADR (Architecture Decision Record) format:
 **Status:** Accepted
 
 ### Context
-Needed to choose a language for the RANA framework that balances developer experience, type safety, and ecosystem compatibility.
+Needed to choose a language for the CoFounder framework that balances developer experience, type safety, and ecosystem compatibility.
 
 ### Decision
 Use TypeScript for all packages with strict mode enabled.
@@ -107,7 +107,7 @@ Build cost tracking, budgets, and alerts into the core framework rather than as 
 Developers already know Jest. AI testing has unique needs (semantic matching, statistical assertions).
 
 ### Decision
-Create `@rana/testing` that extends Jest with AI-specific matchers while maintaining full compatibility.
+Create `@cofounder/testing` that extends Jest with AI-specific matchers while maintaining full compatibility.
 
 ### Consequences
 - ✅ Familiar API for developers
@@ -126,7 +126,7 @@ Create `@rana/testing` that extends Jest with AI-specific matchers while maintai
 Developers spend time in terminals. Good CLI UX (like Rails) can dramatically improve developer experience.
 
 ### Decision
-Build a comprehensive CLI (`rana`) that handles all common tasks: init, config, test, deploy, etc.
+Build a comprehensive CLI (`cofounder`) that handles all common tasks: init, config, test, deploy, etc.
 
 ### Consequences
 - ✅ Fast, scriptable operations

@@ -1,20 +1,20 @@
 {
-  "name": "rana-monorepo",
+  "name": "cofounder-monorepo",
   "version": "0.1.0",
   "private": true,
-  "description": "RANA - Rapid AI Native Architecture. Quality gates and strategic validation for AI-assisted development.",
+  "description": "CoFounder - Rapid AI Native Architecture. Quality gates and strategic validation for AI-assisted development.",
   "author": "Waymaker <support@waymaker.cx>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/waymaker-ai/ranavibe.git"
+    "url": "https://github.com/waymaker-ai/cofounder.git"
   },
   "bugs": {
-    "url": "https://github.com/waymaker-ai/ranavibe/issues"
+    "url": "https://github.com/waymaker-ai/cofounder/issues"
   },
-  "homepage": "https://rana.cx",
+  "homepage": "https://cofounder.cx",
   "keywords": [
-    "rana",
+    "cofounder",
     "ai",
     "development",
     "quality-gates",

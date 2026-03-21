@@ -1,5 +1,5 @@
 /**
- * @ranavibe/ci - Type definitions
+ * @cofounder/ci - Type definitions
  * Zero-dependency CI guardrails for AI applications
  */
 
@@ -77,7 +77,7 @@ export interface ScanConfig {
   failOn: Severity;
   /** Output format */
   format: ReportFormat;
-  /** Path to .rana.yml config file */
+  /** Path to .cofounder.yml config file */
   configPath?: string;
   /** Whether to comment on PRs */
   commentOnPr: boolean;
@@ -87,7 +87,7 @@ export interface ScanConfig {
   approvedModels?: string[];
   /** Monthly budget limit in USD */
   budgetLimit?: number;
-  /** Patterns to ignore (from .ranaignore) */
+  /** Patterns to ignore (from .cofounderignore) */
   ignorePatterns: string[];
 }
 
@@ -106,8 +106,8 @@ export interface GitHubContext {
   apiUrl: string;
 }
 
-/** Structure of .rana.yml configuration */
-export interface RanaConfig {
+/** Structure of .cofounder.yml configuration */
+export interface CoFounderConfig {
   rules?: {
     [ruleId: string]: {
       enabled?: boolean;

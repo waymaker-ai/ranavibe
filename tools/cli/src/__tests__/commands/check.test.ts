@@ -24,7 +24,7 @@ describe('check command', () => {
   });
 });
 
-describe('RANA standards validation', () => {
+describe('CoFounder standards validation', () => {
   it('should validate component structure rules', () => {
     const rules = {
       maxComponentLines: 300,

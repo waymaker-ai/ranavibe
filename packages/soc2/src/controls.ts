@@ -1,27 +1,27 @@
 /**
- * SOC 2 Trust Service Criteria controls mapped to RANA features.
+ * SOC 2 Trust Service Criteria controls mapped to CoFounder features.
  *
  * Each control defines a standard SOC 2 criterion, its description,
- * and how RANA guardrails provide evidence for that criterion.
+ * and how CoFounder guardrails provide evidence for that criterion.
  */
 
 import type { ControlObjective, TrustServiceCategory, ComplianceStatus } from './types';
 
-/** Definition of a SOC 2 control with its RANA feature mapping */
+/** Definition of a SOC 2 control with its CoFounder feature mapping */
 export interface ControlDefinition {
   id: string;
   criteria: string;
   title: string;
   description: string;
   category: TrustServiceCategory;
-  ranaMapping: string[];
-  ranaMappingDescription: string;
+  cofounderMapping: string[];
+  cofounderMappingDescription: string;
   testProcedure: string;
 }
 
 /**
  * SOC 2 Trust Service Criteria controls relevant to AI systems,
- * mapped to RANA guardrail features.
+ * mapped to CoFounder guardrail features.
  */
 export const SOC2Controls: ControlDefinition[] = [
   // --- Security (Common Criteria) ---
@@ -32,11 +32,11 @@ export const SOC2Controls: ControlDefinition[] = [
     description:
       'The entity implements logical access security software, infrastructure, and architectures over protected information assets to protect them from security events.',
     category: 'security',
-    ranaMapping: ['access-policies', 'api-key-auth', 'role-based-access'],
-    ranaMappingDescription:
-      'RANA enforces API key authentication, role-based access controls on policy management, and scoped access to guardrail configurations.',
+    cofounderMapping: ['access-policies', 'api-key-auth', 'role-based-access'],
+    cofounderMappingDescription:
+      'CoFounder enforces API key authentication, role-based access controls on policy management, and scoped access to guardrail configurations.',
     testProcedure:
-      'Review RANA access policies, verify API key requirements, confirm role assignments for policy administration.',
+      'Review CoFounder access policies, verify API key requirements, confirm role assignments for policy administration.',
   },
   {
     id: 'CC6.2',
@@ -45,9 +45,9 @@ export const SOC2Controls: ControlDefinition[] = [
     description:
       'Prior to issuing system credentials and granting system access, the entity registers and authorizes new internal and external users.',
     category: 'security',
-    ranaMapping: ['api-key-management', 'user-registration'],
-    ranaMappingDescription:
-      'RANA manages API key lifecycle including generation, rotation, and revocation. All users must be registered before accessing guardrail services.',
+    cofounderMapping: ['api-key-management', 'user-registration'],
+    cofounderMappingDescription:
+      'CoFounder manages API key lifecycle including generation, rotation, and revocation. All users must be registered before accessing guardrail services.',
     testProcedure:
       'Review API key issuance process, verify key rotation policies, confirm deprovisioning procedures.',
   },
@@ -58,9 +58,9 @@ export const SOC2Controls: ControlDefinition[] = [
     description:
       'The entity authorizes, modifies, or removes access to data, software, functions, and other protected information assets based on roles.',
     category: 'security',
-    ranaMapping: ['policy-permissions', 'guardrail-scoping'],
-    ranaMappingDescription:
-      'RANA policies define which guardrails apply to which contexts. Access to modify policies is restricted by role.',
+    cofounderMapping: ['policy-permissions', 'guardrail-scoping'],
+    cofounderMappingDescription:
+      'CoFounder policies define which guardrails apply to which contexts. Access to modify policies is restricted by role.',
     testProcedure:
       'Review policy permission model, verify role-based access to guardrail configuration, test unauthorized access attempts.',
   },
@@ -71,9 +71,9 @@ export const SOC2Controls: ControlDefinition[] = [
     description:
       'The entity implements controls to prevent or detect and act upon the introduction of unauthorized or malicious software.',
     category: 'security',
-    ranaMapping: ['injection-detection', 'content-filtering', 'prompt-guard'],
-    ranaMappingDescription:
-      'RANA provides injection detection guardrails that identify and block prompt injection, jailbreak attempts, and malicious payloads in real time.',
+    cofounderMapping: ['injection-detection', 'content-filtering', 'prompt-guard'],
+    cofounderMappingDescription:
+      'CoFounder provides injection detection guardrails that identify and block prompt injection, jailbreak attempts, and malicious payloads in real time.',
     testProcedure:
       'Review injection detection rules, test with known attack patterns, verify blocking actions and alert generation.',
   },
@@ -84,9 +84,9 @@ export const SOC2Controls: ControlDefinition[] = [
     description:
       'The entity restricts the transmission, movement, and removal of information to authorized internal and external users and processes.',
     category: 'security',
-    ranaMapping: ['pii-detection', 'data-redaction', 'output-filtering'],
-    ranaMappingDescription:
-      'RANA PII detection guardrails identify and redact sensitive data before it is transmitted to LLMs or returned in responses.',
+    cofounderMapping: ['pii-detection', 'data-redaction', 'output-filtering'],
+    cofounderMappingDescription:
+      'CoFounder PII detection guardrails identify and redact sensitive data before it is transmitted to LLMs or returned in responses.',
     testProcedure:
       'Review PII detection configuration, test with sample PII data, verify redaction occurs before transmission.',
   },
@@ -97,9 +97,9 @@ export const SOC2Controls: ControlDefinition[] = [
     description:
       'The entity implements controls to prevent or detect and act upon the introduction of unauthorized changes to software.',
     category: 'security',
-    ranaMapping: ['ci-cd-scanning', 'policy-validation'],
-    ranaMappingDescription:
-      'RANA CI/CD integration scans code changes for policy violations before deployment. Policy changes require validation.',
+    cofounderMapping: ['ci-cd-scanning', 'policy-validation'],
+    cofounderMappingDescription:
+      'CoFounder CI/CD integration scans code changes for policy violations before deployment. Policy changes require validation.',
     testProcedure:
       'Review CI/CD scan configuration, verify scan execution on code changes, confirm policy validation workflow.',
   },
@@ -111,9 +111,9 @@ export const SOC2Controls: ControlDefinition[] = [
     description:
       'The entity uses detection and monitoring procedures to identify changes to configurations and new vulnerabilities.',
     category: 'security',
-    ranaMapping: ['audit-logs', 'violation-tracking', 'alert-system'],
-    ranaMappingDescription:
-      'RANA maintains comprehensive audit logs of all guardrail evaluations, policy violations, and configuration changes with full traceability.',
+    cofounderMapping: ['audit-logs', 'violation-tracking', 'alert-system'],
+    cofounderMappingDescription:
+      'CoFounder maintains comprehensive audit logs of all guardrail evaluations, policy violations, and configuration changes with full traceability.',
     testProcedure:
       'Review audit log completeness, verify violation tracking, confirm alert triggers for security events.',
   },
@@ -124,9 +124,9 @@ export const SOC2Controls: ControlDefinition[] = [
     description:
       'The entity monitors system components and the operation of those components for anomalies.',
     category: 'security',
-    ranaMapping: ['dashboard-metrics', 'real-time-alerts', 'health-monitoring'],
-    ranaMappingDescription:
-      'RANA dashboard provides real-time metrics on guardrail performance, request volumes, violation rates, and system health.',
+    cofounderMapping: ['dashboard-metrics', 'real-time-alerts', 'health-monitoring'],
+    cofounderMappingDescription:
+      'CoFounder dashboard provides real-time metrics on guardrail performance, request volumes, violation rates, and system health.',
     testProcedure:
       'Review dashboard metrics, verify alert thresholds, confirm monitoring coverage of all guardrail components.',
   },
@@ -137,9 +137,9 @@ export const SOC2Controls: ControlDefinition[] = [
     description:
       'The entity evaluates identified security events and determines whether they constitute security incidents.',
     category: 'security',
-    ranaMapping: ['violation-classification', 'severity-assessment', 'incident-workflow'],
-    ranaMappingDescription:
-      'RANA classifies violations by severity, enables investigation through detailed audit trails, and supports incident response workflows.',
+    cofounderMapping: ['violation-classification', 'severity-assessment', 'incident-workflow'],
+    cofounderMappingDescription:
+      'CoFounder classifies violations by severity, enables investigation through detailed audit trails, and supports incident response workflows.',
     testProcedure:
       'Review violation classification criteria, verify severity assessment accuracy, confirm incident escalation procedures.',
   },
@@ -151,9 +151,9 @@ export const SOC2Controls: ControlDefinition[] = [
     description:
       'The entity authorizes, designs, develops, configures, documents, tests, approves, and implements changes to infrastructure and software.',
     category: 'security',
-    ranaMapping: ['policy-versioning', 'ci-cd-scans', 'change-audit-trail'],
-    ranaMappingDescription:
-      'RANA policies are versioned with full change history. CI/CD scans validate changes before deployment. All modifications are logged.',
+    cofounderMapping: ['policy-versioning', 'ci-cd-scans', 'change-audit-trail'],
+    cofounderMappingDescription:
+      'CoFounder policies are versioned with full change history. CI/CD scans validate changes before deployment. All modifications are logged.',
     testProcedure:
       'Review policy version history, verify CI/CD scan results, confirm change approval workflow and audit trail.',
   },
@@ -165,9 +165,9 @@ export const SOC2Controls: ControlDefinition[] = [
     description:
       'The entity maintains, monitors, and evaluates current processing capacity and use of system components to manage capacity demand.',
     category: 'availability',
-    ranaMapping: ['performance-metrics', 'capacity-monitoring', 'rate-limiting'],
-    ranaMappingDescription:
-      'RANA monitors guardrail processing capacity, tracks response times, and supports rate limiting to manage demand.',
+    cofounderMapping: ['performance-metrics', 'capacity-monitoring', 'rate-limiting'],
+    cofounderMappingDescription:
+      'CoFounder monitors guardrail processing capacity, tracks response times, and supports rate limiting to manage demand.',
     testProcedure:
       'Review capacity metrics, verify rate limiting configuration, confirm performance SLA compliance.',
   },
@@ -178,9 +178,9 @@ export const SOC2Controls: ControlDefinition[] = [
     description:
       'The entity authorizes, designs, develops, implements, operates, approves, maintains, and monitors environmental protections.',
     category: 'availability',
-    ranaMapping: ['fallback-mechanisms', 'graceful-degradation'],
-    ranaMappingDescription:
-      'RANA guardrails support fallback mechanisms when primary detection fails and graceful degradation under high load.',
+    cofounderMapping: ['fallback-mechanisms', 'graceful-degradation'],
+    cofounderMappingDescription:
+      'CoFounder guardrails support fallback mechanisms when primary detection fails and graceful degradation under high load.',
     testProcedure:
       'Test fallback behavior when primary guardrails are unavailable, verify graceful degradation under load.',
   },
@@ -192,9 +192,9 @@ export const SOC2Controls: ControlDefinition[] = [
     description:
       'The entity implements policies and procedures over system processing to result in products, services, and reporting to meet objectives.',
     category: 'processing_integrity',
-    ranaMapping: ['guardrail-accuracy', 'false-positive-tracking', 'validation-rules'],
-    ranaMappingDescription:
-      'RANA tracks guardrail accuracy metrics including false positive/negative rates and provides validation rules for content processing.',
+    cofounderMapping: ['guardrail-accuracy', 'false-positive-tracking', 'validation-rules'],
+    cofounderMappingDescription:
+      'CoFounder tracks guardrail accuracy metrics including false positive/negative rates and provides validation rules for content processing.',
     testProcedure:
       'Review accuracy metrics, analyze false positive rates, verify validation rule effectiveness.',
   },
@@ -206,9 +206,9 @@ export const SOC2Controls: ControlDefinition[] = [
     description:
       'The entity identifies and maintains confidential information to meet the entity\'s objectives related to confidentiality.',
     category: 'confidentiality',
-    ranaMapping: ['data-classification', 'pii-categories', 'sensitivity-levels'],
-    ranaMappingDescription:
-      'RANA classifies data by sensitivity level, identifies PII categories, and applies appropriate guardrails based on classification.',
+    cofounderMapping: ['data-classification', 'pii-categories', 'sensitivity-levels'],
+    cofounderMappingDescription:
+      'CoFounder classifies data by sensitivity level, identifies PII categories, and applies appropriate guardrails based on classification.',
     testProcedure:
       'Review data classification rules, verify PII category coverage, confirm sensitivity-based guardrail application.',
   },
@@ -219,9 +219,9 @@ export const SOC2Controls: ControlDefinition[] = [
     description:
       'The entity disposes of confidential information to meet the entity\'s objectives related to confidentiality.',
     category: 'confidentiality',
-    ranaMapping: ['data-redaction', 'log-retention-policies', 'data-minimization'],
-    ranaMappingDescription:
-      'RANA redacts sensitive data in transit, enforces log retention policies, and supports data minimization principles.',
+    cofounderMapping: ['data-redaction', 'log-retention-policies', 'data-minimization'],
+    cofounderMappingDescription:
+      'CoFounder redacts sensitive data in transit, enforces log retention policies, and supports data minimization principles.',
     testProcedure:
       'Review redaction effectiveness, verify log retention enforcement, confirm data minimization practices.',
   },
@@ -233,9 +233,9 @@ export const SOC2Controls: ControlDefinition[] = [
     description:
       'Personal information is collected consistent with the entity\'s objectives related to privacy.',
     category: 'privacy',
-    ranaMapping: ['pii-policies', 'consent-tracking', 'collection-limits'],
-    ranaMappingDescription:
-      'RANA PII detection policies define what personal information is identified and how it is handled, supporting collection limitation principles.',
+    cofounderMapping: ['pii-policies', 'consent-tracking', 'collection-limits'],
+    cofounderMappingDescription:
+      'CoFounder PII detection policies define what personal information is identified and how it is handled, supporting collection limitation principles.',
     testProcedure:
       'Review PII policy configuration, verify collection limitation rules, confirm consent tracking mechanisms.',
   },
@@ -246,9 +246,9 @@ export const SOC2Controls: ControlDefinition[] = [
     description:
       'The entity retains personal information consistent with the entity\'s objectives related to privacy.',
     category: 'privacy',
-    ranaMapping: ['data-retention-rules', 'log-expiration', 'purge-policies'],
-    ranaMappingDescription:
-      'RANA supports configurable data retention rules for audit logs and detected PII, with automated purge capabilities.',
+    cofounderMapping: ['data-retention-rules', 'log-expiration', 'purge-policies'],
+    cofounderMappingDescription:
+      'CoFounder supports configurable data retention rules for audit logs and detected PII, with automated purge capabilities.',
     testProcedure:
       'Review data retention configuration, verify log expiration enforcement, confirm purge policy execution.',
   },
@@ -259,9 +259,9 @@ export const SOC2Controls: ControlDefinition[] = [
     description:
       'The entity collects and maintains accurate, up-to-date, complete, and relevant personal information.',
     category: 'privacy',
-    ranaMapping: ['content-validation', 'data-accuracy-checks', 'quality-metrics'],
-    ranaMappingDescription:
-      'RANA content validation guardrails ensure data quality by checking completeness and accuracy of processed content.',
+    cofounderMapping: ['content-validation', 'data-accuracy-checks', 'quality-metrics'],
+    cofounderMappingDescription:
+      'CoFounder content validation guardrails ensure data quality by checking completeness and accuracy of processed content.',
     testProcedure:
       'Review content validation rules, verify data quality metrics, confirm accuracy of guardrail assessments.',
   },
@@ -272,9 +272,9 @@ export const SOC2Controls: ControlDefinition[] = [
     description:
       'The entity discloses personal information to third parties only for the purposes identified in the notice.',
     category: 'privacy',
-    ranaMapping: ['output-filtering', 'third-party-data-controls', 'disclosure-policies'],
-    ranaMappingDescription:
-      'RANA output filtering prevents unauthorized disclosure of personal information to LLM providers and downstream consumers.',
+    cofounderMapping: ['output-filtering', 'third-party-data-controls', 'disclosure-policies'],
+    cofounderMappingDescription:
+      'CoFounder output filtering prevents unauthorized disclosure of personal information to LLM providers and downstream consumers.',
     testProcedure:
       'Review output filtering rules, verify third-party data controls, confirm disclosure policy enforcement.',
   },
@@ -307,10 +307,10 @@ export function createControlObjective(
     title: definition.title,
     description: definition.description,
     category: definition.category,
-    ranaMapping: definition.ranaMapping,
+    cofounderMapping: definition.cofounderMapping,
     evidence: [],
     status,
-    notes: definition.ranaMappingDescription,
+    notes: definition.cofounderMappingDescription,
   };
 }
 

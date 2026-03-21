@@ -20,7 +20,7 @@ export const pciPolicy: Policy = {
       'Policy enforcing PCI DSS v4.0 requirements. Covers cardholder data protection (Req 3), ' +
       'encryption in transit (Req 4), access control (Req 7-8), logging/monitoring (Req 10), ' +
       'and network security (Req 1-2).',
-    author: 'ranavibe',
+    author: 'cofounder',
     tags: ['payment', 'pci-dss', 'cardholder', 'compliance', 'financial'],
     framework: 'PCI-DSS-v4.0',
   },

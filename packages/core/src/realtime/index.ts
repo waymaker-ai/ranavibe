@@ -4,7 +4,7 @@
  *
  * @example
  * ```typescript
- * import { createVoiceSession, VoiceSession } from '@rana/core';
+ * import { createVoiceSession, VoiceSession } from '@cofounder/core';
  *
  * // Create voice session
  * const session = createVoiceSession({

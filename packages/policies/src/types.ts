@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// @ranavibe/policies - Core type definitions
+// @cofounder/policies - Core type definitions
 // ---------------------------------------------------------------------------
 
 /** Severity level for a violation. */

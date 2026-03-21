@@ -1,6 +1,6 @@
-# @rana/rag
+# @cofounder/rag
 
-Advanced RAG (Retrieval Augmented Generation) for the RANA Framework.
+Advanced RAG (Retrieval Augmented Generation) for the CoFounder Framework.
 
 ## Features
 
@@ -15,30 +15,30 @@ Advanced RAG (Retrieval Augmented Generation) for the RANA Framework.
 ## Installation
 
 ```bash
-npm install @rana/rag
+npm install @cofounder/rag
 ```
 
 ## Quick Start
 
 ```typescript
-import { createRAGPipeline, RAGPresets } from '@rana/rag';
+import { createRAGPipeline, RAGPresets } from '@cofounder/rag';
 
 // Use a preset for quick setup
 const pipeline = RAGPresets.balanced();
 
 // Index your documents
 await pipeline.index([
-  { id: 'doc1', content: 'RANA is an AI development framework...' },
+  { id: 'doc1', content: 'CoFounder is an AI development framework...' },
   { id: 'doc2', content: 'RAG enables knowledge-grounded AI...' },
 ]);
 
 // Query the pipeline
 const result = await pipeline.query({
-  query: 'What is RANA?',
+  query: 'What is CoFounder?',
 });
 
 console.log(result.answer);
-// "RANA is an AI development framework that..."
+// "CoFounder is an AI development framework that..."
 
 console.log(result.citations);
 // [{ text: '...', source: 'doc1', score: 0.95 }]
@@ -49,7 +49,7 @@ console.log(result.citations);
 ### Custom Pipeline
 
 ```typescript
-import { createRAGPipeline } from '@rana/rag';
+import { createRAGPipeline } from '@cofounder/rag';
 
 const pipeline = createRAGPipeline({
   // Chunking strategy
@@ -103,7 +103,7 @@ const pipeline = createRAGPipeline({
 ### Presets
 
 ```typescript
-import { RAGPresets } from '@rana/rag';
+import { RAGPresets } from '@cofounder/rag';
 
 // Fast: Optimized for speed
 const fast = RAGPresets.fast();
@@ -134,7 +134,7 @@ const chat = RAGPresets.chat();
 Splits text based on semantic boundaries using embedding similarity:
 
 ```typescript
-import { SemanticChunker } from '@rana/rag';
+import { SemanticChunker } from '@cofounder/rag';
 
 const chunker = new SemanticChunker();
 const chunks = await chunker.chunk(text, {
@@ -149,7 +149,7 @@ const chunks = await chunker.chunk(text, {
 Preserves markdown structure (headers, code blocks, lists):
 
 ```typescript
-import { MarkdownChunker } from '@rana/rag';
+import { MarkdownChunker } from '@cofounder/rag';
 
 const chunker = new MarkdownChunker();
 const chunks = await chunker.chunk(markdown, {
@@ -164,7 +164,7 @@ const chunks = await chunker.chunk(markdown, {
 Preserves function and class boundaries:
 
 ```typescript
-import { CodeChunker } from '@rana/rag';
+import { CodeChunker } from '@cofounder/rag';
 
 const chunker = new CodeChunker();
 const chunks = await chunker.chunk(code, {
@@ -182,7 +182,7 @@ const chunks = await chunker.chunk(code, {
 Combines vector and keyword search:
 
 ```typescript
-import { HybridRetriever } from '@rana/rag';
+import { HybridRetriever } from '@cofounder/rag';
 
 const retriever = new HybridRetriever();
 await retriever.index(chunks);
@@ -207,7 +207,7 @@ const results = await retriever.retrieve(query, {
 More accurate than bi-encoder but slower:
 
 ```typescript
-import { CrossEncoderReranker } from '@rana/rag';
+import { CrossEncoderReranker } from '@cofounder/rag';
 
 const reranker = new CrossEncoderReranker();
 const reranked = await reranker.rerank(query, results, {
@@ -221,7 +221,7 @@ const reranked = await reranker.rerank(query, results, {
 Maximize relevance while maintaining diversity:
 
 ```typescript
-import { DiversityReranker } from '@rana/rag';
+import { DiversityReranker } from '@cofounder/rag';
 
 const reranker = new DiversityReranker();
 const reranked = await reranker.rerank(query, results, {
@@ -273,7 +273,7 @@ synthesizer: {
 ### Setup
 
 ```tsx
-import { RAGProvider, RAGPresets } from '@rana/rag';
+import { RAGProvider, RAGPresets } from '@cofounder/rag';
 
 const pipeline = RAGPresets.balanced();
 
@@ -289,7 +289,7 @@ function App() {
 ### useRAG Hook
 
 ```tsx
-import { useRAG } from '@rana/rag';
+import { useRAG } from '@cofounder/rag';
 
 function SearchComponent() {
   const { query, answer, citations, isLoading, error } = useRAG();
@@ -317,7 +317,7 @@ function SearchComponent() {
 ### useRAGStream Hook
 
 ```tsx
-import { useRAGStream } from '@rana/rag';
+import { useRAGStream } from '@cofounder/rag';
 
 function StreamingSearch() {
   const { queryStream, answer, citations, isStreaming, stop } = useRAGStream();
@@ -338,7 +338,7 @@ function StreamingSearch() {
 ### useRAGIndex Hook
 
 ```tsx
-import { useRAGIndex } from '@rana/rag';
+import { useRAGIndex } from '@cofounder/rag';
 
 function DocumentManager() {
   const { index, deleteDocuments, isIndexing, progress, documentCount } = useRAGIndex();

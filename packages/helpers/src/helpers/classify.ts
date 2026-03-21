@@ -3,7 +3,7 @@
  *
  * @example
  * ```typescript
- * import { classify } from '@rana/helpers';
+ * import { classify } from '@cofounder/helpers';
  *
  * const result = await classify('This is spam!', ['spam', 'ham', 'urgent']);
  * console.log(result.label); // "spam"

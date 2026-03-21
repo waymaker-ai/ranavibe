@@ -1,21 +1,21 @@
 /**
- * RANA Budget Command
+ * CoFounder Budget Command
  *
  * Manage cost budget limits and enforcement
  *
  * @example
  * ```bash
  * # Set a daily budget
- * rana budget:set --limit 10 --period daily
+ * cofounder budget:set --limit 10 --period daily
  *
  * # Set a hard limit that blocks API calls
- * rana budget:set --limit 5 --period daily --action block
+ * cofounder budget:set --limit 5 --period daily --action block
  *
  * # View current budget status
- * rana budget
+ * cofounder budget
  *
  * # Clear budget enforcement
- * rana budget:clear
+ * cofounder budget:clear
  * ```
  */
 
@@ -38,7 +38,7 @@ interface StoredBudget extends BudgetConfig {
   periodStart: string;
 }
 
-const BUDGET_FILE = '.rana/budget.json';
+const BUDGET_FILE = '.cofounder/budget.json';
 
 /**
  * Load stored budget configuration
@@ -62,10 +62,10 @@ function loadBudget(): StoredBudget | null {
  */
 function saveBudget(budget: StoredBudget): void {
   const budgetPath = path.join(process.cwd(), BUDGET_FILE);
-  const ranaDir = path.dirname(budgetPath);
+  const cofounderDir = path.dirname(budgetPath);
 
-  if (!fs.existsSync(ranaDir)) {
-    fs.mkdirSync(ranaDir, { recursive: true });
+  if (!fs.existsSync(cofounderDir)) {
+    fs.mkdirSync(cofounderDir, { recursive: true });
   }
 
   fs.writeFileSync(budgetPath, JSON.stringify(budget, null, 2));
@@ -75,17 +75,17 @@ function saveBudget(budget: StoredBudget): void {
  * Show current budget status
  */
 export async function budgetCommand(): Promise<void> {
-  console.log(chalk.bold.cyan('\n💰 RANA Budget Status\n'));
+  console.log(chalk.bold.cyan('\n💰 CoFounder Budget Status\n'));
 
   const budget = loadBudget();
 
   if (!budget) {
     console.log(chalk.yellow('No budget configured.'));
-    console.log(chalk.gray('\nSet a budget with: rana budget:set --limit <amount>\n'));
+    console.log(chalk.gray('\nSet a budget with: cofounder budget:set --limit <amount>\n'));
     console.log(chalk.gray('Examples:'));
-    console.log(chalk.gray('  rana budget:set --limit 10 --period daily'));
-    console.log(chalk.gray('  rana budget:set --limit 50 --period weekly --action block'));
-    console.log(chalk.gray('  rana budget:set --limit 100 --period monthly --warning 80\n'));
+    console.log(chalk.gray('  cofounder budget:set --limit 10 --period daily'));
+    console.log(chalk.gray('  cofounder budget:set --limit 50 --period weekly --action block'));
+    console.log(chalk.gray('  cofounder budget:set --limit 100 --period monthly --warning 80\n'));
     return;
   }
 
@@ -153,7 +153,7 @@ export async function setBudgetCommand(options: {
   bypass?: boolean;
   interactive?: boolean;
 }): Promise<void> {
-  console.log(chalk.bold.cyan('\n💰 Set RANA Budget\n'));
+  console.log(chalk.bold.cyan('\n💰 Set CoFounder Budget\n'));
 
   let config: BudgetConfig;
 
@@ -256,8 +256,8 @@ export async function setBudgetCommand(options: {
     console.log(chalk.gray('   Use --critical flag on individual calls to bypass if needed.'));
   }
 
-  console.log(chalk.gray('\nView status: rana budget'));
-  console.log(chalk.gray('Clear budget: rana budget:clear\n'));
+  console.log(chalk.gray('\nView status: cofounder budget'));
+  console.log(chalk.gray('Clear budget: cofounder budget:clear\n'));
 }
 
 /**
@@ -299,7 +299,7 @@ export async function addSpentCommand(amount: number): Promise<void> {
   const budget = loadBudget();
 
   if (!budget) {
-    console.log(chalk.yellow('No budget configured. Set one first with: rana budget:set\n'));
+    console.log(chalk.yellow('No budget configured. Set one first with: cofounder budget:set\n'));
     return;
   }
 
@@ -354,7 +354,7 @@ export async function budgetPresetCommand(preset: string): Promise<void> {
     console.log(chalk.gray('  • development - $10/day, warnings only'));
     console.log(chalk.gray('  • staging     - $50/week, blocking'));
     console.log(chalk.gray('  • production  - $100/month, blocking'));
-    console.log(chalk.gray('\nUsage: rana budget:preset <name>\n'));
+    console.log(chalk.gray('\nUsage: cofounder budget:preset <name>\n'));
     return;
   }
 
@@ -372,5 +372,5 @@ export async function budgetPresetCommand(preset: string): Promise<void> {
   console.log(`  Limit:    $${config.limit.toFixed(2)} per ${config.period}`);
   console.log(`  Action:   ${config.action}`);
   console.log(`  Warning:  ${config.warningThreshold}%`);
-  console.log(chalk.gray('\nView status: rana budget\n'));
+  console.log(chalk.gray('\nView status: cofounder budget\n'));
 }

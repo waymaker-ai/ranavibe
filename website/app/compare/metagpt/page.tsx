@@ -23,7 +23,7 @@ team.run_project(idea="Build a weather app")
 
 # Complex setup with roles, actions, and memories
 # Requires understanding MetaGPT's role-based architecture`,
-    rana: `import { createTeam, createOrchestrator } from '@rana/agents';
+    cofounder: `import { createTeam, createOrchestrator } from '@cofounder/agents';
 
 const orchestrator = createOrchestrator();
 
@@ -71,7 +71,7 @@ class CustomRole(Role):
         return Message(content=result, role=self.profile)
 
 # Requires understanding OOP patterns and async execution`,
-    rana: `import { AgentOrchestrator } from '@rana/agents';
+    cofounder: `import { AgentOrchestrator } from '@cofounder/agents';
 
 const orchestrator = new AgentOrchestrator();
 
@@ -118,7 +118,7 @@ class MyRole(Role):
         # Access memory for context
         memories = self.rc.memory.get()
         # Complex memory management`,
-    rana: `import { SharedStateManager } from '@rana/agents';
+    cofounder: `import { SharedStateManager } from '@cofounder/agents';
 
 const stateManager = new SharedStateManager({ taskCount: 0 });
 
@@ -159,7 +159,7 @@ for role in team.roles:
 
 # Count votes manually
 consensus = sum(results) > len(results) / 2`,
-    rana: `import { createConsensusGroup } from '@rana/agents';
+    cofounder: `import { createConsensusGroup } from '@cofounder/agents';
 
 const { vote } = createConsensusGroup([
   { id: 'reviewer-1', name: 'Reviewer 1', capabilities: ['review'] },
@@ -194,11 +194,11 @@ export default function MetaGPTComparisonPage() {
 
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            RANA vs MetaGPT
+            CoFounder vs MetaGPT
           </h1>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
             MetaGPT pioneered multi-agent frameworks but requires Python and
-            complex OOP patterns. RANA brings the same power to TypeScript with
+            complex OOP patterns. CoFounder brings the same power to TypeScript with
             a simpler API.
           </p>
         </div>
@@ -243,14 +243,14 @@ export default function MetaGPTComparisonPage() {
                 <div>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="px-3 py-1 rounded-full bg-green-500/20 text-green-400 text-sm">
-                      RANA
+                      CoFounder
                     </span>
                     <span className="text-gray-500 text-sm">
-                      {example.rana.split('\n').length} lines
+                      {example.cofounder.split('\n').length} lines
                     </span>
                   </div>
                   <pre className="p-4 rounded-xl bg-gray-900 border border-gray-800 overflow-x-auto text-sm">
-                    <code className="text-gray-300">{example.rana}</code>
+                    <code className="text-gray-300">{example.cofounder}</code>
                   </pre>
                 </div>
               </div>
@@ -265,7 +265,7 @@ export default function MetaGPTComparisonPage() {
               <thead>
                 <tr className="border-b border-gray-800">
                   <th className="py-4 px-4 font-semibold">Feature</th>
-                  <th className="py-4 px-4 font-semibold text-center">RANA</th>
+                  <th className="py-4 px-4 font-semibold text-center">CoFounder</th>
                   <th className="py-4 px-4 font-semibold text-center">MetaGPT</th>
                 </tr>
               </thead>
@@ -311,10 +311,10 @@ export default function MetaGPTComparisonPage() {
         </div>
 
         <div className="mt-16 p-8 rounded-2xl border border-gray-800 bg-gradient-to-br from-blue-900/20 to-purple-900/20">
-          <h2 className="text-2xl font-semibold mb-6">When to Choose RANA</h2>
+          <h2 className="text-2xl font-semibold mb-6">When to Choose CoFounder</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <h3 className="text-lg font-medium text-green-400 mb-4">Choose RANA if you:</h3>
+              <h3 className="text-lg font-medium text-green-400 mb-4">Choose CoFounder if you:</h3>
               <ul className="space-y-2 text-gray-300">
                 <li className="flex items-start gap-2">
                   <span className="text-green-400 mt-1">✓</span>
@@ -364,10 +364,10 @@ export default function MetaGPTComparisonPage() {
 
         <div className="mt-16 text-center">
           <Link
-            href="https://github.com/waymaker-ai/ranavibe"
+            href="https://github.com/waymaker-ai/cofounder"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-black font-semibold hover:bg-gray-200 transition-colors"
           >
-            Try RANA Now
+            Try CoFounder Now
             <span>→</span>
           </Link>
         </div>

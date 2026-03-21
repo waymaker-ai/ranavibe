@@ -40,7 +40,7 @@ export class LLMAgent extends BaseAgent {
   }
 
   /**
-   * Set the chat function (from @rana/core)
+   * Set the chat function (from @cofounder/core)
    */
   setLLM(chatFn: (messages: any[], options: any) => Promise<LLMResponse>): this {
     this.chatFn = chatFn;

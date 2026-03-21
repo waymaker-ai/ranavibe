@@ -30,7 +30,7 @@ function generateId(prefix: string = ''): string {
  */
 function generateApiKey(): string {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  let key = 'rana_';
+  let key = 'cofounder_';
   for (let i = 0; i < 40; i++) {
     key += chars.charAt(Math.floor(Math.random() * chars.length));
   }
@@ -383,7 +383,7 @@ export class TenantManager {
 /**
  * Evaluate content against a policy assignment.
  * This is a basic pattern-matching implementation.
- * In production, this would integrate with RANA core detectors.
+ * In production, this would integrate with CoFounder core detectors.
  */
 function evaluateAgainstPolicy(
   content: string,

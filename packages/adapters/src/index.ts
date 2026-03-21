@@ -1,7 +1,7 @@
 /**
- * @ranavibe/adapters — Integration adapters for enterprise guardrail products.
+ * @cofounder/adapters — Integration adapters for enterprise guardrail products.
  *
- * Provides unified conversion between RANA policies and Lakera Guard,
+ * Provides unified conversion between CoFounder policies and Lakera Guard,
  * AWS Bedrock Guardrails, and Galileo evaluation formats.
  */
 
@@ -18,7 +18,7 @@ export type {
   PolicyMapping,
   RanaAction,
   RanaCategory,
-  RanaPolicyConfig,
+  CoFounderPolicyConfig,
   Severity,
   UnifiedAdapterConfig,
   UnifiedFinding,

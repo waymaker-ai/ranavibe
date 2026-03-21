@@ -35,7 +35,7 @@ export function guardTool<T extends ToolDefinition>(tool: T, guards: Partial<Gua
       });
 
       if (inputResult.blocked) {
-        throw new Error(`[RANA Guard] Tool "${tool.name}" blocked: ${inputResult.reason}`);
+        throw new Error(`[CoFounder Guard] Tool "${tool.name}" blocked: ${inputResult.reason}`);
       }
 
       const result = await originalExecute(...args);
@@ -46,7 +46,7 @@ export function guardTool<T extends ToolDefinition>(tool: T, guards: Partial<Gua
         });
 
         if (outputResult.blocked) {
-          throw new Error(`[RANA Guard] Tool "${tool.name}" output blocked: ${outputResult.reason}`);
+          throw new Error(`[CoFounder Guard] Tool "${tool.name}" output blocked: ${outputResult.reason}`);
         }
 
         return outputResult.transformed || result;

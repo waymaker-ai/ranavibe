@@ -4,11 +4,11 @@ import {
   ColangRule,
   ConversionResult,
   ParsedColang,
-  RanaPolicyRule,
+  CoFounderPolicyRule,
 } from './types';
 
 /**
- * Convert parsed Colang to RANA policy format.
+ * Convert parsed Colang to CoFounder policy format.
  *
  * Conversion mapping:
  * - Dialog flows with refusal patterns -> content rules (block action)
@@ -21,7 +21,7 @@ export function convertToPolicy(
   colang: ParsedColang,
   sourceName: string = 'colang-import',
 ): ConversionResult {
-  const rules: RanaPolicyRule[] = [];
+  const rules: CoFounderPolicyRule[] = [];
   const warnings: string[] = [];
   let ruleIndex = 0;
 
@@ -76,7 +76,7 @@ export function convertToPolicy(
  * Convert a user message definition to an input validation rule.
  * User messages define patterns that categorize user intents.
  */
-function convertUserMessage(msg: ColangMessage, id: string): RanaPolicyRule | null {
+function convertUserMessage(msg: ColangMessage, id: string): CoFounderPolicyRule | null {
   if (msg.examples.length === 0) return null;
 
   // Check if this is a prohibited topic (name contains "ask about" harmful things)
@@ -97,7 +97,7 @@ function convertUserMessage(msg: ColangMessage, id: string): RanaPolicyRule | nu
  * Convert a bot message definition to an output rule.
  * Bot messages define response templates.
  */
-function convertBotMessage(msg: ColangMessage, id: string): RanaPolicyRule | null {
+function convertBotMessage(msg: ColangMessage, id: string): CoFounderPolicyRule | null {
   if (msg.examples.length === 0) return null;
 
   // Determine if this is a refusal or informational response
@@ -118,15 +118,15 @@ function convertBotMessage(msg: ColangMessage, id: string): RanaPolicyRule | nul
 }
 
 /**
- * Convert a flow to RANA policy rules.
+ * Convert a flow to CoFounder policy rules.
  * Flows that pair user intents with bot refusals become content rules.
  */
 function convertFlow(
   flow: ColangFlow,
   nextId: () => string,
   warnings: string[],
-): RanaPolicyRule[] {
-  const rules: RanaPolicyRule[] = [];
+): CoFounderPolicyRule[] {
+  const rules: CoFounderPolicyRule[] = [];
 
   // Look for patterns: user says X -> bot refuses
   // This indicates a content restriction
@@ -206,14 +206,14 @@ function convertFlow(
 }
 
 /**
- * Convert a Colang rule to RANA policy rules.
+ * Convert a Colang rule to CoFounder policy rules.
  */
 function convertRule(
   colangRule: ColangRule,
   nextId: () => string,
   warnings: string[],
-): RanaPolicyRule[] {
-  const rules: RanaPolicyRule[] = [];
+): CoFounderPolicyRule[] {
+  const rules: CoFounderPolicyRule[] = [];
 
   // Check if any action is a stop (blocking rule)
   const hasStop = colangRule.actions.some((a) => a.type === 'stop');
@@ -249,7 +249,7 @@ function convertRule(
   const executeActions = colangRule.actions.filter((a) => a.type === 'execute');
   for (const action of executeActions) {
     warnings.push(
-      `Rule "${colangRule.name}": Execute action "${action.target}" requires manual mapping to RANA action`,
+      `Rule "${colangRule.name}": Execute action "${action.target}" requires manual mapping to CoFounder action`,
     );
   }
 

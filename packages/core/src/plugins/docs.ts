@@ -1,9 +1,9 @@
 /**
- * Documentation Chatbot Plugin for RANA
+ * Documentation Chatbot Plugin for CoFounder
  * AI-powered documentation Q&A with semantic search and citations
  */
 
-import type { RanaClient } from '../client';
+import type { CoFounderClient } from '../client';
 import type { Message } from '../types';
 import {
   VectorMemory,
@@ -96,8 +96,8 @@ export interface DocsAnswer {
  * DocsPlugin configuration
  */
 export interface DocsPluginConfig {
-  /** RANA client instance */
-  rana: RanaClient;
+  /** CoFounder client instance */
+  cofounder: CoFounderClient;
 
   /** Documentation sources to ingest */
   sources?: DocumentSource[];
@@ -252,17 +252,17 @@ function extractSection(content: string, offset: number): string | undefined {
 }
 
 // ============================================================================
-// Simple Embedding Provider (uses RANA)
+// Simple Embedding Provider (uses CoFounder)
 // ============================================================================
 
 /**
- * Simple embedding provider that uses RANA chat completion
+ * Simple embedding provider that uses CoFounder chat completion
  * This is a basic implementation - in production, use a proper embedding API
  */
 class SimpleEmbeddingProvider implements EmbeddingProvider {
   readonly dimensions: number = 384; // Small fixed size for demo
 
-  constructor(private rana: RanaClient, private model?: string) {}
+  constructor(private cofounder: CoFounderClient, private model?: string) {}
 
   async embed(text: string): Promise<number[]> {
     // This is a simple hash-based embedding for demo purposes
@@ -312,12 +312,12 @@ class SimpleEmbeddingProvider implements EmbeddingProvider {
  *
  * @example
  * ```typescript
- * import { createRana } from '@rana/core';
- * import { DocsPlugin } from '@rana/core/plugins/docs';
+ * import { createCoFounder } from '@cofounder/core';
+ * import { DocsPlugin } from '@cofounder/core/plugins/docs';
  *
- * const rana = createRana({ ... });
+ * const cofounder = createCoFounder({ ... });
  * const docs = new DocsPlugin({
- *   rana,
+ *   cofounder,
  *   sources: [
  *     { type: 'markdown', location: './docs' },
  *     { type: 'github', location: 'owner/repo' }
@@ -356,7 +356,7 @@ export class DocsPlugin {
       enableContext: true,
       maxHistory: 5,
       ...config,
-      rana: config.rana,
+      cofounder: config.cofounder,
       persistencePath: config.persistencePath,
       embeddingProvider: config.embeddingProvider,
     } as Required<DocsPluginConfig>;
@@ -378,7 +378,7 @@ export class DocsPlugin {
 
     // Create embedding provider if not provided
     const embeddingProvider = this.config.embeddingProvider ||
-      new SimpleEmbeddingProvider(this.config.rana, this.config.embeddingModel);
+      new SimpleEmbeddingProvider(this.config.cofounder, this.config.embeddingModel);
 
     // Create vector memory
     if (this.config.persistencePath) {
@@ -632,7 +632,7 @@ Please provide a clear, accurate answer based on the documentation above. Cite y
     );
 
     // Get answer from LLM
-    const response = await this.config.rana.chat({
+    const response = await this.config.cofounder.chat({
       model: this.config.chatModel,
       messages,
       temperature: 0.3,
@@ -710,7 +710,7 @@ Please provide a clear, accurate answer based on the documentation above. Cite y
     answer: string
   ): Promise<string[]> {
     try {
-      const response = await this.config.rana.chat({
+      const response = await this.config.cofounder.chat({
         model: this.config.chatModel,
         messages: [
           {

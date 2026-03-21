@@ -1,5 +1,5 @@
 /**
- * Unified adapter — runs RANA policies alongside enterprise adapters and
+ * Unified adapter — runs CoFounder policies alongside enterprise adapters and
  * merges all findings into a single result.
  */
 
@@ -9,7 +9,7 @@ import type {
   PolicyMapping,
   RanaAction,
   RanaCategory,
-  RanaPolicyConfig,
+  CoFounderPolicyConfig,
   UnifiedAdapterConfig,
   UnifiedFinding,
 } from './types';
@@ -18,7 +18,7 @@ import { createBedrockAdapter } from './bedrock/adapter';
 import { createGalileoAdapter } from './galileo/adapter';
 
 // ---------------------------------------------------------------------------
-// Built-in RANA "local" evaluator (lightweight pattern checks)
+// Built-in CoFounder "local" evaluator (lightweight pattern checks)
 // ---------------------------------------------------------------------------
 
 const PII_PATTERNS: Array<{ label: string; pattern: RegExp }> = [
@@ -36,7 +36,7 @@ const INJECTION_PATTERNS: Array<{ label: string; pattern: RegExp }> = [
   { label: 'DAN jailbreak', pattern: /\bDAN\b.*\b(?:Do\s+Anything\s+Now|jailbreak)\b/gi },
 ];
 
-function runLocalRana(text: string, policies: RanaPolicyConfig): UnifiedFinding[] {
+function runLocalRana(text: string, policies: CoFounderPolicyConfig): UnifiedFinding[] {
   const findings: UnifiedFinding[] = [];
 
   if (policies.pii && policies.pii !== 'allow') {
@@ -45,7 +45,7 @@ function runLocalRana(text: string, policies: RanaPolicyConfig): UnifiedFinding[
       if (matches) {
         for (const match of matches) {
           findings.push({
-            source: 'rana',
+            source: 'cofounder',
             category: 'pii',
             severity: 'high',
             action: policies.pii,
@@ -61,7 +61,7 @@ function runLocalRana(text: string, policies: RanaPolicyConfig): UnifiedFinding[
     for (const { label, pattern } of INJECTION_PATTERNS) {
       if (pattern.test(text)) {
         findings.push({
-          source: 'rana',
+          source: 'cofounder',
           category: 'injection',
           severity: 'critical',
           action: policies.injection,
@@ -137,22 +137,22 @@ class UnifiedAdapter {
   }
 
   /**
-   * Evaluate text against all active adapters (RANA + enterprise) in parallel.
+   * Evaluate text against all active adapters (CoFounder + enterprise) in parallel.
    */
   async evaluate(text: string): Promise<UnifiedResult> {
     const start = Date.now();
     const allFindings: UnifiedFinding[] = [];
     const adapterResults: AdapterResult[] = [];
 
-    // Run local RANA checks synchronously
-    if (this.config.rana) {
-      const ranaFindings = runLocalRana(text, this.config.rana);
-      allFindings.push(...ranaFindings);
+    // Run local CoFounder checks synchronously
+    if (this.config.cofounder) {
+      const cofounderFindings = runLocalRana(text, this.config.cofounder);
+      allFindings.push(...cofounderFindings);
 
       adapterResults.push({
-        adapter: 'rana',
-        passed: ranaFindings.every((f) => f.action !== 'block'),
-        findings: ranaFindings,
+        adapter: 'cofounder',
+        passed: cofounderFindings.every((f) => f.action !== 'block'),
+        findings: cofounderFindings,
         latencyMs: Date.now() - start,
         timestamp: new Date().toISOString(),
       });
@@ -174,7 +174,7 @@ class UnifiedAdapter {
             passed: false,
             findings: [
               {
-                source: 'rana',
+                source: 'cofounder',
                 category: 'custom',
                 severity: 'critical',
                 action: 'flag',
@@ -203,7 +203,7 @@ class UnifiedAdapter {
    */
   getActiveAdapters(): string[] {
     const names = this.adapters.map((a) => a.name);
-    if (this.config.rana) names.unshift('rana');
+    if (this.config.cofounder) names.unshift('cofounder');
     return names;
   }
 }
@@ -213,13 +213,13 @@ class UnifiedAdapter {
 // ---------------------------------------------------------------------------
 
 /**
- * Create a unified adapter that evaluates text against RANA policies and
+ * Create a unified adapter that evaluates text against CoFounder policies and
  * one or more enterprise guardrail products simultaneously.
  *
  * @example
  * ```typescript
  * const unified = createUnifiedAdapter({
- *   rana: { pii: 'redact', injection: 'block' },
+ *   cofounder: { pii: 'redact', injection: 'block' },
  *   lakera: { apiKey: '...', endpoint: '...' },
  *   bedrock: { region: 'us-east-1', guardrailId: '...' },
  * });

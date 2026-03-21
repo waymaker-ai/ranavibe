@@ -1,4 +1,4 @@
-# Google Agent Development Kit (ADK) Integration Guide for RANA
+# Google Agent Development Kit (ADK) Integration Guide for CoFounder
 
 **Version:** 1.0.0
 **Last Updated:** 2025-11-09
@@ -8,7 +8,7 @@
 
 ## Overview
 
-This guide extends RANA with Google's Agent Development Kit (ADK) patterns, enabling production-ready multi-agent systems that maintain RANA quality standards.
+This guide extends CoFounder with Google's Agent Development Kit (ADK) patterns, enabling production-ready multi-agent systems that maintain CoFounder quality standards.
 
 ---
 
@@ -18,7 +18,7 @@ This guide extends RANA with Google's Agent Development Kit (ADK) patterns, enab
 2. [Agent Design Patterns](#agent-design-patterns)
 3. [Multi-Agent Orchestration](#multi-agent-orchestration)
 4. [Tool Integration](#tool-integration)
-5. [RANA Quality Gates for Agents](#aads-quality-gates-for-agents)
+5. [CoFounder Quality Gates for Agents](#aads-quality-gates-for-agents)
 6. [Production Deployment](#production-deployment)
 7. [Examples](#examples)
 
@@ -98,7 +98,7 @@ from google.adk.tools import ToolManager
 
 class CodeReviewerAgent(LlmAgent):
     """
-    ✅ RANA Compliance:
+    ✅ CoFounder Compliance:
     - Real code analysis (no mocks)
     - Error handling throughout
     - Follows design system patterns
@@ -109,7 +109,7 @@ class CodeReviewerAgent(LlmAgent):
             name="code_reviewer",
             model="gemini-2.0-flash",
             instructions="""
-            You are a code reviewer following RANA standards.
+            You are a code reviewer following CoFounder standards.
 
             For every review:
             1. Check for mock data (flag as violation)
@@ -118,7 +118,7 @@ class CodeReviewerAgent(LlmAgent):
             4. Verify tests exist
             5. Check deployment readiness
 
-            Follow RANA quality gates strictly.
+            Follow CoFounder quality gates strictly.
             """,
             tools=ToolManager([
                 self.analyze_code,
@@ -129,15 +129,15 @@ class CodeReviewerAgent(LlmAgent):
 
     async def analyze_code(self, file_path: str) -> dict:
         """
-        ✅ RANA: Real file analysis (no mocks)
-        ✅ RANA: Error handling
+        ✅ CoFounder: Real file analysis (no mocks)
+        ✅ CoFounder: Error handling
         """
         try:
             # Read actual file
             with open(file_path, 'r') as f:
                 code = f.read()
 
-            # Analyze for RANA violations
+            # Analyze for CoFounder violations
             violations = []
 
             # Check for mock data
@@ -161,7 +161,7 @@ class CodeReviewerAgent(LlmAgent):
             }
 
         except Exception as e:
-            # ✅ RANA: Error handling
+            # ✅ CoFounder: Error handling
             return {
                 'error': str(e),
                 'file': file_path,
@@ -217,8 +217,8 @@ from .deploy_agent import DeployAgent
 
 class DeploymentWorkflow(SequentialAgent):
     """
-    ✅ RANA Compliance:
-    - Follows RANA deployment quality gates
+    ✅ CoFounder Compliance:
+    - Follows CoFounder deployment quality gates
     - Tests before deploy
     - Verifies after deploy
     """
@@ -262,12 +262,12 @@ from google.adk import BaseAgent
 
 class AADSComplianceAgent(BaseAgent):
     """
-    Custom agent that checks RANA compliance
+    Custom agent that checks CoFounder compliance
     """
 
     async def execute(self, context):
         """
-        Execute RANA compliance checks
+        Execute CoFounder compliance checks
         """
         results = {
             'pre_implementation': await self.check_pre_implementation(context),
@@ -338,7 +338,7 @@ from google.adk import LlmAgent, SequentialAgent, ParallelAgent
 class FeatureDevelopmentTeam:
     """
     Multi-agent system for complete feature development
-    following RANA workflow
+    following CoFounder workflow
     """
 
     def __init__(self):
@@ -427,9 +427,9 @@ class FeatureDevelopmentTeam:
         })
 
     def load_aads_config(self):
-        """Load .rana.yml configuration"""
+        """Load .cofounder.yml configuration"""
         import yaml
-        with open('.rana.yml', 'r') as f:
+        with open('.cofounder.yml', 'r') as f:
             return yaml.safe_load(f)
 ```
 
@@ -457,7 +457,7 @@ class DynamicAgentRouter(LlmAgent):
             - Testing → TestingAgent
             - Documentation → DocumentationAgent
 
-            Always consider RANA quality gates for routing decisions.
+            Always consider CoFounder quality gates for routing decisions.
             """,
         )
 
@@ -532,7 +532,7 @@ from google.adk.tools import function_tool
 @function_tool
 async def check_aads_compliance(file_path: str) -> dict:
     """
-    Check if a file complies with RANA standards
+    Check if a file complies with CoFounder standards
 
     Args:
         file_path: Path to the file to check
@@ -541,7 +541,7 @@ async def check_aads_compliance(file_path: str) -> dict:
         Compliance report with violations and score
     """
     try:
-        # ✅ RANA: Real file analysis
+        # ✅ CoFounder: Real file analysis
         with open(file_path, 'r') as f:
             content = f.read()
 
@@ -570,7 +570,7 @@ async def check_aads_compliance(file_path: str) -> dict:
         }
 
     except Exception as e:
-        # ✅ RANA: Error handling
+        # ✅ CoFounder: Error handling
         return {
             'error': str(e),
             'compliant': False
@@ -590,7 +590,7 @@ async def run_tests(test_path: str = None) -> dict:
     import subprocess
 
     try:
-        # ✅ RANA: Real test execution
+        # ✅ CoFounder: Real test execution
         cmd = ['npm', 'test']
         if test_path:
             cmd.append(test_path)
@@ -622,12 +622,12 @@ async def run_tests(test_path: str = None) -> dict:
 
 ---
 
-## RANA Quality Gates for Agents
+## CoFounder Quality Gates for Agents
 
 ### Agent-Specific Quality Gates
 
 ```yaml
-# .rana.yml with ADK configuration
+# .cofounder.yml with ADK configuration
 quality_gates:
   agent_development:
     # Pre-implementation
@@ -733,7 +733,7 @@ cloud_run_config = CloudRunConfig(
     },
     env_vars={
         'DATABASE_URL': 'postgresql://...',
-        'AADS_CONFIG_PATH': '.rana.yml',
+        'AADS_CONFIG_PATH': '.cofounder.yml',
     }
 )
 ```
@@ -755,7 +755,7 @@ class InstrumentedAgent(LlmAgent):
     """
 
     async def execute(self, context):
-        # ✅ RANA: Logging for observability
+        # ✅ CoFounder: Logging for observability
         logger.info(f"Agent {self.name} starting execution", extra={
             'agent': self.name,
             'context': context,
@@ -773,7 +773,7 @@ class InstrumentedAgent(LlmAgent):
             return result
 
         except Exception as e:
-            # ✅ RANA: Error logging
+            # ✅ CoFounder: Error logging
             logger.error(f"Agent {self.name} failed", extra={
                 'agent': self.name,
                 'error': str(e),
@@ -791,7 +791,7 @@ class InstrumentedAgent(LlmAgent):
 
 ## Examples
 
-### Example 1: Complete RANA-Compliant Feature Agent
+### Example 1: Complete CoFounder-Compliant Feature Agent
 
 ```python
 # agents/aads_feature_agent.py
@@ -802,7 +802,7 @@ import subprocess
 
 class AADSFeatureAgent(SequentialAgent):
     """
-    Complete feature development following RANA workflow
+    Complete feature development following CoFounder workflow
     """
 
     def __init__(self):
@@ -821,7 +821,7 @@ class AADSFeatureAgent(SequentialAgent):
         return LlmAgent(
             name="researcher",
             instructions="""
-            RANA Phase 1-2: Understanding & Research
+            CoFounder Phase 1-2: Understanding & Research
 
             1. Clarify the feature requirements
             2. Search for existing implementations
@@ -848,7 +848,7 @@ class AADSFeatureAgent(SequentialAgent):
                 LlmAgent(
                     name="backend_impl",
                     instructions="""
-                    RANA Implementation Standards:
+                    CoFounder Implementation Standards:
 
                     MUST:
                     - Use real data (no mocks)
@@ -866,7 +866,7 @@ class AADSFeatureAgent(SequentialAgent):
                 LlmAgent(
                     name="frontend_impl",
                     instructions="""
-                    RANA Implementation Standards:
+                    CoFounder Implementation Standards:
 
                     MUST:
                     - Use design system components
@@ -935,13 +935,13 @@ class AADSFeatureAgent(SequentialAgent):
 
     @function_tool
     async def implement_backend(self, spec: dict) -> dict:
-        """Implement backend following RANA standards"""
+        """Implement backend following CoFounder standards"""
         # Implementation logic here
         return {'status': 'implemented'}
 
     @function_tool
     async def implement_frontend(self, spec: dict) -> dict:
-        """Implement frontend following RANA standards"""
+        """Implement frontend following CoFounder standards"""
         # Implementation logic here
         return {'status': 'implemented'}
 
@@ -1007,7 +1007,7 @@ class AADSFeatureAgent(SequentialAgent):
 
 ---
 
-## Integration with RANA + MCP
+## Integration with CoFounder + MCP
 
 ### Combined Architecture
 
@@ -1019,7 +1019,7 @@ from google.adk.tools import MCPToolbox
 class FullStackAADSAgent(LlmAgent):
     """
     Production agent combining:
-    - RANA quality standards
+    - CoFounder quality standards
     - ADK multi-agent patterns
     - MCP tool integration
     """
@@ -1035,9 +1035,9 @@ class FullStackAADSAgent(LlmAgent):
             name="fullstack_agent",
             model="gemini-2.0-flash",
             instructions="""
-            You are a full-stack developer following RANA standards.
+            You are a full-stack developer following CoFounder standards.
 
-            RANA Principles:
+            CoFounder Principles:
             1. Search before creating
             2. Real data only (no mocks)
             3. Test everything
@@ -1065,14 +1065,14 @@ class FullStackAADSAgent(LlmAgent):
 
 ## Conclusion
 
-Google's ADK provides powerful patterns for building production-ready agent systems. Combined with RANA standards and MCP integration, you can create reliable, maintainable, and high-quality AI agent workflows.
+Google's ADK provides powerful patterns for building production-ready agent systems. Combined with CoFounder standards and MCP integration, you can create reliable, maintainable, and high-quality AI agent workflows.
 
 **Key Takeaways:**
 - Use LLM agents for adaptive reasoning
 - Use workflow agents for deterministic orchestration
 - Use custom agents for specialized logic
 - Combine all three for complex systems
-- Apply RANA quality gates to all agent development
+- Apply CoFounder quality gates to all agent development
 - Integrate MCP for secure data access
 - Deploy with proper observability and monitoring
 
@@ -1081,9 +1081,9 @@ Google's ADK provides powerful patterns for building production-ready agent syst
 **Next Steps:**
 1. Read the [official ADK documentation](https://google.github.io/adk-docs/)
 2. Review the [ADK Python SDK](https://github.com/google/adk-python)
-3. Build your first agent following RANA standards
+3. Build your first agent following CoFounder standards
 4. Combine ADK + MCP for powerful workflows
 
 ---
 
-*Part of the RANA Framework - Production-Quality AI Development*
+*Part of the CoFounder Framework - Production-Quality AI Development*

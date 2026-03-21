@@ -1,10 +1,10 @@
 /**
  * Slack Plugin Examples
  *
- * This file demonstrates how to use the Slack plugin with RANA
+ * This file demonstrates how to use the Slack plugin with CoFounder
  */
 
-import { createRana } from '../client';
+import { createCoFounder } from '../client';
 import { createSlackPlugin, slackPlugin } from './slack';
 import type { SlackMessage, SlackCommand } from './slack';
 
@@ -13,8 +13,8 @@ import type { SlackMessage, SlackCommand } from './slack';
 // ============================================================================
 
 async function basicSetup() {
-  // Create RANA client
-  const rana = createRana({
+  // Create CoFounder client
+  const cofounder = createCoFounder({
     providers: {
       anthropic: process.env.ANTHROPIC_API_KEY,
       openai: process.env.OPENAI_API_KEY,
@@ -37,8 +37,8 @@ async function basicSetup() {
   slack.onMessage(async (message: SlackMessage) => {
     console.log('Received message:', message.text);
 
-    // Use RANA to generate response
-    const response = await rana.chat(message.text);
+    // Use CoFounder to generate response
+    const response = await cofounder.chat(message.text);
 
     // Reply in Slack
     await slack.reply(message.channel, response.content, {
@@ -55,7 +55,7 @@ async function basicSetup() {
 // ============================================================================
 
 async function slashCommands() {
-  const rana = createRana({
+  const cofounder = createCoFounder({
     providers: {
       anthropic: process.env.ANTHROPIC_API_KEY,
     },
@@ -67,13 +67,13 @@ async function slashCommands() {
 
   // Handle /ask command
   slack.onCommand('ask', async (command: SlackCommand) => {
-    const response = await rana.chat(command.text);
+    const response = await cofounder.chat(command.text);
     return response.content;
   });
 
   // Handle /summarize command with cost optimization
   slack.onCommand('summarize', async (command: SlackCommand) => {
-    const response = await rana.chat({
+    const response = await cofounder.chat({
       provider: 'openai',
       model: 'gpt-4o-mini',
       messages: [{ role: 'user', content: `Summarize this: ${command.text}` }],
@@ -91,7 +91,7 @@ async function slashCommands() {
 // ============================================================================
 
 async function interactiveComponents() {
-  const rana = createRana({
+  const cofounder = createCoFounder({
     providers: {
       anthropic: process.env.ANTHROPIC_API_KEY,
     },
@@ -184,7 +184,7 @@ async function interactiveComponents() {
 // ============================================================================
 
 async function conversationHistory() {
-  const rana = createRana({
+  const cofounder = createCoFounder({
     providers: {
       anthropic: process.env.ANTHROPIC_API_KEY,
     },
@@ -213,7 +213,7 @@ async function conversationHistory() {
     }
 
     // Get response with conversation history
-    const response = await rana.chat({
+    const response = await cofounder.chat({
       messages: context.messages,
       max_tokens: 1000,
     });
@@ -241,7 +241,7 @@ async function conversationHistory() {
 // ============================================================================
 
 async function richMessages() {
-  const rana = createRana({
+  const cofounder = createCoFounder({
     providers: {
       anthropic: process.env.ANTHROPIC_API_KEY,
     },
@@ -254,7 +254,7 @@ async function richMessages() {
   slack.onMessage(async (message: SlackMessage) => {
     if (message.text.toLowerCase().includes('analyze')) {
       // Get AI analysis
-      const response = await rana.chat(message.text);
+      const response = await cofounder.chat(message.text);
 
       // Send rich formatted response using Block Kit
       const { SlackBot } = await import('./slack');
@@ -284,20 +284,20 @@ async function richMessages() {
 }
 
 // ============================================================================
-// Example 6: Plugin Integration with RANA
+// Example 6: Plugin Integration with CoFounder
 // ============================================================================
 
 async function pluginIntegration() {
-  // Create RANA with Slack plugin integrated
-  const rana = createRana({
+  // Create CoFounder with Slack plugin integrated
+  const cofounder = createCoFounder({
     providers: {
       anthropic: process.env.ANTHROPIC_API_KEY,
     },
-    // Note: Plugin system would need to be implemented in RanaClient
+    // Note: Plugin system would need to be implemented in CoFounderClient
     // This is a demonstration of how it would work
   });
 
-  // Slack will automatically handle messages and integrate with RANA
+  // Slack will automatically handle messages and integrate with CoFounder
   const plugin = slackPlugin({
     botToken: process.env.SLACK_BOT_TOKEN!,
     autoReply: true, // Auto-reply to all messages
@@ -354,7 +354,7 @@ async function advancedFeatures() {
 // ============================================================================
 
 async function multiProvider() {
-  const rana = createRana({
+  const cofounder = createCoFounder({
     providers: {
       anthropic: process.env.ANTHROPIC_API_KEY,
       openai: process.env.OPENAI_API_KEY,
@@ -391,7 +391,7 @@ async function multiProvider() {
       .trim();
 
     // Get response with fallback support
-    const response = await rana.chat({
+    const response = await cofounder.chat({
       provider,
       optimize,
       messages: [{ role: 'user', content: cleanText }],

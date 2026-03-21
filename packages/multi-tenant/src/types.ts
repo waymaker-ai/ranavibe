@@ -1,5 +1,5 @@
 /**
- * @ranavibe/multi-tenant - Types for multi-tenant policy management
+ * @cofounder/multi-tenant - Types for multi-tenant policy management
  */
 
 export interface Tenant {

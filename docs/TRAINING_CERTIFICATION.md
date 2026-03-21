@@ -1,32 +1,32 @@
-# RANA Training & Certification Program
+# CoFounder Training & Certification Program
 
-> **Become a certified RANA developer and master AI-native development**
+> **Become a certified CoFounder developer and master AI-native development**
 
-[![RANA Certified](https://img.shields.io/badge/RANA-Certified-brightgreen)](https://rana.dev/certification)
+[![CoFounder Certified](https://img.shields.io/badge/CoFounder-Certified-brightgreen)](https://cofounder.dev/certification)
 [![Training Available](https://img.shields.io/badge/Training-Available-blue)](https://waymaker.cx/training)
 
 ---
 
 ## Overview
 
-The RANA Certification Program validates your expertise in AI-native development. Our comprehensive training programs teach you to build production-ready AI applications 120x faster with 70% cost reduction.
+The CoFounder Certification Program validates your expertise in AI-native development. Our comprehensive training programs teach you to build production-ready AI applications 120x faster with 70% cost reduction.
 
 **Certification Levels:**
 | Level | Name | Duration | Price | Credential |
 |-------|------|----------|-------|------------|
-| 1 | RANA Fundamentals | 2 days | $2,500 | RANA-F |
-| 2 | RANA Team Workshop | 1 day | $5,000/team | RANA-T |
-| 3 | RANA Certified Developer | 4 weeks | $5,000 | RANA-CD |
-| 4 | RANA Enterprise | Custom | $50K-$200K | RANA-E |
+| 1 | CoFounder Fundamentals | 2 days | $2,500 | CoFounder-F |
+| 2 | CoFounder Team Workshop | 1 day | $5,000/team | CoFounder-T |
+| 3 | CoFounder Certified Developer | 4 weeks | $5,000 | CoFounder-CD |
+| 4 | CoFounder Enterprise | Custom | $50K-$200K | CoFounder-E |
 
 ---
 
-## Level 1: RANA Fundamentals (2 Days)
+## Level 1: CoFounder Fundamentals (2 Days)
 
 ### Who Should Attend
 - Individual developers learning AI-native development
 - Freelancers building AI-powered products
-- Developers evaluating RANA for their projects
+- Developers evaluating CoFounder for their projects
 - Small teams getting started with AI development
 
 ### Prerequisites
@@ -41,10 +41,10 @@ The RANA Certification Program validates your expertise in AI-native development
 | Time | Module | Topics |
 |------|--------|--------|
 | 9:00-9:30 | Welcome | Introduction, setup, course overview |
-| 9:30-10:15 | RANA Philosophy | AI-native development, production-first mindset |
-| 10:15-11:30 | CLI Mastery | `rana init`, `rana check`, `rana deploy`, all 22+ commands |
-| 11:30-12:45 | Database Framework | `rana db:setup`, Supabase/Prisma, RLS patterns |
-| 1:45-3:15 | Security Framework | `rana security:audit`, OWASP Top 10, authentication |
+| 9:30-10:15 | CoFounder Philosophy | AI-native development, production-first mindset |
+| 10:15-11:30 | CLI Mastery | `cofounder init`, `cofounder check`, `cofounder deploy`, all 22+ commands |
+| 11:30-12:45 | Database Framework | `cofounder db:setup`, Supabase/Prisma, RLS patterns |
+| 1:45-3:15 | Security Framework | `cofounder security:audit`, OWASP Top 10, authentication |
 | 3:30-5:15 | LLM Optimization | 9 providers, 70% cost reduction, caching, smart routing |
 | 5:15-6:00 | Day 1 Project | Build and deploy an AI-powered app |
 
@@ -52,8 +52,8 @@ The RANA Certification Program validates your expertise in AI-native development
 | Time | Module | Topics |
 |------|--------|--------|
 | 9:00-9:30 | Day 1 Review | Q&A, homework review |
-| 9:30-10:45 | SEO Framework | `rana seo:check`, sitemap, meta tags, structured data |
-| 10:45-11:45 | Mobile-First | `rana mobile:validate`, PWA, touch targets, gestures |
+| 9:30-10:45 | SEO Framework | `cofounder seo:check`, sitemap, meta tags, structured data |
+| 10:45-11:45 | Mobile-First | `cofounder mobile:validate`, PWA, touch targets, gestures |
 | 1:00-2:00 | Deployment | Vercel, Railway, CI/CD, monitoring |
 | 2:00-2:45 | MCP Integration | Model Context Protocol, agent development |
 | 3:00-4:00 | Complete Workflow | End-to-end development with quality gates |
@@ -66,7 +66,7 @@ The RANA Certification Program validates your expertise in AI-native development
 - ✅ Production-deployed app with SEO and mobile support
 - ✅ Portfolio piece to showcase your skills
 
-### Certification: RANA-F (Fundamentals)
+### Certification: CoFounder-F (Fundamentals)
 - Complete 2-day training
 - Pass knowledge assessment (80%+)
 - Deploy final project to production
@@ -74,17 +74,17 @@ The RANA Certification Program validates your expertise in AI-native development
 
 ---
 
-## Level 2: RANA Team Workshop (1 Day)
+## Level 2: CoFounder Team Workshop (1 Day)
 
 ### Who Should Attend
 - Development teams (2-10 people)
-- Companies adopting RANA
+- Companies adopting CoFounder
 - Agencies implementing AI-native development
 - Teams with existing codebases to modernize
 
 ### Workshop Outcomes
 By the end of this workshop, your team will have:
-- ✅ RANA fully integrated in your project
+- ✅ CoFounder fully integrated in your project
 - ✅ Custom quality gates configured
 - ✅ CI/CD pipeline set up
 - ✅ Team workflow established
@@ -95,34 +95,34 @@ By the end of this workshop, your team will have:
 **Morning: Foundation in Your Context**
 | Time | Module | Topics |
 |------|--------|--------|
-| 9:00-9:45 | RANA Overview | Benefits for teams, ROI analysis, implementation strategy |
+| 9:00-9:45 | CoFounder Overview | Benefits for teams, ROI analysis, implementation strategy |
 | 9:45-10:45 | CLI Bootcamp | All 22+ commands, hands-on with your codebase |
-| 10:45-12:00 | Your Project Setup | `.rana.yml` configuration, quality gates, database integration |
+| 10:45-12:00 | Your Project Setup | `.cofounder.yml` configuration, quality gates, database integration |
 
 **Afternoon: Implementation & Practice**
 | Time | Module | Topics |
 |------|--------|--------|
 | 1:00-2:30 | Your Tech Stack | Custom integrations, CI/CD setup, git hooks |
 | 2:45-3:45 | Team Workflow | Code review process, deployment checklist, collaboration |
-| 3:45-5:00 | Hands-on Practice | Build and deploy a feature with RANA |
+| 3:45-5:00 | Hands-on Practice | Build and deploy a feature with CoFounder |
 | 5:00-5:30 | Wrap-up | Certificates, support plan, next steps |
 
 ### Deliverables
 **Technical:**
-- `.rana.yml` configured for your project
+- `.cofounder.yml` configured for your project
 - Custom quality gates
 - CI/CD pipeline integration
 - Documentation
 
 **Training:**
-- All team members certified (RANA-T)
+- All team members certified (CoFounder-T)
 - Video recordings of workshop
 - Custom quick reference guides
 - 60-day Slack support access
 
 ---
 
-## Level 3: RANA Certified Developer (4 Weeks)
+## Level 3: CoFounder Certified Developer (4 Weeks)
 
 ### Who Should Attend
 - Developers seeking official certification
@@ -140,7 +140,7 @@ By the end of this workshop, your team will have:
 - Intermediate JavaScript/TypeScript
 - 3+ months React experience
 - Git proficiency
-- Completed RANA Fundamentals (recommended)
+- Completed CoFounder Fundamentals (recommended)
 
 ### Curriculum
 
@@ -174,7 +174,7 @@ By the end of this workshop, your team will have:
 
 ### Certification Requirements
 
-**To Earn RANA-CD:**
+**To Earn CoFounder-CD:**
 - ✅ Attend 7/8 live sessions (minimum)
 - ✅ Complete all weekly deliverables
 - ✅ Final project meets requirements
@@ -183,7 +183,7 @@ By the end of this workshop, your team will have:
 
 **Final Project Requirements:**
 - Full-stack AI application
-- All 5 RANA frameworks integrated
+- All 5 CoFounder frameworks integrated
 - Production deployed
 - Security score 90+
 - SEO score 85+
@@ -198,9 +198,9 @@ By the end of this workshop, your team will have:
 - Practical and theoretical
 
 ### Benefits of Certification
-- 📜 Official RANA Certified Developer credential
+- 📜 Official CoFounder Certified Developer credential
 - 🏆 Digital badge for LinkedIn
-- 📋 Listed in RANA Certified Developer directory
+- 📋 Listed in CoFounder Certified Developer directory
 - 💼 Access to job board (coming soon)
 - 🎓 Lifetime access to materials and updates
 - 👥 Private Slack community
@@ -208,7 +208,7 @@ By the end of this workshop, your team will have:
 
 ---
 
-## Level 4: RANA Enterprise Training (Custom)
+## Level 4: CoFounder Enterprise Training (Custom)
 
 ### Who Should Attend
 - Companies with 10+ developers
@@ -229,22 +229,22 @@ By the end of this workshop, your team will have:
 **Week 1: Foundation & Integration**
 | Day | Focus | Outcomes |
 |-----|-------|----------|
-| 1 | RANA Introduction | Leadership briefing, developer onboarding, setup |
+| 1 | CoFounder Introduction | Leadership briefing, developer onboarding, setup |
 | 2-3 | Framework Deep Dives | Database, security, LLM optimization in your stack |
-| 4-5 | Your Codebase | RANA integration, quality gates, CI/CD |
+| 4-5 | Your Codebase | CoFounder integration, quality gates, CI/CD |
 
 **Week 2: Practice & Deployment**
 | Day | Focus | Outcomes |
 |-----|-------|----------|
-| 6-7 | Team Development | Build features with RANA, pair programming |
+| 6-7 | Team Development | Build features with CoFounder, pair programming |
 | 8-9 | Production Deployment | Deploy, monitor, optimize, troubleshoot |
 | 10 | Certification & Handoff | Presentations, assessment, leadership report |
 
 ### Enterprise Deliverables
 
 **Technical:**
-- RANA fully integrated in all projects
-- Custom `.rana.yml` configurations
+- CoFounder fully integrated in all projects
+- Custom `.cofounder.yml` configurations
 - CI/CD pipeline setup
 - Quality gates enforced
 - Complete documentation
@@ -283,7 +283,7 @@ By the end of this workshop, your team will have:
 | **Cost Reduction** | 70% savings on LLM costs |
 | **Quality Assurance** | Built-in security, SEO, mobile compliance |
 | **Team Alignment** | Everyone trained on same standards |
-| **Support** | Direct access to RANA experts |
+| **Support** | Direct access to CoFounder experts |
 
 ### For Organizations
 | Benefit | Description |
@@ -317,9 +317,9 @@ By the end of this workshop, your team will have:
 ## Instructors
 
 ### Qualifications
-All RANA instructors have:
+All CoFounder instructors have:
 - 3+ years production development experience
-- Deep RANA framework expertise
+- Deep CoFounder framework expertise
 - Teaching/mentoring experience
 - Strong communication skills
 - Real-world AI development projects
@@ -337,12 +337,12 @@ All RANA instructors have:
 
 ### Upcoming Sessions
 
-**RANA Fundamentals (2-Day)**
+**CoFounder Fundamentals (2-Day)**
 - January 15-16, 2025 (Virtual)
 - February 12-13, 2025 (Virtual)
 - March 19-20, 2025 (Virtual)
 
-**RANA Certified Developer (4-Week)**
+**CoFounder Certified Developer (4-Week)**
 - Q1 2025 Cohort: January 20 - February 14
 - Q2 2025 Cohort: April 7 - May 2
 
@@ -371,10 +371,10 @@ All RANA instructors have:
 ## FAQ
 
 **Q: Do I need prior AI/ML experience?**
-A: No. RANA handles the AI complexity. You need JavaScript/TypeScript and basic React.
+A: No. CoFounder handles the AI complexity. You need JavaScript/TypeScript and basic React.
 
 **Q: Is the certification recognized?**
-A: RANA certification is issued by Waymaker, creators of the RANA framework. It validates practical skills in AI-native development.
+A: CoFounder certification is issued by Waymaker, creators of the CoFounder framework. It validates practical skills in AI-native development.
 
 **Q: Can I get a refund?**
 A: Full refund if cancelled 7+ days before start. 50% refund if cancelled 3-7 days before. No refund within 3 days.
@@ -398,9 +398,9 @@ A: Currently, the exam is only available as part of the certification program.
 - Website: https://waymaker.cx/training
 
 **General Support:**
-- Email: support@rana.dev
-- Discord: https://discord.gg/rana
-- GitHub: https://github.com/waymaker/rana
+- Email: support@cofounder.dev
+- Discord: https://discord.gg/cofounder
+- GitHub: https://github.com/waymaker/cofounder
 
 ---
 
@@ -408,17 +408,17 @@ A: Currently, the exam is only available as part of the certification program.
 
 ```bash
 # Start your journey today
-npx create-rana-app my-first-rana-app
-cd my-first-rana-app
+npx create-cofounder-app my-first-cofounder-app
+cd my-first-cofounder-app
 npm run dev
 ```
 
 **Then join our next training cohort!**
 
-[Register for Training](https://waymaker.cx/training) | [Download RANA](https://rana.dev) | [Read Documentation](https://rana.dev/docs)
+[Register for Training](https://waymaker.cx/training) | [Download CoFounder](https://cofounder.dev) | [Read Documentation](https://cofounder.dev/docs)
 
 ---
 
-*RANA Training & Certification Program*
+*CoFounder Training & Certification Program*
 *Powered by Waymaker*
 *https://waymaker.cx/training*

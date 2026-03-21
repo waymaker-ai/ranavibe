@@ -1,5 +1,5 @@
 /**
- * Rate Limiter for RANA Core
+ * Rate Limiter for CoFounder Core
  * Handles rate limiting per provider with auto-throttling
  */
 

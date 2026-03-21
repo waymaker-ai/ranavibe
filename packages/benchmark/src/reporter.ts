@@ -26,7 +26,7 @@ export function formatConsoleTable(report: CombinedReport): string {
   const thinSep = '-'.repeat(90);
 
   lines.push(sep);
-  lines.push('  RANA Detection Benchmark Report');
+  lines.push('  CoFounder Detection Benchmark Report');
   lines.push(`  Generated: ${report.generatedAt}`);
   lines.push(`  Total Duration: ${report.totalDurationMs}ms`);
   lines.push(sep);
@@ -113,7 +113,7 @@ export function formatJSON(report: CombinedReport): string {
 export function formatMarkdownTable(report: CombinedReport): string {
   const lines: string[] = [];
 
-  lines.push('# RANA Detection Benchmark Report');
+  lines.push('# CoFounder Detection Benchmark Report');
   lines.push('');
   lines.push(`**Generated:** ${report.generatedAt}`);
   lines.push(`**Total Duration:** ${report.totalDurationMs}ms`);

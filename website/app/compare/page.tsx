@@ -7,21 +7,21 @@ const comparisons = [
     name: 'NeMo Guardrails',
     slug: 'nemo-guardrails',
     tagline: 'Same guardrails, more features, TypeScript-first',
-    description: 'RANA covers everything NeMo Guardrails does — plus compliance, cost tracking, CI/CD, MCP, and a dashboard',
+    description: 'CoFounder covers everything NeMo Guardrails does — plus compliance, cost tracking, CI/CD, MCP, and a dashboard',
     featured: true,
   },
   {
     name: 'NemoClaw / OpenClaw',
     slug: 'nemoclaw',
     tagline: 'Guardrails for the OpenClaw ecosystem',
-    description: 'RANA provides the same security layer NemoClaw adds to OpenClaw — and works with any agent framework',
+    description: 'CoFounder provides the same security layer NemoClaw adds to OpenClaw — and works with any agent framework',
     featured: true,
   },
   {
     name: 'LangChain',
     slug: 'langchain',
     tagline: 'Simple by default, powerful when needed',
-    description: 'See how RANA provides LangChain functionality with 90% less code',
+    description: 'See how CoFounder provides LangChain functionality with 90% less code',
   },
   {
     name: 'MetaGPT',
@@ -39,7 +39,7 @@ const comparisons = [
     name: 'Vercel AI SDK',
     slug: 'vercel-ai-sdk',
     tagline: 'Full-featured and production-ready',
-    description: 'RANA extends Vercel AI SDK patterns with enterprise features',
+    description: 'CoFounder extends Vercel AI SDK patterns with enterprise features',
   },
   {
     name: 'LlamaIndex',
@@ -61,10 +61,10 @@ export default function ComparePage() {
       <div className="mx-auto max-w-6xl px-6 py-24">
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            How RANA Compares
+            How CoFounder Compares
           </h1>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            See how RANA stacks up against other AI frameworks.
+            See how CoFounder stacks up against other AI frameworks.
             We believe in transparency and letting the code speak for itself.
           </p>
         </div>
@@ -78,7 +78,7 @@ export default function ComparePage() {
             >
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-2xl font-semibold">
-                  RANA vs {comparison.name}
+                  CoFounder vs {comparison.name}
                 </h2>
                 <span className="text-gray-500 group-hover:text-white transition-colors">
                   →
@@ -99,7 +99,7 @@ export default function ComparePage() {
               <thead>
                 <tr className="border-b border-gray-800">
                   <th className="py-4 px-3 font-semibold">Feature</th>
-                  <th className="py-4 px-3 font-semibold text-center">RANA</th>
+                  <th className="py-4 px-3 font-semibold text-center">CoFounder</th>
                   <th className="py-4 px-3 font-semibold text-center">NeMo Guardrails</th>
                   <th className="py-4 px-3 font-semibold text-center">NemoClaw</th>
                   <th className="py-4 px-3 font-semibold text-center">OpenGuardrails</th>
@@ -185,7 +185,7 @@ export default function ComparePage() {
                 </tr>
                 <tr className="border-b border-gray-800/50">
                   <td className="py-3 px-3">Zero dependencies</td>
-                  <td className="py-3 px-3 text-center text-green-400">✓ @ranavibe/guard</td>
+                  <td className="py-3 px-3 text-center text-green-400">✓ @cofounder/guard</td>
                   <td className="py-3 px-3 text-center text-red-400">Heavy deps</td>
                   <td className="py-3 px-3 text-center text-red-400">Heavy deps</td>
                   <td className="py-3 px-3 text-center text-yellow-400">Moderate</td>

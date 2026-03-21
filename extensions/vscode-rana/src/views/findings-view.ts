@@ -67,7 +67,7 @@ class FindingDetailNode extends vscode.TreeItem {
 }
 
 /**
- * TreeDataProvider for the RANA Findings sidebar panel.
+ * TreeDataProvider for the CoFounder Findings sidebar panel.
  * Groups findings by file, then shows individual findings with severity icons.
  */
 export class FindingsViewProvider implements vscode.TreeDataProvider<FindingNode> {
@@ -123,7 +123,7 @@ export class FindingsViewProvider implements vscode.TreeDataProvider<FindingNode
       if (fileNodes.length === 0) {
         // Return a placeholder node
         const placeholder = new vscode.TreeItem(
-          'No findings. Run RANA: Scan Workspace.',
+          'No findings. Run CoFounder: Scan Workspace.',
           vscode.TreeItemCollapsibleState.None
         );
         placeholder.iconPath = new vscode.ThemeIcon('check');

@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/_next/'],
     },
-    sitemap: 'https://rana.cx/sitemap.xml',
+    sitemap: 'https://cofounder.cx/sitemap.xml',
   };
 }

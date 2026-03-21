@@ -1,12 +1,12 @@
 {
-  "name": "@ranavibe/generate",
+  "name": "@cofounder/generate",
   "version": "1.0.0",
-  "description": "Natural language code generation for RANA Framework",
+  "description": "Natural language code generation for CoFounder Framework",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "bin": {
-    "rana-generate": "./dist/cli/index.js"
+    "cofounder-generate": "./dist/cli/index.js"
   },
   "exports": {
     ".": {
@@ -27,7 +27,7 @@
     "typecheck": "tsc --noEmit"
   },
   "keywords": [
-    "rana",
+    "cofounder",
     "ai",
     "code-generation",
     "llm",
@@ -39,8 +39,8 @@
   "author": "Waymaker",
   "license": "MIT",
   "dependencies": {
-    "@ranavibe/core": "^2.0.0",
-    "@ranavibe/helpers": "^1.0.0",
+    "@cofounder/core": "^2.0.0",
+    "@cofounder/helpers": "^1.0.0",
     "chalk": "^5.3.0",
     "commander": "^12.0.0",
     "glob": "^10.3.10",
@@ -61,10 +61,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/waymaker-ai/ranavibe.git",
+    "url": "https://github.com/waymaker-ai/cofounder.git",
     "directory": "packages/generate"
   },
-  "homepage": "https://rana.cx",
+  "homepage": "https://cofounder.cx",
   "files": [
     "dist",
     "README.md"

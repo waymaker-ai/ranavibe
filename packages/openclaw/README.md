@@ -1,25 +1,25 @@
-# @ranavibe/openclaw
+# @cofounder/openclaw
 
-RANA guardrails for [OpenClaw](https://github.com/openclaw-ai/openclaw) agents. Adds PII detection, prompt injection blocking, toxicity filtering, compliance enforcement, and cost tracking to any OpenClaw agent as a skill or standalone bridge.
+CoFounder guardrails for [OpenClaw](https://github.com/openclaw-ai/openclaw) agents. Adds PII detection, prompt injection blocking, toxicity filtering, compliance enforcement, and cost tracking to any OpenClaw agent as a skill or standalone bridge.
 
 **Zero runtime dependencies.** Works with WhatsApp, Telegram, Slack, Discord, and any webhook-based agent.
 
 ## Installation
 
 ```bash
-npm install @ranavibe/openclaw
+npm install @cofounder/openclaw
 ```
 
 ## Quick Start
 
 ### As an OpenClaw Skill
 
-The primary integration. Register RANA as a skill in your OpenClaw agent:
+The primary integration. Register CoFounder as a skill in your OpenClaw agent:
 
 ```typescript
-import { createRanaSkill } from '@ranavibe/openclaw';
+import { createCoFounderSkill } from '@cofounder/openclaw';
 
-const ranaSkill = createRanaSkill({
+const cofounderSkill = createCoFounderSkill({
   pii: 'redact',                    // 'detect' | 'redact' | 'block'
   injectionSensitivity: 'high',     // 'low' | 'medium' | 'high'
   injectionAction: 'block',         // 'block' | 'warn' | 'sanitize'
@@ -33,7 +33,7 @@ const ranaSkill = createRanaSkill({
 });
 
 // Register with OpenClaw
-agent.use(ranaSkill);
+agent.use(cofounderSkill);
 ```
 
 The skill hooks into OpenClaw's message pipeline:
@@ -48,7 +48,7 @@ The skill hooks into OpenClaw's message pipeline:
 Use when you want guardrails without the OpenClaw skill system:
 
 ```typescript
-import { OpenClawBridge } from '@ranavibe/openclaw';
+import { OpenClawBridge } from '@cofounder/openclaw';
 
 const bridge = new OpenClawBridge({
   guardOptions: {
@@ -75,7 +75,7 @@ Protect your webhook server:
 
 ```typescript
 import express from 'express';
-import { OpenClawBridge } from '@ranavibe/openclaw';
+import { OpenClawBridge } from '@cofounder/openclaw';
 
 const app = express();
 const bridge = new OpenClawBridge({
@@ -85,7 +85,7 @@ const bridge = new OpenClawBridge({
 app.use('/webhook', express.json(), bridge.middleware());
 
 app.post('/webhook', (req, res) => {
-  // req.ranaGuard contains the guard result
+  // req.cofounderGuard contains the guard result
   // req.body has redacted content if PII was found
   const message = req.body.message.content;
   // ... process safely
@@ -109,14 +109,14 @@ const { response, inputGuard, outputGuard } = await guardedHandler(
 
 ## OpenClaw Chat Commands
 
-When registered as a skill, RANA adds these commands:
+When registered as a skill, CoFounder adds these commands:
 
 | Command | Description |
 |---------|-------------|
-| `/rana-status` | Full guard report (checks, blocks, PII, injections) |
-| `/rana-cost` | Cost tracking report (spend by model, budget status) |
-| `/rana-compliance` | Compliance status across all configured frameworks |
-| `/rana-scan <text>` | Scan arbitrary text for PII, injection, toxicity |
+| `/cofounder-status` | Full guard report (checks, blocks, PII, injections) |
+| `/cofounder-cost` | Cost tracking report (spend by model, budget status) |
+| `/cofounder-compliance` | Compliance status across all configured frameworks |
+| `/cofounder-scan <text>` | Scan arbitrary text for PII, injection, toxicity |
 
 ## Configuration
 
@@ -146,7 +146,7 @@ When registered as a skill, RANA adds these commands:
 | `webhookUrl` | `string` | `''` | Webhook URL for reporting |
 | `auditEnabled` | `boolean` | `true` | Enable audit logging |
 
-## What RANA Detects
+## What CoFounder Detects
 
 ### PII Detection (15+ patterns)
 
@@ -215,7 +215,7 @@ import {
   detectToxicity, hasToxicity,
   checkCompliance, isCompliant,
   BudgetTracker,
-} from '@ranavibe/openclaw';
+} from '@cofounder/openclaw';
 
 // PII
 const pii = detectPII('Email: user@example.com, SSN: 123-45-6789');
@@ -247,7 +247,7 @@ console.log(budget.getSpent()); // $0.0075
 
 ## Comparison with NemoClaw / NeMo Guardrails
 
-| Feature | @ranavibe/openclaw | NemoClaw | NeMo Guardrails |
+| Feature | @cofounder/openclaw | NemoClaw | NeMo Guardrails |
 |---------|-------------------|----------|-----------------|
 | Zero dependencies | Yes | No (requires NeMo) | No (Python + ML models) |
 | Install size | ~50KB | ~500MB+ | ~2GB+ |
@@ -256,13 +256,13 @@ console.log(budget.getSpent()); // $0.0075
 | Injection detection | Pattern matching (25+) | ML-based | ML-based |
 | Compliance | 7 frameworks built-in | Limited | Limited |
 | Cost tracking | Built-in (25+ models) | No | No |
-| Chat commands | Yes (/rana-*) | No | No |
+| Chat commands | Yes (/cofounder-*) | No | No |
 | Webhook middleware | Yes | No | No |
 | Multi-platform reports | Yes (Slack/TG/WA/Discord) | No | No |
 | Runtime | Node.js/Edge | Python | Python |
 | Latency | <5ms | 100-500ms | 100-500ms |
 
-RANA is pattern-based (fast, predictable, zero-setup) while NemoClaw/NeMo use ML models (higher accuracy for edge cases, but heavier). For most OpenClaw deployments, RANA's pattern matching catches 95%+ of real-world threats at a fraction of the cost and latency.
+CoFounder is pattern-based (fast, predictable, zero-setup) while NemoClaw/NeMo use ML models (higher accuracy for edge cases, but heavier). For most OpenClaw deployments, CoFounder's pattern matching catches 95%+ of real-world threats at a fraction of the cost and latency.
 
 ## How It Works in OpenClaw
 
@@ -272,14 +272,14 @@ User (WhatsApp/Telegram/Slack)
   v
 OpenClaw Agent
   |
-  +-- beforeMessage hook (RANA guards input)
+  +-- beforeMessage hook (CoFounder guards input)
   |     - Detect/redact PII
   |     - Block injection attempts
   |     - Check compliance
   |
   +-- Agent processes (safe) message
   |
-  +-- afterMessage hook (RANA guards output)
+  +-- afterMessage hook (CoFounder guards output)
   |     - Redact any PII in response
   |     - Verify compliance
   |     - Track cost

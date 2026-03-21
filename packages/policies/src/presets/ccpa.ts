@@ -28,7 +28,7 @@ export const ccpaPolicy: Policy = {
       'Policy enforcing California Consumer Privacy Act (CCPA) and California Privacy Rights Act (CPRA). ' +
       'Covers right to know, right to delete, right to opt-out, data minimization, and non-discrimination ' +
       '(Cal. Civ. Code Secs. 1798.100-1798.199.100).',
-    author: 'ranavibe',
+    author: 'cofounder',
     tags: ['california', 'ccpa', 'cpra', 'privacy', 'compliance', 'us-state'],
     framework: 'CCPA/CPRA',
   },

@@ -1,5 +1,5 @@
 /**
- * Audit Logger for RANA Security
+ * Audit Logger for CoFounder Security
  * Comprehensive audit logging system with GDPR compliance and tamper detection
  */
 
@@ -638,7 +638,7 @@ export class AuditLogger {
   private getDefaultFilePath(): string {
     return path.join(
       process.env.HOME || process.env.USERPROFILE || '.',
-      '.rana',
+      '.cofounder',
       'audit.log'
     );
   }

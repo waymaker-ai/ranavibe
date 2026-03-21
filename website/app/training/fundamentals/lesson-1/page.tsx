@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'What is RANA? | RANA Fundamentals',
-  description: 'Introduction to the RANA framework and its core principles',
+  title: 'What is CoFounder? | CoFounder Fundamentals',
+  description: 'Introduction to the CoFounder framework and its core principles',
 };
 
 export default function Lesson1Page() {
@@ -25,16 +25,16 @@ export default function Lesson1Page() {
 
         {/* Content */}
         <article className="prose prose-lg max-w-none">
-          <h1>What is RANA?</h1>
+          <h1>What is CoFounder?</h1>
 
           <p className="lead">
-            RANA (React Agent Next Architecture) is a professional framework for
+            CoFounder (React Agent Next Architecture) is a professional framework for
             building production-ready AI agents with React and Next.js. It provides
             a complete architecture for developing, deploying, and scaling
             intelligent applications.
           </p>
 
-          <h2>Why RANA?</h2>
+          <h2>Why CoFounder?</h2>
 
           <p>
             Building AI agents from scratch is challenging. You need to handle:
@@ -52,7 +52,7 @@ export default function Lesson1Page() {
           </ul>
 
           <p>
-            RANA solves all of these problems with a cohesive, type-safe framework
+            CoFounder solves all of these problems with a cohesive, type-safe framework
             that follows industry best practices.
           </p>
 
@@ -60,7 +60,7 @@ export default function Lesson1Page() {
 
           <h3>1. Type Safety First</h3>
           <p>
-            RANA is built with TypeScript from the ground up. Every API, hook, and
+            CoFounder is built with TypeScript from the ground up. Every API, hook, and
             component is fully typed with comprehensive inference. You get
             autocomplete and compile-time error checking throughout your entire
             application.
@@ -68,7 +68,7 @@ export default function Lesson1Page() {
 
           <div className="code-block">
             <pre>
-              <code>{`import { useAgent } from '@rana/react';
+              <code>{`import { useAgent } from '@cofounder/react';
 
 // Full type inference
 const { send, messages, isLoading } = useAgent({
@@ -83,7 +83,7 @@ messages.map(msg => msg.content); // ✅ Type-safe`}</code>
 
           <h3>2. Production Ready</h3>
           <p>
-            RANA isn&apos;t a toy framework—it&apos;s designed for real-world applications.
+            CoFounder isn&apos;t a toy framework—it&apos;s designed for real-world applications.
             It includes:
           </p>
 
@@ -98,7 +98,7 @@ messages.map(msg => msg.content); // ✅ Type-safe`}</code>
 
           <h3>3. Developer Experience</h3>
           <p>
-            RANA prioritizes developer productivity with:
+            CoFounder prioritizes developer productivity with:
           </p>
 
           <ul>
@@ -111,7 +111,7 @@ messages.map(msg => msg.content); // ✅ Type-safe`}</code>
 
           <h3>4. Performance Optimized</h3>
           <p>
-            Every part of RANA is optimized for performance:
+            Every part of CoFounder is optimized for performance:
           </p>
 
           <ul>
@@ -124,30 +124,30 @@ messages.map(msg => msg.content); // ✅ Type-safe`}</code>
 
           <h2>Framework Architecture</h2>
 
-          <p>RANA consists of three main packages:</p>
+          <p>CoFounder consists of three main packages:</p>
 
-          <h3>@rana/core</h3>
+          <h3>@cofounder/core</h3>
           <p>
             The core LLM client library. Handles API communication, streaming,
             error handling, and retry logic. Works with any JavaScript environment.
           </p>
 
-          <h3>@rana/react</h3>
+          <h3>@cofounder/react</h3>
           <p>
             React hooks and components for building AI interfaces. Provides
             <code>useAgent</code>, <code>useChat</code>, and other hooks for
             managing agent state.
           </p>
 
-          <h3>@rana/cli</h3>
+          <h3>@cofounder/cli</h3>
           <p>
             Command-line tools for project initialization, validation, and
             deployment. Includes generators for common patterns and best practices.
           </p>
 
-          <h2>Who Should Use RANA?</h2>
+          <h2>Who Should Use CoFounder?</h2>
 
-          <p>RANA is perfect for:</p>
+          <p>CoFounder is perfect for:</p>
 
           <ul>
             <li>

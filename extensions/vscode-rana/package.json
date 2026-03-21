@@ -1,41 +1,41 @@
 {
-  "name": "rana-guardrails",
-  "displayName": "RANA Guardrails",
+  "name": "cofounder-guardrails",
+  "displayName": "CoFounder Guardrails",
   "description": "AI guardrails for VS Code - PII scanning, injection detection, compliance checking, cost tracking",
   "version": "1.0.0",
   "publisher": "waymaker",
   "engines": { "vscode": "^1.85.0" },
   "categories": ["Linters", "Other"],
-  "activationEvents": ["onLanguage:typescript", "onLanguage:javascript", "onLanguage:python", "onCommand:rana.scan"],
+  "activationEvents": ["onLanguage:typescript", "onLanguage:javascript", "onLanguage:python", "onCommand:cofounder.scan"],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
-      { "command": "rana.scan", "title": "RANA: Scan Current File" },
-      { "command": "rana.scanWorkspace", "title": "RANA: Scan Workspace" },
-      { "command": "rana.showDashboard", "title": "RANA: Show Dashboard" },
-      { "command": "rana.checkCompliance", "title": "RANA: Check Compliance" },
-      { "command": "rana.estimateCost", "title": "RANA: Estimate Cost" }
+      { "command": "cofounder.scan", "title": "CoFounder: Scan Current File" },
+      { "command": "cofounder.scanWorkspace", "title": "CoFounder: Scan Workspace" },
+      { "command": "cofounder.showDashboard", "title": "CoFounder: Show Dashboard" },
+      { "command": "cofounder.checkCompliance", "title": "CoFounder: Check Compliance" },
+      { "command": "cofounder.estimateCost", "title": "CoFounder: Estimate Cost" }
     ],
     "configuration": {
-      "title": "RANA Guardrails",
+      "title": "CoFounder Guardrails",
       "properties": {
-        "rana.enableInlineScan": { "type": "boolean", "default": true, "description": "Enable real-time inline scanning" },
-        "rana.piiMode": { "type": "string", "enum": ["detect", "redact", "block"], "default": "detect" },
-        "rana.injectionSensitivity": { "type": "string", "enum": ["low", "medium", "high"], "default": "medium" },
-        "rana.approvedModels": { "type": "array", "default": [], "description": "Approved model names" },
-        "rana.complianceFrameworks": { "type": "array", "default": ["safety"], "description": "Active compliance frameworks" }
+        "cofounder.enableInlineScan": { "type": "boolean", "default": true, "description": "Enable real-time inline scanning" },
+        "cofounder.piiMode": { "type": "string", "enum": ["detect", "redact", "block"], "default": "detect" },
+        "cofounder.injectionSensitivity": { "type": "string", "enum": ["low", "medium", "high"], "default": "medium" },
+        "cofounder.approvedModels": { "type": "array", "default": [], "description": "Approved model names" },
+        "cofounder.complianceFrameworks": { "type": "array", "default": ["safety"], "description": "Active compliance frameworks" }
       }
     },
     "viewsContainers": {
       "activitybar": [
-        { "id": "rana", "title": "RANA Guardrails", "icon": "$(shield)" }
+        { "id": "cofounder", "title": "CoFounder Guardrails", "icon": "$(shield)" }
       ]
     },
     "views": {
-      "rana": [
-        { "id": "rana.findings", "name": "Findings" },
-        { "id": "rana.policies", "name": "Policies" },
-        { "id": "rana.dashboard", "name": "Dashboard" }
+      "cofounder": [
+        { "id": "cofounder.findings", "name": "Findings" },
+        { "id": "cofounder.policies", "name": "Policies" },
+        { "id": "cofounder.dashboard", "name": "Dashboard" }
       ]
     }
   },

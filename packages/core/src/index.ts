@@ -1,12 +1,12 @@
 /**
- * @ranavibe/core
- * Core SDK for RANA - Rapid AI Native Architecture
+ * @cofounder/core
+ * Core SDK for CoFounder - Rapid AI Native Architecture
  *
  * @example
  * ```typescript
- * import { createRana } from '@ranavibe/core';
+ * import { createCoFounder } from '@cofounder/core';
  *
- * const rana = createRana({
+ * const cofounder = createCoFounder({
  *   providers: {
  *     anthropic: process.env.ANTHROPIC_API_KEY,
  *     openai: process.env.OPENAI_API_KEY,
@@ -14,10 +14,10 @@
  * });
  *
  * // Simple usage
- * const response = await rana.chat('Hello!');
+ * const response = await cofounder.chat('Hello!');
  *
  * // Advanced usage with fluent API
- * const response = await rana
+ * const response = await cofounder
  *   .provider('anthropic')
  *   .model('claude-3-5-sonnet-20241022')
  *   .optimize('cost')
@@ -27,12 +27,12 @@
  */
 
 // Main client
-export { RanaClient, Rana, createRana } from './client';
+export { CoFounderClient, Rana, createCoFounder } from './client';
 
 // Types
 export type {
   // Core types
-  RanaConfig,
+  CoFounderConfig,
   RanaChatRequest,
   RanaChatResponse,
   RanaStreamChunk,
@@ -637,11 +637,11 @@ export type {
 } from './plugins/email';
 
 // ============================================================================
-// RANA Core Features (Config, Quality Gates, REPM, etc.)
+// CoFounder Core Features (Config, Quality Gates, REPM, etc.)
 // ============================================================================
 
 // Configuration Parser
-export { ConfigParser, RanaConfigSchema } from './config/index.js';
+export { ConfigParser, CoFounderConfigSchema } from './config/index.js';
 export type { QualityGate } from './config/index.js';
 
 // Quality Gates
@@ -713,7 +713,7 @@ export {
   VercelError,
   createVercelClient,
   createVercelConfig,
-  createRanaVercelConfig,
+  createCoFounderVercelConfig,
   deployToVercel,
   getDeployButton,
   generateDeployReadme,
@@ -760,7 +760,7 @@ export {
   WandbRun,
   WandbError,
   createWandbTracker,
-  createRanaWandbMiddleware,
+  createCoFounderWandbMiddleware,
   withExperiment,
 } from './integrations';
 export type {

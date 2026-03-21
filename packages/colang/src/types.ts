@@ -1,5 +1,5 @@
 /**
- * @ranavibe/colang - Types for Colang parsing and RANA policy conversion
+ * @cofounder/colang - Types for Colang parsing and CoFounder policy conversion
  */
 
 /** A user or bot message pattern in Colang */
@@ -83,8 +83,8 @@ export interface ParseWarning {
   message: string;
 }
 
-/** RANA policy rule types for conversion output */
-export interface RanaPolicyRule {
+/** CoFounder policy rule types for conversion output */
+export interface CoFounderPolicyRule {
   /** Rule identifier */
   id: string;
   /** Rule type */
@@ -105,10 +105,10 @@ export interface RanaPolicyRule {
   priority?: number;
 }
 
-/** Result of converting Colang to RANA policy */
+/** Result of converting Colang to CoFounder policy */
 export interface ConversionResult {
-  /** Generated RANA policy rules */
-  rules: RanaPolicyRule[];
+  /** Generated CoFounder policy rules */
+  rules: CoFounderPolicyRule[];
   /** Policy metadata */
   metadata: {
     /** Original file name */

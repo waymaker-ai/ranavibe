@@ -1,7 +1,7 @@
 {
-  "name": "rana-sdk-demo",
+  "name": "cofounder-sdk-demo",
   "version": "1.0.0",
-  "description": "Complete demo of RANA SDK features",
+  "description": "Complete demo of CoFounder SDK features",
   "type": "module",
   "scripts": {
     "dev": "tsx src/core-examples.ts",
@@ -9,8 +9,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@rana/core": "^2.0.0",
-    "@rana/react": "^2.0.0",
+    "@cofounder/core": "^2.0.0",
+    "@cofounder/react": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

@@ -1,5 +1,5 @@
 /**
- * @ranavibe/policies Demo
+ * @cofounder/policies Demo
  *
  * Run with: npx tsx index.ts
  *
@@ -15,7 +15,7 @@ import {
   listPresets,
   compose,
   PolicyBuilder,
-} from '@ranavibe/policies';
+} from '@cofounder/policies';
 
 // ─── 1. Available presets ──────────────────────────────────────────────────────
 

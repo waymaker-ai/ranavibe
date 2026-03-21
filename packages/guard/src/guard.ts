@@ -244,7 +244,7 @@ export function createGuard(options: GuardOptions = {}): Guard {
         if (result.blocked) {
           res.statusCode = 403;
           res.setHeader('Content-Type', 'application/json');
-          res.end(JSON.stringify({ error: 'Blocked by RANA Guard', reason: result.reason, violations: result.violations }));
+          res.end(JSON.stringify({ error: 'Blocked by CoFounder Guard', reason: result.reason, violations: result.violations }));
           return;
         }
       }

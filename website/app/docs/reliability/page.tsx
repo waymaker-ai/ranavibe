@@ -9,7 +9,7 @@ const features = [
     icon: RefreshCw,
     title: 'Automatic Retry',
     description: 'Smart retry logic with exponential backoff and jitter',
-    code: `import { withRetry, RetryConfig } from '@rana/core';
+    code: `import { withRetry, RetryConfig } from '@cofounder/core';
 
 const config: RetryConfig = {
   maxAttempts: 3,
@@ -39,7 +39,7 @@ const client = createClient({
     icon: Shield,
     title: 'Circuit Breaker',
     description: 'Prevent cascade failures with circuit breaker pattern',
-    code: `import { CircuitBreaker } from '@rana/core';
+    code: `import { CircuitBreaker } from '@cofounder/core';
 
 const breaker = new CircuitBreaker({
   failureThreshold: 5,     // Open after 5 failures
@@ -69,7 +69,7 @@ console.log(breaker.stats);  // { failures: 3, successes: 10, ... }`,
     icon: GitBranch,
     title: 'Fallback Chains',
     description: 'Chain multiple providers with automatic failover',
-    code: `import { FallbackChain } from '@rana/core';
+    code: `import { FallbackChain } from '@cofounder/core';
 
 const chain = new FallbackChain({
   providers: [
@@ -105,7 +105,7 @@ console.log(result.provider);  // Which provider succeeded`,
     icon: Timer,
     title: 'Timeout Management',
     description: 'Configurable timeouts with graceful cancellation',
-    code: `import { withTimeout, TimeoutError } from '@rana/core';
+    code: `import { withTimeout, TimeoutError } from '@cofounder/core';
 
 // Simple timeout wrapper
 try {
@@ -134,7 +134,7 @@ const result = await withTimeout(
     icon: Zap,
     title: 'Rate Limiting',
     description: 'Client-side rate limiting to respect API limits',
-    code: `import { RateLimiter } from '@rana/core';
+    code: `import { RateLimiter } from '@cofounder/core';
 
 const limiter = new RateLimiter({
   requests: {
@@ -164,7 +164,7 @@ const result = await limiter.execute(
     icon: Activity,
     title: 'Health Checks',
     description: 'Monitor provider health and availability',
-    code: `import { HealthChecker } from '@rana/core';
+    code: `import { HealthChecker } from '@cofounder/core';
 
 const health = new HealthChecker({
   providers: ['openai', 'anthropic', 'local'],
@@ -223,7 +223,7 @@ export default function ReliabilityPage() {
             fallback chains, and health monitoring.
           </p>
           <div className="mt-4 code-block font-mono text-sm">
-            npm install @rana/core
+            npm install @cofounder/core
           </div>
         </motion.div>
 

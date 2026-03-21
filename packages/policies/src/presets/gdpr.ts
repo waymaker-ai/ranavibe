@@ -29,7 +29,7 @@ export const gdprPolicy: Policy = {
       'Policy enforcing EU General Data Protection Regulation. Covers data minimization, ' +
       'purpose limitation, lawful basis, consent management, and data subject rights ' +
       '(Articles 5-22, 25, 32, 35).',
-    author: 'ranavibe',
+    author: 'cofounder',
     tags: ['eu', 'gdpr', 'privacy', 'compliance', 'data-protection'],
     framework: 'GDPR',
   },

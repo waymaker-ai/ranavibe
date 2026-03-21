@@ -1,4 +1,4 @@
-# RANA 2.1 Release - January 2026
+# CoFounder 2.1 Release - January 2026
 
 **The Enterprise-Ready AI Development Framework**
 
@@ -6,12 +6,12 @@
 
 ## 🎉 Release Highlights
 
-RANA 2.1 is the most significant release yet, transforming RANA from a solid AI framework into the **most comprehensive TypeScript-first AI development ecosystem** with:
+CoFounder 2.1 is the most significant release yet, transforming CoFounder from a solid AI framework into the **most comprehensive TypeScript-first AI development ecosystem** with:
 
 ### ⭐ **Three Major New Packages**
-1. **@rana/guidelines** - Dynamic behavioral control
-2. **@rana/compliance** - Enterprise compliance (HIPAA, SEC, GDPR, CCPA)
-3. **@rana/context-optimizer** - 400K token handling with 70% cost savings
+1. **@cofounder/guidelines** - Dynamic behavioral control
+2. **@cofounder/compliance** - Enterprise compliance (HIPAA, SEC, GDPR, CCPA)
+3. **@cofounder/context-optimizer** - 400K token handling with 70% cost savings
 
 ### 🚀 **Complete Code Generation Overhaul**
 1. **Advanced API Generation** - Full CRUD for Next.js, Express, Fastify, GraphQL
@@ -28,14 +28,14 @@ RANA 2.1 is the most significant release yet, transforming RANA from a solid AI 
 
 ## 📦 What's New
 
-### 1. @rana/guidelines - Dynamic Behavioral Control
+### 1. @cofounder/guidelines - Dynamic Behavioral Control
 
 **The Problem**: Static prompts can't adapt to changing contexts, priorities, or user roles.
 
 **The Solution**: Context-aware guidelines that dynamically apply based on conversation state.
 
 ```typescript
-import { createGuidelineManager, Conditions, PresetGuidelines } from '@rana/guidelines';
+import { createGuidelineManager, Conditions, PresetGuidelines } from '@cofounder/guidelines';
 
 const manager = createGuidelineManager({
   enableAnalytics: true,
@@ -87,14 +87,14 @@ const guidelines = await manager.match({
 
 ---
 
-### 2. @rana/compliance - Enterprise Compliance
+### 2. @cofounder/compliance - Enterprise Compliance
 
 **The Problem**: Healthcare, finance, and privacy regulations require strict compliance. Manual enforcement is error-prone.
 
 **The Solution**: Automatic compliance enforcement with built-in rules for major regulations.
 
 ```typescript
-import { createComplianceEnforcer, PresetRules } from '@rana/compliance';
+import { createComplianceEnforcer, PresetRules } from '@cofounder/compliance';
 
 const enforcer = createComplianceEnforcer({
   enableAllPresets: true,  // HIPAA, SEC, GDPR, CCPA, etc.
@@ -142,14 +142,14 @@ const result = await enforcer.enforce(
 
 ---
 
-### 3. @rana/context-optimizer - Extended Context Optimization
+### 3. @cofounder/context-optimizer - Extended Context Optimization
 
 **The Problem**: GPT-5.2 (400K), Gemini 3, and Claude 4.5 support massive contexts, but naive usage is expensive.
 
 **The Solution**: Smart hybrid optimization maintains 70% cost savings at 400K scale.
 
 ```typescript
-import { createContextOptimizer } from '@rana/context-optimizer';
+import { createContextOptimizer } from '@cofounder/context-optimizer';
 
 const optimizer = createContextOptimizer({
   strategy: 'hybrid',      // Smart mix of full + summarized
@@ -193,14 +193,14 @@ console.log(`Quality: ${result.qualityScore}`);         // 0.85+
 
 ---
 
-### 4. @rana/generate - Complete Overhaul
+### 4. @cofounder/generate - Complete Overhaul
 
 #### 4.1 Advanced API Generation ⭐ NEW
 
 **Generate production-ready CRUD APIs with authentication, validation, and rate limiting.**
 
 ```typescript
-import { APIGenerator, type CRUDSpec } from '@rana/generate';
+import { APIGenerator, type CRUDSpec } from '@cofounder/generate';
 
 const spec: CRUDSpec = {
   entity: 'User',
@@ -250,7 +250,7 @@ const { schema, resolvers } = APIGenerator.generateGraphQL(spec);
 **Generate schemas for Prisma, Drizzle, or raw SQL.**
 
 ```typescript
-import { DatabaseGenerator, type Entity } from '@rana/generate';
+import { DatabaseGenerator, type Entity } from '@cofounder/generate';
 
 const entity: Entity = {
   name: 'User',
@@ -299,7 +299,7 @@ const sql = DatabaseGenerator.generateSQLMigration(entity, {
 **Automatically determine where files should go and manage imports.**
 
 ```typescript
-import { FileIntegrator, analyzeCodebase } from '@rana/generate';
+import { FileIntegrator, analyzeCodebase } from '@cofounder/generate';
 
 // Analyze your codebase
 const context = await analyzeCodebase('./my-project');
@@ -336,7 +336,7 @@ console.log(result.suggestions);  // Integration tips
 
 ### Industry Leadership
 
-RANA 2.1 establishes RANA as:
+CoFounder 2.1 establishes CoFounder as:
 
 1. **#1 for Compliance** - Only TypeScript framework with built-in HIPAA/SEC/GDPR
 2. **#1 for Cost Optimization** - 70% savings at 400K tokens (competitors: none)
@@ -345,7 +345,7 @@ RANA 2.1 establishes RANA as:
 
 ### Feature Comparison
 
-| Feature | RANA 2.1 | LangChain | Cursor | v0.dev | MetaGPT |
+| Feature | CoFounder 2.1 | LangChain | Cursor | v0.dev | MetaGPT |
 |---------|----------|-----------|--------|--------|---------|
 | **TypeScript Native** | ✅ | ⚠️ | N/A | N/A | ❌ |
 | **API Generation** | ✅ | ❌ | ⚠️ | ❌ | ⚠️ |
@@ -384,9 +384,9 @@ RANA 2.1 establishes RANA as:
 
 ### New Documentation
 - **Comparison Guides**:
-  - [RANA vs LangChain](./comparisons/RANA_VS_LANGCHAIN.md)
-  - [RANA vs Cursor](./comparisons/RANA_VS_CURSOR.md)
-  - [RANA vs v0.dev & MetaGPT](./comparisons/RANA_VS_V0_METAGPT.md)
+  - [CoFounder vs LangChain](./comparisons/CoFounder_VS_LANGCHAIN.md)
+  - [CoFounder vs Cursor](./comparisons/CoFounder_VS_CURSOR.md)
+  - [CoFounder vs v0.dev & MetaGPT](./comparisons/CoFounder_VS_V0_METAGPT.md)
 
 ### New Examples
 - **Code Generation Demo**:
@@ -395,34 +395,34 @@ RANA 2.1 establishes RANA as:
   - [File Integration](../examples/code-generation-demo/file-integration.ts)
 
 ### Package Documentation
-- [@rana/guidelines README](../packages/guidelines/README.md)
-- [@rana/compliance README](../packages/compliance/README.md)
-- [@rana/context-optimizer README](../packages/context-optimizer/README.md)
-- [@rana/generate README](../packages/generate/README.md) - Updated
+- [@cofounder/guidelines README](../packages/guidelines/README.md)
+- [@cofounder/compliance README](../packages/compliance/README.md)
+- [@cofounder/context-optimizer README](../packages/context-optimizer/README.md)
+- [@cofounder/generate README](../packages/generate/README.md) - Updated
 
 ---
 
 ## 🚀 Migration Guide
 
-### From RANA 2.0 to 2.1
+### From CoFounder 2.0 to 2.1
 
-**No breaking changes!** RANA 2.1 is fully backward compatible.
+**No breaking changes!** CoFounder 2.1 is fully backward compatible.
 
 **New features are opt-in:**
 
 ```typescript
 // Existing code continues to work
-import { createRana } from '@rana/core';
-const rana = createRana({ /* ... */ });
+import { createCoFounder } from '@cofounder/core';
+const cofounder = createCoFounder({ /* ... */ });
 
 // Add new features as needed
-import { createComplianceEnforcer } from '@rana/compliance';
+import { createComplianceEnforcer } from '@cofounder/compliance';
 const enforcer = createComplianceEnforcer({ enableAllPresets: true });
 
-import { createGuidelineManager } from '@rana/guidelines';
+import { createGuidelineManager } from '@cofounder/guidelines';
 const guidelines = createGuidelineManager();
 
-import { createContextOptimizer } from '@rana/context-optimizer';
+import { createContextOptimizer } from '@cofounder/context-optimizer';
 const optimizer = createContextOptimizer({ maxTokens: 400000 });
 ```
 
@@ -434,19 +434,19 @@ const optimizer = createContextOptimizer({ maxTokens: 400000 });
 
 ```bash
 # Core + all new packages
-npm install @rana/core @rana/guidelines @rana/compliance @rana/context-optimizer @rana/generate
+npm install @cofounder/core @cofounder/guidelines @cofounder/compliance @cofounder/context-optimizer @cofounder/generate
 
 # Or install individually
-npm install @rana/guidelines
-npm install @rana/compliance
-npm install @rana/context-optimizer
+npm install @cofounder/guidelines
+npm install @cofounder/compliance
+npm install @cofounder/context-optimizer
 ```
 
 ### Quick Start
 
 ```typescript
 // 1. Generate a complete CRUD API
-import { APIGenerator } from '@rana/generate';
+import { APIGenerator } from '@cofounder/generate';
 
 const api = APIGenerator.generateCRUD({
   entity: 'User',
@@ -455,19 +455,19 @@ const api = APIGenerator.generateCRUD({
 }, { framework: 'next', includeAuth: true });
 
 // 2. Enforce compliance
-import { createComplianceEnforcer } from '@rana/compliance';
+import { createComplianceEnforcer } from '@cofounder/compliance';
 
 const enforcer = createComplianceEnforcer({ enableAllPresets: true });
 const safe = await enforcer.enforce(input, output, context);
 
 // 3. Optimize costs
-import { createContextOptimizer } from '@rana/context-optimizer';
+import { createContextOptimizer } from '@cofounder/context-optimizer';
 
 const optimizer = createContextOptimizer({ maxTokens: 400000 });
 const optimized = await optimizer.optimize({ query, codebase });
 
 // 4. Apply guidelines
-import { createGuidelineManager } from '@rana/guidelines';
+import { createGuidelineManager } from '@cofounder/guidelines';
 
 const guidelines = createGuidelineManager();
 const matched = await guidelines.match(context);
@@ -475,7 +475,7 @@ const matched = await guidelines.match(context);
 
 ---
 
-## 🏆 What Makes RANA 2.1 Unique
+## 🏆 What Makes CoFounder 2.1 Unique
 
 ### 1. Only Framework with Built-in Compliance ⭐
 - HIPAA, SEC, GDPR, CCPA enforcement
@@ -528,16 +528,16 @@ const matched = await guidelines.match(context);
 
 ## 📞 Support & Community
 
-- **GitHub**: [github.com/waymaker-ai/ranavibe](https://github.com/waymaker-ai/ranavibe)
-- **Issues**: [github.com/waymaker-ai/ranavibe/issues](https://github.com/waymaker-ai/ranavibe/issues)
-- **Discussions**: [github.com/waymaker-ai/ranavibe/discussions](https://github.com/waymaker-ai/ranavibe/discussions)
-- **Documentation**: [docs.rana.ai](https://docs.rana.ai) *(coming soon)*
+- **GitHub**: [github.com/waymaker-ai/cofounder](https://github.com/waymaker-ai/cofounder)
+- **Issues**: [github.com/waymaker-ai/cofounder/issues](https://github.com/waymaker-ai/cofounder/issues)
+- **Discussions**: [github.com/waymaker-ai/cofounder/discussions](https://github.com/waymaker-ai/cofounder/discussions)
+- **Documentation**: [docs.cofounder.ai](https://docs.cofounder.ai) *(coming soon)*
 
 ---
 
 ## 🙏 Acknowledgments
 
-RANA 2.1 represents months of work to create the most comprehensive TypeScript-first AI development framework. Thank you to:
+CoFounder 2.1 represents months of work to create the most comprehensive TypeScript-first AI development framework. Thank you to:
 
 - Early adopters who provided feedback
 - Contributors who reported issues
@@ -551,6 +551,6 @@ MIT © Waymaker
 
 ---
 
-**RANA 2.1 - The Enterprise-Ready AI Development Framework**
+**CoFounder 2.1 - The Enterprise-Ready AI Development Framework**
 
 *Released: January 2026*

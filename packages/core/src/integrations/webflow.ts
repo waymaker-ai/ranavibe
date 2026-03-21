@@ -1,5 +1,5 @@
 /**
- * Webflow CMS Integration for RANA
+ * Webflow CMS Integration for CoFounder
  *
  * Enables AI-powered content management with Webflow CMS.
  * Create, update, and manage CMS items using natural language.
@@ -630,11 +630,11 @@ export class WebflowIntegration extends EventEmitter {
   }
 
   // ===========================================================================
-  // RANA Integration Helpers
+  // CoFounder Integration Helpers
   // ===========================================================================
 
   /**
-   * Create RANA tool definitions for Webflow operations
+   * Create CoFounder tool definitions for Webflow operations
    */
   getToolDefinitions(): Array<{
     name: string;

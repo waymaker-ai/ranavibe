@@ -1,18 +1,18 @@
 /**
- * n8n Integration for RANA
+ * n8n Integration for CoFounder
  *
  * Enables integration with n8n workflow automation platform.
  * Supports both self-hosted and n8n cloud instances.
  *
  * Features:
- * - Webhook triggers for RANA events
- * - Custom n8n nodes for RANA operations
- * - Workflow execution from RANA
+ * - Webhook triggers for CoFounder events
+ * - Custom n8n nodes for CoFounder operations
+ * - Workflow execution from CoFounder
  * - Credential management
  *
  * @example
  * ```typescript
- * import { N8nIntegration } from '@rana/core';
+ * import { N8nIntegration } from '@cofounder/core';
  *
  * const n8n = new N8nIntegration({
  *   baseUrl: 'https://your-n8n-instance.com',
@@ -21,12 +21,12 @@
  *
  * // Trigger a workflow
  * await n8n.triggerWorkflow('my-workflow-id', {
- *   data: { message: 'Hello from RANA!' }
+ *   data: { message: 'Hello from CoFounder!' }
  * });
  *
  * // Listen for n8n webhooks
- * n8n.onWebhook('rana-trigger', async (data) => {
- *   const response = await rana.chat({ messages: data.messages });
+ * n8n.onWebhook('cofounder-trigger', async (data) => {
+ *   const response = await cofounder.chat({ messages: data.messages });
  *   return { response: response.content };
  * });
  * ```
@@ -355,9 +355,9 @@ export class N8nIntegration extends EventEmitter {
   }
 
   /**
-   * Create RANA credentials in n8n
+   * Create CoFounder credentials in n8n
    */
-  async createRanaCredentials(options: {
+  async createCoFounderCredentials(options: {
     name: string;
     apiKey: string;
     baseUrl?: string;
@@ -366,17 +366,17 @@ export class N8nIntegration extends EventEmitter {
       method: 'POST',
       body: JSON.stringify({
         name: options.name,
-        type: 'ranaApi',
+        type: 'cofounderApi',
         data: {
           apiKey: options.apiKey,
-          baseUrl: options.baseUrl || 'https://api.rana.dev',
+          baseUrl: options.baseUrl || 'https://api.cofounder.dev',
         },
       }),
     });
   }
 
   // ============================================================================
-  // WEBHOOK HANDLERS (for n8n to call RANA)
+  // WEBHOOK HANDLERS (for n8n to call CoFounder)
   // ============================================================================
 
   /**
@@ -460,25 +460,25 @@ export class N8nIntegration extends EventEmitter {
   }
 
   // ============================================================================
-  // RANA-SPECIFIC NODES (Templates for n8n custom nodes)
+  // CoFounder-SPECIFIC NODES (Templates for n8n custom nodes)
   // ============================================================================
 
   /**
-   * Get RANA node definitions for n8n
+   * Get CoFounder node definitions for n8n
    * These can be used to create custom n8n nodes
    */
   getRanaNodeDefinitions(): Record<string, any>[] {
     return [
       {
-        displayName: 'RANA Chat',
-        name: 'ranaChat',
+        displayName: 'CoFounder Chat',
+        name: 'cofounderChat',
         group: ['transform'],
         version: 1,
-        description: 'Send messages to RANA AI',
-        defaults: { name: 'RANA Chat' },
+        description: 'Send messages to CoFounder AI',
+        defaults: { name: 'CoFounder Chat' },
         inputs: ['main'],
         outputs: ['main'],
-        credentials: [{ name: 'ranaApi', required: true }],
+        credentials: [{ name: 'cofounderApi', required: true }],
         properties: [
           {
             displayName: 'Message',
@@ -486,7 +486,7 @@ export class N8nIntegration extends EventEmitter {
             type: 'string',
             default: '',
             required: true,
-            description: 'The message to send to RANA',
+            description: 'The message to send to CoFounder',
           },
           {
             displayName: 'Model',
@@ -509,15 +509,15 @@ export class N8nIntegration extends EventEmitter {
         ],
       },
       {
-        displayName: 'RANA Summarize',
-        name: 'ranaSummarize',
+        displayName: 'CoFounder Summarize',
+        name: 'cofounderSummarize',
         group: ['transform'],
         version: 1,
-        description: 'Summarize text using RANA',
-        defaults: { name: 'RANA Summarize' },
+        description: 'Summarize text using CoFounder',
+        defaults: { name: 'CoFounder Summarize' },
         inputs: ['main'],
         outputs: ['main'],
-        credentials: [{ name: 'ranaApi', required: true }],
+        credentials: [{ name: 'cofounderApi', required: true }],
         properties: [
           {
             displayName: 'Text',
@@ -541,15 +541,15 @@ export class N8nIntegration extends EventEmitter {
         ],
       },
       {
-        displayName: 'RANA Classify',
-        name: 'ranaClassify',
+        displayName: 'CoFounder Classify',
+        name: 'cofounderClassify',
         group: ['transform'],
         version: 1,
         description: 'Classify text into categories',
-        defaults: { name: 'RANA Classify' },
+        defaults: { name: 'CoFounder Classify' },
         inputs: ['main'],
         outputs: ['main'],
-        credentials: [{ name: 'ranaApi', required: true }],
+        credentials: [{ name: 'cofounderApi', required: true }],
         properties: [
           {
             displayName: 'Text',
@@ -569,15 +569,15 @@ export class N8nIntegration extends EventEmitter {
         ],
       },
       {
-        displayName: 'RANA RAG Query',
-        name: 'ranaRagQuery',
+        displayName: 'CoFounder RAG Query',
+        name: 'cofounderRagQuery',
         group: ['transform'],
         version: 1,
         description: 'Query documents using RAG',
-        defaults: { name: 'RANA RAG Query' },
+        defaults: { name: 'CoFounder RAG Query' },
         inputs: ['main'],
         outputs: ['main'],
-        credentials: [{ name: 'ranaApi', required: true }],
+        credentials: [{ name: 'cofounderApi', required: true }],
         properties: [
           {
             displayName: 'Question',
@@ -601,15 +601,15 @@ export class N8nIntegration extends EventEmitter {
         ],
       },
       {
-        displayName: 'RANA Agent',
-        name: 'ranaAgent',
+        displayName: 'CoFounder Agent',
+        name: 'cofounderAgent',
         group: ['transform'],
         version: 1,
-        description: 'Run a RANA agent with tools',
-        defaults: { name: 'RANA Agent' },
+        description: 'Run a CoFounder agent with tools',
+        defaults: { name: 'CoFounder Agent' },
         inputs: ['main'],
         outputs: ['main'],
-        credentials: [{ name: 'ranaApi', required: true }],
+        credentials: [{ name: 'cofounderApi', required: true }],
         properties: [
           {
             displayName: 'Agent ID',
@@ -644,7 +644,7 @@ export class N8nIntegration extends EventEmitter {
   }
 
   /**
-   * Export workflow template for RANA integration
+   * Export workflow template for CoFounder integration
    */
   exportRanaWorkflowTemplate(options: {
     name: string;
@@ -663,7 +663,7 @@ export class N8nIntegration extends EventEmitter {
         type: 'n8n-nodes-base.webhook',
         position: [250, yPosition],
         parameters: {
-          path: `rana-${options.name.toLowerCase().replace(/\s+/g, '-')}`,
+          path: `cofounder-${options.name.toLowerCase().replace(/\s+/g, '-')}`,
           httpMethod: 'POST',
         },
       });
@@ -683,17 +683,17 @@ export class N8nIntegration extends EventEmitter {
       yPosition += 150;
     }
 
-    // Add RANA node
+    // Add CoFounder node
     nodes.push({
       id: String(nodeId++),
-      name: 'RANA AI',
-      type: 'n8n-nodes-rana.ranaChat',
+      name: 'CoFounder AI',
+      type: 'n8n-nodes-cofounder.cofounderChat',
       position: [500, 300],
       parameters: {
         message: '={{ $json.message }}',
         model: 'gpt-4o',
       },
-      credentials: { ranaApi: { id: 'rana-credentials', name: 'RANA API' } },
+      credentials: { cofounderApi: { id: 'cofounder-credentials', name: 'CoFounder API' } },
     });
 
     return {
@@ -705,7 +705,7 @@ export class N8nIntegration extends EventEmitter {
       nodes,
       connections: {},
       settings: { executionOrder: 'v1' },
-      tags: ['rana', 'ai'],
+      tags: ['cofounder', 'ai'],
     };
   }
 }

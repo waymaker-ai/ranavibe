@@ -9,7 +9,7 @@ import {
   REPMValidator,
   TemplateManager,
   DesignSystemChecker,
-} from '@rana/core';
+} from '@cofounder/core';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -24,8 +24,8 @@ import { registerPlaygroundCommands } from './commands/playground.js';
 const program = new Command();
 
 program
-  .name('rana')
-  .description('RANA CLI - Guardrails, VibeSpecs, code generation, MCP servers, and feature workflows for AI-assisted development')
+  .name('cofounder')
+  .description('CoFounder CLI - Guardrails, VibeSpecs, code generation, MCP servers, and feature workflows for AI-assisted development')
   .version('1.0.0');
 
 // Register command modules
@@ -39,11 +39,11 @@ registerPlaygroundCommands(program);
 // Command: init
 program
   .command('init')
-  .description('Initialize a new RANA project')
+  .description('Initialize a new CoFounder project')
   .option('-t, --type <type>', 'Project type (nextjs, react, python)', 'default')
   .option('-o, --output <path>', 'Output directory', process.cwd())
   .action(async (options) => {
-    console.log(chalk.blue.bold('\n🚀 RANA Project Initialization\n'));
+    console.log(chalk.blue.bold('\n🚀 CoFounder Project Initialization\n'));
 
     const answers = await inquirer.prompt([
       {
@@ -68,7 +68,7 @@ program
       },
     ]);
 
-    const spinner = ora('Creating .rana.yml...').start();
+    const spinner = ora('Creating .cofounder.yml...').start();
 
     try {
       const templateManager = new TemplateManager();
@@ -83,18 +83,18 @@ program
           `languages:\n${answers.languages.map((lang: string) => `    - "${lang}"`).join('\n')}`
         );
 
-      const configPath = path.join(options.output, '.rana.yml');
+      const configPath = path.join(options.output, '.cofounder.yml');
       fs.writeFileSync(configPath, customConfig, 'utf8');
 
-      spinner.succeed(chalk.green('Created .rana.yml'));
+      spinner.succeed(chalk.green('Created .cofounder.yml'));
 
-      console.log(chalk.green.bold('\n✅ RANA project initialized!\n'));
+      console.log(chalk.green.bold('\n✅ CoFounder project initialized!\n'));
       console.log(chalk.gray('Next steps:'));
-      console.log(chalk.gray('  1. Customize .rana.yml for your project'));
-      console.log(chalk.gray('  2. Run `rana validate` to verify configuration'));
-      console.log(chalk.gray('  3. Run `rana check pre` before implementing features\n'));
+      console.log(chalk.gray('  1. Customize .cofounder.yml for your project'));
+      console.log(chalk.gray('  2. Run `cofounder validate` to verify configuration'));
+      console.log(chalk.gray('  3. Run `cofounder check pre` before implementing features\n'));
     } catch (error) {
-      spinner.fail(chalk.red('Failed to create .rana.yml'));
+      spinner.fail(chalk.red('Failed to create .cofounder.yml'));
       console.error(chalk.red(error instanceof Error ? error.message : String(error)));
       process.exit(1);
     }
@@ -103,16 +103,16 @@ program
 // Command: validate
 program
   .command('validate')
-  .description('Validate .rana.yml configuration')
-  .option('-c, --config <path>', 'Path to .rana.yml file')
+  .description('Validate .cofounder.yml configuration')
+  .option('-c, --config <path>', 'Path to .cofounder.yml file')
   .action(async (options) => {
     const spinner = ora('Validating configuration...').start();
 
     try {
       const configPath = options.config || ConfigParser.findConfig();
       if (!configPath) {
-        spinner.fail(chalk.red('No .rana.yml file found'));
-        console.log(chalk.gray('\nRun `rana init` to create one.\n'));
+        spinner.fail(chalk.red('No .cofounder.yml file found'));
+        console.log(chalk.gray('\nRun `cofounder init` to create one.\n'));
         process.exit(1);
       }
 
@@ -160,7 +160,7 @@ program
 program
   .command('check <phase>')
   .description('Check quality gates for a specific phase')
-  .option('-c, --config <path>', 'Path to .rana.yml file')
+  .option('-c, --config <path>', 'Path to .cofounder.yml file')
   .action(async (phase, options) => {
     const validPhases = ['pre', 'impl', 'test', 'deploy'];
     const phaseMap: Record<string, 'pre_implementation' | 'implementation' | 'testing' | 'deployment'> = {
@@ -180,7 +180,7 @@ program
     try {
       const configPath = options.config || ConfigParser.findConfig();
       if (!configPath) {
-        console.error(chalk.red('No .rana.yml file found'));
+        console.error(chalk.red('No .cofounder.yml file found'));
         process.exit(1);
       }
 
@@ -247,7 +247,7 @@ program
 program
   .command('is-major')
   .description('Check if a feature requires REPM validation')
-  .option('-c, --config <path>', 'Path to .rana.yml file')
+  .option('-c, --config <path>', 'Path to .cofounder.yml file')
   .action(async (options) => {
     const answers = await inquirer.prompt([
       {
@@ -260,7 +260,7 @@ program
     try {
       const configPath = options.config || ConfigParser.findConfig();
       if (!configPath) {
-        console.error(chalk.red('No .rana.yml file found'));
+        console.error(chalk.red('No .cofounder.yml file found'));
         process.exit(1);
       }
 
@@ -275,16 +275,16 @@ program
           )
         );
         console.log(chalk.white.bold('\nREPM validation required before implementation.\n'));
-        console.log(chalk.gray('Run: rana repm\n'));
+        console.log(chalk.gray('Run: cofounder repm\n'));
       } else {
         console.log(chalk.green.bold('\n✅ This is a standard feature\n'));
         console.log(chalk.gray('No REPM validation needed.'));
         console.log(chalk.white.bold('\nProceed with regular quality gates:\n'));
-        console.log(chalk.gray('  1. Run: rana check pre'));
+        console.log(chalk.gray('  1. Run: cofounder check pre'));
         console.log(chalk.gray('  2. Implement feature'));
-        console.log(chalk.gray('  3. Run: rana check impl'));
-        console.log(chalk.gray('  4. Run: rana check test'));
-        console.log(chalk.gray('  5. Run: rana check deploy\n'));
+        console.log(chalk.gray('  3. Run: cofounder check impl'));
+        console.log(chalk.gray('  4. Run: cofounder check test'));
+        console.log(chalk.gray('  5. Run: cofounder check deploy\n'));
       }
     } catch (error) {
       console.error(chalk.red(error instanceof Error ? error.message : String(error)));
@@ -296,7 +296,7 @@ program
 program
   .command('report')
   .description('Generate compliance report')
-  .option('-c, --config <path>', 'Path to .rana.yml file')
+  .option('-c, --config <path>', 'Path to .cofounder.yml file')
   .option('-o, --output <file>', 'Output file (markdown)')
   .action(async (options) => {
     const spinner = ora('Generating compliance report...').start();
@@ -304,14 +304,14 @@ program
     try {
       const configPath = options.config || ConfigParser.findConfig();
       if (!configPath) {
-        spinner.fail(chalk.red('No .rana.yml file found'));
+        spinner.fail(chalk.red('No .cofounder.yml file found'));
         process.exit(1);
       }
 
       const config = ConfigParser.parse(configPath);
       const checker = new QualityGateChecker(config);
 
-      let report = `# RANA Compliance Report\n\n`;
+      let report = `# CoFounder Compliance Report\n\n`;
       report += `**Project**: ${config.project.name}\n`;
       report += `**Type**: ${config.project.type}\n`;
       report += `**Languages**: ${config.project.languages.join(', ')}\n\n`;
@@ -346,20 +346,20 @@ program
 program
   .command('check-design-system')
   .description('Check design system compliance')
-  .option('-c, --config <path>', 'Path to .rana.yml file')
+  .option('-c, --config <path>', 'Path to .cofounder.yml file')
   .action(async (options) => {
     try {
       const configPath = options.config || ConfigParser.findConfig();
       if (!configPath) {
-        console.error(chalk.red('No .rana.yml file found'));
+        console.error(chalk.red('No .cofounder.yml file found'));
         process.exit(1);
       }
 
       const config = ConfigParser.parse(configPath);
 
       if (!config.standards?.design_system?.enabled) {
-        console.log(chalk.yellow('⚠️  Design system not enabled in .rana.yml\n'));
-        console.log(chalk.gray('Add this to your .rana.yml:\n'));
+        console.log(chalk.yellow('⚠️  Design system not enabled in .cofounder.yml\n'));
+        console.log(chalk.gray('Add this to your .cofounder.yml:\n'));
         console.log(chalk.gray('standards:'));
         console.log(chalk.gray('  design_system:'));
         console.log(chalk.gray('    enabled: true\n'));
@@ -414,7 +414,7 @@ program
         }
       }
 
-      console.log(chalk.gray('Run `rana design-violations --fix` to auto-fix some issues\n'));
+      console.log(chalk.gray('Run `cofounder design-violations --fix` to auto-fix some issues\n'));
 
       if (!result.passed) {
         process.exit(1);
@@ -429,13 +429,13 @@ program
 program
   .command('design-coverage')
   .description('Show design system coverage statistics')
-  .option('-c, --config <path>', 'Path to .rana.yml file')
+  .option('-c, --config <path>', 'Path to .cofounder.yml file')
   .option('--threshold <number>', 'Fail if coverage is below threshold', '0')
   .action(async (options) => {
     try {
       const configPath = options.config || ConfigParser.findConfig();
       if (!configPath) {
-        console.error(chalk.red('No .rana.yml file found'));
+        console.error(chalk.red('No .cofounder.yml file found'));
         process.exit(1);
       }
 
@@ -465,13 +465,13 @@ program
 program
   .command('design-violations')
   .description('Show all design system violations')
-  .option('-c, --config <path>', 'Path to .rana.yml file')
+  .option('-c, --config <path>', 'Path to .cofounder.yml file')
   .option('--fix', 'Attempt to auto-fix violations')
   .action(async (options) => {
     try {
       const configPath = options.config || ConfigParser.findConfig();
       if (!configPath) {
-        console.error(chalk.red('No .rana.yml file found'));
+        console.error(chalk.red('No .cofounder.yml file found'));
         process.exit(1);
       }
 

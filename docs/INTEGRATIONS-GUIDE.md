@@ -1,8 +1,8 @@
-# RANA Integrations Guide
+# CoFounder Integrations Guide
 
 ## Hugging Face Integration
 
-Hugging Face is the GitHub of ML. Integrating deeply gives RANA access to:
+Hugging Face is the GitHub of ML. Integrating deeply gives CoFounder access to:
 - 500k+ models
 - 100k+ datasets
 - Inference API
@@ -12,7 +12,7 @@ Hugging Face is the GitHub of ML. Integrating deeply gives RANA access to:
 ### Implementation
 
 ```typescript
-import { HuggingFace } from '@rana/huggingface';
+import { HuggingFace } from '@cofounder/huggingface';
 
 // Use any HF model
 const hf = new HuggingFace({ token: process.env.HF_TOKEN });
@@ -66,7 +66,7 @@ MCP is the future of AI tool integration. Be an early adopter.
 ### Create MCP Server
 
 ```typescript
-import { createMCPServer, Tool, Resource } from '@rana/mcp';
+import { createMCPServer, Tool, Resource } from '@cofounder/mcp';
 
 const server = createMCPServer({
   name: 'my-company-tools',
@@ -128,7 +128,7 @@ server.listen({ port: 3100 });
 ### OpenTelemetry (Industry Standard)
 
 ```typescript
-import { enableTracing } from '@rana/observability';
+import { enableTracing } from '@cofounder/observability';
 
 enableTracing({
   serviceName: 'my-ai-app',
@@ -136,7 +136,7 @@ enableTracing({
   endpoint: process.env.OTEL_ENDPOINT,
 });
 
-// Automatic spans for all RANA operations
+// Automatic spans for all CoFounder operations
 // - LLM calls with tokens, cost, latency
 // - RAG retrieval with results
 // - Agent tool calls
@@ -147,19 +147,19 @@ enableTracing({
 
 ```typescript
 // Datadog
-import { DatadogExporter } from '@rana/observability/datadog';
+import { DatadogExporter } from '@cofounder/observability/datadog';
 enableTracing({ exporter: new DatadogExporter() });
 
 // New Relic
-import { NewRelicExporter } from '@rana/observability/newrelic';
+import { NewRelicExporter } from '@cofounder/observability/newrelic';
 enableTracing({ exporter: new NewRelicExporter() });
 
 // Grafana/Tempo
-import { TempoExporter } from '@rana/observability/tempo';
+import { TempoExporter } from '@cofounder/observability/tempo';
 enableTracing({ exporter: new TempoExporter() });
 
 // Honeycomb
-import { HoneycombExporter } from '@rana/observability/honeycomb';
+import { HoneycombExporter } from '@cofounder/observability/honeycomb';
 enableTracing({ exporter: new HoneycombExporter() });
 ```
 
@@ -167,7 +167,7 @@ enableTracing({ exporter: new HoneycombExporter() });
 
 ```bash
 # Start local observability dashboard
-rana observe
+cofounder observe
 
 # Opens localhost:4000 with:
 # - Request timeline
@@ -191,25 +191,25 @@ rana observe
 
 ```typescript
 // Weaviate
-import { WeaviateRetriever } from '@rana/rag/weaviate';
+import { WeaviateRetriever } from '@cofounder/rag/weaviate';
 
 // Milvus
-import { MilvusRetriever } from '@rana/rag/milvus';
+import { MilvusRetriever } from '@cofounder/rag/milvus';
 
 // pgvector (PostgreSQL)
-import { PgVectorRetriever } from '@rana/rag/pgvector';
+import { PgVectorRetriever } from '@cofounder/rag/pgvector';
 
 // Supabase Vector
-import { SupabaseRetriever } from '@rana/rag/supabase';
+import { SupabaseRetriever } from '@cofounder/rag/supabase';
 
 // Redis Vector
-import { RedisRetriever } from '@rana/rag/redis';
+import { RedisRetriever } from '@cofounder/rag/redis';
 
 // LanceDB (local, serverless)
-import { LanceRetriever } from '@rana/rag/lance';
+import { LanceRetriever } from '@cofounder/rag/lance';
 
 // Turbopuffer (new, fast)
-import { TurbopufferRetriever } from '@rana/rag/turbopuffer';
+import { TurbopufferRetriever } from '@cofounder/rag/turbopuffer';
 ```
 
 ---
@@ -230,7 +230,7 @@ import { TurbopufferRetriever } from '@rana/rag/turbopuffer';
 }
 
 // One-click deploy
-$ rana deploy vercel
+$ cofounder deploy vercel
 
 // Automatic:
 // - Edge runtime for streaming
@@ -242,7 +242,7 @@ $ rana deploy vercel
 ### Railway
 
 ```typescript
-$ rana deploy railway
+$ cofounder deploy railway
 
 // Includes:
 // - Redis for caching
@@ -253,7 +253,7 @@ $ rana deploy railway
 ### Fly.io
 
 ```typescript
-$ rana deploy fly
+$ cofounder deploy fly
 
 // Includes:
 // - Edge deployment
@@ -265,10 +265,10 @@ $ rana deploy fly
 
 ```bash
 # Generate production Dockerfile
-rana docker:generate
+cofounder docker:generate
 
 # Generate Helm chart
-rana k8s:generate
+cofounder k8s:generate
 
 # Includes:
 # - Multi-stage builds
@@ -284,7 +284,7 @@ rana k8s:generate
 ### Slack
 
 ```typescript
-import { SlackBot } from '@rana/slack';
+import { SlackBot } from '@cofounder/slack';
 
 const bot = new SlackBot({
   token: process.env.SLACK_BOT_TOKEN,
@@ -292,14 +292,14 @@ const bot = new SlackBot({
 });
 
 bot.onMessage(async (message, say) => {
-  const response = await rana.chat(message.text, {
+  const response = await cofounder.chat(message.text, {
     context: await bot.getThreadContext(message),
   });
   await say(response);
 });
 
 bot.onSlashCommand('/ask', async (command, respond) => {
-  const response = await rana.chat(command.text);
+  const response = await cofounder.chat(command.text);
   await respond(response);
 });
 
@@ -309,7 +309,7 @@ bot.start();
 ### Discord
 
 ```typescript
-import { DiscordBot } from '@rana/discord';
+import { DiscordBot } from '@cofounder/discord';
 
 const bot = new DiscordBot({
   token: process.env.DISCORD_TOKEN,
@@ -317,7 +317,7 @@ const bot = new DiscordBot({
 
 bot.onMessage(async (message) => {
   if (message.mentions.has(bot.user)) {
-    const response = await rana.chat(message.content);
+    const response = await cofounder.chat(message.content);
     await message.reply(response);
   }
 });
@@ -328,7 +328,7 @@ bot.start();
 ### Microsoft Teams
 
 ```typescript
-import { TeamsBot } from '@rana/teams';
+import { TeamsBot } from '@cofounder/teams';
 // Similar API...
 ```
 
@@ -339,7 +339,7 @@ import { TeamsBot } from '@rana/teams';
 ### Notion
 
 ```typescript
-import { NotionLoader } from '@rana/loaders/notion';
+import { NotionLoader } from '@cofounder/loaders/notion';
 
 const loader = new NotionLoader({
   token: process.env.NOTION_TOKEN,
@@ -360,7 +360,7 @@ loader.onUpdate(async (page) => {
 ### Confluence
 
 ```typescript
-import { ConfluenceLoader } from '@rana/loaders/confluence';
+import { ConfluenceLoader } from '@cofounder/loaders/confluence';
 
 const loader = new ConfluenceLoader({
   baseUrl: 'https://company.atlassian.net',
@@ -374,7 +374,7 @@ const docs = await loader.loadSpace('ENGINEERING');
 ### GitHub
 
 ```typescript
-import { GitHubLoader } from '@rana/loaders/github';
+import { GitHubLoader } from '@cofounder/loaders/github';
 
 const loader = new GitHubLoader({
   token: process.env.GITHUB_TOKEN,
@@ -397,7 +397,7 @@ const issues = await loader.loadIssues('owner/repo');
 ### Unstructured.io
 
 ```typescript
-import { UnstructuredLoader } from '@rana/loaders/unstructured';
+import { UnstructuredLoader } from '@cofounder/loaders/unstructured';
 
 // Parse any document type
 const loader = new UnstructuredLoader({
@@ -411,7 +411,7 @@ const docs = await loader.load('./documents/**/*');
 ### LlamaParse
 
 ```typescript
-import { LlamaParseLoader } from '@rana/loaders/llamaparse';
+import { LlamaParseLoader } from '@cofounder/loaders/llamaparse';
 
 // Best-in-class PDF parsing
 const loader = new LlamaParseLoader({
@@ -428,9 +428,9 @@ const docs = await loader.load('./documents/*.pdf');
 ### Sentry
 
 ```typescript
-import { SentryPlugin } from '@rana/plugins/sentry';
+import { SentryPlugin } from '@cofounder/plugins/sentry';
 
-rana.use(SentryPlugin({
+cofounder.use(SentryPlugin({
   dsn: process.env.SENTRY_DSN,
   tracesSampleRate: 1.0,
   captureAIErrors: true,  // Capture LLM errors with context
@@ -444,9 +444,9 @@ rana.use(SentryPlugin({
 ### PostHog
 
 ```typescript
-import { PostHogPlugin } from '@rana/plugins/posthog';
+import { PostHogPlugin } from '@cofounder/plugins/posthog';
 
-rana.use(PostHogPlugin({
+cofounder.use(PostHogPlugin({
   apiKey: process.env.POSTHOG_KEY,
   trackUsage: true,
   trackCost: true,
@@ -462,7 +462,7 @@ rana.use(PostHogPlugin({
 ### Mixpanel
 
 ```typescript
-import { MixpanelPlugin } from '@rana/plugins/mixpanel';
+import { MixpanelPlugin } from '@cofounder/plugins/mixpanel';
 // Similar API...
 ```
 
@@ -473,7 +473,7 @@ import { MixpanelPlugin } from '@rana/plugins/mixpanel';
 ### Stripe
 
 ```typescript
-import { StripeUsageBilling } from '@rana/billing/stripe';
+import { StripeUsageBilling } from '@cofounder/billing/stripe';
 
 const billing = new StripeUsageBilling({
   secretKey: process.env.STRIPE_SECRET_KEY,
@@ -481,10 +481,10 @@ const billing = new StripeUsageBilling({
 });
 
 // Automatically meter AI usage
-rana.use(billing.middleware());
+cofounder.use(billing.middleware());
 
 // Track usage per customer
-await rana.chat('Hello', {
+await cofounder.chat('Hello', {
   customerId: 'cus_xxx',  // Stripe customer ID
 });
 ```
@@ -496,19 +496,19 @@ await rana.chat('Hello', {
 ### LaunchDarkly
 
 ```typescript
-import { LaunchDarklyPlugin } from '@rana/plugins/launchdarkly';
+import { LaunchDarklyPlugin } from '@cofounder/plugins/launchdarkly';
 
-rana.use(LaunchDarklyPlugin({
+cofounder.use(LaunchDarklyPlugin({
   sdkKey: process.env.LD_SDK_KEY,
 }));
 
 // Feature flag model selection
-const model = await rana.flag('ai-model', {
+const model = await cofounder.flag('ai-model', {
   default: 'gpt-4o-mini',
   user: { key: userId },
 });
 
-const response = await rana.chat('Hello', { model });
+const response = await cofounder.chat('Hello', { model });
 ```
 
 ---
@@ -518,11 +518,11 @@ const response = await rana.chat('Hello', { model });
 ### n8n
 
 ```typescript
-// n8n custom node for RANA
+// n8n custom node for CoFounder
 export class RanaNode implements INodeType {
   description: INodeTypeDescription = {
-    displayName: 'RANA',
-    name: 'rana',
+    displayName: 'CoFounder',
+    name: 'cofounder',
     group: ['transform'],
     // ...
   };
@@ -546,7 +546,7 @@ export class RanaNode implements INodeType {
 ```json
 // .vscode/extensions.json
 {
-  "recommendations": ["rana.rana-vscode"]
+  "recommendations": ["cofounder.cofounder-vscode"]
 }
 ```
 
@@ -580,18 +580,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup RANA
-        uses: rana/setup-action@v1
+      - name: Setup CoFounder
+        uses: cofounder/setup-action@v1
         with:
           version: latest
 
       - name: Run AI Tests
-        run: rana test
+        run: cofounder test
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
       - name: Check Costs
-        run: rana cost:check --budget 10.00
+        run: cofounder cost:check --budget 10.00
 ```
 
 ### GitLab CI
@@ -600,8 +600,8 @@ jobs:
 # .gitlab-ci.yml
 ai-tests:
   script:
-    - npx rana test
-    - npx rana cost:check --budget 10.00
+    - npx cofounder test
+    - npx cofounder cost:check --budget 10.00
 ```
 
 ---
@@ -611,7 +611,7 @@ ai-tests:
 ### Vault (HashiCorp)
 
 ```typescript
-import { VaultSecrets } from '@rana/secrets/vault';
+import { VaultSecrets } from '@cofounder/secrets/vault';
 
 const secrets = new VaultSecrets({
   address: process.env.VAULT_ADDR,
@@ -625,7 +625,7 @@ const openaiKey = await secrets.get('openai/api-key');
 ### AWS Secrets Manager
 
 ```typescript
-import { AWSSecrets } from '@rana/secrets/aws';
+import { AWSSecrets } from '@cofounder/secrets/aws';
 
 const secrets = new AWSSecrets({
   region: 'us-east-1',

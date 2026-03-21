@@ -1,14 +1,14 @@
-# @ranavibe/soc2
+# @cofounder/soc2
 
-Auto-generate SOC 2 Type II audit evidence from RANA guardrail data. Zero runtime dependencies.
+Auto-generate SOC 2 Type II audit evidence from CoFounder guardrail data. Zero runtime dependencies.
 
 ## Overview
 
-This package maps RANA AI guardrail features to SOC 2 Trust Service Criteria and generates comprehensive audit reports with evidence collection from multiple RANA components.
+This package maps CoFounder AI guardrail features to SOC 2 Trust Service Criteria and generates comprehensive audit reports with evidence collection from multiple CoFounder components.
 
 ## Features
 
-- **19 SOC 2 controls** mapped to RANA guardrail features across all five Trust Service Categories
+- **19 SOC 2 controls** mapped to CoFounder guardrail features across all five Trust Service Categories
 - **Automated evidence collection** from dashboard metrics, audit logs, policies, CI/CD scans, and guard reports
 - **Report generation** in JSON, HTML, and Markdown formats
 - **Professional formatting** with executive summaries, control test results, and exception tracking
@@ -17,19 +17,19 @@ This package maps RANA AI guardrail features to SOC 2 Trust Service Criteria and
 ## Installation
 
 ```bash
-npm install @ranavibe/soc2
+npm install @cofounder/soc2
 ```
 
 ## Quick Start
 
 ```typescript
-import { generateSOC2Report, collectEvidence, SOC2Controls } from '@ranavibe/soc2';
+import { generateSOC2Report, collectEvidence, SOC2Controls } from '@cofounder/soc2';
 
 // Generate a SOC 2 report
 const { report, formatted } = generateSOC2Report({
   organizationName: 'Acme Corp',
   systemName: 'AI Assistant Platform',
-  systemDescription: 'AI-powered customer service platform with RANA guardrails',
+  systemDescription: 'AI-powered customer service platform with CoFounder guardrails',
   auditPeriod: {
     startDate: '2025-01-01',
     endDate: '2025-12-31',
@@ -78,7 +78,7 @@ console.log(formatted);
 
 ## Trust Service Categories
 
-| Category | Controls | Example RANA Mappings |
+| Category | Controls | Example CoFounder Mappings |
 |----------|----------|---------------------|
 | Security | CC6.1-CC8.1 | Access policies, injection detection, PII redaction, audit logs |
 | Availability | A1.1-A1.2 | Performance metrics, rate limiting, fallback mechanisms |
@@ -94,11 +94,11 @@ Generate a complete SOC 2 Type II report.
 
 ### `collectEvidence(sources, config)`
 
-Collect and aggregate evidence from RANA data sources.
+Collect and aggregate evidence from CoFounder data sources.
 
 ### `SOC2Controls`
 
-Array of all SOC 2 control definitions with RANA feature mappings.
+Array of all SOC 2 control definitions with CoFounder feature mappings.
 
 ### `getControlsByCategory(category)`
 

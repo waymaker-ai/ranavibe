@@ -1,4 +1,4 @@
-export const DEFAULT_RANA_CONFIG = `version: "1.0.0"
+export const DEFAULT_CoFounder_CONFIG = `version: "1.0.0"
 
 project:
   name: "My Project"
@@ -39,10 +39,10 @@ quality_gates:
 
 export class TemplateManager {
   /**
-   * Get default RANA config template
+   * Get default CoFounder config template
    */
   getDefaultConfig(): string {
-    return DEFAULT_RANA_CONFIG;
+    return DEFAULT_CoFounder_CONFIG;
   }
 
   /**
@@ -50,6 +50,6 @@ export class TemplateManager {
    */
   generateConfig(projectType: 'nextjs' | 'react' | 'python'): string {
     // TODO: Add project-specific templates
-    return DEFAULT_RANA_CONFIG;
+    return DEFAULT_CoFounder_CONFIG;
   }
 }

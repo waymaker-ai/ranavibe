@@ -11,7 +11,7 @@ import { registerCheckComplianceCommand } from './commands/check-compliance';
 import { registerEstimateCostCommand } from './commands/estimate-cost';
 
 /**
- * Activates the RANA Guardrails extension.
+ * Activates the CoFounder Guardrails extension.
  * Sets up inline scanning, tree views, commands, and the status bar.
  */
 export function activate(context: vscode.ExtensionContext): void {
@@ -33,10 +33,10 @@ export function activate(context: vscode.ExtensionContext): void {
   const dashboardView = new DashboardViewProvider(context.extensionUri);
 
   context.subscriptions.push(
-    vscode.window.registerTreeDataProvider('rana.findings', findingsView)
+    vscode.window.registerTreeDataProvider('cofounder.findings', findingsView)
   );
   context.subscriptions.push(
-    vscode.window.registerTreeDataProvider('rana.policies', policiesView)
+    vscode.window.registerTreeDataProvider('cofounder.policies', policiesView)
   );
   context.subscriptions.push(
     vscode.window.registerWebviewViewProvider(DashboardViewProvider.viewType, dashboardView)
@@ -60,7 +60,7 @@ export function activate(context: vscode.ExtensionContext): void {
 
   // Show Dashboard command opens the full dashboard panel
   context.subscriptions.push(
-    vscode.commands.registerCommand('rana.showDashboard', () => {
+    vscode.commands.registerCommand('cofounder.showDashboard', () => {
       dashboardView.showFullDashboard();
     })
   );
@@ -78,16 +78,16 @@ export function activate(context: vscode.ExtensionContext): void {
   // -----------------------------------------------------------------------
   context.subscriptions.push(
     vscode.workspace.onDidChangeConfiguration((event) => {
-      if (event.affectsConfiguration('rana.enableInlineScan')) {
-        const config = vscode.workspace.getConfiguration('rana');
+      if (event.affectsConfiguration('cofounder.enableInlineScan')) {
+        const config = vscode.workspace.getConfiguration('cofounder');
         const enabled = config.get<boolean>('enableInlineScan', true);
         inlineScanner.setEnabled(enabled);
         statusBar.setActive(enabled);
       }
 
       if (
-        event.affectsConfiguration('rana.injectionSensitivity') ||
-        event.affectsConfiguration('rana.piiMode')
+        event.affectsConfiguration('cofounder.injectionSensitivity') ||
+        event.affectsConfiguration('cofounder.piiMode')
       ) {
         // Re-scan all open documents with new settings
         for (const doc of vscode.workspace.textDocuments) {
@@ -101,7 +101,7 @@ export function activate(context: vscode.ExtensionContext): void {
   // Policy view context menu commands
   // -----------------------------------------------------------------------
   context.subscriptions.push(
-    vscode.commands.registerCommand('rana.togglePolicy', (node: any) => {
+    vscode.commands.registerCommand('cofounder.togglePolicy', (node: any) => {
       if (node && node.kind === 'file') {
         policiesView.togglePolicy(node);
       }
@@ -109,7 +109,7 @@ export function activate(context: vscode.ExtensionContext): void {
   );
 
   context.subscriptions.push(
-    vscode.commands.registerCommand('rana.createPolicy', async (node: any) => {
+    vscode.commands.registerCommand('cofounder.createPolicy', async (node: any) => {
       if (node && node.kind === 'preset') {
         await policiesView.createFromPreset(node.presetName);
       } else {
@@ -131,7 +131,7 @@ export function activate(context: vscode.ExtensionContext): void {
   );
 
   context.subscriptions.push(
-    vscode.commands.registerCommand('rana.refreshPolicies', () => {
+    vscode.commands.registerCommand('cofounder.refreshPolicies', () => {
       policiesView.refreshPolicies();
     })
   );
@@ -139,7 +139,7 @@ export function activate(context: vscode.ExtensionContext): void {
   // -----------------------------------------------------------------------
   // Apply initial configuration
   // -----------------------------------------------------------------------
-  const config = vscode.workspace.getConfiguration('rana');
+  const config = vscode.workspace.getConfiguration('cofounder');
   const enableInlineScan = config.get<boolean>('enableInlineScan', true);
   inlineScanner.setEnabled(enableInlineScan);
   statusBar.setActive(enableInlineScan);
@@ -147,12 +147,12 @@ export function activate(context: vscode.ExtensionContext): void {
   // -----------------------------------------------------------------------
   // Done
   // -----------------------------------------------------------------------
-  console.log('RANA Guardrails extension activated');
+  console.log('CoFounder Guardrails extension activated');
 }
 
 /**
  * Deactivates the extension. Cleanup is handled by subscriptions.
  */
 export function deactivate(): void {
-  console.log('RANA Guardrails extension deactivated');
+  console.log('CoFounder Guardrails extension deactivated');
 }

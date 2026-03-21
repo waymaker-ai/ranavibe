@@ -16,7 +16,7 @@ export class InlineScanner implements vscode.Disposable {
   onDiagnosticsChanged?: (uri: vscode.Uri, diagnostics: vscode.Diagnostic[]) => void;
 
   constructor() {
-    this.diagnosticCollection = vscode.languages.createDiagnosticCollection('rana');
+    this.diagnosticCollection = vscode.languages.createDiagnosticCollection('cofounder');
 
     // Scan on document open
     this.disposables.push(
@@ -73,7 +73,7 @@ export class InlineScanner implements vscode.Disposable {
    * Manually scan a document and return the detections.
    */
   scanDocument(document: vscode.TextDocument): Detection[] {
-    const config = vscode.workspace.getConfiguration('rana');
+    const config = vscode.workspace.getConfiguration('cofounder');
     const sensitivity = config.get<'low' | 'medium' | 'high'>('injectionSensitivity', 'medium');
     const text = document.getText();
 
@@ -167,7 +167,7 @@ export class InlineScanner implements vscode.Disposable {
     }
 
     const diagnostic = new vscode.Diagnostic(range, detection.message, severity);
-    diagnostic.source = 'RANA';
+    diagnostic.source = 'CoFounder';
     diagnostic.code = detection.type;
 
     // Add tags for deprecated-style rendering of PII

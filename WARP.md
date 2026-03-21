@@ -4,21 +4,21 @@ This file provides guidance to WARP (warp.dev) when working with code in this re
 
 ## Project Overview
 
-**RANA Framework** (Rapid AI Native Architecture) - A universal framework that ensures AI coding assistants produce production-quality code. This is a documentation and tooling project that provides standards, workflows, quality gates, and CLI tools for AI-assisted development.
+**CoFounder Framework** (Rapid AI Native Architecture) - A universal framework that ensures AI coding assistants produce production-quality code. This is a documentation and tooling project that provides standards, workflows, quality gates, and CLI tools for AI-assisted development.
 
 ## Repository Structure
 
 ```
-ranavibe/
+cofounder/
 ├── tools/
-│   ├── cli/                      # Core RANA CLI tool (@rana/cli)
-│   └── waymaker-rana-pro/        # Enhanced version with team features
+│   ├── cli/                      # Core CoFounder CLI tool (@cofounder/cli)
+│   └── waymaker-cofounder-pro/        # Enhanced version with team features
 ├── examples/
-│   └── react-typescript/         # Example React+TS project using RANA
+│   └── react-typescript/         # Example React+TS project using CoFounder
 ├── docs/
-│   └── SPECIFICATION.md          # Complete RANA specification
+│   └── SPECIFICATION.md          # Complete CoFounder specification
 ├── marketing/                    # Marketing materials and launch content
-└── .rana.yml                     # This repo's own RANA configuration
+└── .cofounder.yml                     # This repo's own CoFounder configuration
 ```
 
 ## Common Commands
@@ -48,7 +48,7 @@ npm test
 npm test -- --watch
 
 # Build Waymaker Pro version
-cd tools/waymaker-rana-pro
+cd tools/waymaker-cofounder-pro
 npm run build
 ```
 
@@ -57,8 +57,8 @@ npm run build
 ```bash
 # From project root, test CLI in another project
 cd /path/to/test-project
-node /Users/ashleykays/projects/ranavibe/tools/cli/dist/cli.js init
-node /Users/ashleykays/projects/ranavibe/tools/cli/dist/cli.js check
+node /Users/ashleykays/projects/cofounder/tools/cli/dist/cli.js init
+node /Users/ashleykays/projects/cofounder/tools/cli/dist/cli.js check
 ```
 
 ### Example Projects
@@ -94,16 +94,16 @@ The CLI is built with TypeScript and uses:
 - **Commander.js**: CLI framework for command routing and argument parsing
 - **Inquirer**: Interactive prompts for user input
 - **Chalk**: Terminal output coloring
-- **js-yaml**: YAML parsing for `.rana.yml` configuration
+- **js-yaml**: YAML parsing for `.cofounder.yml` configuration
 - **Ora**: Loading spinners and progress indicators
 
 **Main commands:**
-- `init` - Creates `.rana.yml` and documentation structure (supports --template and --force flags)
-- `check` - Validates compliance with RANA standards (supports --verbose and --fix flags)
+- `init` - Creates `.cofounder.yml` and documentation structure (supports --template and --force flags)
+- `check` - Validates compliance with CoFounder standards (supports --verbose and --fix flags)
 - `deploy` - Handles deployment with verification workflow (supports --verify and --skip-tests flags)
-- `validate` - Validates `.rana.yml` configuration
+- `validate` - Validates `.cofounder.yml` configuration
 - `config` - Shows current configuration
-- `status` - Shows project RANA status
+- `status` - Shows project CoFounder status
 
 **Command implementation pattern:**
 Each command is in `src/commands/` and exports an async function that takes options. The main CLI file (`src/cli.ts`) registers these commands with Commander.
@@ -119,7 +119,7 @@ The `check` command scans for:
 
 ### Configuration System
 
-The `.rana.yml` file defines:
+The `.cofounder.yml` file defines:
 - **Project metadata**: name, type, languages, frameworks
 - **Standards**: principles, code quality rules, testing requirements
 - **Quality gates**: Checkpoints for pre-implementation, implementation, testing, deployment
@@ -128,7 +128,7 @@ The `.rana.yml` file defines:
 
 ### Quality Gates
 
-RANA enforces quality through four gate categories:
+CoFounder enforces quality through four gate categories:
 1. **Pre-implementation**: Search existing code, review docs, plan architecture
 2. **Implementation**: Error handling, loading states, real data (no mocks), type safety
 3. **Testing**: Manual testing, automated tests, coverage thresholds
@@ -136,7 +136,7 @@ RANA enforces quality through four gate categories:
 
 ## Core Principles
 
-When working on this codebase, follow these RANA principles (defined in `.rana.yml`):
+When working on this codebase, follow these CoFounder principles (defined in `.cofounder.yml`):
 
 1. **search_before_create** - Always check existing code before adding new functionality
 2. **real_data_only** - Never create mock data; use real implementations
@@ -173,8 +173,8 @@ The project uses **Vitest** for testing.
 
 When updating docs:
 - Main specification lives in `docs/SPECIFICATION.md`
-- Example READMEs demonstrate RANA principles in practice
-- CLI generates documentation templates in `docs/rana/` directory
+- Example READMEs demonstrate CoFounder principles in practice
+- CLI generates documentation templates in `docs/cofounder/` directory
 - Keep IMPLEMENTATION_STATUS.md updated with progress
 
 ## CLI Development Workflow
@@ -192,9 +192,9 @@ When adding a new CLI command:
 
 ## Package Publishing
 
-**@rana/cli** package:
-- Scoped package under `@rana` organization
-- Binary name: `rana`
+**@cofounder/cli** package:
+- Scoped package under `@cofounder` organization
+- Binary name: `cofounder`
 - Entry point: `dist/cli.js` (must be executable)
 - Always run `npm run build` before publishing
 - Version follows semver
@@ -203,16 +203,16 @@ When adding a new CLI command:
 
 - Main branch contains production code
 - Commit messages should be descriptive
-- This project follows its own RANA standards (self-referential)
+- This project follows its own CoFounder standards (self-referential)
 - Use `git --no-pager` commands when running git via CLI
 
 ## Key Files to Know
 
-- `.rana.yml` - This repository's own configuration (meta-example)
-- `docs/SPECIFICATION.md` - Complete RANA spec (200+ lines)
+- `.cofounder.yml` - This repository's own configuration (meta-example)
+- `docs/SPECIFICATION.md` - Complete CoFounder spec (200+ lines)
 - `tools/cli/src/cli.ts` - CLI entry point with all commands
 - `tools/cli/src/commands/init.ts` - Template generation logic
-- `examples/react-typescript/.rana.yml` - Well-documented example config
+- `examples/react-typescript/.cofounder.yml` - Well-documented example config
 
 ## Important Constraints
 

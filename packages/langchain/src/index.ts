@@ -1,20 +1,20 @@
 /**
- * @rana/langchain
- * LangChain adapter for RANA Framework
+ * @cofounder/langchain
+ * LangChain adapter for CoFounder Framework
  *
- * Provides a LangChain-compatible chat model that uses RANA
+ * Provides a LangChain-compatible chat model that uses CoFounder
  * for multi-provider routing, cost optimization, and security.
  *
  * @example
  * ```typescript
- * import { RanaChatModel } from '@rana/langchain';
- * import { createRana } from '@rana/core';
+ * import { RanaChatModel } from '@cofounder/langchain';
+ * import { createCoFounder } from '@cofounder/core';
  *
- * const rana = createRana({
+ * const cofounder = createCoFounder({
  *   providers: { openai: process.env.OPENAI_API_KEY }
  * });
  *
- * const model = new RanaChatModel({ rana });
+ * const model = new RanaChatModel({ cofounder });
  *
  * // Use in LangChain chains
  * const result = await model.invoke([
@@ -24,9 +24,9 @@
  */
 
 export interface RanaChatModelConfig {
-  /** RANA client instance */
-  rana: any; // RanaClient - using any to avoid import issues
-  /** Provider to use (optional, uses RANA routing if not specified) */
+  /** CoFounder client instance */
+  cofounder: any; // CoFounderClient - using any to avoid import issues
+  /** Provider to use (optional, uses CoFounder routing if not specified) */
   provider?: string;
   /** Model to use */
   model?: string;
@@ -73,17 +73,17 @@ export interface ChatResult {
 }
 
 /**
- * LangChain-compatible chat model that uses RANA
+ * LangChain-compatible chat model that uses CoFounder
  *
- * This allows you to use RANA's multi-provider routing,
+ * This allows you to use CoFounder's multi-provider routing,
  * cost optimization, and security features within LangChain chains.
  */
 export class RanaChatModel {
-  private rana: any;
+  private cofounder: any;
   private config: RanaChatModelConfig;
 
   constructor(config: RanaChatModelConfig) {
-    this.rana = config.rana;
+    this.cofounder = config.cofounder;
     this.config = config;
   }
 
@@ -91,7 +91,7 @@ export class RanaChatModel {
    * Invoke the model with messages
    */
   async invoke(messages: ChatMessage[], options?: any): Promise<ChatResult> {
-    const response = await this.rana.chat({
+    const response = await this.cofounder.chat({
       messages: messages.map((m) => ({
         role: m.role,
         content: m.content,
@@ -134,7 +134,7 @@ export class RanaChatModel {
     messages: ChatMessage[],
     options?: any
   ): AsyncGenerator<{ content: string; additional_kwargs: any }> {
-    const response = await this.rana.chat({
+    const response = await this.cofounder.chat({
       messages: messages.map((m) => ({
         role: m.role,
         content: m.content,
@@ -176,7 +176,7 @@ export class RanaChatModel {
    * Get the model name
    */
   get modelName(): string {
-    return this.config.model || 'rana-default';
+    return this.config.model || 'cofounder-default';
   }
 }
 
@@ -200,14 +200,14 @@ class RanaChatModelWithTools extends RanaChatModel {
 }
 
 /**
- * Create a RANA chat model for LangChain
+ * Create a CoFounder chat model for LangChain
  */
-export function createRanaChatModel(config: RanaChatModelConfig): RanaChatModel {
+export function createCoFounderChatModel(config: RanaChatModelConfig): RanaChatModel {
   return new RanaChatModel(config);
 }
 
 /**
- * Utility to convert LangChain tools to RANA format
+ * Utility to convert LangChain tools to CoFounder format
  */
 export function langchainToolToRana(tool: any): any {
   return {
@@ -221,9 +221,9 @@ export function langchainToolToRana(tool: any): any {
 }
 
 /**
- * Utility to convert RANA tools to LangChain format
+ * Utility to convert CoFounder tools to LangChain format
  */
-export function ranaToolToLangchain(tool: any): any {
+export function cofounderToolToLangchain(tool: any): any {
   return {
     name: tool.name,
     description: tool.description,

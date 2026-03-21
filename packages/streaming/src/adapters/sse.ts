@@ -1,5 +1,5 @@
 /**
- * @ranavibe/streaming - Generic SSE Parser
+ * @cofounder/streaming - Generic SSE Parser
  *
  * Parses Server-Sent Events (SSE) from any provider.
  * Handles the standard SSE wire format: event, data, id, retry fields.

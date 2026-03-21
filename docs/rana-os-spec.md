@@ -1,11 +1,11 @@
-# RANA OS Specification v1.0
+# CoFounder OS Specification v1.0
 
-> **RANA: Rapid AI Native Architecture**
+> **CoFounder: Rapid AI Native Architecture**
 > A full AI app + RAG + agent OS developers can live in.
 
 ## Overview
 
-RANA is positioned at the intersection of:
+CoFounder is positioned at the intersection of:
 - **LiteLLM** (gateway) - multi-provider routing, cost optimization
 - **Makerkit/AnotherWrapper** (templates) - Next.js AI SaaS starters
 - **LangChain/CrewAI** (orchestration) - agents, RAG, workflows
@@ -35,7 +35,7 @@ But with a much more integrated "production OS" lens including security, quality
 
 ---
 
-## 1. @rana/rag - RAG Module (Enhanced)
+## 1. @cofounder/rag - RAG Module (Enhanced)
 
 ### 1.1 Knowledge Base Management
 
@@ -101,10 +101,10 @@ export interface Chunk {
 ```typescript
 // packages/rag/src/client.ts
 
-import { RanaClient } from '@rana/core';
+import { RanaClient } from '@cofounder/core';
 
 export interface RAGClientConfig {
-  rana: RanaClient;
+  cofounder: RanaClient;
   defaultChunking?: ChunkingConfig;
   defaultEmbeddings?: EmbeddingConfig;
   defaultRetrieval?: RetrievalConfig;
@@ -135,12 +135,12 @@ export interface RAGDatabaseAdapter {
 }
 
 export class RAGClient {
-  private rana: RanaClient;
+  private cofounder: RanaClient;
   private cfg: RAGClientConfig;
 
   constructor(config: RAGClientConfig) {
     this.cfg = config;
-    this.rana = config.rana;
+    this.cofounder = config.cofounder;
   }
 
   async createKnowledgeBase(input: {
@@ -176,17 +176,17 @@ export class RAGClient {
     // Implementation:
     // 1. Fetch & normalize content from sources
     // 2. Chunk using configured strategy
-    // 3. Generate embeddings via RANA core
+    // 3. Generate embeddings via CoFounder core
     // 4. Save documents & chunks via db adapter
   }
 
   async ask(req: AskRequest): Promise<AskResult> {
     // Implementation:
-    // 1. Embed query via RANA core
+    // 1. Embed query via CoFounder core
     // 2. Query chunks using db adapter
     // 3. Optionally rerank results
     // 4. Build context + system prompt
-    // 5. Call rana.chat(...) for synthesis
+    // 5. Call cofounder.chat(...) for synthesis
     // 6. Return answer + citations + usage
   }
 
@@ -367,15 +367,15 @@ $$;
 
 ---
 
-## 2. @rana/agents - Agent Development Kit (ADK)
+## 2. @cofounder/agents - Agent Development Kit (ADK)
 
 ### 2.1 Core Types
 
 ```typescript
 // packages/agents/src/types.ts
 
-import { RanaClient } from '@rana/core';
-import { RAGClient } from '@rana/rag';
+import { RanaClient } from '@cofounder/core';
+import { RAGClient } from '@cofounder/rag';
 
 export interface UserIdentity {
   id: string;
@@ -466,7 +466,7 @@ export interface AgentOutput {
 }
 
 export interface AgentContext {
-  rana: RanaClient;
+  cofounder: RanaClient;
   rag?: RAGClient;
   tools: Tool[];
   memory?: MemoryStore;
@@ -597,7 +597,7 @@ export class LLMAgent extends BaseAgent {
     while (iterations < this.config.maxIterations!) {
       iterations++;
 
-      const response = await this.ctx.rana.chat({
+      const response = await this.ctx.cofounder.chat({
         messages: messages.map(m => ({ role: m.role as any, content: m.content })),
         tools: this.ctx.tools.map(t => ({
           type: 'function',
@@ -853,7 +853,7 @@ export interface VibeSpec {
 // packages/core/src/vibe-spec/compiler.ts
 
 import { VibeSpec } from './types';
-import { RetrievalConfig } from '@rana/rag';
+import { RetrievalConfig } from '@cofounder/rag';
 
 export interface CompiledVibe {
   systemPrompt: string;
@@ -937,33 +937,33 @@ export async function loadVibeSpec(path: string): Promise<VibeSpec> {
 
 ## 4. Adapters
 
-### 4.1 @rana/crewai
+### 4.1 @cofounder/crewai
 
 ```typescript
 // packages/crewai/src/index.ts
 
-import { RanaClient } from '@rana/core';
+import { RanaClient } from '@cofounder/core';
 
 /**
- * Wraps RANA as a CrewAI-compatible model
+ * Wraps CoFounder as a CrewAI-compatible model
  */
 export class RanaCrewModel {
-  private rana: RanaClient;
+  private cofounder: RanaClient;
   private provider?: string;
   private model?: string;
 
   constructor(config: {
-    rana: RanaClient;
+    cofounder: RanaClient;
     provider?: string;
     model?: string;
   }) {
-    this.rana = config.rana;
+    this.cofounder = config.cofounder;
     this.provider = config.provider;
     this.model = config.model;
   }
 
   async generate(prompt: string, options?: any): Promise<string> {
-    const response = await this.rana.chat({
+    const response = await this.cofounder.chat({
       messages: [{ role: 'user', content: prompt }],
       provider: this.provider,
       model: this.model,
@@ -977,7 +977,7 @@ export class RanaCrewModel {
     tools: any[],
     options?: any
   ): Promise<{ content: string; toolCalls?: any[] }> {
-    const response = await this.rana.chat({
+    const response = await this.cofounder.chat({
       messages: [{ role: 'user', content: prompt }],
       tools,
       provider: this.provider,
@@ -991,8 +991,8 @@ export class RanaCrewModel {
   }
 }
 
-export function createRanaCrewModel(config: {
-  rana: RanaClient;
+export function createCoFounderCrewModel(config: {
+  cofounder: RanaClient;
   provider?: string;
   model?: string;
 }): RanaCrewModel {
@@ -1000,16 +1000,16 @@ export function createRanaCrewModel(config: {
 }
 ```
 
-### 4.2 @rana/langchain
+### 4.2 @cofounder/langchain
 
 ```typescript
 // packages/langchain/src/index.ts
 
-import { RanaClient } from '@rana/core';
+import { RanaClient } from '@cofounder/core';
 // Note: This would extend LangChain's BaseChatModel
 
 export interface RanaChatModelConfig {
-  rana: RanaClient;
+  cofounder: RanaClient;
   provider?: string;
   model?: string;
   temperature?: number;
@@ -1017,31 +1017,31 @@ export interface RanaChatModelConfig {
 }
 
 /**
- * LangChain-compatible chat model that uses RANA under the hood
+ * LangChain-compatible chat model that uses CoFounder under the hood
  *
  * @example
  * ```typescript
- * import { RanaChatModel } from '@rana/langchain';
- * import { createRana } from '@rana/core';
+ * import { RanaChatModel } from '@cofounder/langchain';
+ * import { createCoFounder } from '@cofounder/core';
  *
- * const rana = createRana({ providers: { openai: '...' } });
- * const model = new RanaChatModel({ rana });
+ * const cofounder = createCoFounder({ providers: { openai: '...' } });
+ * const model = new RanaChatModel({ cofounder });
  *
  * // Use in LangChain chains
  * const chain = prompt.pipe(model).pipe(outputParser);
  * ```
  */
 export class RanaChatModel {
-  private rana: RanaClient;
+  private cofounder: RanaClient;
   private config: RanaChatModelConfig;
 
   constructor(config: RanaChatModelConfig) {
-    this.rana = config.rana;
+    this.cofounder = config.cofounder;
     this.config = config;
   }
 
   async invoke(messages: any[], options?: any): Promise<any> {
-    const response = await this.rana.chat({
+    const response = await this.cofounder.chat({
       messages: messages.map(m => ({
         role: m.role || m._getType(),
         content: m.content,
@@ -1063,7 +1063,7 @@ export class RanaChatModel {
   }
 
   async stream(messages: any[], options?: any): AsyncGenerator<any> {
-    const stream = await this.rana.chat({
+    const stream = await this.cofounder.chat({
       messages: messages.map(m => ({
         role: m.role || m._getType(),
         content: m.content,
@@ -1083,42 +1083,42 @@ export class RanaChatModel {
   }
 }
 
-export function createRanaChatModel(config: RanaChatModelConfig): RanaChatModel {
+export function createCoFounderChatModel(config: RanaChatModelConfig): RanaChatModel {
   return new RanaChatModel(config);
 }
 ```
 
-### 4.3 @rana/mcp (MCP Integration)
+### 4.3 @cofounder/mcp (MCP Integration)
 
 ```typescript
 // packages/mcp/src/index.ts
 
-import { RanaClient, MCPServer, MCPClient } from '@rana/core';
-import { RAGClient } from '@rana/rag';
-import { Tool } from '@rana/agents';
+import { RanaClient, MCPServer, MCPClient } from '@cofounder/core';
+import { RAGClient } from '@cofounder/rag';
+import { Tool } from '@cofounder/agents';
 
 /**
- * Expose RANA tools and RAG as MCP resources
+ * Expose CoFounder tools and RAG as MCP resources
  */
 export class RanaMCPServer {
   private server: MCPServer;
-  private rana: RanaClient;
+  private cofounder: RanaClient;
   private rag?: RAGClient;
   private tools: Tool[];
 
   constructor(config: {
-    rana: RanaClient;
+    cofounder: RanaClient;
     rag?: RAGClient;
     tools?: Tool[];
     name?: string;
     version?: string;
   }) {
-    this.rana = config.rana;
+    this.cofounder = config.cofounder;
     this.rag = config.rag;
     this.tools = config.tools || [];
 
     this.server = new MCPServer({
-      name: config.name || 'rana-mcp',
+      name: config.name || 'cofounder-mcp',
       version: config.version || '1.0.0',
     });
 
@@ -1179,7 +1179,7 @@ export class RanaMCPServer {
 }
 
 /**
- * Use external MCP tools inside RANA agents
+ * Use external MCP tools inside CoFounder agents
  */
 export class MCPToolAdapter {
   private client: MCPClient;
@@ -1218,8 +1218,8 @@ export class MCPToolAdapter {
   }
 }
 
-export function createRanaMCPServer(config: {
-  rana: RanaClient;
+export function createCoFounderMCPServer(config: {
+  cofounder: RanaClient;
   rag?: RAGClient;
   tools?: Tool[];
 }): RanaMCPServer {
@@ -1241,10 +1241,10 @@ export function createMCPToolAdapter(config: {
 ### 5.1 PII Detection & Redaction Pipeline
 
 ```typescript
-// Already exists in @rana/core as PIIDetector
+// Already exists in @cofounder/core as PIIDetector
 // Enhanced usage for RAG/Agents:
 
-import { PIIDetector, createPIIDetector } from '@rana/core';
+import { PIIDetector, createPIIDetector } from '@cofounder/core';
 
 export function createRAGSecurityPipeline(config: {
   piiRedaction: boolean;
@@ -1277,7 +1277,7 @@ export function createRAGSecurityPipeline(config: {
         return { safe: true, risk: 'none' };
       }
 
-      const { detectInjection } = await import('@rana/core');
+      const { detectInjection } = await import('@cofounder/core');
       const result = detectInjection(text);
 
       return {
@@ -1372,27 +1372,27 @@ export function wrapToolWithSafety(
 
 ```bash
 # RAG Management
-rana kb:create <name>              # Create knowledge base
-rana kb:list                       # List knowledge bases
-rana kb:ingest <kb-id> <source>    # Ingest documents
-rana kb:query <kb-id> "question"   # Query knowledge base
-rana kb:delete <kb-id>             # Delete knowledge base
+cofounder kb:create <name>              # Create knowledge base
+cofounder kb:list                       # List knowledge bases
+cofounder kb:ingest <kb-id> <source>    # Ingest documents
+cofounder kb:query <kb-id> "question"   # Query knowledge base
+cofounder kb:delete <kb-id>             # Delete knowledge base
 
 # Agent Management
-rana agent:new <name>              # Scaffold new agent
-rana agent:test <agent-file>       # Run agent tests
-rana agent:serve <agent-file>      # Start agent as API server
-rana agent:chat <agent-file>       # Interactive chat with agent
+cofounder agent:new <name>              # Scaffold new agent
+cofounder agent:test <agent-file>       # Run agent tests
+cofounder agent:serve <agent-file>      # Start agent as API server
+cofounder agent:chat <agent-file>       # Interactive chat with agent
 
 # Vibe Management
-rana vibe:new <name>               # Create new vibe config
-rana vibe:validate <vibe-file>     # Validate vibe YAML
-rana vibe:compile <vibe-file>      # Show compiled system prompt
+cofounder vibe:new <name>               # Create new vibe config
+cofounder vibe:validate <vibe-file>     # Validate vibe YAML
+cofounder vibe:compile <vibe-file>      # Show compiled system prompt
 
 # MCP
-rana mcp:serve                     # Start RANA MCP server
-rana mcp:connect <server>          # Connect to external MCP server
-rana mcp:tools                     # List available MCP tools
+cofounder mcp:serve                     # Start CoFounder MCP server
+cofounder mcp:connect <server>          # Connect to external MCP server
+cofounder mcp:tools                     # List available MCP tools
 ```
 
 ---
@@ -1402,13 +1402,13 @@ rana mcp:tools                     # List available MCP tools
 ### Complete Agent with RAG + Vibe
 
 ```typescript
-import { createRana } from '@rana/core';
-import { RAGClient, createSupabaseRAGAdapter } from '@rana/rag';
-import { createAgent, LLMAgent } from '@rana/agents';
-import { loadVibeSpec, compileVibe } from '@rana/core/vibe-spec';
+import { createCoFounder } from '@cofounder/core';
+import { RAGClient, createSupabaseRAGAdapter } from '@cofounder/rag';
+import { createAgent, LLMAgent } from '@cofounder/agents';
+import { loadVibeSpec, compileVibe } from '@cofounder/core/vibe-spec';
 
-// Initialize RANA
-const rana = createRana({
+// Initialize CoFounder
+const cofounder = createCoFounder({
   providers: {
     anthropic: process.env.ANTHROPIC_API_KEY!,
     openai: process.env.OPENAI_API_KEY!,
@@ -1417,7 +1417,7 @@ const rana = createRana({
 
 // Initialize RAG
 const rag = new RAGClient({
-  rana,
+  cofounder,
   db: createSupabaseRAGAdapter({
     url: process.env.SUPABASE_URL!,
     anonKey: process.env.SUPABASE_ANON_KEY!,
@@ -1430,7 +1430,7 @@ const vibe = await loadVibeSpec('./config/vibes/customer_support.yml');
 // Create agent
 const agent = createAgent(
   {
-    rana,
+    cofounder,
     rag,
     vibe,
     tools: [
@@ -1468,9 +1468,9 @@ console.log('Citations:', result.citations);
 ## Next Steps
 
 1. **Implement** the RAG Client enhancements (knowledge base management, multi-tenant)
-2. **Create** `@rana/agents` package with ADK
+2. **Create** `@cofounder/agents` package with ADK
 3. **Add** VibeSpec loader and compiler to core
-4. **Build** adapter packages (@rana/crewai, @rana/langchain, @rana/mcp)
+4. **Build** adapter packages (@cofounder/crewai, @cofounder/langchain, @cofounder/mcp)
 5. **Add** CLI commands for KB, agents, vibes
 6. **Create** example apps demonstrating full stack
 

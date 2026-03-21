@@ -1,5 +1,5 @@
 /**
- * Tracing Module for RANA Observability
+ * Tracing Module for CoFounder Observability
  * Captures detailed traces of LLM operations with parent-child span relationships
  */
 
@@ -344,7 +344,7 @@ export class Tracer {
 
   private debug(message: string): void {
     if (this.config.debug) {
-      console.log(`[RANA Tracer] ${message}`);
+      console.log(`[CoFounder Tracer] ${message}`);
     }
   }
 }

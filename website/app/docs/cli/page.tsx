@@ -8,99 +8,99 @@ const commands = [
   {
     category: 'Core Commands',
     items: [
-      { cmd: 'rana init', desc: 'Initialize RANA in your project' },
-      { cmd: 'rana check', desc: 'Check compliance with RANA standards' },
-      { cmd: 'rana fix', desc: 'Automatically fix detected issues' },
-      { cmd: 'rana deploy', desc: 'Deploy with verification workflow' },
-      { cmd: 'rana status', desc: 'Show project status' },
-      { cmd: 'rana doctor', desc: 'Diagnose project setup' },
-      { cmd: 'rana playground', desc: 'Interactive testing playground' },
-      { cmd: 'rana demo', desc: 'Run quick feature demo' },
-      { cmd: 'rana quickstart', desc: 'Show quickstart guide' },
+      { cmd: 'cofounder init', desc: 'Initialize CoFounder in your project' },
+      { cmd: 'cofounder check', desc: 'Check compliance with CoFounder standards' },
+      { cmd: 'cofounder fix', desc: 'Automatically fix detected issues' },
+      { cmd: 'cofounder deploy', desc: 'Deploy with verification workflow' },
+      { cmd: 'cofounder status', desc: 'Show project status' },
+      { cmd: 'cofounder doctor', desc: 'Diagnose project setup' },
+      { cmd: 'cofounder playground', desc: 'Interactive testing playground' },
+      { cmd: 'cofounder demo', desc: 'Run quick feature demo' },
+      { cmd: 'cofounder quickstart', desc: 'Show quickstart guide' },
     ],
   },
   {
     category: 'Code Generation',
     items: [
-      { cmd: 'rana generate "<prompt>"', desc: 'Generate code from natural language' },
-      { cmd: 'rana generate:templates', desc: 'List available templates' },
-      { cmd: 'rana generate:interactive', desc: 'Interactive code generation' },
+      { cmd: 'cofounder generate "<prompt>"', desc: 'Generate code from natural language' },
+      { cmd: 'cofounder generate:templates', desc: 'List available templates' },
+      { cmd: 'cofounder generate:interactive', desc: 'Interactive code generation' },
     ],
   },
   {
     category: 'Prompt Management',
     items: [
-      { cmd: 'rana prompts save', desc: 'Save a new prompt with metadata' },
-      { cmd: 'rana prompts list', desc: 'List saved prompts with filters' },
-      { cmd: 'rana prompts use <name>', desc: 'Get and use a saved prompt' },
-      { cmd: 'rana prompts analyze', desc: 'Analyze prompt quality score' },
-      { cmd: 'rana prompts improve', desc: 'Get AI improvement suggestions' },
-      { cmd: 'rana prompts compare <a> <b>', desc: 'Compare two prompts side-by-side' },
-      { cmd: 'rana prompts export', desc: 'Export prompts to JSON' },
-      { cmd: 'rana prompts import', desc: 'Import prompts from file' },
+      { cmd: 'cofounder prompts save', desc: 'Save a new prompt with metadata' },
+      { cmd: 'cofounder prompts list', desc: 'List saved prompts with filters' },
+      { cmd: 'cofounder prompts use <name>', desc: 'Get and use a saved prompt' },
+      { cmd: 'cofounder prompts analyze', desc: 'Analyze prompt quality score' },
+      { cmd: 'cofounder prompts improve', desc: 'Get AI improvement suggestions' },
+      { cmd: 'cofounder prompts compare <a> <b>', desc: 'Compare two prompts side-by-side' },
+      { cmd: 'cofounder prompts export', desc: 'Export prompts to JSON' },
+      { cmd: 'cofounder prompts import', desc: 'Import prompts from file' },
     ],
   },
   {
     category: 'MCP Servers',
     items: [
-      { cmd: 'rana mcp:create', desc: 'Create new MCP server from template' },
-      { cmd: 'rana mcp:list', desc: 'List installed MCP servers' },
-      { cmd: 'rana mcp:install', desc: 'Install MCP server from npm/git' },
-      { cmd: 'rana mcp:configure', desc: 'Configure MCP server settings' },
-      { cmd: 'rana mcp:test', desc: 'Test MCP server tools' },
+      { cmd: 'cofounder mcp:create', desc: 'Create new MCP server from template' },
+      { cmd: 'cofounder mcp:list', desc: 'List installed MCP servers' },
+      { cmd: 'cofounder mcp:install', desc: 'Install MCP server from npm/git' },
+      { cmd: 'cofounder mcp:configure', desc: 'Configure MCP server settings' },
+      { cmd: 'cofounder mcp:test', desc: 'Test MCP server tools' },
     ],
   },
   {
     category: 'Cost & Analytics',
     items: [
-      { cmd: 'rana dashboard', desc: 'Real-time cost dashboard' },
-      { cmd: 'rana analyze', desc: 'Analyze project and get recommendations' },
-      { cmd: 'rana optimize', desc: 'Apply cost optimizations automatically' },
-      { cmd: 'rana cost:estimate', desc: 'Estimate LLM costs' },
-      { cmd: 'rana cost:compare', desc: 'Compare provider pricing' },
+      { cmd: 'cofounder dashboard', desc: 'Real-time cost dashboard' },
+      { cmd: 'cofounder analyze', desc: 'Analyze project and get recommendations' },
+      { cmd: 'cofounder optimize', desc: 'Apply cost optimizations automatically' },
+      { cmd: 'cofounder cost:estimate', desc: 'Estimate LLM costs' },
+      { cmd: 'cofounder cost:compare', desc: 'Compare provider pricing' },
     ],
   },
   {
     category: 'LLM Management',
     items: [
-      { cmd: 'rana llm:setup', desc: 'Setup LLM providers' },
-      { cmd: 'rana llm:analyze', desc: 'Analyze LLM usage and costs' },
-      { cmd: 'rana llm:optimize', desc: 'Apply LLM optimizations' },
-      { cmd: 'rana llm:compare', desc: 'Compare models and pricing' },
+      { cmd: 'cofounder llm:setup', desc: 'Setup LLM providers' },
+      { cmd: 'cofounder llm:analyze', desc: 'Analyze LLM usage and costs' },
+      { cmd: 'cofounder llm:optimize', desc: 'Apply LLM optimizations' },
+      { cmd: 'cofounder llm:compare', desc: 'Compare models and pricing' },
     ],
   },
   {
     category: 'Database',
     items: [
-      { cmd: 'rana db:setup', desc: 'Interactive database setup wizard' },
-      { cmd: 'rana db:migrate', desc: 'Run database migrations' },
-      { cmd: 'rana db:seed', desc: 'Seed database with data' },
-      { cmd: 'rana db:studio', desc: 'Open Prisma Studio' },
-      { cmd: 'rana db:status', desc: 'Show database status' },
+      { cmd: 'cofounder db:setup', desc: 'Interactive database setup wizard' },
+      { cmd: 'cofounder db:migrate', desc: 'Run database migrations' },
+      { cmd: 'cofounder db:seed', desc: 'Seed database with data' },
+      { cmd: 'cofounder db:studio', desc: 'Open Prisma Studio' },
+      { cmd: 'cofounder db:status', desc: 'Show database status' },
     ],
   },
   {
     category: 'Security',
     items: [
-      { cmd: 'rana security:audit', desc: 'Run security audit' },
-      { cmd: 'rana security:setup', desc: 'Interactive security setup' },
-      { cmd: 'rana audit', desc: 'Quick security audit' },
+      { cmd: 'cofounder security:audit', desc: 'Run security audit' },
+      { cmd: 'cofounder security:setup', desc: 'Interactive security setup' },
+      { cmd: 'cofounder audit', desc: 'Quick security audit' },
     ],
   },
   {
     category: 'SEO',
     items: [
-      { cmd: 'rana seo:check', desc: 'Validate SEO setup' },
-      { cmd: 'rana seo:generate', desc: 'Generate sitemap, robots.txt' },
-      { cmd: 'rana seo:analyze', desc: 'Analyze pages for SEO' },
+      { cmd: 'cofounder seo:check', desc: 'Validate SEO setup' },
+      { cmd: 'cofounder seo:generate', desc: 'Generate sitemap, robots.txt' },
+      { cmd: 'cofounder seo:analyze', desc: 'Analyze pages for SEO' },
     ],
   },
   {
     category: 'Process Intelligence',
     items: [
-      { cmd: 'rana analyze:velocity', desc: 'Development velocity & DORA metrics' },
-      { cmd: 'rana analyze:legacy', desc: 'Legacy code modernization analysis' },
-      { cmd: 'rana benchmark:run', desc: 'Benchmark LLM providers' },
+      { cmd: 'cofounder analyze:velocity', desc: 'Development velocity & DORA metrics' },
+      { cmd: 'cofounder analyze:legacy', desc: 'Legacy code modernization analysis' },
+      { cmd: 'cofounder benchmark:run', desc: 'Benchmark LLM providers' },
     ],
   },
 ];
@@ -123,7 +123,7 @@ export default function CLIPage() {
         >
           <h1 className="text-4xl md:text-5xl font-bold mb-4">CLI Reference</h1>
           <p className="text-lg text-foreground-secondary mb-8">
-            Complete guide to all RANA CLI commands
+            Complete guide to all CoFounder CLI commands
           </p>
         </motion.div>
 
@@ -134,9 +134,9 @@ export default function CLIPage() {
           className="code-block font-mono text-sm mb-12"
         >
           <div className="text-foreground-secondary"># Install globally</div>
-          <div>npm install -g @rana/cli</div>
+          <div>npm install -g @cofounder/cli</div>
           <div className="mt-4 text-foreground-secondary"># Or use with npx</div>
-          <div>npx @rana/cli init</div>
+          <div>npx @cofounder/cli init</div>
         </motion.div>
 
         <div className="space-y-12">
@@ -185,7 +185,7 @@ export default function CLIPage() {
             Run any command with --help for detailed options
           </p>
           <div className="code-block font-mono text-sm">
-            rana generate --help
+            cofounder generate --help
           </div>
         </motion.div>
       </div>

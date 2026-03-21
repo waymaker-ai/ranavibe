@@ -1,10 +1,10 @@
 /**
  * Real-time Cost Dashboard
- * Terminal UI for monitoring RANA costs and performance
+ * Terminal UI for monitoring CoFounder costs and performance
  * Uses real data from:
- * - .rana/usage.json (LLM usage tracking)
- * - .rana/prompts.json (prompt registry)
- * - .rana/deployments.json (deployment history)
+ * - .cofounder/usage.json (LLM usage tracking)
+ * - .cofounder/prompts.json (prompt registry)
+ * - .cofounder/deployments.json (deployment history)
  * - Git history (velocity metrics)
  * - Package analysis (dependencies)
  */
@@ -94,7 +94,7 @@ const COST_TABLE: Record<string, Record<string, { input: number; output: number 
   },
 };
 
-const USAGE_FILE = '.rana/usage.json';
+const USAGE_FILE = '.cofounder/usage.json';
 
 /**
  * Main Dashboard Command
@@ -239,7 +239,7 @@ function estimateUsage(): UsageData {
             const content = fs.readFileSync(file, 'utf-8');
             if (content.includes('openai') || content.includes('anthropic') ||
                 content.includes('gemini') || content.includes('groq') ||
-                content.includes('@rana/core')) {
+                content.includes('@cofounder/core')) {
               llmEndpoints++;
             }
           } catch {
@@ -334,9 +334,9 @@ async function getRecentActivity(): Promise<{ time: string; action: string; deta
   }
 
   // Deployments
-  if (fs.existsSync('.rana/deployments.json')) {
+  if (fs.existsSync('.cofounder/deployments.json')) {
     try {
-      const deployments = JSON.parse(fs.readFileSync('.rana/deployments.json', 'utf-8'));
+      const deployments = JSON.parse(fs.readFileSync('.cofounder/deployments.json', 'utf-8'));
       deployments.slice(0, 3).forEach((deploy: any) => {
         const time = new Date(deploy.timestamp);
         const timeAgo = getTimeAgo(time);
@@ -394,9 +394,9 @@ function generateRecommendations(stats: DashboardStats, usage: UsageData): strin
 
   // Default recommendations if none generated
   if (recommendations.length === 0) {
-    recommendations.push('Run `rana llm:analyze` for detailed cost analysis');
-    recommendations.push('Run `rana prompt:create` to manage prompts');
-    recommendations.push('Run `rana security:audit` to check for vulnerabilities');
+    recommendations.push('Run `cofounder llm:analyze` for detailed cost analysis');
+    recommendations.push('Run `cofounder prompt:create` to manage prompts');
+    recommendations.push('Run `cofounder security:audit` to check for vulnerabilities');
   }
 
   return recommendations.slice(0, 4);
@@ -439,7 +439,7 @@ function displayDashboard(stats: DashboardStats) {
 
   // Header
   console.log(chalk.bold.cyan('╔' + '═'.repeat(width - 2) + '╗'));
-  console.log(chalk.bold.cyan('║') + centerText('🐟 RANA Dashboard', width - 2) + chalk.bold.cyan('║'));
+  console.log(chalk.bold.cyan('║') + centerText('🐟 CoFounder Dashboard', width - 2) + chalk.bold.cyan('║'));
   console.log(chalk.bold.cyan('╠' + '═'.repeat(width - 2) + '╣'));
 
   // Cost Summary Row
@@ -476,7 +476,7 @@ function displayDashboard(stats: DashboardStats) {
     });
   } else {
     console.log(chalk.bold.cyan('╠' + '═'.repeat(width - 2) + '╣'));
-    console.log(chalk.bold.cyan('║') + chalk.gray('  No usage data yet. Run `rana llm:setup` to configure.'.padEnd(width - 2)) + chalk.bold.cyan('║'));
+    console.log(chalk.bold.cyan('║') + chalk.gray('  No usage data yet. Run `cofounder llm:setup` to configure.'.padEnd(width - 2)) + chalk.bold.cyan('║'));
   }
 
   // Project Health
@@ -576,7 +576,7 @@ export async function dashboardLiveCommand() {
  * Track a usage record (for SDK integration)
  */
 export function trackUsage(record: Omit<UsageRecord, 'timestamp'>) {
-  const dir = '.rana';
+  const dir = '.cofounder';
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
   }

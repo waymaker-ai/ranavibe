@@ -1,12 +1,12 @@
-# RANA CI/CD Guardrails
+# CoFounder CI/CD Guardrails
 #
 # Scans your codebase for AI security, compliance, cost, and safety issues.
 # Runs on every PR and push to main. Posts findings as a PR comment and
 # creates a GitHub Check Run with SARIF results.
 #
-# Configuration: Place a .rana.yml in your repo root (optional).
+# Configuration: Place a .cofounder.yml in your repo root (optional).
 
-name: RANA Guard
+name: CoFounder Guard
 
 on:
   push:
@@ -20,8 +20,8 @@ permissions:
   checks: write
 
 jobs:
-  rana-scan:
-    name: RANA Security & Compliance Scan
+  cofounder-scan:
+    name: CoFounder Security & Compliance Scan
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -43,16 +43,16 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # ── RANA Scan ─────────────────────────────────────────────────
-      - name: Run RANA scan
-        id: rana
+      # ── CoFounder Scan ─────────────────────────────────────────────────
+      - name: Run CoFounder scan
+        id: cofounder
         run: |
-          npx @ranavibe/cli scan \
+          npx @cofounder/cli scan \
             --path . \
             --format sarif \
-            --output rana-results.sarif \
+            --output cofounder-results.sarif \
             --fail-on high \
-            --config .rana.yml
+            --config .cofounder.yml
         continue-on-error: true
 
       # ── Upload SARIF to GitHub Code Scanning ──────────────────────
@@ -60,8 +60,8 @@ jobs:
         if: always()
         uses: github/codeql-action/upload-sarif@v3
         with:
-          sarif_file: rana-results.sarif
-          category: rana-guard
+          sarif_file: cofounder-results.sarif
+          category: cofounder-guard
 
       # ── PR Comment with results ───────────────────────────────────
       - name: Post PR comment
@@ -69,24 +69,24 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          npx @ranavibe/cli scan \
+          npx @cofounder/cli scan \
             --path . \
             --format github-pr \
-            --config .rana.yml \
+            --config .cofounder.yml \
             --github-pr ${{ github.event.pull_request.number }}
 
       # ── Summary ───────────────────────────────────────────────────
       - name: Console summary
         if: always()
         run: |
-          npx @ranavibe/cli scan \
+          npx @cofounder/cli scan \
             --path . \
             --format console \
-            --config .rana.yml
+            --config .cofounder.yml
 
-      # ── Fail if RANA scan found high/critical issues ──────────────
+      # ── Fail if CoFounder scan found high/critical issues ──────────────
       - name: Check scan result
-        if: steps.rana.outcome == 'failure'
+        if: steps.cofounder.outcome == 'failure'
         run: |
-          echo "::error::RANA scan found high or critical severity issues. See the PR comment and SARIF results for details."
+          echo "::error::CoFounder scan found high or critical severity issues. See the PR comment and SARIF results for details."
           exit 1

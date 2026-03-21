@@ -1,5 +1,5 @@
 /**
- * RANA Retry System with Exponential Backoff
+ * CoFounder Retry System with Exponential Backoff
  * Advanced retry logic with jitter, configurable strategies, and error classification
  */
 
@@ -82,7 +82,7 @@ export const DEFAULT_RETRY_CONFIG: RetryConfig = {
  * Classify an error to determine if it's retryable
  */
 export function classifyError(error: any): RetryableErrorType | null {
-  // Handle RANA-specific errors
+  // Handle CoFounder-specific errors
   if (error instanceof RanaRateLimitError) {
     return 'rate_limit';
   }

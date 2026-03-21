@@ -5,7 +5,7 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'RANA - Rapid AI Native Architecture',
+  title: 'CoFounder - Rapid AI Native Architecture',
   description: 'Build production-quality products with AI assistants through proven quality gates and strategic validation',
 }
 

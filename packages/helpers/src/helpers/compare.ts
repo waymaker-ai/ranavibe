@@ -3,7 +3,7 @@
  *
  * @example
  * ```typescript
- * import { compare } from '@rana/helpers';
+ * import { compare } from '@cofounder/helpers';
  *
  * // Compare two texts
  * const result = await compare(text1, text2);

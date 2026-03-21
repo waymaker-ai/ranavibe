@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 const packages = [
   {
-    name: '@ranavibe/agent-sdk',
+    name: '@cofounder/agent-sdk',
     icon: Cpu,
     description: 'Wrap Anthropic Agent SDK with guardrails — PII, injection, compliance, cost',
     features: ['7 Interceptors', 'HIPAA Agent', 'GDPR Agent', 'Financial Agent'],
@@ -22,19 +22,19 @@ const packages = [
     isNew: true,
   },
   {
-    name: '@ranavibe/guard',
+    name: '@cofounder/guard',
     icon: Lock,
     description: 'Zero-dependency runtime guard — one import, any framework',
     features: ['Zero Deps', 'Client Proxy', 'PII/Injection', '25+ Models'],
     color: 'from-red-500 to-pink-500',
-    example: `import { createGuard } from '@ranavibe/guard';
+    example: `import { createGuard } from '@cofounder/guard';
 const g = createGuard({ pii: 'redact', injection: 'block' });
 const client = g.wrap(new Anthropic());
 // All calls now guarded automatically`,
     isNew: true,
   },
   {
-    name: '@ranavibe/policies',
+    name: '@cofounder/policies',
     icon: FileCheck,
     description: 'Declarative YAML policies with 9 compliance presets',
     features: ['HIPAA', 'GDPR', 'SEC', 'PCI', 'SOX', 'FERPA', 'CCPA'],
@@ -47,13 +47,13 @@ const result = engine.evaluate(text, {
     isNew: true,
   },
   {
-    name: '@ranavibe/ci',
+    name: '@cofounder/ci',
     icon: GitBranch,
     description: 'GitHub Action & CLI for AI security scanning in CI/CD',
     features: ['PR Scanning', 'SARIF Output', 'Key Detection', 'Cost Estimation'],
     color: 'from-green-500 to-emerald-500',
-    example: `# .github/workflows/rana.yml
-- uses: waymaker-ai/rana-ci@v1
+    example: `# .github/workflows/cofounder.yml
+- uses: waymaker-ai/cofounder-ci@v1
   with:
     fail-on: 'high'
     approved-models: 'claude-sonnet-4-6,gpt-4o'
@@ -61,34 +61,34 @@ const result = engine.evaluate(text, {
     isNew: true,
   },
   {
-    name: '@ranavibe/dashboard',
+    name: '@cofounder/dashboard',
     icon: Activity,
     description: 'AI observability — cost tracking, security alerts, compliance metrics',
     features: ['Real-time Metrics', 'Anomaly Detection', 'Prometheus Export', 'HTTP API'],
     color: 'from-violet-500 to-purple-500',
-    example: `const dashboard = new RanaDashboard({
-  storage: new FileStorage('./rana-data')
+    example: `const dashboard = new CoFounderDashboard({
+  storage: new FileStorage('./cofounder-data')
 });
 dashboard.collect(event);
 await dashboard.serve({ port: 3456 });`,
     isNew: true,
   },
   {
-    name: '@ranavibe/mcp-server',
+    name: '@cofounder/mcp-server',
     icon: Eye,
     description: '15+ MCP tools for Claude Desktop, Code, and Cursor',
     features: ['PII Scan', 'Injection Detect', 'Cost Estimate', 'Code Safety'],
     color: 'from-cyan-500 to-teal-500',
     example: `// In Claude Desktop settings:
-{ "mcpServers": { "rana": {
+{ "mcpServers": { "cofounder": {
   "command": "npx",
-  "args": ["@ranavibe/mcp-server"]
+  "args": ["@cofounder/mcp-server"]
 }}}
-// Now use rana_scan_pii, rana_detect_injection...`,
+// Now use cofounder_scan_pii, cofounder_detect_injection...`,
     isNew: true,
   },
   {
-    name: '@rana/compliance',
+    name: '@cofounder/compliance',
     icon: Shield,
     description: 'Automatic HIPAA, SEC, GDPR, CCPA compliance enforcement',
     features: ['PII Detection', 'Auto Redaction', 'Audit Trail', 'Disclaimers'],
@@ -100,7 +100,7 @@ await dashboard.serve({ port: 3456 });`,
 const result = await enforcer.enforce(request);`,
   },
   {
-    name: '@rana/guidelines',
+    name: '@cofounder/guidelines',
     icon: Scale,
     description: 'Dynamic behavioral control with context-aware rules',
     features: ['Priority Rules', 'Analytics', 'Violations', '8+ Presets'],
@@ -112,7 +112,7 @@ await manager.addGuideline(
 const matched = await manager.match(context);`,
   },
   {
-    name: '@rana/context-optimizer',
+    name: '@cofounder/context-optimizer',
     icon: Layers,
     description: 'Handle 400K+ token contexts with 70% cost savings',
     features: ['400K Tokens', '70% Savings', 'Smart Chunking', 'Caching'],
@@ -137,7 +137,7 @@ export function Packages() {
             className="inline-flex items-center space-x-2 px-4 py-1.5 mb-6 rounded-full border border-border bg-background"
           >
             <Package className="h-4 w-4 text-gradient-from" />
-            <span className="text-sm font-medium">New in RANA 3.1</span>
+            <span className="text-sm font-medium">New in CoFounder 3.1</span>
           </motion.div>
 
           <motion.h2
@@ -212,7 +212,7 @@ export function Packages() {
           className="mt-12 text-center"
         >
           <Link
-            href="https://github.com/waymaker-ai/ranavibe"
+            href="https://github.com/waymaker-ai/cofounder"
             target="_blank"
             className="btn-primary px-6 py-3 text-base group inline-flex items-center"
           >

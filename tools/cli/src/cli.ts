@@ -9,27 +9,27 @@ import { deployCommand } from './commands/deploy.js';
 const program = new Command();
 
 program
-  .name('rana')
-  .description('RANA - Rapid AI Native Architecture - Production-quality AI development framework')
+  .name('cofounder')
+  .description('CoFounder - Rapid AI Native Architecture - Production-quality AI development framework')
   .version('2.0.0');
 
 // ASCII Art Banner
 const banner = `
 ${chalk.bold.cyan('╔═══════════════════════════════════════╗')}
-${chalk.bold.cyan('║')}  ${chalk.bold.white('RANA - Rapid AI Native')}      ${chalk.bold.cyan('║')}
+${chalk.bold.cyan('║')}  ${chalk.bold.white('CoFounder - Rapid AI Native')}      ${chalk.bold.cyan('║')}
 ${chalk.bold.cyan('║')}       ${chalk.bold.white('Production AI Development')}        ${chalk.bold.cyan('║')}
 ${chalk.bold.cyan('╚═══════════════════════════════════════╝')}
 
 ${chalk.gray('9 LLM Providers • 70% Cost Reduction • 5min Setup')}
-${chalk.gray('Made by')} ${chalk.bold('Waymaker')} ${chalk.gray('• https://rana.dev')}
+${chalk.gray('Made by')} ${chalk.bold('Waymaker')} ${chalk.gray('• https://cofounder.dev')}
 `;
 
 // Init command
 program
   .command('init')
-  .description('Initialize RANA in your project')
+  .description('Initialize CoFounder in your project')
   .option('-t, --template <type>', 'Template to use (default, react, nextjs, vue)', 'default')
-  .option('-f, --force', 'Overwrite existing .rana.yml')
+  .option('-f, --force', 'Overwrite existing .cofounder.yml')
   .action(initCommand);
 
 // ============================================================================
@@ -40,7 +40,7 @@ program
 program
   .command('playground')
   .alias('play')
-  .description('Interactive playground to try RANA features')
+  .description('Interactive playground to try CoFounder features')
   .option('--demo', 'Run demo mode without API keys')
   .action(async (options) => {
     if (options.demo) {
@@ -159,7 +159,7 @@ program
 // Check command
 program
   .command('check')
-  .description('Check compliance with RANA standards')
+  .description('Check compliance with CoFounder standards')
   .option('-v, --verbose', 'Show detailed output')
   .option('-f, --fix', 'Automatically fix issues where possible')
   .action(checkCommand);
@@ -167,7 +167,7 @@ program
 // Deploy command
 program
   .command('deploy')
-  .description('Deploy with RANA verification workflow')
+  .description('Deploy with CoFounder verification workflow')
   .option('--verify', 'Verify deployment in production')
   .option('--skip-tests', 'Skip testing phase (not recommended)')
   .option('--skip-build', 'Skip build phase')
@@ -197,7 +197,7 @@ program
 // Validate command
 program
   .command('validate')
-  .description('Validate .rana.yml configuration')
+  .description('Validate .cofounder.yml configuration')
   .action(async () => {
     const { validateConfig } = await import('./commands/validate.js');
     await validateConfig();
@@ -206,7 +206,7 @@ program
 // Config command
 program
   .command('config')
-  .description('Show current RANA configuration')
+  .description('Show current CoFounder configuration')
   .action(async () => {
     const { showConfig } = await import('./commands/config.js');
     await showConfig();
@@ -257,7 +257,7 @@ program
 program
   .command('config:export')
   .description('Export API keys to .env file')
-  .option('-f, --file <file>', 'Output file (default: .env.rana)')
+  .option('-f, --file <file>', 'Output file (default: .env.cofounder)')
   .action(async (options) => {
     const { configExport } = await import('./commands/config.js');
     await configExport(options);
@@ -276,7 +276,7 @@ program
 // Status command
 program
   .command('status')
-  .description('Show RANA project status')
+  .description('Show CoFounder project status')
   .action(async () => {
     const { showStatus } = await import('./commands/status.js');
     await showStatus();
@@ -989,7 +989,7 @@ program
 // Learn - Interactive tutorials
 program
   .command('learn [topic]')
-  .description('Interactive tutorials for learning RANA')
+  .description('Interactive tutorials for learning CoFounder')
   .action(async (topic) => {
     const { learnCommand } = await import('./commands/learn.js');
     await learnCommand(topic);
@@ -1547,14 +1547,14 @@ program
 program.on('--help', () => {
   console.log(banner);
   console.log(chalk.gray('\nExamples:'));
-  console.log(chalk.gray('  $ rana init                  # Initialize RANA in current project'));
-  console.log(chalk.gray('  $ rana check                 # Check compliance'));
-  console.log(chalk.gray('  $ rana llm:compare           # Compare 9 LLM providers'));
-  console.log(chalk.gray('  $ rana analyze:velocity      # View development velocity metrics'));
-  console.log(chalk.gray('  $ rana analyze:legacy        # Analyze legacy code for modernization'));
-  console.log(chalk.gray('  $ rana deploy --verify       # Deploy with verification'));
-  console.log(chalk.gray('\nDocumentation: https://rana.dev'));
-  console.log(chalk.gray('GitHub: https://github.com/waymaker/rana\n'));
+  console.log(chalk.gray('  $ cofounder init                  # Initialize CoFounder in current project'));
+  console.log(chalk.gray('  $ cofounder check                 # Check compliance'));
+  console.log(chalk.gray('  $ cofounder llm:compare           # Compare 9 LLM providers'));
+  console.log(chalk.gray('  $ cofounder analyze:velocity      # View development velocity metrics'));
+  console.log(chalk.gray('  $ cofounder analyze:legacy        # Analyze legacy code for modernization'));
+  console.log(chalk.gray('  $ cofounder deploy --verify       # Deploy with verification'));
+  console.log(chalk.gray('\nDocumentation: https://cofounder.dev'));
+  console.log(chalk.gray('GitHub: https://github.com/waymaker/cofounder\n'));
 });
 
 // Parse arguments

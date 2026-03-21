@@ -1,5 +1,5 @@
 /**
- * @ranavibe/ci - CI/CD guardrails for AI applications
+ * @cofounder/ci - CI/CD guardrails for AI applications
  *
  * Zero runtime dependencies. Scans your codebase for AI security,
  * compliance, cost, and safety issues.
@@ -15,7 +15,7 @@ export type {
   ReportFormat,
   Severity,
   GitHubContext,
-  RanaConfig,
+  CoFounderConfig,
 } from './types.js';
 
 export { SEVERITY_ORDER, severityMeetsThreshold } from './types.js';
@@ -79,19 +79,19 @@ import { formatReport } from './reporters/index.js';
 export function scan(config: ScanConfig): ScanResult {
   const startTime = Date.now();
 
-  // Load .rana.yml if it exists
-  const ranaConfig = config.configPath ? loadConfig(config.configPath) : null;
+  // Load .cofounder.yml if it exists
+  const cofounderConfig = config.configPath ? loadConfig(config.configPath) : null;
 
-  // Merge config from .rana.yml
-  if (ranaConfig) {
-    if (ranaConfig.models?.approved && !config.approvedModels) {
-      config.approvedModels = ranaConfig.models.approved;
+  // Merge config from .cofounder.yml
+  if (cofounderConfig) {
+    if (cofounderConfig.models?.approved && !config.approvedModels) {
+      config.approvedModels = cofounderConfig.models.approved;
     }
-    if (ranaConfig.budget?.monthly && !config.budgetLimit) {
-      config.budgetLimit = ranaConfig.budget.monthly;
+    if (cofounderConfig.budget?.monthly && !config.budgetLimit) {
+      config.budgetLimit = cofounderConfig.budget.monthly;
     }
-    if (ranaConfig.ignore) {
-      config.ignorePatterns = [...config.ignorePatterns, ...ranaConfig.ignore];
+    if (cofounderConfig.ignore) {
+      config.ignorePatterns = [...config.ignorePatterns, ...cofounderConfig.ignore];
     }
   }
 

@@ -1,5 +1,5 @@
 /**
- * @ranavibe/streaming - StreamGuard
+ * @cofounder/streaming - StreamGuard
  *
  * Main class for guarding SSE/streaming LLM responses token-by-token.
  * Buffers tokens, runs detectors incrementally, and emits events for

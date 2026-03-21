@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 
 /**
- * Manages the RANA status bar item that shows guard status, finding counts,
+ * Manages the CoFounder status bar item that shows guard status, finding counts,
  * and cost estimates at the bottom of the VS Code window.
  */
 export class RanaStatusBar implements vscode.Disposable {
@@ -17,7 +17,7 @@ export class RanaStatusBar implements vscode.Disposable {
       vscode.StatusBarAlignment.Left,
       100
     );
-    this.statusBarItem.command = 'rana.showDashboard';
+    this.statusBarItem.command = 'cofounder.showDashboard';
     this.update();
     this.statusBarItem.show();
   }
@@ -50,8 +50,8 @@ export class RanaStatusBar implements vscode.Disposable {
 
   private update(): void {
     if (!this.isActive) {
-      this.statusBarItem.text = '$(shield) RANA: Inactive';
-      this.statusBarItem.tooltip = 'RANA Guardrails - Click to open dashboard';
+      this.statusBarItem.text = '$(shield) CoFounder: Inactive';
+      this.statusBarItem.tooltip = 'CoFounder Guardrails - Click to open dashboard';
       this.statusBarItem.backgroundColor = undefined;
       return;
     }
@@ -66,7 +66,7 @@ export class RanaStatusBar implements vscode.Disposable {
     }
 
     if (this.findingsCount === 0) {
-      parts.push('RANA: Clean');
+      parts.push('CoFounder: Clean');
     }
 
     if (this.costEstimate !== undefined && this.costEstimate > 0) {
@@ -76,7 +76,7 @@ export class RanaStatusBar implements vscode.Disposable {
     this.statusBarItem.text = parts.join(' ');
 
     const tooltipLines = [
-      'RANA Guardrails',
+      'CoFounder Guardrails',
       `Findings: ${this.findingsCount} (${this.errorCount} errors, ${this.warningCount} warnings)`,
     ];
     if (this.costEstimate !== undefined) {

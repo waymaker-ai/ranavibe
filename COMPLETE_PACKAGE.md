@@ -1,4 +1,4 @@
-# RANA v2.0 - Complete Package Summary
+# CoFounder v2.0 - Complete Package Summary
 
 Everything you need to know about what was built and what to do next.
 
@@ -6,7 +6,7 @@ Everything you need to know about what was built and what to do next.
 
 ## ✅ What's Been Built
 
-### **1. Core SDK (@rana/core)** ✅
+### **1. Core SDK (@cofounder/core)** ✅
 
 **Location:** `packages/core/`
 
@@ -40,17 +40,17 @@ Everything you need to know about what was built and what to do next.
 
 ---
 
-### **2. React Hooks Package (@rana/react)** ✅
+### **2. React Hooks Package (@cofounder/react)** ✅
 
 **Location:** `packages/react/`
 
 **Features:**
 - ✅ 5 custom React hooks
-  - `useRanaChat` - Basic chat functionality
-  - `useRanaStream` - Streaming responses
-  - `useRanaCost` - Cost tracking
-  - `useRanaOptimize` - Optimization suggestions
-  - `useRanaConversation` - Full conversation management
+  - `useCoFounderChat` - Basic chat functionality
+  - `useCoFounderStream` - Streaming responses
+  - `useCoFounderCost` - Cost tracking
+  - `useCoFounderOptimize` - Optimization suggestions
+  - `useCoFounderConversation` - Full conversation management
 - ✅ RanaProvider context
 - ✅ Full TypeScript support
 
@@ -72,10 +72,10 @@ Everything you need to know about what was built and what to do next.
 **Location:** `tools/cli/`
 
 **New Commands:**
-- ✅ `rana dashboard` - Real-time cost dashboard
-- ✅ `rana analyze` - Smart project analysis
-- ✅ `rana optimize` - Auto-optimization
-- ✅ `rana fix` - Auto-fix issues
+- ✅ `cofounder dashboard` - Real-time cost dashboard
+- ✅ `cofounder analyze` - Smart project analysis
+- ✅ `cofounder optimize` - Auto-optimization
+- ✅ `cofounder fix` - Auto-fix issues
 
 **Files Created/Updated:**
 - `src/commands/dashboard.ts` (150 lines)
@@ -89,7 +89,7 @@ Everything you need to know about what was built and what to do next.
 
 **Comprehensive Guides:**
 - ✅ `README.md` - Updated with SDK usage
-- ✅ `RANA_SDK_GUIDE.md` (900 lines) - Complete SDK documentation
+- ✅ `CoFounder_SDK_GUIDE.md` (900 lines) - Complete SDK documentation
 - ✅ `SDK_QUICK_START.md` (300 lines) - 5-minute tutorial
 - ✅ `BEFORE_AND_AFTER.md` (700 lines) - Visual comparison
 - ✅ `NEXT_STEPS.md` (500 lines) - Long-term roadmap
@@ -124,7 +124,7 @@ Everything you need to know about what was built and what to do next.
 **Examples Created:**
 - ✅ `src/core-examples.ts` (500 lines) - 10 SDK examples
 - ✅ `src/react-examples.tsx` (450 lines) - 5 React component examples
-- ✅ `rana.config.ts` - Configuration template
+- ✅ `cofounder.config.ts` - Configuration template
 - ✅ `package.json` - Dependencies
 
 **Example Topics:**
@@ -165,16 +165,16 @@ Everything you need to know about what was built and what to do next.
 
 ---
 
-## 🎯 What Makes RANA v2.0 Special
+## 🎯 What Makes CoFounder v2.0 Special
 
 ### 1. **React-like Developer Experience**
 
 ```typescript
 // Just like useState or React Query
-import { useRanaChat } from '@rana/react';
+import { useCoFounderChat } from '@cofounder/react';
 
 function ChatApp() {
-  const { chat, response, loading, cost } = useRanaChat(rana);
+  const { chat, response, loading, cost } = useCoFounderChat(cofounder);
   return <div>...</div>;
 }
 ```
@@ -183,10 +183,10 @@ function ChatApp() {
 
 ```typescript
 // Try Claude
-const claude = await rana.anthropic().chat('Hello!');
+const claude = await cofounder.anthropic().chat('Hello!');
 
 // Try GPT
-const gpt = await rana.openai().chat('Hello!');
+const gpt = await cofounder.openai().chat('Hello!');
 
 // No vendor lock-in!
 ```
@@ -202,7 +202,7 @@ Through:
 ### 4. **Fluent API Pattern**
 
 ```typescript
-const response = await rana
+const response = await cofounder
   .provider('anthropic')
   .model('claude-3-5-sonnet-20241022')
   .temperature(0.7)
@@ -228,7 +228,7 @@ const { provider, cost } = await findCheapestProvider(
 );
 
 // Batch process
-const responses = await batchProcess(rana, [
+const responses = await batchProcess(cofounder, [
   'Question 1',
   'Question 2',
   'Question 3'
@@ -283,16 +283,16 @@ cd ../react
 npm publish --access public
 
 # 4. Verify
-npm view @rana/core
-npm view @rana/react
+npm view @cofounder/core
+npm view @cofounder/react
 ```
 
 **See:** `PUBLISHING_GUIDE.md` for detailed instructions
 
 **Checklist:**
 - [ ] npm login successful
-- [ ] @rana/core published
-- [ ] @rana/react published
+- [ ] @cofounder/core published
+- [ ] @cofounder/react published
 - [ ] Both visible on npmjs.com
 - [ ] Test install works
 
@@ -314,9 +314,9 @@ git push origin v2.0.0
 ```
 
 **On GitHub:**
-1. Go to https://github.com/waymaker/rana/releases/new
+1. Go to https://github.com/waymaker/cofounder/releases/new
 2. Tag: v2.0.0
-3. Title: "RANA v2.0.0 - Full SDK Release"
+3. Title: "CoFounder v2.0.0 - Full SDK Release"
 4. Description: Copy from `RELEASE_NOTES_V2.md`
 5. Publish release
 
@@ -353,9 +353,9 @@ git push origin v2.0.0
 ## 📂 File Structure Overview
 
 ```
-rana/
+cofounder/
 ├── packages/
-│   ├── core/                      # @rana/core SDK
+│   ├── core/                      # @cofounder/core SDK
 │   │   ├── src/
 │   │   │   ├── types.ts           # All TypeScript types
 │   │   │   ├── client.ts          # Main RanaClient
@@ -369,7 +369,7 @@ rana/
 │   │   ├── tsconfig.json
 │   │   └── README.md
 │   │
-│   └── react/                     # @rana/react hooks
+│   └── react/                     # @cofounder/react hooks
 │       ├── src/
 │       │   ├── types.ts           # Type definitions
 │       │   ├── hooks.ts           # 5 custom hooks
@@ -380,7 +380,7 @@ rana/
 │       └── README.md
 │
 ├── tools/
-│   └── cli/                       # @rana/cli
+│   └── cli/                       # @cofounder/cli
 │       ├── src/
 │       │   ├── commands/
 │       │   │   ├── dashboard.ts   # Cost dashboard
@@ -399,7 +399,7 @@ rana/
 ├── docs/                          # Additional documentation
 │
 ├── README.md                      # Main README
-├── RANA_SDK_GUIDE.md              # Complete guide
+├── CoFounder_SDK_GUIDE.md              # Complete guide
 ├── SDK_QUICK_START.md             # Quick start
 ├── RELEASE_NOTES_V2.md            # Release notes
 ├── LAUNCH_MATERIALS.md            # Social media posts
@@ -474,7 +474,7 @@ Handles:
    - Try: `examples/sdk-demo/`
 
 2. **Complete Guide** (30 minutes)
-   - Read: `RANA_SDK_GUIDE.md`
+   - Read: `CoFounder_SDK_GUIDE.md`
    - Covers all features in depth
 
 3. **Video Demo** (10 minutes)
@@ -549,8 +549,8 @@ Handles:
 ## 📞 Support
 
 - **Documentation**: All files in this repo
-- **Discord**: https://discord.gg/rana
-- **GitHub**: https://github.com/waymaker/rana
+- **Discord**: https://discord.gg/cofounder
+- **GitHub**: https://github.com/waymaker/cofounder
 - **Email**: ashley@waymaker.cx
 
 ---
@@ -596,8 +596,8 @@ Handles:
 
 ### Publishing
 - [ ] npm login
-- [ ] Publish @rana/core
-- [ ] Publish @rana/react
+- [ ] Publish @cofounder/core
+- [ ] Publish @cofounder/react
 - [ ] Create GitHub release
 
 ### Launch
@@ -609,7 +609,7 @@ Handles:
 
 ## 🎉 You're Ready!
 
-Everything is built, tested, and documented. RANA v2.0 is production-ready.
+Everything is built, tested, and documented. CoFounder v2.0 is production-ready.
 
 ### What You've Accomplished
 
@@ -635,7 +635,7 @@ Everything is built, tested, and documented. RANA v2.0 is production-ready.
 
 ## 🚀 Let's Launch!
 
-**RANA v2.0 is ready to change how developers build AI applications.**
+**CoFounder v2.0 is ready to change how developers build AI applications.**
 
 The hard work is done. Now it's time to share it with the world!
 
@@ -643,4 +643,4 @@ The hard work is done. Now it's time to share it with the world!
 
 **Made with ❤️ by Waymaker**
 
-https://github.com/waymaker/rana
+https://github.com/waymaker/cofounder

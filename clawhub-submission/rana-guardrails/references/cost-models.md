@@ -1,8 +1,8 @@
-# RANA Supported Model Pricing Reference
+# CoFounder Supported Model Pricing Reference
 
 All costs are in USD per 1 million tokens. Context window sizes are in tokens.
 
-Data sourced from `packages/guard/src/enforcers/budget.ts` (primary) and `extensions/vscode-rana/src/detectors.ts` (supplementary).
+Data sourced from `packages/guard/src/enforcers/budget.ts` (primary) and `extensions/vscode-cofounder/src/detectors.ts` (supplementary).
 
 ---
 
@@ -79,7 +79,7 @@ The VS Code extension uses a simplified pricing table for inline cost estimation
 
 ## Cost Estimation
 
-RANA estimates costs using the formula:
+CoFounder estimates costs using the formula:
 
 ```
 cost = (input_tokens / 1,000,000) * input_rate + (output_tokens / 1,000,000) * output_rate

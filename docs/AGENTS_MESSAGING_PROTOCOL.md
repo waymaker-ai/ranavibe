@@ -1,6 +1,6 @@
 # Agent-to-Agent Messaging Protocol
 
-RANA's messaging protocol enables sophisticated agent-to-agent communication with typed channels, delivery guarantees, and flexible routing patterns.
+CoFounder's messaging protocol enables sophisticated agent-to-agent communication with typed channels, delivery guarantees, and flexible routing patterns.
 
 ## Overview
 
@@ -18,7 +18,7 @@ import {
   MessageBroker,
   createChannel,
   createRequestChannel
-} from '@rana/agents';
+} from '@cofounder/agents';
 
 // Create a message broker
 const broker = new MessageBroker();
@@ -481,10 +481,10 @@ broker.subscribe('step-2', 'workflow', async (msg) => {
 
 ## Integration with Orchestrator
 
-The messaging system integrates seamlessly with RANA's orchestrator:
+The messaging system integrates seamlessly with CoFounder's orchestrator:
 
 ```typescript
-import { createOrchestrator, MessageBroker } from '@rana/agents';
+import { createOrchestrator, MessageBroker } from '@cofounder/agents';
 
 const broker = new MessageBroker();
 const orchestrator = createOrchestrator({
@@ -534,7 +534,7 @@ import type {
   SendOptions,
   MessageBrokerStats,
   ChannelStats,
-} from '@rana/agents';
+} from '@cofounder/agents';
 ```
 
 ## Related Documentation

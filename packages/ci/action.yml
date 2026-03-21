@@ -1,4 +1,4 @@
-name: 'RANA AI Guardrails'
+name: 'CoFounder AI Guardrails'
 description: 'Scan your codebase for AI security, compliance, and cost issues'
 branding:
   icon: 'shield'
@@ -14,8 +14,8 @@ inputs:
     description: 'Severity to fail on (critical, high, medium, low, none)'
     default: 'high'
   config:
-    description: 'Path to .rana.yml config'
-    default: '.rana.yml'
+    description: 'Path to .cofounder.yml config'
+    default: '.cofounder.yml'
   comment-on-pr:
     description: 'Whether to comment on PRs with results'
     default: 'true'

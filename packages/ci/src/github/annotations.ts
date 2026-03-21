@@ -113,12 +113,12 @@ export async function createCheckRun(
     const { status, data } = await githubFetch(url, context.token, {
       method: 'POST',
       body: {
-        name: 'RANA CI - AI Guardrails',
+        name: 'CoFounder CI - AI Guardrails',
         head_sha: context.sha,
         status: 'completed',
         conclusion: passed ? 'success' : 'failure',
         output: {
-          title: passed ? 'RANA CI: All checks passed' : 'RANA CI: Issues found',
+          title: passed ? 'CoFounder CI: All checks passed' : 'CoFounder CI: Issues found',
           summary: summary + truncatedNote,
           annotations,
         },

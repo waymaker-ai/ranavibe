@@ -1,5 +1,5 @@
 /**
- * @rana/guidelines - Guideline Manager
+ * @cofounder/guidelines - Guideline Manager
  */
 
 import type {

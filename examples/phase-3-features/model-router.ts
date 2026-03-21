@@ -3,7 +3,7 @@
  * Demonstrates intelligent routing across multiple LLM providers
  */
 
-import { ModelRouter, RoutingStrategy } from '@rana/core';
+import { ModelRouter, RoutingStrategy } from '@cofounder/core';
 
 async function main() {
   // Initialize router with multiple providers

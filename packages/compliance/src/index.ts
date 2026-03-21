@@ -1,10 +1,10 @@
 /**
- * @rana/compliance
- * Enterprise compliance enforcement for RANA agents
+ * @cofounder/compliance
+ * Enterprise compliance enforcement for CoFounder agents
  *
  * @example
  * ```typescript
- * import { createComplianceEnforcer, PresetRules } from '@rana/compliance';
+ * import { createComplianceEnforcer, PresetRules } from '@cofounder/compliance';
  *
  * const enforcer = createComplianceEnforcer({
  *   enableAllPresets: true,

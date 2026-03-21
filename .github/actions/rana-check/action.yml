@@ -1,5 +1,5 @@
-name: 'RANA Check'
-description: 'Run RANA quality gates including security audit, SEO check, and LLM cost analysis'
+name: 'CoFounder Check'
+description: 'Run CoFounder quality gates including security audit, SEO check, and LLM cost analysis'
 author: 'Waymaker'
 
 branding:
@@ -50,19 +50,19 @@ runs:
       with:
         node-version: '20'
 
-    - name: Install RANA CLI
+    - name: Install CoFounder CLI
       shell: bash
       run: |
-        npm install -g @rana/cli || npm install -g ./tools/cli
+        npm install -g @cofounder/cli || npm install -g ./tools/cli
 
     - name: Run Security Audit
       id: security
       if: inputs.security == 'true'
       shell: bash
       run: |
-        echo "🔒 Running RANA Security Audit..."
+        echo "🔒 Running CoFounder Security Audit..."
         set +e
-        output=$(rana security:audit 2>&1)
+        output=$(cofounder security:audit 2>&1)
         exit_code=$?
         echo "$output"
 
@@ -80,9 +80,9 @@ runs:
       if: inputs.seo == 'true'
       shell: bash
       run: |
-        echo "🔍 Running RANA SEO Check..."
+        echo "🔍 Running CoFounder SEO Check..."
         set +e
-        output=$(rana seo:check 2>&1)
+        output=$(cofounder seo:check 2>&1)
         exit_code=$?
         echo "$output"
 
@@ -100,9 +100,9 @@ runs:
       if: inputs.llm == 'true'
       shell: bash
       run: |
-        echo "💰 Running RANA LLM Cost Analysis..."
+        echo "💰 Running CoFounder LLM Cost Analysis..."
         set +e
-        output=$(rana llm:analyze 2>&1)
+        output=$(cofounder llm:analyze 2>&1)
         echo "$output"
 
         # Extract estimated cost from output
@@ -122,7 +122,7 @@ runs:
       id: summary
       shell: bash
       run: |
-        echo "## RANA Quality Gate Results" >> $GITHUB_STEP_SUMMARY
+        echo "## CoFounder Quality Gate Results" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
 
         if [ "${{ inputs.security }}" == "true" ]; then

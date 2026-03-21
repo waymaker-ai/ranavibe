@@ -1,8 +1,8 @@
-# @rana/core
+# @cofounder/core
 
-> Core SDK for RANA - Rapid AI Native Architecture
+> Core SDK for CoFounder - Rapid AI Native Architecture
 
-The `@rana/core` package provides a unified, type-safe API for working with 9 LLM providers, automatic cost optimization, and intelligent caching.
+The `@cofounder/core` package provides a unified, type-safe API for working with 9 LLM providers, automatic cost optimization, and intelligent caching.
 
 ## Features
 
@@ -17,7 +17,7 @@ The `@rana/core` package provides a unified, type-safe API for working with 9 LL
 ## Installation
 
 ```bash
-npm install @rana/core
+npm install @cofounder/core
 ```
 
 ## Quick Start
@@ -25,9 +25,9 @@ npm install @rana/core
 ### Simple Usage
 
 ```typescript
-import { createRana } from '@rana/core';
+import { createCoFounder } from '@cofounder/core';
 
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: {
     anthropic: process.env.ANTHROPIC_API_KEY,
     openai: process.env.OPENAI_API_KEY,
@@ -35,14 +35,14 @@ const rana = createRana({
 });
 
 // Simple chat
-const response = await rana.chat('Hello, world!');
+const response = await cofounder.chat('Hello, world!');
 console.log(response.content);
 ```
 
 ### Fluent API
 
 ```typescript
-const response = await rana
+const response = await cofounder
   .provider('anthropic')
   .model('claude-3-5-sonnet-20241022')
   .optimize('cost')
@@ -54,19 +54,19 @@ const response = await rana
 
 ```typescript
 // Anthropic
-const response = await rana
+const response = await cofounder
   .anthropic()
   .model('claude-3-5-sonnet-20241022')
   .chat({ messages: [...] });
 
 // OpenAI
-const response = await rana
+const response = await cofounder
   .openai()
   .model('gpt-4o')
   .chat({ messages: [...] });
 
 // Google
-const response = await rana
+const response = await cofounder
   .google()
   .model('gemini-2.0-flash-exp')
   .chat({ messages: [...] });
@@ -76,10 +76,10 @@ const response = await rana
 
 ### TypeScript Config File
 
-Create `rana.config.ts`:
+Create `cofounder.config.ts`:
 
 ```typescript
-import { defineConfig } from '@rana/core';
+import { defineConfig } from '@cofounder/core';
 
 export default defineConfig({
   providers: {
@@ -120,7 +120,7 @@ export default defineConfig({
 ### Runtime Configuration
 
 ```typescript
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: {
     anthropic: process.env.ANTHROPIC_API_KEY,
   },
@@ -140,19 +140,19 @@ const rana = createRana({
 
 ```typescript
 // Optimize for cost (uses cheapest providers)
-const response = await rana.chat({
+const response = await cofounder.chat({
   messages: [{ role: 'user', content: 'Hello!' }],
   optimize: 'cost', // Uses Gemini Flash ($0.10/1M)
 });
 
 // Optimize for speed (uses fastest providers)
-const response = await rana.chat({
+const response = await cofounder.chat({
   messages: [{ role: 'user', content: 'Hello!' }],
   optimize: 'speed', // Uses Groq
 });
 
 // Optimize for quality (uses best models)
-const response = await rana.chat({
+const response = await cofounder.chat({
   messages: [{ role: 'user', content: 'Hello!' }],
   optimize: 'quality', // Uses Claude 3.5 Sonnet
 });
@@ -161,7 +161,7 @@ const response = await rana.chat({
 ### Streaming Responses
 
 ```typescript
-for await (const chunk of rana.stream('Tell me a story')) {
+for await (const chunk of cofounder.stream('Tell me a story')) {
   process.stdout.write(chunk.delta);
 }
 ```
@@ -170,7 +170,7 @@ for await (const chunk of rana.stream('Tell me a story')) {
 
 ```typescript
 // Get cost statistics
-const stats = await rana.cost.stats();
+const stats = await cofounder.cost.stats();
 
 console.log(`Total spent: $${stats.total_spent.toFixed(2)}`);
 console.log(`Total saved: $${stats.total_saved.toFixed(2)}`);
@@ -183,13 +183,13 @@ stats.breakdown.forEach(b => {
 });
 
 // Reset cost tracking
-rana.cost.reset();
+cofounder.cost.reset();
 ```
 
 ### Tool Calling (Function Calling)
 
 ```typescript
-const response = await rana.chat({
+const response = await cofounder.chat({
   messages: [{ role: 'user', content: 'What is the weather in SF?' }],
   tools: [
     {
@@ -218,7 +218,7 @@ if (response.tool_calls) {
 ### Multimodal (Images)
 
 ```typescript
-const response = await rana.chat({
+const response = await cofounder.chat({
   messages: [
     {
       role: 'user',
@@ -240,7 +240,7 @@ const response = await rana.chat({
 
 ```typescript
 // Enable caching for this request
-const response = await rana.chat({
+const response = await cofounder.chat({
   messages: [{ role: 'user', content: 'Hello!' }],
   cache: true,
 });
@@ -248,16 +248,16 @@ const response = await rana.chat({
 console.log('From cache:', response.cached);
 
 // Clear all cache
-await rana.clearCache();
+await cofounder.clearCache();
 ```
 
 ### Error Handling
 
 ```typescript
-import { RanaAuthError, RanaRateLimitError, RanaNetworkError } from '@rana/core';
+import { RanaAuthError, RanaRateLimitError, RanaNetworkError } from '@cofounder/core';
 
 try {
-  const response = await rana.chat('Hello!');
+  const response = await cofounder.chat('Hello!');
 } catch (error) {
   if (error instanceof RanaAuthError) {
     console.error('Authentication failed. Check your API key.');
@@ -274,13 +274,13 @@ try {
 ### Creating a Plugin
 
 ```typescript
-import { definePlugin } from '@rana/core';
+import { definePlugin } from '@cofounder/core';
 
 const loggingPlugin = definePlugin({
   name: 'logging-plugin',
 
   async onInit(config) {
-    console.log('RANA initialized with config:', config);
+    console.log('CoFounder initialized with config:', config);
   },
 
   async onBeforeRequest(request) {
@@ -299,7 +299,7 @@ const loggingPlugin = definePlugin({
 });
 
 // Use the plugin
-await rana.use(loggingPlugin);
+await cofounder.use(loggingPlugin);
 ```
 
 ### Built-in Plugin Examples
@@ -341,13 +341,13 @@ const rateLimitPlugin = definePlugin({
 
 ```typescript
 // Test a single provider
-const isWorking = await rana.test('anthropic');
+const isWorking = await cofounder.test('anthropic');
 console.log('Anthropic working:', isWorking);
 
 // Test all providers
 const providers = ['anthropic', 'openai', 'google'];
 for (const provider of providers) {
-  const working = await rana.test(provider);
+  const working = await cofounder.test(provider);
   console.log(`${provider}: ${working ? '✓' : '✗'}`);
 }
 ```
@@ -368,7 +368,7 @@ for (const provider of providers) {
 
 ### Types
 
-See the full [API Reference](https://rana.dev/api/core) for complete type definitions.
+See the full [API Reference](https://cofounder.dev/api/core) for complete type definitions.
 
 ## Examples
 

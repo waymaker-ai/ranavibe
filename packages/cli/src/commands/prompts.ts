@@ -1,6 +1,6 @@
 /**
  * Prompt Management Commands
- * Save, retrieve, organize, and improve prompts for RANA
+ * Save, retrieve, organize, and improve prompts for CoFounder
  */
 
 import { Command } from 'commander';
@@ -55,7 +55,7 @@ interface PromptAnalysis {
 }
 
 // Constants
-const STORE_DIR = path.join(os.homedir(), '.rana');
+const STORE_DIR = path.join(os.homedir(), '.cofounder');
 const STORE_FILE = path.join(STORE_DIR, 'prompts.json');
 
 const DEFAULT_CATEGORIES: Record<PromptCategory, { color: string; description: string }> = {
@@ -495,7 +495,7 @@ export function registerPromptCommands(program: Command): void {
           console.log(`   ${color(`[${p.category}]`)} ${chalk.gray(p.tags.join(', '))}`);
           console.log();
         });
-        console.log(chalk.gray('Use `rana prompts import-builtins` to import these templates.\n'));
+        console.log(chalk.gray('Use `cofounder prompts import-builtins` to import these templates.\n'));
         return;
       }
 
@@ -563,7 +563,7 @@ export function registerPromptCommands(program: Command): void {
 
       if (!prompt) {
         console.error(chalk.red(`Prompt not found: ${nameOrId}`));
-        console.log(chalk.gray('\nUse `rana prompts list` to see available prompts.\n'));
+        console.log(chalk.gray('\nUse `cofounder prompts list` to see available prompts.\n'));
         process.exit(1);
       }
 
@@ -947,7 +947,7 @@ Respond with [format type] containing:
 
       if (imported > 0) {
         console.log(chalk.green(`\n✅ Imported ${imported} built-in prompts\n`));
-        console.log(chalk.gray('Use `rana prompts list` to see them.\n'));
+        console.log(chalk.gray('Use `cofounder prompts list` to see them.\n'));
       } else {
         console.log(chalk.yellow('\nAll built-in prompts already imported.\n'));
       }
@@ -957,7 +957,7 @@ Respond with [format type] containing:
   prompts
     .command('export')
     .description('Export prompts to file')
-    .option('-o, --output <file>', 'Output file', 'rana-prompts.json')
+    .option('-o, --output <file>', 'Output file', 'cofounder-prompts.json')
     .option('-c, --category <category>', 'Export only specific category')
     .action(async (options) => {
       const store = loadStore();

@@ -1,7 +1,7 @@
 {
-  "name": "@ranavibe/langchain",
+  "name": "@cofounder/langchain",
   "version": "1.0.0",
-  "description": "LangChain adapter for RANA Framework",
+  "description": "LangChain adapter for CoFounder Framework",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -23,7 +23,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@ranavibe/core": "workspace:*"
+    "@cofounder/core": "workspace:*"
   },
   "peerDependencies": {
     "@langchain/core": ">=0.1.0",
@@ -44,7 +44,7 @@
     "vitest": "^1.0.0"
   },
   "keywords": [
-    "rana",
+    "cofounder",
     "langchain",
     "llm",
     "ai",
@@ -54,10 +54,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/waymaker-ai/ranavibe.git",
+    "url": "https://github.com/waymaker-ai/cofounder.git",
     "directory": "packages/langchain"
   },
-  "homepage": "https://rana.cx",
+  "homepage": "https://cofounder.cx",
   "publishConfig": {
     "access": "public"
   }

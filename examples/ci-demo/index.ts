@@ -1,9 +1,9 @@
 /**
- * @ranavibe/ci Demo
+ * @cofounder/ci Demo
  *
  * Run with: npx tsx index.ts
  *
- * Demonstrates running a RANA CI scan programmatically: scanning files,
+ * Demonstrates running a CoFounder CI scan programmatically: scanning files,
  * generating reports, and checking results.
  */
 
@@ -13,7 +13,7 @@ import {
   runAndFormat,
   ALL_RULES,
   getRules,
-} from '@ranavibe/ci';
+} from '@cofounder/ci';
 
 // ─── 1. List available rules ────────────────────────────────────────────────────
 

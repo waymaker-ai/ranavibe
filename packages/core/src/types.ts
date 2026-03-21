@@ -1,6 +1,6 @@
 /**
- * RANA Core Types
- * TypeScript definitions for the RANA SDK
+ * CoFounder Core Types
+ * TypeScript definitions for the CoFounder SDK
  */
 
 // ============================================================================
@@ -118,7 +118,7 @@ export interface RanaChatRequest {
   tools?: ToolDefinition[];
   tool_choice?: 'auto' | 'none' | { type: 'function'; function: { name: string } };
 
-  // RANA-specific features
+  // CoFounder-specific features
   optimize?: 'cost' | 'speed' | 'quality' | 'balanced';
   cache?: boolean;
   fallback?: LLMProvider[];
@@ -198,7 +198,7 @@ export interface RanaStreamChunk {
 // Configuration Types
 // ============================================================================
 
-export interface RanaConfig {
+export interface CoFounderConfig {
   // Provider API keys
   providers: {
     anthropic?: string;
@@ -439,7 +439,7 @@ export class RanaBudgetExceededError extends RanaError {
   ) {
     super(
       `Budget exceeded: $${currentSpent.toFixed(4)} spent (limit: $${budgetLimit.toFixed(2)} per ${budgetPeriod}). ` +
-        `API calls are blocked. Reset budget or increase limit with rana config:set --budget`,
+        `API calls are blocked. Reset budget or increase limit with cofounder config:set --budget`,
       'BUDGET_EXCEEDED',
       undefined,
       402,
@@ -476,7 +476,7 @@ export interface RanaPlugin {
   version?: string;
 
   // Lifecycle hooks
-  onInit?: (config: RanaConfig) => void | Promise<void>;
+  onInit?: (config: CoFounderConfig) => void | Promise<void>;
   onBeforeRequest?: (request: RanaChatRequest) => RanaChatRequest | Promise<RanaChatRequest>;
   onAfterResponse?: (response: RanaChatResponse) => RanaChatResponse | Promise<RanaChatResponse>;
   onError?: (error: RanaError) => void | Promise<void>;

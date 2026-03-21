@@ -1,7 +1,7 @@
 {
-  "name": "@rana/context-optimizer",
+  "name": "@cofounder/context-optimizer",
   "version": "1.0.0",
-  "description": "Extended context optimization for RANA - Efficiently handle 400K+ token contexts",
+  "description": "Extended context optimization for CoFounder - Efficiently handle 400K+ token contexts",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -20,7 +20,7 @@
     "typecheck": "tsc --noEmit"
   },
   "keywords": [
-    "rana",
+    "cofounder",
     "context",
     "optimization",
     "llm",
@@ -40,6 +40,6 @@
     "vitest": "^1.6.0"
   },
   "peerDependencies": {
-    "@rana/core": "^2.0.0"
+    "@cofounder/core": "^2.0.0"
   }
 }

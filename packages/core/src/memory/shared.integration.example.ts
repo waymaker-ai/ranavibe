@@ -1,5 +1,5 @@
 /**
- * SharedMemory Integration Example with RANA Agents
+ * SharedMemory Integration Example with CoFounder Agents
  * Demonstrates how to use SharedMemory in a multi-agent system
  */
 

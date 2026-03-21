@@ -139,7 +139,7 @@ export async function assertSemanticSnapshot(
   snapshotId: string,
   options: { snapshotDir?: string; threshold?: number } = {}
 ): Promise<void> {
-  const { snapshotDir = '.rana/snapshots', threshold = 0.9 } = options;
+  const { snapshotDir = '.cofounder/snapshots', threshold = 0.9 } = options;
   const fs = await import('fs/promises');
   const path = await import('path');
 

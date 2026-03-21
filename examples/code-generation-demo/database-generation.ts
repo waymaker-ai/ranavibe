@@ -1,11 +1,11 @@
 /**
  * Database Schema Generation Examples
  *
- * This example demonstrates how to use @rana/generate to create
+ * This example demonstrates how to use @cofounder/generate to create
  * database schemas for Prisma, Drizzle, and raw SQL.
  */
 
-import { DatabaseGenerator, type Entity } from '@rana/generate';
+import { DatabaseGenerator, type Entity } from '@cofounder/generate';
 
 // ============================================================================
 // Example 1: Simple User Entity with Prisma

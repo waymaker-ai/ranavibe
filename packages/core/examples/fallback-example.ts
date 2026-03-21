@@ -5,7 +5,7 @@
  * to ensure your application stays resilient when providers fail.
  */
 
-import { createRana } from '../src';
+import { createCoFounder } from '../src';
 
 // ============================================================================
 // Basic Fallback Example
@@ -14,7 +14,7 @@ import { createRana } from '../src';
 async function basicFallbackExample() {
   console.log('\n=== Basic Fallback Example ===\n');
 
-  const rana = createRana({
+  const cofounder = createCoFounder({
     providers: {
       openai: process.env.OPENAI_API_KEY!,
       anthropic: process.env.ANTHROPIC_API_KEY!,
@@ -29,7 +29,7 @@ async function basicFallbackExample() {
     },
   });
 
-  const response = await rana.chat('What is the capital of France?');
+  const response = await cofounder.chat('What is the capital of France?');
   console.log(`✅ Response: ${response.content}`);
   console.log(`   Provider used: ${response.provider}`);
 }
@@ -41,7 +41,7 @@ async function basicFallbackExample() {
 async function fallbackWithRetryExample() {
   console.log('\n=== Fallback with Retry Example ===\n');
 
-  const rana = createRana({
+  const cofounder = createCoFounder({
     providers: {
       openai: process.env.OPENAI_API_KEY!,
       anthropic: process.env.ANTHROPIC_API_KEY!,
@@ -57,7 +57,7 @@ async function fallbackWithRetryExample() {
     },
   });
 
-  const response = await rana.chat('Explain quantum computing in one sentence.');
+  const response = await cofounder.chat('Explain quantum computing in one sentence.');
   console.log(`✅ Response: ${response.content}`);
 }
 
@@ -69,7 +69,7 @@ async function costOptimizedFallbackExample() {
   console.log('\n=== Cost-Optimized Fallback Example ===\n');
 
   // Try free/cheap providers first, fall back to premium ones if needed
-  const rana = createRana({
+  const cofounder = createCoFounder({
     providers: {
       google: process.env.GOOGLE_API_KEY!, // Free during preview
       anthropic: process.env.ANTHROPIC_API_KEY!,
@@ -83,7 +83,7 @@ async function costOptimizedFallbackExample() {
     },
   });
 
-  const response = await rana.chat('Write a haiku about AI.');
+  const response = await cofounder.chat('Write a haiku about AI.');
   console.log(`✅ Haiku:\n${response.content}`);
   console.log(`   Cost: $${response.cost.total_cost.toFixed(6)}`);
   console.log(`   Provider: ${response.provider}`);
@@ -96,7 +96,7 @@ async function costOptimizedFallbackExample() {
 async function fallbackMetadataExample() {
   console.log('\n=== Fallback Metadata Example ===\n');
 
-  const rana = createRana({
+  const cofounder = createCoFounder({
     providers: {
       openai: process.env.OPENAI_API_KEY!,
       anthropic: process.env.ANTHROPIC_API_KEY!,
@@ -108,7 +108,7 @@ async function fallbackMetadataExample() {
     },
   });
 
-  const response = await rana.chat('Hello, world!');
+  const response = await cofounder.chat('Hello, world!');
 
   // Access fallback metadata
   if ('fallbackMetadata' in response) {
@@ -169,7 +169,7 @@ async function directFallbackManagerExample() {
 async function errorHandlingExample() {
   console.log('\n=== Error Handling Example ===\n');
 
-  const rana = createRana({
+  const cofounder = createCoFounder({
     providers: {
       // Intentionally using invalid keys to demonstrate error handling
       openai: 'invalid-key-1',
@@ -187,7 +187,7 @@ async function errorHandlingExample() {
   });
 
   try {
-    await rana.chat('This will fail because all keys are invalid');
+    await cofounder.chat('This will fail because all keys are invalid');
   } catch (error) {
     console.log('\n⛔ All providers failed:');
     console.log(error instanceof Error ? error.message : String(error));

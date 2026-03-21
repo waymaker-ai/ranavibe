@@ -1,4 +1,4 @@
-# Database Integration Guide for RANA
+# Database Integration Guide for CoFounder
 
 **Version:** 1.0.0
 **Last Updated:** 2025-11-09
@@ -8,9 +8,9 @@
 
 ## Overview
 
-Every production application needs a robust, secure, and scalable database. This guide provides RANA-compliant patterns for database integration, focusing on **Supabase** (PostgreSQL) and **Prisma ORM**, with security, performance, and best practices built-in.
+Every production application needs a robust, secure, and scalable database. This guide provides CoFounder-compliant patterns for database integration, focusing on **Supabase** (PostgreSQL) and **Prisma ORM**, with security, performance, and best practices built-in.
 
-**RANA Principle:** Real data only. No mocks in production code.
+**CoFounder Principle:** Real data only. No mocks in production code.
 
 ---
 
@@ -26,7 +26,7 @@ Every production application needs a robust, secure, and scalable database. This
 8. [Real-time Subscriptions](#real-time-subscriptions)
 9. [Security Best Practices](#security-best-practices)
 10. [Testing](#testing)
-11. [RANA Quality Gates](#aads-quality-gates)
+11. [CoFounder Quality Gates](#aads-quality-gates)
 
 ---
 
@@ -49,10 +49,10 @@ npx supabase init
 npx prisma init
 ```
 
-### Configuration in .rana.yml
+### Configuration in .cofounder.yml
 
 ```yaml
-# .rana.yml
+# .cofounder.yml
 version: 1.0.0
 
 project:
@@ -128,7 +128,7 @@ SUPABASE_SERVICE_ROLE_KEY="your-service-role-key"
 import { createClient } from '@supabase/supabase-js';
 import type { Database } from './database.types';
 
-// ✅ RANA: Environment variables, not hardcoded
+// ✅ CoFounder: Environment variables, not hardcoded
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 
@@ -199,7 +199,7 @@ datasource db {
   extensions = [uuid_ossp(map: "uuid-ossp"), pgcrypto]
 }
 
-// ✅ RANA: Use proper relationships, not loose IDs
+// ✅ CoFounder: Use proper relationships, not loose IDs
 model User {
   id            String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   email         String    @unique
@@ -259,7 +259,7 @@ model Comment {
 // lib/prisma.ts
 import { PrismaClient } from '@prisma/client';
 
-// ✅ RANA: Singleton pattern for connection pooling
+// ✅ CoFounder: Singleton pattern for connection pooling
 declare global {
   // eslint-disable-next-line no-var
   var prisma: PrismaClient | undefined;
@@ -275,7 +275,7 @@ if (process.env.NODE_ENV !== 'production') {
   global.prisma = prisma;
 }
 
-// ✅ RANA: Graceful shutdown
+// ✅ CoFounder: Graceful shutdown
 process.on('beforeExit', async () => {
   await prisma.$disconnect();
 });
@@ -427,7 +427,7 @@ import { prisma } from '@/lib/prisma';
 import type { Post, Prisma } from '@prisma/client';
 
 /**
- * ✅ RANA: Service layer for database operations
+ * ✅ CoFounder: Service layer for database operations
  * - Centralized logic
  * - Error handling
  * - Type safety
@@ -437,7 +437,7 @@ import type { Post, Prisma } from '@prisma/client';
 export class PostsService {
   /**
    * Get all published posts with author information
-   * ✅ RANA: Includes relations, no N+1 queries
+   * ✅ CoFounder: Includes relations, no N+1 queries
    */
   async getPublishedPosts() {
     try {
@@ -462,7 +462,7 @@ export class PostsService {
 
   /**
    * Get post by ID with all relations
-   * ✅ RANA: Error handling, not found handling
+   * ✅ CoFounder: Error handling, not found handling
    */
   async getPostById(id: string) {
     try {
@@ -504,7 +504,7 @@ export class PostsService {
 
   /**
    * Create a new post
-   * ✅ RANA: Validation, transaction, error handling
+   * ✅ CoFounder: Validation, transaction, error handling
    */
   async createPost(data: Prisma.PostCreateInput) {
     try {
@@ -537,7 +537,7 @@ export class PostsService {
 
   /**
    * Update a post
-   * ✅ RANA: Authorization check, validation
+   * ✅ CoFounder: Authorization check, validation
    */
   async updatePost(id: string, userId: string, data: Prisma.PostUpdateInput) {
     try {
@@ -576,7 +576,7 @@ export class PostsService {
 
   /**
    * Delete a post
-   * ✅ RANA: Authorization check, cascade handling
+   * ✅ CoFounder: Authorization check, cascade handling
    */
   async deletePost(id: string, userId: string) {
     try {
@@ -608,7 +608,7 @@ export class PostsService {
 
   /**
    * Get user's posts with pagination
-   * ✅ RANA: Pagination, cursor-based
+   * ✅ CoFounder: Pagination, cursor-based
    */
   async getUserPosts(userId: string, cursor?: string, limit: number = 20) {
     try {
@@ -649,7 +649,7 @@ export const postsService = new PostsService();
 import { prisma } from '@/lib/prisma';
 
 /**
- * ✅ RANA: Use transactions for multi-table operations
+ * ✅ CoFounder: Use transactions for multi-table operations
  */
 export async function transferPostOwnership(
   postId: string,
@@ -815,7 +815,7 @@ UPDATE users SET important_data_deprecated = important_data;
 ### Indexing Strategy
 
 ```prisma
-// ✅ RANA: Index frequently queried fields
+// ✅ CoFounder: Index frequently queried fields
 model Post {
   id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   title       String
@@ -882,7 +882,7 @@ const posts = await prisma.post.findMany({
 import { supabase } from './client';
 
 /**
- * ✅ RANA: Real-time subscriptions with error handling
+ * ✅ CoFounder: Real-time subscriptions with error handling
  */
 export function subscribeToPostUpdates(
   onInsert?: (payload: any) => void,
@@ -1108,11 +1108,11 @@ describe('PostsService', () => {
 
 ---
 
-## RANA Quality Gates
+## CoFounder Quality Gates
 
 ### Database Quality Gates
 
-Add to `.rana.yml`:
+Add to `.cofounder.yml`:
 
 ```yaml
 quality_gates:
@@ -1216,4 +1216,4 @@ Following these patterns ensures your database layer is:
 
 ---
 
-*Part of the RANA Framework - Production-Quality AI Development*
+*Part of the CoFounder Framework - Production-Quality AI Development*

@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'React Hooks Deep Dive | RANA Fundamentals',
-  description: 'Master RANA React hooks for building interactive AI interfaces',
+  title: 'React Hooks Deep Dive | CoFounder Fundamentals',
+  description: 'Master CoFounder React hooks for building interactive AI interfaces',
 };
 
 export default function Lesson6Page() {
@@ -28,14 +28,14 @@ export default function Lesson6Page() {
           <h1>React Hooks Deep Dive</h1>
 
           <p className="lead">
-            RANA provides purpose-built React hooks for AI interactions.
+            CoFounder provides purpose-built React hooks for AI interactions.
             This lesson covers all available hooks and best practices for
             building responsive AI interfaces.
           </p>
 
           <h2>Available Hooks</h2>
 
-          <p>RANA provides several hooks for different use cases:</p>
+          <p>CoFounder provides several hooks for different use cases:</p>
 
           <ul>
             <li><code>useChat</code> - Full chat interface with history</li>
@@ -53,7 +53,7 @@ export default function Lesson6Page() {
 
           <div className="code-block">
             <pre>
-              <code>{`import { useChat } from '@rana/react';
+              <code>{`import { useChat } from '@cofounder/react';
 
 function ChatComponent() {
   const {
@@ -142,7 +142,7 @@ function ChatComponent() {
 
           <div className="code-block">
             <pre>
-              <code>{`import { useCompletion } from '@rana/react';
+              <code>{`import { useCompletion } from '@cofounder/react';
 
 function CompletionComponent() {
   const {
@@ -184,7 +184,7 @@ function CompletionComponent() {
 
           <div className="code-block">
             <pre>
-              <code>{`import { useAgent } from '@rana/react';
+              <code>{`import { useAgent } from '@cofounder/react';
 
 function AgentComponent() {
   const {
@@ -249,7 +249,7 @@ function AgentComponent() {
 
           <div className="code-block">
             <pre>
-              <code>{`import { useStream } from '@rana/react';
+              <code>{`import { useStream } from '@cofounder/react';
 
 function CustomStreamComponent() {
   const {
@@ -291,7 +291,7 @@ function CustomStreamComponent() {
 
           <div className="code-block">
             <pre>
-              <code>{`import { useTokenCount } from '@rana/react';
+              <code>{`import { useTokenCount } from '@cofounder/react';
 
 function TokenAwareInput() {
   const [text, setText] = useState('');

@@ -1,6 +1,6 @@
 # guard-demo
 
-Demonstrates the core features of `@ranavibe/guard`:
+Demonstrates the core features of `@cofounder/guard`:
 
 - **One-shot guard check** with `guard()` for quick validation
 - **PII redaction** across emails, SSNs, credit cards, and more

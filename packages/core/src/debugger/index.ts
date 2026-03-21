@@ -4,7 +4,7 @@
  *
  * @example
  * ```typescript
- * import { createAgentDebugger, debug } from '@rana/core';
+ * import { createAgentDebugger, debug } from '@cofounder/core';
  *
  * // Quick start with global debugger
  * const session = debug('MyAgent');

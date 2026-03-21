@@ -14,7 +14,7 @@
  *   AgentOrchestrator,
  *   SharedStateManager,
  *   createOrchestrator,
- * } from '@rana/agents/orchestration';
+ * } from '@cofounder/agents/orchestration';
  *
  * // Create orchestrator
  * const orchestrator = createOrchestrator({

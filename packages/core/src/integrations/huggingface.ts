@@ -1,5 +1,5 @@
 /**
- * @rana/integrations/huggingface
+ * @cofounder/integrations/huggingface
  * Hugging Face models integration
  *
  * Supports:
@@ -10,7 +10,7 @@
  *
  * @example
  * ```typescript
- * import { createHuggingFaceProvider } from '@rana/core';
+ * import { createHuggingFaceProvider } from '@cofounder/core';
  *
  * const hf = createHuggingFaceProvider({
  *   apiKey: process.env.HF_API_KEY,

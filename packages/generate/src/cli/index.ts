@@ -16,13 +16,13 @@ import { getAllTemplates } from '../templates';
 import type { GeneratedFile, ParsedIntent, ImplementationPlan } from '../types';
 
 // ============================================================================
-// CLI - rana generate command
+// CLI - cofounder generate command
 // ============================================================================
 
 const program = new Command();
 
 program
-  .name('rana-generate')
+  .name('cofounder-generate')
   .description('Generate production-ready code from natural language')
   .version('1.0.0');
 
@@ -170,7 +170,7 @@ program
 async function runFullWizard(): Promise<void> {
   console.log();
   console.log(chalk.cyan('╭─────────────────────────────────────────────────────────╮'));
-  console.log(chalk.cyan('│   RANA Code Generator - Full Wizard                     │'));
+  console.log(chalk.cyan('│   CoFounder Code Generator - Full Wizard                     │'));
   console.log(chalk.cyan('│   Build production-ready features step by step          │'));
   console.log(chalk.cyan('╰─────────────────────────────────────────────────────────╯'));
   console.log();
@@ -795,7 +795,7 @@ function buildAPIDescription(answers: any): string {
 async function runInteractiveWizard(options: any): Promise<string> {
   console.log();
   console.log(chalk.cyan('╭─────────────────────────────────────────────────╮'));
-  console.log(chalk.cyan('│   RANA Code Generator                          │'));
+  console.log(chalk.cyan('│   CoFounder Code Generator                          │'));
   console.log(chalk.cyan('│   Generate production-ready code from ideas    │'));
   console.log(chalk.cyan('╰─────────────────────────────────────────────────╯'));
   console.log();

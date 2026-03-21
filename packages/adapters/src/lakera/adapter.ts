@@ -1,5 +1,5 @@
 /**
- * Lakera Guard adapter — converts between RANA and Lakera formats.
+ * Lakera Guard adapter — converts between CoFounder and Lakera formats.
  */
 
 import type {
@@ -15,10 +15,10 @@ import type {
 } from '../types';
 
 // ---------------------------------------------------------------------------
-// Lakera category → RANA category mapping
+// Lakera category → CoFounder category mapping
 // ---------------------------------------------------------------------------
 
-const LAKERA_TO_RANA: Record<string, RanaCategory> = {
+const LAKERA_TO_CoFounder: Record<string, RanaCategory> = {
   prompt_injection: 'injection',
   jailbreak: 'injection',
   pii: 'pii',
@@ -32,7 +32,7 @@ const LAKERA_TO_RANA: Record<string, RanaCategory> = {
   relevance: 'off_topic',
 };
 
-const RANA_TO_LAKERA: Record<string, string> = {
+const CoFounder_TO_LAKERA: Record<string, string> = {
   injection: 'prompt_injection',
   pii: 'pii',
   toxicity: 'toxicity',
@@ -61,7 +61,7 @@ function policyForCategory(
   policies: PolicyMapping[],
   category: RanaCategory,
 ): PolicyMapping | undefined {
-  return policies.find((p) => p.ranaCategory === category);
+  return policies.find((p) => p.cofounderCategory === category);
 }
 
 // ---------------------------------------------------------------------------
@@ -130,12 +130,12 @@ class LakeraAdapter implements Adapter {
   }
 
   /**
-   * Export RANA policies into Lakera-compatible format.
+   * Export CoFounder policies into Lakera-compatible format.
    */
   exportPolicies(): ExportResult {
     const lakeraCategories = this.config.policies
       .map((p) => {
-        const lakeraName = RANA_TO_LAKERA[p.ranaCategory];
+        const lakeraName = CoFounder_TO_LAKERA[p.cofounderCategory];
         if (!lakeraName) return null;
         return {
           category: lakeraName,
@@ -157,7 +157,7 @@ class LakeraAdapter implements Adapter {
   }
 
   /**
-   * Import raw Lakera results into RANA-normalised findings.
+   * Import raw Lakera results into CoFounder-normalised findings.
    */
   importResults(raw: unknown): ImportResult {
     const errors: string[] = [];
@@ -186,17 +186,17 @@ class LakeraAdapter implements Adapter {
     if (raw.results && Array.isArray(raw.results)) {
       for (const result of raw.results) {
         for (const cat of result.categories ?? []) {
-          const ranaCategory = LAKERA_TO_RANA[cat.name] ?? 'custom';
+          const cofounderCategory = LAKERA_TO_CoFounder[cat.name] ?? 'custom';
           const score = cat.score ?? 0;
           const severity = mapLakeraSeverity(score);
-          const policy = policyForCategory(this.config.policies, ranaCategory);
+          const policy = policyForCategory(this.config.policies, cofounderCategory);
           const threshold = policy?.threshold ?? 0.5;
 
           if (score < threshold) continue;
 
           findings.push({
             source: 'lakera',
-            category: ranaCategory,
+            category: cofounderCategory,
             severity,
             action: policy?.action ?? 'flag',
             message: `Lakera detected ${cat.name} (score: ${score.toFixed(2)})`,

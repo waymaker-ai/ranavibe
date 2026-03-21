@@ -1,17 +1,17 @@
-# RANA Tracer - Quick Start Guide
+# CoFounder Tracer - Quick Start Guide
 
 ## Installation
 
-The tracer is built into `@rana/core` - no additional installation needed!
+The tracer is built into `@cofounder/core` - no additional installation needed!
 
 ```typescript
-import { createTracer } from '@rana/core';
+import { createTracer } from '@cofounder/core';
 ```
 
 ## 30-Second Start
 
 ```typescript
-import { createTracer } from '@rana/core';
+import { createTracer } from '@cofounder/core';
 
 // 1. Create a tracer
 const tracer = createTracer();
@@ -48,7 +48,7 @@ console.log(exported);
 const span = tracer.startTrace('chat_request');
 
 try {
-  const response = await rana.chat('Hello!');
+  const response = await cofounder.chat('Hello!');
 
   tracer.setAttributes(span, {
     tokens: response.usage.total_tokens,
@@ -83,13 +83,13 @@ tracer.endSpan(parent, 'success');
 
 ```typescript
 // In your app initialization
-import { createTracer, setGlobalTracer } from '@rana/core';
+import { createTracer, setGlobalTracer } from '@cofounder/core';
 
 const tracer = createTracer({ maxTraces: 1000 });
 setGlobalTracer(tracer);
 
 // Anywhere in your app
-import { getGlobalTracer } from '@rana/core';
+import { getGlobalTracer } from '@cofounder/core';
 
 const tracer = getGlobalTracer();
 const span = tracer.startTrace('operation');
@@ -113,7 +113,7 @@ const tracer = createTracer({
 ### Pattern 5: Function Wrapping
 
 ```typescript
-import { traced } from '@rana/core';
+import { traced } from '@cofounder/core';
 
 // Define your function
 async function processData(data: string) {
@@ -270,7 +270,7 @@ const tracer = createTracer({
 ## Real-World Example
 
 ```typescript
-import { createTracer, setGlobalTracer } from '@rana/core';
+import { createTracer, setGlobalTracer } from '@cofounder/core';
 
 // App setup
 const tracer = createTracer({
@@ -302,7 +302,7 @@ async function handleUserRequest(userMessage: string) {
       provider: 'anthropic'
     });
 
-    const response = await rana.chat(userMessage);
+    const response = await cofounder.chat(userMessage);
 
     tracer.setAttributes(llmSpan, {
       tokens: response.usage.total_tokens,

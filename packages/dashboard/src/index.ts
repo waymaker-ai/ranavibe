@@ -1,12 +1,12 @@
 /**
- * @ranavibe/dashboard
+ * @cofounder/dashboard
  * AI observability dashboard - cost tracking, security monitoring, compliance reporting
  *
  * Zero runtime dependencies. Built on Node.js built-ins only.
  *
  * @example
  * ```ts
- * const dashboard = new RanaDashboard({ storage: 'memory' });
+ * const dashboard = new CoFounderDashboard({ storage: 'memory' });
  * dashboard.collect({ type: 'cost', data: { cost: 0.05, model: 'gpt-4o' } });
  * const summary = await dashboard.summary();
  * await dashboard.serve({ port: 3456 });
@@ -81,7 +81,7 @@ export type { ServerOptions, RouteDeps, Middleware } from './api/index.js';
 export { exportCsv, exportMetricsCsv, exportJson, exportSummaryJson, exportPrometheus } from './exporters/index.js';
 
 // ============================================================================
-// RanaDashboard - High-level facade
+// CoFounderDashboard - High-level facade
 // ============================================================================
 
 import type {
@@ -114,7 +114,7 @@ import { exportCsv } from './exporters/csv.js';
 import { exportJson } from './exporters/json.js';
 import { exportPrometheus } from './exporters/prometheus.js';
 
-export interface RanaDashboardOptions {
+export interface CoFounderDashboardOptions {
   storage?: 'memory' | 'file' | StorageInterface;
   storagePath?: string;
   maxEvents?: number;
@@ -126,7 +126,7 @@ export interface RanaDashboardOptions {
   budgetMonthly?: number;
 }
 
-export class RanaDashboard {
+export class CoFounderDashboard {
   private readonly storage: StorageInterface;
   private readonly collector: EventCollector;
   private readonly alertLog: Alert[] = [];
@@ -141,7 +141,7 @@ export class RanaDashboard {
     usage: (query?: MetricQuery) => ReturnType<UsageMetricsCalculator['calculate']>;
   };
 
-  constructor(options: RanaDashboardOptions = {}) {
+  constructor(options: CoFounderDashboardOptions = {}) {
     // Initialize storage
     if (typeof options.storage === 'object' && options.storage !== null && 'store' in options.storage) {
       this.storage = options.storage;
@@ -333,7 +333,7 @@ export class RanaDashboard {
   // Private
   // ============================================================================
 
-  private setupAlerts(options: RanaDashboardOptions): void {
+  private setupAlerts(options: CoFounderDashboardOptions): void {
     // Budget alert
     if (options.budgetMonthly && options.budgetMonthly > 0) {
       const budgetAlert = new BudgetAlert({ monthlyBudget: options.budgetMonthly });

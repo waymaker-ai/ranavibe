@@ -71,7 +71,7 @@ const layers: EcosystemLayer[] = [
       { name: 'streaming', description: 'Token-by-token guardrail evaluation on streaming responses', isNew: true },
       { name: 'VS Code Extension', description: 'Inline PII highlighting, injection warnings, policy quickfixes', isNew: true },
       { name: 'cli', description: 'Command-line guardrail scanning and policy management' },
-      { name: 'create-rana-app', description: 'Project scaffolding with guardrails pre-configured' },
+      { name: 'create-cofounder-app', description: 'Project scaffolding with guardrails pre-configured' },
     ],
   },
 ];
@@ -88,7 +88,7 @@ export function Ecosystem() {
             className="inline-flex items-center space-x-2 px-4 py-1.5 mb-6 rounded-full border border-border bg-background"
           >
             <Layers className="h-4 w-4 text-gradient-from" />
-            <span className="text-sm font-medium">RANA 3.1 Ecosystem</span>
+            <span className="text-sm font-medium">CoFounder 3.1 Ecosystem</span>
           </motion.div>
 
           <motion.h2

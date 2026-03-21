@@ -1,6 +1,6 @@
 /**
  * Content Filter Examples
- * Demonstrates usage of the RANA Content Filter
+ * Demonstrates usage of the CoFounder Content Filter
  */
 
 import {
@@ -264,13 +264,13 @@ console.log('Violations:', dynamicResult.violations.length);
 console.log();
 
 // ============================================================================
-// Example 10: Integration with RANA Chat
+// Example 10: Integration with CoFounder Chat
 // ============================================================================
 
-console.log('=== Example 10: Integration with RANA ===\n');
+console.log('=== Example 10: Integration with CoFounder ===\n');
 
-// Example of how to integrate with RANA chat requests
-const ranaFilter = createContentFilter({
+// Example of how to integrate with CoFounder chat requests
+const cofounderFilter = createContentFilter({
   enableProfanityFilter: true,
   enableHarmfulContentFilter: true,
   defaultAction: 'block',
@@ -289,7 +289,7 @@ const ranaFilter = createContentFilter({
 
 // Simulate filtering a user message before sending to LLM
 function filterUserMessage(message: string): string {
-  const result = ranaFilter.filter(message);
+  const result = cofounderFilter.filter(message);
 
   if (result.action_taken === 'block') {
     throw new Error('Message contains prohibited content and cannot be processed.');

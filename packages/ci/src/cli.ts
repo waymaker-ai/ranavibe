@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
 /**
- * @ranavibe/ci CLI
+ * @cofounder/ci CLI
  *
  * Usage:
- *   rana-ci scan [path] [--rules all] [--format console] [--fail-on high]
- *   rana-ci validate [config-path]
- *   rana-ci check [path] [--format github-pr]
+ *   cofounder-ci scan [path] [--rules all] [--format console] [--fail-on high]
+ *   cofounder-ci validate [config-path]
+ *   cofounder-ci check [path] [--format github-pr]
  */
 
 import type { ReportFormat, Severity, ScanConfig } from './types.js';
@@ -75,19 +75,19 @@ function parseArgs(argv: string[]): ParsedArgs {
 
 function printUsage(): void {
   const usage = `
-RANA CI - AI Guardrails Scanner
+CoFounder CI - AI Guardrails Scanner
 
 Usage:
-  rana-ci scan [path]       Scan codebase for AI security issues
-  rana-ci validate [config] Validate .rana.yml configuration
-  rana-ci check [path]      Scan and post results to GitHub PR
-  rana-ci help              Show this help message
+  cofounder-ci scan [path]       Scan codebase for AI security issues
+  cofounder-ci validate [config] Validate .cofounder.yml configuration
+  cofounder-ci check [path]      Scan and post results to GitHub PR
+  cofounder-ci help              Show this help message
 
 Options:
   --rules <rules>     Comma-separated rules or "all" (default: all)
   --format <format>   Output format: console, json, sarif, markdown, github-pr (default: console)
   --fail-on <level>   Minimum severity to fail: critical, high, medium, low, none (default: high)
-  --config <path>     Path to .rana.yml config (default: .rana.yml)
+  --config <path>     Path to .cofounder.yml config (default: .cofounder.yml)
   --approved-models   Comma-separated approved model list
   --budget-limit      Monthly budget limit in USD
 
@@ -96,10 +96,10 @@ Environment:
   GITHUB_EVENT_PATH   Path to GitHub event payload JSON
 
 Examples:
-  rana-ci scan ./src --rules no-hardcoded-keys,no-pii-in-prompts --format json
-  rana-ci scan . --fail-on critical --format sarif > results.sarif
-  rana-ci validate .rana.yml
-  rana-ci check . --format github-pr
+  cofounder-ci scan ./src --rules no-hardcoded-keys,no-pii-in-prompts --format json
+  cofounder-ci scan . --fail-on critical --format sarif > results.sarif
+  cofounder-ci validate .cofounder.yml
+  cofounder-ci check . --format github-pr
 `;
   process.stdout.write(usage + '\n');
 }
@@ -110,7 +110,7 @@ function buildConfig(parsed: ParsedArgs): ScanConfig {
   const rules: string[] | 'all' = rulesStr === 'all' ? 'all' : rulesStr.split(',').map(s => s.trim());
   const format = (parsed.flags.format || 'console') as ReportFormat;
   const failOn = (parsed.flags['fail-on'] || 'high') as Severity;
-  const configPath = parsed.flags.config || '.rana.yml';
+  const configPath = parsed.flags.config || '.cofounder.yml';
   const commentOnPr = parsed.flags['comment-on-pr'] !== 'false';
 
   const approvedModels = parsed.flags['approved-models']
@@ -165,7 +165,7 @@ async function cmdScan(parsed: ParsedArgs): Promise<number> {
 }
 
 async function cmdValidate(parsed: ParsedArgs): Promise<number> {
-  const configPath = parsed.positional[0] || parsed.flags.config || '.rana.yml';
+  const configPath = parsed.positional[0] || parsed.flags.config || '.cofounder.yml';
   const findings = validateConfig(configPath);
 
   if (findings.length === 0) {
@@ -271,7 +271,7 @@ async function main(): Promise<void> {
     case 'version':
     case '--version':
     case '-v':
-      process.stdout.write('rana-ci v1.0.0\n');
+      process.stdout.write('cofounder-ci v1.0.0\n');
       exitCode = 0;
       break;
     default:

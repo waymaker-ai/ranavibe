@@ -3,12 +3,12 @@
  * Demonstrates how to use the documentation chatbot plugin
  */
 
-import { createRana } from '../client';
+import { createCoFounder } from '../client';
 import { DocsPlugin } from './docs';
 
 async function main() {
-  // Create RANA client
-  const rana = createRana({
+  // Create CoFounder client
+  const cofounder = createCoFounder({
     providers: {
       openai: process.env.OPENAI_API_KEY,
       anthropic: process.env.ANTHROPIC_API_KEY,
@@ -21,7 +21,7 @@ async function main() {
 
   // Create docs plugin
   const docs = new DocsPlugin({
-    rana,
+    cofounder,
     sources: [
       // Markdown files
       {
@@ -31,7 +31,7 @@ async function main() {
       // GitHub repository
       {
         type: 'github',
-        location: 'waymaker-ai/ranavibe',
+        location: 'waymaker-ai/cofounder',
       },
     ],
     chunkSize: 1000,
@@ -56,8 +56,8 @@ async function main() {
 
   // Example 1: Simple question
   console.log('=== Example 1: Simple Question ===');
-  const answer1 = await docs.ask('How do I install RANA?');
-  console.log('Q: How do I install RANA?');
+  const answer1 = await docs.ask('How do I install CoFounder?');
+  console.log('Q: How do I install CoFounder?');
   console.log(`A: ${answer1.answer}\n`);
   console.log(`Confidence: ${(answer1.confidence * 100).toFixed(1)}%`);
   console.log(`Sources: ${answer1.sources.length}`);
@@ -73,8 +73,8 @@ async function main() {
   }
 
   console.log('\n=== Example 2: Technical Question ===');
-  const answer2 = await docs.ask('What providers does RANA support?');
-  console.log('Q: What providers does RANA support?');
+  const answer2 = await docs.ask('What providers does CoFounder support?');
+  console.log('Q: What providers does CoFounder support?');
   console.log(`A: ${answer2.answer}\n`);
 
   // Example 3: Search without answering
@@ -88,7 +88,7 @@ async function main() {
 
   // Example 4: Conversational context
   console.log('\n=== Example 4: Conversational Context ===');
-  await docs.ask('What is RANA?');
+  await docs.ask('What is CoFounder?');
   const answer4 = await docs.ask('How much does it cost?', {
     useContext: true,
   });
@@ -102,7 +102,7 @@ async function main() {
 
 // Example with custom embedding provider
 async function exampleWithCustomEmbedding() {
-  const rana = createRana({
+  const cofounder = createCoFounder({
     providers: {
       openai: process.env.OPENAI_API_KEY,
     },
@@ -121,7 +121,7 @@ async function exampleWithCustomEmbedding() {
   };
 
   const docs = new DocsPlugin({
-    rana,
+    cofounder,
     embeddingProvider,
     sources: [
       { type: 'markdown', location: './docs' },
@@ -139,14 +139,14 @@ async function exampleWithCustomEmbedding() {
 
 // Example with file persistence
 async function exampleWithPersistence() {
-  const rana = createRana({
+  const cofounder = createCoFounder({
     providers: {
       openai: process.env.OPENAI_API_KEY,
     },
   });
 
   const docs = new DocsPlugin({
-    rana,
+    cofounder,
     sources: [
       { type: 'markdown', location: './docs' },
     ],

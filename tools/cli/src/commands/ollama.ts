@@ -1,21 +1,21 @@
 /**
- * RANA Ollama Command
+ * CoFounder Ollama Command
  *
  * Local-first AI development with Ollama
  *
  * @example
  * ```bash
  * # Check Ollama status
- * rana ollama
+ * cofounder ollama
  *
  * # List available models
- * rana ollama:models
+ * cofounder ollama:models
  *
  * # Pull a model
- * rana ollama:pull llama3.2
+ * cofounder ollama:pull llama3.2
  *
  * # Test a model
- * rana ollama:test llama3.2
+ * cofounder ollama:test llama3.2
  * ```
  */
 
@@ -31,7 +31,7 @@ interface OllamaModel {
  * Check Ollama status
  */
 export async function ollamaCommand(): Promise<void> {
-  console.log(chalk.bold.cyan('\n🦙 RANA Ollama Integration\n'));
+  console.log(chalk.bold.cyan('\n🦙 CoFounder Ollama Integration\n'));
 
   const baseUrl = process.env.OLLAMA_HOST || 'http://localhost:11434';
 
@@ -50,7 +50,7 @@ export async function ollamaCommand(): Promise<void> {
 
     if (models.length === 0) {
       console.log(chalk.yellow('  No models installed.'));
-      console.log(chalk.gray('  Run: rana ollama:pull llama3.2'));
+      console.log(chalk.gray('  Run: cofounder ollama:pull llama3.2'));
     } else {
       for (const model of models) {
         const size = formatSize(model.size);
@@ -58,11 +58,11 @@ export async function ollamaCommand(): Promise<void> {
       }
     }
 
-    console.log(chalk.gray('\nUsage with RANA:'));
-    console.log(chalk.gray('  const rana = createRana({'));
+    console.log(chalk.gray('\nUsage with CoFounder:'));
+    console.log(chalk.gray('  const cofounder = createCoFounder({'));
     console.log(chalk.gray('    providers: { ollama: "http://localhost:11434" }'));
     console.log(chalk.gray('  });'));
-    console.log(chalk.gray(`  await rana.chat({ provider: 'ollama', model: '${models[0]?.name || 'llama3.2'}', ... });`));
+    console.log(chalk.gray(`  await cofounder.chat({ provider: 'ollama', model: '${models[0]?.name || 'llama3.2'}', ... });`));
     console.log('');
   } catch (error) {
     console.log(chalk.red('✗ Ollama is not running'));
@@ -97,11 +97,11 @@ export async function ollamaModelsCommand(): Promise<void> {
     if (models.length === 0) {
       console.log(chalk.yellow('No models installed.\n'));
       console.log('Popular models to try:');
-      console.log(chalk.gray('  rana ollama:pull llama3.2      # Fast, small (2GB)'));
-      console.log(chalk.gray('  rana ollama:pull llama3.2:1b   # Tiny (1.3GB)'));
-      console.log(chalk.gray('  rana ollama:pull codellama     # Code generation'));
-      console.log(chalk.gray('  rana ollama:pull mistral       # Good balance'));
-      console.log(chalk.gray('  rana ollama:pull mixtral       # Large, powerful'));
+      console.log(chalk.gray('  cofounder ollama:pull llama3.2      # Fast, small (2GB)'));
+      console.log(chalk.gray('  cofounder ollama:pull llama3.2:1b   # Tiny (1.3GB)'));
+      console.log(chalk.gray('  cofounder ollama:pull codellama     # Code generation'));
+      console.log(chalk.gray('  cofounder ollama:pull mistral       # Good balance'));
+      console.log(chalk.gray('  cofounder ollama:pull mixtral       # Large, powerful'));
       console.log('');
       return;
     }
@@ -140,7 +140,7 @@ export async function ollamaModelsCommand(): Promise<void> {
  */
 export async function ollamaPullCommand(model: string): Promise<void> {
   if (!model) {
-    console.log(chalk.yellow('\nUsage: rana ollama:pull <model>\n'));
+    console.log(chalk.yellow('\nUsage: cofounder ollama:pull <model>\n'));
     console.log('Popular models:');
     console.log(chalk.gray('  llama3.2      # Latest Llama, fast'));
     console.log(chalk.gray('  llama3.2:1b   # Tiny version'));
@@ -168,8 +168,8 @@ export async function ollamaPullCommand(model: string): Promise<void> {
     }
 
     console.log(chalk.green(`✓ Successfully pulled ${model}`));
-    console.log(chalk.gray('\nUse with RANA:'));
-    console.log(chalk.gray(`  await rana.chat({ provider: 'ollama', model: '${model}', ... });`));
+    console.log(chalk.gray('\nUse with CoFounder:'));
+    console.log(chalk.gray(`  await cofounder.chat({ provider: 'ollama', model: '${model}', ... });`));
     console.log('');
   } catch (error: any) {
     console.log(chalk.red(`✗ Failed to pull ${model}`));
@@ -197,7 +197,7 @@ export async function ollamaTestCommand(model?: string): Promise<void> {
 
   if (!model) {
     console.log(chalk.yellow('\nNo model specified and no models installed.'));
-    console.log(chalk.gray('Run: rana ollama:pull llama3.2\n'));
+    console.log(chalk.gray('Run: cofounder ollama:pull llama3.2\n'));
     return;
   }
 
@@ -211,7 +211,7 @@ export async function ollamaTestCommand(model?: string): Promise<void> {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         model,
-        messages: [{ role: 'user', content: 'Say "Hello from RANA!" in exactly 5 words.' }],
+        messages: [{ role: 'user', content: 'Say "Hello from CoFounder!" in exactly 5 words.' }],
         stream: false,
       }),
     });

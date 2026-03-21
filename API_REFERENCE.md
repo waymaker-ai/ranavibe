@@ -1,8 +1,8 @@
-# RANA/RANA Framework - Complete API Reference
+# CoFounder/CoFounder Framework - Complete API Reference
 
 > **Production-ready AI apps in 5 minutes**
 
-This document provides complete API documentation for the RANA/RANA Framework.
+This document provides complete API documentation for the CoFounder/CoFounder Framework.
 
 ---
 
@@ -26,20 +26,20 @@ This document provides complete API documentation for the RANA/RANA Framework.
 
 ```bash
 # Install globally
-npm install -g @rana/cli
+npm install -g @cofounder/cli
 
 # Or use npx
-npx @rana/cli init
+npx @cofounder/cli init
 ```
 
 ### Core Commands
 
-#### `rana init`
+#### `cofounder init`
 
-Initialize RANA in your project.
+Initialize CoFounder in your project.
 
 ```bash
-rana init [options]
+cofounder init [options]
 
 Options:
   -t, --template <type>  Template to use: default, react, nextjs, vue
@@ -47,34 +47,34 @@ Options:
   --skip-install         Skip npm install
 
 Examples:
-  rana init                    # Use default template
-  rana init -t nextjs          # Use Next.js template
-  rana init -t react --force   # Force overwrite existing config
+  cofounder init                    # Use default template
+  cofounder init -t nextjs          # Use Next.js template
+  cofounder init -t react --force   # Force overwrite existing config
 ```
 
 **What it does:**
-- Creates `.rana.yml` configuration file
+- Creates `.cofounder.yml` configuration file
 - Installs dependencies
 - Sets up project structure
 - Creates example files
 
 ---
 
-#### `rana check`
+#### `cofounder check`
 
-Check compliance with RANA standards.
+Check compliance with CoFounder standards.
 
 ```bash
-rana check [options]
+cofounder check [options]
 
 Options:
   -v, --verbose  Show detailed output
   -f, --fix      Automatically fix issues where possible
 
 Examples:
-  rana check           # Quick check
-  rana check -v        # Detailed output
-  rana check --fix     # Auto-fix issues
+  cofounder check           # Quick check
+  cofounder check -v        # Detailed output
+  cofounder check --fix     # Auto-fix issues
 ```
 
 **Checks:**
@@ -94,12 +94,12 @@ Examples:
 
 ---
 
-#### `rana deploy`
+#### `cofounder deploy`
 
-Deploy with RANA verification workflow.
+Deploy with CoFounder verification workflow.
 
 ```bash
-rana deploy [options]
+cofounder deploy [options]
 
 Options:
   --verify           Verify deployment in production
@@ -108,14 +108,14 @@ Options:
   --dry-run          Preview deployment without executing
 
 Examples:
-  rana deploy                      # Deploy to production
-  rana deploy --verify             # Deploy with verification
-  rana deploy --environment staging # Deploy to staging
-  rana deploy --dry-run            # Preview deployment
+  cofounder deploy                      # Deploy to production
+  cofounder deploy --verify             # Deploy with verification
+  cofounder deploy --environment staging # Deploy to staging
+  cofounder deploy --dry-run            # Preview deployment
 ```
 
 **Deployment flow:**
-1. Run quality checks (`rana check`)
+1. Run quality checks (`cofounder check`)
 2. Run tests
 3. Build project
 4. Deploy to target environment
@@ -124,15 +124,15 @@ Examples:
 
 ---
 
-#### `rana status`
+#### `cofounder status`
 
-Show RANA project status.
+Show CoFounder project status.
 
 ```bash
-rana status
+cofounder status
 
 Output:
-  - RANA version
+  - CoFounder version
   - Project name
   - Quality scores
   - Last check date
@@ -142,12 +142,12 @@ Output:
 
 ---
 
-#### `rana validate`
+#### `cofounder validate`
 
-Validate `.rana.yml` configuration.
+Validate `.cofounder.yml` configuration.
 
 ```bash
-rana validate
+cofounder validate
 
 Output:
   - Configuration validity
@@ -160,12 +160,12 @@ Output:
 
 ### Database Commands
 
-#### `rana db:setup`
+#### `cofounder db:setup`
 
 Interactive database setup wizard.
 
 ```bash
-rana db:setup
+cofounder db:setup
 
 Interactive prompts:
   1. Choose database provider (Supabase, PostgreSQL, MySQL, MongoDB)
@@ -183,12 +183,12 @@ Interactive prompts:
 
 ---
 
-#### `rana db:migrate`
+#### `cofounder db:migrate`
 
 Run database migrations.
 
 ```bash
-rana db:migrate [options]
+cofounder db:migrate [options]
 
 Options:
   --create <name>   Create new migration
@@ -198,55 +198,55 @@ Options:
   --dry-run         Preview migrations without executing
 
 Examples:
-  rana db:migrate                    # Run pending migrations
-  rana db:migrate --create add-users # Create new migration
-  rana db:migrate --down             # Rollback last migration
+  cofounder db:migrate                    # Run pending migrations
+  cofounder db:migrate --create add-users # Create new migration
+  cofounder db:migrate --down             # Rollback last migration
 ```
 
 ---
 
-#### `rana db:seed`
+#### `cofounder db:seed`
 
 Seed database with data.
 
 ```bash
-rana db:seed [options]
+cofounder db:seed [options]
 
 Options:
   --file <path>  Path to seed file
   --clear        Clear existing data first
 
 Examples:
-  rana db:seed                  # Run all seed files
-  rana db:seed --file users.ts  # Run specific seed
-  rana db:seed --clear          # Clear and seed
+  cofounder db:seed                  # Run all seed files
+  cofounder db:seed --file users.ts  # Run specific seed
+  cofounder db:seed --clear          # Clear and seed
 ```
 
 ---
 
-#### `rana db:reset`
+#### `cofounder db:reset`
 
 Reset database (WARNING: deletes all data).
 
 ```bash
-rana db:reset [options]
+cofounder db:reset [options]
 
 Options:
   --force  Skip confirmation prompt
 
 Example:
-  rana db:reset         # Reset with confirmation
-  rana db:reset --force # Force reset
+  cofounder db:reset         # Reset with confirmation
+  cofounder db:reset --force # Force reset
 ```
 
 ---
 
-#### `rana db:studio`
+#### `cofounder db:studio`
 
 Open database management UI.
 
 ```bash
-rana db:studio
+cofounder db:studio
 
 Opens:
   - Prisma Studio (for Prisma projects)
@@ -256,12 +256,12 @@ Opens:
 
 ---
 
-#### `rana db:status`
+#### `cofounder db:status`
 
 Show database status.
 
 ```bash
-rana db:status
+cofounder db:status
 
 Output:
   - Database provider
@@ -275,12 +275,12 @@ Output:
 
 ### Security Commands
 
-#### `rana security:audit`
+#### `cofounder security:audit`
 
 Run security audit on codebase.
 
 ```bash
-rana security:audit [options]
+cofounder security:audit [options]
 
 Options:
   --fix      Automatically fix issues where possible
@@ -288,9 +288,9 @@ Options:
   --json     Output results as JSON
 
 Examples:
-  rana security:audit           # Run audit
-  rana security:audit --fix     # Auto-fix issues
-  rana security:audit --verbose # Detailed output
+  cofounder security:audit           # Run audit
+  cofounder security:audit --fix     # Auto-fix issues
+  cofounder security:audit --verbose # Detailed output
 ```
 
 **Checks:**
@@ -341,12 +341,12 @@ Overall Security Score: 96/100
 
 ---
 
-#### `rana security:setup`
+#### `cofounder security:setup`
 
 Interactive security setup wizard.
 
 ```bash
-rana security:setup
+cofounder security:setup
 
 Interactive prompts:
   1. Choose authentication provider (Supabase, NextAuth, Clerk, Auth0)
@@ -361,12 +361,12 @@ Interactive prompts:
 
 ### LLM Commands
 
-#### `rana llm:setup`
+#### `cofounder llm:setup`
 
 Setup LLM providers.
 
 ```bash
-rana llm:setup
+cofounder llm:setup
 
 Interactive prompts:
   1. Choose providers (OpenAI, Anthropic, Google, xAI, Mistral, etc.)
@@ -389,12 +389,12 @@ Interactive prompts:
 
 ---
 
-#### `rana llm:analyze`
+#### `cofounder llm:analyze`
 
 Analyze LLM usage and costs.
 
 ```bash
-rana llm:analyze [options]
+cofounder llm:analyze [options]
 
 Options:
   --detailed     Show detailed analysis
@@ -402,9 +402,9 @@ Options:
   --timeframe <days> Analyze last N days (default: 30)
 
 Examples:
-  rana llm:analyze                # Last 30 days
-  rana llm:analyze --detailed     # Detailed breakdown
-  rana llm:analyze --provider openai --timeframe 7
+  cofounder llm:analyze                # Last 30 days
+  cofounder llm:analyze --detailed     # Detailed breakdown
+  cofounder llm:analyze --provider openai --timeframe 7
 ```
 
 **Output:**
@@ -435,12 +435,12 @@ Total Potential Savings: $900/month (72%)
 
 ---
 
-#### `rana llm:optimize`
+#### `cofounder llm:optimize`
 
 Apply LLM cost optimizations.
 
 ```bash
-rana llm:optimize [options]
+cofounder llm:optimize [options]
 
 Options:
   --all              Apply all optimizations without prompting
@@ -450,9 +450,9 @@ Options:
   --prompts          Optimize prompt templates
 
 Examples:
-  rana llm:optimize           # Interactive mode
-  rana llm:optimize --all     # Apply all optimizations
-  rana llm:optimize --caching # Only enable caching
+  cofounder llm:optimize           # Interactive mode
+  cofounder llm:optimize --all     # Apply all optimizations
+  cofounder llm:optimize --caching # Only enable caching
 ```
 
 **Optimizations applied:**
@@ -481,12 +481,12 @@ Examples:
 
 ---
 
-#### `rana llm:compare`
+#### `cofounder llm:compare`
 
 Compare LLM models and pricing.
 
 ```bash
-rana llm:compare [options]
+cofounder llm:compare [options]
 
 Options:
   --providers <list>  Compare specific providers (comma-separated)
@@ -494,9 +494,9 @@ Options:
   --task <type>       Task type: chat, completion, embedding, multimodal
 
 Examples:
-  rana llm:compare                        # Compare all providers
-  rana llm:compare --providers openai,anthropic
-  rana llm:compare --metric cost --task chat
+  cofounder llm:compare                        # Compare all providers
+  cofounder llm:compare --providers openai,anthropic
+  cofounder llm:compare --metric cost --task chat
 ```
 
 **Output:**
@@ -527,12 +527,12 @@ For your use case (10M tokens/month):
 
 ### SEO Commands
 
-#### `rana seo:check`
+#### `cofounder seo:check`
 
 Validate SEO setup.
 
 ```bash
-rana seo:check [options]
+cofounder seo:check [options]
 
 Options:
   --fix      Automatically fix issues where possible
@@ -540,9 +540,9 @@ Options:
   --url <url> Check specific URL
 
 Examples:
-  rana seo:check           # Check all pages
-  rana seo:check --fix     # Auto-fix issues
-  rana seo:check --url /about
+  cofounder seo:check           # Check all pages
+  cofounder seo:check --fix     # Auto-fix issues
+  cofounder seo:check --url /about
 ```
 
 **Checks:**
@@ -577,12 +577,12 @@ Overall SEO Score: 92/100
 
 ---
 
-#### `rana seo:generate`
+#### `cofounder seo:generate`
 
 Generate SEO files.
 
 ```bash
-rana seo:generate [options]
+cofounder seo:generate [options]
 
 Options:
   --all          Generate all SEO files
@@ -592,8 +592,8 @@ Options:
   --meta         Generate meta tags
 
 Examples:
-  rana seo:generate --all       # Generate everything
-  rana seo:generate --sitemap   # Just sitemap
+  cofounder seo:generate --all       # Generate everything
+  cofounder seo:generate --sitemap   # Just sitemap
 ```
 
 **Generated files:**
@@ -604,31 +604,31 @@ Examples:
 
 ---
 
-#### `rana seo:analyze`
+#### `cofounder seo:analyze`
 
 Analyze pages for SEO.
 
 ```bash
-rana seo:analyze [options]
+cofounder seo:analyze [options]
 
 Options:
   --url <url>    Analyze specific URL
   --export <format> Export results (json, csv, pdf)
 
 Examples:
-  rana seo:analyze                    # Analyze all pages
-  rana seo:analyze --url /blog/post-1
-  rana seo:analyze --export json
+  cofounder seo:analyze                    # Analyze all pages
+  cofounder seo:analyze --url /blog/post-1
+  cofounder seo:analyze --export json
 ```
 
 ---
 
-#### `rana seo:setup`
+#### `cofounder seo:setup`
 
 Interactive SEO setup wizard.
 
 ```bash
-rana seo:setup
+cofounder seo:setup
 
 Interactive prompts:
   1. Enter site name
@@ -644,20 +644,20 @@ Interactive prompts:
 
 ### Mobile Commands
 
-#### `rana mobile:validate`
+#### `cofounder mobile:validate`
 
 Validate mobile-first compliance.
 
 ```bash
-rana mobile:validate [options]
+cofounder mobile:validate [options]
 
 Options:
   --fix      Automatically fix issues where possible
   --verbose  Show detailed output
 
 Examples:
-  rana mobile:validate           # Check compliance
-  rana mobile:validate --fix     # Auto-fix issues
+  cofounder mobile:validate           # Check compliance
+  cofounder mobile:validate --fix     # Auto-fix issues
 ```
 
 **Checks:**
@@ -688,12 +688,12 @@ Overall Mobile Score: 88/100
 
 ---
 
-#### `rana mobile:test`
+#### `cofounder mobile:test`
 
 Test on different mobile viewports.
 
 ```bash
-rana mobile:test [options]
+cofounder mobile:test [options]
 
 Options:
   --devices <list>  Test specific devices (comma-separated)
@@ -701,9 +701,9 @@ Options:
   --screenshot      Capture screenshots
 
 Examples:
-  rana mobile:test                    # Test all common devices
-  rana mobile:test --devices iphone14,pixel7
-  rana mobile:test --url /pricing --screenshot
+  cofounder mobile:test                    # Test all common devices
+  cofounder mobile:test --devices iphone14,pixel7
+  cofounder mobile:test --url /pricing --screenshot
 ```
 
 **Tested devices:**
@@ -716,12 +716,12 @@ Examples:
 
 ---
 
-#### `rana mobile:setup`
+#### `cofounder mobile:setup`
 
 Interactive mobile setup wizard.
 
 ```bash
-rana mobile:setup
+cofounder mobile:setup
 
 Interactive prompts:
   1. Configure viewport meta tag
@@ -737,13 +737,13 @@ Interactive prompts:
 
 ## Configuration
 
-### `.rana.yml` Configuration File
+### `.cofounder.yml` Configuration File
 
 ```yaml
-# RANA/RANA Configuration
+# CoFounder/CoFounder Configuration
 version: 2.0
-name: my-rana-app
-description: Built with RANA Framework
+name: my-cofounder-app
+description: Built with CoFounder Framework
 
 # Quality thresholds
 quality:
@@ -809,10 +809,10 @@ security:
 
 # SEO Configuration
 seo:
-  siteName: My RANA App
+  siteName: My CoFounder App
   siteUrl: https://yourdomain.com
   description: Production-ready AI app
-  keywords: [ai, app, rana]
+  keywords: [ai, app, cofounder]
   og:
     image: /og-image.png
     type: website
@@ -826,8 +826,8 @@ seo:
 mobile:
   pwa:
     enabled: true
-    name: My RANA App
-    shortName: RANA
+    name: My CoFounder App
+    shortName: CoFounder
     themeColor: '#000000'
     backgroundColor: '#ffffff'
   touchTargets:
@@ -863,9 +863,9 @@ deployment:
 ### Unified LLM Client
 
 ```typescript
-import { UnifiedLLMClient } from '@rana/core';
+import { UnifiedLLMClient } from '@cofounder/core';
 
-const rana = new UnifiedLLMClient({
+const cofounder = new UnifiedLLMClient({
   providers: {
     openai: process.env.OPENAI_API_KEY,
     anthropic: process.env.ANTHROPIC_API_KEY,
@@ -879,7 +879,7 @@ const rana = new UnifiedLLMClient({
 });
 
 // Basic chat
-const response = await rana.chat({
+const response = await cofounder.chat({
   provider: 'openai', // optional, uses default if not specified
   model: 'gpt-4o',
   messages: [
@@ -891,7 +891,7 @@ const response = await rana.chat({
 console.log(response.content); // "Hello! How can I help you today?"
 
 // Streaming
-const stream = await rana.chat({
+const stream = await cofounder.chat({
   model: 'gpt-4o',
   messages: [{ role: 'user', content: 'Tell me a story' }],
   stream: true
@@ -902,7 +902,7 @@ for await (const chunk of stream) {
 }
 
 // Multimodal (with images)
-const visionResponse = await rana.chat({
+const visionResponse = await cofounder.chat({
   provider: 'google',
   model: 'gemini-2.0-flash',
   messages: [
@@ -917,7 +917,7 @@ const visionResponse = await rana.chat({
 });
 
 // Function calling (tools)
-const toolResponse = await rana.chat({
+const toolResponse = await cofounder.chat({
   model: 'gpt-4o',
   messages: [{ role: 'user', content: 'What is the weather in NYC?' }],
   tools: [
@@ -938,7 +938,7 @@ const toolResponse = await rana.chat({
 });
 
 // Cost tracking
-const stats = rana.getStats();
+const stats = cofounder.getStats();
 console.log(stats.totalCost); // "$1.25"
 console.log(stats.totalTokens); // 50000
 console.log(stats.byProvider); // { openai: { cost: "$1.00", tokens: 40000 }, ... }
@@ -949,7 +949,7 @@ console.log(stats.byProvider); // { openai: { cost: "$1.00", tokens: 40000 }, ..
 ## Security Module
 
 ```typescript
-import { SecurityModule } from '@rana/security';
+import { SecurityModule } from '@cofounder/security';
 
 // Initialize security
 const security = new SecurityModule({
@@ -1003,9 +1003,9 @@ security.log('user_login', {
 
 ## Questions?
 
-- **Documentation:** https://rana.dev/docs
-- **GitHub:** https://github.com/waymaker/rana
-- **Discord:** https://discord.gg/rana
+- **Documentation:** https://cofounder.dev/docs
+- **GitHub:** https://github.com/waymaker/cofounder
+- **Discord:** https://discord.gg/cofounder
 - **Email:** support@waymaker.ai
 
 ---

@@ -1,10 +1,10 @@
-# RANA Observability
+# CoFounder Observability
 
-Built-in tracing and observability system for monitoring RANA LLM operations.
+Built-in tracing and observability system for monitoring CoFounder LLM operations.
 
 ## Overview
 
-The RANA Observability module provides comprehensive tracing capabilities to help you understand and debug your LLM operations. It captures detailed information about requests, including:
+The CoFounder Observability module provides comprehensive tracing capabilities to help you understand and debug your LLM operations. It captures detailed information about requests, including:
 
 - Request start/end times and latency
 - Provider and model information
@@ -36,7 +36,7 @@ The RANA Observability module provides comprehensive tracing capabilities to hel
 ### Basic Usage
 
 ```typescript
-import { createTracer } from '@rana/core';
+import { createTracer } from '@cofounder/core';
 
 // Create a tracer
 const tracer = createTracer({
@@ -70,7 +70,7 @@ console.log(exported);
 ### Nested Operations
 
 ```typescript
-import { createTracer } from '@rana/core';
+import { createTracer } from '@cofounder/core';
 
 const tracer = createTracer();
 
@@ -94,7 +94,7 @@ tracer.endSpan(parentSpan, 'success');
 ### Error Handling
 
 ```typescript
-import { createTracer } from '@rana/core';
+import { createTracer } from '@cofounder/core';
 
 const tracer = createTracer();
 const span = tracer.startTrace('risky_operation');
@@ -110,7 +110,7 @@ try {
 ### Global Tracer
 
 ```typescript
-import { createTracer, setGlobalTracer, getGlobalTracer } from '@rana/core';
+import { createTracer, setGlobalTracer, getGlobalTracer } from '@cofounder/core';
 
 // Set up global tracer once
 const tracer = createTracer({ maxTraces: 1000 });
@@ -124,7 +124,7 @@ const span = globalTracer.startTrace('operation');
 ### Function Wrapping
 
 ```typescript
-import { traced } from '@rana/core';
+import { traced } from '@cofounder/core';
 
 // Wrap an async function
 async function processMessage(msg: string): Promise<string> {
@@ -141,7 +141,7 @@ const result = await tracedProcess('Hello!');
 ### Auto-Export
 
 ```typescript
-import { createTracer } from '@rana/core';
+import { createTracer } from '@cofounder/core';
 
 const tracer = createTracer({
   autoExport: true,
@@ -273,11 +273,11 @@ interface TraceExport {
 ### Real-World Example: Complete Chat Request
 
 ```typescript
-import { createTracer } from '@rana/core';
+import { createTracer } from '@cofounder/core';
 
 async function handleChatRequest(tracer: Tracer) {
   // Main request trace
-  const requestSpan = tracer.startTrace('rana.chat', {
+  const requestSpan = tracer.startTrace('cofounder.chat', {
     provider: 'anthropic',
     model: 'claude-3-5-sonnet-20241022'
   });
@@ -346,7 +346,7 @@ async function handleChatRequest(tracer: Tracer) {
 ### Integration with Monitoring Services
 
 ```typescript
-import { createTracer } from '@rana/core';
+import { createTracer } from '@cofounder/core';
 
 // Example: Send to DataDog
 const tracer = createTracer({
@@ -386,7 +386,7 @@ const tracer = createTracer({
 ### Statistics and Monitoring
 
 ```typescript
-import { getGlobalTracer } from '@rana/core';
+import { getGlobalTracer } from '@cofounder/core';
 
 const tracer = getGlobalTracer();
 

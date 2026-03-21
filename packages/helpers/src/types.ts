@@ -1,5 +1,5 @@
 /**
- * Type definitions for @rana/helpers
+ * Type definitions for @cofounder/helpers
  */
 
 import { z } from 'zod';

@@ -23,7 +23,7 @@ const response = await chat.invoke([
 ]);
 
 console.log(response.content);`,
-        after: `import { Agent } from '@rana/core';
+        after: `import { Agent } from '@cofounder/core';
 
 const agent = new Agent({
   model: 'gpt-4',
@@ -50,14 +50,14 @@ const result = await chain.call({
   language: 'Spanish',
   text: 'Hello world'
 });`,
-        after: `import { translate } from '@rana/helpers';
+        after: `import { translate } from '@cofounder/helpers';
 
 const result = await translate('Hello world', {
   to: 'Spanish'
 });
 
 // Or with PromptManager for complex prompts
-import { PromptManager } from '@rana/prompts';
+import { PromptManager } from '@cofounder/prompts';
 
 const pm = new PromptManager({ workspace: 'app' });
 await pm.register('translate', {
@@ -85,7 +85,7 @@ const chain = RetrievalQAChain.fromLLM(chat, vectorStore.asRetriever());
 const response = await chain.call({
   query: 'What is the refund policy?'
 });`,
-        after: `import { RAGPresets } from '@rana/rag';
+        after: `import { RAGPresets } from '@cofounder/rag';
 
 const pipeline = RAGPresets.balanced();
 
@@ -120,7 +120,7 @@ const result = await streamText({
 for await (const chunk of result.textStream) {
   process.stdout.write(chunk);
 }`,
-        after: `import { Agent } from '@rana/core';
+        after: `import { Agent } from '@cofounder/core';
 
 const agent = new Agent({ model: 'gpt-4' });
 
@@ -129,7 +129,7 @@ for await (const chunk of agent.stream('Hello!')) {
 }
 
 // Or with React hook
-import { useChat } from '@rana/react';
+import { useChat } from '@cofounder/react';
 
 function Chat() {
   const { messages, input, send } = useChat();
@@ -156,7 +156,7 @@ const result = await streamText({
   },
   messages: [{ role: 'user', content: 'Weather in NYC?' }]
 });`,
-        after: `import { Agent, Tool } from '@rana/core';
+        after: `import { Agent, Tool } from '@cofounder/core';
 
 const weatherTool = new Tool({
   name: 'weather',
@@ -196,7 +196,7 @@ const completion = await openai.chat.completions.create({
 });
 
 console.log(completion.choices[0].message.content);`,
-        after: `import { Agent } from '@rana/core';
+        after: `import { Agent } from '@cofounder/core';
 
 const agent = new Agent({
   model: 'gpt-4',
@@ -223,7 +223,7 @@ console.log(result);
 for await (const chunk of stream) {
   process.stdout.write(chunk.choices[0]?.delta?.content || '');
 }`,
-        after: `import { Agent } from '@rana/core';
+        after: `import { Agent } from '@cofounder/core';
 
 const agent = new Agent({ model: 'gpt-4' });
 
@@ -258,7 +258,7 @@ if (completion.choices[0].message.function_call) {
   const weather = await getWeather(args.city);
   // Need to send another request with the result...
 }`,
-        after: `import { Agent, Tool } from '@rana/core';
+        after: `import { Agent, Tool } from '@cofounder/core';
 
 const agent = new Agent({
   model: 'gpt-4',
@@ -285,14 +285,14 @@ const result = await agent.run('Weather in NYC?');
 ];
 
 const benefits = [
-  { feature: 'Automatic retries & fallbacks', rana: true, others: false },
-  { feature: 'Built-in cost tracking', rana: true, others: false },
-  { feature: 'Provider-agnostic API', rana: true, others: false },
-  { feature: 'Semantic testing', rana: true, others: false },
-  { feature: 'Memory management', rana: true, others: false },
-  { feature: 'Prompt versioning', rana: true, others: false },
-  { feature: 'RAG with citations', rana: true, others: false },
-  { feature: 'OpenTelemetry support', rana: true, others: false },
+  { feature: 'Automatic retries & fallbacks', cofounder: true, others: false },
+  { feature: 'Built-in cost tracking', cofounder: true, others: false },
+  { feature: 'Provider-agnostic API', cofounder: true, others: false },
+  { feature: 'Semantic testing', cofounder: true, others: false },
+  { feature: 'Memory management', cofounder: true, others: false },
+  { feature: 'Prompt versioning', cofounder: true, others: false },
+  { feature: 'RAG with citations', cofounder: true, others: false },
+  { feature: 'OpenTelemetry support', cofounder: true, others: false },
 ];
 
 export default function MigrationPage() {
@@ -319,7 +319,7 @@ export default function MigrationPage() {
             <h1 className="text-4xl md:text-5xl font-bold">Migration Guide</h1>
           </div>
           <p className="text-lg text-foreground-secondary">
-            Migrate from LangChain, Vercel AI SDK, or OpenAI SDK to RANA.
+            Migrate from LangChain, Vercel AI SDK, or OpenAI SDK to CoFounder.
             Side-by-side code comparisons to make migration easy.
           </p>
         </motion.div>
@@ -331,13 +331,13 @@ export default function MigrationPage() {
           transition={{ delay: 0.1 }}
           className="mb-16 card"
         >
-          <h2 className="text-2xl font-bold mb-6">Why Migrate to RANA?</h2>
+          <h2 className="text-2xl font-bold mb-6">Why Migrate to CoFounder?</h2>
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
                 <tr className="border-b border-border">
                   <th className="text-left py-3 px-4">Feature</th>
-                  <th className="text-center py-3 px-4">RANA</th>
+                  <th className="text-center py-3 px-4">CoFounder</th>
                   <th className="text-center py-3 px-4">Others</th>
                 </tr>
               </thead>
@@ -346,7 +346,7 @@ export default function MigrationPage() {
                   <tr key={b.feature} className="border-b border-border">
                     <td className="py-3 px-4">{b.feature}</td>
                     <td className="text-center py-3 px-4">
-                      {b.rana ? (
+                      {b.cofounder ? (
                         <Check className="inline h-5 w-5 text-green-500" />
                       ) : (
                         <X className="inline h-5 w-5 text-red-500" />
@@ -376,7 +376,7 @@ export default function MigrationPage() {
             className="mb-16"
           >
             <h2 className="text-3xl font-bold mb-8">
-              From {migration.from} to RANA
+              From {migration.from} to CoFounder
             </h2>
 
             <div className="space-y-8">
@@ -395,7 +395,7 @@ export default function MigrationPage() {
                     </div>
                     <div>
                       <div className="text-sm font-medium text-green-400 mb-2">
-                        After (RANA)
+                        After (CoFounder)
                       </div>
                       <div className="code-block font-mono text-sm overflow-x-auto">
                         <pre>{section.after}</pre>
@@ -422,9 +422,9 @@ export default function MigrationPage() {
                 1
               </span>
               <div>
-                <strong>Install RANA packages</strong>
+                <strong>Install CoFounder packages</strong>
                 <div className="code-block font-mono text-sm mt-2">
-                  npm install @rana/core @rana/helpers @rana/prompts @rana/rag
+                  npm install @cofounder/core @cofounder/helpers @cofounder/prompts @cofounder/rag
                 </div>
               </div>
             </li>
@@ -476,7 +476,7 @@ OPENAI_API_KEY=sk-...`}
           <p className="text-foreground-secondary mb-4">
             Need help with your migration?
           </p>
-          <Link href="https://discord.gg/rana" target="_blank" className="btn-primary">
+          <Link href="https://discord.gg/cofounder" target="_blank" className="btn-primary">
             Join our Discord
             <ArrowRight className="ml-2 h-4 w-4" />
           </Link>

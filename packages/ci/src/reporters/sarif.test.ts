@@ -40,7 +40,7 @@ describe('formatSarif', () => {
     it('should include tool driver info', () => {
       const sarif = JSON.parse(formatSarif(makeScanResult()));
       const driver = sarif.runs[0].tool.driver;
-      expect(driver.name).toBe('rana-ci');
+      expect(driver.name).toBe('cofounder-ci');
       expect(driver.semanticVersion).toBe('1.0.0');
       expect(driver.informationUri).toBeDefined();
     });

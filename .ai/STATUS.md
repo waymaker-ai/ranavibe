@@ -1,4 +1,4 @@
-# RANA Project Status
+# CoFounder Project Status
 
 > Living document tracking current project state, priorities, and blockers.
 
@@ -33,7 +33,7 @@
 6. Built-in tracing dashboard
 
 ### 🟢 Low Priority (Backlog)
-- Official plugins (@rana/slack, etc.)
+- Official plugins (@cofounder/slack, etc.)
 - Enterprise features (SSO, RBAC)
 - Multi-modal support
 
@@ -42,7 +42,7 @@
 ## Recently Completed
 
 ### 2024-11-29
-- ✅ Cost optimization suggestions (`rana cost:optimize`)
+- ✅ Cost optimization suggestions (`cofounder cost:optimize`)
 - ✅ Cost alerts (Slack, Discord, email, webhooks)
 - ✅ Environment-based model selection (`envModels`)
 - ✅ CLI auto-completion (bash, zsh, fish)
@@ -50,7 +50,7 @@
 
 ### Previous Sessions
 - ✅ Phase 1 Foundation (100% complete)
-- ✅ Testing framework (@rana/testing)
+- ✅ Testing framework (@cofounder/testing)
 - ✅ Budget enforcement
 - ✅ MCP support (server + client)
 - ✅ Memory compression

@@ -20,11 +20,11 @@ const completion = await openai.chat.completions.create({
 });
 
 console.log(completion.choices[0].message.content);`,
-    rana: `import { createRana } from '@rana/core';
+    cofounder: `import { createCoFounder } from '@cofounder/core';
 
-const rana = createRana();
+const cofounder = createCoFounder();
 
-const response = await rana
+const response = await cofounder
   .system('You are a helpful assistant.')
   .chat('Hello!');
 
@@ -51,19 +51,19 @@ const anthropicResponse = await anthropic.messages.create({
   max_tokens: 1024,
   messages: [{ role: 'user', content: 'Hello' }],
 });`,
-    rana: `import { createRana } from '@rana/core';
+    cofounder: `import { createCoFounder } from '@cofounder/core';
 
-const rana = createRana();
+const cofounder = createCoFounder();
 
 // Same API for all providers
-const gpt4 = await rana.model('gpt-4').chat('Hello');
+const gpt4 = await cofounder.model('gpt-4').chat('Hello');
 
-const claude = await rana.model('claude-3-sonnet').chat('Hello');
+const claude = await cofounder.model('claude-3-sonnet').chat('Hello');
 
-const gemini = await rana.model('gemini-pro').chat('Hello');
+const gemini = await cofounder.model('gemini-pro').chat('Hello');
 
 // Switch providers with one line
-const response = await rana
+const response = await cofounder
   .model(process.env.MODEL || 'gpt-4')
   .chat('Hello');`,
   },
@@ -105,9 +105,9 @@ if (toolCall) {
   const args = JSON.parse(toolCall.function.arguments);
   // Execute function, make another API call...
 }`,
-    rana: `import { createRana, createTool } from '@rana/core';
+    cofounder: `import { createCoFounder, createTool } from '@cofounder/core';
 
-const rana = createRana();
+const cofounder = createCoFounder();
 
 const weather = createTool({
   name: 'get_weather',
@@ -118,8 +118,8 @@ const weather = createTool({
   },
 });
 
-// RANA automatically executes tools
-const response = await rana
+// CoFounder automatically executes tools
+const response = await cofounder
   .tools([weather])
   .chat('Weather in SF?');
 
@@ -144,11 +144,11 @@ for await (const chunk of stream) {
     process.stdout.write(content);
   }
 }`,
-    rana: `import { createRana } from '@rana/core';
+    cofounder: `import { createCoFounder } from '@cofounder/core';
 
-const rana = createRana();
+const cofounder = createCoFounder();
 
-for await (const chunk of rana.stream('Tell a story')) {
+for await (const chunk of cofounder.stream('Tell a story')) {
   process.stdout.write(chunk);
 }`,
   },
@@ -158,62 +158,62 @@ const features = [
   {
     feature: 'OpenAI Models',
     openai: true,
-    rana: true,
+    cofounder: true,
     note: 'Both support all OpenAI models',
   },
   {
     feature: 'Anthropic Models',
     openai: false,
-    rana: true,
-    note: 'RANA supports Claude models natively',
+    cofounder: true,
+    note: 'CoFounder supports Claude models natively',
   },
   {
     feature: 'Google Models',
     openai: false,
-    rana: true,
-    note: 'RANA supports Gemini models',
+    cofounder: true,
+    note: 'CoFounder supports Gemini models',
   },
   {
     feature: 'Local Models (Ollama)',
     openai: false,
-    rana: true,
-    note: 'RANA supports local models out of the box',
+    cofounder: true,
+    note: 'CoFounder supports local models out of the box',
   },
   {
     feature: 'Unified API',
     openai: false,
-    rana: true,
+    cofounder: true,
     note: 'One API for all providers',
   },
   {
     feature: 'Automatic Tool Execution',
     openai: false,
-    rana: true,
-    note: 'RANA runs tools automatically',
+    cofounder: true,
+    note: 'CoFounder runs tools automatically',
   },
   {
     feature: 'Cost Tracking',
     openai: false,
-    rana: true,
-    note: 'RANA tracks costs across providers',
+    cofounder: true,
+    note: 'CoFounder tracks costs across providers',
   },
   {
     feature: 'Built-in Testing',
     openai: false,
-    rana: true,
-    note: 'RANA includes testing utilities',
+    cofounder: true,
+    note: 'CoFounder includes testing utilities',
   },
   {
     feature: 'Automatic Fallbacks',
     openai: false,
-    rana: true,
-    note: 'RANA falls back between providers',
+    cofounder: true,
+    note: 'CoFounder falls back between providers',
   },
   {
     feature: 'Security Features',
     openai: false,
-    rana: true,
-    note: 'RANA includes injection detection, PII filtering',
+    cofounder: true,
+    note: 'CoFounder includes injection detection, PII filtering',
   },
 ];
 
@@ -230,10 +230,10 @@ export default function OpenAISDKComparisonPage() {
 
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            RANA vs OpenAI SDK
+            CoFounder vs OpenAI SDK
           </h1>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            The OpenAI SDK is great for OpenAI models. RANA gives you the same experience
+            The OpenAI SDK is great for OpenAI models. CoFounder gives you the same experience
             across all providers, plus production features you actually need.
           </p>
         </div>
@@ -263,7 +263,7 @@ export default function OpenAISDKComparisonPage() {
               <tr>
                 <th className="py-4 px-6 text-left font-semibold">Feature</th>
                 <th className="py-4 px-6 text-center font-semibold">OpenAI SDK</th>
-                <th className="py-4 px-6 text-center font-semibold">RANA</th>
+                <th className="py-4 px-6 text-center font-semibold">CoFounder</th>
               </tr>
             </thead>
             <tbody>
@@ -284,7 +284,7 @@ export default function OpenAISDKComparisonPage() {
                     )}
                   </td>
                   <td className="py-4 px-6 text-center">
-                    {item.rana ? (
+                    {item.cofounder ? (
                       <span className="text-green-400">✓</span>
                     ) : (
                       <span className="text-red-400">✗</span>
@@ -317,14 +317,14 @@ export default function OpenAISDKComparisonPage() {
                 <div>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="px-3 py-1 rounded-full bg-green-500/20 text-green-400 text-sm">
-                      RANA
+                      CoFounder
                     </span>
                     <span className="text-gray-500 text-sm">
-                      {example.rana.split('\n').length} lines
+                      {example.cofounder.split('\n').length} lines
                     </span>
                   </div>
                   <pre className="p-4 rounded-xl bg-gray-900 border border-gray-800 overflow-x-auto text-sm">
-                    <code className="text-gray-300">{example.rana}</code>
+                    <code className="text-gray-300">{example.cofounder}</code>
                   </pre>
                 </div>
               </div>
@@ -363,7 +363,7 @@ export default function OpenAISDKComparisonPage() {
           <h2 className="text-2xl font-semibold mb-6">When to Choose Each</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <h3 className="text-lg font-medium text-green-400 mb-4">Choose RANA if you:</h3>
+              <h3 className="text-lg font-medium text-green-400 mb-4">Choose CoFounder if you:</h3>
               <ul className="space-y-2 text-gray-300">
                 <li className="flex items-start gap-2">
                   <span className="text-green-400 mt-1">✓</span>
@@ -405,10 +405,10 @@ export default function OpenAISDKComparisonPage() {
 
         <div className="mt-16 text-center">
           <Link
-            href="https://github.com/waymaker-ai/ranavibe"
+            href="https://github.com/waymaker-ai/cofounder"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-black font-semibold hover:bg-gray-200 transition-colors"
           >
-            Try RANA Now
+            Try CoFounder Now
             <span>→</span>
           </Link>
         </div>

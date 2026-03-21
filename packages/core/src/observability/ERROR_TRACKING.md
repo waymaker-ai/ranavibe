@@ -1,6 +1,6 @@
-# Error Tracking Integration for RANA
+# Error Tracking Integration for CoFounder
 
-Complete error tracking and monitoring system for RANA SDK operations.
+Complete error tracking and monitoring system for CoFounder SDK operations.
 
 ## Features
 
@@ -14,7 +14,7 @@ Complete error tracking and monitoring system for RANA SDK operations.
 ## Quick Start
 
 ```typescript
-import { createErrorTracker, RanaAuthError } from '@rana/core';
+import { createErrorTracker, RanaAuthError } from '@cofounder/core';
 
 // Create an error tracker
 const tracker = createErrorTracker({
@@ -27,7 +27,7 @@ const tracker = createErrorTracker({
 
 // Capture errors
 try {
-  await rana.chat({ messages: [...] });
+  await cofounder.chat({ messages: [...] });
 } catch (error) {
   tracker.captureError(error, {
     provider: 'anthropic',
@@ -40,7 +40,7 @@ try {
 
 ## Error Classification
 
-The tracker automatically classifies RANA errors:
+The tracker automatically classifies CoFounder errors:
 
 ### Auth Errors
 ```typescript
@@ -90,7 +90,7 @@ tracker.addBreadcrumb({
 
 // These breadcrumbs will be included with any errors captured
 try {
-  await rana.chat({ ... });
+  await cofounder.chat({ ... });
 } catch (error) {
   tracker.captureError(error); // Includes all breadcrumbs
 }
@@ -195,14 +195,14 @@ const tracker = createErrorTracker({
 ## Integration with Sentry
 
 ```typescript
-import { createErrorTracker } from '@rana/core';
+import { createErrorTracker } from '@cofounder/core';
 
 const tracker = createErrorTracker({
   sentryDsn: process.env.SENTRY_DSN,
   environment: process.env.NODE_ENV,
   release: process.env.APP_VERSION,
   tags: {
-    service: 'rana-api',
+    service: 'cofounder-api',
   },
 });
 
@@ -247,7 +247,7 @@ import {
   captureError,
   getErrorStats,
   getRecentErrors,
-} from '@rana/core';
+} from '@cofounder/core';
 
 // Configure once
 configureErrorTracker({
@@ -257,7 +257,7 @@ configureErrorTracker({
 
 // Use anywhere
 try {
-  await rana.chat({ ... });
+  await cofounder.chat({ ... });
 } catch (error) {
   captureError(error, { provider: 'anthropic' });
 }
@@ -313,7 +313,7 @@ console.log(recent[0].count); // 10
 ## Example: Full Integration
 
 ```typescript
-import { createRana, createErrorTracker } from '@rana/core';
+import { createCoFounder, createErrorTracker } from '@cofounder/core';
 
 const tracker = createErrorTracker({
   sentryDsn: process.env.SENTRY_DSN,
@@ -322,7 +322,7 @@ const tracker = createErrorTracker({
   tags: { service: 'chat-api' },
 });
 
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: {
     anthropic: process.env.ANTHROPIC_API_KEY,
     openai: process.env.OPENAI_API_KEY,
@@ -337,7 +337,7 @@ async function handleChatRequest(userId: string, message: string) {
   });
 
   try {
-    const response = await rana.chat({
+    const response = await cofounder.chat({
       messages: [{ role: 'user', content: message }],
       provider: 'anthropic',
     });

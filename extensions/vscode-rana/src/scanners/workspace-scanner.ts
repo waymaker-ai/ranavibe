@@ -36,11 +36,11 @@ export class WorkspaceScanner {
     await vscode.window.withProgress(
       {
         location: vscode.ProgressLocation.Notification,
-        title: 'RANA: Scanning workspace...',
+        title: 'CoFounder: Scanning workspace...',
         cancellable: true,
       },
       async (progress, token) => {
-        const config = vscode.workspace.getConfiguration('rana');
+        const config = vscode.workspace.getConfiguration('cofounder');
         const sensitivity = config.get<'low' | 'medium' | 'high'>(
           'injectionSensitivity',
           'medium'
@@ -115,7 +115,7 @@ export class WorkspaceScanner {
     const infoCount = this._findings.filter((f) => f.detection.severity === 'info').length;
 
     vscode.window.showInformationMessage(
-      `RANA: Scan complete. Found ${this._findings.length} issues ` +
+      `CoFounder: Scan complete. Found ${this._findings.length} issues ` +
       `(${errorCount} errors, ${warningCount} warnings, ${infoCount} info).`
     );
 

@@ -1,5 +1,5 @@
 /**
- * RANA Multi-Agent Example
+ * CoFounder Multi-Agent Example
  * Demonstrates the agent orchestration framework
  *
  * This example shows:
@@ -12,7 +12,7 @@
  */
 
 // Simple Agent implementation for the example
-// In a real app, you'd import from @rana/core
+// In a real app, you'd import from @cofounder/core
 
 interface Tool {
   name: string;
@@ -350,7 +350,7 @@ async function demoRouter() {
     'What is machine learning?',
     'Write a function to sort an array in TypeScript',
     'Calculate the average of 10, 20, 30, 40, 50',
-    'Write a blog post about RANA',
+    'Write a blog post about CoFounder',
   ];
 
   for (const query of queries) {
@@ -369,7 +369,7 @@ async function demoRouter() {
 async function main() {
   console.log('\x1b[36m');
   console.log('╔═══════════════════════════════════════════╗');
-  console.log('║   🤖 RANA Multi-Agent Orchestration Demo  ║');
+  console.log('║   🤖 CoFounder Multi-Agent Orchestration Demo  ║');
   console.log('╚═══════════════════════════════════════════╝');
   console.log('\x1b[0m\n');
 
@@ -383,7 +383,7 @@ async function main() {
   await demoRouter();
 
   console.log('\x1b[36m\n=== Demo Complete ===\x1b[0m');
-  console.log('This demonstrates RANA\'s agent orchestration capabilities.');
+  console.log('This demonstrates CoFounder\'s agent orchestration capabilities.');
   console.log('In a real application, agents would be powered by LLMs and');
   console.log('connected to real tools and data sources.\n');
 }

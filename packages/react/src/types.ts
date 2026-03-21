@@ -1,6 +1,6 @@
 /**
- * Type definitions for RANA React
- * These mirror @rana/core types for standalone use
+ * Type definitions for CoFounder React
+ * These mirror @cofounder/core types for standalone use
  */
 
 export type LLMProvider = 'anthropic' | 'openai' | 'google' | 'xai' | 'mistral' | 'cohere' | 'together' | 'groq' | 'ollama';
@@ -60,7 +60,7 @@ export interface CostStats {
   };
 }
 
-export interface RanaClient {
+export interface CoFounderClient {
   chat(input: string | RanaChatRequest): Promise<RanaChatResponse>;
   stream(input: string | RanaChatRequest): AsyncGenerator<any>;
   cost: {

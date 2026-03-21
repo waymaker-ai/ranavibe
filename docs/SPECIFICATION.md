@@ -1,4 +1,4 @@
-# RANA Specification v1.0.0
+# CoFounder Specification v1.0.0
 
 **Status:** Draft
 **Version:** 1.0.0
@@ -9,7 +9,7 @@
 
 ## Abstract
 
-This document defines the Rapid AI Native Architecture (RANA), a comprehensive framework for ensuring production-quality code from AI coding assistants. RANA provides standards, workflows, quality gates, and tooling that work universally across tech stacks, IDEs, and AI assistants.
+This document defines the Rapid AI Native Architecture (CoFounder), a comprehensive framework for ensuring production-quality code from AI coding assistants. CoFounder provides standards, workflows, quality gates, and tooling that work universally across tech stacks, IDEs, and AI assistants.
 
 ---
 
@@ -17,17 +17,17 @@ This document defines the Rapid AI Native Architecture (RANA), a comprehensive f
 
 ### 1.1 Purpose
 
-RANA addresses the critical gap in AI-assisted development: while AI assistants can generate code quickly, they often produce:
+CoFounder addresses the critical gap in AI-assisted development: while AI assistants can generate code quickly, they often produce:
 - Mock data instead of real implementations
 - Code that breaks existing functionality
 - Code without proper testing
 - Code that never reaches production
 
-RANA provides a comprehensive standard that ensures AI-generated code meets production-quality requirements.
+CoFounder provides a comprehensive standard that ensures AI-generated code meets production-quality requirements.
 
 ### 1.2 Scope
 
-RANA covers the entire development lifecycle:
+CoFounder covers the entire development lifecycle:
 - Research and planning
 - Implementation standards
 - Testing requirements
@@ -53,13 +53,13 @@ RANA covers the entire development lifecycle:
 
 ### 2.1 Configuration File
 
-RANA uses `.rana.yml` as the standard configuration file location.
+CoFounder uses `.cofounder.yml` as the standard configuration file location.
 
 **Rationale:** Follows established patterns (.gitignore, .eslintrc, etc.)
 
 **Structure:**
 ```yaml
-version: string          # RANA version (semver)
+version: string          # CoFounder version (semver)
 project: object          # Project metadata
 standards: object        # Development standards
 quality_gates: object    # Quality requirements
@@ -79,7 +79,7 @@ Quality gates are checkpoints that must pass before proceeding to the next phase
 
 ### 2.3 Development Phases
 
-RANA defines seven development phases:
+CoFounder defines seven development phases:
 
 1. **Understanding:** Clarify requirements
 2. **Research:** Find existing implementations
@@ -96,17 +96,17 @@ RANA defines seven development phases:
 ### 3.1 File Format
 
 **Format:** YAML
-**File name:** `.rana.yml`
+**File name:** `.cofounder.yml`
 **Location:** Project root
 
 ### 3.2 Schema Definition
 
 ```yaml
-# RANA Configuration Schema v1.0.0
+# CoFounder Configuration Schema v1.0.0
 
 version: string
   # Required
-  # RANA specification version
+  # CoFounder specification version
   # Format: semver (e.g., "1.0.0")
   # Example: "1.0.0"
 
@@ -402,7 +402,7 @@ const users = await userService.getUsers();
 - **Integration:** Test API endpoints with real database
 - **E2E:** Test user flows end-to-end
 
-**Minimum coverage:** As specified in `.rana.yml` (default: 80%)
+**Minimum coverage:** As specified in `.cofounder.yml` (default: 80%)
 
 **Rationale:** Tests prevent regressions and document behavior.
 
@@ -574,12 +574,12 @@ Detailed phase specifications in separate document: `WORKFLOW_GUIDE.md`
 
 ### 7.1 CLI Tool
 
-RANA provides an official CLI tool: `@aads/cli`
+CoFounder provides an official CLI tool: `@aads/cli`
 
 **Commands:**
-- `aads init` - Initialize RANA in a project
+- `aads init` - Initialize CoFounder in a project
 - `aads check` - Check compliance with standards
-- `aads validate` - Validate `.rana.yml` configuration
+- `aads validate` - Validate `.cofounder.yml` configuration
 - `aads flow <type> <name>` - Start a workflow
 - `aads deploy` - Deploy with verification
 
@@ -607,7 +607,7 @@ Official IDE extensions available for:
 ```yaml
 - uses: aads/check-compliance@v1
   with:
-    config: .rana.yml
+    config: .cofounder.yml
 ```
 
 **GitLab CI:**
@@ -621,9 +621,9 @@ aads-check:
 
 ## 8. Integration with AI Assistants
 
-### 8.1 How AI Assistants Use RANA
+### 8.1 How AI Assistants Use CoFounder
 
-1. **Read Configuration:** AI reads `.rana.yml` at project start
+1. **Read Configuration:** AI reads `.cofounder.yml` at project start
 2. **Follow Standards:** AI follows defined principles and quality gates
 3. **Use Instructions:** AI references `instructions_path` document
 4. **Check Compliance:** AI verifies quality gates before marking tasks complete
@@ -631,9 +631,9 @@ aads-check:
 ### 8.2 AI Assistant Prompt Template
 
 ```
-You are assisting with development on a project that follows RANA.
+You are assisting with development on a project that follows CoFounder.
 
-Configuration: [contents of .rana.yml]
+Configuration: [contents of .cofounder.yml]
 Instructions: [contents of instructions_path]
 Checklist: [contents of checklist_path]
 
@@ -651,7 +651,7 @@ Mark task complete only when all quality gates pass.
 
 ### 8.3 Supported AI Assistants
 
-RANA is designed to work with any AI assistant:
+CoFounder is designed to work with any AI assistant:
 - Claude (Anthropic)
 - ChatGPT (OpenAI)
 - GitHub Copilot
@@ -666,7 +666,7 @@ RANA is designed to work with any AI assistant:
 ### 9.1 Compliance Levels
 
 **Level 1: Minimal**
-- `.rana.yml` file present
+- `.cofounder.yml` file present
 - Core principles defined
 - Basic quality gates
 
@@ -710,17 +710,17 @@ quality_gates:
 
 ### 10.2 Language-Specific Extensions
 
-Language-specific guides can extend RANA:
-- RANA for React
-- RANA for Python/Django
-- RANA for Ruby/Rails
+Language-specific guides can extend CoFounder:
+- CoFounder for React
+- CoFounder for Python/Django
+- CoFounder for Ruby/Rails
 
 ### 10.3 Industry-Specific Extensions
 
 Industry-specific extensions can add requirements:
-- RANA for E-commerce (PCI compliance)
-- RANA for Healthcare (HIPAA compliance)
-- RANA for Finance (SOC 2 compliance)
+- CoFounder for E-commerce (PCI compliance)
+- CoFounder for Healthcare (HIPAA compliance)
+- CoFounder for Finance (SOC 2 compliance)
 
 ---
 
@@ -728,14 +728,14 @@ Industry-specific extensions can add requirements:
 
 ### 11.1 Semantic Versioning
 
-RANA follows semantic versioning (semver):
+CoFounder follows semantic versioning (semver):
 - **Major:** Breaking changes to schema or workflow
 - **Minor:** New features, backward compatible
 - **Patch:** Bug fixes, clarifications
 
 ### 11.2 Version Compatibility
 
-Projects specify RANA version in `.rana.yml`:
+Projects specify CoFounder version in `.cofounder.yml`:
 
 ```yaml
 version: "1.0.0"
@@ -747,22 +747,22 @@ Tools check version compatibility and warn if mismatch.
 
 ## 12. Migration
 
-### 12.1 Adopting RANA
+### 12.1 Adopting CoFounder
 
 For existing projects:
 
 1. Run `aads init`
-2. Review generated `.rana.yml`
+2. Review generated `.cofounder.yml`
 3. Customize for your project
 4. Start using with new features
 5. Gradually adopt for existing code
 
 ### 12.2 Migrating Between Versions
 
-When RANA versions change:
+When CoFounder versions change:
 
 1. Read migration guide
-2. Update `.rana.yml` version
+2. Update `.cofounder.yml` version
 3. Run `aads validate`
 4. Fix any compatibility issues
 5. Update tooling (CLI, extensions)
@@ -773,7 +773,7 @@ When RANA versions change:
 
 ### 13.1 Governance
 
-RANA is community-driven:
+CoFounder is community-driven:
 - **RFC Process:** Major changes require RFC
 - **Core Team:** Maintainers guide direction
 - **Community Input:** Anyone can propose changes
@@ -794,28 +794,28 @@ See `CONTRIBUTING.md` for guidelines.
 
 ## 14. License
 
-RANA specification is licensed under CC BY 4.0.
+CoFounder specification is licensed under CC BY 4.0.
 
-RANA tooling is licensed under MIT.
+CoFounder tooling is licensed under MIT.
 
 ---
 
 ## 15. References
 
-- RANA Website: https://rana.dev
+- CoFounder Website: https://cofounder.dev
 - GitHub Repository: https://github.com/yourusername/aads-framework
 - Discord Community: https://discord.gg/aads
 - Twitter: @aads_dev
 
 ---
 
-## Appendix A: Example .rana.yml
+## Appendix A: Example .cofounder.yml
 
-See `templates/react-typescript/.rana.yml` for React example.
+See `templates/react-typescript/.cofounder.yml` for React example.
 
-See `templates/nextjs-supabase/.rana.yml` for Next.js example.
+See `templates/nextjs-supabase/.cofounder.yml` for Next.js example.
 
-See `templates/vue-firebase/.rana.yml` for Vue example.
+See `templates/vue-firebase/.cofounder.yml` for Vue example.
 
 ---
 
@@ -835,7 +835,7 @@ See `docs/WORKFLOW_GUIDE.md`
 
 ---
 
-**RANA Specification v1.0.0**
+**CoFounder Specification v1.0.0**
 **Status:** Draft
 **Last Updated:** 2025-11-05
 

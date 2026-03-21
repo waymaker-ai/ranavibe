@@ -1,6 +1,6 @@
-# @rana/guidelines
+# @cofounder/guidelines
 
-> Dynamic guideline management for RANA agents - Context-aware behavioral rules
+> Dynamic guideline management for CoFounder agents - Context-aware behavioral rules
 
 ## Features
 
@@ -14,7 +14,7 @@
 ## Installation
 
 ```bash
-npm install @rana/guidelines
+npm install @cofounder/guidelines
 ```
 
 ## Quick Start
@@ -22,7 +22,7 @@ npm install @rana/guidelines
 ### Basic Usage
 
 ```typescript
-import { createGuidelineManager, createGuideline, Conditions } from '@rana/guidelines';
+import { createGuidelineManager, createGuideline, Conditions } from '@cofounder/guidelines';
 
 const manager = createGuidelineManager();
 
@@ -50,7 +50,7 @@ console.log(matched);
 ### Using Presets
 
 ```typescript
-import { PresetGuidelines } from '@rana/guidelines';
+import { PresetGuidelines } from '@cofounder/guidelines';
 
 // Add preset guidelines
 await manager.addGuideline(PresetGuidelines.noMedicalAdvice());
@@ -63,7 +63,7 @@ await manager.addGuideline(PresetGuidelines.professionalTone());
 Build complex matching logic easily:
 
 ```typescript
-import { Conditions } from '@rana/guidelines';
+import { Conditions } from '@cofounder/guidelines';
 
 // Topic matching
 Conditions.topic('medical')
@@ -211,7 +211,7 @@ const manager = createGuidelineManager({
 ### File Storage
 
 ```typescript
-import { FileStorage } from '@rana/guidelines';
+import { FileStorage } from '@cofounder/guidelines';
 
 const manager = createGuidelineManager({
   storage: new FileStorage('./guidelines.json')
@@ -256,7 +256,7 @@ import {
   createGuideline,
   Conditions,
   PresetGuidelines,
-} from '@rana/guidelines';
+} from '@cofounder/guidelines';
 
 const manager = createGuidelineManager({
   enableAnalytics: true,
@@ -355,7 +355,7 @@ import type {
   GuidelineViolation,
   ValidationResult,
   EnforcementLevel,
-} from '@rana/guidelines';
+} from '@cofounder/guidelines';
 ```
 
 ## Best Practices

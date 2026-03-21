@@ -61,7 +61,7 @@ const features = [
   {
     icon: Eye,
     title: '15+ MCP Tools',
-    description: 'Use RANA guardrails from Claude Desktop, Claude Code, or Cursor without writing code. PII scanning, injection detection, cost estimation, and code safety analysis via MCP.',
+    description: 'Use CoFounder guardrails from Claude Desktop, Claude Code, or Cursor without writing code. PII scanning, injection detection, cost estimation, and code safety analysis via MCP.',
     isNew: true,
   },
   {
@@ -94,19 +94,19 @@ const features = [
   {
     icon: Box,
     title: 'Sandboxed Execution',
-    description: 'Run untrusted AI-generated code safely with @ranavibe/sandbox. Process isolation, resource limits, timeout enforcement, and output capture. Evaluate agent tool calls without risk.',
+    description: 'Run untrusted AI-generated code safely with @cofounder/sandbox. Process isolation, resource limits, timeout enforcement, and output capture. Evaluate agent tool calls without risk.',
     isNew: true,
   },
   {
     icon: Radio,
     title: 'Streaming Guards',
-    description: 'Real-time guardrail evaluation on streaming LLM responses with @ranavibe/streaming. Token-by-token PII detection, injection scanning, and policy enforcement without buffering the full response.',
+    description: 'Real-time guardrail evaluation on streaming LLM responses with @cofounder/streaming. Token-by-token PII detection, injection scanning, and policy enforcement without buffering the full response.',
     isNew: true,
   },
   {
     icon: BarChart3,
     title: 'Detection Benchmarks',
-    description: 'Measure detection accuracy with @ranavibe/benchmark. 252 curated test cases across PII, injection, and toxicity. Per-category metrics, confusion matrices, and NeMo Guardrails comparison.',
+    description: 'Measure detection accuracy with @cofounder/benchmark. 252 curated test cases across PII, injection, and toxicity. Per-category metrics, confusion matrices, and NeMo Guardrails comparison.',
     isNew: true,
   },
   {

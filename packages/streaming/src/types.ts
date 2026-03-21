@@ -1,5 +1,5 @@
 /**
- * @ranavibe/streaming - Types
+ * @cofounder/streaming - Types
  *
  * Core type definitions for streaming guard configuration,
  * events, violations, and reports.

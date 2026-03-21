@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Understanding the LLM Client | RANA Fundamentals',
-  description: 'Deep dive into the RANA LLM client configuration and capabilities',
+  title: 'Understanding the LLM Client | CoFounder Fundamentals',
+  description: 'Deep dive into the CoFounder LLM client configuration and capabilities',
 };
 
 export default function Lesson5Page() {
@@ -28,7 +28,7 @@ export default function Lesson5Page() {
           <h1>Understanding the LLM Client</h1>
 
           <p className="lead">
-            The LLM client is the core of RANA&apos;s interaction with AI models.
+            The LLM client is the core of CoFounder&apos;s interaction with AI models.
             This lesson covers configuration, provider switching, and advanced
             options for optimizing your AI applications.
           </p>
@@ -36,12 +36,12 @@ export default function Lesson5Page() {
           <h2>The LLMClient Class</h2>
 
           <p>
-            RANA provides a unified client that abstracts away provider differences:
+            CoFounder provides a unified client that abstracts away provider differences:
           </p>
 
           <div className="code-block">
             <pre>
-              <code>{`import { LLMClient } from '@rana/core';
+              <code>{`import { LLMClient } from '@cofounder/core';
 
 // Create a client with default settings
 const client = new LLMClient({
@@ -212,7 +212,7 @@ const response = await client.chat({
 
           <div className="code-block">
             <pre>
-              <code>{`import { LLMError, RateLimitError, AuthError } from '@rana/core';
+              <code>{`import { LLMError, RateLimitError, AuthError } from '@cofounder/core';
 
 try {
   const response = await client.chat({ messages });
@@ -283,7 +283,7 @@ const response2 = await client.chat({ messages }); // From cache`}</code>
           <h2>Switching Providers</h2>
 
           <p>
-            RANA makes it easy to switch between providers:
+            CoFounder makes it easy to switch between providers:
           </p>
 
           <div className="code-block">
@@ -345,7 +345,7 @@ const client = createClient(process.env.LLM_PROVIDER as any);`}</code>
 
           <p>
             Now that you understand the LLM client, the next lesson covers
-            RANA&apos;s React hooks for building interactive AI interfaces.
+            CoFounder&apos;s React hooks for building interactive AI interfaces.
           </p>
         </article>
 
@@ -356,7 +356,7 @@ const client = createClient(process.env.LLM_PROVIDER as any);`}</code>
             className="text-foreground-secondary hover:text-foreground transition-colors"
           >
             <ArrowLeft className="inline mr-2 h-4 w-4" />
-            Previous: Your First RANA Project
+            Previous: Your First CoFounder Project
           </Link>
           <Link
             href="/training/fundamentals/lesson-6"

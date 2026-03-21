@@ -13,8 +13,8 @@ const tutorials = [
     description: 'Create a full-featured chat interface with streaming, conversation history, and multiple models',
     code: `// 1. Create the chat API route
 // app/api/chat/route.ts
-import { Agent } from '@rana/core';
-import { streamResponse } from '@rana/helpers';
+import { Agent } from '@cofounder/core';
+import { streamResponse } from '@cofounder/helpers';
 
 const agent = new Agent({
   name: 'ChatBot',
@@ -32,7 +32,7 @@ export async function POST(req: Request) {
 // 2. Create the chat component
 // components/Chat.tsx
 'use client';
-import { useChat } from '@rana/react';
+import { useChat } from '@cofounder/react';
 
 export function Chat() {
   const { messages, input, setInput, send, isLoading } = useChat({
@@ -70,7 +70,7 @@ export function Chat() {
     time: '30 min',
     description: 'Build a system that answers questions from your documents using RAG',
     code: `// 1. Index your documents
-import { RAGPresets, SemanticChunker } from '@rana/rag';
+import { RAGPresets, SemanticChunker } from '@cofounder/rag';
 
 const pipeline = RAGPresets.balanced();
 
@@ -158,7 +158,7 @@ export function DocumentQA() {
     difficulty: 'Intermediate',
     time: '25 min',
     description: 'Create an agent that can search the web, read files, and execute code',
-    code: `import { Agent, Tool } from '@rana/core';
+    code: `import { Agent, Tool } from '@cofounder/core';
 
 // Define tools
 const webSearchTool = new Tool({
@@ -227,8 +227,8 @@ console.log(result);
     difficulty: 'Advanced',
     time: '45 min',
     description: 'Automatically classify, summarize, and respond to emails',
-    code: `import { Workflow, Step, Branch } from '@rana/core';
-import { classify, summarize, generate } from '@rana/helpers';
+    code: `import { Workflow, Step, Branch } from '@cofounder/core';
+import { classify, summarize, generate } from '@cofounder/helpers';
 
 const emailWorkflow = new Workflow({ name: 'email-processor' });
 
@@ -321,7 +321,7 @@ const result = await emailWorkflow.run({
     difficulty: 'Advanced',
     time: '40 min',
     description: 'Build a code search engine that understands natural language queries',
-    code: `import { RAGPresets } from '@rana/rag';
+    code: `import { RAGPresets } from '@cofounder/rag';
 import { glob } from 'glob';
 import * as fs from 'fs/promises';
 
@@ -390,7 +390,7 @@ const results = await searchCode(
     difficulty: 'Intermediate',
     time: '20 min',
     description: 'Generate and send automated AI reports on a schedule',
-    code: `import { Agent } from '@rana/core';
+    code: `import { Agent } from '@cofounder/core';
 import { CronJob } from 'cron';
 
 // 1. Create report generator agent
@@ -482,7 +482,7 @@ export default function TutorialsPage() {
             <h1 className="text-4xl md:text-5xl font-bold">Tutorials</h1>
           </div>
           <p className="text-lg text-foreground-secondary">
-            Step-by-step tutorials to build real-world AI applications with RANA.
+            Step-by-step tutorials to build real-world AI applications with CoFounder.
             From beginner to advanced, learn by building.
           </p>
         </motion.div>
@@ -534,7 +534,7 @@ export default function TutorialsPage() {
             We&apos;re adding new tutorials regularly. Have a request?
           </p>
           <Link
-            href="https://github.com/waymaker-ai/ranavibe/issues"
+            href="https://github.com/waymaker-ai/cofounder/issues"
             target="_blank"
             className="btn-primary inline-block"
           >

@@ -1,6 +1,6 @@
 # dashboard-demo
 
-Demonstrates the core features of `@ranavibe/dashboard`:
+Demonstrates the core features of `@cofounder/dashboard`:
 
 - **Event collection** for cost, security, compliance, and performance events
 - **Dashboard summary** aggregating all metrics into a single view

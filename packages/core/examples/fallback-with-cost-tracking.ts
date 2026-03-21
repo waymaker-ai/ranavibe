@@ -2,15 +2,15 @@
  * Example: Fallback with Cost Tracking
  *
  * This example demonstrates how the fallback system integrates
- * seamlessly with RANA's cost tracking and budget enforcement.
+ * seamlessly with CoFounder's cost tracking and budget enforcement.
  */
 
-import { createRana } from '../src';
+import { createCoFounder } from '../src';
 
 async function costOptimizedWithTracking() {
   console.log('\n=== Cost-Optimized Fallback with Tracking ===\n');
 
-  const rana = createRana({
+  const cofounder = createCoFounder({
     providers: {
       google: process.env.GOOGLE_API_KEY!, // Free during preview
       anthropic: process.env.ANTHROPIC_API_KEY!,
@@ -42,7 +42,7 @@ async function costOptimizedWithTracking() {
   console.log('Making requests...\n');
 
   for (const prompt of prompts) {
-    const response = await rana.chat(prompt);
+    const response = await cofounder.chat(prompt);
 
     console.log(`\nPrompt: "${prompt}"`);
     console.log(`Response: ${response.content}`);
@@ -59,7 +59,7 @@ async function costOptimizedWithTracking() {
 
   // Get cost statistics
   console.log('\n=== Cost Statistics ===\n');
-  const stats = await rana.cost.stats();
+  const stats = await cofounder.cost.stats();
 
   console.log(`Total Spent: $${stats.total_spent.toFixed(6)}`);
   console.log(`Total Requests: ${stats.total_requests}`);
@@ -83,7 +83,7 @@ async function costOptimizedWithTracking() {
 async function budgetEnforcementWithFallback() {
   console.log('\n=== Budget Enforcement with Fallback ===\n');
 
-  const rana = createRana({
+  const cofounder = createCoFounder({
     providers: {
       openai: process.env.OPENAI_API_KEY!,
       anthropic: process.env.ANTHROPIC_API_KEY!,
@@ -108,21 +108,21 @@ async function budgetEnforcementWithFallback() {
   console.log('Budget: $0.10 daily limit\n');
 
   // Check budget status before making requests
-  const budgetBefore = rana.cost.budget();
+  const budgetBefore = cofounder.cost.budget();
   console.log('Initial Budget Status:');
   console.log(`  Spent: $${budgetBefore.spent.toFixed(6)}`);
   console.log(`  Remaining: $${budgetBefore.remaining.toFixed(6)}`);
   console.log(`  Used: ${budgetBefore.percentUsed.toFixed(1)}%\n`);
 
   // Make requests
-  const response = await rana.chat('Explain quantum computing in one sentence.');
+  const response = await cofounder.chat('Explain quantum computing in one sentence.');
 
   console.log(`Response: ${response.content}`);
   console.log(`Provider: ${response.provider}`);
   console.log(`Cost: $${response.cost.total_cost.toFixed(6)}\n`);
 
   // Check budget after
-  const budgetAfter = rana.cost.budget();
+  const budgetAfter = cofounder.cost.budget();
   console.log('Budget Status After Request:');
   console.log(`  Spent: $${budgetAfter.spent.toFixed(6)}`);
   console.log(`  Remaining: $${budgetAfter.remaining.toFixed(6)}`);
@@ -136,7 +136,7 @@ async function budgetEnforcementWithFallback() {
 async function cachingWithFallback() {
   console.log('\n=== Caching with Fallback ===\n');
 
-  const rana = createRana({
+  const cofounder = createCoFounder({
     providers: {
       openai: process.env.OPENAI_API_KEY!,
       anthropic: process.env.ANTHROPIC_API_KEY!,
@@ -160,20 +160,20 @@ async function cachingWithFallback() {
 
   // First request - will use provider (potentially with fallback)
   console.log('First request (will call provider)...');
-  const response1 = await rana.chat(prompt);
+  const response1 = await cofounder.chat(prompt);
   console.log(`Provider: ${response1.provider}`);
   console.log(`Cost: $${response1.cost.total_cost.toFixed(6)}`);
   console.log(`Cached: ${response1.cached}`);
 
   // Second request - will use cache (no provider calls, no fallback)
   console.log('\nSecond request (from cache)...');
-  const response2 = await rana.chat(prompt);
+  const response2 = await cofounder.chat(prompt);
   console.log(`Provider: ${response2.provider}`);
   console.log(`Cost: $${response2.cost.total_cost.toFixed(6)}`);
   console.log(`Cached: ${response2.cached}`);
 
   // Get cost stats showing savings from cache
-  const stats = await rana.cost.stats();
+  const stats = await cofounder.cost.stats();
   console.log('\nCost Statistics:');
   console.log(`Total Spent: $${stats.total_spent.toFixed(6)}`);
   console.log(`Total Saved: $${stats.total_saved.toFixed(6)}`);

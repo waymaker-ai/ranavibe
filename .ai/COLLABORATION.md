@@ -263,13 +263,13 @@ Build shared understanding:
 
 ```bash
 # Check project status
-rana docs:status
+cofounder docs:status
 
 # See all documents
-rana docs:list
+cofounder docs:list
 
 # Validate document health
-rana docs:check
+cofounder docs:check
 
 # Show open roadmap items
 cat ROADMAP.md | grep "\[ \]"

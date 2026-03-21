@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// @ranavibe/openclaw - Report formatting for OpenClaw chat platforms
+// @cofounder/openclaw - Report formatting for OpenClaw chat platforms
 // ---------------------------------------------------------------------------
 // Formats guard reports as chat-friendly markdown messages suitable for
 // Slack, Telegram, WhatsApp, Discord, and web interfaces.
@@ -46,14 +46,14 @@ export function formatGuardResult(result: GuardResult, channel?: OpenClawChannel
   const lines: string[] = [];
 
   if (result.blocked) {
-    lines.push('**RANA Guard: BLOCKED**');
+    lines.push('**CoFounder Guard: BLOCKED**');
     if (result.reason) {
       lines.push(`> ${result.reason}`);
     }
   } else if (result.violations.length > 0) {
-    lines.push('**RANA Guard: WARNING**');
+    lines.push('**CoFounder Guard: WARNING**');
   } else {
-    lines.push('**RANA Guard: PASSED**');
+    lines.push('**CoFounder Guard: PASSED**');
   }
 
   lines.push('');
@@ -120,7 +120,7 @@ export function formatGuardResult(result: GuardResult, channel?: OpenClawChannel
 export function formatGuardReport(report: GuardReport, channel?: OpenClawChannel): string {
   const lines: string[] = [];
 
-  lines.push('**RANA Guard Report**');
+  lines.push('**CoFounder Guard Report**');
   lines.push('---');
 
   // Overview
@@ -196,7 +196,7 @@ export function formatGuardReport(report: GuardReport, channel?: OpenClawChannel
 export function formatCostReport(report: CostReport, channel?: OpenClawChannel): string {
   const lines: string[] = [];
 
-  lines.push('**RANA Cost Report**');
+  lines.push('**CoFounder Cost Report**');
   lines.push('---');
 
   const usage = report.budgetLimit > 0
@@ -246,7 +246,7 @@ export function formatComplianceReport(report: ComplianceReport, channel?: OpenC
   const lines: string[] = [];
 
   const status = report.compliant ? 'COMPLIANT' : 'NON-COMPLIANT';
-  lines.push(`**RANA Compliance: ${status}**`);
+  lines.push(`**CoFounder Compliance: ${status}**`);
   lines.push('---');
 
   lines.push(`  Frameworks: ${report.frameworks.map((f) => f.toUpperCase()).join(', ')}`);
@@ -285,12 +285,12 @@ export function formatComplianceReport(report: ComplianceReport, channel?: OpenC
 // =========================================================================
 
 /**
- * Format a text scan result for the /rana-scan command.
+ * Format a text scan result for the /cofounder-scan command.
  */
 export function formatScanResult(result: GuardResult, textPreview: string, channel?: OpenClawChannel): string {
   const lines: string[] = [];
 
-  lines.push('**RANA Scan Result**');
+  lines.push('**CoFounder Scan Result**');
   lines.push('---');
   lines.push(`> ${textPreview.slice(0, 100)}${textPreview.length > 100 ? '...' : ''}`);
   lines.push('');

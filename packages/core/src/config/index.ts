@@ -4,9 +4,9 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 /**
- * RANA Configuration Schema
+ * CoFounder Configuration Schema
  *
- * Defines the structure of .rana.yml configuration files
+ * Defines the structure of .cofounder.yml configuration files
  */
 
 const QualityGateSchema = z.object({
@@ -18,7 +18,7 @@ const QualityGateSchema = z.object({
   phases: z.array(z.string()).optional(),
 });
 
-export const RanaConfigSchema = z.object({
+export const CoFounderConfigSchema = z.object({
   version: z.string(),
   project: z.object({
     name: z.string(),
@@ -49,19 +49,19 @@ export const RanaConfigSchema = z.object({
   assistant_notes: z.string().optional(),
 });
 
-export type RanaConfig = z.infer<typeof RanaConfigSchema>;
+export type CoFounderConfig = z.infer<typeof CoFounderConfigSchema>;
 export type QualityGate = z.infer<typeof QualityGateSchema>;
 
 /**
  * Configuration Parser
  *
- * Handles reading, parsing, and validating RANA config files
+ * Handles reading, parsing, and validating CoFounder config files
  */
 export class ConfigParser {
   /**
-   * Parse a .rana.yml file
+   * Parse a .cofounder.yml file
    */
-  static parse(filePath: string): RanaConfig {
+  static parse(filePath: string): CoFounderConfig {
     if (!fs.existsSync(filePath)) {
       throw new Error(`Config file not found: ${filePath}`);
     }
@@ -70,13 +70,13 @@ export class ConfigParser {
     const data = yaml.load(content);
 
     try {
-      return RanaConfigSchema.parse(data);
+      return CoFounderConfigSchema.parse(data);
     } catch (error) {
       if (error instanceof z.ZodError) {
         const errorMessages = error.errors
           .map((e) => `${e.path.join('.')}: ${e.message}`)
           .join('\n');
-        throw new Error(`Invalid RANA config:\n${errorMessages}`);
+        throw new Error(`Invalid CoFounder config:\n${errorMessages}`);
       }
       throw error;
     }
@@ -91,7 +91,7 @@ export class ConfigParser {
     warnings: string[];
   } {
     try {
-      RanaConfigSchema.parse(config);
+      CoFounderConfigSchema.parse(config);
       return { valid: true, errors: [], warnings: [] };
     } catch (error) {
       if (error instanceof z.ZodError) {
@@ -110,13 +110,13 @@ export class ConfigParser {
   }
 
   /**
-   * Find .rana.yml in current directory or parent directories
+   * Find .cofounder.yml in current directory or parent directories
    */
   static findConfig(startDir: string = process.cwd()): string | null {
     let currentDir = startDir;
 
     while (currentDir !== path.parse(currentDir).root) {
-      const configPath = path.join(currentDir, '.rana.yml');
+      const configPath = path.join(currentDir, '.cofounder.yml');
       if (fs.existsSync(configPath)) {
         return configPath;
       }
@@ -129,7 +129,7 @@ export class ConfigParser {
   /**
    * Load config from current directory or parent
    */
-  static load(startDir?: string): RanaConfig | null {
+  static load(startDir?: string): CoFounderConfig | null {
     const configPath = this.findConfig(startDir);
     if (!configPath) {
       return null;
@@ -141,7 +141,7 @@ export class ConfigParser {
    * Check if a feature is a "major feature" based on config
    */
   static isMajorFeature(
-    config: RanaConfig,
+    config: CoFounderConfig,
     featureDescription: string
   ): boolean {
     const majorFeatures = config.major_features;
@@ -161,7 +161,7 @@ export class ConfigParser {
    * Get quality gates for a specific phase
    */
   static getQualityGates(
-    config: RanaConfig,
+    config: CoFounderConfig,
     phase:
       | 'pre_implementation'
       | 'implementation'

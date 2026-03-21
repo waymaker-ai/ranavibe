@@ -17,14 +17,14 @@ interface ComplianceResult {
 export function registerCheckComplianceCommand(
   context: vscode.ExtensionContext
 ): vscode.Disposable {
-  return vscode.commands.registerCommand('rana.checkCompliance', async () => {
+  return vscode.commands.registerCommand('cofounder.checkCompliance', async () => {
     const editor = vscode.window.activeTextEditor;
     if (!editor) {
-      vscode.window.showWarningMessage('RANA: No active editor for compliance check.');
+      vscode.window.showWarningMessage('CoFounder: No active editor for compliance check.');
       return;
     }
 
-    const config = vscode.workspace.getConfiguration('rana');
+    const config = vscode.workspace.getConfiguration('cofounder');
     const frameworks = config.get<string[]>('complianceFrameworks', ['safety']);
     const sensitivity = config.get<'low' | 'medium' | 'high'>('injectionSensitivity', 'medium');
 
@@ -68,7 +68,7 @@ export function registerCheckComplianceCommand(
     });
 
     await vscode.window.showQuickPick(items, {
-      title: `RANA Compliance Check - ${document.fileName.split('/').pop()}`,
+      title: `CoFounder Compliance Check - ${document.fileName.split('/').pop()}`,
       placeHolder: 'Compliance results',
     });
   });

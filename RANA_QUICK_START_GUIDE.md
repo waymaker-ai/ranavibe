@@ -1,6 +1,6 @@
-# RANA Quick Start Guide
+# CoFounder Quick Start Guide
 
-**How to launch the Rapid AI Native Architecture (RANA) framework**
+**How to launch the Rapid AI Native Architecture (CoFounder) framework**
 
 ---
 
@@ -32,7 +32,7 @@ cp ../visionstack-to-betr/docs/DEVELOPMENT_WORKFLOW_FLOWCHART.md ./docs/
 
 1. **`README.md`** - Main introduction
 ```markdown
-# RANA: Rapid AI Native Architecture
+# CoFounder: Rapid AI Native Architecture
 
 > A comprehensive framework that ensures AI coding assistants produce production-quality code.
 
@@ -47,7 +47,7 @@ AI assistants often:
 
 ## The Solution
 
-RANA provides:
+CoFounder provides:
 - ✅ Development principles that work
 - ✅ Quality gates that catch issues
 - ✅ Checklists that ensure completeness
@@ -106,7 +106,7 @@ MIT - See [LICENSE](./LICENSE)
 **Create 3 example projects:**
 
 1. **`examples/react-typescript-basic/`**
-   - Simple React app with RANA
+   - Simple React app with CoFounder
    - `.aads.yml` configuration
    - Shows basic principles
 
@@ -117,7 +117,7 @@ MIT - See [LICENSE](./LICENSE)
 
 3. **`examples/vue-firebase-starter/`**
    - Vue.js alternative
-   - Shows RANA works across frameworks
+   - Shows CoFounder works across frameworks
 
 Each example should have:
 ```
@@ -160,7 +160,7 @@ npm init -y
 
 **Basic commands to implement:**
 
-1. `aads init` - Initialize RANA in project
+1. `aads init` - Initialize CoFounder in project
    - Creates `.aads.yml`
    - Creates `docs/aads/` directory
    - Copies templates
@@ -222,11 +222,11 @@ docs/
 
 **1. Launch Blog Post**
 
-Title: "RANA: A New Standard for AI-Assisted Development"
+Title: "CoFounder: A New Standard for AI-Assisted Development"
 
 Outline:
 ```markdown
-# RANA: A New Standard for AI-Assisted Development
+# CoFounder: A New Standard for AI-Assisted Development
 
 ## The Problem I Faced
 
@@ -279,7 +279,7 @@ Professional version of the story, targeting:
 
 **5. Hacker News**
 
-Submit as "Show HN: RANA - A Standard for AI-Assisted Development"
+Submit as "Show HN: CoFounder - A Standard for AI-Assisted Development"
 
 #### Day 18-21: Build Community
 
@@ -289,7 +289,7 @@ Channels:
 - #announcements
 - #general
 - #help
-- #showcase (projects using RANA)
+- #showcase (projects using CoFounder)
 - #ideas
 - #contributing
 - #off-topic
@@ -319,7 +319,7 @@ I'm a developer who's been building a production app with AI assistants (Claude,
 - Breaking existing code
 - Never deploying to production
 
-So I created a comprehensive framework to solve this: RANA (Rapid AI Native Architecture).
+So I created a comprehensive framework to solve this: CoFounder (Rapid AI Native Architecture).
 
 It's like Conventional Commits or Semantic Versioning, but for the entire AI-assisted development workflow.
 
@@ -413,7 +413,7 @@ Based on feedback:
 ### Week 4 Goals:
 - [x] Soft launch complete
 - [x] First contributors
-- [x] First projects using RANA
+- [x] First projects using CoFounder
 - Target: 500 GitHub stars
 
 ---
@@ -423,7 +423,7 @@ Based on feedback:
 ### Month 2-3: Integrations
 
 **Priority integrations:**
-1. **Claude/Anthropic** - Native RANA support
+1. **Claude/Anthropic** - Native CoFounder support
 2. **Cursor** - IDE integration
 3. **Vercel** - Deployment integration
 4. **Supabase** - Database standards
@@ -451,7 +451,7 @@ Based on feedback:
 - Weekly community calls
 - Monthly showcases
 - Contributor spotlights
-- RANA Champions program
+- CoFounder Champions program
 
 **Tool improvements:**
 - VS Code extension
@@ -485,7 +485,7 @@ Based on feedback:
 ## 💰 Monetization Strategy
 
 ### Free Forever:
-- Core RANA framework
+- Core CoFounder framework
 - Basic CLI tool
 - Documentation
 - Community support
@@ -521,22 +521,22 @@ Based on feedback:
 
 **Anthropic:**
 - Contact: DevRel team
-- Pitch: Native RANA support in Claude
+- Pitch: Native CoFounder support in Claude
 - Offer: Co-marketing, case studies
 
 **Cursor:**
 - Contact: Product team
-- Pitch: Built-in RANA compliance
+- Pitch: Built-in CoFounder compliance
 - Offer: Beta testing, feedback
 
 **Vercel:**
 - Contact: Lee Robinson
-- Pitch: RANA deployment integration
-- Offer: Vercel templates with RANA
+- Pitch: CoFounder deployment integration
+- Offer: Vercel templates with CoFounder
 
 **Supabase:**
 - Contact: DevRel team
-- Pitch: RANA database standards
+- Pitch: CoFounder database standards
 - Offer: Reference implementations
 
 ---
@@ -544,7 +544,7 @@ Based on feedback:
 ## 📝 Key Messages
 
 ### Elevator Pitch (30 seconds):
-"RANA is like Conventional Commits for your entire development workflow. It ensures AI assistants produce production-quality code by enforcing standards for research, implementation, testing, and deployment. Just add a config file, and AI follows your rules automatically."
+"CoFounder is like Conventional Commits for your entire development workflow. It ensures AI assistants produce production-quality code by enforcing standards for research, implementation, testing, and deployment. Just add a config file, and AI follows your rules automatically."
 
 ### Value Props:
 - ✅ **For Developers:** Stop fixing AI mistakes
@@ -564,7 +564,7 @@ Based on feedback:
 
 ### Week 1:
 - Mon: Launch announcement (Twitter, LinkedIn)
-- Wed: "Why we need RANA" blog post
+- Wed: "Why we need CoFounder" blog post
 - Fri: Technical deep-dive video
 
 ### Week 2:
@@ -573,7 +573,7 @@ Based on feedback:
 - Fri: Community highlight
 
 ### Week 3:
-- Mon: Tutorial: Getting started with RANA
+- Mon: Tutorial: Getting started with CoFounder
 - Wed: Case study: Real project results
 - Fri: Q&A livestream
 

@@ -1,6 +1,6 @@
-# Slack Bot Plugin for RANA
+# Slack Bot Plugin for CoFounder
 
-A comprehensive Slack integration plugin that enables RANA-powered chatbots with support for messages, slash commands, interactive components, and more.
+A comprehensive Slack integration plugin that enables CoFounder-powered chatbots with support for messages, slash commands, interactive components, and more.
 
 ## Features
 
@@ -16,10 +16,10 @@ A comprehensive Slack integration plugin that enables RANA-powered chatbots with
 
 ## Installation
 
-The Slack plugin is included in `@rana/core`:
+The Slack plugin is included in `@cofounder/core`:
 
 ```bash
-npm install @rana/core
+npm install @cofounder/core
 ```
 
 ## Basic Setup
@@ -34,11 +34,11 @@ You'll need:
 ### 2. Create a Basic Bot
 
 ```typescript
-import { createRana } from '@rana/core';
-import { createSlackPlugin } from '@rana/core/plugins/slack';
+import { createCoFounder } from '@cofounder/core';
+import { createSlackPlugin } from '@cofounder/core/plugins/slack';
 
-// Initialize RANA
-const rana = createRana({
+// Initialize CoFounder
+const cofounder = createCoFounder({
   providers: {
     anthropic: process.env.ANTHROPIC_API_KEY,
     openai: process.env.OPENAI_API_KEY,
@@ -59,7 +59,7 @@ const slack = createSlackPlugin({
 
 // Handle incoming messages
 slack.onMessage(async (message) => {
-  const response = await rana.chat(message.text);
+  const response = await cofounder.chat(message.text);
   await slack.reply(message.channel, response.content, {
     thread_ts: message.ts, // Reply in thread
   });
@@ -82,7 +82,7 @@ interface SlackConfig {
   /** Slack Signing Secret for request verification */
   signingSecret?: string;
 
-  /** Default model to use for RANA chat */
+  /** Default model to use for CoFounder chat */
   defaultModel?: LLMModel;
 
   /** Rate limit: max requests per minute (default: 60) */
@@ -117,13 +117,13 @@ slack.onMessage(async (message) => {
 ```typescript
 // Register a slash command handler
 slack.onCommand('ask', async (command) => {
-  const response = await rana.chat(command.text);
+  const response = await cofounder.chat(command.text);
   return response.content; // Auto-sends response
 });
 
 // Multiple commands
 slack.onCommand('summarize', async (command) => {
-  const response = await rana.chat({
+  const response = await cofounder.chat({
     messages: [{ role: 'user', content: `Summarize: ${command.text}` }],
     optimize: 'cost',
   });
@@ -243,7 +243,7 @@ slack.onMessage(async (message) => {
   }
 
   // Get response with conversation history
-  const response = await rana.chat({
+  const response = await cofounder.chat({
     messages: context.messages,
   });
 
@@ -318,7 +318,7 @@ slack.onMessage(async (message) => {
 
   context.messages.push({ role: 'user', content: message.text });
 
-  const response = await rana.chat({
+  const response = await cofounder.chat({
     messages: context.messages,
     max_tokens: 1000,
   });
@@ -351,7 +351,7 @@ slack.onCommand('ask', async (command) => {
 
   const cleanText = command.text.replace(/--\w+/g, '').trim();
 
-  const response = await rana.chat({
+  const response = await cofounder.chat({
     provider,
     optimize,
     messages: [{ role: 'user', content: cleanText }],
@@ -369,7 +369,7 @@ slack.onMessage(async (message) => {
   await slack.addReaction(message.channel, message.ts, 'hourglass');
 
   try {
-    const response = await rana.chat(message.text);
+    const response = await cofounder.chat(message.text);
 
     // Show success
     await slack.addReaction(message.channel, message.ts, 'white_check_mark');
@@ -403,13 +403,13 @@ slack.onEvent('reaction_added', async (event) => {
 
 ## Plugin Integration
 
-Use as a RANA plugin for automatic integration:
+Use as a CoFounder plugin for automatic integration:
 
 ```typescript
-import { createRana } from '@rana/core';
-import { slackPlugin } from '@rana/core/plugins/slack';
+import { createCoFounder } from '@cofounder/core';
+import { slackPlugin } from '@cofounder/core/plugins/slack';
 
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: {
     anthropic: process.env.ANTHROPIC_API_KEY,
   },
@@ -473,7 +473,7 @@ import type {
   MessageHandler,
   CommandHandler,
   InteractionHandler,
-} from '@rana/core/plugins/slack';
+} from '@cofounder/core/plugins/slack';
 ```
 
 ## Best Practices

@@ -1,21 +1,21 @@
 /**
- * @rana/crewai
- * CrewAI adapter for RANA Framework
+ * @cofounder/crewai
+ * CrewAI adapter for CoFounder Framework
  *
- * Provides a CrewAI-compatible model wrapper that uses RANA
+ * Provides a CrewAI-compatible model wrapper that uses CoFounder
  * for multi-provider routing, cost optimization, and security.
  *
  * @example
  * ```typescript
- * import { RanaCrewModel } from '@rana/crewai';
- * import { createRana } from '@rana/core';
+ * import { RanaCrewModel } from '@cofounder/crewai';
+ * import { createCoFounder } from '@cofounder/core';
  *
- * const rana = createRana({
+ * const cofounder = createCoFounder({
  *   providers: { anthropic: process.env.ANTHROPIC_API_KEY }
  * });
  *
  * const model = new RanaCrewModel({
- *   rana,
+ *   cofounder,
  *   provider: 'anthropic',
  *   model: 'claude-3-5-sonnet-20241022',
  * });
@@ -30,8 +30,8 @@
  */
 
 export interface RanaCrewModelConfig {
-  /** RANA client instance */
-  rana: any; // RanaClient
+  /** CoFounder client instance */
+  cofounder: any; // CoFounderClient
   /** Provider to use */
   provider?: string;
   /** Model to use */
@@ -43,20 +43,20 @@ export interface RanaCrewModelConfig {
 }
 
 /**
- * CrewAI-compatible model that uses RANA
+ * CrewAI-compatible model that uses CoFounder
  *
- * This allows you to use RANA's multi-provider routing
+ * This allows you to use CoFounder's multi-provider routing
  * and cost optimization with CrewAI crews.
  */
 export class RanaCrewModel {
-  private rana: any;
+  private cofounder: any;
   private provider?: string;
   private model?: string;
   private temperature: number;
   private maxTokens: number;
 
   constructor(config: RanaCrewModelConfig) {
-    this.rana = config.rana;
+    this.cofounder = config.cofounder;
     this.provider = config.provider;
     this.model = config.model;
     this.temperature = config.temperature ?? 0.7;
@@ -67,7 +67,7 @@ export class RanaCrewModel {
    * Generate a response (CrewAI compatible)
    */
   async generate(prompt: string, options?: any): Promise<string> {
-    const response = await this.rana.chat({
+    const response = await this.cofounder.chat({
       messages: [{ role: 'user', content: prompt }],
       provider: options?.provider || this.provider,
       model: options?.model || this.model,
@@ -93,7 +93,7 @@ export class RanaCrewModel {
       arguments: Record<string, any>;
     }>;
   }> {
-    const response = await this.rana.chat({
+    const response = await this.cofounder.chat({
       messages: [{ role: 'user', content: prompt }],
       tools: tools.map(formatToolForRana),
       provider: options?.provider || this.provider,
@@ -124,7 +124,7 @@ export class RanaCrewModel {
     messages: Array<{ role: string; content: string }>,
     options?: any
   ): Promise<string> {
-    const response = await this.rana.chat({
+    const response = await this.cofounder.chat({
       messages: messages.map((m) => ({
         role: m.role as 'user' | 'assistant' | 'system',
         content: m.content,
@@ -142,7 +142,7 @@ export class RanaCrewModel {
    * Stream response (if supported by CrewAI)
    */
   async *stream(prompt: string, options?: any): AsyncGenerator<string> {
-    const response = await this.rana.chat({
+    const response = await this.cofounder.chat({
       messages: [{ role: 'user', content: prompt }],
       stream: true,
       provider: options?.provider || this.provider,
@@ -175,7 +175,7 @@ export class RanaCrewModel {
 }
 
 /**
- * Format a CrewAI tool for RANA
+ * Format a CrewAI tool for CoFounder
  */
 function formatToolForRana(tool: any): any {
   return {
@@ -189,16 +189,16 @@ function formatToolForRana(tool: any): any {
 }
 
 /**
- * Create a RANA model for CrewAI
+ * Create a CoFounder model for CrewAI
  */
-export function createRanaCrewModel(config: RanaCrewModelConfig): RanaCrewModel {
+export function createCoFounderCrewModel(config: RanaCrewModelConfig): RanaCrewModel {
   return new RanaCrewModel(config);
 }
 
 /**
- * Convert RANA tool to CrewAI format
+ * Convert CoFounder tool to CrewAI format
  */
-export function ranaToolToCrewAI(tool: any): any {
+export function cofounderToolToCrewAI(tool: any): any {
   return {
     name: tool.name,
     description: tool.description,
@@ -211,18 +211,18 @@ export function ranaToolToCrewAI(tool: any): any {
 }
 
 /**
- * Wrapper to create a crew with RANA-powered agents
+ * Wrapper to create a crew with CoFounder-powered agents
  */
 export interface RanaCrewConfig {
-  rana: any;
+  cofounder: any;
   defaultProvider?: string;
   defaultModel?: string;
   temperature?: number;
 }
 
-export function createRanaCrewLLM(config: RanaCrewConfig): RanaCrewModel {
+export function createCoFounderCrewLLM(config: RanaCrewConfig): RanaCrewModel {
   return new RanaCrewModel({
-    rana: config.rana,
+    cofounder: config.cofounder,
     provider: config.defaultProvider,
     model: config.defaultModel,
     temperature: config.temperature,

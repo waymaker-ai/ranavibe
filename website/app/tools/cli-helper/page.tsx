@@ -5,8 +5,8 @@ import { Terminal, Copy, Check } from 'lucide-react';
 
 const commands = {
   init: {
-    command: 'npx @rana/cli init',
-    description: 'Initialize a new RANA project',
+    command: 'npx @cofounder/cli init',
+    description: 'Initialize a new CoFounder project',
     flags: [
       { flag: '--template <name>', description: 'Use a specific template' },
       { flag: '--typescript', description: 'Use TypeScript (default)' },
@@ -15,15 +15,15 @@ const commands = {
     ],
   },
   check: {
-    command: 'npx @rana/cli check',
-    description: 'Validate your RANA configuration',
+    command: 'npx @cofounder/cli check',
+    description: 'Validate your CoFounder configuration',
     flags: [
       { flag: '--fix', description: 'Automatically fix issues' },
       { flag: '--verbose', description: 'Show detailed output' },
     ],
   },
   db: {
-    command: 'npx @rana/cli db',
+    command: 'npx @cofounder/cli db',
     description: 'Database management commands',
     subcommands: [
       { command: 'migrate', description: 'Run database migrations' },
@@ -33,8 +33,8 @@ const commands = {
     ],
   },
   deploy: {
-    command: 'npx @rana/cli deploy',
-    description: 'Deploy your RANA application',
+    command: 'npx @cofounder/cli deploy',
+    description: 'Deploy your CoFounder application',
     flags: [
       { flag: '--prod', description: 'Deploy to production' },
       { flag: '--preview', description: 'Create preview deployment' },
@@ -42,7 +42,7 @@ const commands = {
     ],
   },
   analyze: {
-    command: 'npx @rana/cli analyze',
+    command: 'npx @cofounder/cli analyze',
     description: 'Analyze your project for issues',
     flags: [
       { flag: '--performance', description: 'Focus on performance issues' },
@@ -76,7 +76,7 @@ export default function CLIHelperPage() {
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">CLI Helper</h1>
           <p className="text-lg text-foreground-secondary max-w-2xl mx-auto">
-            Interactive guide for RANA CLI commands with examples and flag
+            Interactive guide for CoFounder CLI commands with examples and flag
             explanations.
           </p>
         </div>
@@ -185,7 +185,7 @@ export default function CLIHelperPage() {
                         Create a new project with TypeScript:
                       </div>
                       <div className="code-block font-mono text-sm">
-                        npx @rana/cli init my-agent
+                        npx @cofounder/cli init my-agent
                       </div>
                     </div>
                     <div>
@@ -193,7 +193,7 @@ export default function CLIHelperPage() {
                         Use a specific template:
                       </div>
                       <div className="code-block font-mono text-sm">
-                        npx @rana/cli init my-agent --template chatbot
+                        npx @cofounder/cli init my-agent --template chatbot
                       </div>
                     </div>
                   </>
@@ -206,7 +206,7 @@ export default function CLIHelperPage() {
                         Check configuration:
                       </div>
                       <div className="code-block font-mono text-sm">
-                        npx @rana/cli check
+                        npx @cofounder/cli check
                       </div>
                     </div>
                     <div>
@@ -214,7 +214,7 @@ export default function CLIHelperPage() {
                         Auto-fix issues:
                       </div>
                       <div className="code-block font-mono text-sm">
-                        npx @rana/cli check --fix
+                        npx @cofounder/cli check --fix
                       </div>
                     </div>
                   </>
@@ -227,7 +227,7 @@ export default function CLIHelperPage() {
                         Run migrations:
                       </div>
                       <div className="code-block font-mono text-sm">
-                        npx @rana/cli db migrate
+                        npx @cofounder/cli db migrate
                       </div>
                     </div>
                     <div>
@@ -235,7 +235,7 @@ export default function CLIHelperPage() {
                         Check migration status:
                       </div>
                       <div className="code-block font-mono text-sm">
-                        npx @rana/cli db status
+                        npx @cofounder/cli db status
                       </div>
                     </div>
                   </>
@@ -248,7 +248,7 @@ export default function CLIHelperPage() {
                         Deploy to production:
                       </div>
                       <div className="code-block font-mono text-sm">
-                        npx @rana/cli deploy --prod
+                        npx @cofounder/cli deploy --prod
                       </div>
                     </div>
                     <div>
@@ -256,7 +256,7 @@ export default function CLIHelperPage() {
                         Create preview deployment:
                       </div>
                       <div className="code-block font-mono text-sm">
-                        npx @rana/cli deploy --preview
+                        npx @cofounder/cli deploy --preview
                       </div>
                     </div>
                   </>
@@ -269,7 +269,7 @@ export default function CLIHelperPage() {
                         Analyze all aspects:
                       </div>
                       <div className="code-block font-mono text-sm">
-                        npx @rana/cli analyze
+                        npx @cofounder/cli analyze
                       </div>
                     </div>
                     <div>
@@ -277,7 +277,7 @@ export default function CLIHelperPage() {
                         Focus on security:
                       </div>
                       <div className="code-block font-mono text-sm">
-                        npx @rana/cli analyze --security
+                        npx @cofounder/cli analyze --security
                       </div>
                     </div>
                   </>

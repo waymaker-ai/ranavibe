@@ -1,5 +1,5 @@
 /**
- * @ranavibe/sandbox - Type definitions
+ * @cofounder/sandbox - Type definitions
  * Lightweight Node.js agent execution sandbox
  */
 

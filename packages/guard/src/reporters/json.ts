@@ -4,7 +4,7 @@ import type { CheckResult, GuardReport } from '../types.js';
 export class JsonReporter {
   private filePath: string;
 
-  constructor(filePath: string = './rana-guard.log.json') {
+  constructor(filePath: string = './cofounder-guard.log.json') {
     this.filePath = filePath;
   }
 

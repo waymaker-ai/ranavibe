@@ -3,7 +3,7 @@
  *
  * @example
  * ```typescript
- * import { moderate } from '@rana/helpers';
+ * import { moderate } from '@cofounder/helpers';
  *
  * // Basic moderation
  * const result = await moderate('Some user content here');

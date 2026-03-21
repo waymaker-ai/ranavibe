@@ -73,7 +73,7 @@ export class MetricsCollector {
   constructor(config: MetricsConfig = {}) {
     this.config = {
       enabled: true,
-      prefix: 'rana',
+      prefix: 'cofounder',
       defaultLabels: {},
       exporter: new ConsoleMetricsExporter(),
       flushInterval: 10000,

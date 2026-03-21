@@ -1,12 +1,12 @@
 /**
- * Make (Integromat) Integration for RANA
+ * Make (Integromat) Integration for CoFounder
  *
  * Enables integration with Make.com automation platform.
- * Provides modules, webhooks, and connections for RANA operations.
+ * Provides modules, webhooks, and connections for CoFounder operations.
  *
  * @example
  * ```typescript
- * import { MakeIntegration } from '@rana/core';
+ * import { MakeIntegration } from '@cofounder/core';
  *
  * const make = new MakeIntegration({
  *   apiKey: process.env.MAKE_API_KEY,
@@ -15,9 +15,9 @@
  *
  * // Create a webhook for Make to call
  * const webhook = await make.createWebhook({
- *   name: 'RANA Chat',
+ *   name: 'CoFounder Chat',
  *   handler: async (data) => {
- *     const response = await rana.chat({ messages: data.messages });
+ *     const response = await cofounder.chat({ messages: data.messages });
  *     return { response: response.content };
  *   }
  * });
@@ -414,9 +414,9 @@ export class MakeIntegration extends EventEmitter {
   }
 
   /**
-   * Create a RANA connection
+   * Create a CoFounder connection
    */
-  async createRanaConnection(options: {
+  async createCoFounderConnection(options: {
     name: string;
     apiKey: string;
     baseUrl?: string;
@@ -425,29 +425,29 @@ export class MakeIntegration extends EventEmitter {
       method: 'POST',
       body: JSON.stringify({
         name: options.name,
-        accountType: 'rana',
+        accountType: 'cofounder',
         teamId: this.config.teamId,
         data: {
           apiKey: options.apiKey,
-          baseUrl: options.baseUrl || 'https://api.rana.dev',
+          baseUrl: options.baseUrl || 'https://api.cofounder.dev',
         },
       }),
     });
   }
 
   // ============================================================================
-  // RANA MODULE DEFINITIONS (for Make App)
+  // CoFounder MODULE DEFINITIONS (for Make App)
   // ============================================================================
 
   /**
-   * Get RANA module definitions for Make
+   * Get CoFounder module definitions for Make
    */
   getRanaModuleDefinitions(): MakeModule[] {
     return [
       // Chat Module
       {
         id: 1,
-        module: 'rana:chat',
+        module: 'cofounder:chat',
         version: 1,
         parameters: {},
         metadata: {
@@ -475,7 +475,7 @@ export class MakeIntegration extends EventEmitter {
       // Summarize Module
       {
         id: 2,
-        module: 'rana:summarize',
+        module: 'cofounder:summarize',
         version: 1,
         parameters: {},
         metadata: {
@@ -499,7 +499,7 @@ export class MakeIntegration extends EventEmitter {
       // Classify Module
       {
         id: 3,
-        module: 'rana:classify',
+        module: 'cofounder:classify',
         version: 1,
         parameters: {},
         metadata: {
@@ -513,7 +513,7 @@ export class MakeIntegration extends EventEmitter {
       // RAG Query Module
       {
         id: 4,
-        module: 'rana:ragQuery',
+        module: 'cofounder:ragQuery',
         version: 1,
         parameters: {},
         metadata: {
@@ -528,7 +528,7 @@ export class MakeIntegration extends EventEmitter {
       // Agent Module
       {
         id: 5,
-        module: 'rana:agent',
+        module: 'cofounder:agent',
         version: 1,
         parameters: {},
         metadata: {
@@ -543,7 +543,7 @@ export class MakeIntegration extends EventEmitter {
       // Extract Module
       {
         id: 6,
-        module: 'rana:extract',
+        module: 'cofounder:extract',
         version: 1,
         parameters: {},
         metadata: {
@@ -557,7 +557,7 @@ export class MakeIntegration extends EventEmitter {
       // Translate Module
       {
         id: 7,
-        module: 'rana:translate',
+        module: 'cofounder:translate',
         version: 1,
         parameters: {},
         metadata: {
@@ -584,7 +584,7 @@ export class MakeIntegration extends EventEmitter {
   }
 
   /**
-   * Export a scenario blueprint template for RANA integration
+   * Export a scenario blueprint template for CoFounder integration
    */
   exportRanaScenarioTemplate(options: {
     name: string;
@@ -611,10 +611,10 @@ export class MakeIntegration extends EventEmitter {
       });
     }
 
-    // Add RANA modules
+    // Add CoFounder modules
     for (const mod of options.modules) {
       const moduleDefinitions = this.getRanaModuleDefinitions();
-      const definition = moduleDefinitions.find(m => m.module === `rana:${mod}`);
+      const definition = moduleDefinitions.find(m => m.module === `cofounder:${mod}`);
       if (definition) {
         flow.push({
           ...definition,

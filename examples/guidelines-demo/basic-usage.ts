@@ -1,5 +1,5 @@
 /**
- * @rana/guidelines - Basic Usage Example
+ * @cofounder/guidelines - Basic Usage Example
  *
  * This example demonstrates how to use the guideline system
  * to control AI agent behavior based on context.
@@ -10,10 +10,10 @@ import {
   createGuideline,
   Conditions,
   PresetGuidelines,
-} from '@rana/guidelines';
+} from '@cofounder/guidelines';
 
 async function main() {
-  console.log('🎯 RANA Guidelines - Basic Usage\n');
+  console.log('🎯 CoFounder Guidelines - Basic Usage\n');
 
   // Create guideline manager
   const manager = createGuidelineManager({

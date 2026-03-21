@@ -1,6 +1,6 @@
 /**
  * Audit Logger Examples
- * Demonstrates comprehensive usage of RANA audit logging
+ * Demonstrates comprehensive usage of CoFounder audit logging
  */
 
 import {
@@ -265,7 +265,7 @@ async function authAuditing() {
   // Log successful authentication
   await audit.logAuthentication('success', 'user-123', 'api_key', {
     ip_address: '192.168.1.50',
-    user_agent: 'RANA-SDK/1.0',
+    user_agent: 'CoFounder-SDK/1.0',
   });
 
   // Log failed authentication
@@ -415,7 +415,7 @@ async function productionSetup() {
     destinations: [
       {
         type: 'file',
-        filepath: '/var/log/rana/audit.log',
+        filepath: '/var/log/cofounder/audit.log',
         enabled: true,
       },
       {

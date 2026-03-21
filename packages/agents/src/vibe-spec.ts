@@ -1,5 +1,5 @@
 /**
- * @rana/agents - VibeSpec
+ * @cofounder/agents - VibeSpec
  * Declarative agent configuration through "vibes"
  */
 

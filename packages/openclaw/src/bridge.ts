@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// @ranavibe/openclaw - Guard Bridge
+// @cofounder/openclaw - Guard Bridge
 // ---------------------------------------------------------------------------
 // Standalone bridge that guards any OpenClaw agent's I/O without requiring
 // the OpenClaw skill system. Can be used as middleware for webhook servers
@@ -36,7 +36,7 @@ const DEFAULT_BRIDGE_CONFIG: Required<BridgeConfig> = {
     budget: { limit: 10, period: 'day', warningThreshold: 0.8, onExceeded: 'warn' },
     model: 'gpt-4o',
     audit: { enabled: true, level: 'standard', maxEntries: 1000 },
-    blockedMessage: 'This message was blocked by RANA guardrails.',
+    blockedMessage: 'This message was blocked by CoFounder guardrails.',
     guardToolCalls: true,
     allowedChannels: [],
   },
@@ -52,11 +52,11 @@ const DEFAULT_BRIDGE_CONFIG: Required<BridgeConfig> = {
 
 /**
  * Standalone guard bridge for OpenClaw agents. Use this when you want to
- * add RANA guardrails without using the OpenClaw skill system.
+ * add CoFounder guardrails without using the OpenClaw skill system.
  *
  * @example
  * ```typescript
- * import { OpenClawBridge } from '@ranavibe/openclaw';
+ * import { OpenClawBridge } from '@cofounder/openclaw';
  *
  * const bridge = new OpenClawBridge({
  *   guardOptions: { pii: 'redact', compliance: ['hipaa'] },
@@ -249,7 +249,7 @@ export class OpenClawBridge {
       const result = this.guardInput(message, context);
 
       // Attach guard result to request
-      req.ranaGuard = result;
+      req.cofounderGuard = result;
 
       if (result.blocked) {
         res.status(403);
@@ -296,7 +296,7 @@ export class OpenClawBridge {
       const inputGuard = this.guardInput(message, context);
       if (inputGuard.blocked) {
         return {
-          response: this.guardConfig.blockedMessage || 'Message blocked by RANA guardrails.',
+          response: this.guardConfig.blockedMessage || 'Message blocked by CoFounder guardrails.',
           inputGuard,
           outputGuard: {
             allowed: true, blocked: false, violations: [], piiFindings: [],
@@ -314,7 +314,7 @@ export class OpenClawBridge {
       // Guard output
       const outputGuard = this.guardOutput(response, context);
       const safeResponse = outputGuard.blocked
-        ? (this.guardConfig.blockedMessage || 'Response blocked by RANA guardrails.')
+        ? (this.guardConfig.blockedMessage || 'Response blocked by CoFounder guardrails.')
         : outputGuard.redactedContent || response;
 
       return { response: safeResponse, inputGuard, outputGuard };
@@ -455,7 +455,7 @@ export class OpenClawBridge {
       budget: opts.budget ?? { limit: 10, period: 'day' as const, warningThreshold: 0.8, onExceeded: 'warn' as const },
       model: opts.model ?? 'gpt-4o',
       audit: opts.audit ?? { enabled: true, level: 'standard' as const, maxEntries: 1000 },
-      blockedMessage: opts.blockedMessage ?? 'This message was blocked by RANA guardrails.',
+      blockedMessage: opts.blockedMessage ?? 'This message was blocked by CoFounder guardrails.',
       guardToolCalls: opts.guardToolCalls ?? true,
       allowedChannels: opts.allowedChannels ?? [],
     } as Required<OpenClawSkillConfig>;

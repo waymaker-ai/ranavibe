@@ -1,5 +1,5 @@
 /**
- * @rana/integrations/sentry
+ * @cofounder/integrations/sentry
  * Sentry error reporting integration
  *
  * Features:
@@ -11,7 +11,7 @@
  *
  * @example
  * ```typescript
- * import { createSentryIntegration } from '@rana/core';
+ * import { createSentryIntegration } from '@cofounder/core';
  *
  * const sentry = createSentryIntegration({
  *   dsn: process.env.SENTRY_DSN,
@@ -20,7 +20,7 @@
  * });
  *
  * // Capture errors automatically
- * rana.use(sentry.middleware);
+ * cofounder.use(sentry.middleware);
  *
  * // Manual capture
  * sentry.captureException(error, {
@@ -507,7 +507,7 @@ export class SentryIntegration {
   // --------------------------------------------------------------------------
 
   /**
-   * Create RANA middleware for automatic error tracking
+   * Create CoFounder middleware for automatic error tracking
    */
   get middleware() {
     return {

@@ -16,7 +16,7 @@ interface AnalysisResult {
 }
 
 export async function analyzeCommand(options: { detailed?: boolean } = {}) {
-  console.log(chalk.bold.cyan('\n🔍 Analyzing RANA Project...\n'));
+  console.log(chalk.bold.cyan('\n🔍 Analyzing CoFounder Project...\n'));
 
   const results: AnalysisResult[] = [];
 
@@ -37,7 +37,7 @@ async function analyzeCostOptimization(): Promise<AnalysisResult[]> {
   const results: AnalysisResult[] = [];
 
   // Check if caching is enabled
-  const hasCache = checkFileContains('rana.config.ts', 'cache: {');
+  const hasCache = checkFileContains('cofounder.config.ts', 'cache: {');
 
   if (!hasCache) {
     results.push({
@@ -142,14 +142,14 @@ async function analyzeConfiguration(): Promise<AnalysisResult[]> {
   const results: AnalysisResult[] = [];
 
   // Check for config file
-  const hasConfig = fs.existsSync('rana.config.ts') || fs.existsSync('rana.config.js');
+  const hasConfig = fs.existsSync('cofounder.config.ts') || fs.existsSync('cofounder.config.js');
 
   if (!hasConfig) {
     results.push({
       type: 'warning',
       category: 'Config',
-      message: 'No rana.config.ts found',
-      recommendation: 'Create rana.config.ts for better configuration',
+      message: 'No cofounder.config.ts found',
+      recommendation: 'Create cofounder.config.ts for better configuration',
     });
   }
 
@@ -161,7 +161,7 @@ async function analyzeConfiguration(): Promise<AnalysisResult[]> {
       type: 'info',
       category: 'Config',
       message: 'TypeScript not detected',
-      recommendation: 'Use TypeScript for better type safety with RANA',
+      recommendation: 'Use TypeScript for better type safety with CoFounder',
     });
   }
 
@@ -210,7 +210,7 @@ function displaySummary(results: AnalysisResult[]) {
 
   if (totalSavings > 0) {
     console.log(chalk.green(`\n  💰 Potential savings: ~${totalSavings}% on costs\n`));
-    console.log(chalk.gray(`  Run ${chalk.white('rana optimize')} to apply optimizations\n`));
+    console.log(chalk.gray(`  Run ${chalk.white('cofounder optimize')} to apply optimizations\n`));
   } else {
     console.log(chalk.green('\n  ✓ All optimizations applied!\n'));
   }

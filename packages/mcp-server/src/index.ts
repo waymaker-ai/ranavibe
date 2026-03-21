@@ -9,16 +9,16 @@ import {
   ListPromptsRequestSchema,
   GetPromptRequestSchema,
 } from '@modelcontextprotocol/sdk/types.js';
-import { ConfigParser, QualityGateChecker, REPMValidator, TemplateManager } from '@rana/core';
+import { ConfigParser, QualityGateChecker, REPMValidator, TemplateManager } from '@cofounder/core';
 import * as path from 'path';
 import * as fs from 'fs';
 
 // ============================================================================
-// RANA MCP Server - Comprehensive AI Guardrail Server
+// CoFounder MCP Server - Comprehensive AI Guardrail Server
 // ============================================================================
 
 const server = new Server({
-  name: 'rana-mcp',
+  name: 'cofounder-mcp',
   version: '2.1.0',
 });
 
@@ -713,12 +713,12 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
   tools: [
     // ---- Existing Tools ----
     {
-      name: 'validate_rana_config',
-      description: 'Validate .rana.yml configuration file and check for syntax/schema errors',
+      name: 'validate_cofounder_config',
+      description: 'Validate .cofounder.yml configuration file and check for syntax/schema errors',
       inputSchema: {
         type: 'object',
         properties: {
-          config_path: { type: 'string', description: 'Path to .rana.yml file (optional)' },
+          config_path: { type: 'string', description: 'Path to .cofounder.yml file (optional)' },
         },
       },
     },
@@ -729,7 +729,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
         type: 'object',
         properties: {
           phase: { type: 'string', enum: ['pre_implementation', 'implementation', 'testing', 'deployment'], description: 'Quality gate phase to check' },
-          config_path: { type: 'string', description: 'Path to .rana.yml file (optional)' },
+          config_path: { type: 'string', description: 'Path to .cofounder.yml file (optional)' },
         },
         required: ['phase'],
       },
@@ -751,36 +751,36 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
         type: 'object',
         properties: {
           description: { type: 'string', description: 'Description of the feature being built' },
-          config_path: { type: 'string', description: 'Path to .rana.yml file (optional)' },
+          config_path: { type: 'string', description: 'Path to .cofounder.yml file (optional)' },
         },
         required: ['description'],
       },
     },
     {
       name: 'generate_compliance_report',
-      description: 'Generate a complete RANA compliance report showing all quality gates and their status',
+      description: 'Generate a complete CoFounder compliance report showing all quality gates and their status',
       inputSchema: {
         type: 'object',
         properties: {
-          config_path: { type: 'string', description: 'Path to .rana.yml file (optional)' },
+          config_path: { type: 'string', description: 'Path to .cofounder.yml file (optional)' },
         },
       },
     },
     {
-      name: 'init_rana_project',
-      description: 'Initialize a new RANA project with default or custom configuration',
+      name: 'init_cofounder_project',
+      description: 'Initialize a new CoFounder project with default or custom configuration',
       inputSchema: {
         type: 'object',
         properties: {
           project_type: { type: 'string', enum: ['nextjs', 'react', 'python', 'default'], description: 'Type of project to initialize' },
-          output_path: { type: 'string', description: 'Path where .rana.yml should be created' },
+          output_path: { type: 'string', description: 'Path where .cofounder.yml should be created' },
         },
       },
     },
 
     // ---- Security Tools ----
     {
-      name: 'rana_scan_pii',
+      name: 'cofounder_scan_pii',
       description: 'Scan text for PII (email, phone, SSN, credit cards, IP addresses, DOB, medical records, API keys, addresses). Returns findings with types, locations, confidence scores. Supports redaction mode.',
       inputSchema: {
         type: 'object',
@@ -793,7 +793,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
       },
     },
     {
-      name: 'rana_detect_injection',
+      name: 'cofounder_detect_injection',
       description: 'Analyze a prompt for injection attacks (25+ patterns including override, roleplay, privilege escalation, jailbreak, exfiltration, obfuscation, role confusion). Returns risk score 0-100, detected patterns, and recommendation.',
       inputSchema: {
         type: 'object',
@@ -804,7 +804,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
       },
     },
     {
-      name: 'rana_filter_content',
+      name: 'cofounder_filter_content',
       description: 'Check text for toxic/harmful content across categories: profanity, violence, hate speech, self-harm, adult content, harassment, illegal activity. Returns categories with severity and recommendation.',
       inputSchema: {
         type: 'object',
@@ -815,7 +815,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
       },
     },
     {
-      name: 'rana_validate_prompt',
+      name: 'cofounder_validate_prompt',
       description: 'Comprehensive prompt validation: injection detection + PII scanning + content filtering + length/ambiguity checks. Returns overall safety score 0-100 with detailed breakdown.',
       inputSchema: {
         type: 'object',
@@ -829,7 +829,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
 
     // ---- Cost Tools ----
     {
-      name: 'rana_estimate_cost',
+      name: 'cofounder_estimate_cost',
       description: 'Estimate cost for a specific model and token count. Supports all major models (OpenAI, Anthropic, Google, Meta, Mistral, DeepSeek, Cohere) with current pricing.',
       inputSchema: {
         type: 'object',
@@ -842,7 +842,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
       },
     },
     {
-      name: 'rana_compare_models',
+      name: 'cofounder_compare_models',
       description: 'Compare costs across all supported models for a given token count. Recommends cheapest option and shows breakdown by provider.',
       inputSchema: {
         type: 'object',
@@ -857,7 +857,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
       },
     },
     {
-      name: 'rana_budget_check',
+      name: 'cofounder_budget_check',
       description: 'Track cumulative API costs against a budget limit. Add costs, set budgets, check remaining balance, get alerts.',
       inputSchema: {
         type: 'object',
@@ -874,7 +874,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
 
     // ---- Compliance Tools ----
     {
-      name: 'rana_check_hipaa',
+      name: 'cofounder_check_hipaa',
       description: 'Check text for HIPAA violations by scanning for all 18 PHI identifiers (names, geographic data, dates, phone/fax, email, SSN, MRN, health plan ID, account numbers, license/vehicle/device IDs, URLs, IPs, biometrics, photos, unique IDs).',
       inputSchema: {
         type: 'object',
@@ -885,7 +885,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
       },
     },
     {
-      name: 'rana_check_gdpr',
+      name: 'cofounder_check_gdpr',
       description: 'Check text for GDPR compliance issues across Articles 5-49 (lawful basis, consent, special categories, transparency, data rights, minimization, security, breach handling, DPIA, international transfers, retention).',
       inputSchema: {
         type: 'object',
@@ -896,7 +896,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
       },
     },
     {
-      name: 'rana_check_compliance',
+      name: 'cofounder_check_compliance',
       description: 'Check text against multiple compliance frameworks simultaneously (HIPAA, GDPR, SOC2, PCI-DSS, FERPA, COPPA). Returns unified report.',
       inputSchema: {
         type: 'object',
@@ -912,7 +912,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
       },
     },
     {
-      name: 'rana_generate_disclaimer',
+      name: 'cofounder_generate_disclaimer',
       description: 'Generate appropriate compliance disclaimers for specific frameworks and use cases.',
       inputSchema: {
         type: 'object',
@@ -927,7 +927,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
 
     // ---- Analysis Tools ----
     {
-      name: 'rana_analyze_code_safety',
+      name: 'cofounder_analyze_code_safety',
       description: 'Analyze generated code for security vulnerabilities: SQL injection, XSS, command injection, path traversal, hardcoded secrets, insecure crypto, unsafe deserialization, prototype pollution, CORS issues, and more. References CWE IDs.',
       inputSchema: {
         type: 'object',
@@ -939,7 +939,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
       },
     },
     {
-      name: 'rana_score_response',
+      name: 'cofounder_score_response',
       description: 'Score LLM response quality on a 0-100 scale with breakdown across dimensions: relevance, completeness, accuracy signals, clarity, safety, and formatting.',
       inputSchema: {
         type: 'object',
@@ -963,7 +963,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
       },
     },
     {
-      name: 'rana_enforce_guidelines',
+      name: 'cofounder_enforce_guidelines',
       description: 'Apply dynamic guidelines/policies to text. Check for violations of custom rules (word limits, required sections, banned phrases, tone requirements, format rules).',
       inputSchema: {
         type: 'object',
@@ -1005,10 +1005,10 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       // Existing Tools (preserved)
       // ================================================================
 
-      case 'validate_rana_config': {
+      case 'validate_cofounder_config': {
         const configPath = (args as any)?.config_path || ConfigParser.findConfig();
         if (!configPath) {
-          return { content: [{ type: 'text', text: 'Error: No .rana.yml file found. Use init_rana_project tool to create one.' }] };
+          return { content: [{ type: 'text', text: 'Error: No .cofounder.yml file found. Use init_cofounder_project tool to create one.' }] };
         }
         try {
           const config = ConfigParser.parse(configPath);
@@ -1027,7 +1027,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         const toolArgs = args as any;
         const configPath = toolArgs?.config_path || ConfigParser.findConfig();
         if (!configPath) {
-          return { content: [{ type: 'text', text: 'Error: No .rana.yml file found.' }] };
+          return { content: [{ type: 'text', text: 'Error: No .cofounder.yml file found.' }] };
         }
         const config = ConfigParser.parse(configPath);
         const checker = new QualityGateChecker(config);
@@ -1065,7 +1065,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         const toolArgs = args as any;
         const configPath = toolArgs?.config_path || ConfigParser.findConfig();
         if (!configPath) {
-          return { content: [{ type: 'text', text: 'Error: No .rana.yml file found.' }] };
+          return { content: [{ type: 'text', text: 'Error: No .cofounder.yml file found.' }] };
         }
         const config = ConfigParser.parse(configPath);
         const isMajor = ConfigParser.isMajorFeature(config, toolArgs.description);
@@ -1074,7 +1074,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
             type: 'text',
             text: isMajor
               ? 'This is a MAJOR FEATURE - REPM validation required.\n\nReason: Feature involves revenue streams, new products, pricing changes, or market segments.\n\nNext step: Run repm_validate tool to start strategic validation.'
-              : 'This is a standard feature - proceed with regular quality gates.\n\nNo REPM validation needed. Follow quality_gates from .rana.yml.',
+              : 'This is a standard feature - proceed with regular quality gates.\n\nNo REPM validation needed. Follow quality_gates from .cofounder.yml.',
           }],
         };
       }
@@ -1083,11 +1083,11 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         const toolArgs = args as any;
         const configPath = toolArgs?.config_path || ConfigParser.findConfig();
         if (!configPath) {
-          return { content: [{ type: 'text', text: 'Error: No .rana.yml file found.' }] };
+          return { content: [{ type: 'text', text: 'Error: No .cofounder.yml file found.' }] };
         }
         const config = ConfigParser.parse(configPath);
         const checker = new QualityGateChecker(config);
-        let report = `# RANA Compliance Report\n\nProject: ${config.project.name}\nType: ${config.project.type}\n\n`;
+        let report = `# CoFounder Compliance Report\n\nProject: ${config.project.name}\nType: ${config.project.type}\n\n`;
         const phases = ['pre_implementation', 'implementation', 'testing', 'deployment'] as const;
         for (const phase of phases) {
           const results = checker.checkPhase(phase);
@@ -1100,7 +1100,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         return { content: [{ type: 'text', text: report }] };
       }
 
-      case 'init_rana_project': {
+      case 'init_cofounder_project': {
         const toolArgs = args as any;
         const templateManager = new TemplateManager();
         const projectType = toolArgs?.project_type || 'default';
@@ -1111,12 +1111,12 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         } else {
           config = templateManager.generateConfig(projectType as 'nextjs' | 'react' | 'python');
         }
-        const configFile = path.join(outputPath, '.rana.yml');
+        const configFile = path.join(outputPath, '.cofounder.yml');
         try {
           fs.writeFileSync(configFile, config, 'utf8');
-          return { content: [{ type: 'text', text: `Created .rana.yml at ${configFile}\n\nProject type: ${projectType}\n\nNext steps:\n1. Customize .rana.yml for your project\n2. Run validate_rana_config to verify\n3. Start building with RANA quality gates!` }] };
+          return { content: [{ type: 'text', text: `Created .cofounder.yml at ${configFile}\n\nProject type: ${projectType}\n\nNext steps:\n1. Customize .cofounder.yml for your project\n2. Run validate_cofounder_config to verify\n3. Start building with CoFounder quality gates!` }] };
         } catch (error) {
-          return { content: [{ type: 'text', text: `Failed to create .rana.yml:\n\n${error instanceof Error ? error.message : String(error)}` }] };
+          return { content: [{ type: 'text', text: `Failed to create .cofounder.yml:\n\n${error instanceof Error ? error.message : String(error)}` }] };
         }
       }
 
@@ -1124,7 +1124,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       // Security Tools
       // ================================================================
 
-      case 'rana_scan_pii': {
+      case 'cofounder_scan_pii': {
         const toolArgs = args as any;
         const text: string = toolArgs.text;
         const shouldRedact: boolean = toolArgs.redact === true;
@@ -1172,7 +1172,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         return { content: [{ type: 'text', text: output }] };
       }
 
-      case 'rana_detect_injection': {
+      case 'cofounder_detect_injection': {
         const toolArgs = args as any;
         const result = detectInjection(toolArgs.text);
 
@@ -1206,7 +1206,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         return { content: [{ type: 'text', text: output }] };
       }
 
-      case 'rana_filter_content': {
+      case 'cofounder_filter_content': {
         const toolArgs = args as any;
         const result = filterContent(toolArgs.text);
 
@@ -1229,7 +1229,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         return { content: [{ type: 'text', text: output }] };
       }
 
-      case 'rana_validate_prompt': {
+      case 'cofounder_validate_prompt': {
         const toolArgs = args as any;
         const text: string = toolArgs.text;
         const maxLength: number = toolArgs.max_length ?? 50000;
@@ -1306,7 +1306,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       // Cost Tools
       // ================================================================
 
-      case 'rana_estimate_cost': {
+      case 'cofounder_estimate_cost': {
         const toolArgs = args as any;
         const modelName: string = toolArgs.model;
         const inputTokens: number = toolArgs.input_tokens;
@@ -1346,7 +1346,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         return { content: [{ type: 'text', text: output }] };
       }
 
-      case 'rana_compare_models': {
+      case 'cofounder_compare_models': {
         const toolArgs = args as any;
         const inputTokens: number = toolArgs.input_tokens;
         const outputTokens: number = toolArgs.output_tokens;
@@ -1390,7 +1390,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         return { content: [{ type: 'text', text: output }] };
       }
 
-      case 'rana_budget_check': {
+      case 'cofounder_budget_check': {
         const toolArgs = args as any;
         const action: string = toolArgs.action;
 
@@ -1518,7 +1518,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       // Compliance Tools
       // ================================================================
 
-      case 'rana_check_hipaa': {
+      case 'cofounder_check_hipaa': {
         const toolArgs = args as any;
         const text: string = toolArgs.text;
         const violations: HIPAAViolation[] = [];
@@ -1573,7 +1573,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         return { content: [{ type: 'text', text: output }] };
       }
 
-      case 'rana_check_gdpr': {
+      case 'cofounder_check_gdpr': {
         const toolArgs = args as any;
         const text: string = toolArgs.text;
         const violations: GDPRViolation[] = [];
@@ -1651,7 +1651,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         return { content: [{ type: 'text', text: output }] };
       }
 
-      case 'rana_check_compliance': {
+      case 'cofounder_check_compliance': {
         const toolArgs = args as any;
         const text: string = toolArgs.text;
         const frameworks: string[] = toolArgs.frameworks || ['hipaa', 'gdpr', 'soc2', 'pci_dss', 'ferpa', 'coppa'];
@@ -1789,7 +1789,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         return { content: [{ type: 'text', text: output }] };
       }
 
-      case 'rana_generate_disclaimer': {
+      case 'cofounder_generate_disclaimer': {
         const toolArgs = args as any;
         const framework: string = toolArgs.framework;
         const context: string = toolArgs.context || 'general application';
@@ -1953,7 +1953,7 @@ LIABILITY: The operators of this system make no warranties, express or implied, 
       // Analysis Tools
       // ================================================================
 
-      case 'rana_analyze_code_safety': {
+      case 'cofounder_analyze_code_safety': {
         const toolArgs = args as any;
         const code: string = toolArgs.code;
         const language: string = toolArgs.language || 'auto';
@@ -2026,7 +2026,7 @@ LIABILITY: The operators of this system make no warranties, express or implied, 
         return { content: [{ type: 'text', text: output }] };
       }
 
-      case 'rana_score_response': {
+      case 'cofounder_score_response': {
         const toolArgs = args as any;
         const response: string = toolArgs.response;
         const prompt: string = toolArgs.prompt || '';
@@ -2176,7 +2176,7 @@ LIABILITY: The operators of this system make no warranties, express or implied, 
         return { content: [{ type: 'text', text: output }] };
       }
 
-      case 'rana_enforce_guidelines': {
+      case 'cofounder_enforce_guidelines': {
         const toolArgs = args as any;
         const text: string = toolArgs.text;
         const guidelines = toolArgs.guidelines || {};
@@ -2340,44 +2340,44 @@ server.setRequestHandler(ListResourcesRequestSchema, async () => ({
   resources: [
     // Existing resources
     {
-      uri: 'rana://docs/quality-gates',
+      uri: 'cofounder://docs/quality-gates',
       name: 'Quality Gates Documentation',
-      description: 'Complete guide to RANA quality gates',
+      description: 'Complete guide to CoFounder quality gates',
       mimeType: 'text/markdown',
     },
     {
-      uri: 'rana://docs/repm',
+      uri: 'cofounder://docs/repm',
       name: 'REPM Methodology',
       description: 'Reverse Engineering Product Methodology guide',
       mimeType: 'text/markdown',
     },
     {
-      uri: 'rana://templates/default',
+      uri: 'cofounder://templates/default',
       name: 'Default Configuration Template',
-      description: 'Default .rana.yml template',
+      description: 'Default .cofounder.yml template',
       mimeType: 'text/yaml',
     },
     // New resources
     {
-      uri: 'rana://models/pricing',
+      uri: 'cofounder://models/pricing',
       name: 'Model Pricing Table',
       description: 'Current pricing for all supported AI models (OpenAI, Anthropic, Google, Meta, Mistral, DeepSeek, Cohere)',
       mimeType: 'text/markdown',
     },
     {
-      uri: 'rana://compliance/frameworks',
+      uri: 'cofounder://compliance/frameworks',
       name: 'Compliance Frameworks',
       description: 'All supported compliance frameworks and their checks (HIPAA, GDPR, SOC2, PCI-DSS, FERPA, COPPA)',
       mimeType: 'text/markdown',
     },
     {
-      uri: 'rana://security/patterns',
+      uri: 'cofounder://security/patterns',
       name: 'Security Patterns Database',
       description: 'Known injection attack patterns, PII detection patterns, and content filtering categories',
       mimeType: 'text/markdown',
     },
     {
-      uri: 'rana://policies/presets',
+      uri: 'cofounder://policies/presets',
       name: 'Policy Presets',
       description: 'Pre-configured policy presets for common use cases (healthcare, finance, education, general)',
       mimeType: 'text/markdown',
@@ -2389,12 +2389,12 @@ server.setRequestHandler(ReadResourceRequestSchema, async (request) => {
   const { uri } = request.params;
 
   switch (uri) {
-    case 'rana://docs/quality-gates': {
+    case 'cofounder://docs/quality-gates': {
       return {
         contents: [{
           uri,
           mimeType: 'text/markdown',
-          text: `# RANA Quality Gates
+          text: `# CoFounder Quality Gates
 
 Quality gates ensure production-quality code at every phase:
 
@@ -2424,7 +2424,7 @@ Run \`check_quality_gates\` tool for your project-specific gates.`,
       };
     }
 
-    case 'rana://docs/repm': {
+    case 'cofounder://docs/repm': {
       const validator = new REPMValidator();
       return {
         contents: [{
@@ -2441,7 +2441,7 @@ Run \`repm_validate\` tool for phase-specific guidance.`,
       };
     }
 
-    case 'rana://templates/default': {
+    case 'cofounder://templates/default': {
       const templateManager = new TemplateManager();
       return {
         contents: [{
@@ -2452,18 +2452,18 @@ Run \`repm_validate\` tool for phase-specific guidance.`,
       };
     }
 
-    case 'rana://models/pricing': {
+    case 'cofounder://models/pricing': {
       let text = `# AI Model Pricing Table\n\nPrices in USD. Updated for early 2026.\n\n`;
       text += `| Provider | Model | Input $/1M | Output $/1M | Context | Vision | Tools |\n`;
       text += `|----------|-------|-----------|------------|---------|--------|-------|\n`;
       for (const m of MODEL_PRICING) {
         text += `| ${m.provider} | ${m.model} | $${m.input_per_1m.toFixed(2)} | $${m.output_per_1m.toFixed(2)} | ${(m.context_window / 1000).toFixed(0)}k | ${m.supports_vision ? 'Yes' : 'No'} | ${m.supports_tools ? 'Yes' : 'No'} |\n`;
       }
-      text += `\nUse \`rana_estimate_cost\` or \`rana_compare_models\` tools for cost calculations.\n`;
+      text += `\nUse \`cofounder_estimate_cost\` or \`cofounder_compare_models\` tools for cost calculations.\n`;
       return { contents: [{ uri, mimeType: 'text/markdown', text }] };
     }
 
-    case 'rana://compliance/frameworks': {
+    case 'cofounder://compliance/frameworks': {
       let text = `# Supported Compliance Frameworks\n\n`;
 
       text += `## HIPAA (Health Insurance Portability and Accountability Act)\n`;
@@ -2490,11 +2490,11 @@ Run \`repm_validate\` tool for phase-specific guidance.`,
       text += `\n## COPPA\n`;
       text += `Children's Online Privacy Protection Act checks: Children's data collection, parental consent, tracking/profiling\n`;
 
-      text += `\nUse \`rana_check_compliance\` tool to run checks against any combination of frameworks.\n`;
+      text += `\nUse \`cofounder_check_compliance\` tool to run checks against any combination of frameworks.\n`;
       return { contents: [{ uri, mimeType: 'text/markdown', text }] };
     }
 
-    case 'rana://security/patterns': {
+    case 'cofounder://security/patterns': {
       let text = `# Security Patterns Database\n\n`;
 
       text += `## Injection Attack Patterns (${INJECTION_PATTERNS.length})\n\n`;
@@ -2525,51 +2525,51 @@ Run \`repm_validate\` tool for phase-specific guidance.`,
         text += `- **${t}**: ${patterns.length} patterns (${patterns.map((p) => p.cwe).join(', ')})\n`;
       }
 
-      text += `\nUse the security tools (\`rana_detect_injection\`, \`rana_scan_pii\`, \`rana_filter_content\`, \`rana_analyze_code_safety\`) to scan text against these patterns.\n`;
+      text += `\nUse the security tools (\`cofounder_detect_injection\`, \`cofounder_scan_pii\`, \`cofounder_filter_content\`, \`cofounder_analyze_code_safety\`) to scan text against these patterns.\n`;
       return { contents: [{ uri, mimeType: 'text/markdown', text }] };
     }
 
-    case 'rana://policies/presets': {
+    case 'cofounder://policies/presets': {
       const text = `# Policy Presets
 
 ## Healthcare
 Recommended tools and settings for healthcare applications:
-- Run \`rana_check_hipaa\` on all text containing patient data
-- Run \`rana_scan_pii\` with min_confidence: 0.5 and redact: true
-- Run \`rana_check_compliance\` with frameworks: ["hipaa", "gdpr"]
-- Generate disclaimers with \`rana_generate_disclaimer\` framework: "hipaa"
+- Run \`cofounder_check_hipaa\` on all text containing patient data
+- Run \`cofounder_scan_pii\` with min_confidence: 0.5 and redact: true
+- Run \`cofounder_check_compliance\` with frameworks: ["hipaa", "gdpr"]
+- Generate disclaimers with \`cofounder_generate_disclaimer\` framework: "hipaa"
 - Guidelines: no_first_person: true, require_citations: true, tone: "formal"
 
 ## Finance
 Recommended for financial applications:
-- Run \`rana_check_compliance\` with frameworks: ["pci_dss", "gdpr", "soc2"]
-- Run \`rana_scan_pii\` to detect credit card numbers and account info
-- Run \`rana_analyze_code_safety\` on all generated code
-- Budget tracking with \`rana_budget_check\`
+- Run \`cofounder_check_compliance\` with frameworks: ["pci_dss", "gdpr", "soc2"]
+- Run \`cofounder_scan_pii\` to detect credit card numbers and account info
+- Run \`cofounder_analyze_code_safety\` on all generated code
+- Budget tracking with \`cofounder_budget_check\`
 - Guidelines: tone: "formal", no_first_person: true
 
 ## Education
 Recommended for educational platforms:
-- Run \`rana_check_compliance\` with frameworks: ["ferpa", "coppa"]
-- Run \`rana_filter_content\` to ensure age-appropriate content
-- Run \`rana_validate_prompt\` on student inputs
+- Run \`cofounder_check_compliance\` with frameworks: ["ferpa", "coppa"]
+- Run \`cofounder_filter_content\` to ensure age-appropriate content
+- Run \`cofounder_validate_prompt\` on student inputs
 - Guidelines: tone: "friendly", max_sentence_length: 25
 
 ## Enterprise General
 Recommended baseline for any enterprise application:
-- Run \`rana_validate_prompt\` on all user inputs
-- Run \`rana_detect_injection\` on prompts before sending to LLM
-- Run \`rana_scan_pii\` on LLM responses before displaying
-- Run \`rana_filter_content\` on generated content
-- Set budget with \`rana_budget_check\` action: "set_limit"
-- Run \`rana_score_response\` on critical outputs
-- Run \`rana_analyze_code_safety\` on any generated code
+- Run \`cofounder_validate_prompt\` on all user inputs
+- Run \`cofounder_detect_injection\` on prompts before sending to LLM
+- Run \`cofounder_scan_pii\` on LLM responses before displaying
+- Run \`cofounder_filter_content\` on generated content
+- Set budget with \`cofounder_budget_check\` action: "set_limit"
+- Run \`cofounder_score_response\` on critical outputs
+- Run \`cofounder_analyze_code_safety\` on any generated code
 
 ## Minimal (Development/Testing)
 Lightweight checks for development:
-- Run \`rana_detect_injection\` on untrusted inputs
-- Run \`rana_analyze_code_safety\` on generated code
-- Use \`rana_estimate_cost\` to track spending
+- Run \`cofounder_detect_injection\` on untrusted inputs
+- Run \`cofounder_analyze_code_safety\` on generated code
+- Use \`cofounder_estimate_cost\` to track spending
 `;
       return { contents: [{ uri, mimeType: 'text/markdown', text }] };
     }
@@ -2588,7 +2588,7 @@ server.setRequestHandler(ListPromptsRequestSchema, async () => ({
     // Existing prompts
     {
       name: 'init_project',
-      description: 'Initialize a new project with RANA',
+      description: 'Initialize a new project with CoFounder',
       arguments: [
         { name: 'project_name', description: 'Name of the project', required: true },
         { name: 'project_type', description: 'Type of project (nextjs, react, python)', required: false },
@@ -2610,7 +2610,7 @@ server.setRequestHandler(ListPromptsRequestSchema, async () => ({
     },
     // New prompts
     {
-      name: 'rana_secure_prompt',
+      name: 'cofounder_secure_prompt',
       description: 'Template for building injection-resistant prompts with guardrails',
       arguments: [
         { name: 'task', description: 'The task the prompt should accomplish', required: true },
@@ -2619,7 +2619,7 @@ server.setRequestHandler(ListPromptsRequestSchema, async () => ({
       ],
     },
     {
-      name: 'rana_compliant_prompt',
+      name: 'cofounder_compliant_prompt',
       description: 'Template for building prompts that comply with specific regulatory frameworks',
       arguments: [
         { name: 'task', description: 'The task the prompt should accomplish', required: true },
@@ -2628,7 +2628,7 @@ server.setRequestHandler(ListPromptsRequestSchema, async () => ({
       ],
     },
     {
-      name: 'rana_cost_optimized',
+      name: 'cofounder_cost_optimized',
       description: 'Template for building cost-optimized prompts that minimize token usage',
       arguments: [
         { name: 'task', description: 'The task the prompt should accomplish', required: true },
@@ -2649,7 +2649,7 @@ server.setRequestHandler(GetPromptRequestSchema, async (request) => {
           role: 'user',
           content: {
             type: 'text',
-            text: `Initialize a new RANA project named "${promptArgs?.project_name}" (type: ${promptArgs?.project_type || 'default'}).\n\nSteps:\n1. Create .rana.yml configuration\n2. Set up quality gates\n3. Configure project metadata\n4. Validate configuration\n\nPlease use the init_rana_project tool.`,
+            text: `Initialize a new CoFounder project named "${promptArgs?.project_name}" (type: ${promptArgs?.project_type || 'default'}).\n\nSteps:\n1. Create .cofounder.yml configuration\n2. Set up quality gates\n3. Configure project metadata\n4. Validate configuration\n\nPlease use the init_cofounder_project tool.`,
           },
         }],
       };
@@ -2671,12 +2671,12 @@ server.setRequestHandler(GetPromptRequestSchema, async (request) => {
           role: 'user',
           content: {
             type: 'text',
-            text: `Implement feature: ${promptArgs?.feature_description}\n\nFollow RANA quality gates:\n\n1. PRE-IMPLEMENTATION\n   - Run check_quality_gates for pre_implementation phase\n   - Search for existing implementations\n   - Validate approach\n\n2. IMPLEMENTATION\n   - Follow TypeScript strict mode\n   - Use design system components\n   - Implement with quality gates\n   - Run check_quality_gates for implementation phase\n\n3. TESTING\n   - Manual testing\n   - Edge cases\n   - Run check_quality_gates for testing phase\n\n4. DEPLOYMENT\n   - Deploy to production\n   - Verify functionality\n   - Run check_quality_gates for deployment phase\n\nUse check_quality_gates tool throughout.`,
+            text: `Implement feature: ${promptArgs?.feature_description}\n\nFollow CoFounder quality gates:\n\n1. PRE-IMPLEMENTATION\n   - Run check_quality_gates for pre_implementation phase\n   - Search for existing implementations\n   - Validate approach\n\n2. IMPLEMENTATION\n   - Follow TypeScript strict mode\n   - Use design system components\n   - Implement with quality gates\n   - Run check_quality_gates for implementation phase\n\n3. TESTING\n   - Manual testing\n   - Edge cases\n   - Run check_quality_gates for testing phase\n\n4. DEPLOYMENT\n   - Deploy to production\n   - Verify functionality\n   - Run check_quality_gates for deployment phase\n\nUse check_quality_gates tool throughout.`,
           },
         }],
       };
 
-    case 'rana_secure_prompt':
+    case 'cofounder_secure_prompt':
       return {
         messages: [{
           role: 'user',
@@ -2726,14 +2726,14 @@ Before providing a response, verify:
 ---
 
 Before using this prompt, validate it with:
-1. \`rana_detect_injection\` - Confirm no injection vectors
-2. \`rana_validate_prompt\` - Full safety validation
-3. \`rana_filter_content\` - Content safety check`,
+1. \`cofounder_detect_injection\` - Confirm no injection vectors
+2. \`cofounder_validate_prompt\` - Full safety validation
+3. \`cofounder_filter_content\` - Content safety check`,
           },
         }],
       };
 
-    case 'rana_compliant_prompt':
+    case 'cofounder_compliant_prompt':
       return {
         messages: [{
           role: 'user',
@@ -2797,14 +2797,14 @@ Before responding, verify:
 ---
 
 After creating the prompt, validate with:
-1. \`rana_check_compliance\` with frameworks: ["${promptArgs?.framework || 'gdpr'}"]
-2. \`rana_scan_pii\` with redact: true
-3. \`rana_generate_disclaimer\` for appropriate disclaimer text`,
+1. \`cofounder_check_compliance\` with frameworks: ["${promptArgs?.framework || 'gdpr'}"]
+2. \`cofounder_scan_pii\` with redact: true
+3. \`cofounder_generate_disclaimer\` for appropriate disclaimer text`,
           },
         }],
       };
 
-    case 'rana_cost_optimized':
+    case 'cofounder_cost_optimized':
       return {
         messages: [{
           role: 'user',
@@ -2833,7 +2833,7 @@ Cost Optimization Strategies:
    - Ask for bullet points instead of paragraphs
 
 3. MODEL SELECTION:
-   - Use \`rana_compare_models\` to find cheapest model that meets your needs
+   - Use \`cofounder_compare_models\` to find cheapest model that meets your needs
    - Consider: Does this task need GPT-4/Claude Opus quality, or can a smaller model handle it?
    - Use smaller models for classification, extraction, simple Q&A
    - Reserve larger models for complex reasoning, creative tasks, code generation
@@ -2853,9 +2853,9 @@ Format: Use bullet points. No preamble.
 ---
 
 After creating, validate with:
-1. \`rana_estimate_cost\` to verify per-request cost
-2. \`rana_compare_models\` to check if a cheaper model suffices
-3. \`rana_budget_check\` action: "set_limit" to track ongoing costs`,
+1. \`cofounder_estimate_cost\` to verify per-request cost
+2. \`cofounder_compare_models\` to check if a cheaper model suffices
+3. \`cofounder_budget_check\` action: "set_limit" to track ongoing costs`,
           },
         }],
       };
@@ -2872,7 +2872,7 @@ After creating, validate with:
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error('RANA MCP server v2.1.0 running on stdio');
+  console.error('CoFounder MCP server v2.1.0 running on stdio');
   console.error(`Loaded: ${MODEL_PRICING.length} models, ${INJECTION_PATTERNS.length} injection patterns, ${PII_PATTERNS.length} PII patterns, ${HIPAA_IDENTIFIERS.length} HIPAA identifiers, ${GDPR_CHECKS.length} GDPR checks, ${CODE_SECURITY_PATTERNS.length} code security patterns`);
 }
 

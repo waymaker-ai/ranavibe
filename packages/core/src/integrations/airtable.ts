@@ -1,5 +1,5 @@
 /**
- * Airtable Integration for RANA
+ * Airtable Integration for CoFounder
  *
  * Enables AI-powered database operations with Airtable.
  * Create, read, update, and query records using natural language.
@@ -709,11 +709,11 @@ export class AirtableIntegration extends EventEmitter {
   }
 
   // ===========================================================================
-  // RANA Integration Helpers
+  // CoFounder Integration Helpers
   // ===========================================================================
 
   /**
-   * Get tool definitions for RANA agents
+   * Get tool definitions for CoFounder agents
    */
   getToolDefinitions(): Array<{
     name: string;

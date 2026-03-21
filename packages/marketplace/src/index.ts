@@ -1,7 +1,7 @@
 /**
- * @ranavibe/marketplace — Community policy sharing infrastructure.
+ * @cofounder/marketplace — Community policy sharing infrastructure.
  *
- * Search, browse, import, and publish RANA policy packages.
+ * Search, browse, import, and publish CoFounder policy packages.
  */
 
 import { PolicyRegistry } from './registry';

@@ -23,7 +23,7 @@ const DEFAULT_IGNORE_DIRS = [
   '.cache',
 ];
 
-/** Parse a .ranaignore file (gitignore-style) into patterns */
+/** Parse a .cofounderignore file (gitignore-style) into patterns */
 export function parseIgnoreFile(content: string): string[] {
   return content
     .split('\n')
@@ -118,9 +118,9 @@ export function readFileSafe(filePath: string): string | null {
   }
 }
 
-/** Load .ranaignore patterns from a directory */
+/** Load .cofounderignore patterns from a directory */
 export function loadIgnorePatterns(rootPath: string): string[] {
-  const ignorePath = path.join(rootPath, '.ranaignore');
+  const ignorePath = path.join(rootPath, '.cofounderignore');
   try {
     const content = fs.readFileSync(ignorePath, 'utf-8');
     return parseIgnoreFile(content);
@@ -143,7 +143,7 @@ export function scanFiles(
 ): FileScanResult {
   const rootPath = path.resolve(config.scanPath);
 
-  // Load .ranaignore
+  // Load .cofounderignore
   const ignorePatterns = [
     ...config.ignorePatterns,
     ...loadIgnorePatterns(rootPath),

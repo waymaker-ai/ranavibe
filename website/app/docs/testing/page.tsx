@@ -9,7 +9,7 @@ const features = [
     icon: FlaskConical,
     title: 'AI Test Runner',
     description: 'Purpose-built test runner for AI applications with special matchers',
-    code: `import { aiTest, expect } from '@rana/testing';
+    code: `import { aiTest, expect } from '@cofounder/testing';
 
 aiTest('summarizes articles correctly', async () => {
   const result = await summarize(article);
@@ -25,7 +25,7 @@ aiTest('summarizes articles correctly', async () => {
     icon: CheckCircle,
     title: 'Semantic Matching',
     description: 'Compare outputs by meaning, not exact strings',
-    code: `import { semanticMatch, semanticSimilarity } from '@rana/testing';
+    code: `import { semanticMatch, semanticSimilarity } from '@cofounder/testing';
 
 // Check if two texts have the same meaning
 const match = await semanticMatch(
@@ -42,7 +42,7 @@ const score = await semanticSimilarity(text1, text2);
     icon: BarChart3,
     title: 'Statistical Assertions',
     description: 'Handle non-deterministic AI outputs with statistical testing',
-    code: `import { aiTest, expect } from '@rana/testing';
+    code: `import { aiTest, expect } from '@cofounder/testing';
 
 aiTest('classifier is mostly accurate', async () => {
   const results = await runMultiple(100, () =>
@@ -63,7 +63,7 @@ aiTest('classifier is mostly accurate', async () => {
     icon: Clock,
     title: 'Latency Assertions',
     description: 'Ensure responses meet performance requirements',
-    code: `import { aiTest, expect } from '@rana/testing';
+    code: `import { aiTest, expect } from '@cofounder/testing';
 
 aiTest('responds within SLA', async () => {
   const result = await timed(() => chat('Hello'));
@@ -80,7 +80,7 @@ aiTest('responds within SLA', async () => {
     icon: DollarSign,
     title: 'Cost Assertions',
     description: 'Control costs with per-test budget limits',
-    code: `import { aiTest, expect } from '@rana/testing';
+    code: `import { aiTest, expect } from '@cofounder/testing';
 
 aiTest('stays within budget', async () => {
   const result = await tracked(() =>
@@ -101,7 +101,7 @@ aiTest('stays within budget', async () => {
     icon: Camera,
     title: 'Snapshot Testing',
     description: 'Catch regressions with semantic snapshots',
-    code: `import { aiTest, expect } from '@rana/testing';
+    code: `import { aiTest, expect } from '@cofounder/testing';
 
 aiTest('prompt output is stable', async () => {
   const result = await generate(prompt);
@@ -146,7 +146,7 @@ export default function TestingPage() {
             statistical assertions, cost tracking, and regression testing.
           </p>
           <div className="mt-4 code-block font-mono text-sm">
-            npm install @rana/testing
+            npm install @cofounder/testing
           </div>
         </motion.div>
 
@@ -185,8 +185,8 @@ export default function TestingPage() {
         >
           <h2 className="text-2xl font-bold mb-4">Configuration</h2>
           <div className="code-block font-mono text-sm overflow-x-auto">
-            <pre>{`// rana.test.config.ts
-import { defineConfig } from '@rana/testing';
+            <pre>{`// cofounder.test.config.ts
+import { defineConfig } from '@cofounder/testing';
 
 export default defineConfig({
   // Run tests in parallel
@@ -220,11 +220,11 @@ export default defineConfig({
         >
           <h2 className="text-2xl font-bold mb-4">Jest Integration</h2>
           <p className="text-foreground-secondary mb-4">
-            Use RANA&apos;s AI matchers with your existing Jest setup:
+            Use CoFounder&apos;s AI matchers with your existing Jest setup:
           </p>
           <div className="code-block font-mono text-sm overflow-x-auto">
             <pre>{`// jest.setup.ts
-import '@rana/testing/jest';
+import '@cofounder/testing/jest';
 
 // Now use in any Jest test
 test('AI output is correct', async () => {

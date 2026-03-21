@@ -1,5 +1,5 @@
 /**
- * @ranavibe/llm-detect - Type definitions for LLM-augmented detection
+ * @cofounder/llm-detect - Type definitions for LLM-augmented detection
  */
 
 /** Supported LLM providers */

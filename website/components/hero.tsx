@@ -22,7 +22,7 @@ export function Hero() {
             className="inline-flex items-center space-x-2 px-4 py-1.5 mb-8 rounded-full border border-border bg-background-secondary"
           >
             <Sparkles className="h-4 w-4 text-gradient-from" />
-            <span className="text-sm font-medium">New: RANA 3.1 — 35 Packages, Sandbox, Streaming, Benchmarks, VS Code</span>
+            <span className="text-sm font-medium">New: CoFounder 3.1 — 35 Packages, Sandbox, Streaming, Benchmarks, VS Code</span>
           </motion.div>
 
           {/* Heading */}
@@ -101,11 +101,11 @@ export function Hero() {
             className="mt-16 text-left"
           >
             <div className="code-block font-mono text-sm">
-              <div className="text-foreground-secondary">$ npm install @ranavibe/guard @ranavibe/policies @ranavibe/agent-sdk</div>
-              <div className="mt-2 text-gradient-from">✓ Installed RANA 3.1 packages</div>
-              <div className="text-foreground-secondary mt-2">{`import { ComplianceEnforcer, PresetRules } from '@rana/compliance';`}</div>
-              <div className="text-foreground-secondary">{`import { GuidelineManager, Conditions } from '@rana/guidelines';`}</div>
-              <div className="text-foreground-secondary">{`import { ContextOptimizer } from '@rana/context-optimizer';`}</div>
+              <div className="text-foreground-secondary">$ npm install @cofounder/guard @cofounder/policies @cofounder/agent-sdk</div>
+              <div className="mt-2 text-gradient-from">✓ Installed CoFounder 3.1 packages</div>
+              <div className="text-foreground-secondary mt-2">{`import { ComplianceEnforcer, PresetRules } from '@cofounder/compliance';`}</div>
+              <div className="text-foreground-secondary">{`import { GuidelineManager, Conditions } from '@cofounder/guidelines';`}</div>
+              <div className="text-foreground-secondary">{`import { ContextOptimizer } from '@cofounder/context-optimizer';`}</div>
               <div className="mt-2 text-gradient-to">{`// HIPAA-compliant AI with built-in guardrails`}</div>
               <div className="text-foreground-secondary">{`const enforcer = new ComplianceEnforcer([PresetRules.hipaa()]);`}</div>
             </div>

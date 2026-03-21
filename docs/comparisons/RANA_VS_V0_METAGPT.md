@@ -1,12 +1,12 @@
-# RANA vs v0.dev & MetaGPT
+# CoFounder vs v0.dev & MetaGPT
 
-**Comparing RANA with v0.dev (Vercel) and MetaGPT for AI code generation.**
+**Comparing CoFounder with v0.dev (Vercel) and MetaGPT for AI code generation.**
 
 ---
 
 ## 🎯 TL;DR
 
-| Feature | RANA | v0.dev | MetaGPT |
+| Feature | CoFounder | v0.dev | MetaGPT |
 |---------|------|--------|---------|
 | **Type** | Framework | Web UI | Python Framework |
 | **Language** | TypeScript | Any (UI gen) | Python |
@@ -21,12 +21,12 @@
 
 ## 📊 What Each Tool Does
 
-### RANA
+### CoFounder
 **TypeScript framework for production AI features**
 
 ```typescript
-import { APIGenerator, DatabaseGenerator } from '@rana/generate';
-import { createComplianceEnforcer } from '@rana/compliance';
+import { APIGenerator, DatabaseGenerator } from '@cofounder/generate';
+import { createComplianceEnforcer } from '@cofounder/compliance';
 
 // Generate production APIs
 const api = APIGenerator.generateCRUD(spec, {
@@ -78,7 +78,7 @@ company.run("Build a todo app")
 
 ## 🔑 Detailed Comparisons
 
-## RANA vs v0.dev
+## CoFounder vs v0.dev
 
 ### What They Have in Common
 - Both generate code from natural language
@@ -89,7 +89,7 @@ company.run("Build a todo app")
 
 #### 1. Scope
 
-**RANA:**
+**CoFounder:**
 ```typescript
 // Full-stack generation
 const api = APIGenerator.generateCRUD({...});      // Backend API
@@ -110,16 +110,16 @@ const result = await generate('complete user management system', {
 - ❌ No database schemas
 - ❌ No API endpoints
 
-**Winner: RANA** - Full-stack vs UI-only
+**Winner: CoFounder** - Full-stack vs UI-only
 
 ---
 
 #### 2. Deployment
 
-**RANA:**
+**CoFounder:**
 ```typescript
 // Deploy as microservice
-import { generate } from '@rana/generate';
+import { generate } from '@cofounder/generate';
 
 app.post('/api/generate', async (req, res) => {
   const code = await generate(req.body.description);
@@ -133,13 +133,13 @@ app.post('/api/generate', async (req, res) => {
 - ❌ No programmatic access
 - ⚠️ Copy/paste code manually
 
-**Winner: RANA** - Programmatic API vs manual copy/paste
+**Winner: CoFounder** - Programmatic API vs manual copy/paste
 
 ---
 
 #### 3. Compliance
 
-**RANA:**
+**CoFounder:**
 ```typescript
 const enforcer = createComplianceEnforcer({
   enableAllPresets: true, // HIPAA, SEC, GDPR, CCPA
@@ -154,13 +154,13 @@ const safe = await enforcer.enforce(input, output, context);
 - ❌ No PII detection
 - ⚠️ You review manually
 
-**Winner: RANA** - Only option with compliance
+**Winner: CoFounder** - Only option with compliance
 
 ---
 
 #### 4. Customization
 
-**RANA:**
+**CoFounder:**
 ```typescript
 const api = APIGenerator.generateCRUD(spec, {
   framework: 'next',        // or 'express', 'fastify'
@@ -186,13 +186,13 @@ const schema = DatabaseGenerator.generatePrismaSchema(entity, {
 - ⚠️ Framework choice (React only)
 - ❌ No backend options
 
-**Winner: RANA** - Deep customization
+**Winner: CoFounder** - Deep customization
 
 ---
 
 #### 5. Use Cases
 
-**RANA Use Cases:**
+**CoFounder Use Cases:**
 - ✅ Internal code generation tools
 - ✅ Production API services
 - ✅ Database schema migrations
@@ -213,7 +213,7 @@ const schema = DatabaseGenerator.generatePrismaSchema(entity, {
 
 #### 6. Pricing
 
-**RANA:**
+**CoFounder:**
 - ✅ **Open source** (MIT)
 - ✅ **Free** forever
 - ⚠️ You pay LLM costs (if using AI features)
@@ -225,11 +225,11 @@ const schema = DatabaseGenerator.generatePrismaSchema(entity, {
 - 💰 Pro: $20/month (unlimited)
 - 💰 Enterprise: Custom pricing
 
-**Winner: RANA** - Open source vs paid
+**Winner: CoFounder** - Open source vs paid
 
 ---
 
-## RANA vs MetaGPT
+## CoFounder vs MetaGPT
 
 ### What They Have in Common
 - Both generate code programmatically
@@ -240,11 +240,11 @@ const schema = DatabaseGenerator.generatePrismaSchema(entity, {
 
 #### 1. Language Ecosystem
 
-**RANA:**
+**CoFounder:**
 ```typescript
 // Native TypeScript
-import { generate } from '@rana/generate';
-import type { GeneratedFile } from '@rana/generate';
+import { generate } from '@cofounder/generate';
+import type { GeneratedFile } from '@cofounder/generate';
 
 const files: GeneratedFile[] = await generate('user auth');
 ```
@@ -264,7 +264,7 @@ company.run("Build user auth")
 
 #### 2. Architecture
 
-**RANA:**
+**CoFounder:**
 ```typescript
 // Structured generators
 const api = APIGenerator.generateCRUD({...});
@@ -288,7 +288,7 @@ company.hire([
 company.run("Build todo app")
 ```
 
-**RANA Approach:**
+**CoFounder Approach:**
 - Direct code generation
 - Fast (seconds)
 - Predictable output
@@ -306,7 +306,7 @@ company.run("Build todo app")
 
 #### 3. Code Quality & Structure
 
-**RANA:**
+**CoFounder:**
 ```typescript
 // Production-ready with:
 // - Authentication
@@ -340,15 +340,15 @@ company.run("Build todo app")
 
 **Output**: Creative but inconsistent
 
-**Winner: RANA** - Production-ready vs experimental
+**Winner: CoFounder** - Production-ready vs experimental
 
 ---
 
 #### 4. Compliance
 
-**RANA:**
+**CoFounder:**
 ```typescript
-import { createComplianceEnforcer } from '@rana/compliance';
+import { createComplianceEnforcer } from '@cofounder/compliance';
 
 const enforcer = createComplianceEnforcer({
   enableAllPresets: true,
@@ -370,13 +370,13 @@ const safe = await enforcer.enforce(input, output, context);
 - ⚠️ You implement manually
 - ❌ No PII detection
 
-**Winner: RANA** - Only framework with compliance
+**Winner: CoFounder** - Only framework with compliance
 
 ---
 
 #### 5. Database Support
 
-**RANA:**
+**CoFounder:**
 ```typescript
 // 3 ORMs supported
 const prisma = DatabaseGenerator.generatePrismaSchema(entity, {
@@ -401,17 +401,17 @@ const sql = DatabaseGenerator.generateSQLMigration(entity, {
 - ⚠️ May generate SQL queries
 - ⚠️ Manual schema creation
 
-**Winner: RANA** - Built-in vs manual
+**Winner: CoFounder** - Built-in vs manual
 
 ---
 
 #### 6. Integration & Deployment
 
-**RANA:**
+**CoFounder:**
 ```typescript
 // Deploy as microservice
 import express from 'express';
-import { generate } from '@rana/generate';
+import { generate } from '@cofounder/generate';
 
 const app = express();
 
@@ -432,7 +432,7 @@ company = SoftwareCompany()
 company.run("Build app")  # Outputs to local files
 ```
 
-**RANA Deployment:**
+**CoFounder Deployment:**
 - ✅ Microservices
 - ✅ Serverless functions
 - ✅ CLI tools
@@ -443,13 +443,13 @@ company.run("Build app")  # Outputs to local files
 - ⚠️ Manual deployment
 - ❌ No built-in service mode
 
-**Winner: RANA** - Production-ready deployment
+**Winner: CoFounder** - Production-ready deployment
 
 ---
 
 #### 7. Speed & Performance
 
-**RANA:**
+**CoFounder:**
 ```typescript
 // Fast generation (< 1 second for structured)
 const api = APIGenerator.generateCRUD(spec); // ~500ms
@@ -467,7 +467,7 @@ company.run("Build todo app")
 # ProductManager → Architect → Engineer → ...
 ```
 
-**RANA:**
+**CoFounder:**
 - ✅ Fast (< 1s for templates)
 - ✅ Predictable timing
 - ✅ Can optimize for speed
@@ -477,13 +477,13 @@ company.run("Build todo app")
 - ⚠️ Variable timing
 - ⚠️ More LLM calls = higher cost
 
-**Winner: RANA** - Faster for production use
+**Winner: CoFounder** - Faster for production use
 
 ---
 
 ## 🎯 When to Choose Each
 
-### Choose RANA If:
+### Choose CoFounder If:
 
 1. **Building TypeScript/Node.js apps**
    - Next.js, React, Express
@@ -565,8 +565,8 @@ company.run("Build todo app")
 // 1. Use v0.dev for UI inspiration
 // Visit v0.dev, describe UI, get component
 
-// 2. Use RANA for backend
-import { APIGenerator, DatabaseGenerator } from '@rana/generate';
+// 2. Use CoFounder for backend
+import { APIGenerator, DatabaseGenerator } from '@cofounder/generate';
 
 const api = APIGenerator.generateCRUD(spec, {
   framework: 'next',
@@ -586,7 +586,7 @@ prd = pm.run("Write PRD for user management")
 
 ## 📊 Complete Feature Matrix
 
-| Feature | RANA | v0.dev | MetaGPT |
+| Feature | CoFounder | v0.dev | MetaGPT |
 |---------|------|--------|---------|
 | **Language** | TypeScript | Any (UI) | Python |
 | **API Generation** | ✅ Full CRUD | ❌ | ⚠️ Basic |
@@ -613,7 +613,7 @@ prd = pm.run("Write PRD for user management")
 
 ### All Three Serve Different Purposes
 
-**RANA**: Production-ready code generation with compliance
+**CoFounder**: Production-ready code generation with compliance
 - Best for: TypeScript apps, compliance-first, production services
 - Unique: Only framework with built-in HIPAA/SEC/GDPR
 
@@ -632,7 +632,7 @@ prd = pm.run("Write PRD for user management")
 ```
 UI Design → v0.dev (components)
         ↓
-Backend → RANA (APIs, DB, compliance)
+Backend → CoFounder (APIs, DB, compliance)
         ↓
 Docs → MetaGPT (PRD, architecture)
 ```
@@ -641,13 +641,13 @@ Docs → MetaGPT (PRD, architecture)
 
 ## 📚 Resources
 
-- **RANA**: [github.com/waymaker-ai/ranavibe](https://github.com/waymaker-ai/ranavibe)
+- **CoFounder**: [github.com/waymaker-ai/cofounder](https://github.com/waymaker-ai/cofounder)
 - **v0.dev**: [v0.dev](https://v0.dev)
 - **MetaGPT**: [github.com/geekan/MetaGPT](https://github.com/geekan/MetaGPT)
 
 ---
 
 **Last Updated**: January 2026
-**RANA Version**: 2.1
+**CoFounder Version**: 2.1
 **v0.dev**: Latest
 **MetaGPT**: 0.7.x

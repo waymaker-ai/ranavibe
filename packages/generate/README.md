@@ -1,17 +1,17 @@
-# @rana/generate
+# @cofounder/generate
 
 Natural language code generation with 30+ templates and context-aware output.
 
 ## Installation
 
 ```bash
-npm install @rana/generate
+npm install @cofounder/generate
 ```
 
 ## Quick Start
 
 ```typescript
-import { generate, listTemplates } from '@rana/generate';
+import { generate, listTemplates } from '@cofounder/generate';
 
 // Generate from natural language
 const code = await generate('create a login form with email and password');
@@ -53,7 +53,7 @@ const table = await generate(`
 Generate complete CRUD APIs with authentication, validation, and rate limiting:
 
 ```typescript
-import { APIGenerator, type CRUDSpec } from '@rana/generate';
+import { APIGenerator, type CRUDSpec } from '@cofounder/generate';
 
 const userAPI: CRUDSpec = {
   entity: 'User',
@@ -95,7 +95,7 @@ const { schema, resolvers } = APIGenerator.generateGraphQL(userAPI);
 Generate schemas for Prisma, Drizzle, or raw SQL:
 
 ```typescript
-import { DatabaseGenerator, type Entity } from '@rana/generate';
+import { DatabaseGenerator, type Entity } from '@cofounder/generate';
 
 const userEntity: Entity = {
   name: 'User',
@@ -144,7 +144,7 @@ const sqlMigration = DatabaseGenerator.generateSQLMigration(userEntity, {
 Automatically determine where files should go and manage imports:
 
 ```typescript
-import { FileIntegrator, analyzeCodebase } from '@rana/generate';
+import { FileIntegrator, analyzeCodebase } from '@cofounder/generate';
 
 // Analyze your codebase
 const context = await analyzeCodebase('./my-project');
@@ -221,7 +221,7 @@ const store = await generate({
 ### Context-Aware Generation
 
 ```typescript
-import { generate, analyzeContext } from '@rana/generate';
+import { generate, analyzeContext } from '@cofounder/generate';
 
 // Analyze codebase patterns
 const context = await analyzeContext('./src');
@@ -314,7 +314,7 @@ console.log(result.validation);
 ## Creating Custom Templates
 
 ```typescript
-import { registerTemplate, Template } from '@rana/generate';
+import { registerTemplate, Template } from '@cofounder/generate';
 
 const myTemplate: Template = {
   id: 'my-template',
@@ -382,16 +382,16 @@ registerTemplate(myTemplate);
 
 ```bash
 # Generate from description
-rana generate "create a button component"
+cofounder generate "create a button component"
 
 # Use specific template
-rana generate --template react-component "Button"
+cofounder generate --template react-component "Button"
 
 # List templates
-rana templates
+cofounder templates
 
 # Preview without writing
-rana generate --dry-run "component"
+cofounder generate --dry-run "component"
 ```
 
 ## Documentation

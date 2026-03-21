@@ -1,4 +1,4 @@
-# @ranavibe/sandbox
+# @cofounder/sandbox
 
 Lightweight Node.js agent execution sandbox. The NemoClaw/OpenShell alternative that runs anywhere without Docker or NVIDIA GPUs.
 
@@ -7,13 +7,13 @@ Lightweight Node.js agent execution sandbox. The NemoClaw/OpenShell alternative 
 ## Install
 
 ```bash
-npm install @ranavibe/sandbox
+npm install @cofounder/sandbox
 ```
 
 ## Quick Start
 
 ```typescript
-import { Sandbox, restrictedAgent } from '@ranavibe/sandbox';
+import { Sandbox, restrictedAgent } from '@cofounder/sandbox';
 
 const sandbox = new Sandbox({
   policy: restrictedAgent,
@@ -39,7 +39,7 @@ console.log(result.duration);     // 12 (ms)
 ### `Sandbox`
 
 ```typescript
-import { Sandbox } from '@ranavibe/sandbox';
+import { Sandbox } from '@cofounder/sandbox';
 
 const sandbox = new Sandbox(config: SandboxConfig);
 
@@ -110,7 +110,7 @@ limits:
 In TypeScript:
 
 ```typescript
-import { parsePolicy, registerPolicy, defaultPolicy } from '@ranavibe/sandbox';
+import { parsePolicy, registerPolicy, defaultPolicy } from '@cofounder/sandbox';
 
 // Register a base policy for inheritance
 registerPolicy(defaultPolicy);
@@ -139,7 +139,7 @@ const policy = parsePolicy({
 | `sandboxed` | /tmp only | None | node only | 10s |
 
 ```typescript
-import { restrictedAgent, openAgent, ciRunner, sandboxed } from '@ranavibe/sandbox';
+import { restrictedAgent, openAgent, ciRunner, sandboxed } from '@cofounder/sandbox';
 ```
 
 ## Guards
@@ -153,7 +153,7 @@ Guards are the enforcement layer. They intercept operations and check them again
 For advanced usage, guards can be used directly:
 
 ```typescript
-import { createFilesystemGuard, createNetworkGuard, createProcessGuard } from '@ranavibe/sandbox';
+import { createFilesystemGuard, createNetworkGuard, createProcessGuard } from '@cofounder/sandbox';
 
 const fsGuard = createFilesystemGuard(policy.filesystem, policy.limits, workingDir);
 const netGuard = createNetworkGuard(policy.network);
@@ -174,7 +174,7 @@ const procGuard = createProcessGuard(policy.process);
 
 ## Comparison with OpenShell / NemoClaw
 
-| Feature | @ranavibe/sandbox | OpenShell | NemoClaw |
+| Feature | @cofounder/sandbox | OpenShell | NemoClaw |
 |---------|-------------------|-----------|----------|
 | Runtime | Node.js (any platform) | Docker required | NVIDIA GPU + Docker |
 | Dependencies | Zero | Docker, container images | CUDA, Docker, GPU drivers |

@@ -1,6 +1,6 @@
 # PII Detection and Redaction
 
-Comprehensive personally identifiable information (PII) detection, redaction, and masking system for RANA.
+Comprehensive personally identifiable information (PII) detection, redaction, and masking system for CoFounder.
 
 ## Features
 
@@ -21,7 +21,7 @@ import {
   detectPIIAdvanced,
   redactPII,
   maskPII,
-} from '@rana/core';
+} from '@cofounder/core';
 ```
 
 ## Quick Start
@@ -262,7 +262,7 @@ const masked = maskPII(text);
 ### Validate Credit Cards
 
 ```typescript
-import { validateCreditCard, detectCreditCardType } from '@rana/core';
+import { validateCreditCard, detectCreditCardType } from '@cofounder/core';
 
 const isValid = validateCreditCard('4532015112830366');
 console.log(isValid); // true (uses Luhn algorithm)
@@ -499,12 +499,12 @@ if (!detector.hasPII(text)) {
 return detector.redact(text).processed;
 ```
 
-## Integration with RANA Security
+## Integration with CoFounder Security
 
 ### Combine with Audit Logger
 
 ```typescript
-import { createAuditLogger, createPIIDetector } from '@rana/core';
+import { createAuditLogger, createPIIDetector } from '@cofounder/core';
 
 const auditLogger = createAuditLogger({
   hashSensitiveData: true,
@@ -525,7 +525,7 @@ function secureLog(action: string, details: any) {
 ### Combine with Content Filter
 
 ```typescript
-import { createContentFilter, createPIIDetector } from '@rana/core';
+import { createContentFilter, createPIIDetector } from '@cofounder/core';
 
 const contentFilter = createContentFilter();
 const piiDetector = createPIIDetector();
@@ -662,4 +662,4 @@ const textsWithPII = texts.filter(text => detector.hasPII(text));
 
 ## License
 
-Part of RANA - Rapid AI Native Architecture. See main package for license details.
+Part of CoFounder - Rapid AI Native Architecture. See main package for license details.

@@ -13,7 +13,7 @@ interface CostEstimate {
   inputTokens: number;
   outputTokens: number;
   costPerMonth: number;
-  costWithRANA: number;
+  costWithCoFounder: number;
   savings: number;
   savingsPercent: number;
 }
@@ -68,7 +68,7 @@ export async function costEstimate(options: {
   provider?: string;
   model?: string;
 } = {}) {
-  console.log(chalk.bold.cyan('\n💰 RANA Cost Estimator\n'));
+  console.log(chalk.bold.cyan('\n💰 CoFounder Cost Estimator\n'));
 
   // Determine scenario
   let scenario: UsageScenario;
@@ -104,9 +104,9 @@ export async function costEstimate(options: {
       const outputCost = (monthlyOutputTokens / 1_000_000) * pricing.output;
       const costPerMonth = inputCost + outputCost;
 
-      // RANA saves ~70% through caching, smart routing, etc.
-      const costWithRANA = costPerMonth * 0.30;
-      const savings = costPerMonth - costWithRANA;
+      // CoFounder saves ~70% through caching, smart routing, etc.
+      const costWithCoFounder = costPerMonth * 0.30;
+      const savings = costPerMonth - costWithCoFounder;
       const savingsPercent = 70;
 
       estimates.push({
@@ -115,7 +115,7 @@ export async function costEstimate(options: {
         inputTokens: monthlyInputTokens,
         outputTokens: monthlyOutputTokens,
         costPerMonth,
-        costWithRANA,
+        costWithCoFounder,
         savings,
         savingsPercent,
       });
@@ -123,26 +123,26 @@ export async function costEstimate(options: {
   });
 
   // Sort by cost
-  estimates.sort((a, b) => a.costWithRANA - b.costWithRANA);
+  estimates.sort((a, b) => a.costWithCoFounder - b.costWithCoFounder);
 
   // Display results
   console.log(chalk.bold('\n💵 Monthly Cost Estimates'));
   console.log(chalk.gray('─'.repeat(60)));
-  console.log(chalk.gray('Provider        Model                  Standard    With RANA   Savings'));
+  console.log(chalk.gray('Provider        Model                  Standard    With CoFounder   Savings'));
   console.log(chalk.gray('─'.repeat(60)));
 
   estimates.forEach(est => {
     const providerPad = est.provider.padEnd(14);
     const modelPad = est.model.padEnd(22);
     const costPad = ('$' + est.costPerMonth.toFixed(2)).padStart(10);
-    const ranaCostPad = ('$' + est.costWithRANA.toFixed(2)).padStart(10);
+    const cofounderCostPad = ('$' + est.costWithCoFounder.toFixed(2)).padStart(10);
     const savingsPad = ('$' + est.savings.toFixed(2)).padStart(10);
 
     console.log(
       chalk.white(providerPad) +
       chalk.cyan(modelPad) +
       chalk.red(costPad) +
-      chalk.green(ranaCostPad) +
+      chalk.green(cofounderCostPad) +
       chalk.yellow(savingsPad)
     );
   });
@@ -153,15 +153,15 @@ export async function costEstimate(options: {
 
   console.log(chalk.bold('\n📈 Summary'));
   console.log(chalk.gray('─'.repeat(60)));
-  console.log(chalk.green(`  Cheapest:    ${cheapest.provider}/${cheapest.model} at $${cheapest.costWithRANA.toFixed(2)}/mo`));
-  console.log(chalk.red(`  Expensive:   ${mostExpensive.provider}/${mostExpensive.model} at $${mostExpensive.costWithRANA.toFixed(2)}/mo`));
+  console.log(chalk.green(`  Cheapest:    ${cheapest.provider}/${cheapest.model} at $${cheapest.costWithCoFounder.toFixed(2)}/mo`));
+  console.log(chalk.red(`  Expensive:   ${mostExpensive.provider}/${mostExpensive.model} at $${mostExpensive.costWithCoFounder.toFixed(2)}/mo`));
 
-  // Calculate potential savings if using RANA vs not using RANA with GPT-4
+  // Calculate potential savings if using CoFounder vs not using CoFounder with GPT-4
   const gpt4Estimate = estimates.find(e => e.model === 'gpt-4-turbo');
   if (gpt4Estimate) {
-    console.log(chalk.bold('\n💡 If using GPT-4 Turbo without RANA:'));
+    console.log(chalk.bold('\n💡 If using GPT-4 Turbo without CoFounder:'));
     console.log(chalk.red(`  Standard Cost:  $${gpt4Estimate.costPerMonth.toFixed(2)}/mo`));
-    console.log(chalk.green(`  With RANA:      $${gpt4Estimate.costWithRANA.toFixed(2)}/mo`));
+    console.log(chalk.green(`  With CoFounder:      $${gpt4Estimate.costWithCoFounder.toFixed(2)}/mo`));
     console.log(chalk.yellow(`  You Save:       $${gpt4Estimate.savings.toFixed(2)}/mo (70%)`));
     console.log(chalk.green(`  Annual Savings: $${(gpt4Estimate.savings * 12).toFixed(2)}/year`));
   }
@@ -173,13 +173,13 @@ export async function costEstimate(options: {
   console.log('  2. Use ' + chalk.cyan('Claude Sonnet') + ' for complex reasoning');
   console.log('  3. Use ' + chalk.cyan('GPT-4') + ' only for specialized tasks');
   console.log('  4. Enable ' + chalk.cyan('response caching') + ' for 40% additional savings');
-  console.log('  5. Run ' + chalk.cyan('rana llm:optimize') + ' to apply all optimizations');
+  console.log('  5. Run ' + chalk.cyan('cofounder llm:optimize') + ' to apply all optimizations');
 
   console.log();
 }
 
 export async function costCompare() {
-  console.log(chalk.bold.cyan('\n💰 RANA Provider Comparison\n'));
+  console.log(chalk.bold.cyan('\n💰 CoFounder Provider Comparison\n'));
 
   console.log(chalk.bold('Pricing per 1M tokens (as of January 2025)'));
   console.log(chalk.gray('─'.repeat(70)));
@@ -212,6 +212,6 @@ export async function costCompare() {
     );
   });
 
-  console.log(chalk.gray('\n* RANA automatically routes to optimal models and caches responses'));
-  console.log(chalk.gray('* Run `rana cost:estimate` for usage-based estimates\n'));
+  console.log(chalk.gray('\n* CoFounder automatically routes to optimal models and caches responses'));
+  console.log(chalk.gray('* Run `cofounder cost:estimate` for usage-based estimates\n'));
 }

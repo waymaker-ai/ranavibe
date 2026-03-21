@@ -1,6 +1,6 @@
 import type { GitHubContext } from '../types.js';
 
-const COMMENT_MARKER = '<!-- rana-ci-scan -->';
+const COMMENT_MARKER = '<!-- cofounder-ci-scan -->';
 
 /**
  * Make a GitHub API request using native fetch (Node 18+).
@@ -35,7 +35,7 @@ async function githubFetch(
 }
 
 /**
- * Find an existing RANA CI comment on a PR.
+ * Find an existing CoFounder CI comment on a PR.
  */
 async function findExistingComment(
   context: GitHubContext,
@@ -65,7 +65,7 @@ async function findExistingComment(
 
 /**
  * Post or update a PR comment with scan results.
- * If a previous RANA CI comment exists, it will be updated.
+ * If a previous CoFounder CI comment exists, it will be updated.
  */
 export async function postOrUpdateComment(
   context: GitHubContext,

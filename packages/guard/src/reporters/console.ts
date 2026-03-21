@@ -19,7 +19,7 @@ export function reportCheck(result: CheckResult): void {
     ? `${COLORS.yellow}${COLORS.bold}WARNING${COLORS.reset}`
     : `${COLORS.green}${COLORS.bold}PASSED${COLORS.reset}`;
 
-  console.log(`\n${COLORS.cyan}[RANA Guard]${COLORS.reset} ${status}`);
+  console.log(`\n${COLORS.cyan}[CoFounder Guard]${COLORS.reset} ${status}`);
 
   if (result.blocked && result.reason) {
     console.log(`  ${COLORS.red}Reason: ${result.reason}${COLORS.reset}`);
@@ -56,7 +56,7 @@ export function reportCheck(result: CheckResult): void {
 }
 
 export function reportSummary(report: GuardReport): void {
-  console.log(`\n${COLORS.cyan}${COLORS.bold}=== RANA Guard Report ===${COLORS.reset}`);
+  console.log(`\n${COLORS.cyan}${COLORS.bold}=== CoFounder Guard Report ===${COLORS.reset}`);
   console.log(`${COLORS.dim}Period: ${new Date(report.startedAt).toISOString()} - ${new Date(report.lastCheckAt).toISOString()}${COLORS.reset}\n`);
 
   const rows = [

@@ -9,7 +9,7 @@ const features = [
     icon: DollarSign,
     title: 'Cost Tracking',
     description: 'Real-time tracking of all AI API costs',
-    code: `import { CostTracker } from '@rana/core';
+    code: `import { CostTracker } from '@cofounder/core';
 
 const tracker = new CostTracker({
   storage: 'postgresql',
@@ -41,7 +41,7 @@ const invoice = await tracker.generateInvoice({
     icon: Wallet,
     title: 'Budget Management',
     description: 'Set and enforce spending limits',
-    code: `import { BudgetManager } from '@rana/core';
+    code: `import { BudgetManager } from '@cofounder/core';
 
 const budget = new BudgetManager({
   storage: 'redis',
@@ -80,7 +80,7 @@ budget.on('threshold', (userId, percentage, budget) => {
     icon: TrendingDown,
     title: 'Cost Optimization',
     description: 'Automatic cost reduction strategies',
-    code: `import { CostOptimizer } from '@rana/core';
+    code: `import { CostOptimizer } from '@cofounder/core';
 
 const optimizer = new CostOptimizer({
   strategies: ['caching', 'model-routing', 'prompt-compression'],
@@ -109,7 +109,7 @@ const recommendations = await optimizer.analyze();
     icon: Calculator,
     title: 'Cost Estimation',
     description: 'Predict costs before making requests',
-    code: `import { CostEstimator } from '@rana/core';
+    code: `import { CostEstimator } from '@cofounder/core';
 
 const estimator = new CostEstimator();
 
@@ -146,7 +146,7 @@ const comparison = estimator.compareModels(userPrompt, [
     icon: BarChart3,
     title: 'Usage Analytics',
     description: 'Detailed analytics and reporting',
-    code: `import { UsageAnalytics } from '@rana/core';
+    code: `import { UsageAnalytics } from '@cofounder/core';
 
 const analytics = new UsageAnalytics({
   storage: 'postgresql',
@@ -189,7 +189,7 @@ console.log(dashboard.topModels);       // [{ model: 'gpt-4', cost: $800 }]`,
     icon: Bell,
     title: 'Cost Alerts',
     description: 'Proactive alerting for cost anomalies',
-    code: `import { CostAlerts } from '@rana/core';
+    code: `import { CostAlerts } from '@cofounder/core';
 
 const alerts = new CostAlerts({
   channels: [
@@ -259,7 +259,7 @@ export default function CostManagementPage() {
             cost estimation, analytics, and automated optimization.
           </p>
           <div className="mt-4 code-block font-mono text-sm">
-            npm install @rana/core
+            npm install @cofounder/core
           </div>
         </motion.div>
 
@@ -345,7 +345,7 @@ export default function CostManagementPage() {
             </table>
           </div>
           <p className="mt-4 text-sm text-foreground-secondary">
-            * Prices are approximate and may vary. RANA automatically tracks actual costs from each provider.
+            * Prices are approximate and may vary. CoFounder automatically tracks actual costs from each provider.
           </p>
         </motion.div>
       </div>

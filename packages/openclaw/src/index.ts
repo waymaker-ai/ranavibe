@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// @ranavibe/openclaw - RANA guardrails for OpenClaw agents
+// @cofounder/openclaw - CoFounder guardrails for OpenClaw agents
 // ---------------------------------------------------------------------------
 // Zero-dependency integration providing PII detection, prompt injection
 // blocking, toxicity detection, compliance enforcement, and cost tracking
@@ -7,7 +7,7 @@
 // ---------------------------------------------------------------------------
 
 // Skill (primary integration)
-export { createRanaSkill } from './skill.js';
+export { createCoFounderSkill } from './skill.js';
 
 // Bridge (standalone usage)
 export { OpenClawBridge } from './bridge.js';

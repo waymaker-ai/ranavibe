@@ -1,5 +1,5 @@
 /**
- * AWS Bedrock Guardrails adapter — converts between RANA and Bedrock formats.
+ * AWS Bedrock Guardrails adapter — converts between CoFounder and Bedrock formats.
  */
 
 import type {
@@ -16,10 +16,10 @@ import type {
 } from '../types';
 
 // ---------------------------------------------------------------------------
-// Bedrock content filter → RANA category mapping
+// Bedrock content filter → CoFounder category mapping
 // ---------------------------------------------------------------------------
 
-const BEDROCK_CONTENT_FILTER_TO_RANA: Record<string, RanaCategory> = {
+const BEDROCK_CONTENT_FILTER_TO_CoFounder: Record<string, RanaCategory> = {
   HATE: 'hate_speech',
   INSULTS: 'toxicity',
   SEXUAL: 'sexual_content',
@@ -28,7 +28,7 @@ const BEDROCK_CONTENT_FILTER_TO_RANA: Record<string, RanaCategory> = {
   PROMPT_ATTACK: 'injection',
 };
 
-const RANA_TO_BEDROCK_CONTENT_FILTER: Record<string, string> = {
+const CoFounder_TO_BEDROCK_CONTENT_FILTER: Record<string, string> = {
   hate_speech: 'HATE',
   toxicity: 'INSULTS',
   sexual_content: 'SEXUAL',
@@ -38,7 +38,7 @@ const RANA_TO_BEDROCK_CONTENT_FILTER: Record<string, string> = {
 };
 
 // ---------------------------------------------------------------------------
-// Bedrock PII types → RANA PII mapping
+// Bedrock PII types → CoFounder PII mapping
 // ---------------------------------------------------------------------------
 
 const BEDROCK_PII_TYPES: string[] = [
@@ -95,7 +95,7 @@ function mapBedrockStrength(strength: string): Severity {
   }
 }
 
-function ranaActionToBedrockAction(action: RanaAction): string {
+function cofounderActionToBedrockAction(action: RanaAction): string {
   switch (action) {
     case 'block':
       return 'BLOCKED';
@@ -108,7 +108,7 @@ function ranaActionToBedrockAction(action: RanaAction): string {
   }
 }
 
-function ranaActionToBedrockStrength(action: RanaAction): string {
+function cofounderActionToBedrockStrength(action: RanaAction): string {
   switch (action) {
     case 'block':
       return 'HIGH';
@@ -126,7 +126,7 @@ function policyForCategory(
   policies: PolicyMapping[],
   category: RanaCategory,
 ): PolicyMapping | undefined {
-  return policies.find((p) => p.ranaCategory === category);
+  return policies.find((p) => p.cofounderCategory === category);
 }
 
 // ---------------------------------------------------------------------------
@@ -233,7 +233,7 @@ class BedrockAdapter implements Adapter {
   }
 
   /**
-   * Export RANA policies into a Bedrock guardrail configuration format.
+   * Export CoFounder policies into a Bedrock guardrail configuration format.
    */
   exportPolicies(): ExportResult {
     const contentFilters: BedrockContentFilter[] = [];
@@ -241,21 +241,21 @@ class BedrockAdapter implements Adapter {
     const topicPolicies: BedrockTopicPolicy[] = [];
 
     for (const policy of this.config.policies) {
-      const bedrockFilter = RANA_TO_BEDROCK_CONTENT_FILTER[policy.ranaCategory];
+      const bedrockFilter = CoFounder_TO_BEDROCK_CONTENT_FILTER[policy.cofounderCategory];
       if (bedrockFilter) {
         contentFilters.push({
           type: bedrockFilter,
-          inputStrength: ranaActionToBedrockStrength(policy.action),
-          outputStrength: ranaActionToBedrockStrength(policy.action),
+          inputStrength: cofounderActionToBedrockStrength(policy.action),
+          outputStrength: cofounderActionToBedrockStrength(policy.action),
         });
         continue;
       }
 
-      if (policy.ranaCategory === 'pii') {
+      if (policy.cofounderCategory === 'pii') {
         for (const piiType of BEDROCK_PII_TYPES) {
           piiEntities.push({
             type: piiType,
-            action: ranaActionToBedrockAction(policy.action),
+            action: cofounderActionToBedrockAction(policy.action),
           });
         }
         continue;
@@ -263,14 +263,14 @@ class BedrockAdapter implements Adapter {
 
       // Everything else → topic policy
       topicPolicies.push({
-        name: policy.ranaCategory,
-        definition: `Block content related to ${policy.ranaCategory}`,
-        action: ranaActionToBedrockAction(policy.action),
+        name: policy.cofounderCategory,
+        definition: `Block content related to ${policy.cofounderCategory}`,
+        action: cofounderActionToBedrockAction(policy.action),
       });
     }
 
     const guardrailConfig = {
-      name: `rana-guardrail-${this.config.guardrailId}`,
+      name: `cofounder-guardrail-${this.config.guardrailId}`,
       contentPolicyConfig: { filtersConfig: contentFilters },
       sensitiveInformationPolicyConfig: { piiEntitiesConfig: piiEntities },
       topicPolicyConfig: { topicsConfig: topicPolicies },
@@ -284,7 +284,7 @@ class BedrockAdapter implements Adapter {
   }
 
   /**
-   * Import raw Bedrock evaluation results into RANA-normalised findings.
+   * Import raw Bedrock evaluation results into CoFounder-normalised findings.
    */
   importResults(raw: unknown): ImportResult {
     if (!raw || typeof raw !== 'object') {
@@ -318,14 +318,14 @@ class BedrockAdapter implements Adapter {
     for (const assessment of raw.assessments ?? []) {
       // Content filters
       for (const filter of assessment.contentPolicy?.filters ?? []) {
-        const ranaCategory = BEDROCK_CONTENT_FILTER_TO_RANA[filter.type] ?? 'custom';
+        const cofounderCategory = BEDROCK_CONTENT_FILTER_TO_CoFounder[filter.type] ?? 'custom';
         const severity = mapBedrockStrength(filter.strength ?? 'MEDIUM');
-        const policy = policyForCategory(this.config.policies, ranaCategory);
+        const policy = policyForCategory(this.config.policies, cofounderCategory);
         const confidence = filter.confidence ?? 0.8;
 
         findings.push({
           source: 'bedrock',
-          category: ranaCategory,
+          category: cofounderCategory,
           severity,
           action: policy?.action ?? (filter.action === 'BLOCKED' ? 'block' : 'flag'),
           message: `Bedrock content filter: ${filter.type} (strength: ${filter.strength ?? 'MEDIUM'})`,
@@ -350,12 +350,12 @@ class BedrockAdapter implements Adapter {
 
       // Topic policies
       for (const topic of assessment.topicPolicy?.topics ?? []) {
-        const ranaCategory: RanaCategory =
+        const cofounderCategory: RanaCategory =
           (topic.name as RanaCategory) ?? 'custom';
-        const policy = policyForCategory(this.config.policies, ranaCategory);
+        const policy = policyForCategory(this.config.policies, cofounderCategory);
         findings.push({
           source: 'bedrock',
-          category: ranaCategory,
+          category: cofounderCategory,
           severity: 'high',
           action: policy?.action ?? (topic.action === 'BLOCKED' ? 'block' : 'flag'),
           message: `Bedrock topic policy: ${topic.name}`,

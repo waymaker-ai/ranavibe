@@ -1,12 +1,12 @@
 /**
- * @ranavibe/openclaw Demo
+ * @cofounder/openclaw Demo
  *
  * Run with: npx tsx index.ts
  *
- * Demonstrates how RANA integrates with OpenClaw agents as a skill,
+ * Demonstrates how CoFounder integrates with OpenClaw agents as a skill,
  * providing guard hooks for messages and tool calls.
  *
- * Note: This example uses the @ranavibe/openclaw types and demonstrates
+ * Note: This example uses the @cofounder/openclaw types and demonstrates
  * the skill/bridge pattern. The actual OpenClaw runtime is not required.
  */
 
@@ -18,21 +18,21 @@ import type {
   GuardResult,
   BridgeConfig,
   SkillManifest,
-} from '@ranavibe/openclaw';
+} from '@cofounder/openclaw';
 
 // ─── Helper: Simulated guard logic ─────────────────────────────────────────────
-// In production, the @ranavibe/openclaw package provides createRanaSkill()
+// In production, the @cofounder/openclaw package provides createCoFounderSkill()
 // and OpenClawBridge. Here we simulate the pattern to show the integration.
 
-function createRanaSkill(config: OpenClawSkillConfig = {}): OpenClawSkill {
+function createCoFounderSkill(config: OpenClawSkillConfig = {}): OpenClawSkill {
   const piiMode = config.pii ?? 'redact';
   const injectionAction = config.injectionAction ?? 'block';
   let totalChecks = 0;
   let blocked = 0;
 
   const manifest: SkillManifest = {
-    name: 'rana-guard',
-    description: 'RANA AI guardrails - PII, injection, compliance, cost tracking',
+    name: 'cofounder-guard',
+    description: 'CoFounder AI guardrails - PII, injection, compliance, cost tracking',
     version: '1.0.0',
     author: 'Waymaker',
     capabilities: ['pii-detection', 'injection-blocking', 'compliance', 'cost-tracking'],
@@ -155,7 +155,7 @@ function createRanaSkill(config: OpenClawSkillConfig = {}): OpenClawSkill {
     },
     commands: {
       async status(context: OpenClawContext) {
-        return `RANA Guard active. ${totalChecks} checks performed, ${blocked} blocked.`;
+        return `CoFounder Guard active. ${totalChecks} checks performed, ${blocked} blocked.`;
       },
       async report(context: OpenClawContext) {
         return JSON.stringify({ totalChecks, blocked, passed: totalChecks - blocked }, null, 2);
@@ -168,7 +168,7 @@ class OpenClawBridge {
   private skill: OpenClawSkill;
 
   constructor(config: BridgeConfig = {}) {
-    this.skill = createRanaSkill(config.guardOptions);
+    this.skill = createCoFounderSkill(config.guardOptions);
   }
 
   getSkill(): OpenClawSkill {
@@ -188,14 +188,14 @@ class OpenClawBridge {
 
 async function main() {
   console.log('╔══════════════════════════════════════════════╗');
-  console.log('║       @ranavibe/openclaw Demo               ║');
+  console.log('║       @cofounder/openclaw Demo               ║');
   console.log('╚══════════════════════════════════════════════╝\n');
 
   // ─── 1. Create skill ─────────────────────────────────────────────────────
 
-  console.log('=== 1. Create RANA Skill ===\n');
+  console.log('=== 1. Create CoFounder Skill ===\n');
 
-  const skill = createRanaSkill({
+  const skill = createCoFounderSkill({
     pii: 'redact',
     injectionAction: 'block',
     toxicity: 'block',

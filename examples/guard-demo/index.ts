@@ -1,5 +1,5 @@
 /**
- * @ranavibe/guard Demo
+ * @cofounder/guard Demo
  *
  * Run with: npx tsx index.ts
  *
@@ -7,7 +7,7 @@
  * cost tracking, and the reporting API.
  */
 
-import { createGuard, guard, detectPII, redactPII, hasInjection } from '@ranavibe/guard';
+import { createGuard, guard, detectPII, redactPII, hasInjection } from '@cofounder/guard';
 
 // ─── 1. One-shot guard check ───────────────────────────────────────────────────
 
@@ -92,7 +92,7 @@ console.log('Denied model (gpt-4-turbo):', denied.blocked ? 'BLOCKED' : 'ALLOWED
 
 console.log('\n=== 5. Standalone Detectors ===\n');
 
-const pii = detectPII('Call me at (555) 123-4567 or email support@rana.cx');
+const pii = detectPII('Call me at (555) 123-4567 or email support@cofounder.cx');
 console.log(
   'Standalone PII:',
   pii.map((f) => `${f.type}=${f.value}`),

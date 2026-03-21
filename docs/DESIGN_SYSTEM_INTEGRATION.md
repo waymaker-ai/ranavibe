@@ -1,12 +1,12 @@
-# Design System Integration with RANA
+# Design System Integration with CoFounder
 
-**How to enforce your design system with RANA quality gates**
+**How to enforce your design system with CoFounder quality gates**
 
 ---
 
 ## Quick Start
 
-### 1. Configure Your Design System in `.rana.yml`
+### 1. Configure Your Design System in `.cofounder.yml`
 
 ```yaml
 standards:
@@ -25,13 +25,13 @@ standards:
 
 ```bash
 # Check compliance
-rana check-design-system
+cofounder check-design-system
 
 # See coverage report
-rana design-coverage
+cofounder design-coverage
 
 # Auto-fix violations
-rana design-violations --fix
+cofounder design-violations --fix
 ```
 
 ### 3. Enforce in CI/CD
@@ -40,15 +40,15 @@ rana design-violations --fix
 # .github/workflows/ci.yml
 - name: Design System Compliance
   run: |
-    rana check-design-system
-    rana design-coverage --threshold 90
+    cofounder check-design-system
+    cofounder design-coverage --threshold 90
 ```
 
 ---
 
 ## Configuration Options
 
-### Full `.rana.yml` Design System Block
+### Full `.cofounder.yml` Design System Block
 
 ```yaml
 design_system:
@@ -180,7 +180,7 @@ import { Button } from '@/components/ui/button';
 </Button>
 ```
 
-**How RANA enforces:**
+**How CoFounder enforces:**
 - Searches code for `<button className=`
 - Blocks commit if found
 - Suggests design system component
@@ -205,7 +205,7 @@ import { Card } from '@/components/ui/card';
 </Card>
 ```
 
-**How RANA enforces:**
+**How CoFounder enforces:**
 - Regex search for `style={{`
 - Blocks commit if found
 - Suggests Tailwind classes or design system
@@ -226,7 +226,7 @@ className="bg-primary text-primary-foreground"
 className="text-destructive"
 ```
 
-**How RANA enforces:**
+**How CoFounder enforces:**
 - Searches for hex colors (#...), rgb(), hsl()
 - Blocks hardcoded colors
 - Requires `var(--color-name)` or Tailwind semantic classes
@@ -247,7 +247,7 @@ className="p-4"  // 16px (4 * 4)
 className="p-3"  // 12px (3 * 4)
 ```
 
-**How RANA enforces:**
+**How CoFounder enforces:**
 - Checks spacing values
 - Ensures multiples of 4 (4px grid)
 - Suggests nearest valid value
@@ -259,7 +259,7 @@ className="p-3"  // 12px (3 * 4)
 ### Coverage Report
 
 ```bash
-rana design-coverage
+cofounder design-coverage
 ```
 
 **Output:**
@@ -280,13 +280,13 @@ Violations:
   - 5 inline styles
   - 3 direct <button> elements
 
-Run 'rana design-violations' for details
+Run 'cofounder design-violations' for details
 ```
 
 ### Set Coverage Threshold
 
 ```yaml
-# .rana.yml
+# .cofounder.yml
 design_system:
   coverage:
     minimum: 90  # Require 90% coverage
@@ -301,10 +301,10 @@ design_system:
 
 ```bash
 # Show violations
-rana design-violations
+cofounder design-violations
 
 # Auto-fix what's possible
-rana design-violations --fix
+cofounder design-violations --fix
 ```
 
 ### What Gets Auto-Fixed
@@ -406,7 +406,7 @@ design_system:
 
 ### Configure AI to Enforce Design System
 
-Add to `.rana.yml`:
+Add to `.cofounder.yml`:
 
 ```yaml
 ai_assistant:
@@ -458,9 +458,9 @@ jobs:
 
       - name: Design System Check
         run: |
-          rana check-design-system
-          rana design-coverage --threshold 90
-          rana design-violations
+          cofounder check-design-system
+          cofounder design-coverage --threshold 90
+          cofounder design-violations
 
       - name: Accessibility Audit
         run: npm run a11y-audit
@@ -473,10 +473,10 @@ jobs:
 #!/bin/sh
 
 # Check design system compliance
-rana check-design-system || exit 1
+cofounder check-design-system || exit 1
 
 # Check coverage threshold
-rana design-coverage --threshold 85 || exit 1
+cofounder design-coverage --threshold 85 || exit 1
 ```
 
 ### Pre-Push Hook
@@ -486,7 +486,7 @@ rana design-coverage --threshold 85 || exit 1
 #!/bin/sh
 
 # Full design system audit
-rana check-design-system --strict
+cofounder check-design-system --strict
 
 # Accessibility tests
 npm run a11y-audit
@@ -498,7 +498,7 @@ npm run a11y-audit
 
 ### Example 1: Enforcing Button Usage
 
-**`.rana.yml`:**
+**`.cofounder.yml`:**
 ```yaml
 design_system:
   components:
@@ -519,7 +519,7 @@ quality_gates:
 </button>
 ```
 
-**RANA output:**
+**CoFounder output:**
 ```
 ❌ Design System Violation
 
@@ -536,7 +536,7 @@ Autofix:
 
 ### Example 2: Color Consistency
 
-**`.rana.yml`:**
+**`.cofounder.yml`:**
 ```yaml
 design_system:
   style_tokens:
@@ -558,7 +558,7 @@ quality_gates:
 </div>
 ```
 
-**RANA output:**
+**CoFounder output:**
 ```
 ❌ Design System Violation
 
@@ -576,7 +576,7 @@ Autofix:
 
 ### Example 3: Spacing Grid
 
-**`.rana.yml`:**
+**`.cofounder.yml`:**
 ```yaml
 design_system:
   style_tokens:
@@ -597,7 +597,7 @@ quality_gates:
 </div>
 ```
 
-**RANA output:**
+**CoFounder output:**
 ```
 ❌ Design System Violation
 
@@ -657,8 +657,8 @@ function suggestDesignToken(value: string): string {
 ### Register Custom Rule
 
 ```typescript
-// .rana/custom-rules.ts
-import { DesignSystemChecker } from '@rana/core';
+// .cofounder/custom-rules.ts
+import { DesignSystemChecker } from '@cofounder/core';
 import { noMagicNumbers } from './rules/no-magic-numbers';
 
 const checker = new DesignSystemChecker(config);
@@ -680,20 +680,20 @@ checker.addRule(noMagicNumbers);
 
 ### Next Steps
 
-1. **Configure**: Copy `templates/rana-custom-design-system.yml`
+1. **Configure**: Copy `templates/cofounder-custom-design-system.yml`
 2. **Enable**: Set `design_system.enabled: true`
-3. **Run check**: `rana check-design-system`
-4. **Fix violations**: `rana design-violations --fix`
+3. **Run check**: `cofounder check-design-system`
+4. **Fix violations**: `cofounder design-violations --fix`
 5. **Add to CI**: GitHub Actions workflow
 6. **Monitor coverage**: Track over time
 
 ---
 
 **Questions?**
-- **Docs**: https://rana.cx/docs/design-systems
+- **Docs**: https://cofounder.cx/docs/design-systems
 - **Email**: support@waymaker.cx
-- **Discord**: https://discord.gg/rana
+- **Discord**: https://discord.gg/cofounder
 
 ---
 
-**Built with RANA** 🚀
+**Built with CoFounder** 🚀

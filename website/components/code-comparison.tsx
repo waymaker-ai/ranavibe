@@ -22,14 +22,14 @@ const messages = [
 
 const response = await model.invoke(messages);
 console.log(response.content);`,
-    rana: `import { createRana } from '@rana/core';
+    cofounder: `import { createCoFounder } from '@cofounder/core';
 
-const rana = createRana();
+const cofounder = createCoFounder();
 
-const response = await rana.chat('Hello!');
+const response = await cofounder.chat('Hello!');
 console.log(response.content);`,
     langchainLines: 14,
-    ranaLines: 5,
+    cofounderLines: 5,
   },
   {
     name: 'RAG Pipeline',
@@ -66,17 +66,17 @@ const retrievalChain = await createRetrievalChain({
 });
 
 const response = await retrievalChain.invoke({ input: "question" });`,
-    rana: `import { createRana } from '@rana/core';
-import { createRAG } from '@rana/rag';
+    cofounder: `import { createCoFounder } from '@cofounder/core';
+import { createRAG } from '@cofounder/rag';
 
-const rana = createRana();
-const rag = createRAG({ rana });
+const cofounder = createCoFounder();
+const rag = createRAG({ cofounder });
 
 await rag.ingest(text);
 
 const response = await rag.query('question');`,
     langchainLines: 31,
-    ranaLines: 8,
+    cofounderLines: 8,
   },
   {
     name: 'Tool Calling',
@@ -103,9 +103,9 @@ const model = new ChatOpenAI({
 
 const response = await model.invoke("Weather in SF?");
 // Handle tool calls manually...`,
-    rana: `import { createRana, createTool } from '@rana/core';
+    cofounder: `import { createCoFounder, createTool } from '@cofounder/core';
 
-const rana = createRana();
+const cofounder = createCoFounder();
 
 const weather = createTool({
   name: 'get_weather',
@@ -114,18 +114,18 @@ const weather = createTool({
   handler: ({ location }) => \`Weather in \${location}: Sunny\`,
 });
 
-const response = await rana
+const response = await cofounder
   .tools([weather])
   .chat('Weather in SF?');`,
     langchainLines: 22,
-    ranaLines: 13,
+    cofounderLines: 13,
   },
 ];
 
 export function CodeComparison() {
   const [activeTab, setActiveTab] = useState(0);
   const comparison = comparisons[activeTab];
-  const reduction = Math.round((1 - comparison.ranaLines / comparison.langchainLines) * 100);
+  const reduction = Math.round((1 - comparison.cofounderLines / comparison.langchainLines) * 100);
 
   return (
     <section className="py-20 md:py-32 border-t border-border">
@@ -199,19 +199,19 @@ export function CodeComparison() {
             </div>
           </div>
 
-          {/* RANA */}
+          {/* CoFounder */}
           <div>
             <div className="flex items-center justify-between mb-3">
               <span className="px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-sm font-medium">
-                RANA
+                CoFounder
               </span>
               <span className="text-sm text-foreground-secondary">
-                {comparison.ranaLines} lines
+                {comparison.cofounderLines} lines
               </span>
             </div>
             <div className="code-block overflow-x-auto max-h-96">
               <pre className="text-sm">
-                <code className="text-foreground-secondary">{comparison.rana}</code>
+                <code className="text-foreground-secondary">{comparison.cofounder}</code>
               </pre>
             </div>
           </div>

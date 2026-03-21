@@ -1,6 +1,6 @@
 /**
  * MCP Server Creation commands
- * rana mcp create, rana mcp list, rana mcp add-tool
+ * cofounder mcp create, cofounder mcp list, cofounder mcp add-tool
  */
 
 import { Command } from 'commander';

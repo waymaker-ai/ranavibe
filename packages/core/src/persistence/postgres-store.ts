@@ -40,7 +40,7 @@ export class PostgresCostStore implements CostStore {
 
   constructor(config: PostgresConfig) {
     this.config = config;
-    this.tableName = config.tableName || 'rana_cost_records';
+    this.tableName = config.tableName || 'cofounder_cost_records';
   }
 
   async initialize(): Promise<void> {

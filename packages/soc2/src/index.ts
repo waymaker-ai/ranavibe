@@ -1,7 +1,7 @@
 /**
- * @ranavibe/soc2
+ * @cofounder/soc2
  *
- * Auto-generate SOC 2 audit evidence from RANA guardrail data.
+ * Auto-generate SOC 2 audit evidence from CoFounder guardrail data.
  * Zero runtime dependencies.
  */
 

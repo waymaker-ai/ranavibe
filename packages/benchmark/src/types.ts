@@ -1,5 +1,5 @@
 /**
- * @ranavibe/benchmark - Types for detection accuracy benchmarking
+ * @cofounder/benchmark - Types for detection accuracy benchmarking
  */
 
 export interface BenchmarkConfig {

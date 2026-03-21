@@ -1,5 +1,5 @@
 /**
- * @ranavibe/dashboard Demo
+ * @cofounder/dashboard Demo
  *
  * Run with: npx tsx index.ts
  *
@@ -7,18 +7,18 @@
  * metrics, exporting data, and optionally serving the HTTP API.
  */
 
-import { RanaDashboard } from '@ranavibe/dashboard';
+import { CoFounderDashboard } from '@cofounder/dashboard';
 
 async function main() {
   console.log('╔══════════════════════════════════════════════╗');
-  console.log('║       @ranavibe/dashboard Demo              ║');
+  console.log('║       @cofounder/dashboard Demo              ║');
   console.log('╚══════════════════════════════════════════════╝\n');
 
   // ─── 1. Create dashboard ──────────────────────────────────────────────────
 
   console.log('=== 1. Create Dashboard ===\n');
 
-  const dashboard = new RanaDashboard({
+  const dashboard = new CoFounderDashboard({
     storage: 'memory',
     maxEvents: 1000,
     budgetMonthly: 100,

@@ -1,5 +1,5 @@
 /**
- * RANA Utility Helpers
+ * CoFounder Utility Helpers
  * Convenient shortcuts and utilities for common tasks
  */
 
@@ -21,11 +21,11 @@ export async function quickChat(
   message: string,
   apiKey: string
 ): Promise<string> {
-  const { createRana } = await import('../index');
-  const rana = createRana({
+  const { createCoFounder } = await import('../index');
+  const cofounder = createCoFounder({
     providers: { [provider]: apiKey }
   });
-  const response = await rana.chat(message);
+  const response = await cofounder.chat(message);
   return response.content;
 }
 
@@ -43,12 +43,12 @@ export async function compareProviders(
   message: string,
   apiKeys: Record<string, string>
 ): Promise<Array<{ provider: LLMProvider; response: string; cost: number; latency: number }>> {
-  const { createRana } = await import('../index');
-  const rana = createRana({ providers: apiKeys });
+  const { createCoFounder } = await import('../index');
+  const cofounder = createCoFounder({ providers: apiKeys });
 
   const results = await Promise.all(
     providers.map(async (provider) => {
-      const response = await rana.chat({
+      const response = await cofounder.chat({
         messages: [{ role: 'user' as const, content: message }],
         provider
       });
@@ -177,14 +177,14 @@ export function extractContent(response: RanaChatResponse | string): string {
 /**
  * Batch process multiple messages
  * @example
- * const responses = await batchProcess(rana, [
+ * const responses = await batchProcess(cofounder, [
  *   'What is React?',
  *   'What is Vue?',
  *   'What is Angular?'
  * ]);
  */
 export async function batchProcess(
-  client: any, // RanaClient
+  client: any, // CoFounderClient
   messages: string[],
   options?: { parallel?: boolean; delay?: number }
 ): Promise<RanaChatResponse[]> {

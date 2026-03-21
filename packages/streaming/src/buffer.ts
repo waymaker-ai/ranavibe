@@ -1,5 +1,5 @@
 /**
- * @ranavibe/streaming - TokenBuffer
+ * @cofounder/streaming - TokenBuffer
  *
  * Accumulates streaming tokens into a sliding buffer for pattern matching.
  * Provides efficient append, slide, and sentence-boundary flushing.

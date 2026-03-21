@@ -2,12 +2,12 @@
 
 ## Executive Summary
 
-**Feature**: Advanced RAG (Retrieval Augmented Generation) Package for RANA Framework
+**Feature**: Advanced RAG (Retrieval Augmented Generation) Package for CoFounder Framework
 **Priority**: P0 (Competitive Parity)
 **Impact**: AI Application Quality, Production Readiness
 **Timeline**: Q1 2025 (8-10 weeks)
 
-This specification defines RANA's advanced RAG capabilities to compete with LangChain, LlamaIndex, and enterprise RAG solutions. The package provides production-ready patterns for semantic search, hybrid retrieval, intelligent chunking, re-ranking, and multi-document synthesis.
+This specification defines CoFounder's advanced RAG capabilities to compete with LangChain, LlamaIndex, and enterprise RAG solutions. The package provides production-ready patterns for semantic search, hybrid retrieval, intelligent chunking, re-ranking, and multi-document synthesis.
 
 ---
 
@@ -15,7 +15,7 @@ This specification defines RANA's advanced RAG capabilities to compete with Lang
 
 ### Current State
 
-RANA has basic RAG support:
+CoFounder has basic RAG support:
 - ✓ Vector database integration (pgvector, Pinecone, Weaviate)
 - ✓ Embedding generation
 - ✓ Simple semantic search
@@ -29,7 +29,7 @@ RANA has basic RAG support:
 
 ### Competitive Landscape
 
-| Framework | Capability | RANA Status |
+| Framework | Capability | CoFounder Status |
 |-----------|-----------|-------------|
 | **LangChain** | Advanced chunking, multi-query | ✗ Missing |
 | **LlamaIndex** | Graph RAG, sub-question decomposition | ✗ Missing |
@@ -40,7 +40,7 @@ RANA has basic RAG support:
 ### Target State
 
 ```typescript
-import { createRAGPipeline, chunkers, retrievers, rerankers } from '@rana/rag-advanced';
+import { createRAGPipeline, chunkers, retrievers, rerankers } from '@cofounder/rag-advanced';
 
 // Create production RAG pipeline
 const pipeline = createRAGPipeline({
@@ -97,7 +97,7 @@ const pipeline = createRAGPipeline({
 
 // Use the pipeline
 const result = await pipeline.query({
-  query: "How does RANA handle multi-agent orchestration?",
+  query: "How does CoFounder handle multi-agent orchestration?",
   filters: {
     category: 'documentation',
     version: '2.0',
@@ -120,7 +120,7 @@ console.log(result.metrics);      // { latency, cost, chunks, sources }
 ### 1. Package Structure
 
 ```
-@rana/rag-advanced
+@cofounder/rag-advanced
 ├── chunking/
 │   ├── semantic.ts           # Semantic chunking
 │   ├── recursive.ts          # Recursive character splitting
@@ -1671,22 +1671,22 @@ export function useRAGStream(pipeline: RAGPipeline) {
 
 ```bash
 # Initialize RAG
-rana rag init --index docs --source ./docs
+cofounder rag init --index docs --source ./docs
 
 # Index documents
-rana rag index ./docs --chunker semantic --chunk-size 512
+cofounder rag index ./docs --chunker semantic --chunk-size 512
 
 # Query
-rana rag query "How does RANA handle authentication?"
+cofounder rag query "How does CoFounder handle authentication?"
 
 # Evaluate
-rana rag eval --dataset ./test-questions.json --output report.html
+cofounder rag eval --dataset ./test-questions.json --output report.html
 
 # Optimize
-rana rag optimize --metric latency --target 1000ms
+cofounder rag optimize --metric latency --target 1000ms
 
 # Analytics
-rana rag analytics --last 30d
+cofounder rag analytics --last 30d
 ```
 
 ---

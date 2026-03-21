@@ -4,7 +4,7 @@
  *
  * @example
  * ```typescript
- * import { createStructuredOutput, generateStructured } from '@rana/core';
+ * import { createStructuredOutput, generateStructured } from '@cofounder/core';
  * import { z } from 'zod';
  *
  * // Define schema with Zod
@@ -27,7 +27,7 @@
  * };
  *
  * // Create generator
- * const structured = createStructuredOutput(rana.chat.bind(rana), {
+ * const structured = createStructuredOutput(cofounder.chat.bind(cofounder), {
  *   retry: { maxRetries: 3, strategy: 'guided' },
  *   allowPartial: true,
  * });
@@ -50,7 +50,7 @@
  *
  * // One-liner with global function
  * const data = await generateStructured(
- *   rana.chat.bind(rana),
+ *   cofounder.chat.bind(cofounder),
  *   PersonSchema,
  *   [{ role: 'user', content: 'Create a person profile' }]
  * );

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Successfully implemented OpenTelemetry export capabilities for RANA observability at `/packages/core/src/observability/otel.ts`.
+Successfully implemented OpenTelemetry export capabilities for CoFounder observability at `/packages/core/src/observability/otel.ts`.
 
 ## What Was Created
 
@@ -10,7 +10,7 @@ Successfully implemented OpenTelemetry export capabilities for RANA observabilit
 
 **Location:** `/packages/core/src/observability/otel.ts`
 
-A comprehensive OpenTelemetry exporter that converts RANA traces to OTLP format with the following features:
+A comprehensive OpenTelemetry exporter that converts CoFounder traces to OTLP format with the following features:
 
 #### Key Classes & Functions
 
@@ -18,7 +18,7 @@ A comprehensive OpenTelemetry exporter that converts RANA traces to OTLP format 
   - Records chat spans with full metadata
   - Batches spans for efficient export
   - Supports manual trace grouping
-  - Converts to RANA plugin
+  - Converts to CoFounder plugin
 
 - **`createOTelExporter(config)`** - Factory function for creating exporters
 - **`createOTelPlugin(config)`** - Convenience function for plugin pattern
@@ -46,35 +46,35 @@ interface OTelConfig {
 
 The exporter automatically captures:
 
-**RANA Core:**
-- `rana.provider` - LLM provider
-- `rana.model` - Model name
-- `rana.request_id` - Request ID
-- `rana.cached` - Cache hit status
-- `rana.finish_reason` - Completion reason
+**CoFounder Core:**
+- `cofounder.provider` - LLM provider
+- `cofounder.model` - Model name
+- `cofounder.request_id` - Request ID
+- `cofounder.cached` - Cache hit status
+- `cofounder.finish_reason` - Completion reason
 
 **Cost Metrics:**
-- `rana.cost.total`
-- `rana.cost.prompt`
-- `rana.cost.completion`
+- `cofounder.cost.total`
+- `cofounder.cost.prompt`
+- `cofounder.cost.completion`
 
 **Usage Metrics:**
-- `rana.usage.prompt_tokens`
-- `rana.usage.completion_tokens`
-- `rana.usage.total_tokens`
+- `cofounder.usage.prompt_tokens`
+- `cofounder.usage.completion_tokens`
+- `cofounder.usage.total_tokens`
 
 **Performance:**
-- `rana.latency_ms`
+- `cofounder.latency_ms`
 
 **Request Metadata:**
-- `rana.temperature`
-- `rana.max_tokens`
-- `rana.optimize`
-- `rana.user`
+- `cofounder.temperature`
+- `cofounder.max_tokens`
+- `cofounder.optimize`
+- `cofounder.user`
 
 **Retry Metadata:**
-- `rana.retry_count`
-- `rana.retry_time_ms`
+- `cofounder.retry_count`
+- `cofounder.retry_time_ms`
 
 #### Error Tracking
 
@@ -91,14 +91,14 @@ Created comprehensive TypeScript types:
 - `OTelResource` - Resource labels
 - `OTelBatch` - Batch export format
 
-### 3. Integration with RANA
+### 3. Integration with CoFounder
 
 #### Plugin Pattern
 
-The exporter integrates seamlessly with RANA's plugin system:
+The exporter integrates seamlessly with CoFounder's plugin system:
 
 ```typescript
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: { anthropic: process.env.ANTHROPIC_API_KEY },
   plugins: [
     createOTelPlugin({
@@ -111,7 +111,7 @@ const rana = createRana({
 
 #### Lifecycle Hooks
 
-- `onInit` - Initialize on RANA startup
+- `onInit` - Initialize on CoFounder startup
 - `onAfterResponse` - Record successful responses
 - `onError` - Record error spans
 - `onDestroy` - Flush and shutdown
@@ -130,7 +130,7 @@ npm install @opentelemetry/api \
 If not installed:
 - Feature is gracefully disabled
 - Warning logged once
-- RANA continues to work normally
+- CoFounder continues to work normally
 
 ### 5. Documentation
 
@@ -193,7 +193,7 @@ Re-exports from `otel.ts` for modular import.
 
 ### ✅ Core Requirements
 
-1. **OpenTelemetry Export** - Converts RANA traces to OTLP format
+1. **OpenTelemetry Export** - Converts CoFounder traces to OTLP format
 2. **Service Configuration** - Configurable service name
 3. **Endpoint Support** - HTTP/gRPC OTLP endpoints
 4. **Authentication** - Custom headers for auth
@@ -209,7 +209,7 @@ Re-exports from `otel.ts` for modular import.
 5. **Callbacks** - Success/error callbacks
 6. **Debug Mode** - Optional debug logging
 7. **Graceful Shutdown** - Flush pending spans
-8. **Plugin Integration** - First-class RANA plugin support
+8. **Plugin Integration** - First-class CoFounder plugin support
 
 ### ✅ Production Ready
 
@@ -224,9 +224,9 @@ Re-exports from `otel.ts` for modular import.
 ### Basic
 
 ```typescript
-import { createRana, createOTelPlugin } from '@rana/core';
+import { createCoFounder, createOTelPlugin } from '@cofounder/core';
 
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: { anthropic: process.env.ANTHROPIC_API_KEY },
   plugins: [
     createOTelPlugin({
@@ -236,13 +236,13 @@ const rana = createRana({
   ],
 });
 
-await rana.chat('Hello!');
+await cofounder.chat('Hello!');
 ```
 
 ### Advanced
 
 ```typescript
-import { createOTelExporter } from '@rana/core';
+import { createOTelExporter } from '@cofounder/core';
 
 const exporter = createOTelExporter({
   serviceName: 'production-app',
@@ -258,7 +258,7 @@ const exporter = createOTelExporter({
   onExportError: (err) => console.error('Export failed:', err),
 });
 
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: { anthropic: process.env.ANTHROPIC_API_KEY },
   plugins: [exporter.asPlugin()],
 });
@@ -271,9 +271,9 @@ const exporter = createOTelExporter({ ... });
 
 // Group conversation in single trace
 const traceId = exporter.startTrace();
-await rana.chat('Question 1');
-await rana.chat('Question 2');
-await rana.chat('Question 3');
+await cofounder.chat('Question 1');
+await cofounder.chat('Question 2');
+await cofounder.chat('Question 3');
 exporter.endTrace();
 
 await exporter.shutdown();
@@ -295,7 +295,7 @@ The implementation is ready for build. Current build errors are from pre-existin
 
 ## Integration Points
 
-### RANA Plugin System
+### CoFounder Plugin System
 
 - Implements `RanaPlugin` interface
 - Uses lifecycle hooks: `onInit`, `onAfterResponse`, `onError`, `onDestroy`
@@ -303,13 +303,13 @@ The implementation is ready for build. Current build errors are from pre-existin
 
 ### Cost Tracking
 
-- Integrates with RANA's cost tracker
+- Integrates with CoFounder's cost tracker
 - Exports cost metrics as span attributes
 - No additional cost overhead
 
 ### Error System
 
-- Works with existing RANA error types
+- Works with existing CoFounder error types
 - Captures error context in spans
 - Preserves error stack traces
 
@@ -370,7 +370,7 @@ The OpenTelemetry export implementation is:
 - ✅ **Type-Safe** - Full TypeScript support
 - ✅ **Production-Ready** - Error handling, performance, security
 - ✅ **Well-Documented** - Comprehensive docs and examples
-- ✅ **Plugin-Compatible** - Integrates with RANA's architecture
+- ✅ **Plugin-Compatible** - Integrates with CoFounder's architecture
 - ✅ **Tested** - Type-checked and validated
 - ✅ **Backward-Compatible** - Optional peer dependencies
 

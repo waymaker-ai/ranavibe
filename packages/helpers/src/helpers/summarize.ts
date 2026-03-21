@@ -3,7 +3,7 @@
  *
  * @example
  * ```typescript
- * import { summarize } from '@rana/helpers';
+ * import { summarize } from '@cofounder/helpers';
  *
  * const result = await summarize(longArticle);
  * console.log(result.summary);

@@ -13,7 +13,7 @@ interface SyncOptions {
 export async function syncCommand(options: SyncOptions) {
   const authToken = await getAuthToken();
   if (!authToken) {
-    console.log(chalk.red('❌ Not authenticated. Run: waymaker-rana login'));
+    console.log(chalk.red('❌ Not authenticated. Run: waymaker-cofounder login'));
     return;
   }
 
@@ -27,9 +27,9 @@ export async function syncCommand(options: SyncOptions) {
     console.log(chalk.yellow('Please specify --push, --pull, or --auto'));
     console.log();
     console.log('Examples:');
-    console.log('  waymaker-rana sync --push   # Upload local .rana.yml to Waymaker');
-    console.log('  waymaker-rana sync --pull   # Download team config from Waymaker');
-    console.log('  waymaker-rana sync --auto   # Enable automatic sync');
+    console.log('  waymaker-cofounder sync --push   # Upload local .cofounder.yml to Waymaker');
+    console.log('  waymaker-cofounder sync --pull   # Download team config from Waymaker');
+    console.log('  waymaker-cofounder sync --auto   # Enable automatic sync');
   }
 }
 
@@ -44,10 +44,10 @@ async function getAuthToken(): Promise<string | null> {
 }
 
 async function pushConfig(token: string) {
-  const spinner = ora('Uploading .rana.yml to Waymaker...').start();
+  const spinner = ora('Uploading .cofounder.yml to Waymaker...').start();
 
   try {
-    const configPath = path.join(process.cwd(), '.rana.yml');
+    const configPath = path.join(process.cwd(), '.cofounder.yml');
     const configContent = await fs.readFile(configPath, 'utf-8');
     const config = yaml.load(configContent);
 
@@ -62,11 +62,11 @@ async function pushConfig(token: string) {
     // });
 
     spinner.succeed('Configuration synced to Waymaker');
-    console.log(chalk.green('\n✅ Team can now access your RANA configuration'));
-    console.log(chalk.gray('View at: https://waymaker.com/rana/config'));
+    console.log(chalk.green('\n✅ Team can now access your CoFounder configuration'));
+    console.log(chalk.gray('View at: https://waymaker.com/cofounder/config'));
   } catch (error: any) {
     if (error.code === 'ENOENT') {
-      spinner.fail('No .rana.yml found. Run: waymaker-rana init');
+      spinner.fail('No .cofounder.yml found. Run: waymaker-cofounder init');
     } else {
       spinner.fail(`Sync failed: ${error.message}`);
     }
@@ -78,7 +78,7 @@ async function pullConfig(token: string) {
 
   try {
     // Check if local config exists
-    const configPath = path.join(process.cwd(), '.rana.yml');
+    const configPath = path.join(process.cwd(), '.cofounder.yml');
     let hasLocal = false;
     try {
       await fs.access(configPath);
@@ -87,10 +87,10 @@ async function pullConfig(token: string) {
 
     if (hasLocal) {
       spinner.stop();
-      console.log(chalk.yellow('\n⚠️  Local .rana.yml exists'));
+      console.log(chalk.yellow('\n⚠️  Local .cofounder.yml exists'));
       console.log('Pulling will overwrite your local configuration.');
       console.log('\nOptions:');
-      console.log('  1. Backup local config first: cp .rana.yml .rana.yml.backup');
+      console.log('  1. Backup local config first: cp .cofounder.yml .cofounder.yml.backup');
       console.log('  2. Use --push to upload local config instead');
       console.log('  3. Continue with pull (overwrites local)');
       return;
@@ -112,7 +112,7 @@ project:
 
     await fs.writeFile(configPath, configYaml, 'utf-8');
     spinner.succeed('Configuration downloaded');
-    console.log(chalk.green('\n✅ .rana.yml created from team settings'));
+    console.log(chalk.green('\n✅ .cofounder.yml created from team settings'));
   } catch (error: any) {
     spinner.fail(`Pull failed: ${error.message}`);
   }
@@ -138,14 +138,14 @@ async function enableAutoSync(token: string) {
     await fs.writeFile(configPath, JSON.stringify(config, null, 2), 'utf-8');
 
     spinner.succeed('Auto-sync enabled');
-    console.log(chalk.green('\n✅ RANA config will automatically sync with Waymaker'));
+    console.log(chalk.green('\n✅ CoFounder config will automatically sync with Waymaker'));
     console.log();
     console.log('Behavior:');
     console.log('  • Local changes pushed after commits');
     console.log('  • Team updates pulled periodically');
     console.log('  • Conflicts resolved with team preference');
     console.log();
-    console.log(chalk.gray('Disable: waymaker-rana sync --auto=false'));
+    console.log(chalk.gray('Disable: waymaker-cofounder sync --auto=false'));
   } catch (error: any) {
     spinner.fail(`Failed to enable auto-sync: ${error.message}`);
   }

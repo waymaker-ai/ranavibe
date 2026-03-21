@@ -1,4 +1,4 @@
-import { RanaConfig, QualityGate } from '../config/index';
+import { CoFounderConfig, QualityGate } from '../config/index';
 
 export interface QualityGateResult {
   gate: QualityGate;
@@ -13,9 +13,9 @@ export interface PhaseResults {
 }
 
 export class QualityGateChecker {
-  private config: RanaConfig;
+  private config: CoFounderConfig;
 
-  constructor(config: RanaConfig) {
+  constructor(config: CoFounderConfig) {
     this.config = config;
   }
 

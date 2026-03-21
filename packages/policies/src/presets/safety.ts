@@ -16,7 +16,7 @@ export const safetyPolicy: Policy = {
       'Comprehensive AI safety policy covering harmful content prevention, suicide/self-harm ' +
       'intervention, child safety (CSAM/grooming), misinformation, prompt injection defense, ' +
       'hate speech, violence, and responsible AI output standards.',
-    author: 'ranavibe',
+    author: 'cofounder',
     tags: ['safety', 'ai-safety', 'responsible-ai', 'guardrails', 'content-moderation'],
     framework: 'AI-Safety',
   },

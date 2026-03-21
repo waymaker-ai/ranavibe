@@ -77,7 +77,7 @@ export function wrapClient<T extends object>(client: T, ctx: ProxyContext): T {
             if (inputText) {
               const checkResult = ctx.check(inputText, { model, direction: 'input' });
               if (checkResult.blocked) {
-                throw new Error(`[RANA Guard] Request blocked: ${checkResult.reason}`);
+                throw new Error(`[CoFounder Guard] Request blocked: ${checkResult.reason}`);
               }
 
               // If PII was redacted, modify the arguments

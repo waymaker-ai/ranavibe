@@ -15,7 +15,7 @@ export const secPolicy: Policy = {
       'Policy enforcing SEC regulations for financial content. Covers investment disclaimers, ' +
       'forward-looking statement safe harbors, material information disclosures, insider trading ' +
       'prohibitions, and anti-fraud provisions (Securities Act 1933, Exchange Act 1934, Reg FD, Reg S-P).',
-    author: 'ranavibe',
+    author: 'cofounder',
     tags: ['finance', 'sec', 'securities', 'compliance', 'investment'],
     framework: 'SEC',
   },

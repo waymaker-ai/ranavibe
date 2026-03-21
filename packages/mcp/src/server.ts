@@ -1,6 +1,6 @@
 /**
- * RANA MCP Server
- * Exposes RANA functionality as an MCP server
+ * CoFounder MCP Server
+ * Exposes CoFounder functionality as an MCP server
  */
 
 import type {
@@ -33,7 +33,7 @@ export interface MCPServerOptions {
 }
 
 /**
- * RANA MCP Server
+ * CoFounder MCP Server
  * Can be embedded in applications or run standalone
  */
 export class MCPServer {
@@ -193,11 +193,11 @@ export class MCPServer {
 }
 
 /**
- * Create a pre-configured RANA MCP server with built-in tools
+ * Create a pre-configured CoFounder MCP server with built-in tools
  */
 export function createRanaMCPServer(): MCPServer {
   const server = new MCPServer({
-    name: 'rana-mcp-server',
+    name: 'cofounder-mcp-server',
     version: '2.0.0',
     capabilities: {
       tools: true,
@@ -206,11 +206,11 @@ export function createRanaMCPServer(): MCPServer {
     },
   });
 
-  // Register built-in RANA tools
+  // Register built-in CoFounder tools
   server.registerTool(
     {
-      name: 'rana_chat',
-      description: 'Send a chat message through RANA with cost optimization',
+      name: 'cofounder_chat',
+      description: 'Send a chat message through CoFounder with cost optimization',
       inputSchema: {
         type: 'object',
         properties: {
@@ -227,13 +227,13 @@ export function createRanaMCPServer(): MCPServer {
       },
     },
     async (args) => {
-      // This would integrate with RanaClient in production
+      // This would integrate with CoFounderClient in production
       return {
         content: [
           {
             type: 'text',
             text: JSON.stringify({
-              response: `[RANA would process: ${args.message}]`,
+              response: `[CoFounder would process: ${args.message}]`,
               provider: args.provider || 'auto',
               optimize: args.optimize || 'balanced',
             }),
@@ -245,7 +245,7 @@ export function createRanaMCPServer(): MCPServer {
 
   server.registerTool(
     {
-      name: 'rana_cost_report',
+      name: 'cofounder_cost_report',
       description: 'Get cost tracking report',
       inputSchema: {
         type: 'object',
@@ -279,7 +279,7 @@ export function createRanaMCPServer(): MCPServer {
 
   server.registerTool(
     {
-      name: 'rana_compare_models',
+      name: 'cofounder_compare_models',
       description: 'Compare different LLM models for a task',
       inputSchema: {
         type: 'object',
@@ -315,12 +315,12 @@ export function createRanaMCPServer(): MCPServer {
     }
   );
 
-  // Register RANA resources
+  // Register CoFounder resources
   server.registerResource(
     {
-      uri: 'rana://config',
-      name: 'RANA Configuration',
-      description: 'Current RANA configuration',
+      uri: 'cofounder://config',
+      name: 'CoFounder Configuration',
+      description: 'Current CoFounder configuration',
       mimeType: 'application/json',
     },
     async () => ({
@@ -340,7 +340,7 @@ export function createRanaMCPServer(): MCPServer {
 
   server.registerResource(
     {
-      uri: 'rana://providers',
+      uri: 'cofounder://providers',
       name: 'Provider Status',
       description: 'Status of all LLM providers',
       mimeType: 'application/json',
@@ -359,9 +359,9 @@ export function createRanaMCPServer(): MCPServer {
     })
   );
 
-  // Register RANA prompt templates
+  // Register CoFounder prompt templates
   server.registerPrompt({
-    name: 'rana_summarize',
+    name: 'cofounder_summarize',
     description: 'Summarize text with cost optimization',
     arguments: [
       { name: 'text', description: 'Text to summarize', required: true },
@@ -370,7 +370,7 @@ export function createRanaMCPServer(): MCPServer {
   });
 
   server.registerPrompt({
-    name: 'rana_analyze_code',
+    name: 'cofounder_analyze_code',
     description: 'Analyze code for improvements',
     arguments: [
       { name: 'code', description: 'Code to analyze', required: true },

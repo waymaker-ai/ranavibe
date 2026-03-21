@@ -1,20 +1,20 @@
 /**
- * RANA Learn Command
+ * CoFounder Learn Command
  *
- * Interactive tutorial system for learning RANA
+ * Interactive tutorial system for learning CoFounder
  * Inspired by Rails Guides - but interactive in the terminal
  *
  * @example
  * ```bash
  * # Start interactive learning
- * rana learn
+ * cofounder learn
  *
  * # Learn specific topic
- * rana learn prompts
- * rana learn rag
- * rana learn agents
- * rana learn testing
- * rana learn cost
+ * cofounder learn prompts
+ * cofounder learn rag
+ * cofounder learn agents
+ * cofounder learn testing
+ * cofounder learn cost
  * ```
  */
 
@@ -51,14 +51,14 @@ interface Lesson {
 const LESSONS: Lesson[] = [
   {
     id: 'getting-started',
-    title: '🚀 Getting Started with RANA',
-    description: 'Learn the basics of RANA in 5 minutes',
+    title: '🚀 Getting Started with CoFounder',
+    description: 'Learn the basics of CoFounder in 5 minutes',
     duration: '5 min',
     steps: [
       {
-        title: 'Welcome to RANA!',
+        title: 'Welcome to CoFounder!',
         content: `
-RANA (Rapid AI Native Architecture) helps you build production-ready
+CoFounder (Rapid AI Native Architecture) helps you build production-ready
 AI applications with:
 
   • 9 LLM Providers (OpenAI, Anthropic, Google, and more)
@@ -70,9 +70,9 @@ Let's build your first AI-powered feature!
         `.trim(),
       },
       {
-        title: 'Install RANA',
-        content: 'First, install the RANA core package:',
-        code: 'npm install @rana/core',
+        title: 'Install CoFounder',
+        content: 'First, install the CoFounder core package:',
+        code: 'npm install @cofounder/core',
         action: 'show-example',
       },
       {
@@ -83,21 +83,21 @@ OpenAI is the most common starting point.
 
 Run this command to securely store your key:
         `.trim(),
-        code: 'rana config:set --provider openai --key YOUR_API_KEY',
+        code: 'cofounder config:set --provider openai --key YOUR_API_KEY',
         action: 'show-example',
       },
       {
         title: 'Your First AI Call',
         content: 'Create a simple chat completion:',
         code: `
-import { RanaClient } from '@rana/core';
+import { CoFounderClient } from '@cofounder/core';
 
-const rana = new RanaClient();
+const cofounder = new CoFounderClient();
 
-const response = await rana.chat({
+const response = await cofounder.chat({
   model: 'gpt-4o-mini',
   messages: [
-    { role: 'user', content: 'Hello, RANA!' }
+    { role: 'user', content: 'Hello, CoFounder!' }
   ]
 });
 
@@ -110,7 +110,7 @@ console.log(response.content);
         content: 'Let\'s make sure you understood the basics:',
         action: 'quiz',
         quiz: {
-          question: 'What does RANA help you with?',
+          question: 'What does CoFounder help you with?',
           options: [
             'Building video games',
             'Building AI applications with cost optimization',
@@ -124,7 +124,7 @@ console.log(response.content);
   },
   {
     id: 'prompts',
-    title: '✏️ Prompt Engineering with RANA',
+    title: '✏️ Prompt Engineering with CoFounder',
     description: 'Master prompt management, versioning, and A/B testing',
     duration: '10 min',
     steps: [
@@ -138,20 +138,20 @@ Prompts are the "code" of AI applications. Just like code, they need:
   • A/B testing - optimize for quality and cost
   • Organization - find and reuse prompts
 
-RANA's @rana/prompts package solves all of this.
+CoFounder's @cofounder/prompts package solves all of this.
         `.trim(),
       },
       {
         title: 'Install Prompts Package',
         content: 'Add the prompts package to your project:',
-        code: 'npm install @rana/prompts',
+        code: 'npm install @cofounder/prompts',
         action: 'show-example',
       },
       {
         title: 'Register a Prompt',
         content: 'Create and register your first managed prompt:',
         code: `
-import { PromptManager } from '@rana/prompts';
+import { PromptManager } from '@cofounder/prompts';
 
 const pm = new PromptManager({ workspace: 'my-app' });
 
@@ -183,7 +183,7 @@ await pm.createABTest('greeting', {
   trafficSplit: [50, 50]
 });
 
-// RANA automatically tracks which variant performs better!
+// CoFounder automatically tracks which variant performs better!
         `.trim(),
         action: 'show-example',
       },
@@ -214,30 +214,30 @@ Perfect for:
       {
         title: 'Install RAG Package',
         content: 'Add the RAG package:',
-        code: 'npm install @rana/rag',
+        code: 'npm install @cofounder/rag',
         action: 'show-example',
       },
       {
         title: 'Create a RAG Pipeline',
         content: 'Build your first RAG system in 10 lines:',
         code: `
-import { RAGPresets } from '@rana/rag';
+import { RAGPresets } from '@cofounder/rag';
 
 // Use the balanced preset (good quality + speed)
 const pipeline = RAGPresets.balanced();
 
 // Index your documents
 await pipeline.index([
-  { content: 'RANA supports 9 LLM providers', metadata: { source: 'docs' } },
+  { content: 'CoFounder supports 9 LLM providers', metadata: { source: 'docs' } },
   { content: 'Use caching to reduce costs by 70%', metadata: { source: 'docs' } },
 ]);
 
 // Query with automatic citation
 const result = await pipeline.query({
-  query: 'How many providers does RANA support?'
+  query: 'How many providers does CoFounder support?'
 });
 
-console.log(result.answer);    // "RANA supports 9 LLM providers"
+console.log(result.answer);    // "CoFounder supports 9 LLM providers"
 console.log(result.citations); // Sources used
         `.trim(),
         action: 'show-example',
@@ -267,7 +267,7 @@ Think of them as AI assistants that can actually DO things.
         title: 'Create Your First Agent',
         content: 'Build an agent with tools:',
         code: `
-import { LLMAgent, calculatorTool, webSearchTool } from '@rana/core';
+import { LLMAgent, calculatorTool, webSearchTool } from '@cofounder/core';
 
 const agent = new LLMAgent({
   name: 'Assistant',
@@ -286,7 +286,7 @@ const result = await agent.run('What is 15% of 847?');
         title: 'Multi-Agent Systems',
         content: 'Have agents work together:',
         code: `
-import { Orchestrator, LLMAgent } from '@rana/core';
+import { Orchestrator, LLMAgent } from '@cofounder/core';
 
 const researcher = new LLMAgent({
   name: 'Researcher',
@@ -326,7 +326,7 @@ Testing AI is different because:
   • "Correct" is subjective
   • You can't do exact string matching
 
-RANA's @rana/testing solves this with:
+CoFounder's @cofounder/testing solves this with:
 
   • Semantic matching (compare meaning, not strings)
   • Statistical assertions (80% should be X)
@@ -338,7 +338,7 @@ RANA's @rana/testing solves this with:
         title: 'Write Your First AI Test',
         content: 'Test AI outputs by meaning:',
         code: `
-import { describe, aiTest, runTimes } from '@rana/testing';
+import { describe, aiTest, runTimes } from '@cofounder/testing';
 
 describe('Summarization', () => {
   aiTest('should summarize correctly', async ({ expect }) => {
@@ -366,16 +366,16 @@ describe('Summarization', () => {
       },
       {
         title: 'Run Your Tests',
-        content: 'Use the RANA test runner:',
+        content: 'Use the CoFounder test runner:',
         code: `
 # Run all tests
-rana test
+cofounder test
 
 # Watch mode
-rana test --watch
+cofounder test --watch
 
 # With cost budget
-rana test --max-cost 1.00
+cofounder test --max-cost 1.00
         `.trim(),
         action: 'show-example',
       },
@@ -397,7 +397,7 @@ AI API costs can explode quickly:
 
 A busy app can cost thousands per month!
 
-RANA helps you:
+CoFounder helps you:
   • Cache responses (same question = free)
   • Choose right-sized models
   • Track costs in real-time
@@ -408,9 +408,9 @@ RANA helps you:
         title: 'Enable Caching',
         content: 'Cache identical requests:',
         code: `
-import { RanaClient } from '@rana/core';
+import { CoFounderClient } from '@cofounder/core';
 
-const rana = new RanaClient({
+const cofounder = new CoFounderClient({
   cache: {
     type: 'redis', // or 'memory', 'file'
     ttl: 3600,     // Cache for 1 hour
@@ -418,10 +418,10 @@ const rana = new RanaClient({
 });
 
 // First call: hits API, costs money
-await rana.chat({ messages: [{ role: 'user', content: 'Hi' }] });
+await cofounder.chat({ messages: [{ role: 'user', content: 'Hi' }] });
 
 // Second call: returns cached response, FREE!
-await rana.chat({ messages: [{ role: 'user', content: 'Hi' }] });
+await cofounder.chat({ messages: [{ role: 'user', content: 'Hi' }] });
         `.trim(),
         action: 'show-example',
       },
@@ -430,7 +430,7 @@ await rana.chat({ messages: [{ role: 'user', content: 'Hi' }] });
         content: 'Monitor your spending:',
         code: `
 // Get cost report
-const tracker = rana.getCostTracker();
+const tracker = cofounder.getCostTracker();
 
 console.log(tracker.getReport());
 // {
@@ -441,14 +441,14 @@ console.log(tracker.getReport());
 // }
 
 // Or use the CLI
-// $ rana dashboard
+// $ cofounder dashboard
         `.trim(),
         action: 'show-example',
       },
       {
         title: 'Use the Dashboard',
         content: 'See costs in real-time:',
-        code: 'rana dashboard --live',
+        code: 'cofounder dashboard --live',
         action: 'show-example',
       },
     ],
@@ -459,7 +459,7 @@ console.log(tracker.getReport());
  * Main learn command
  */
 export async function learnCommand(topic?: string): Promise<void> {
-  console.log(chalk.bold.cyan('\n📚 RANA Learning Center\n'));
+  console.log(chalk.bold.cyan('\n📚 CoFounder Learning Center\n'));
 
   if (topic) {
     // Find and run specific lesson
@@ -494,7 +494,7 @@ export async function learnCommand(topic?: string): Promise<void> {
   });
 
   if (!response.lesson) {
-    console.log(chalk.gray('\nNo lesson selected. Run `rana learn` anytime!\n'));
+    console.log(chalk.gray('\nNo lesson selected. Run `cofounder learn` anytime!\n'));
     return;
   }
 
@@ -561,7 +561,7 @@ async function runLesson(lesson: Lesson): Promise<void> {
       });
 
       if (!cont.continue) {
-        console.log(chalk.gray('\nLesson paused. Run `rana learn` to continue!\n'));
+        console.log(chalk.gray('\nLesson paused. Run `cofounder learn` to continue!\n'));
         return;
       }
 
@@ -578,11 +578,11 @@ async function runLesson(lesson: Lesson): Promise<void> {
   if (currentIndex < LESSONS.length - 1) {
     const next = LESSONS[currentIndex + 1];
     console.log(chalk.gray(`  • Next: ${next.title}`));
-    console.log(chalk.gray(`    Run: rana learn ${next.id}\n`));
+    console.log(chalk.gray(`    Run: cofounder learn ${next.id}\n`));
   }
 
-  console.log(chalk.gray('  • See all lessons: rana learn'));
-  console.log(chalk.gray('  • Get help: rana --help\n'));
+  console.log(chalk.gray('  • See all lessons: cofounder learn'));
+  console.log(chalk.gray('  • Get help: cofounder --help\n'));
 }
 
 /**
@@ -595,6 +595,6 @@ export function listLessons(): void {
     console.log(chalk.bold(`${lesson.title}`));
     console.log(chalk.gray(`  ${lesson.description}`));
     console.log(chalk.gray(`  Duration: ${lesson.duration}`));
-    console.log(chalk.gray(`  Run: rana learn ${lesson.id}\n`));
+    console.log(chalk.gray(`  Run: cofounder learn ${lesson.id}\n`));
   }
 }

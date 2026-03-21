@@ -1,8 +1,8 @@
 // ---------------------------------------------------------------------------
-// @ranavibe/openclaw - Core guard logic (zero dependencies)
+// @cofounder/openclaw - Core guard logic (zero dependencies)
 // ---------------------------------------------------------------------------
 // Inline implementations of PII, injection, toxicity detection and budget
-// tracking. These mirror @ranavibe/guard patterns but are fully self-contained
+// tracking. These mirror @cofounder/guard patterns but are fully self-contained
 // so this package has zero runtime dependencies.
 // ---------------------------------------------------------------------------
 

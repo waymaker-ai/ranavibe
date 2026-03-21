@@ -1,5 +1,5 @@
 /**
- * @ranavibe/marketplace - Type definitions for policy marketplace
+ * @cofounder/marketplace - Type definitions for policy marketplace
  */
 
 // ---------------------------------------------------------------------------
@@ -39,7 +39,7 @@ export interface PolicyRule {
 }
 
 export interface PolicyPackage {
-  /** Package name (e.g., "@rana-policies/healthcare-us") */
+  /** Package name (e.g., "@cofounder-policies/healthcare-us") */
   name: string;
   /** Semantic version */
   version: string;
@@ -137,7 +137,7 @@ export interface PolicyImportResult {
 // ---------------------------------------------------------------------------
 
 export interface PublishConfig {
-  /** npm scope (e.g., "@rana-policies") */
+  /** npm scope (e.g., "@cofounder-policies") */
   scope?: string;
   /** Author name */
   author: string;

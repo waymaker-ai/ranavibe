@@ -1,4 +1,4 @@
-# RANA Quality Gate Workflow
+# CoFounder Quality Gate Workflow
 # Runs security audit, SEO check, and LLM cost analysis on every PR
 #
 # Usage: Copy this file to your repository's .github/workflows/ directory
@@ -6,14 +6,14 @@
 #
 #   jobs:
 #     quality-gate:
-#       uses: waymaker-ai/rana/.github/workflows/rana-quality-gate.yml@main
+#       uses: waymaker-ai/cofounder/.github/workflows/cofounder-quality-gate.yml@main
 #       with:
 #         security: true
 #         seo: true
 #         llm: true
 #         cost-budget: 500
 
-name: RANA Quality Gate
+name: CoFounder Quality Gate
 
 on:
   pull_request:
@@ -37,7 +37,7 @@ on:
 
 jobs:
   quality-gate:
-    name: RANA Quality Gate
+    name: CoFounder Quality Gate
     runs-on: ubuntu-latest
 
     permissions:
@@ -57,19 +57,19 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Install RANA CLI
-        run: npm install -g @rana/cli || true
+      - name: Install CoFounder CLI
+        run: npm install -g @cofounder/cli || true
 
       # Security Audit
       - name: 🔒 Security Audit
         id: security
         if: github.event.inputs.security != 'false'
         run: |
-          echo "Running RANA Security Audit..."
+          echo "Running CoFounder Security Audit..."
           set +e
 
           # Run audit and capture output
-          rana security:audit 2>&1 | tee security-output.txt
+          cofounder security:audit 2>&1 | tee security-output.txt
           exit_code=${PIPESTATUS[0]}
 
           # Parse results
@@ -93,10 +93,10 @@ jobs:
         id: seo
         if: github.event.inputs.seo != 'false'
         run: |
-          echo "Running RANA SEO Check..."
+          echo "Running CoFounder SEO Check..."
           set +e
 
-          rana seo:check 2>&1 | tee seo-output.txt
+          cofounder seo:check 2>&1 | tee seo-output.txt
           exit_code=${PIPESTATUS[0]}
 
           # Parse results
@@ -117,10 +117,10 @@ jobs:
         id: llm
         if: github.event.inputs.llm != 'false'
         run: |
-          echo "Running RANA LLM Cost Analysis..."
+          echo "Running CoFounder LLM Cost Analysis..."
           set +e
 
-          rana llm:analyze 2>&1 | tee llm-output.txt
+          cofounder llm:analyze 2>&1 | tee llm-output.txt
 
           # Extract cost estimate
           cost=$(grep -oP '\$[\d,]+' llm-output.txt | head -1 | tr -d '$,' || echo "0")
@@ -131,7 +131,7 @@ jobs:
       - name: 📊 Generate Summary
         id: summary
         run: |
-          echo "## 🐟 RANA Quality Gate Report" >> $GITHUB_STEP_SUMMARY
+          echo "## 🐟 CoFounder Quality Gate Report" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "| Check | Status | Score |" >> $GITHUB_STEP_SUMMARY
           echo "|-------|--------|-------|" >> $GITHUB_STEP_SUMMARY
@@ -168,7 +168,7 @@ jobs:
 
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "---" >> $GITHUB_STEP_SUMMARY
-          echo "🐟 *Powered by [RANA](https://rana.dev)*" >> $GITHUB_STEP_SUMMARY
+          echo "🐟 *Powered by [CoFounder](https://cofounder.dev)*" >> $GITHUB_STEP_SUMMARY
 
           # Determine overall status
           overall="passed"
@@ -199,7 +199,7 @@ jobs:
               }
             };
 
-            const body = `## 🐟 RANA Quality Gate Results
+            const body = `## 🐟 CoFounder Quality Gate Results
 
             | Check | Status | Score |
             |-------|--------|-------|
@@ -210,7 +210,7 @@ jobs:
             ${secStatus === 'critical' ? '### ⚠️ Security issues must be fixed before merging!' : ''}
 
             ---
-            🐟 *Powered by [RANA](https://rana.dev)*`;
+            🐟 *Powered by [CoFounder](https://cofounder.dev)*`;
 
             // Find existing comment
             const { data: comments } = await github.rest.issues.listComments({
@@ -219,7 +219,7 @@ jobs:
               issue_number: context.issue.number,
             });
 
-            const existingComment = comments.find(c => c.body.includes('RANA Quality Gate'));
+            const existingComment = comments.find(c => c.body.includes('CoFounder Quality Gate'));
 
             if (existingComment) {
               await github.rest.issues.updateComment({
@@ -241,5 +241,5 @@ jobs:
       - name: Check Result
         if: steps.summary.outputs.overall == 'failed'
         run: |
-          echo "::error::RANA Quality Gate failed due to critical issues"
+          echo "::error::CoFounder Quality Gate failed due to critical issues"
           exit 1

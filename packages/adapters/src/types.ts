@@ -1,5 +1,5 @@
 /**
- * @ranavibe/adapters - Type definitions for enterprise guardrail adapters
+ * @cofounder/adapters - Type definitions for enterprise guardrail adapters
  */
 
 // ---------------------------------------------------------------------------
@@ -30,8 +30,8 @@ export type RanaAction = 'block' | 'redact' | 'flag' | 'log' | 'allow';
 
 export interface UnifiedFinding {
   /** Which adapter produced this finding */
-  source: 'rana' | 'lakera' | 'bedrock' | 'galileo';
-  /** Normalised RANA category */
+  source: 'cofounder' | 'lakera' | 'bedrock' | 'galileo';
+  /** Normalised CoFounder category */
   category: RanaCategory;
   /** Severity of the finding */
   severity: Severity;
@@ -50,8 +50,8 @@ export interface UnifiedFinding {
 }
 
 export interface PolicyMapping {
-  /** RANA category */
-  ranaCategory: RanaCategory;
+  /** CoFounder category */
+  cofounderCategory: RanaCategory;
   /** Action to take when this category is detected */
   action: RanaAction;
   /** Severity override */
@@ -65,7 +65,7 @@ export interface AdapterConfig {
   name: string;
   /** Whether the adapter is enabled */
   enabled: boolean;
-  /** Policy mappings from RANA categories to actions */
+  /** Policy mappings from CoFounder categories to actions */
   policies: PolicyMapping[];
 }
 
@@ -160,7 +160,7 @@ export interface GalileoConfig extends AdapterConfig {
 // Unified adapter config
 // ---------------------------------------------------------------------------
 
-export interface RanaPolicyConfig {
+export interface CoFounderPolicyConfig {
   pii?: RanaAction;
   injection?: RanaAction;
   toxicity?: RanaAction;
@@ -180,8 +180,8 @@ export interface RanaPolicyConfig {
 }
 
 export interface UnifiedAdapterConfig {
-  /** Base RANA policy configuration */
-  rana?: RanaPolicyConfig;
+  /** Base CoFounder policy configuration */
+  cofounder?: CoFounderPolicyConfig;
   /** Lakera adapter config (omit to disable) */
   lakera?: Omit<LakeraConfig, 'name' | 'enabled' | 'policies'> & { policies?: PolicyMapping[] };
   /** Bedrock adapter config (omit to disable) */

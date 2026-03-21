@@ -1,6 +1,6 @@
 /**
  * Logger
- * Main logging system for RANA observability
+ * Main logging system for CoFounder observability
  */
 
 import { randomUUID } from 'crypto';

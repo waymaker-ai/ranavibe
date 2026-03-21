@@ -17,7 +17,7 @@ export function formatGitHubPr(result: ScanResult): string {
 
   // Header
   const statusIcon = result.passed ? ':white_check_mark:' : ':x:';
-  lines.push(`## ${statusIcon} RANA CI Scan Results`);
+  lines.push(`## ${statusIcon} CoFounder CI Scan Results`);
   lines.push('');
 
   // Summary table
@@ -34,7 +34,7 @@ export function formatGitHubPr(result: ScanResult): string {
     lines.push('> :tada: No findings. All AI guardrail checks passed!');
     lines.push('');
     lines.push('---');
-    lines.push('*Scanned by [RANA CI](https://rana.cx)*');
+    lines.push('*Scanned by [CoFounder CI](https://cofounder.cx)*');
     return lines.join('\n');
   }
 
@@ -141,7 +141,7 @@ export function formatGitHubPr(result: ScanResult): string {
   }
 
   lines.push('---');
-  lines.push('*Scanned by [RANA CI](https://rana.cx)*');
+  lines.push('*Scanned by [CoFounder CI](https://cofounder.cx)*');
 
   return lines.join('\n');
 }

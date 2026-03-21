@@ -1,6 +1,6 @@
 /**
  * Security commands
- * rana security:check, rana security:scan
+ * cofounder security:check, cofounder security:scan
  */
 
 import { Command } from 'commander';
@@ -334,7 +334,7 @@ export function registerSecurityCommands(program: Command): void {
     .command('check')
     .description('Run guardrail checks (security, constraints)')
     .action(async () => {
-      console.log(chalk.blue.bold('\n🛡️  RANA Guardrail Checks\n'));
+      console.log(chalk.blue.bold('\n🛡️  CoFounder Guardrail Checks\n'));
 
       // Run security scan
       console.log(chalk.white.bold('1. Security Scan\n'));
@@ -360,7 +360,7 @@ export function registerSecurityCommands(program: Command): void {
           console.log(chalk.green('   ✅ No critical security issues\n'));
         } else {
           console.log(chalk.red(`   ❌ ${issueCount} critical/high issues found`));
-          console.log(chalk.gray('   Run: rana security scan for details\n'));
+          console.log(chalk.gray('   Run: cofounder security scan for details\n'));
         }
       } catch {
         spinner.stop();
@@ -372,7 +372,7 @@ export function registerSecurityCommands(program: Command): void {
       console.log(chalk.gray('   Run: npm audit\n'));
 
       console.log(chalk.gray('---\n'));
-      console.log(chalk.gray('For full security scan: rana security scan'));
-      console.log(chalk.gray('For feature checks: rana feature check <name>\n'));
+      console.log(chalk.gray('For full security scan: cofounder security scan'));
+      console.log(chalk.gray('For feature checks: cofounder feature check <name>\n'));
     });
 }

@@ -1,12 +1,12 @@
 /**
- * Zapier Integration for RANA
+ * Zapier Integration for CoFounder
  *
  * Enables integration with Zapier automation platform.
- * Provides triggers, actions, and searches for RANA operations.
+ * Provides triggers, actions, and searches for CoFounder operations.
  *
  * @example
  * ```typescript
- * import { ZapierIntegration } from '@rana/core';
+ * import { ZapierIntegration } from '@cofounder/core';
  *
  * const zapier = new ZapierIntegration({
  *   clientId: process.env.ZAPIER_CLIENT_ID,
@@ -15,12 +15,12 @@
  *
  * // Handle Zapier trigger
  * zapier.onTrigger('new_chat_response', async (input) => {
- *   return { message: 'Response from RANA' };
+ *   return { message: 'Response from CoFounder' };
  * });
  *
  * // Handle Zapier action
  * zapier.onAction('send_message', async (input) => {
- *   const response = await rana.chat({ messages: input.messages });
+ *   const response = await cofounder.chat({ messages: input.messages });
  *   return { response: response.content };
  * });
  * ```
@@ -395,7 +395,7 @@ export class ZapierIntegration extends EventEmitter {
    */
   getAppDefinition(): Record<string, any> {
     return {
-      version: '2.0.0', // RANA version
+      version: '2.0.0', // CoFounder version
       platformVersion: '15.0.0', // Zapier platform version
 
       authentication: this.getAuthenticationConfig(),
@@ -426,7 +426,7 @@ export class ZapierIntegration extends EventEmitter {
       type: 'oauth2',
       oauth2Config: {
         authorizeUrl: {
-          url: 'https://api.rana.dev/oauth/authorize',
+          url: 'https://api.cofounder.dev/oauth/authorize',
           params: {
             client_id: '{{process.env.CLIENT_ID}}',
             redirect_uri: '{{bundle.inputData.redirect_uri}}',
@@ -435,7 +435,7 @@ export class ZapierIntegration extends EventEmitter {
           },
         },
         getAccessToken: {
-          url: 'https://api.rana.dev/oauth/token',
+          url: 'https://api.cofounder.dev/oauth/token',
           method: 'POST',
           body: {
             code: '{{bundle.inputData.code}}',
@@ -446,7 +446,7 @@ export class ZapierIntegration extends EventEmitter {
           },
         },
         refreshAccessToken: {
-          url: 'https://api.rana.dev/oauth/token',
+          url: 'https://api.cofounder.dev/oauth/token',
           method: 'POST',
           body: {
             refresh_token: '{{bundle.authData.refresh_token}}',
@@ -458,7 +458,7 @@ export class ZapierIntegration extends EventEmitter {
         autoRefresh: true,
       },
       test: {
-        url: 'https://api.rana.dev/v1/me',
+        url: 'https://api.cofounder.dev/v1/me',
       },
       connectionLabel: '{{bundle.inputData.email}}',
     };
@@ -587,7 +587,7 @@ export class ZapierIntegration extends EventEmitter {
         noun: 'Message',
         display: {
           label: 'Send Chat Message',
-          description: 'Send a message to RANA AI and get a response.',
+          description: 'Send a message to CoFounder AI and get a response.',
           important: true,
         },
         operation: {

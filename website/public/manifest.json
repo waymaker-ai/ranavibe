@@ -1,6 +1,6 @@
 {
-  "name": "RANA Framework",
-  "short_name": "RANA",
+  "name": "CoFounder Framework",
+  "short_name": "CoFounder",
   "description": "Professional AI agent framework for React applications",
   "start_url": "/",
   "display": "standalone",
@@ -26,14 +26,14 @@
     {
       "name": "Quick Start",
       "short_name": "Quick Start",
-      "description": "Get started with RANA in 5 minutes",
+      "description": "Get started with CoFounder in 5 minutes",
       "url": "/docs/quick-start",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "Training",
       "short_name": "Training",
-      "description": "Learn RANA framework",
+      "description": "Learn CoFounder framework",
       "url": "/training",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     },

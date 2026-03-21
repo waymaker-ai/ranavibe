@@ -14,7 +14,7 @@ const SEVERITY_EMOJI: Record<Severity, string> = {
 export function formatMarkdown(result: ScanResult): string {
   const lines: string[] = [];
 
-  lines.push('# RANA CI Scan Results');
+  lines.push('# CoFounder CI Scan Results');
   lines.push('');
 
   // Summary table

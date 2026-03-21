@@ -9,7 +9,7 @@ const steps = [
     step: '01',
     title: 'Install',
     description: 'One command to get started. No complex setup.',
-    code: 'npx create-rana-app my-ai-app',
+    code: 'npx create-cofounder-app my-ai-app',
     duration: '30 seconds',
   },
   {
@@ -17,8 +17,8 @@ const steps = [
     step: '02',
     title: 'Build',
     description: 'Write clean, simple AI code with full TypeScript support.',
-    code: `const rana = createRana();
-const response = await rana.chat('Hello!');`,
+    code: `const cofounder = createCoFounder();
+const response = await cofounder.chat('Hello!');`,
     duration: '2 minutes',
   },
   {

@@ -1,17 +1,17 @@
-# @ranavibe/policies
+# @cofounder/policies
 
 Declarative policy engine for AI guardrails. Ships with battle-tested compliance presets for HIPAA, GDPR, CCPA, SEC, PCI DSS, FERPA, SOX, and general AI safety. Zero runtime dependencies.
 
 ## Installation
 
 ```bash
-npm install @ranavibe/policies
+npm install @cofounder/policies
 ```
 
 ## Quick Start
 
 ```ts
-import { PolicyEngine } from '@ranavibe/policies';
+import { PolicyEngine } from '@cofounder/policies';
 
 // Create an engine from presets
 const engine = PolicyEngine.fromPresets(['hipaa', 'safety']);
@@ -45,7 +45,7 @@ console.log(result.redactedContent); // content with PII redacted (if action is 
 | `enterprise`| Enterprise   | Balanced default: safety + privacy + PII + governance    |
 
 ```ts
-import { listPresets, getPreset } from '@ranavibe/policies';
+import { listPresets, getPreset } from '@cofounder/policies';
 
 console.log(listPresets()); // ['hipaa', 'gdpr', 'ccpa', ...]
 
@@ -57,7 +57,7 @@ const hipaa = getPreset('hipaa');
 Combine multiple policies with different strategies:
 
 ```ts
-import { PolicyEngine, compose, getPreset } from '@ranavibe/policies';
+import { PolicyEngine, compose, getPreset } from '@cofounder/policies';
 
 // Strictest: block > redact > detect, lower cost limits, intersection of allowed models
 const composed = compose(
@@ -80,7 +80,7 @@ Strategies:
 ## Custom Policies
 
 ```ts
-import { PolicyBuilder, CORE_PII_PATTERNS } from '@ranavibe/policies';
+import { PolicyBuilder, CORE_PII_PATTERNS } from '@cofounder/policies';
 
 const policy = new PolicyBuilder('my-policy', 'My Custom Policy')
   .description('Custom policy for internal use')
@@ -105,7 +105,7 @@ const engine = new PolicyEngine([policy]);
 ## Extending Presets
 
 ```ts
-import { parsePolicy } from '@ranavibe/policies';
+import { parsePolicy } from '@cofounder/policies';
 
 const policy = parsePolicy({
   metadata: {
@@ -127,7 +127,7 @@ const policy = parsePolicy({
 ## Validation
 
 ```ts
-import { validatePolicy } from '@ranavibe/policies';
+import { validatePolicy } from '@cofounder/policies';
 
 const result = validatePolicy(myPolicyObject);
 if (!result.valid) {

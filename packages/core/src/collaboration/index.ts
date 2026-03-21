@@ -4,11 +4,11 @@
  *
  * @example
  * ```typescript
- * import { createPromptLibrary, PromptVersion } from '@rana/core';
+ * import { createPromptLibrary, PromptVersion } from '@cofounder/core';
  *
  * const library = createPromptLibrary({
  *   storage: 'file',
- *   path: './.rana/prompts',
+ *   path: './.cofounder/prompts',
  * });
  *
  * // Create and version prompts

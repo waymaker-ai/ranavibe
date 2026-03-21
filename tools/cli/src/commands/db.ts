@@ -9,7 +9,7 @@ import path from 'path';
  * Interactive wizard for setting up database with Supabase or Prisma
  */
 export async function dbSetup() {
-  console.log(chalk.bold.cyan('\n🗄️  RANA Database Setup\n'));
+  console.log(chalk.bold.cyan('\n🗄️  CoFounder Database Setup\n'));
 
   // Check for existing setup
   const hasPrisma = fs.existsSync('prisma/schema.prisma');

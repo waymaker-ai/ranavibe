@@ -1,10 +1,10 @@
-# OpenTelemetry Export for RANA
+# OpenTelemetry Export for CoFounder
 
-RANA provides built-in OpenTelemetry export capabilities to help you monitor and trace your LLM operations in production environments.
+CoFounder provides built-in OpenTelemetry export capabilities to help you monitor and trace your LLM operations in production environments.
 
 ## Overview
 
-The OpenTelemetry exporter converts RANA traces into the OTLP (OpenTelemetry Protocol) format and sends them to any compatible collector (Jaeger, Zipkin, Honeycomb, Datadog, New Relic, etc.).
+The OpenTelemetry exporter converts CoFounder traces into the OTLP (OpenTelemetry Protocol) format and sends them to any compatible collector (Jaeger, Zipkin, Honeycomb, Datadog, New Relic, etc.).
 
 ## Installation
 
@@ -16,35 +16,35 @@ The OpenTelemetry integration uses an optional peer dependency pattern. Install 
 npm install @opentelemetry/api @opentelemetry/sdk-trace-base @opentelemetry/exporter-trace-otlp-http
 ```
 
-If these packages are not installed, RANA will still work normally but OTel export will be disabled.
+If these packages are not installed, CoFounder will still work normally but OTel export will be disabled.
 
 ## Quick Start
 
 ### Basic Usage
 
 ```typescript
-import { createRana, createOTelPlugin } from '@rana/core';
+import { createCoFounder, createOTelPlugin } from '@cofounder/core';
 
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: {
     anthropic: process.env.ANTHROPIC_API_KEY,
   },
   plugins: [
     createOTelPlugin({
-      serviceName: 'my-rana-service',
+      serviceName: 'my-cofounder-service',
       endpoint: 'http://localhost:4318/v1/traces',
     }),
   ],
 });
 
 // All requests are now traced
-await rana.chat('Hello!');
+await cofounder.chat('Hello!');
 ```
 
 ### Advanced Configuration
 
 ```typescript
-import { createOTelExporter } from '@rana/core';
+import { createOTelExporter } from '@cofounder/core';
 
 const exporter = createOTelExporter({
   serviceName: 'production-app',
@@ -77,7 +77,7 @@ const exporter = createOTelExporter({
   debug: true,
 });
 
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: { anthropic: process.env.ANTHROPIC_API_KEY },
   plugins: [exporter.asPlugin()],
 });
@@ -103,37 +103,37 @@ const rana = createRana({
 
 ## Span Attributes
 
-Each RANA request generates a span with the following attributes:
+Each CoFounder request generates a span with the following attributes:
 
 ### Core Attributes
-- `rana.provider` - LLM provider (anthropic, openai, etc.)
-- `rana.model` - Model name
-- `rana.request_id` - Unique request ID
-- `rana.cached` - Whether response was cached
-- `rana.finish_reason` - Completion reason
+- `cofounder.provider` - LLM provider (anthropic, openai, etc.)
+- `cofounder.model` - Model name
+- `cofounder.request_id` - Unique request ID
+- `cofounder.cached` - Whether response was cached
+- `cofounder.finish_reason` - Completion reason
 
 ### Cost Attributes
-- `rana.cost.total` - Total cost in USD
-- `rana.cost.prompt` - Prompt cost
-- `rana.cost.completion` - Completion cost
+- `cofounder.cost.total` - Total cost in USD
+- `cofounder.cost.prompt` - Prompt cost
+- `cofounder.cost.completion` - Completion cost
 
 ### Usage Attributes
-- `rana.usage.prompt_tokens` - Input tokens
-- `rana.usage.completion_tokens` - Output tokens
-- `rana.usage.total_tokens` - Total tokens
+- `cofounder.usage.prompt_tokens` - Input tokens
+- `cofounder.usage.completion_tokens` - Output tokens
+- `cofounder.usage.total_tokens` - Total tokens
 
 ### Performance Attributes
-- `rana.latency_ms` - Request latency
+- `cofounder.latency_ms` - Request latency
 
 ### Request Metadata
-- `rana.temperature` - Temperature setting
-- `rana.max_tokens` - Max tokens setting
-- `rana.optimize` - Optimization strategy
-- `rana.user` - User ID
+- `cofounder.temperature` - Temperature setting
+- `cofounder.max_tokens` - Max tokens setting
+- `cofounder.optimize` - Optimization strategy
+- `cofounder.user` - User ID
 
 ### Retry Attributes (if applicable)
-- `rana.retry_count` - Number of retries
-- `rana.retry_time_ms` - Total retry time
+- `cofounder.retry_count` - Number of retries
+- `cofounder.retry_time_ms` - Total retry time
 
 ## Use Cases
 
@@ -148,25 +148,25 @@ docker run -d --name jaeger \
 ```
 
 ```typescript
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: { anthropic: process.env.ANTHROPIC_API_KEY },
   plugins: [
     createOTelPlugin({
-      serviceName: 'dev-rana',
+      serviceName: 'dev-cofounder',
       endpoint: 'http://localhost:4318/v1/traces',
       debug: true,
     }),
   ],
 });
 
-await rana.chat('Test trace');
+await cofounder.chat('Test trace');
 // View traces at http://localhost:16686
 ```
 
 ### 2. Production with Honeycomb
 
 ```typescript
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: { anthropic: process.env.ANTHROPIC_API_KEY },
   plugins: [
     createOTelPlugin({
@@ -174,7 +174,7 @@ const rana = createRana({
       endpoint: 'https://api.honeycomb.io/v1/traces',
       headers: {
         'x-honeycomb-team': process.env.HONEYCOMB_API_KEY,
-        'x-honeycomb-dataset': 'rana-traces',
+        'x-honeycomb-dataset': 'cofounder-traces',
       },
     }),
   ],
@@ -184,7 +184,7 @@ const rana = createRana({
 ### 3. Datadog
 
 ```typescript
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: { anthropic: process.env.ANTHROPIC_API_KEY },
   plugins: [
     createOTelPlugin({
@@ -201,7 +201,7 @@ const rana = createRana({
 ### 4. New Relic
 
 ```typescript
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: { anthropic: process.env.ANTHROPIC_API_KEY },
   plugins: [
     createOTelPlugin({
@@ -225,7 +225,7 @@ const exporter = createOTelExporter({
   endpoint: 'http://localhost:4318/v1/traces',
 });
 
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: { anthropic: process.env.ANTHROPIC_API_KEY },
   plugins: [exporter.asPlugin()],
 });
@@ -234,9 +234,9 @@ const rana = createRana({
 const traceId = exporter.startTrace();
 
 try {
-  await rana.chat('What is AI?');
-  await rana.chat('Tell me more');
-  await rana.chat('Give an example');
+  await cofounder.chat('What is AI?');
+  await cofounder.chat('Tell me more');
+  await cofounder.chat('Give an example');
 } finally {
   exporter.endTrace();
 }
@@ -249,7 +249,7 @@ await exporter.shutdown();
 Send traces to multiple collectors:
 
 ```typescript
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: { anthropic: process.env.ANTHROPIC_API_KEY },
   plugins: [
     // Local development
@@ -273,7 +273,7 @@ const rana = createRana({
 function createOTelConfig(): OTelConfig | null {
   if (process.env.NODE_ENV === 'development') {
     return {
-      serviceName: 'dev-rana',
+      serviceName: 'dev-cofounder',
       endpoint: 'http://localhost:4318/v1/traces',
       debug: true,
     };
@@ -281,7 +281,7 @@ function createOTelConfig(): OTelConfig | null {
 
   if (process.env.NODE_ENV === 'production') {
     return {
-      serviceName: 'prod-rana',
+      serviceName: 'prod-cofounder',
       endpoint: process.env.OTEL_ENDPOINT!,
       headers: {
         'x-api-key': process.env.OTEL_API_KEY!,
@@ -295,7 +295,7 @@ function createOTelConfig(): OTelConfig | null {
 }
 
 const otelConfig = createOTelConfig();
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: { anthropic: process.env.ANTHROPIC_API_KEY },
   plugins: otelConfig ? [createOTelPlugin(otelConfig)] : [],
 });
@@ -413,7 +413,7 @@ Creates a new OpenTelemetry exporter.
 
 ### `createOTelPlugin(config: OTelConfig): RanaPlugin`
 
-Creates a RANA plugin for easier integration.
+Creates a CoFounder plugin for easier integration.
 
 ### `isOTelAvailable(): boolean`
 
@@ -426,7 +426,7 @@ Checks if OpenTelemetry dependencies are installed.
 - `endTrace()` - End current trace
 - `flush()` - Flush pending spans
 - `shutdown()` - Shutdown and flush
-- `asPlugin()` - Convert to RANA plugin
+- `asPlugin()` - Convert to CoFounder plugin
 
 ## Examples
 
@@ -436,4 +436,4 @@ See `/examples/otel-export.ts` for complete examples.
 
 - [OpenTelemetry Documentation](https://opentelemetry.io/docs/)
 - [OTLP Specification](https://opentelemetry.io/docs/specs/otlp/)
-- [RANA Observability Guide](./OBSERVABILITY.md)
+- [CoFounder Observability Guide](./OBSERVABILITY.md)

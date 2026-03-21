@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to RANA will be documented in this file.
+All notable changes to CoFounder will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -11,41 +11,41 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Published to npm
 
-Initial public release to npm under the `@ranavibe` organization.
+Initial public release to npm under the `@cofounder` organization.
 
 **Published Packages:**
 
 | Package | Version | Description |
 |---------|---------|-------------|
-| `@ranavibe/core` | 2.0.0 | Unified LLM client with cost optimization, provider routing, and guardrails |
-| `@ranavibe/agents` | 1.0.0 | Agent Development Kit (ADK) with presets, tools, and orchestration |
-| `@ranavibe/rag` | 1.0.0 | RAG pipeline: chunking, retrieval, reranking, knowledge base |
-| `@ranavibe/mcp` | 2.0.0 | Model Context Protocol server & client implementation |
-| `@ranavibe/helpers` | 1.0.0 | Quick LLM helpers for common tasks (summarize, translate, classify, etc.) |
-| `@ranavibe/prompts` | 1.0.0 | Enterprise prompt management with versioning and A/B testing |
-| `@ranavibe/generate` | 1.0.0 | Natural language code generation with templates and wizards |
-| `@ranavibe/react` | 2.0.0 | React hooks and components for chat, RAG, and streaming |
-| `@ranavibe/testing` | 1.0.0 | AI-native testing framework with semantic assertions |
-| `@ranavibe/cli` | 1.0.0 | CLI for init, check, feature flows, and development workflows |
-| `@ranavibe/sdk` | 0.1.0 | SDK for programmatic access to quality gates and REPM validation |
-| `@ranavibe/ui` | 0.1.0 | Glass morphism component library for React |
-| `@ranavibe/ui-cli` | 0.1.0 | CLI tool for installing RANA UI components |
-| `@ranavibe/crewai` | 1.0.0 | CrewAI adapter for RANA |
-| `@ranavibe/langchain` | 1.0.0 | LangChain adapter for RANA |
-| `@ranavibe/mcp-server` | 0.1.0 | MCP server for Claude integration |
-| `create-rana-app` | 2.0.0 | CLI to scaffold new RANA applications |
+| `@cofounder/core` | 2.0.0 | Unified LLM client with cost optimization, provider routing, and guardrails |
+| `@cofounder/agents` | 1.0.0 | Agent Development Kit (ADK) with presets, tools, and orchestration |
+| `@cofounder/rag` | 1.0.0 | RAG pipeline: chunking, retrieval, reranking, knowledge base |
+| `@cofounder/mcp` | 2.0.0 | Model Context Protocol server & client implementation |
+| `@cofounder/helpers` | 1.0.0 | Quick LLM helpers for common tasks (summarize, translate, classify, etc.) |
+| `@cofounder/prompts` | 1.0.0 | Enterprise prompt management with versioning and A/B testing |
+| `@cofounder/generate` | 1.0.0 | Natural language code generation with templates and wizards |
+| `@cofounder/react` | 2.0.0 | React hooks and components for chat, RAG, and streaming |
+| `@cofounder/testing` | 1.0.0 | AI-native testing framework with semantic assertions |
+| `@cofounder/cli` | 1.0.0 | CLI for init, check, feature flows, and development workflows |
+| `@cofounder/sdk` | 0.1.0 | SDK for programmatic access to quality gates and REPM validation |
+| `@cofounder/ui` | 0.1.0 | Glass morphism component library for React |
+| `@cofounder/ui-cli` | 0.1.0 | CLI tool for installing CoFounder UI components |
+| `@cofounder/crewai` | 1.0.0 | CrewAI adapter for CoFounder |
+| `@cofounder/langchain` | 1.0.0 | LangChain adapter for CoFounder |
+| `@cofounder/mcp-server` | 0.1.0 | MCP server for Claude integration |
+| `create-cofounder-app` | 2.0.0 | CLI to scaffold new CoFounder applications |
 
 ### Installation
 
 ```bash
 # Core package
-npm install @ranavibe/core
+npm install @cofounder/core
 
 # Create new app
-npx create-rana-app my-app
+npx create-cofounder-app my-app
 
 # Full stack
-npm install @ranavibe/core @ranavibe/agents @ranavibe/rag @ranavibe/react
+npm install @cofounder/core @cofounder/agents @cofounder/rag @cofounder/react
 ```
 
 ### Infrastructure
@@ -66,11 +66,11 @@ npm install @ranavibe/core @ranavibe/agents @ranavibe/rag @ranavibe/react
 - Property name mismatches in `packages/agents/src/middleware/vibe-enforcer.ts`
 - Implicit any types in `packages/generate/src/quality/auto-fixer.ts`
 - Template interface flexibility in `packages/generate/src/types.ts`
-- Package references from `@rana/ui` to `@ranavibe/ui` in docs
+- Package references from `@cofounder/ui` to `@cofounder/ui` in docs
 
 ### Version Strategy
 
-**Stable (1.0.0+):** `core`, `mcp`, `react`, `agents`, `rag`, `helpers`, `prompts`, `generate`, `testing`, `cli`, `crewai`, `langchain`, `create-rana-app`
+**Stable (1.0.0+):** `core`, `mcp`, `react`, `agents`, `rag`, `helpers`, `prompts`, `generate`, `testing`, `cli`, `crewai`, `langchain`, `create-cofounder-app`
 
 **Pre-release (0.x.x):** `sdk`, `ui`, `ui-cli`, `mcp-server`
 
@@ -82,7 +82,7 @@ npm install @ranavibe/core @ranavibe/agents @ranavibe/rag @ranavibe/react
 
 #### 🎉 New Packages - Framework Expansion
 
-**@rana/guidelines** - Dynamic Behavioral Control
+**@cofounder/guidelines** - Dynamic Behavioral Control
 - Context-aware guideline matching with priority-based resolution
 - 3 enforcement levels: strict, advisory, monitored
 - 8+ preset guidelines for common scenarios (medical, finance, legal, brand voice)
@@ -91,7 +91,7 @@ npm install @ranavibe/core @ranavibe/agents @ranavibe/rag @ranavibe/react
 - Memory and file-based storage options
 - Package documentation: `packages/guidelines/README.md`
 
-**@rana/compliance** - Enterprise Compliance Enforcement
+**@cofounder/compliance** - Enterprise Compliance Enforcement
 - Automatic HIPAA, SEC, GDPR, CCPA, Legal, Safety compliance
 - PII detection and redaction (10+ types: email, phone, SSN, credit card, medical records, etc.)
 - 7 enforcement actions: allow, block, redact, append, replace, warn, escalate
@@ -100,7 +100,7 @@ npm install @ranavibe/core @ranavibe/agents @ranavibe/rag @ranavibe/react
 - 9+ preset compliance rules ready to use
 - Package documentation: `packages/compliance/README.md`
 
-**@rana/context-optimizer** - Extended Context Optimization
+**@cofounder/context-optimizer** - Extended Context Optimization
 - Handle 400K+ token contexts efficiently (GPT-5.2, Gemini 3, Claude 4.5)
 - 70% cost savings maintained at 400K scale
 - 4 optimization strategies: hybrid (recommended), full, rag, summarize
@@ -110,7 +110,7 @@ npm install @ranavibe/core @ranavibe/agents @ranavibe/rag @ranavibe/react
 - LLM-based summarization support
 - Package documentation: `packages/context-optimizer/README.md`
 
-#### 🚀 Major Enhancements - @rana/generate
+#### 🚀 Major Enhancements - @cofounder/generate
 
 **Advanced API Generation** ⭐ NEW
 - Complete CRUD API generation for Next.js App Router (GET, POST, PUT, DELETE)
@@ -161,9 +161,9 @@ npm install @ranavibe/core @ranavibe/agents @ranavibe/rag @ranavibe/react
 - Included usage examples for all major features
 
 **Comparison Guides** ⭐ NEW
-- `docs/comparisons/RANA_VS_LANGCHAIN.md` - Detailed comparison with LangChain for AI development
-- `docs/comparisons/RANA_VS_CURSOR.md` - Comparison with Cursor IDE for code generation
-- `docs/comparisons/RANA_VS_V0_METAGPT.md` - Comparison with v0.dev and MetaGPT
+- `docs/comparisons/CoFounder_VS_LANGCHAIN.md` - Detailed comparison with LangChain for AI development
+- `docs/comparisons/CoFounder_VS_CURSOR.md` - Comparison with Cursor IDE for code generation
+- `docs/comparisons/CoFounder_VS_V0_METAGPT.md` - Comparison with v0.dev and MetaGPT
 - Feature matrices, use case analysis, and decision guides
 
 **Examples** ⭐ NEW
@@ -183,27 +183,27 @@ npm install @ranavibe/core @ranavibe/agents @ranavibe/rag @ranavibe/react
 
 - `examples/guidelines-demo/basic-usage.ts` - Guideline matching for medical, financial, and customer support contexts
 - `examples/compliance-demo/basic-usage.ts` - HIPAA, SEC, GDPR compliance enforcement demonstrations
-- `examples/guidelines-demo/full-integration.ts` - Complete integration showing Guidelines + Compliance + RANA Core working together as CompliantAIAgent
+- `examples/guidelines-demo/full-integration.ts` - Complete integration showing Guidelines + Compliance + CoFounder Core working together as CompliantAIAgent
 
 ### Changed
 
 - Enhanced `CONTRIBUTING.md` with comprehensive framework vision
   - Updated from "guardrail layer" to "comprehensive AI development framework"
   - Added 9 contribution categories including package-specific opportunities
-  - Added RANA Champions Program recognition system
+  - Added CoFounder Champions Program recognition system
   - Updated design guidelines to emphasize production-ready, enterprise features
   - Modernized "What We Value" and "Out of Scope" sections
 
-- Updated `RANA_2025_ROADMAP.md` to reflect new packages and strategic opportunities
+- Updated `CoFounder_2025_ROADMAP.md` to reflect new packages and strategic opportunities
   - Q1 2026: Guidelines, Compliance, Context Optimizer (✅ Complete)
-  - Q2 2026: @rana/graph, @rana/observability, MCP Marketplace
-  - Q3 2026: @rana/multimodal, Universal Agent Protocol
+  - Q2 2026: @cofounder/graph, @cofounder/observability, MCP Marketplace
+  - Q3 2026: @cofounder/multimodal, Universal Agent Protocol
 
 ### Framework Philosophy Evolution
 
 **From Guardrails to Comprehensive Framework**
 
-RANA has evolved to become the ONLY framework with:
+CoFounder has evolved to become the ONLY framework with:
 
 1. ✅ Built-in Compliance (HIPAA, SEC, GDPR, CCPA)
 2. ✅ Dynamic Guidelines (Context-aware behavioral control)
@@ -248,19 +248,19 @@ RANA has evolved to become the ONLY framework with:
 
 ### Migration Guide
 
-**For Existing RANA Users**
+**For Existing CoFounder Users**
 
 All new packages are additive and optional. No breaking changes.
 
 ```bash
 # Add guidelines
-npm install @rana/guidelines
+npm install @cofounder/guidelines
 
 # Add compliance
-npm install @rana/compliance
+npm install @cofounder/compliance
 
 # Add context optimization
-npm install @rana/context-optimizer
+npm install @cofounder/context-optimizer
 ```
 
 See `docs/WHATS_NEW_2026.md` for complete getting started guides.
@@ -279,7 +279,7 @@ See `docs/WHATS_NEW_2026.md` for complete getting started guides.
 - Auto-generated package.json, tsconfig, README, tests, Dockerfile
 
 **Interactive Code Generation Wizards**
-- Full wizard (`rana generate wizard`) - guided entry to all options
+- Full wizard (`cofounder generate wizard`) - guided entry to all options
 - Database schema wizard - Prisma, Drizzle, TypeORM, Mongoose support
 - API wizard - REST, GraphQL, tRPC with framework selection
 - Component wizard - UI, feature, page, layout types
@@ -287,7 +287,7 @@ See `docs/WHATS_NEW_2026.md` for complete getting started guides.
 - Auth wizard - NextAuth, Clerk, Supabase, Firebase, custom JWT
 - Dashboard wizard - charts, widgets, real-time features
 
-**Prompt Management System (`rana prompts`)**
+**Prompt Management System (`cofounder prompts`)**
 - Save/retrieve prompts with categories, tags, and variables
 - Built-in templates for agents, code generation, MCP, and code review
 - Quality analysis with scores for clarity, specificity, and actionability
@@ -295,11 +295,11 @@ See `docs/WHATS_NEW_2026.md` for complete getting started guides.
 - Import/export for sharing prompts between projects
 - Side-by-side prompt comparison
 
-**Interactive Playground (`rana playground`)**
-- REPL environment for testing RANA features interactively
+**Interactive Playground (`cofounder playground`)**
+- REPL environment for testing CoFounder features interactively
 - Quick templates for agents, tools, orchestrators, MCP, and security
-- Demo mode for quick feature overview (`rana demo`)
-- Quickstart guide (`rana quickstart`)
+- Demo mode for quick feature overview (`cofounder demo`)
+- Quickstart guide (`cofounder quickstart`)
 - Code snippet saving and organization
 
 **MCP Server Templates**
@@ -331,34 +331,34 @@ See `docs/WHATS_NEW_2026.md` for complete getting started guides.
 ### CLI Commands Added
 
 **MCP Commands**
-- `rana mcp create` - Create MCP servers from templates
-- `rana mcp validate` - Validate MCP server structure
-- `rana mcp test` - Test MCP server
-- `rana mcp publish` - Publish to npm
-- `rana mcp templates` - List available templates
-- `rana mcp config` - Generate Claude Desktop config
-- `rana mcp add-tool` - Add tool to existing server
-- `rana mcp add-resource` - Add resource to existing server
+- `cofounder mcp create` - Create MCP servers from templates
+- `cofounder mcp validate` - Validate MCP server structure
+- `cofounder mcp test` - Test MCP server
+- `cofounder mcp publish` - Publish to npm
+- `cofounder mcp templates` - List available templates
+- `cofounder mcp config` - Generate Claude Desktop config
+- `cofounder mcp add-tool` - Add tool to existing server
+- `cofounder mcp add-resource` - Add resource to existing server
 
 **Generate Commands**
-- `rana generate wizard` - Full interactive wizard
-- `rana generate schema` - Database schema wizard
-- `rana generate api` - API generation wizard
-- `rana generate component` - Component generation wizard
+- `cofounder generate wizard` - Full interactive wizard
+- `cofounder generate schema` - Database schema wizard
+- `cofounder generate api` - API generation wizard
+- `cofounder generate component` - Component generation wizard
 
 **Prompt Commands**
-- `rana prompts save` - Save prompts with metadata
-- `rana prompts list` - List and filter saved prompts
-- `rana prompts use <name>` - Retrieve and use prompts
-- `rana prompts analyze` - Analyze prompt quality
-- `rana prompts improve` - Get AI suggestions
-- `rana prompts compare` - Compare prompts side-by-side
-- `rana prompts export/import` - Share prompts
+- `cofounder prompts save` - Save prompts with metadata
+- `cofounder prompts list` - List and filter saved prompts
+- `cofounder prompts use <name>` - Retrieve and use prompts
+- `cofounder prompts analyze` - Analyze prompt quality
+- `cofounder prompts improve` - Get AI suggestions
+- `cofounder prompts compare` - Compare prompts side-by-side
+- `cofounder prompts export/import` - Share prompts
 
 **Playground Commands**
-- `rana playground` - Interactive testing environment
-- `rana demo` - Quick feature demonstration
-- `rana quickstart` - Getting started guide
+- `cofounder playground` - Interactive testing environment
+- `cofounder demo` - Quick feature demonstration
+- `cofounder quickstart` - Getting started guide
 
 ### Documentation
 - MCP Server Creation Guide
@@ -503,11 +503,11 @@ See `docs/WHATS_NEW_2026.md` for complete getting started guides.
 
 ## Links
 
-- **Repository:** https://github.com/waymaker-ai/ranavibe
-- **Documentation:** https://rana.cx
-- **npm Organization:** https://www.npmjs.com/org/ranavibe
-- **Issues:** https://github.com/waymaker-ai/ranavibe/issues
-- **Discussions:** https://github.com/waymaker-ai/ranavibe/discussions
+- **Repository:** https://github.com/waymaker-ai/cofounder
+- **Documentation:** https://cofounder.cx
+- **npm Organization:** https://www.npmjs.com/org/cofounder
+- **Issues:** https://github.com/waymaker-ai/cofounder/issues
+- **Discussions:** https://github.com/waymaker-ai/cofounder/discussions
 
 ---
 

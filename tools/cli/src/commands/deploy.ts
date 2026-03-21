@@ -1,6 +1,6 @@
 /**
  * Deploy Command
- * Deploy with RANA verification workflow
+ * Deploy with CoFounder verification workflow
  * Supports Vercel, Railway, and Docker
  */
 
@@ -29,7 +29,7 @@ interface DeployConfig {
  * Main Deploy Command
  */
 export async function deployCommand(options: DeployOptions = {}) {
-  console.log(chalk.bold.cyan('\n🚀 RANA Deployment\n'));
+  console.log(chalk.bold.cyan('\n🚀 CoFounder Deployment\n'));
 
   // Load or create deploy config
   let config = await getDeployConfig();
@@ -326,13 +326,13 @@ async function deployWithDocker(options: DeployOptions) {
 
   // Get registry config
   let config: DeployConfig = { platform: 'docker' };
-  if (fs.existsSync('.rana/docker.json')) {
-    config = JSON.parse(fs.readFileSync('.rana/docker.json', 'utf-8'));
+  if (fs.existsSync('.cofounder/docker.json')) {
+    config = JSON.parse(fs.readFileSync('.cofounder/docker.json', 'utf-8'));
   }
 
   if (!config.projectId) {
     console.log(chalk.gray('\nTo push to a registry, configure with:'));
-    console.log(chalk.cyan('  rana docker:push\n'));
+    console.log(chalk.cyan('  cofounder docker:push\n'));
     return;
   }
 
@@ -382,7 +382,7 @@ async function verifyDeployment(url: string) {
  * Get deploy config
  */
 async function getDeployConfig(): Promise<DeployConfig> {
-  const configPath = '.rana/deploy.json';
+  const configPath = '.cofounder/deploy.json';
 
   if (fs.existsSync(configPath)) {
     try {
@@ -399,7 +399,7 @@ async function getDeployConfig(): Promise<DeployConfig> {
  * Save deploy config
  */
 function saveDeployConfig(config: DeployConfig) {
-  const dir = '.rana';
+  const dir = '.cofounder';
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
   }
@@ -415,7 +415,7 @@ function saveDeploymentInfo(info: {
   timestamp: string;
   production: boolean;
 }) {
-  const dir = '.rana';
+  const dir = '.cofounder';
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
   }
@@ -446,11 +446,11 @@ function saveDeploymentInfo(info: {
 export async function deployStatus() {
   console.log(chalk.bold.cyan('\n📊 Deployment Status\n'));
 
-  const historyPath = '.rana/deployments.json';
+  const historyPath = '.cofounder/deployments.json';
 
   if (!fs.existsSync(historyPath)) {
     console.log(chalk.gray('No deployment history found.'));
-    console.log(chalk.gray('Run `rana deploy` to deploy your app.\n'));
+    console.log(chalk.gray('Run `cofounder deploy` to deploy your app.\n'));
     return;
   }
 

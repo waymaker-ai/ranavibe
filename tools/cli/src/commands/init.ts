@@ -22,14 +22,14 @@ interface ProjectConfig {
 }
 
 export async function initCommand(options: InitOptions) {
-  console.log(chalk.bold.cyan('\n🚀 Initializing RANA in your project...\n'));
+  console.log(chalk.bold.cyan('\n🚀 Initializing CoFounder in your project...\n'));
 
-  // Check if .rana.yml already exists
-  const configPath = path.join(process.cwd(), '.rana.yml');
+  // Check if .cofounder.yml already exists
+  const configPath = path.join(process.cwd(), '.cofounder.yml');
   const exists = await fileExists(configPath);
 
   if (exists && !options.force) {
-    console.log(chalk.yellow('⚠️  .rana.yml already exists!'));
+    console.log(chalk.yellow('⚠️  .cofounder.yml already exists!'));
     const { overwrite } = await inquirer.prompt([
       {
         type: 'confirm',
@@ -52,14 +52,14 @@ export async function initCommand(options: InitOptions) {
   spinner.succeed('Project information collected');
 
   // Generate configuration
-  spinner.start('Generating .rana.yml configuration...');
+  spinner.start('Generating .cofounder.yml configuration...');
   const config = generateConfig(projectInfo, options.template || 'default');
-  spinner.succeed('.rana.yml configuration generated');
+  spinner.succeed('.cofounder.yml configuration generated');
 
   // Write configuration file
-  spinner.start('Writing .rana.yml...');
+  spinner.start('Writing .cofounder.yml...');
   await fs.writeFile(configPath, yaml.dump(config, { indent: 2 }));
-  spinner.succeed('.rana.yml created successfully');
+  spinner.succeed('.cofounder.yml created successfully');
 
   // Create docs directory
   spinner.start('Creating docs/aads/ directory...');
@@ -73,22 +73,22 @@ export async function initCommand(options: InitOptions) {
   spinner.succeed('Documentation templates copied');
 
   // Success message
-  console.log(chalk.bold.green('\n✅ RANA initialized successfully!\n'));
+  console.log(chalk.bold.green('\n✅ CoFounder initialized successfully!\n'));
   console.log(chalk.gray('Files created:'));
-  console.log(chalk.gray('  📄 .rana.yml'));
+  console.log(chalk.gray('  📄 .cofounder.yml'));
   console.log(chalk.gray('  📁 docs/aads/'));
   console.log(chalk.gray('  📝 docs/aads/AGENT_INSTRUCTIONS.md'));
   console.log(chalk.gray('  ✅ docs/aads/DEVELOPMENT_CHECKLIST.md\n'));
 
   console.log(chalk.bold.white('Next steps:'));
-  console.log(chalk.gray('  1. Review and customize .rana.yml'));
+  console.log(chalk.gray('  1. Review and customize .cofounder.yml'));
   console.log(chalk.gray('  2. Update docs/aads/AGENT_INSTRUCTIONS.md with project-specific rules'));
   console.log(chalk.gray('  3. Run ') + chalk.cyan('aads check') + chalk.gray(' to verify setup'));
-  console.log(chalk.gray('  4. Share .rana.yml with your AI assistant\n'));
+  console.log(chalk.gray('  4. Share .cofounder.yml with your AI assistant\n'));
 
   console.log(chalk.bold.cyan('💡 Pro Tip:'));
   console.log(chalk.gray('When working with AI assistants, say:'));
-  console.log(chalk.italic.white('"Follow the RANA framework defined in .rana.yml"\n'));
+  console.log(chalk.italic.white('"Follow the CoFounder framework defined in .cofounder.yml"\n'));
 }
 
 async function fileExists(filePath: string): Promise<boolean> {

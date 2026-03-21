@@ -1,6 +1,6 @@
 /**
  * Vector Memory System
- * Long-term vector memory with similarity search for RANA
+ * Long-term vector memory with similarity search for CoFounder
  */
 
 // ============================================================================

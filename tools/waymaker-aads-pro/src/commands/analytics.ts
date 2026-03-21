@@ -16,13 +16,13 @@ interface ComplianceMetric {
 }
 
 export async function analyticsCommand(options: AnalyticsOptions) {
-  const spinner = ora('Fetching RANA analytics...').start();
+  const spinner = ora('Fetching CoFounder analytics...').start();
 
   try {
     // Check if user is authenticated
     const authToken = await getAuthToken();
     if (!authToken) {
-      spinner.fail('Not authenticated. Run: waymaker-rana login');
+      spinner.fail('Not authenticated. Run: waymaker-cofounder login');
       return;
     }
 
@@ -69,7 +69,7 @@ async function fetchAnalytics(token: string, days: number): Promise<ComplianceMe
 }
 
 function displayAnalytics(metrics: ComplianceMetric[], period: number) {
-  console.log(chalk.bold.cyan(`\n📊 RANA Compliance Analytics (Last ${period} days)\n`));
+  console.log(chalk.bold.cyan(`\n📊 CoFounder Compliance Analytics (Last ${period} days)\n`));
 
   const avgScore = metrics.reduce((sum, m) => sum + m.score, 0) / metrics.length;
   const totalViolations = metrics.reduce((sum, m) => sum + m.violations, 0);

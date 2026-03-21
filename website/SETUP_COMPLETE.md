@@ -1,6 +1,6 @@
-# RANA Website Setup Complete! 🎉
+# CoFounder Website Setup Complete! 🎉
 
-Your professional, minimalistic RANA framework website is ready to deploy!
+Your professional, minimalistic CoFounder framework website is ready to deploy!
 
 ## What's Been Built
 
@@ -130,7 +130,7 @@ To: hsl(210, 100%, 65%)    /* Blue */
 # Push to GitHub
 cd ../  # Go to repo root
 git add website/
-git commit -m "Add professional RANA website with PWA"
+git commit -m "Add professional CoFounder website with PWA"
 git push origin main
 
 # Then in Vercel:
@@ -153,7 +153,7 @@ Follow the complete guide in `FRAMER_INTEGRATION_GUIDE.md`:
 ### 3. Configure Custom Domain
 
 In Vercel project settings:
-1. Add domain: `rana.cx`
+1. Add domain: `cofounder.cx`
 2. Update DNS:
    - A Record → 76.76.21.21
    - CNAME www → cname.vercel-dns.com
@@ -161,7 +161,7 @@ In Vercel project settings:
 ### 4. Test Everything
 
 Use the checklist in `DEPLOYMENT_CHECKLIST.md`:
-- [ ] Site loads at rana.cx
+- [ ] Site loads at cofounder.cx
 - [ ] Dark mode works
 - [ ] PWA installs
 - [ ] Offline mode functional
@@ -382,4 +382,4 @@ Follow the DEPLOYMENT_CHECKLIST.md for step-by-step deployment instructions.
 
 ---
 
-Built with ❤️ for the RANA Framework
+Built with ❤️ for the CoFounder Framework

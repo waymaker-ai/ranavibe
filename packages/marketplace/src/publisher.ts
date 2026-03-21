@@ -120,8 +120,8 @@ function generatePackageJson(
     main: 'policies.json',
     files: ['policies.json', 'README.md'],
     keywords: [
-      'rana',
-      'rana-policy',
+      'cofounder',
+      'cofounder-policy',
       'ai-safety',
       'guardrails',
       ...pkg.tags,
@@ -133,7 +133,7 @@ function generatePackageJson(
       ? { type: 'git', url: config.repository }
       : undefined,
     publishConfig: { access: 'public' },
-    rana: {
+    cofounder: {
       categories: pkg.categories,
       ruleCount: pkg.policies.length,
     },

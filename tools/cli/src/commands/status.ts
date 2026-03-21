@@ -1,6 +1,6 @@
 /**
  * Status Command
- * Show RANA project status
+ * Show CoFounder project status
  */
 
 import chalk from 'chalk';
@@ -24,20 +24,20 @@ interface StatusInfo {
 }
 
 export async function showStatus() {
-  console.log(chalk.bold.cyan('\n📊 RANA Project Status\n'));
+  console.log(chalk.bold.cyan('\n📊 CoFounder Project Status\n'));
 
   const status = await collectStatus();
 
-  // RANA Configuration
+  // CoFounder Configuration
   console.log(chalk.bold('🔧 Configuration'));
   console.log(chalk.gray('─'.repeat(50)));
 
   if (status.hasConfig) {
-    console.log(chalk.green('  ✓ .rana.yml found'));
+    console.log(chalk.green('  ✓ .cofounder.yml found'));
 
     // Load and show config summary
     try {
-      const content = fs.readFileSync('.rana.yml', 'utf-8');
+      const content = fs.readFileSync('.cofounder.yml', 'utf-8');
       const config = yaml.load(content) as Record<string, unknown>;
       const project = config.project as Record<string, unknown> | undefined;
 
@@ -50,8 +50,8 @@ export async function showStatus() {
       // Ignore parse errors
     }
   } else {
-    console.log(chalk.yellow('  ⚠ No .rana.yml found'));
-    console.log(chalk.gray('    Run `rana init` to create one'));
+    console.log(chalk.yellow('  ⚠ No .cofounder.yml found'));
+    console.log(chalk.gray('    Run `cofounder init` to create one'));
   }
 
   // Environment
@@ -110,17 +110,17 @@ export async function showStatus() {
   // Quick Actions
   console.log(chalk.bold('\n💡 Quick Actions'));
   console.log(chalk.gray('─'.repeat(50)));
-  console.log(chalk.gray('  rana check         ') + chalk.white('Check compliance'));
-  console.log(chalk.gray('  rana analyze       ') + chalk.white('Analyze project'));
-  console.log(chalk.gray('  rana llm:analyze   ') + chalk.white('Check LLM costs'));
-  console.log(chalk.gray('  rana security:audit') + chalk.white('Run security scan'));
+  console.log(chalk.gray('  cofounder check         ') + chalk.white('Check compliance'));
+  console.log(chalk.gray('  cofounder analyze       ') + chalk.white('Analyze project'));
+  console.log(chalk.gray('  cofounder llm:analyze   ') + chalk.white('Check LLM costs'));
+  console.log(chalk.gray('  cofounder security:audit') + chalk.white('Run security scan'));
 
   console.log();
 }
 
 async function collectStatus(): Promise<StatusInfo> {
   const status: StatusInfo = {
-    hasConfig: fs.existsSync('.rana.yml'),
+    hasConfig: fs.existsSync('.cofounder.yml'),
     hasPackageJson: fs.existsSync('package.json'),
     hasGit: fs.existsSync('.git'),
     dependencies: {

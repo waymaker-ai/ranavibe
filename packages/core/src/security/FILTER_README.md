@@ -1,6 +1,6 @@
-# RANA Content Filter
+# CoFounder Content Filter
 
-A robust content filtering system for RANA that filters profanity, harmful content, spam, and custom blocklisted words/phrases.
+A robust content filtering system for CoFounder that filters profanity, harmful content, spam, and custom blocklisted words/phrases.
 
 ## Features
 
@@ -15,10 +15,10 @@ A robust content filtering system for RANA that filters profanity, harmful conte
 
 ## Installation
 
-The content filter is included in `@rana/core`:
+The content filter is included in `@cofounder/core`:
 
 ```typescript
-import { createContentFilter, isContentSafe } from '@rana/core';
+import { createContentFilter, isContentSafe } from '@cofounder/core';
 ```
 
 ## Quick Start
@@ -26,7 +26,7 @@ import { createContentFilter, isContentSafe } from '@rana/core';
 ### Basic Usage
 
 ```typescript
-import { createContentFilter } from '@rana/core';
+import { createContentFilter } from '@cofounder/core';
 
 const filter = createContentFilter({
   defaultAction: 'warn',
@@ -44,7 +44,7 @@ if (!result.passed) {
 ### Simple Safety Check
 
 ```typescript
-import { isContentSafe } from '@rana/core';
+import { isContentSafe } from '@cofounder/core';
 
 if (!isContentSafe(userInput)) {
   console.log('Content is not safe!');
@@ -243,10 +243,10 @@ const stats = filter.getStats();
 console.log('Total patterns:', stats.totalPatterns);
 ```
 
-### 8. Integration with RANA Chat
+### 8. Integration with CoFounder Chat
 
 ```typescript
-import { createRana, createContentFilter, ContentBlockedError } from '@rana/core';
+import { createCoFounder, createContentFilter, ContentBlockedError } from '@cofounder/core';
 
 const contentFilter = createContentFilter({
   enableProfanityFilter: true,
@@ -259,7 +259,7 @@ const contentFilter = createContentFilter({
   },
 });
 
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: {
     anthropic: process.env.ANTHROPIC_API_KEY,
   },
@@ -281,7 +281,7 @@ async function safeChatRequest(userMessage: string) {
     : userMessage;
 
   // Send to LLM
-  return await rana.chat({
+  return await cofounder.chat({
     messages: [{ role: 'user', content: safeMessage }],
   });
 }
@@ -382,7 +382,7 @@ const filter = createContentFilter({
 ## Error Handling
 
 ```typescript
-import { ContentBlockedError, ContentFilterError } from '@rana/core';
+import { ContentBlockedError, ContentFilterError } from '@cofounder/core';
 
 try {
   const result = filter.filter(content);
@@ -455,4 +455,4 @@ To extend the built-in patterns:
 
 ## License
 
-Part of the RANA project. See main project license.
+Part of the CoFounder project. See main project license.

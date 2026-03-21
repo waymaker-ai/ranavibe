@@ -1,5 +1,5 @@
 /**
- * @rana/agents/security
+ * @cofounder/agents/security
  * Comprehensive security utilities for agents and tools
  */
 

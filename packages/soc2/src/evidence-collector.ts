@@ -1,5 +1,5 @@
 /**
- * Evidence collection from RANA components for SOC 2 audit reports.
+ * Evidence collection from CoFounder components for SOC 2 audit reports.
  *
  * Collects and aggregates evidence from dashboard metrics, audit logs,
  * policies, CI scans, and guard reports.
@@ -103,7 +103,7 @@ export function collectEvidence(
 }
 
 /**
- * Collect evidence from RANA dashboard metrics.
+ * Collect evidence from CoFounder dashboard metrics.
  */
 function collectDashboardEvidence(
   metrics: DashboardMetrics,
@@ -119,7 +119,7 @@ function collectDashboardEvidence(
     title: 'System Metrics Overview',
     description: `Aggregate guardrail metrics for period ${config.auditPeriod.startDate} to ${config.auditPeriod.endDate}`,
     collectedAt: now,
-    source: 'rana-dashboard',
+    source: 'cofounder-dashboard',
     data: {
       totalRequests: metrics.totalRequests,
       blockedRequests: metrics.blockedRequests,
@@ -138,7 +138,7 @@ function collectDashboardEvidence(
     title: 'PII Detection Metrics',
     description: `PII detection statistics for the audit period`,
     collectedAt: now,
-    source: 'rana-dashboard',
+    source: 'cofounder-dashboard',
     data: {
       totalDetections: metrics.piiDetections,
       detectionRate: metrics.totalRequests > 0
@@ -154,7 +154,7 @@ function collectDashboardEvidence(
     title: 'Injection Detection Metrics',
     description: `Injection attempt detection statistics for the audit period`,
     collectedAt: now,
-    source: 'rana-dashboard',
+    source: 'cofounder-dashboard',
     data: {
       totalAttempts: metrics.injectionAttempts,
       attemptRate: metrics.totalRequests > 0
@@ -170,7 +170,7 @@ function collectDashboardEvidence(
     title: 'Compliance Violation Metrics',
     description: `Compliance violation statistics for the audit period`,
     collectedAt: now,
-    source: 'rana-dashboard',
+    source: 'cofounder-dashboard',
     data: {
       totalViolations: metrics.complianceViolations,
       violationRate: metrics.totalRequests > 0
@@ -186,7 +186,7 @@ function collectDashboardEvidence(
     title: 'System Availability Metrics',
     description: `System uptime and availability for the audit period`,
     collectedAt: now,
-    source: 'rana-dashboard',
+    source: 'cofounder-dashboard',
     data: {
       uptimePercentage: metrics.uptime,
       meetsTarget: metrics.uptime >= 99.9,
@@ -197,7 +197,7 @@ function collectDashboardEvidence(
 }
 
 /**
- * Collect evidence from RANA audit logs.
+ * Collect evidence from CoFounder audit logs.
  */
 function collectAuditLogEvidence(
   logData: { entries: AuditLogEntry[] },
@@ -225,7 +225,7 @@ function collectAuditLogEvidence(
     title: 'Security Events Summary',
     description: `Summary of security events during audit period (${securityEvents.length} events)`,
     collectedAt: now,
-    source: 'rana-audit-log',
+    source: 'cofounder-audit-log',
     data: {
       totalEvents: securityEvents.length,
       bySeverity: countBy(securityEvents, 'severity'),
@@ -245,7 +245,7 @@ function collectAuditLogEvidence(
     title: 'Access Events Summary',
     description: `Summary of access and authentication events during audit period`,
     collectedAt: now,
-    source: 'rana-audit-log',
+    source: 'cofounder-audit-log',
     data: {
       totalEvents: accessEvents.length,
       successfulAccess: accessEvents.filter((e) => e.outcome === 'success').length,
@@ -265,7 +265,7 @@ function collectAuditLogEvidence(
     title: 'Configuration Change Events',
     description: `Summary of configuration and policy changes during audit period`,
     collectedAt: now,
-    source: 'rana-audit-log',
+    source: 'cofounder-audit-log',
     data: {
       totalChanges: changeEvents.length,
       byAction: countBy(changeEvents, 'action'),
@@ -284,7 +284,7 @@ function collectAuditLogEvidence(
     title: 'Violation Events Summary',
     description: `Summary of blocked/violation events during audit period`,
     collectedAt: now,
-    source: 'rana-audit-log',
+    source: 'cofounder-audit-log',
     data: {
       totalViolations: violationEvents.length,
       byEventType: countBy(violationEvents, 'eventType'),
@@ -296,7 +296,7 @@ function collectAuditLogEvidence(
 }
 
 /**
- * Collect evidence from RANA policy documents.
+ * Collect evidence from CoFounder policy documents.
  */
 function collectPolicyEvidence(
   policyData: { policies: PolicySummary[] },
@@ -310,9 +310,9 @@ function collectPolicyEvidence(
     id: generateEvidenceId('policy-summary'),
     type: 'policy' as EvidenceType,
     title: 'Active Compliance Policies',
-    description: `Summary of active RANA compliance policies as of ${config.auditPeriod.endDate}`,
+    description: `Summary of active CoFounder compliance policies as of ${config.auditPeriod.endDate}`,
     collectedAt: now,
-    source: 'rana-policies',
+    source: 'cofounder-policies',
     data: {
       totalPolicies: policyData.policies.length,
       policies: policyData.policies.map((p) => ({
@@ -335,7 +335,7 @@ function collectPolicyEvidence(
       title: `Policy: ${policy.name}`,
       description: `Details of policy "${policy.name}" v${policy.version}`,
       collectedAt: now,
-      source: 'rana-policies',
+      source: 'cofounder-policies',
       data: {
         policyId: policy.id,
         name: policy.name,
@@ -350,7 +350,7 @@ function collectPolicyEvidence(
 }
 
 /**
- * Collect evidence from RANA CI/CD scan results.
+ * Collect evidence from CoFounder CI/CD scan results.
  */
 function collectCIScanEvidence(
   scanData: { scans: CIScanSummary[] },
@@ -375,7 +375,7 @@ function collectCIScanEvidence(
     title: 'CI/CD Scan Results Summary',
     description: `Summary of CI/CD compliance scans during audit period`,
     collectedAt: now,
-    source: 'rana-ci-scans',
+    source: 'cofounder-ci-scans',
     data: {
       totalScans: periodScans.length,
       passed: passedScans.length,
@@ -397,7 +397,7 @@ function collectCIScanEvidence(
       title: 'Failed CI/CD Scans',
       description: `Details of failed CI/CD scans during audit period`,
       collectedAt: now,
-      source: 'rana-ci-scans',
+      source: 'cofounder-ci-scans',
       data: {
         failedScans: failedScans.map((s) => ({
           scanId: s.scanId,
@@ -415,7 +415,7 @@ function collectCIScanEvidence(
 }
 
 /**
- * Collect evidence from RANA guard reports.
+ * Collect evidence from CoFounder guard reports.
  */
 function collectGuardReportEvidence(
   reportData: { reports: GuardReportSummary[] },
@@ -435,7 +435,7 @@ function collectGuardReportEvidence(
     title: 'Guard Effectiveness Overview',
     description: `Aggregate guard effectiveness metrics for audit period`,
     collectedAt: now,
-    source: 'rana-guards',
+    source: 'cofounder-guard'',
     data: {
       totalChecks,
       totalViolations,
@@ -458,7 +458,7 @@ function collectGuardReportEvidence(
       title: `Guard Report: ${report.guardType}`,
       description: `Detailed report for ${report.guardType} guard`,
       collectedAt: now,
-      source: 'rana-guards',
+      source: 'cofounder-guard'',
       data: {
         guardType: report.guardType,
         totalChecks: report.totalChecks,

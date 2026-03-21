@@ -1,17 +1,17 @@
-# @ranavibe/benchmark
+# @cofounder/benchmark
 
-Detection accuracy benchmark suite for RANA guardrails. Measure precision, recall, F1, and false positive/negative rates for your PII, injection, and toxicity detectors.
+Detection accuracy benchmark suite for CoFounder guardrails. Measure precision, recall, F1, and false positive/negative rates for your PII, injection, and toxicity detectors.
 
 ## Installation
 
 ```bash
-npm install @ranavibe/benchmark
+npm install @cofounder/benchmark
 ```
 
 ## Quick Start
 
 ```typescript
-import { runBenchmarks } from '@ranavibe/benchmark';
+import { runBenchmarks } from '@cofounder/benchmark';
 
 const report = await runBenchmarks({
   detectors: [
@@ -81,7 +81,7 @@ interface DetectedFinding {
 ## Running Individual Benchmarks
 
 ```typescript
-import { runPiiBenchmark, runInjectionBenchmark, runToxicityBenchmark } from '@ranavibe/benchmark';
+import { runPiiBenchmark, runInjectionBenchmark, runToxicityBenchmark } from '@cofounder/benchmark';
 
 const piiResult = await runPiiBenchmark(myDetector, 'My PII Detector');
 const injResult = await runInjectionBenchmark(myDetector, 'My Injection Detector');

@@ -1,4 +1,4 @@
-# MCP Integration Guide for RANA
+# MCP Integration Guide for CoFounder
 
 **Version:** 1.0.0
 **Last Updated:** 2025-11-09
@@ -8,7 +8,7 @@
 
 ## Overview
 
-This guide extends RANA with Model Context Protocol (MCP) standards, enabling AI assistants to securely connect to data sources, tools, and services while maintaining RANA quality gates.
+This guide extends CoFounder with Model Context Protocol (MCP) standards, enabling AI assistants to securely connect to data sources, tools, and services while maintaining CoFounder quality gates.
 
 ---
 
@@ -18,7 +18,7 @@ This guide extends RANA with Model Context Protocol (MCP) standards, enabling AI
 2. [Integration Patterns](#integration-patterns)
 3. [Building MCP Servers](#building-mcp-servers)
 4. [Consuming MCP Servers](#consuming-mcp-servers)
-5. [RANA Quality Gates for MCP](#aads-quality-gates-for-mcp)
+5. [CoFounder Quality Gates for MCP](#aads-quality-gates-for-mcp)
 6. [Security Best Practices](#security-best-practices)
 7. [Examples](#examples)
 
@@ -78,7 +78,7 @@ This guide extends RANA with Model Context Protocol (MCP) standards, enabling AI
 ### Pattern 1: MCP-Enhanced Development Workflow
 
 ```yaml
-# .rana.yml with MCP integration
+# .cofounder.yml with MCP integration
 version: 1.0.0
 
 project:
@@ -181,7 +181,7 @@ class MyMCPServer {
       "tools/call",
       async (request) => {
         if (request.params.name === "query_users") {
-          // ✅ RANA: Real data only (no mocks)
+          // ✅ CoFounder: Real data only (no mocks)
           const result = await this.queryDatabase(request.params.arguments);
           return { content: [{ type: "text", text: JSON.stringify(result) }] };
         }
@@ -200,7 +200,7 @@ class MyMCPServer {
 
 ## Building MCP Servers
 
-### RANA Quality Gates for MCP Server Development
+### CoFounder Quality Gates for MCP Server Development
 
 #### Pre-Implementation
 - [ ] Define clear resource/tool boundaries
@@ -285,19 +285,19 @@ class ProductionMCPServer {
       try {
         const { name, arguments: args } = request.params;
 
-        // ✅ RANA: Input validation
+        // ✅ CoFounder: Input validation
         if (!this.validateInput(name, args)) {
           throw new Error("Invalid input parameters");
         }
 
-        // ✅ RANA: Security check
+        // ✅ CoFounder: Security check
         if (!this.checkPermissions(name)) {
           throw new Error("Unauthorized access");
         }
 
         switch (name) {
           case "execute_query":
-            // ✅ RANA: Real data, error handling
+            // ✅ CoFounder: Real data, error handling
             const result = await this.executeQuery(args.query);
             return {
               content: [
@@ -312,7 +312,7 @@ class ProductionMCPServer {
             throw new Error(`Unknown tool: ${name}`);
         }
       } catch (error) {
-        // ✅ RANA: Proper error handling
+        // ✅ CoFounder: Proper error handling
         return {
           content: [
             {
@@ -338,19 +338,19 @@ class ProductionMCPServer {
   }
 
   private validateInput(toolName: string, args: any): boolean {
-    // ✅ RANA: Input validation
+    // ✅ CoFounder: Input validation
     // Add your validation logic
     return true;
   }
 
   private checkPermissions(toolName: string): boolean {
-    // ✅ RANA: Security check
+    // ✅ CoFounder: Security check
     // Add your permission logic
     return true;
   }
 
   private async executeQuery(query: string): Promise<any> {
-    // ✅ RANA: Real database connection (no mocks)
+    // ✅ CoFounder: Real database connection (no mocks)
     // Implement your database logic here
     throw new Error("Not implemented");
   }
@@ -409,16 +409,16 @@ class ProductionMCPServer:
         @self.server.call_tool()
         async def call_tool(name: str, arguments: Any) -> list[TextContent]:
             try:
-                # ✅ RANA: Input validation
+                # ✅ CoFounder: Input validation
                 if not self._validate_input(name, arguments):
                     raise ValueError("Invalid input parameters")
 
-                # ✅ RANA: Security check
+                # ✅ CoFounder: Security check
                 if not self._check_permissions(name):
                     raise PermissionError("Unauthorized access")
 
                 if name == "execute_query":
-                    # ✅ RANA: Real data, error handling
+                    # ✅ CoFounder: Real data, error handling
                     result = await self._execute_query(arguments["query"])
                     return [TextContent(
                         type="text",
@@ -428,7 +428,7 @@ class ProductionMCPServer:
                 raise ValueError(f"Unknown tool: {name}")
 
             except Exception as e:
-                # ✅ RANA: Proper error handling
+                # ✅ CoFounder: Proper error handling
                 logger.error(f"Tool execution error: {e}")
                 return [TextContent(
                     type="text",
@@ -436,15 +436,15 @@ class ProductionMCPServer:
                 )]
 
     def _validate_input(self, tool_name: str, args: Any) -> bool:
-        # ✅ RANA: Input validation
+        # ✅ CoFounder: Input validation
         return True
 
     def _check_permissions(self, tool_name: str) -> bool:
-        # ✅ RANA: Security check
+        # ✅ CoFounder: Security check
         return True
 
     async def _execute_query(self, query: str) -> Any:
-        # ✅ RANA: Real database connection
+        # ✅ CoFounder: Real database connection
         raise NotImplementedError("Implement database logic")
 
     async def run(self):
@@ -525,7 +525,7 @@ class MCPClientService {
 
       return client;
     } catch (error) {
-      // ✅ RANA: Error handling
+      // ✅ CoFounder: Error handling
       console.error(`Failed to connect to MCP server ${serverName}:`, error);
       throw error;
     }
@@ -538,7 +538,7 @@ class MCPClientService {
     }
 
     try {
-      // ✅ RANA: Real tool execution (no mocks)
+      // ✅ CoFounder: Real tool execution (no mocks)
       const result = await client.request(
         {
           method: "tools/call",
@@ -552,7 +552,7 @@ class MCPClientService {
 
       return result;
     } catch (error) {
-      // ✅ RANA: Error handling
+      // ✅ CoFounder: Error handling
       console.error(`Tool execution failed: ${toolName}`, error);
       throw error;
     }
@@ -576,11 +576,11 @@ export const mcpClient = new MCPClientService();
 
 ---
 
-## RANA Quality Gates for MCP
+## CoFounder Quality Gates for MCP
 
 ### MCP-Specific Quality Gates
 
-Add to `.rana.yml`:
+Add to `.cofounder.yml`:
 
 ```yaml
 quality_gates:
@@ -690,18 +690,18 @@ async function getUserForDisplay(userId: string) {
 ```typescript
 // Treat tools as arbitrary code execution
 async function executeTool(toolName: string, args: any) {
-  // ✅ RANA: Validate inputs
+  // ✅ CoFounder: Validate inputs
   const validation = validateToolInput(toolName, args);
   if (!validation.valid) {
     throw new Error(`Invalid input: ${validation.error}`);
   }
 
-  // ✅ RANA: Check permissions
+  // ✅ CoFounder: Check permissions
   if (!hasPermission(toolName)) {
     throw new Error("Unauthorized");
   }
 
-  // ✅ RANA: Sanitize outputs
+  // ✅ CoFounder: Sanitize outputs
   const result = await executeToolSafely(toolName, args);
   return sanitizeOutput(result);
 }
@@ -789,7 +789,7 @@ class ProjectContextServer {
       const filePath = uri.replace("file://", "");
 
       try {
-        // ✅ RANA: Real file access (no mocks)
+        // ✅ CoFounder: Real file access (no mocks)
         const content = await fs.readFile(filePath, "utf-8");
         return {
           contents: [
@@ -801,7 +801,7 @@ class ProjectContextServer {
           ],
         };
       } catch (error) {
-        // ✅ RANA: Error handling
+        // ✅ CoFounder: Error handling
         throw new Error(`Failed to read file: ${error.message}`);
       }
     });
@@ -830,7 +830,7 @@ class ProjectContextServer {
         const { pattern, fileType } = request.params.arguments as any;
 
         try {
-          // ✅ RANA: Real search implementation
+          // ✅ CoFounder: Real search implementation
           const results = await this.searchCode(pattern, fileType);
           return {
             content: [
@@ -841,7 +841,7 @@ class ProjectContextServer {
             ],
           };
         } catch (error) {
-          // ✅ RANA: Error handling
+          // ✅ CoFounder: Error handling
           return {
             content: [
               {
@@ -857,7 +857,7 @@ class ProjectContextServer {
   }
 
   private async searchCode(pattern: string, fileType?: string): Promise<any> {
-    // ✅ RANA: Real implementation (implement actual search logic)
+    // ✅ CoFounder: Real implementation (implement actual search logic)
     throw new Error("Not implemented");
   }
 
@@ -875,9 +875,9 @@ server.run().catch(console.error);
 
 ---
 
-## Integration with RANA Workflow
+## Integration with CoFounder Workflow
 
-### Enhanced RANA Workflow with MCP
+### Enhanced CoFounder Workflow with MCP
 
 ```
 1. UNDERSTANDING
@@ -919,11 +919,11 @@ server.run().catch(console.error);
 
 ## Conclusion
 
-MCP provides a powerful, standardized way to extend AI capabilities while maintaining RANA quality standards. By following these patterns and quality gates, you can build secure, production-ready MCP integrations that enhance the AI development workflow.
+MCP provides a powerful, standardized way to extend AI capabilities while maintaining CoFounder quality standards. By following these patterns and quality gates, you can build secure, production-ready MCP integrations that enhance the AI development workflow.
 
 **Key Takeaways:**
 - MCP enables secure, standardized AI-to-system connections
-- RANA quality gates apply to MCP implementations
+- CoFounder quality gates apply to MCP implementations
 - Security (explicit consent, data minimization) is paramount
 - Real data and proper error handling are non-negotiable
 - Test and deploy MCP servers like any other production code
@@ -933,9 +933,9 @@ MCP provides a powerful, standardized way to extend AI capabilities while mainta
 **Next Steps:**
 1. Read the [official MCP specification](https://modelcontextprotocol.io/specification/2025-03-26)
 2. Explore [MCP server examples](https://github.com/modelcontextprotocol)
-3. Build your first MCP server following RANA standards
+3. Build your first MCP server following CoFounder standards
 4. Integrate MCP into your development workflow
 
 ---
 
-*Part of the RANA Framework - Production-Quality AI Development*
+*Part of the CoFounder Framework - Production-Quality AI Development*

@@ -183,7 +183,7 @@ export interface EntityExtractorConfig {
  */
 const DEFAULT_CONFIG: Required<EntityExtractorConfig> = {
   enablePersistence: false,
-  storageKey: 'rana_entity_graph',
+  storageKey: 'cofounder_entity_graph',
   minConfidence: 0.5,
   maxContexts: 10,
   coOccurrenceWindow: 20,

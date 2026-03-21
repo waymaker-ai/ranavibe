@@ -1,4 +1,4 @@
-# RANA Guardrails for VS Code
+# CoFounder Guardrails for VS Code
 
 AI guardrails for VS Code and Cursor. Scan your code for PII leaks, hardcoded secrets, prompt injection risks, and unapproved model usage -- all in real time.
 
@@ -17,7 +17,7 @@ AI guardrails for VS Code and Cursor. Scan your code for PII leaks, hardcoded se
 
 ### From Marketplace
 
-Search for "RANA Guardrails" in the VS Code or Cursor extensions panel.
+Search for "CoFounder Guardrails" in the VS Code or Cursor extensions panel.
 
 ### From VSIX
 
@@ -29,43 +29,43 @@ Search for "RANA Guardrails" in the VS Code or Cursor extensions panel.
    ```
 2. Install the generated `.vsix` file:
    - VS Code: `Extensions` > `...` > `Install from VSIX...`
-   - Cursor: same flow, or `code --install-extension rana-guardrails-1.0.0.vsix`
+   - Cursor: same flow, or `code --install-extension cofounder-guardrails-1.0.0.vsix`
 
 ## Commands
 
-Open the command palette (`Cmd+Shift+P` / `Ctrl+Shift+P`) and type `RANA`:
+Open the command palette (`Cmd+Shift+P` / `Ctrl+Shift+P`) and type `CoFounder`:
 
 | Command | Description |
 |---------|-------------|
-| `RANA: Scan Current File` | Scan the active editor for issues |
-| `RANA: Scan Workspace` | Scan all supported files in the workspace |
-| `RANA: Show Dashboard` | Open the guardrails dashboard |
-| `RANA: Check Compliance` | Run compliance checks against configured frameworks |
-| `RANA: Estimate Cost` | Find model references and estimate LLM costs |
+| `CoFounder: Scan Current File` | Scan the active editor for issues |
+| `CoFounder: Scan Workspace` | Scan all supported files in the workspace |
+| `CoFounder: Show Dashboard` | Open the guardrails dashboard |
+| `CoFounder: Check Compliance` | Run compliance checks against configured frameworks |
+| `CoFounder: Estimate Cost` | Find model references and estimate LLM costs |
 
 ## Configuration
 
-All settings are under the `rana.*` namespace in VS Code settings.
+All settings are under the `cofounder.*` namespace in VS Code settings.
 
 | Setting | Type | Default | Description |
 |---------|------|---------|-------------|
-| `rana.enableInlineScan` | boolean | `true` | Enable real-time inline scanning |
-| `rana.piiMode` | `detect` / `redact` / `block` | `detect` | How to handle PII findings |
-| `rana.injectionSensitivity` | `low` / `medium` / `high` | `medium` | Injection detection sensitivity |
-| `rana.approvedModels` | string[] | `[]` | Approved model names (empty = all allowed) |
-| `rana.complianceFrameworks` | string[] | `["safety"]` | Active compliance frameworks |
+| `cofounder.enableInlineScan` | boolean | `true` | Enable real-time inline scanning |
+| `cofounder.piiMode` | `detect` / `redact` / `block` | `detect` | How to handle PII findings |
+| `cofounder.injectionSensitivity` | `low` / `medium` / `high` | `medium` | Injection detection sensitivity |
+| `cofounder.approvedModels` | string[] | `[]` | Approved model names (empty = all allowed) |
+| `cofounder.complianceFrameworks` | string[] | `["safety"]` | Active compliance frameworks |
 
 ## Sidebar Views
 
-The RANA shield icon in the activity bar opens three panels:
+The CoFounder shield icon in the activity bar opens three panels:
 
 - **Findings** -- All detected issues grouped by file. Click any finding to jump to its location.
-- **Policies** -- Manage `.rana/policies/*.yml` files. Toggle policies on/off and create new ones from presets.
+- **Policies** -- Manage `.cofounder/policies/*.yml` files. Toggle policies on/off and create new ones from presets.
 - **Dashboard** -- Webview showing compliance score, security summary, and cost estimate.
 
 ## Policies
 
-Place YAML policy files in `.rana/policies/` at the root of your workspace. Available presets:
+Place YAML policy files in `.cofounder/policies/` at the root of your workspace. Available presets:
 
 - `safety` -- Block harmful content generation
 - `pii-detect` -- Detect PII in prompts and responses

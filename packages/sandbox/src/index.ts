@@ -1,5 +1,5 @@
 /**
- * @ranavibe/sandbox
+ * @cofounder/sandbox
  *
  * Lightweight Node.js agent execution sandbox.
  * Zero runtime dependencies. Uses vm module and worker_threads.

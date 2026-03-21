@@ -107,13 +107,13 @@ export async function voiceTranscribeCommand(
 
   if (format === 'srt' || format === 'vtt') {
     console.log(`  ${chalk.gray('[00:00:00,000 --> 00:00:03,500]')}`);
-    console.log(`  Hello and welcome to this demonstration of the RANA`);
+    console.log(`  Hello and welcome to this demonstration of the CoFounder`);
     console.log(`  ${chalk.gray('[00:00:03,500 --> 00:00:07,200]')}`);
     console.log(`  voice transcription system. Today we'll explore how`);
     console.log(`  ${chalk.gray('[00:00:07,200 --> 00:00:11,000]')}`);
     console.log(`  to use AI agents for various tasks including code generation.`);
   } else {
-    console.log(`  Hello and welcome to this demonstration of the RANA voice`);
+    console.log(`  Hello and welcome to this demonstration of the CoFounder voice`);
     console.log(`  transcription system. Today we'll explore how to use AI agents`);
     console.log(`  for various tasks including code generation, analysis, and more.`);
   }
@@ -208,6 +208,6 @@ export async function voiceVoicesCommand(options: { provider?: string }): Promis
   console.log('└───────────────────┴──────────┴─────────┴────────────┴───────────┘');
 
   console.log(chalk.gray(`\nShowing ${filteredVoices.length} voices`));
-  console.log(chalk.gray('Preview a voice: rana voice:speak "Hello" --voice <name>'));
-  console.log(chalk.gray('Filter by provider: rana voice:voices --provider openai\n'));
+  console.log(chalk.gray('Preview a voice: cofounder voice:speak "Hello" --voice <name>'));
+  console.log(chalk.gray('Filter by provider: cofounder voice:voices --provider openai\n'));
 }

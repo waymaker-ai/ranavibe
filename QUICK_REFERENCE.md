@@ -1,13 +1,13 @@
-# RANA Quick Reference Card
+# CoFounder Quick Reference Card
 
-One-page reference for common RANA operations.
+One-page reference for common CoFounder operations.
 
 ---
 
 ## 📦 Installation
 
 ```bash
-npm install @rana/core @rana/react
+npm install @cofounder/core @cofounder/react
 ```
 
 ---
@@ -15,15 +15,15 @@ npm install @rana/core @rana/react
 ## ⚡ Quick Start
 
 ```typescript
-import { createRana } from '@rana/core';
+import { createCoFounder } from '@cofounder/core';
 
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: {
     anthropic: process.env.ANTHROPIC_API_KEY
   }
 });
 
-const response = await rana.chat('Hello!');
+const response = await cofounder.chat('Hello!');
 console.log(response.content);
 ```
 
@@ -33,19 +33,19 @@ console.log(response.content);
 
 ### Simple Chat
 ```typescript
-const response = await rana.chat('What is TypeScript?');
+const response = await cofounder.chat('What is TypeScript?');
 ```
 
 ### Provider Shortcuts
 ```typescript
-const claude = await rana.anthropic().chat('Hello!');
-const gpt = await rana.openai().chat('Hello!');
-const gemini = await rana.google().chat('Hello!');
+const claude = await cofounder.anthropic().chat('Hello!');
+const gpt = await cofounder.openai().chat('Hello!');
+const gemini = await cofounder.google().chat('Hello!');
 ```
 
 ### Fluent API
 ```typescript
-const response = await rana
+const response = await cofounder
   .provider('anthropic')
   .model('claude-3-5-sonnet-20241022')
   .temperature(0.7)
@@ -56,7 +56,7 @@ const response = await rana
 
 ### Streaming
 ```typescript
-for await (const chunk of rana.stream('Tell me a story')) {
+for await (const chunk of cofounder.stream('Tell me a story')) {
   process.stdout.write(chunk.delta);
 }
 ```
@@ -66,10 +66,10 @@ for await (const chunk of rana.stream('Tell me a story')) {
 ## ⚛️ React Hooks
 
 ```tsx
-import { useRanaChat } from '@rana/react';
+import { useCoFounderChat } from '@cofounder/react';
 
 function ChatApp() {
-  const { chat, response, loading, cost } = useRanaChat(rana);
+  const { chat, response, loading, cost } = useCoFounderChat(cofounder);
   return <div>{response?.content}</div>;
 }
 ```
@@ -86,7 +86,7 @@ const comparison = await compareProviders(['anthropic', 'openai'], 'Question', k
 const { provider, cost } = await findCheapestProvider('Question', keys);
 
 // Batch process
-const responses = await batchProcess(rana, ['Q1', 'Q2', 'Q3']);
+const responses = await batchProcess(cofounder, ['Q1', 'Q2', 'Q3']);
 ```
 
 ---
@@ -95,7 +95,7 @@ const responses = await batchProcess(rana, ['Q1', 'Q2', 'Q3']);
 
 ```typescript
 // Use preset
-const rana = createRana(getPreset('costOptimized'));
+const cofounder = createCoFounder(getPreset('costOptimized'));
 
 // Use template
 const request = getTemplate('summarize', text, 200);
@@ -106,11 +106,11 @@ const request = getTemplate('summarize', text, 200);
 ## 🔌 CLI Commands
 
 ```bash
-rana dashboard    # Real-time cost monitoring
-rana analyze      # Project analysis
-rana optimize     # Auto-optimization
+cofounder dashboard    # Real-time cost monitoring
+cofounder analyze      # Project analysis
+cofounder optimize     # Auto-optimization
 ```
 
 ---
 
-**Full docs:** [RANA_SDK_GUIDE.md](./RANA_SDK_GUIDE.md)
+**Full docs:** [CoFounder_SDK_GUIDE.md](./CoFounder_SDK_GUIDE.md)

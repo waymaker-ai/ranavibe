@@ -43,7 +43,7 @@ export function generateComplianceReport(report: GuardReport, violations: Violat
 
 export function formatComplianceReport(data: ComplianceReportData): string {
   const lines = [
-    '=== RANA Compliance Report ===',
+    '=== CoFounder Compliance Report ===',
     '',
     `Compliance Score:    ${data.complianceScore}%`,
     `Total Violations:    ${data.totalViolations}`,

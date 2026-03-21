@@ -31,11 +31,11 @@ const queryEngine = index.asQueryEngine();
 // Query
 const response = await queryEngine.query("Your question here");
 console.log(response.toString());`,
-    rana: `import { createRana } from '@rana/core';
-import { createRAG } from '@rana/rag';
+    cofounder: `import { createCoFounder } from '@cofounder/core';
+import { createRAG } from '@cofounder/rag';
 
-const rana = createRana();
-const rag = createRAG({ rana });
+const cofounder = createCoFounder();
+const rag = createRAG({ cofounder });
 
 await rag.ingest([
   "Your document content here...",
@@ -69,12 +69,12 @@ const index = await VectorStoreIndex.fromDocuments(
   documents,
   { serviceContext }
 );`,
-    rana: `import { createRana } from '@rana/core';
-import { createRAG } from '@rana/rag';
+    cofounder: `import { createCoFounder } from '@cofounder/core';
+import { createRAG } from '@cofounder/rag';
 
-const rana = createRana();
+const cofounder = createCoFounder();
 const rag = createRAG({
-  rana,
+  cofounder,
   embedding: {
     model: 'text-embedding-3-small',
     dimensions: 1536,
@@ -110,11 +110,11 @@ const stream = await queryEngine.query(
 for await (const chunk of stream) {
   process.stdout.write(chunk.response);
 }`,
-    rana: `import { createRana } from '@rana/core';
-import { createRAG } from '@rana/rag';
+    cofounder: `import { createCoFounder } from '@cofounder/core';
+import { createRAG } from '@cofounder/rag';
 
-const rana = createRana({ model: 'gpt-4' });
-const rag = createRAG({ rana });
+const cofounder = createCoFounder({ model: 'gpt-4' });
+const rag = createRAG({ cofounder });
 
 await rag.ingest(docs);
 
@@ -128,61 +128,61 @@ const features = [
   {
     feature: 'RAG Pipeline',
     llamaindex: true,
-    rana: true,
+    cofounder: true,
     note: 'Both provide RAG capabilities',
   },
   {
     feature: 'Vector Storage',
     llamaindex: true,
-    rana: true,
+    cofounder: true,
     note: 'Both support vector stores',
   },
   {
     feature: 'Document Loaders',
     llamaindex: true,
-    rana: true,
+    cofounder: true,
     note: 'Both support multiple document types',
   },
   {
     feature: 'TypeScript Native',
     llamaindex: false,
-    rana: true,
-    note: 'RANA is TypeScript-first',
+    cofounder: true,
+    note: 'CoFounder is TypeScript-first',
   },
   {
     feature: 'Cost Tracking',
     llamaindex: false,
-    rana: true,
-    note: 'RANA tracks costs automatically',
+    cofounder: true,
+    note: 'CoFounder tracks costs automatically',
   },
   {
     feature: 'Built-in Testing',
     llamaindex: false,
-    rana: true,
-    note: 'RANA has @rana/testing',
+    cofounder: true,
+    note: 'CoFounder has @cofounder/testing',
   },
   {
     feature: 'Security Features',
     llamaindex: false,
-    rana: true,
-    note: 'RANA includes PII detection, injection prevention',
+    cofounder: true,
+    note: 'CoFounder includes PII detection, injection prevention',
   },
   {
     feature: 'Multi-Provider',
     llamaindex: true,
-    rana: true,
+    cofounder: true,
     note: 'Both support multiple providers',
   },
   {
     feature: 'Observability',
     llamaindex: false,
-    rana: true,
-    note: 'RANA has built-in tracing',
+    cofounder: true,
+    note: 'CoFounder has built-in tracing',
   },
   {
     feature: 'Agent Framework',
     llamaindex: true,
-    rana: true,
+    cofounder: true,
     note: 'Both support agent patterns',
   },
 ];
@@ -200,10 +200,10 @@ export default function LlamaIndexComparisonPage() {
 
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            RANA vs LlamaIndex
+            CoFounder vs LlamaIndex
           </h1>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            LlamaIndex pioneered RAG frameworks. RANA builds on those patterns
+            LlamaIndex pioneered RAG frameworks. CoFounder builds on those patterns
             with a simpler API, TypeScript-first design, and production features.
           </p>
         </div>
@@ -233,7 +233,7 @@ export default function LlamaIndexComparisonPage() {
               <tr>
                 <th className="py-4 px-6 text-left font-semibold">Feature</th>
                 <th className="py-4 px-6 text-center font-semibold">LlamaIndex</th>
-                <th className="py-4 px-6 text-center font-semibold">RANA</th>
+                <th className="py-4 px-6 text-center font-semibold">CoFounder</th>
               </tr>
             </thead>
             <tbody>
@@ -254,7 +254,7 @@ export default function LlamaIndexComparisonPage() {
                     )}
                   </td>
                   <td className="py-4 px-6 text-center">
-                    {item.rana ? (
+                    {item.cofounder ? (
                       <span className="text-green-400">✓</span>
                     ) : (
                       <span className="text-red-400">✗</span>
@@ -287,14 +287,14 @@ export default function LlamaIndexComparisonPage() {
                 <div>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="px-3 py-1 rounded-full bg-green-500/20 text-green-400 text-sm">
-                      RANA
+                      CoFounder
                     </span>
                     <span className="text-gray-500 text-sm">
-                      {example.rana.split('\n').length} lines
+                      {example.cofounder.split('\n').length} lines
                     </span>
                   </div>
                   <pre className="p-4 rounded-xl bg-gray-900 border border-gray-800 overflow-x-auto text-sm">
-                    <code className="text-gray-300">{example.rana}</code>
+                    <code className="text-gray-300">{example.cofounder}</code>
                   </pre>
                 </div>
               </div>
@@ -306,7 +306,7 @@ export default function LlamaIndexComparisonPage() {
           <h2 className="text-2xl font-semibold mb-6">When to Choose Each</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <h3 className="text-lg font-medium text-green-400 mb-4">Choose RANA if you:</h3>
+              <h3 className="text-lg font-medium text-green-400 mb-4">Choose CoFounder if you:</h3>
               <ul className="space-y-2 text-gray-300">
                 <li className="flex items-start gap-2">
                   <span className="text-green-400 mt-1">✓</span>
@@ -348,10 +348,10 @@ export default function LlamaIndexComparisonPage() {
 
         <div className="mt-16 text-center">
           <Link
-            href="https://github.com/waymaker-ai/ranavibe"
+            href="https://github.com/waymaker-ai/cofounder"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-black font-semibold hover:bg-gray-200 transition-colors"
           >
-            Try RANA Now
+            Try CoFounder Now
             <span>→</span>
           </Link>
         </div>

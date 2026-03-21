@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-**Feature**: Quick LLM Helper Functions for RANA Framework
+**Feature**: Quick LLM Helper Functions for CoFounder Framework
 **Priority**: P1 (Developer Experience)
 **Impact**: Development Speed, Ease of Use
 **Timeline**: Q1 2025 (4 weeks)
@@ -15,7 +15,7 @@ This specification defines simple, ergonomic helper functions for common LLM tas
 
 ### Current State
 
-RANA developers must:
+CoFounder developers must:
 - Write verbose boilerplate for simple LLM tasks
 - Configure client, model, prompt for each operation
 - Handle streaming, errors, retries manually
@@ -25,9 +25,9 @@ RANA developers must:
 
 ```typescript
 // Current: Verbose boilerplate for simple summarization
-import { createRanaClient } from '@rana/core';
+import { createCoFounderClient } from '@cofounder/core';
 
-const client = createRanaClient({
+const client = createCoFounderClient({
   provider: 'anthropic',
   apiKey: process.env.ANTHROPIC_API_KEY,
   model: 'claude-sonnet-4',
@@ -46,7 +46,7 @@ const summary = response.content;
 
 ```typescript
 // New: One-liner for common tasks
-import { quick } from '@rana/quick';
+import { quick } from '@cofounder/quick';
 
 // Summarization
 const summary = await quick.summarize(longText);
@@ -87,7 +87,7 @@ const content = await quick.generate('blog post about AI safety', {
 ### 1. Package Structure
 
 ```
-@rana/quick
+@cofounder/quick
 ├── summarize.ts          # Text summarization
 ├── translate.ts          # Language translation
 ├── classify.ts           # Text classification
@@ -968,7 +968,7 @@ export function configure(config: Partial<QuickConfig>): void {
 }
 
 // Usage
-import { configure } from '@rana/quick';
+import { configure } from '@cofounder/quick';
 
 configure({
   models: {
@@ -1056,21 +1056,21 @@ function SummaryButton({ text }: { text: string }) {
 
 ```bash
 # Quick commands via CLI
-rana quick summarize --text "Long article..." --format bullets
+cofounder quick summarize --text "Long article..." --format bullets
 
-rana quick translate --text "Hello world" --to es
+cofounder quick translate --text "Hello world" --to es
 
-rana quick classify --text "User email..." --labels "spam,important,newsletter"
+cofounder quick classify --text "User email..." --labels "spam,important,newsletter"
 
-rana quick extract --text "Resume text..." --schema "name,email,skills[]"
+cofounder quick extract --text "Resume text..." --schema "name,email,skills[]"
 
-rana quick sentiment --text "Product review..."
+cofounder quick sentiment --text "Product review..."
 
 # Batch processing
-rana quick summarize --input articles.txt --output summaries.txt
+cofounder quick summarize --input articles.txt --output summaries.txt
 
 # Configuration
-rana quick config --cache-ttl 7200 --prefer-cheaper
+cofounder quick config --cache-ttl 7200 --prefer-cheaper
 ```
 
 ---
@@ -1108,7 +1108,7 @@ rana quick config --cache-ttl 7200 --prefer-cheaper
 | API call latency | < 2s |
 | Cache hit rate | > 60% |
 | Cost per call | < $0.01 |
-| Developer adoption | > 70% of RANA users |
+| Developer adoption | > 70% of CoFounder users |
 | Code reduction | > 80% fewer lines |
 
 ---
@@ -1119,7 +1119,7 @@ rana quick config --cache-ttl 7200 --prefer-cheaper
 
 **1. Customer Support Automation**
 ```typescript
-import { quick } from '@rana/quick';
+import { quick } from '@cofounder/quick';
 
 async function handleSupportEmail(email: string) {
   // Classify urgency
@@ -1148,7 +1148,7 @@ async function handleSupportEmail(email: string) {
 
 **2. Content Moderation Pipeline**
 ```typescript
-import { quick } from '@rana/quick';
+import { quick } from '@cofounder/quick';
 
 async function moderateUserPost(post: string) {
   // Check for policy violations
@@ -1172,7 +1172,7 @@ async function moderateUserPost(post: string) {
 
 **3. Document Processing**
 ```typescript
-import { quick } from '@rana/quick';
+import { quick } from '@cofounder/quick';
 
 async function processDocument(doc: string) {
   // Summarize

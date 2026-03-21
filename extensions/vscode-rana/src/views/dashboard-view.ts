@@ -2,11 +2,11 @@ import * as vscode from 'vscode';
 import { WorkspaceFinding } from '../scanners/workspace-scanner';
 
 /**
- * WebviewViewProvider for the RANA Dashboard panel.
+ * WebviewViewProvider for the CoFounder Dashboard panel.
  * Shows cost summary, security summary, and compliance score.
  */
 export class DashboardViewProvider implements vscode.WebviewViewProvider {
-  public static readonly viewType = 'rana.dashboard';
+  public static readonly viewType = 'cofounder.dashboard';
 
   private webviewView?: vscode.WebviewView;
   private findings: WorkspaceFinding[] = [];
@@ -44,10 +44,10 @@ export class DashboardViewProvider implements vscode.WebviewViewProvider {
     webviewView.webview.onDidReceiveMessage((message) => {
       switch (message.command) {
         case 'scan':
-          vscode.commands.executeCommand('rana.scanWorkspace');
+          vscode.commands.executeCommand('cofounder.scanWorkspace');
           break;
         case 'openSettings':
-          vscode.commands.executeCommand('workbench.action.openSettings', 'rana');
+          vscode.commands.executeCommand('workbench.action.openSettings', 'cofounder');
           break;
       }
     });
@@ -74,8 +74,8 @@ export class DashboardViewProvider implements vscode.WebviewViewProvider {
    */
   showFullDashboard(): void {
     const panel = vscode.window.createWebviewPanel(
-      'ranaDashboard',
-      'RANA Dashboard',
+      'cofounderDashboard',
+      'CoFounder Dashboard',
       vscode.ViewColumn.One,
       { enableScripts: true }
     );

@@ -22,7 +22,7 @@ export default function QuickStartPage() {
         >
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Quick Start</h1>
           <p className="text-lg text-foreground-secondary mb-12">
-            Get up and running with RANA in 5 minutes
+            Get up and running with CoFounder in 5 minutes
           </p>
         </motion.div>
 
@@ -40,7 +40,7 @@ export default function QuickStartPage() {
             Install Packages
           </h2>
           <div className="code-block font-mono text-sm">
-            <div>npm install @rana/helpers @rana/prompts @rana/rag</div>
+            <div>npm install @cofounder/helpers @cofounder/prompts @cofounder/rag</div>
           </div>
         </motion.section>
 
@@ -55,10 +55,10 @@ export default function QuickStartPage() {
             <span className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-r from-gradient-from to-gradient-to text-white text-sm font-bold mr-3">
               2
             </span>
-            Use @rana/helpers for One-Line AI
+            Use @cofounder/helpers for One-Line AI
           </h2>
           <div className="code-block font-mono text-sm overflow-x-auto">
-            <pre>{`import { summarize, translate, classify, extract } from '@rana/helpers';
+            <pre>{`import { summarize, translate, classify, extract } from '@cofounder/helpers';
 
 // Summarize any text
 const summary = await summarize(longDocument, { style: 'brief' });
@@ -89,10 +89,10 @@ const data = await extract(resume, {
             <span className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-r from-gradient-from to-gradient-to text-white text-sm font-bold mr-3">
               3
             </span>
-            Use @rana/prompts for Enterprise Management
+            Use @cofounder/prompts for Enterprise Management
           </h2>
           <div className="code-block font-mono text-sm overflow-x-auto">
-            <pre>{`import { PromptManager } from '@rana/prompts';
+            <pre>{`import { PromptManager } from '@cofounder/prompts';
 
 const pm = new PromptManager({ workspace: 'my-app' });
 
@@ -129,10 +129,10 @@ await pm.createABTest('greeting', {
             <span className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-r from-gradient-from to-gradient-to text-white text-sm font-bold mr-3">
               4
             </span>
-            Use @rana/rag for Advanced Retrieval
+            Use @cofounder/rag for Advanced Retrieval
           </h2>
           <div className="code-block font-mono text-sm overflow-x-auto">
-            <pre>{`import { RAGPresets, createRAGPipeline } from '@rana/rag';
+            <pre>{`import { RAGPresets, createRAGPipeline } from '@cofounder/rag';
 
 // Use a preset for quick setup
 const pipeline = RAGPresets.balanced();

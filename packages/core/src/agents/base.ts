@@ -1,6 +1,6 @@
 /**
  * Base Agent Class
- * Foundation for all RANA agents with lifecycle management,
+ * Foundation for all CoFounder agents with lifecycle management,
  * state handling, and tool execution capabilities.
  */
 

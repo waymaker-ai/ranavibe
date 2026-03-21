@@ -1,5 +1,5 @@
 /**
- * @ranavibe/agents/tools
+ * @cofounder/agents/tools
  * Common tools and tool utilities
  */
 

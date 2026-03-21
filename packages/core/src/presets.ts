@@ -1,9 +1,9 @@
 /**
- * RANA Presets
+ * CoFounder Presets
  * Pre-configured setups for common use cases
  */
 
-import type { RanaConfig, RanaChatRequest } from './types';
+import type { CoFounderConfig, RanaChatRequest } from './types';
 
 /**
  * Preset configurations for common scenarios
@@ -414,7 +414,7 @@ export const strategies = {
 /**
  * Helper to get preset configuration
  */
-export function getPreset(preset: keyof typeof presets): Partial<RanaConfig> {
+export function getPreset(preset: keyof typeof presets): Partial<CoFounderConfig> {
   return presets[preset];
 }
 

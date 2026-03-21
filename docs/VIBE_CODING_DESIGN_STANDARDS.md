@@ -1,4 +1,4 @@
-# Vibe Coding Design Standards for RANA
+# Vibe Coding Design Standards for CoFounder
 
 **Version:** 1.0.0
 **Last Updated:** 2025-11-09
@@ -24,7 +24,7 @@
 4. [Design System Customization](#design-system-customization)
 5. [Visual Distinctiveness Patterns](#visual-distinctiveness-patterns)
 6. [Advanced UI Techniques](#advanced-ui-techniques)
-7. [RANA Quality Gates for Design](#aads-quality-gates-for-design)
+7. [CoFounder Quality Gates for Design](#aads-quality-gates-for-design)
 8. [Examples & Templates](#examples--templates)
 
 ---
@@ -43,7 +43,7 @@
 ### 2. Own Your Design System
 
 ```yaml
-# .rana.yml design configuration
+# .cofounder.yml design configuration
 standards:
   design_system:
     enabled: true
@@ -231,7 +231,7 @@ Tier 3: Compositions (Feature-specific)
 // components/design-system/index.ts
 
 /**
- * ✅ RANA: Design System Compliance
+ * ✅ CoFounder: Design System Compliance
  *
  * All app components MUST import from this file.
  * Never import shadcn components directly.
@@ -862,11 +862,11 @@ export function ParticleBackground() {
 
 ---
 
-## RANA Quality Gates for Design
+## CoFounder Quality Gates for Design
 
 ### Design Quality Gates
 
-Add to `.rana.yml`:
+Add to `.cofounder.yml`:
 
 ```yaml
 quality_gates:
@@ -1271,4 +1271,4 @@ Vibe coding accelerates development, but brand distinctiveness requires intentio
 
 ---
 
-*Part of the RANA Framework - Production-Quality AI Development*
+*Part of the CoFounder Framework - Production-Quality AI Development*

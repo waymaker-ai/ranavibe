@@ -1,4 +1,4 @@
-# @ranavibe/ci
+# @cofounder/ci
 
 CI/CD guardrails for AI applications. Scan your codebase for security, compliance, cost, and safety issues in AI/LLM code -- with zero runtime dependencies.
 
@@ -14,29 +14,29 @@ CI/CD guardrails for AI applications. Scan your codebase for security, complianc
 ## Installation
 
 ```bash
-npm install @ranavibe/ci --save-dev
+npm install @cofounder/ci --save-dev
 ```
 
 ## CLI Usage
 
 ```bash
 # Scan current directory
-npx rana-ci scan
+npx cofounder-ci scan
 
 # Scan specific path with specific rules
-npx rana-ci scan ./src --rules no-hardcoded-keys,no-injection-vuln --format json
+npx cofounder-ci scan ./src --rules no-hardcoded-keys,no-injection-vuln --format json
 
 # Fail only on critical issues
-npx rana-ci scan . --fail-on critical
+npx cofounder-ci scan . --fail-on critical
 
 # Output SARIF for GitHub Security tab
-npx rana-ci scan . --format sarif > results.sarif
+npx cofounder-ci scan . --format sarif > results.sarif
 
 # Validate configuration
-npx rana-ci validate .rana.yml
+npx cofounder-ci validate .cofounder.yml
 
 # Scan and post to GitHub PR
-npx rana-ci check . --format github-pr
+npx cofounder-ci check . --format github-pr
 ```
 
 ## GitHub Action Usage
@@ -53,13 +53,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: RANA CI Scan
-        uses: waymaker-ai/ranavibe/packages/ci@v1
+      - name: CoFounder CI Scan
+        uses: waymaker-ai/cofounder/packages/ci@v1
         with:
           scan-path: '.'
           rules: 'all'
           fail-on: 'high'
-          config: '.rana.yml'
+          config: '.cofounder.yml'
           comment-on-pr: 'true'
           github-token: ${{ secrets.GITHUB_TOKEN }}
           approved-models: 'claude-sonnet-4-20250514,gpt-4o,gemini-2.0-flash'
@@ -73,7 +73,7 @@ jobs:
 | `scan-path` | Path to scan | `.` |
 | `rules` | Comma-separated rules to enable | `all` |
 | `fail-on` | Severity to fail on (`critical`, `high`, `medium`, `low`, `none`) | `high` |
-| `config` | Path to `.rana.yml` config | `.rana.yml` |
+| `config` | Path to `.cofounder.yml` config | `.cofounder.yml` |
 | `comment-on-pr` | Whether to comment on PRs with results | `true` |
 | `github-token` | GitHub token for PR comments | `${{ github.token }}` |
 | `approved-models` | Comma-separated list of approved models | _(all common models)_ |
@@ -87,7 +87,7 @@ jobs:
 | `critical` | Number of critical findings |
 | `passed` | Whether the scan passed |
 
-## Configuration (.rana.yml)
+## Configuration (.cofounder.yml)
 
 ```yaml
 rules:
@@ -124,9 +124,9 @@ ignore:
   - "docs/"
 ```
 
-## .ranaignore
+## .cofounderignore
 
-Create a `.ranaignore` file in your project root (gitignore-style syntax):
+Create a `.cofounderignore` file in your project root (gitignore-style syntax):
 
 ```
 # Ignore test fixtures with intentional secrets
@@ -149,7 +149,7 @@ build/
 ## Programmatic Usage
 
 ```typescript
-import { scan, formatReport } from '@ranavibe/ci';
+import { scan, formatReport } from '@cofounder/ci';
 
 const result = scan({
   scanPath: './src',

@@ -8,10 +8,10 @@ export function registerScanFileCommand(
   context: vscode.ExtensionContext,
   inlineScanner: InlineScanner
 ): vscode.Disposable {
-  return vscode.commands.registerCommand('rana.scan', () => {
+  return vscode.commands.registerCommand('cofounder.scan', () => {
     const editor = vscode.window.activeTextEditor;
     if (!editor) {
-      vscode.window.showWarningMessage('RANA: No active editor to scan.');
+      vscode.window.showWarningMessage('CoFounder: No active editor to scan.');
       return;
     }
 
@@ -24,11 +24,11 @@ export function registerScanFileCommand(
 
     if (detections.length === 0) {
       vscode.window.showInformationMessage(
-        `RANA: No issues found in ${document.fileName.split('/').pop()}.`
+        `CoFounder: No issues found in ${document.fileName.split('/').pop()}.`
       );
     } else {
       vscode.window.showWarningMessage(
-        `RANA: Found ${detections.length} issues in ${document.fileName.split('/').pop()} ` +
+        `CoFounder: Found ${detections.length} issues in ${document.fileName.split('/').pop()} ` +
         `(${errorCount} errors, ${warningCount} warnings, ${infoCount} info).`
       );
     }

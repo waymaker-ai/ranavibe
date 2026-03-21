@@ -7,15 +7,15 @@ import { convertToPolicy } from './converter';
 import { ConversionResult, ParsedColang } from './types';
 
 /**
- * Parse a Colang file and convert it to RANA policy format in one step.
+ * Parse a Colang file and convert it to CoFounder policy format in one step.
  *
  * @param source - The Colang source text
  * @param sourceName - Optional name for the source (used in rule IDs)
- * @returns Conversion result with RANA policy rules
+ * @returns Conversion result with CoFounder policy rules
  *
  * @example
  * ```typescript
- * import { importColangFile } from '@ranavibe/colang';
+ * import { importColangFile } from '@cofounder/colang';
  * import { readFileSync } from 'fs';
  *
  * const source = readFileSync('./guardrails.co', 'utf-8');

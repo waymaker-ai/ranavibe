@@ -43,7 +43,7 @@ export class CacheManager {
         return { ...response, cached: true };
       }
     } catch (error) {
-      console.error('[RANA Cache] Redis get error:', error);
+      console.error('[CoFounder Cache] Redis get error:', error);
     }
 
     return null;
@@ -69,7 +69,7 @@ export class CacheManager {
     try {
       await this.redis.setex(key, ttl, JSON.stringify(response));
     } catch (error) {
-      console.error('[RANA Cache] Redis set error:', error);
+      console.error('[CoFounder Cache] Redis set error:', error);
     }
   }
 
@@ -81,12 +81,12 @@ export class CacheManager {
 
     if (this.redis) {
       try {
-        const keys = await this.redis.keys('rana:*');
+        const keys = await this.redis.keys('cofounder:*');
         if (keys.length > 0) {
           await this.redis.del(...keys);
         }
       } catch (error) {
-        console.error('[RANA Cache] Redis clear error:', error);
+        console.error('[CoFounder Cache] Redis clear error:', error);
       }
     }
   }
@@ -108,7 +108,7 @@ export class CacheManager {
       .update(JSON.stringify(normalized))
       .digest('hex');
 
-    return `rana:cache:${hash}`;
+    return `cofounder:cache:${hash}`;
   }
 
   /**
@@ -118,10 +118,10 @@ export class CacheManager {
     try {
       const Redis = await import('ioredis');
       this.redis = new Redis.default(this.config.redis);
-      console.log('[RANA Cache] Redis connected');
+      console.log('[CoFounder Cache] Redis connected');
     } catch (error) {
-      console.error('[RANA Cache] Redis initialization failed:', error);
-      console.log('[RANA Cache] Falling back to memory cache');
+      console.error('[CoFounder Cache] Redis initialization failed:', error);
+      console.log('[CoFounder Cache] Falling back to memory cache');
     }
   }
 }

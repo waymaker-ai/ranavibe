@@ -91,7 +91,7 @@ export function createGuardedAgent(config: GuardedAgentConfig): GuardedAgent {
 
       if (inputResult.blocked) {
         return {
-          output: `[RANA Guard] Request blocked: ${inputResult.reason}`,
+          output: `[CoFounder Guard] Request blocked: ${inputResult.reason}`,
           blocked: true,
           violations: inputResult.violations,
           cost: costInterceptor?.totalCost || 0,
@@ -130,7 +130,7 @@ export function createGuardedAgent(config: GuardedAgentConfig): GuardedAgent {
           .join('\n');
       } catch {
         // Fallback: return a message indicating SDK is not available
-        output = `[RANA Agent] Anthropic SDK not available. Input passed all guards: ${pipeline.getInterceptorNames().join(', ')}. Processed input (${processedInput.length} chars) is ready for your LLM provider.`;
+        output = `[CoFounder Agent] Anthropic SDK not available. Input passed all guards: ${pipeline.getInterceptorNames().join(', ')}. Processed input (${processedInput.length} chars) is ready for your LLM provider.`;
         inputTokens = Math.ceil(processedInput.length / 4);
         outputTokens = Math.ceil(output.length / 4);
       }
@@ -148,7 +148,7 @@ export function createGuardedAgent(config: GuardedAgentConfig): GuardedAgent {
 
       if (outputResult.blocked) {
         return {
-          output: `[RANA Guard] Response blocked: ${outputResult.reason}`,
+          output: `[CoFounder Guard] Response blocked: ${outputResult.reason}`,
           blocked: true,
           violations: outputResult.violations,
           cost: costInterceptor?.totalCost || 0,

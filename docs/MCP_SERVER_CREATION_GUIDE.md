@@ -8,7 +8,7 @@
 
 ## Overview
 
-RANA provides a complete toolkit for creating, testing, and publishing MCP (Model Context Protocol) servers. This guide covers the scaffolding system, templates, testing utilities, and CLI commands.
+CoFounder provides a complete toolkit for creating, testing, and publishing MCP (Model Context Protocol) servers. This guide covers the scaffolding system, templates, testing utilities, and CLI commands.
 
 ---
 
@@ -30,33 +30,33 @@ RANA provides a complete toolkit for creating, testing, and publishing MCP (Mode
 
 ```bash
 # Interactive mode
-rana mcp create
+cofounder mcp create
 
 # With options
-rana mcp create my-server --template database --ts
+cofounder mcp create my-server --template database --ts
 
 # Validate existing server
-rana mcp validate ./my-server
+cofounder mcp validate ./my-server
 
 # Test server
-rana mcp test ./my-server
+cofounder mcp test ./my-server
 
 # Publish to npm
-rana mcp publish ./my-server
+cofounder mcp publish ./my-server
 ```
 
 ---
 
 ## CLI Commands
 
-### `rana mcp create [name]`
+### `cofounder mcp create [name]`
 
 Create a new MCP server project.
 
 ```bash
-rana mcp create my-server
-rana mcp create my-server --template api-wrapper
-rana mcp create my-server --js  # JavaScript instead of TypeScript
+cofounder mcp create my-server
+cofounder mcp create my-server --template api-wrapper
+cofounder mcp create my-server --js  # JavaScript instead of TypeScript
 ```
 
 **Options:**
@@ -65,44 +65,44 @@ rana mcp create my-server --js  # JavaScript instead of TypeScript
 - `--ts` - Use TypeScript (default)
 - `--js` - Use JavaScript
 
-### `rana mcp templates`
+### `cofounder mcp templates`
 
 List available templates.
 
 ```bash
-rana mcp templates
+cofounder mcp templates
 ```
 
-### `rana mcp add-tool <name>`
+### `cofounder mcp add-tool <name>`
 
 Add a new tool to an existing server.
 
 ```bash
-rana mcp add-tool search --description "Search for content"
+cofounder mcp add-tool search --description "Search for content"
 ```
 
-### `rana mcp add-resource <uri>`
+### `cofounder mcp add-resource <uri>`
 
 Add a new resource to an existing server.
 
 ```bash
-rana mcp add-resource "myserver://data" --name "Data" --description "Server data"
+cofounder mcp add-resource "myserver://data" --name "Data" --description "Server data"
 ```
 
-### `rana mcp config`
+### `cofounder mcp config`
 
 Generate Claude Desktop configuration.
 
 ```bash
-rana mcp config --name my-server --path ./my-server
+cofounder mcp config --name my-server --path ./my-server
 ```
 
-### `rana mcp validate [dir]`
+### `cofounder mcp validate [dir]`
 
 Validate MCP server structure.
 
 ```bash
-rana mcp validate ./my-server
+cofounder mcp validate ./my-server
 ```
 
 **Checks:**
@@ -112,12 +112,12 @@ rana mcp validate ./my-server
 - Build script presence
 - MCP SDK dependency
 
-### `rana mcp test [dir]`
+### `cofounder mcp test [dir]`
 
 Test MCP server.
 
 ```bash
-rana mcp test ./my-server
+cofounder mcp test ./my-server
 ```
 
 **Tests:**
@@ -127,14 +127,14 @@ rana mcp test ./my-server
 - MCP SDK usage
 - Stdio transport setup
 
-### `rana mcp publish [dir]`
+### `cofounder mcp publish [dir]`
 
 Publish MCP server to npm.
 
 ```bash
-rana mcp publish ./my-server
-rana mcp publish ./my-server --dry-run
-rana mcp publish ./my-server --tag beta
+cofounder mcp publish ./my-server
+cofounder mcp publish ./my-server --dry-run
+cofounder mcp publish ./my-server --tag beta
 ```
 
 ---
@@ -144,7 +144,7 @@ rana mcp publish ./my-server --tag beta
 ### Basic Usage
 
 ```typescript
-import { scaffoldMCPServer, TEMPLATES } from '@rana/mcp';
+import { scaffoldMCPServer, TEMPLATES } from '@cofounder/mcp';
 
 const result = scaffoldMCPServer({
   name: 'my-server',
@@ -256,7 +256,7 @@ Includes tools for:
 Create a mock MCP server for testing.
 
 ```typescript
-import { createMockServer, runToolTests } from '@rana/mcp';
+import { createMockServer, runToolTests } from '@cofounder/mcp';
 
 const server = createMockServer({
   name: 'test-server',
@@ -302,7 +302,7 @@ import {
   assertResourceExists,
   assertToolSuccess,
   assertResultContains,
-} from '@rana/mcp';
+} from '@cofounder/mcp';
 
 assertToolExists(server, 'echo');
 assertResourceExists(server, 'myserver://data');
@@ -343,7 +343,7 @@ Duration: 17ms
 
 ## Example Servers
 
-RANA includes 5 example MCP servers demonstrating different patterns:
+CoFounder includes 5 example MCP servers demonstrating different patterns:
 
 ### 1. Weather Server (`weather-server.ts`)
 
@@ -405,12 +405,12 @@ Prompts and timezone handling.
 
 1. **Validate structure:**
    ```bash
-   rana mcp validate
+   cofounder mcp validate
    ```
 
 2. **Run tests:**
    ```bash
-   rana mcp test
+   cofounder mcp test
    ```
 
 3. **Build TypeScript:**
@@ -434,13 +434,13 @@ Prompts and timezone handling.
 
 ```bash
 # Dry run first
-rana mcp publish --dry-run
+cofounder mcp publish --dry-run
 
 # Publish
-rana mcp publish
+cofounder mcp publish
 
 # Publish with tag
-rana mcp publish --tag beta
+cofounder mcp publish --tag beta
 ```
 
 ### Post-publish

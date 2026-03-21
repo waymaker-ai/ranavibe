@@ -1,6 +1,6 @@
 # policies-demo
 
-Demonstrates the core features of `@ranavibe/policies`:
+Demonstrates the core features of `@cofounder/policies`:
 
 - **Listing available presets** (HIPAA, GDPR, CCPA, SEC, PCI, FERPA, SOX, safety, enterprise)
 - **Loading presets** and evaluating text against them

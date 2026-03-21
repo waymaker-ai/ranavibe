@@ -55,7 +55,7 @@ export interface CachedLLMProvider {
 
 const DEFAULT_CONFIG: CacheConfig = {
   enabled: true,
-  directory: '.rana/cache/llm',
+  directory: '.cofounder/cache/llm',
   ttlMs: 7 * 24 * 60 * 60 * 1000, // 7 days
   maxEntries: 10000,
   maxSizeBytes: 500 * 1024 * 1024, // 500MB

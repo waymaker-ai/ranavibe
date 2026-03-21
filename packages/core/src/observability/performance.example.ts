@@ -155,13 +155,13 @@ for (const [model, metrics] of Object.entries(modelMetrics)) {
 }
 
 // ============================================================================
-// Integration with RANA Client
+// Integration with CoFounder Client
 // ============================================================================
 
-import { createRana } from '../client';
+import { createCoFounder } from '../client';
 
-// Create RANA client
-const rana = createRana({
+// Create CoFounder client
+const cofounder = createCoFounder({
   providers: {
     anthropic: process.env.ANTHROPIC_API_KEY || '',
     openai: process.env.OPENAI_API_KEY || '',
@@ -189,7 +189,7 @@ async function monitoredChat(provider: LLMProvider, message: string) {
   let error: string | undefined;
 
   try {
-    const response = await rana.provider(provider).chat(message);
+    const response = await cofounder.provider(provider).chat(message);
     success = true;
     cost = response.cost.total_cost;
 

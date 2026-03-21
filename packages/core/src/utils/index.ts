@@ -1,5 +1,5 @@
 /**
- * Utility functions for RANA core
+ * Utility functions for CoFounder core
  */
 
 export function validateYamlSyntax(content: string): boolean {

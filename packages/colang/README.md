@@ -1,17 +1,17 @@
-# @ranavibe/colang
+# @cofounder/colang
 
-Parse NeMo Guardrails Colang files and convert them to RANA policy format. Migrate your existing NeMo Guardrails configurations to RANA with minimal effort.
+Parse NeMo Guardrails Colang files and convert them to CoFounder policy format. Migrate your existing NeMo Guardrails configurations to CoFounder with minimal effort.
 
 ## Installation
 
 ```bash
-npm install @ranavibe/colang
+npm install @cofounder/colang
 ```
 
 ## Quick Start
 
 ```typescript
-import { importColangFile } from '@ranavibe/colang';
+import { importColangFile } from '@cofounder/colang';
 import { readFileSync } from 'fs';
 
 const source = readFileSync('./guardrails.co', 'utf-8');
@@ -31,7 +31,7 @@ Parse Colang 1.0 source text into a structured representation. Returns user mess
 
 ### `convertToPolicy(colang: ParsedColang, sourceName?: string): ConversionResult`
 
-Convert a parsed Colang document into RANA policy rules.
+Convert a parsed Colang document into CoFounder policy rules.
 
 ### `importColangFile(source: string, sourceName?: string): ConversionResult`
 
@@ -41,7 +41,7 @@ Parse and convert in one step.
 
 Parse without converting, useful for inspection and debugging.
 
-## Migration Guide: NeMo Guardrails to RANA
+## Migration Guide: NeMo Guardrails to CoFounder
 
 ### Step 1: Export Your Colang Files
 
@@ -50,7 +50,7 @@ Locate your `.co` files from your NeMo Guardrails project, typically in the `con
 ### Step 2: Convert
 
 ```typescript
-import { importColangFile } from '@ranavibe/colang';
+import { importColangFile } from '@cofounder/colang';
 import { readFileSync, writeFileSync } from 'fs';
 
 const source = readFileSync('./config/rails.co', 'utf-8');
@@ -62,28 +62,28 @@ if (result.metadata.warnings.length > 0) {
   result.metadata.warnings.forEach(w => console.warn(`  - ${w}`));
 }
 
-// Save as JSON for use with RANA
-writeFileSync('./rana-policy.json', JSON.stringify(result.rules, null, 2));
+// Save as JSON for use with CoFounder
+writeFileSync('./cofounder-policy.json', JSON.stringify(result.rules, null, 2));
 ```
 
 ### Step 3: Review the Conversion Mapping
 
-| Colang Concept | RANA Policy Rule Type | Notes |
+| Colang Concept | CoFounder Policy Rule Type | Notes |
 |---|---|---|
 | `define user <intent>` | `input-validation` | User intent patterns become input matchers |
 | `define bot <response>` | `output` | Bot response templates become output rules |
 | `define flow` with refusal | `content` (block) | Flows that refuse topics become blocking rules |
 | `define flow` normal | `flow` (allow) | Normal dialog flows become allow rules |
 | `define rule` with stop | `content` (block) | Rules with stop actions become blocking rules |
-| `execute <action>` | Manual mapping needed | Custom actions require manual RANA integration |
+| `execute <action>` | Manual mapping needed | Custom actions require manual CoFounder integration |
 
 ### Step 4: Handle Manual Mappings
 
 Some Colang features need manual attention:
 
-- **Execute actions**: Custom Python actions in NeMo need to be reimplemented as RANA middleware
+- **Execute actions**: Custom Python actions in NeMo need to be reimplemented as CoFounder middleware
 - **Complex conditionals**: Multi-branch if/else logic may need simplification
-- **Context variables**: NeMo context variables should be mapped to RANA's policy context
+- **Context variables**: NeMo context variables should be mapped to CoFounder's policy context
 
 ### Example: Before and After
 
@@ -103,7 +103,7 @@ define flow harmful topic
   bot refuse harmful topic
 ```
 
-**RANA Policy (after conversion):**
+**CoFounder Policy (after conversion):**
 
 ```json
 [

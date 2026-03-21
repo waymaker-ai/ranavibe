@@ -22,7 +22,7 @@ export const ferpaPolicy: Policy = {
       'Policy enforcing Family Educational Rights and Privacy Act (20 U.S.C. 1232g; 34 CFR Part 99). ' +
       'Covers education records, directory information, consent for disclosure, legitimate educational ' +
       'interest, and parental/student rights.',
-    author: 'ranavibe',
+    author: 'cofounder',
     tags: ['education', 'ferpa', 'student-privacy', 'compliance', 'us-federal'],
     framework: 'FERPA',
   },

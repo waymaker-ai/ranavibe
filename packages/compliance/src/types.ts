@@ -1,5 +1,5 @@
 /**
- * @rana/compliance - Type definitions
+ * @cofounder/compliance - Type definitions
  */
 
 /**

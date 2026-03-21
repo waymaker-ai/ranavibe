@@ -1,10 +1,10 @@
 /**
- * Voice Plugin for RANA
+ * Voice Plugin for CoFounder
  * Adds voice capabilities including STT, TTS, and real-time voice conversations
  */
 
 import { definePlugin } from './helpers';
-import type { RanaPlugin, RanaConfig } from '../types';
+import type { RanaPlugin, CoFounderConfig } from '../types';
 
 // ============================================================================
 // Types
@@ -299,11 +299,11 @@ export interface VADResult {
 // ============================================================================
 
 /**
- * Voice capabilities plugin for RANA
+ * Voice capabilities plugin for CoFounder
  */
 export class VoicePlugin {
   private config: VoiceConfig;
-  private ranaConfig?: RanaConfig;
+  private cofounderConfig?: CoFounderConfig;
   private activeSessions: Map<string, VoiceSession> = new Map();
   private voiceCache: Map<VoiceProvider, Voice[]> = new Map();
 
@@ -322,8 +322,8 @@ export class VoicePlugin {
   /**
    * Initialize the plugin
    */
-  async init(ranaConfig: RanaConfig): Promise<void> {
-    this.ranaConfig = ranaConfig;
+  async init(cofounderConfig: CoFounderConfig): Promise<void> {
+    this.cofounderConfig = cofounderConfig;
 
     // Validate provider configurations
     this.validateProviders();
@@ -617,7 +617,7 @@ export class VoicePlugin {
 
     // Validate API keys
     if (this.config.sttProvider === 'openai-whisper' || this.config.ttsProvider === 'openai-tts') {
-      if (!this.config.apiKeys?.openai && !this.ranaConfig?.providers?.openai) {
+      if (!this.config.apiKeys?.openai && !this.cofounderConfig?.providers?.openai) {
         throw new Error('OpenAI API key is required');
       }
     }
@@ -629,7 +629,7 @@ export class VoicePlugin {
     }
 
     if (this.config.sttProvider === 'google-cloud' || this.config.ttsProvider === 'google-cloud') {
-      if (!this.config.apiKeys?.google && !this.ranaConfig?.providers?.google) {
+      if (!this.config.apiKeys?.google && !this.cofounderConfig?.providers?.google) {
         throw new Error('Google Cloud API key is required');
       }
     }
@@ -644,7 +644,7 @@ export class VoicePlugin {
     audio: AudioBuffer,
     options?: any
   ): Promise<TranscriptionResult> {
-    const apiKey = this.config.apiKeys?.openai || this.ranaConfig?.providers?.openai;
+    const apiKey = this.config.apiKeys?.openai || this.cofounderConfig?.providers?.openai;
 
     // Convert audio to proper format for OpenAI (mp3, wav, webm, etc.)
     const formData = new FormData();
@@ -695,7 +695,7 @@ export class VoicePlugin {
     audio: AudioBuffer,
     options?: any
   ): Promise<TranscriptionResult> {
-    const apiKey = this.config.apiKeys?.google || this.ranaConfig?.providers?.google;
+    const apiKey = this.config.apiKeys?.google || this.cofounderConfig?.providers?.google;
 
     // Google Cloud Speech-to-Text implementation
     // This is a placeholder - implement with @google-cloud/speech
@@ -707,7 +707,7 @@ export class VoicePlugin {
     voiceId: string,
     options?: any
   ): Promise<SynthesisResult> {
-    const apiKey = this.config.apiKeys?.openai || this.ranaConfig?.providers?.openai;
+    const apiKey = this.config.apiKeys?.openai || this.cofounderConfig?.providers?.openai;
 
     // OpenAI voices: alloy, echo, fable, onyx, nova, shimmer
     const validVoices = ['alloy', 'echo', 'fable', 'onyx', 'nova', 'shimmer'];
@@ -944,8 +944,8 @@ export function createVoicePlugin(config: VoiceConfig): RanaPlugin {
     name: 'voice',
     version: '1.0.0',
 
-    async onInit(ranaConfig: RanaConfig) {
-      await voicePlugin.init(ranaConfig);
+    async onInit(cofounderConfig: CoFounderConfig) {
+      await voicePlugin.init(cofounderConfig);
     },
 
     async onDestroy() {

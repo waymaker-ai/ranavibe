@@ -1,17 +1,17 @@
-# @ranavibe/marketplace
+# @cofounder/marketplace
 
-Community policy sharing infrastructure for RANA. Search, browse, import, and publish AI safety policy packages.
+Community policy sharing infrastructure for CoFounder. Search, browse, import, and publish AI safety policy packages.
 
 ## Installation
 
 ```bash
-npm install @ranavibe/marketplace
+npm install @cofounder/marketplace
 ```
 
 ## Quick Start
 
 ```typescript
-import { PolicyMarketplace } from '@ranavibe/marketplace';
+import { PolicyMarketplace } from '@cofounder/marketplace';
 
 const marketplace = new PolicyMarketplace();
 
@@ -23,13 +23,13 @@ console.log(`Found ${results.total} packages`);
 const financePackages = marketplace.browse('finance');
 
 // Get package details
-const pkg = marketplace.getPackage('@rana-policies/fintech');
+const pkg = marketplace.getPackage('@cofounder-policies/fintech');
 console.log(pkg?.description);
 
 // Install from npm
 const importResult = await marketplace.install({
   source: 'npm',
-  identifier: '@rana-policies/saas-basic',
+  identifier: '@cofounder-policies/saas-basic',
 });
 
 // Publish a custom policy

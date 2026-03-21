@@ -385,13 +385,13 @@ When the task is complete, provide a clear final answer.`;
 }
 
 // ============================================================================
-// Helper: Create adapter for RANA client
+// Helper: Create adapter for CoFounder client
 // ============================================================================
 
 /**
- * Create a streaming client adapter from RANA client
+ * Create a streaming client adapter from CoFounder client
  */
-export function createStreamingAdapter(ranaClient: {
+export function createStreamingAdapter(cofounderClient: {
   stream(request: {
     messages: Array<{ role: string; content: string }>;
     model?: string;
@@ -418,7 +418,7 @@ export function createStreamingAdapter(ranaClient: {
 }): StreamingLLMClient {
   return {
     async *stream(messages, options) {
-      const stream = ranaClient.stream({
+      const stream = cofounderClient.stream({
         messages: messages as Array<{ role: string; content: string }>,
         model: options.model,
         temperature: options.temperature,

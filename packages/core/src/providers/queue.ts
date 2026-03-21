@@ -1,5 +1,5 @@
 /**
- * Request Queue for RANA
+ * Request Queue for CoFounder
  * Manages request queuing with priority, concurrency, and timeout support
  */
 

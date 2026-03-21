@@ -92,7 +92,7 @@ export type MCPContent =
   | { type: 'resource'; resource: MCPResource };
 
 // ============================================================================
-// RANA MCP Configuration
+// CoFounder MCP Configuration
 // ============================================================================
 
 /**
@@ -120,7 +120,7 @@ export interface MCPServerConfig {
 }
 
 /**
- * RANA MCP client configuration
+ * CoFounder MCP client configuration
  */
 export interface RanaMCPConfig {
   /** MCP servers to connect */
