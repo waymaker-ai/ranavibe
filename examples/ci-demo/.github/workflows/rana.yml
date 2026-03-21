@@ -1,0 +1,92 @@
+# RANA CI/CD Guardrails
+#
+# Scans your codebase for AI security, compliance, cost, and safety issues.
+# Runs on every PR and push to main. Posts findings as a PR comment and
+# creates a GitHub Check Run with SARIF results.
+#
+# Configuration: Place a .rana.yml in your repo root (optional).
+
+name: RANA Guard
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+  checks: write
+
+jobs:
+  rana-scan:
+    name: RANA Security & Compliance Scan
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # ── RANA Scan ─────────────────────────────────────────────────
+      - name: Run RANA scan
+        id: rana
+        run: |
+          npx @ranavibe/cli scan \
+            --path . \
+            --format sarif \
+            --output rana-results.sarif \
+            --fail-on high \
+            --config .rana.yml
+        continue-on-error: true
+
+      # ── Upload SARIF to GitHub Code Scanning ──────────────────────
+      - name: Upload SARIF
+        if: always()
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: rana-results.sarif
+          category: rana-guard
+
+      # ── PR Comment with results ───────────────────────────────────
+      - name: Post PR comment
+        if: github.event_name == 'pull_request'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          npx @ranavibe/cli scan \
+            --path . \
+            --format github-pr \
+            --config .rana.yml \
+            --github-pr ${{ github.event.pull_request.number }}
+
+      # ── Summary ───────────────────────────────────────────────────
+      - name: Console summary
+        if: always()
+        run: |
+          npx @ranavibe/cli scan \
+            --path . \
+            --format console \
+            --config .rana.yml
+
+      # ── Fail if RANA scan found high/critical issues ──────────────
+      - name: Check scan result
+        if: steps.rana.outcome == 'failure'
+        run: |
+          echo "::error::RANA scan found high or critical severity issues. See the PR comment and SARIF results for details."
+          exit 1
