@@ -22,7 +22,7 @@ export function Hero() {
             className="inline-flex items-center space-x-2 px-4 py-1.5 mb-8 rounded-full border border-border bg-background-secondary"
           >
             <Sparkles className="h-4 w-4 text-gradient-from" />
-            <span className="text-sm font-medium">New: RANA 3.0 — Agent SDK Guards, Policies, CI/CD, Dashboard</span>
+            <span className="text-sm font-medium">New: RANA 3.1 — 35 Packages, Sandbox, Streaming, Benchmarks, VS Code</span>
           </motion.div>
 
           {/* Heading */}
@@ -43,7 +43,7 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-lg md:text-xl text-foreground-secondary text-balance mb-10 max-w-2xl mx-auto"
           >
-            Production-ready guardrails for AI agents. <span className="text-foreground font-semibold">PII detection, prompt injection blocking, 9 compliance frameworks, cost tracking, and observability</span> — wrapping Anthropic Agent SDK, OpenClaw, and any LLM provider. Like NeMo Guardrails, but TypeScript-first with CI/CD and MCP built in.
+            Production-ready guardrails for AI agents. <span className="text-foreground font-semibold">PII detection, prompt injection blocking, 9 compliance frameworks, sandbox, streaming, benchmarks, and observability</span> — wrapping Anthropic Agent SDK, OpenClaw, and any LLM provider. Like NeMo Guardrails, but TypeScript-first with 35 packages, CI/CD, MCP, and VS Code built in.
           </motion.p>
 
           {/* CTAs */}
@@ -84,7 +84,7 @@ export function Hero() {
               <div className="text-sm text-foreground-secondary mt-1">Token Context</div>
             </div>
             <div className="text-center p-4 rounded-lg bg-background-secondary border border-border">
-              <div className="text-3xl md:text-4xl font-bold gradient-text">17+</div>
+              <div className="text-3xl md:text-4xl font-bold gradient-text">35</div>
               <div className="text-sm text-foreground-secondary mt-1">Packages</div>
             </div>
             <div className="text-center p-4 rounded-lg bg-background-secondary border border-border">
@@ -101,8 +101,8 @@ export function Hero() {
             className="mt-16 text-left"
           >
             <div className="code-block font-mono text-sm">
-              <div className="text-foreground-secondary">$ npm install @rana/compliance @rana/guidelines @rana/context-optimizer</div>
-              <div className="mt-2 text-gradient-from">✓ Installed RANA 2.1 packages</div>
+              <div className="text-foreground-secondary">$ npm install @ranavibe/guard @ranavibe/policies @ranavibe/agent-sdk</div>
+              <div className="mt-2 text-gradient-from">✓ Installed RANA 3.1 packages</div>
               <div className="text-foreground-secondary mt-2">{`import { ComplianceEnforcer, PresetRules } from '@rana/compliance';`}</div>
               <div className="text-foreground-secondary">{`import { GuidelineManager, Conditions } from '@rana/guidelines';`}</div>
               <div className="text-foreground-secondary">{`import { ContextOptimizer } from '@rana/context-optimizer';`}</div>

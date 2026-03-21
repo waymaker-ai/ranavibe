@@ -197,6 +197,200 @@ If your contribution doesn't align with our values, we'll work with you to find 
 
 ---
 
+## Creating Custom RANA Policies
+
+RANA policies define guardrail behavior through declarative configuration. To create a custom policy:
+
+### 1. Define Your Policy File
+
+Create a new TypeScript file in `packages/policies/src/presets/`:
+
+```typescript
+import type { PolicyConfig } from '../types';
+
+export const myCustomPolicy: PolicyConfig = {
+  name: 'my-custom-policy',
+  version: '1.0.0',
+  description: 'Description of what this policy enforces',
+  rules: {
+    pii: {
+      enabled: true,
+      enabledTypes: ['email', 'phone', 'ssn', 'creditCard', 'ipAddress'],
+      region: 'US',
+      action: 'redact',
+    },
+    injection: {
+      enabled: true,
+      sensitivity: 'medium',
+    },
+    toxicity: {
+      enabled: true,
+      minSeverity: 'low',
+    },
+    budget: {
+      limit: 10.0,
+      period: 'day',
+      warningThreshold: 0.8,
+      onExceeded: 'block',
+    },
+    compliance: ['hipaa', 'gdpr'],
+  },
+};
+```
+
+### 2. Register the Policy
+
+Export your policy from the presets index so it can be discovered by the policy engine.
+
+### 3. Add Custom PII Patterns (Optional)
+
+If your policy requires domain-specific PII detection:
+
+```typescript
+const customPatterns = [
+  {
+    name: 'Employee ID',
+    pattern: /\bEMP-\d{6}\b/g,
+    placeholder: '[EMPLOYEE_ID]',
+  },
+];
+```
+
+Pass these to the PII detector via the `customPatterns` field in the detector configuration.
+
+### 4. Configure Compliance Frameworks
+
+Reference existing frameworks (`hipaa`, `gdpr`, `sec`, `pci`, `ferpa`) or define custom compliance checks within your policy rules.
+
+---
+
+## Submitting Policies to the Marketplace
+
+To share your policy with the RANA community:
+
+1. **Ensure your policy is well-tested** -- include unit tests for every rule in your policy.
+2. **Add documentation** in a comment block at the top of your policy file explaining its purpose, target audience, and any regulatory context.
+3. **Include example usage** showing how to activate the policy.
+4. **Submit a pull request** following the [PR process](#submitting-pull-requests) with the `policy` label.
+5. **Marketplace metadata**: Add a `marketplace` field to your policy config with `tags`, `category`, and `author` so it can be indexed and discovered.
+
+---
+
+## Creating RANA Skills for OpenClaw
+
+RANA skills are packaged as OpenClaw-compatible skill definitions. To create a new skill:
+
+### Skill Directory Structure
+
+```
+packages/openclaw/skill/
+  SKILL.md          # The skill definition (frontmatter + instructions)
+  references/       # Supporting reference documents
+    *.md
+```
+
+### Write the SKILL.md
+
+The SKILL.md file uses YAML frontmatter followed by markdown instructions that an AI agent will follow:
+
+```markdown
+---
+name: your-skill-name
+description: What the skill does
+version: 1.0.0
+metadata:
+  openclaw:
+    emoji: "..."
+    homepage: https://your-url.com
+    requires:
+      bins:
+        - node
+      env: []
+    primaryEnv: ""
+---
+
+# Skill Title
+
+Instructions that the AI agent follows when this skill is active.
+```
+
+### Add Reference Documents
+
+Place supporting materials in the `references/` directory. These provide the AI with detailed knowledge it can consult (compliance frameworks, detection pattern catalogs, pricing tables, etc.).
+
+### Test Locally
+
+Load your skill in a compatible OpenClaw environment and verify that the AI follows the instructions correctly across a range of test scenarios.
+
+### Submit to ClawHub
+
+Package the skill directory and submit via the ClawHub submission process. See `clawhub-submission/` in this repository for an example of the required structure.
+
+---
+
+## Writing Detection Patterns
+
+RANA uses regular expressions organized by category. When adding new detection patterns:
+
+### Pattern Structure
+
+```typescript
+// PII pattern (VS Code extension style)
+{
+  name: 'Pattern Name',
+  regex: /your-regex-here/g,
+  severity: 'error' | 'warning',
+}
+
+// Injection pattern (core detector style)
+const INJECTION_PATTERNS = {
+  categoryName: [
+    /pattern-one/gi,
+    /pattern-two/gi,
+  ],
+};
+
+// Toxicity pattern
+{
+  category: 'category_name',
+  severity: 'low' | 'medium' | 'high' | 'critical',
+  patterns: [/pattern/gi],
+}
+```
+
+### Guidelines
+
+1. **Always use the `g` flag** for patterns that need to find multiple matches.
+2. **Use `gi` flags** for injection and toxicity patterns (case-insensitive matching is important).
+3. **Anchor with `\b`** word boundaries to avoid false positives inside larger words.
+4. **Test against false positives**: Run your pattern against the benchmark datasets in `packages/benchmark/src/datasets/`.
+5. **Assign appropriate severity**: `critical` for patterns that must always block, `high` for likely threats, `medium` for suspicious content, `low` for informational flags.
+6. **Document each pattern** with a comment explaining what it catches and an example match.
+7. **Consider multi-region support**: PII patterns may need variants for US, EU, UK, CA, AU, and global contexts.
+
+### Where to Add Patterns
+
+- **PII patterns**: `packages/core/src/security/pii.ts` (core) or `extensions/vscode-rana/src/detectors.ts` (VS Code)
+- **Injection patterns**: `packages/core/src/security/injection.ts` (core) or `extensions/vscode-rana/src/detectors.ts` (VS Code)
+- **Toxicity patterns**: `packages/guard/src/detectors/toxicity.ts`
+- **API key patterns**: `extensions/vscode-rana/src/detectors.ts`
+
+---
+
+## Testing Requirements
+
+All contributions must include tests:
+
+1. **Unit tests** for new detection patterns, policies, and utility functions.
+2. **Test files** should be colocated with source (e.g., `pii.test.ts` next to `pii.ts`) or in a `__tests__/` subdirectory.
+3. **Minimum coverage**: All new patterns must have at least one positive match test and one negative (false positive) test.
+4. **Benchmark tests**: For detection patterns, add entries to the benchmark datasets in `packages/benchmark/` so performance can be tracked.
+5. **Run the full test suite** before submitting: `pnpm test`
+6. **TypeScript compilation** must pass without errors: `pnpm build`
+7. **Zero new runtime dependencies** unless explicitly justified and approved by a maintainer.
+
+---
+
 ## Contact
 
 - **GitHub Issues**: For bugs and feature requests

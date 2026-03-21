@@ -20,6 +20,10 @@ import {
   Activity,
   Fingerprint,
   ServerCrash,
+  Box,
+  Radio,
+  BarChart3,
+  MonitorSmartphone,
 } from 'lucide-react';
 
 const features = [
@@ -88,9 +92,33 @@ const features = [
     description: 'Real-time cost tracking with pricing for 25+ models. Budget enforcement, model routing, caching, and prompt optimization. Projected monthly cost reports.',
   },
   {
+    icon: Box,
+    title: 'Sandboxed Execution',
+    description: 'Run untrusted AI-generated code safely with @ranavibe/sandbox. Process isolation, resource limits, timeout enforcement, and output capture. Evaluate agent tool calls without risk.',
+    isNew: true,
+  },
+  {
+    icon: Radio,
+    title: 'Streaming Guards',
+    description: 'Real-time guardrail evaluation on streaming LLM responses with @ranavibe/streaming. Token-by-token PII detection, injection scanning, and policy enforcement without buffering the full response.',
+    isNew: true,
+  },
+  {
+    icon: BarChart3,
+    title: 'Detection Benchmarks',
+    description: 'Measure detection accuracy with @ranavibe/benchmark. 252 curated test cases across PII, injection, and toxicity. Per-category metrics, confusion matrices, and NeMo Guardrails comparison.',
+    isNew: true,
+  },
+  {
+    icon: MonitorSmartphone,
+    title: 'VS Code Extension',
+    description: 'Inline guardrail warnings, PII highlighting, injection detection, and compliance checks directly in your editor. One-click redaction and policy violation quickfixes.',
+    isNew: true,
+  },
+  {
     icon: Scale,
     title: 'Like NeMo Guardrails, But Better',
-    description: 'Everything NVIDIA NeMo Guardrails does — PII, injection, topical control, content safety — plus compliance frameworks, cost tracking, CI/CD, dashboard, and MCP. TypeScript-first.',
+    description: 'Everything NVIDIA NeMo Guardrails does — PII, injection, topical control, content safety — plus compliance frameworks, cost tracking, CI/CD, dashboard, sandbox, streaming, and MCP. TypeScript-first with 35 packages.',
   },
 ];
 
@@ -115,7 +143,7 @@ export function Features() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-lg text-foreground-secondary max-w-2xl mx-auto"
           >
-            The only TypeScript framework with built-in compliance, guidelines, and 400K context optimization
+            35 packages covering detection, compliance, sandbox, streaming, benchmarks, CI/CD, MCP, and VS Code integration
           </motion.p>
         </div>
 

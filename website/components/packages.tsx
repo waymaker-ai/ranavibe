@@ -137,7 +137,7 @@ export function Packages() {
             className="inline-flex items-center space-x-2 px-4 py-1.5 mb-6 rounded-full border border-border bg-background"
           >
             <Package className="h-4 w-4 text-gradient-from" />
-            <span className="text-sm font-medium">New in RANA 3.0</span>
+            <span className="text-sm font-medium">New in RANA 3.1</span>
           </motion.div>
 
           <motion.h2
@@ -147,7 +147,7 @@ export function Packages() {
             transition={{ duration: 0.5 }}
             className="text-3xl md:text-5xl font-bold mb-4"
           >
-            Six Powerful Packages
+            35 Production-Ready Packages
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -156,7 +156,7 @@ export function Packages() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-lg text-foreground-secondary max-w-2xl mx-auto"
           >
-            Production-ready AI building blocks with built-in compliance, guidelines, and context optimization
+            The complete AI guardrail ecosystem — from core detection to enterprise compliance, CI/CD, streaming, sandbox, and VS Code extension
           </motion.p>
         </div>
 
