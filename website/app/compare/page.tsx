@@ -4,6 +4,20 @@ import Link from 'next/link';
 
 const comparisons = [
   {
+    name: 'NeMo Guardrails',
+    slug: 'nemo-guardrails',
+    tagline: 'Same guardrails, more features, TypeScript-first',
+    description: 'RANA covers everything NeMo Guardrails does — plus compliance, cost tracking, CI/CD, MCP, and a dashboard',
+    featured: true,
+  },
+  {
+    name: 'NemoClaw / OpenClaw',
+    slug: 'nemoclaw',
+    tagline: 'Guardrails for the OpenClaw ecosystem',
+    description: 'RANA provides the same security layer NemoClaw adds to OpenClaw — and works with any agent framework',
+    featured: true,
+  },
+  {
     name: 'LangChain',
     slug: 'langchain',
     tagline: 'Simple by default, powerful when needed',
@@ -78,7 +92,7 @@ export default function ComparePage() {
 
         <div className="mt-16 p-8 rounded-2xl border border-gray-800 bg-gradient-to-br from-gray-900 to-gray-900/50">
           <h2 className="text-2xl font-semibold mb-6 text-center">
-            Quick Comparison
+            Guardrails Comparison
           </h2>
           <div className="overflow-x-auto">
             <table className="w-full text-left text-sm">
@@ -86,60 +100,95 @@ export default function ComparePage() {
                 <tr className="border-b border-gray-800">
                   <th className="py-4 px-3 font-semibold">Feature</th>
                   <th className="py-4 px-3 font-semibold text-center">RANA</th>
-                  <th className="py-4 px-3 font-semibold text-center">LangChain</th>
-                  <th className="py-4 px-3 font-semibold text-center">CrewAI</th>
-                  <th className="py-4 px-3 font-semibold text-center">MetaGPT</th>
+                  <th className="py-4 px-3 font-semibold text-center">NeMo Guardrails</th>
+                  <th className="py-4 px-3 font-semibold text-center">NemoClaw</th>
+                  <th className="py-4 px-3 font-semibold text-center">OpenGuardrails</th>
                 </tr>
               </thead>
               <tbody className="text-gray-400">
                 <tr className="border-b border-gray-800/50">
                   <td className="py-3 px-3">TypeScript-first</td>
                   <td className="py-3 px-3 text-center text-green-400">✓</td>
-                  <td className="py-3 px-3 text-center text-yellow-400">Partial</td>
-                  <td className="py-3 px-3 text-center text-red-400">✗</td>
-                  <td className="py-3 px-3 text-center text-red-400">✗</td>
+                  <td className="py-3 px-3 text-center text-red-400">Python</td>
+                  <td className="py-3 px-3 text-center text-red-400">Python</td>
+                  <td className="py-3 px-3 text-center text-red-400">Python</td>
                 </tr>
                 <tr className="border-b border-gray-800/50">
-                  <td className="py-3 px-3">Multi-agent orchestration</td>
+                  <td className="py-3 px-3">PII detection & redaction</td>
+                  <td className="py-3 px-3 text-center text-green-400">✓ 20+ patterns</td>
+                  <td className="py-3 px-3 text-center text-green-400">✓</td>
+                  <td className="py-3 px-3 text-center text-green-400">✓</td>
+                  <td className="py-3 px-3 text-center text-green-400">✓</td>
+                </tr>
+                <tr className="border-b border-gray-800/50">
+                  <td className="py-3 px-3">Prompt injection blocking</td>
+                  <td className="py-3 px-3 text-center text-green-400">✓ 25+ patterns</td>
+                  <td className="py-3 px-3 text-center text-green-400">✓</td>
+                  <td className="py-3 px-3 text-center text-green-400">✓</td>
+                  <td className="py-3 px-3 text-center text-green-400">✓</td>
+                </tr>
+                <tr className="border-b border-gray-800/50">
+                  <td className="py-3 px-3">Content safety filtering</td>
+                  <td className="py-3 px-3 text-center text-green-400">✓ 7 categories</td>
+                  <td className="py-3 px-3 text-center text-green-400">✓</td>
                   <td className="py-3 px-3 text-center text-green-400">✓</td>
                   <td className="py-3 px-3 text-center text-yellow-400">Limited</td>
-                  <td className="py-3 px-3 text-center text-green-400">✓</td>
-                  <td className="py-3 px-3 text-center text-green-400">✓</td>
                 </tr>
                 <tr className="border-b border-gray-800/50">
-                  <td className="py-3 px-3">Parallel execution</td>
-                  <td className="py-3 px-3 text-center text-green-400">✓</td>
-                  <td className="py-3 px-3 text-center text-yellow-400">Manual</td>
-                  <td className="py-3 px-3 text-center text-yellow-400">Limited</td>
-                  <td className="py-3 px-3 text-center text-yellow-400">Limited</td>
-                </tr>
-                <tr className="border-b border-gray-800/50">
-                  <td className="py-3 px-3">Consensus voting</td>
-                  <td className="py-3 px-3 text-center text-green-400">✓</td>
+                  <td className="py-3 px-3">Compliance frameworks</td>
+                  <td className="py-3 px-3 text-center text-green-400">✓ 9 frameworks</td>
                   <td className="py-3 px-3 text-center text-red-400">✗</td>
                   <td className="py-3 px-3 text-center text-red-400">✗</td>
                   <td className="py-3 px-3 text-center text-red-400">✗</td>
                 </tr>
                 <tr className="border-b border-gray-800/50">
-                  <td className="py-3 px-3">Cost tracking</td>
+                  <td className="py-3 px-3">Cost tracking & budgets</td>
+                  <td className="py-3 px-3 text-center text-green-400">✓ 25+ models</td>
+                  <td className="py-3 px-3 text-center text-red-400">✗</td>
+                  <td className="py-3 px-3 text-center text-red-400">✗</td>
+                  <td className="py-3 px-3 text-center text-red-400">✗</td>
+                </tr>
+                <tr className="border-b border-gray-800/50">
+                  <td className="py-3 px-3">MCP server</td>
+                  <td className="py-3 px-3 text-center text-green-400">✓ 15+ tools</td>
+                  <td className="py-3 px-3 text-center text-red-400">✗</td>
+                  <td className="py-3 px-3 text-center text-red-400">✗</td>
+                  <td className="py-3 px-3 text-center text-red-400">✗</td>
+                </tr>
+                <tr className="border-b border-gray-800/50">
+                  <td className="py-3 px-3">CI/CD integration</td>
+                  <td className="py-3 px-3 text-center text-green-400">✓ GitHub Action</td>
+                  <td className="py-3 px-3 text-center text-red-400">✗</td>
+                  <td className="py-3 px-3 text-center text-red-400">✗</td>
+                  <td className="py-3 px-3 text-center text-red-400">✗</td>
+                </tr>
+                <tr className="border-b border-gray-800/50">
+                  <td className="py-3 px-3">Observability dashboard</td>
                   <td className="py-3 px-3 text-center text-green-400">✓</td>
                   <td className="py-3 px-3 text-center text-red-400">✗</td>
                   <td className="py-3 px-3 text-center text-red-400">✗</td>
                   <td className="py-3 px-3 text-center text-red-400">✗</td>
                 </tr>
                 <tr className="border-b border-gray-800/50">
-                  <td className="py-3 px-3">Prompt injection detection</td>
+                  <td className="py-3 px-3">Agent SDK wrapping</td>
+                  <td className="py-3 px-3 text-center text-green-400">✓ Anthropic</td>
+                  <td className="py-3 px-3 text-center text-red-400">✗</td>
+                  <td className="py-3 px-3 text-center text-yellow-400">OpenClaw only</td>
+                  <td className="py-3 px-3 text-center text-yellow-400">OpenClaw only</td>
+                </tr>
+                <tr className="border-b border-gray-800/50">
+                  <td className="py-3 px-3">Declarative policies (YAML)</td>
                   <td className="py-3 px-3 text-center text-green-400">✓</td>
-                  <td className="py-3 px-3 text-center text-red-400">✗</td>
-                  <td className="py-3 px-3 text-center text-red-400">✗</td>
+                  <td className="py-3 px-3 text-center text-yellow-400">Colang DSL</td>
+                  <td className="py-3 px-3 text-center text-yellow-400">via NeMo</td>
                   <td className="py-3 px-3 text-center text-red-400">✗</td>
                 </tr>
                 <tr className="border-b border-gray-800/50">
-                  <td className="py-3 px-3">MCP support</td>
-                  <td className="py-3 px-3 text-center text-green-400">✓</td>
-                  <td className="py-3 px-3 text-center text-red-400">✗</td>
-                  <td className="py-3 px-3 text-center text-red-400">✗</td>
-                  <td className="py-3 px-3 text-center text-red-400">✗</td>
+                  <td className="py-3 px-3">Zero dependencies</td>
+                  <td className="py-3 px-3 text-center text-green-400">✓ @ranavibe/guard</td>
+                  <td className="py-3 px-3 text-center text-red-400">Heavy deps</td>
+                  <td className="py-3 px-3 text-center text-red-400">Heavy deps</td>
+                  <td className="py-3 px-3 text-center text-yellow-400">Moderate</td>
                 </tr>
                 <tr>
                   <td className="py-3 px-3">Transactional state</td>

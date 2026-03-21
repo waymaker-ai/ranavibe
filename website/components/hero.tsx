@@ -22,7 +22,7 @@ export function Hero() {
             className="inline-flex items-center space-x-2 px-4 py-1.5 mb-8 rounded-full border border-border bg-background-secondary"
           >
             <Sparkles className="h-4 w-4 text-gradient-from" />
-            <span className="text-sm font-medium">New: RANA 2.1 with Compliance & Guidelines</span>
+            <span className="text-sm font-medium">New: RANA 3.0 — Agent SDK Guards, Policies, CI/CD, Dashboard</span>
           </motion.div>
 
           {/* Heading */}
@@ -32,8 +32,8 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-balance mb-6"
           >
-            The Only Framework{' '}
-            <span className="gradient-text">With Built-in Compliance</span>
+            The AI Guardrail Layer{' '}
+            <span className="gradient-text">For Every Agent Framework</span>
           </motion.h1>
 
           {/* Description */}
@@ -43,7 +43,7 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-lg md:text-xl text-foreground-secondary text-balance mb-10 max-w-2xl mx-auto"
           >
-            Production-ready TypeScript framework with <span className="text-foreground font-semibold">HIPAA, SEC, GDPR compliance, dynamic guidelines, 400K context optimization</span>, and 70% cost savings. Works with Cursor, Windsurf, Antigravity, and all your favorite tools.
+            Production-ready guardrails for AI agents. <span className="text-foreground font-semibold">PII detection, prompt injection blocking, 9 compliance frameworks, cost tracking, and observability</span> — wrapping Anthropic Agent SDK, OpenClaw, and any LLM provider. Like NeMo Guardrails, but TypeScript-first with CI/CD and MCP built in.
           </motion.p>
 
           {/* CTAs */}
