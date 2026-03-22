@@ -290,11 +290,11 @@ export default function LlamaIndexComparisonPage() {
                       CoFounder
                     </span>
                     <span className="text-gray-500 text-sm">
-                      {example.cofounder.split('\n').length} lines
+                      {example.aicofounder.split('\n').length} lines
                     </span>
                   </div>
                   <pre className="p-4 rounded-xl bg-gray-900 border border-gray-800 overflow-x-auto text-sm">
-                    <code className="text-gray-300">{example.cofounder}</code>
+                    <code className="text-gray-300">{example.aicofounder}</code>
                   </pre>
                 </div>
               </div>
