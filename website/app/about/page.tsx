@@ -16,6 +16,11 @@ const team = [
     role: 'Co-Creator',
     company: 'Core Development',
   },
+  {
+    name: 'Chuck Kays',
+    role: 'CoFounder, Advisor',
+    company: 'Best dad ever',
+  },
 ];
 
 const challenges = [
