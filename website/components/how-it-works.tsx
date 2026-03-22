@@ -9,7 +9,7 @@ const steps = [
     step: '01',
     title: 'Install',
     description: 'One command to get started. No complex setup.',
-    code: 'npx create-cofounder-app my-ai-app',
+    code: 'npx create-aicofounder-app my-ai-app',
     duration: '30 seconds',
   },
   {

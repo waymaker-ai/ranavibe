@@ -365,7 +365,7 @@ async function applyOptimizations(optimizations: Optimization[]): Promise<void> 
 
       case 'batching':
         console.log(chalk.green('  ✓ Use batchProcess() for multiple requests:'));
-        console.log(chalk.gray('    import { batchProcess } from "@cofounder/core";'));
+        console.log(chalk.gray('    import { batchProcess } from "@aicofounder/core";'));
         break;
 
       default:

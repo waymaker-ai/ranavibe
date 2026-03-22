@@ -4,7 +4,7 @@
  *
  * @example
  * ```typescript
- * import { PIIDetector, createPIIDetector } from '@cofounder/core';
+ * import { PIIDetector, createPIIDetector } from '@aicofounder/core';
  *
  * // Create detector with default settings
  * const detector = createPIIDetector();

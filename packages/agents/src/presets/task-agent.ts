@@ -1,5 +1,5 @@
 /**
- * @cofounder/agents - Task Agent
+ * @aicofounder/agents - Task Agent
  * Agent for executing structured tasks with tools
  */
 

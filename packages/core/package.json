@@ -1,5 +1,5 @@
 {
-  "name": "@cofounder/core",
+  "name": "@aicofounder/core",
   "version": "2.0.0",
   "description": "CoFounder Core SDK - Unified LLM client with cost optimization",
   "main": "dist/index.js",

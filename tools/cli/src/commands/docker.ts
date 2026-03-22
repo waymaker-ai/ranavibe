@@ -42,7 +42,7 @@ export async function dockerBuild(options: {
   }
 
   // Get image name from package.json or config
-  let imageName = 'cofounder-app';
+  let imageName = 'aicofounder-app';
   if (fs.existsSync('package.json')) {
     try {
       const pkg = JSON.parse(fs.readFileSync('package.json', 'utf-8'));
@@ -120,7 +120,7 @@ export async function dockerPush(options: {
   console.log(chalk.bold.cyan('\n🐳 CoFounder Docker Push\n'));
 
   // Get image config
-  let imageName = 'cofounder-app';
+  let imageName = 'aicofounder-app';
   let registry = options.registry || '';
 
   if (fs.existsSync('.cofounder/docker.json')) {
@@ -219,7 +219,7 @@ export async function dockerRun(options: {
   console.log(chalk.bold.cyan('\n🐳 CoFounder Docker Run\n'));
 
   // Get image name
-  let imageName = 'cofounder-app';
+  let imageName = 'aicofounder-app';
   if (fs.existsSync('.cofounder/docker.json')) {
     const config = JSON.parse(fs.readFileSync('.cofounder/docker.json', 'utf-8'));
     imageName = config.imageName || imageName;

@@ -1,5 +1,5 @@
 /**
- * Type definitions for @cofounder/rag
+ * Type definitions for @aicofounder/rag
  * Advanced RAG (Retrieval Augmented Generation)
  */
 

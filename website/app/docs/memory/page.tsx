@@ -9,7 +9,7 @@ const features = [
     icon: Database,
     title: 'Conversation Memory',
     description: 'Persistent memory that tracks conversation history across sessions',
-    code: `import { ConversationMemory } from '@cofounder/memory';
+    code: `import { ConversationMemory } from '@aicofounder/memory';
 
 const memory = new ConversationMemory({
   maxMessages: 100,
@@ -38,7 +38,7 @@ await memory.clear(sessionId);`,
     icon: Brain,
     title: 'Semantic Memory',
     description: 'Long-term memory with semantic search and retrieval',
-    code: `import { SemanticMemory } from '@cofounder/memory';
+    code: `import { SemanticMemory } from '@aicofounder/memory';
 
 const memory = new SemanticMemory({
   vectorStore: 'pinecone',
@@ -68,7 +68,7 @@ const preferences = await memory.findByMetadata({
     icon: MessageSquare,
     title: 'Working Memory',
     description: 'Short-term context for the current conversation',
-    code: `import { WorkingMemory } from '@cofounder/memory';
+    code: `import { WorkingMemory } from '@aicofounder/memory';
 
 const working = new WorkingMemory({
   maxTokens: 4000,
@@ -97,7 +97,7 @@ working.clear();`,
     icon: Clock,
     title: 'Temporal Memory',
     description: 'Time-aware memory with decay and importance scoring',
-    code: `import { TemporalMemory } from '@cofounder/memory';
+    code: `import { TemporalMemory } from '@aicofounder/memory';
 
 const temporal = new TemporalMemory({
   decayRate: 0.1,      // Memories fade over time
@@ -126,7 +126,7 @@ await temporal.boost(memoryId, 0.5);`,
     icon: Search,
     title: 'Memory Search',
     description: 'Unified search across all memory types',
-    code: `import { MemoryManager } from '@cofounder/memory';
+    code: `import { MemoryManager } from '@aicofounder/memory';
 
 const manager = new MemoryManager({
   memories: {
@@ -154,7 +154,7 @@ const context = await manager.getContext({
     icon: Layers,
     title: 'Memory Compression',
     description: 'Intelligent compression and summarization of memories',
-    code: `import { MemoryCompressor } from '@cofounder/memory';
+    code: `import { MemoryCompressor } from '@aicofounder/memory';
 
 const compressor = new MemoryCompressor({
   model: 'gpt-4o-mini',
@@ -205,7 +205,7 @@ export default function MemoryPage() {
             semantic search, temporal decay, and automatic compression.
           </p>
           <div className="mt-4 code-block font-mono text-sm">
-            npm install @cofounder/memory
+            npm install @aicofounder/memory
           </div>
         </motion.div>
 

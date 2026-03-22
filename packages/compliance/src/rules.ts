@@ -1,5 +1,5 @@
 /**
- * @cofounder/compliance - Compliance rule factory and presets
+ * @aicofounder/compliance - Compliance rule factory and presets
  */
 
 import type {

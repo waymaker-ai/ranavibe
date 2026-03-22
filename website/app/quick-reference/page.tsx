@@ -12,19 +12,19 @@ const sections = [
     icon: Terminal,
     items: [
       {
-        command: 'npx @cofounder/cli init',
+        command: 'npx @aicofounder/cli init',
         description: 'Initialize a new CoFounder project',
       },
       {
-        command: 'npx @cofounder/cli check',
+        command: 'npx @aicofounder/cli check',
         description: 'Validate your CoFounder configuration',
       },
       {
-        command: 'npx @cofounder/cli db migrate',
+        command: 'npx @aicofounder/cli db migrate',
         description: 'Run database migrations',
       },
       {
-        command: 'npx @cofounder/cli deploy',
+        command: 'npx @aicofounder/cli deploy',
         description: 'Deploy to production',
       },
     ],
@@ -170,7 +170,7 @@ export default function QuickReferencePage() {
             <div>
               <h3 className="font-semibold mb-3">Basic Agent Setup</h3>
               <div className="code-block font-mono text-sm">
-                <pre>{`import { useAgent } from '@cofounder/react';
+                <pre>{`import { useAgent } from '@aicofounder/react';
 
 function MyAgent() {
   const { send, messages, isLoading } = useAgent({
@@ -186,7 +186,7 @@ function MyAgent() {
             <div>
               <h3 className="font-semibold mb-3">Database Query</h3>
               <div className="code-block font-mono text-sm">
-                <pre>{`import { createClient } from '@cofounder/core';
+                <pre>{`import { createClient } from '@aicofounder/core';
 
 async function getConversations() {
   const db = createClient();
@@ -203,7 +203,7 @@ async function getConversations() {
             <div>
               <h3 className="font-semibold mb-3">Streaming Response</h3>
               <div className="code-block font-mono text-sm">
-                <pre>{`import { CoFounderClient } from '@cofounder/core';
+                <pre>{`import { CoFounderClient } from '@aicofounder/core';
 
 const client = new CoFounderClient({ apiKey: process.env.OPENAI_API_KEY });
 

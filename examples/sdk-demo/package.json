@@ -1,5 +1,5 @@
 {
-  "name": "cofounder-sdk-demo",
+  "name": "aicofounder-sdk-demo",
   "version": "1.0.0",
   "description": "Complete demo of CoFounder SDK features",
   "type": "module",
@@ -9,8 +9,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@cofounder/core": "^2.0.0",
-    "@cofounder/react": "^2.0.0",
+    "@aicofounder/core": "^2.0.0",
+    "@aicofounder/react": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

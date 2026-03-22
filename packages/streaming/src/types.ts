@@ -1,5 +1,5 @@
 /**
- * @cofounder/streaming - Types
+ * @aicofounder/streaming - Types
  *
  * Core type definitions for streaming guard configuration,
  * events, violations, and reports.

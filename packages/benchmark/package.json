@@ -1,5 +1,5 @@
 {
-  "name": "@cofounder/benchmark",
+  "name": "@aicofounder/benchmark",
   "version": "1.0.0",
   "description": "CoFounder benchmark package",
   "main": "dist/index.js",

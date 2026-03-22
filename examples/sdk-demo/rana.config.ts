@@ -1,4 +1,4 @@
-import { defineConfig } from '@cofounder/core';
+import { defineConfig } from '@aicofounder/core';
 
 export default defineConfig({
   // Provider API keys

@@ -12,8 +12,8 @@
  *
  * @example
  * ```typescript
- * import { createCoFounder } from '@cofounder/core';
- * import { createSlackPlugin } from '@cofounder/core/plugins/slack';
+ * import { createCoFounder } from '@aicofounder/core';
+ * import { createSlackPlugin } from '@aicofounder/core/plugins/slack';
  *
  * const slack = createSlackPlugin({
  *   botToken: process.env.SLACK_BOT_TOKEN,
@@ -737,8 +737,8 @@ export function createSlackPlugin(config: SlackConfig): SlackBot {
  *
  * @example
  * ```typescript
- * import { createCoFounder } from '@cofounder/core';
- * import { slackPlugin } from '@cofounder/core/plugins/slack';
+ * import { createCoFounder } from '@aicofounder/core';
+ * import { slackPlugin } from '@aicofounder/core/plugins/slack';
  *
  * const cofounder = createCoFounder({
  *   providers: {

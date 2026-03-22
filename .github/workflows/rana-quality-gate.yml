@@ -6,7 +6,7 @@
 #
 #   jobs:
 #     quality-gate:
-#       uses: waymaker-ai/cofounder/.github/workflows/cofounder-quality-gate.yml@main
+#       uses: waymaker-ai/cofounder/.github/workflows/aicofounder-quality-gate.yml@main
 #       with:
 #         security: true
 #         seo: true
@@ -58,7 +58,7 @@ jobs:
         run: npm ci
 
       - name: Install CoFounder CLI
-        run: npm install -g @cofounder/cli || true
+        run: npm install -g @aicofounder/cli || true
 
       # Security Audit
       - name: 🔒 Security Audit

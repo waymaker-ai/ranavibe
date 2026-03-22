@@ -9,7 +9,7 @@ import {
   REPMValidator,
   TemplateManager,
   DesignSystemChecker,
-} from '@cofounder/core';
+} from '@aicofounder/core';
 import * as fs from 'fs';
 import * as path from 'path';
 

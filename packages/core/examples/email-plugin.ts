@@ -3,7 +3,7 @@
  * Demonstrates AI-powered email processing
  */
 
-import { CoFounderClient, createEmailPlugin } from '@cofounder/core';
+import { CoFounderClient, createEmailPlugin } from '@aicofounder/core';
 
 // ============================================================================
 // Example 1: Gmail Integration with Auto-Classification

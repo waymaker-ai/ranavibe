@@ -1,5 +1,5 @@
 /**
- * @cofounder/ci - CI/CD guardrails for AI applications
+ * @aicofounder/ci - CI/CD guardrails for AI applications
  *
  * Zero runtime dependencies. Scans your codebase for AI security,
  * compliance, cost, and safety issues.

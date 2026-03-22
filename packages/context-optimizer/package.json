@@ -1,5 +1,5 @@
 {
-  "name": "@cofounder/context-optimizer",
+  "name": "@aicofounder/context-optimizer",
   "version": "1.0.0",
   "description": "Extended context optimization for CoFounder - Efficiently handle 400K+ token contexts",
   "main": "dist/index.js",
@@ -40,6 +40,6 @@
     "vitest": "^1.6.0"
   },
   "peerDependencies": {
-    "@cofounder/core": "^2.0.0"
+    "@aicofounder/core": "^2.0.0"
   }
 }

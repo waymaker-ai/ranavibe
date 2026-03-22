@@ -110,7 +110,7 @@ class GalileoAdapter implements Adapter {
         },
         body: JSON.stringify({
           text,
-          project_name: this.config.projectName ?? 'cofounder-integration',
+          project_name: this.config.projectName ?? 'aicofounder-integration',
         }),
       });
 
@@ -186,7 +186,7 @@ class GalileoAdapter implements Adapter {
     return {
       format: 'galileo',
       data: {
-        project_name: this.config.projectName ?? 'cofounder-integration',
+        project_name: this.config.projectName ?? 'aicofounder-integration',
         metrics: galileoMetrics,
         console_url: this.config.consoleUrl,
       },

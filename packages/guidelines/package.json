@@ -1,5 +1,5 @@
 {
-  "name": "@cofounder/guidelines",
+  "name": "@aicofounder/guidelines",
   "version": "1.0.0",
   "description": "Dynamic guideline management for CoFounder agents - Context-aware behavioral rules",
   "main": "dist/index.js",
@@ -39,6 +39,6 @@
     "vitest": "^1.6.0"
   },
   "peerDependencies": {
-    "@cofounder/core": "^2.0.0"
+    "@aicofounder/core": "^2.0.0"
   }
 }

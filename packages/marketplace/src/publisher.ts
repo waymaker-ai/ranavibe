@@ -121,7 +121,7 @@ function generatePackageJson(
     files: ['policies.json', 'README.md'],
     keywords: [
       'cofounder',
-      'cofounder-policy',
+      'aicofounder-policy',
       'ai-safety',
       'guardrails',
       ...pkg.tags,

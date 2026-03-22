@@ -1,5 +1,5 @@
 /**
- * @cofounder/mcp/types
+ * @aicofounder/mcp/types
  * Model Context Protocol types and interfaces
  */
 

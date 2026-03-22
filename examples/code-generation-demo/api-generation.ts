@@ -1,11 +1,11 @@
 /**
  * API Generation Examples
  *
- * This example demonstrates how to use @cofounder/generate to create
+ * This example demonstrates how to use @aicofounder/generate to create
  * complete CRUD APIs with authentication, validation, and rate limiting.
  */
 
-import { APIGenerator, type CRUDSpec } from '@cofounder/generate';
+import { APIGenerator, type CRUDSpec } from '@aicofounder/generate';
 
 // ============================================================================
 // Example 1: Simple REST API

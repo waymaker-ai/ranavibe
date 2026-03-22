@@ -6,7 +6,7 @@ const config: DocsThemeConfig = {
   project: {
     link: 'https://github.com/waymaker-ai/cofounder',
   },
-  docsRepositoryBase: 'https://github.com/waymaker-ai/cofounder/tree/main/apps/cofounder-ui-docs',
+  docsRepositoryBase: 'https://github.com/waymaker-ai/cofounder/tree/main/apps/aicofounder-ui-docs',
   footer: {
     text: 'CoFounder UI - Built with CoFounder',
   },

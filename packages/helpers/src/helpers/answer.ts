@@ -3,7 +3,7 @@
  *
  * @example
  * ```typescript
- * import { answer } from '@cofounder/helpers';
+ * import { answer } from '@aicofounder/helpers';
  *
  * // Simple Q&A
  * const result = await answer('What is the capital of France?');

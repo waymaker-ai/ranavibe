@@ -1,5 +1,5 @@
 /**
- * @cofounder/integrations/supabase
+ * @aicofounder/integrations/supabase
  * Supabase vector store integration
  *
  * Features:
@@ -11,7 +11,7 @@
  *
  * @example
  * ```typescript
- * import { createSupabaseVectorStore } from '@cofounder/core';
+ * import { createSupabaseVectorStore } from '@aicofounder/core';
  *
  * const vectorStore = await createSupabaseVectorStore({
  *   supabaseUrl: process.env.SUPABASE_URL,

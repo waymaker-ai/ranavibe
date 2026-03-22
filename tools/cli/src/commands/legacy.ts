@@ -722,7 +722,7 @@ function calculateTotalEffort(items: TechDebtItem[]): string {
 }
 
 function exportReport(report: LegacyReport, format: string) {
-  const filename = `cofounder-legacy-report-${new Date().toISOString().split('T')[0]}`;
+  const filename = `aicofounder-legacy-report-${new Date().toISOString().split('T')[0]}`;
 
   if (format === 'json') {
     fs.writeFileSync(`${filename}.json`, JSON.stringify(report, null, 2));

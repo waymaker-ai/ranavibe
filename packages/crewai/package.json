@@ -1,5 +1,5 @@
 {
-  "name": "@cofounder/crewai",
+  "name": "@aicofounder/crewai",
   "version": "1.0.0",
   "description": "CrewAI adapter for CoFounder Framework",
   "main": "dist/index.js",
@@ -23,7 +23,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@cofounder/core": "workspace:*"
+    "@aicofounder/core": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",

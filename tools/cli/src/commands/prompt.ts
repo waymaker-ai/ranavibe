@@ -1,6 +1,6 @@
 /**
  * Prompt CLI Commands
- * Surfaces @cofounder/prompts package functionality via CLI
+ * Surfaces @aicofounder/prompts package functionality via CLI
  */
 
 import chalk from 'chalk';
@@ -704,7 +704,7 @@ export async function promptExport(options: { output?: string } = {}) {
   console.log(chalk.bold.cyan('\n📤 Export Prompts\n'));
 
   const store = getPromptsStore();
-  const output = options.output || `cofounder-prompts-${new Date().toISOString().split('T')[0]}.json`;
+  const output = options.output || `aicofounder-prompts-${new Date().toISOString().split('T')[0]}.json`;
 
   fs.writeFileSync(output, JSON.stringify(store, null, 2));
 

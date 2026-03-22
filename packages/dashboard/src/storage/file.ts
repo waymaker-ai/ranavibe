@@ -17,7 +17,7 @@ export class FileStorage implements StorageInterface {
   private readonly maxDaysRetention: number;
 
   constructor(options: FileStorageOptions = {}) {
-    this.dataDir = options.dataDir ?? path.join(process.cwd(), 'cofounder-data');
+    this.dataDir = options.dataDir ?? path.join(process.cwd(), 'aicofounder-data');
     this.maxDaysRetention = options.maxDaysRetention ?? 90;
     this.ensureDir(this.dataDir);
   }

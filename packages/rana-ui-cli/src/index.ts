@@ -16,7 +16,7 @@ const __dirname = dirname(__filename);
 const program = new Command();
 
 program
-  .name('cofounder-ui')
+  .name('aicofounder-ui')
   .description('CLI for installing CoFounder UI components')
   .version('0.1.0');
 
@@ -29,7 +29,7 @@ program
     console.log(chalk.blue.bold('\n✨ Welcome to CoFounder UI!\n'));
 
     // Check if already initialized
-    const configPath = path.join(process.cwd(), 'cofounder-ui.json');
+    const configPath = path.join(process.cwd(), 'aicofounder-ui.json');
     if (fs.existsSync(configPath)) {
       console.log(chalk.yellow('⚠️  CoFounder UI is already initialized in this project.\n'));
       const { overwrite } = await prompts({
@@ -135,7 +135,7 @@ program
 
     console.log(chalk.green.bold('\n✅ CoFounder UI initialized successfully!\n'));
     console.log(chalk.gray('Next steps:'));
-    console.log(chalk.gray('  1. Run `cofounder-ui add glass-card` to add a component'));
+    console.log(chalk.gray('  1. Run `aicofounder-ui add glass-card` to add a component'));
     console.log(chalk.gray('  2. Import and use in your app'));
     console.log(chalk.gray('  3. Customize styles in Tailwind config\n'));
   });
@@ -148,10 +148,10 @@ program
   .option('-o, --overwrite', 'Overwrite existing files')
   .action(async (components: string[], options) => {
     // Load config
-    const configPath = path.join(process.cwd(), 'cofounder-ui.json');
+    const configPath = path.join(process.cwd(), 'aicofounder-ui.json');
     if (!fs.existsSync(configPath)) {
       console.error(chalk.red('❌ CoFounder UI not initialized!'));
-      console.log(chalk.gray('\nRun `cofounder-ui init` first.\n'));
+      console.log(chalk.gray('\nRun `aicofounder-ui init` first.\n'));
       return;
     }
 
@@ -248,7 +248,7 @@ program
     }
 
     // Copy component files
-    const componentsDir = path.resolve(__dirname, '../../cofounder-ui/src');
+    const componentsDir = path.resolve(__dirname, '../../aicofounder-ui/src');
 
     for (const name of Array.from(allComponents)) {
       const component = getComponent(name);

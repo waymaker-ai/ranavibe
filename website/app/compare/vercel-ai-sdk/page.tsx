@@ -37,7 +37,7 @@ const features = [
     feature: 'Built-in Testing',
     vercel: false,
     cofounder: true,
-    note: 'CoFounder has @cofounder/testing for AI testing',
+    note: 'CoFounder has @aicofounder/testing for AI testing',
   },
   {
     feature: 'Prompt Injection Detection',
@@ -55,7 +55,7 @@ const features = [
     feature: 'RAG Pipeline',
     vercel: false,
     cofounder: true,
-    note: 'CoFounder includes @cofounder/rag for RAG',
+    note: 'CoFounder includes @aicofounder/rag for RAG',
   },
   {
     feature: 'MCP Support',
@@ -183,7 +183,7 @@ const { text } = await generateText({
                   </span>
                 </div>
                 <pre className="p-4 rounded-xl bg-gray-900 border border-gray-800 overflow-x-auto text-sm">
-                  <code className="text-gray-300">{`import { createCoFounder } from '@cofounder/core';
+                  <code className="text-gray-300">{`import { createCoFounder } from '@aicofounder/core';
 
 const cofounder = createCoFounder();
 
@@ -212,7 +212,7 @@ const stats = cofounder.getCostStats();
               <div className="p-6 rounded-xl border border-gray-800 bg-gray-900/50">
                 <h3 className="text-lg font-medium mb-3">Security</h3>
                 <pre className="p-3 rounded-lg bg-black/50 text-sm overflow-x-auto">
-                  <code className="text-gray-300">{`import { detectInjection } from '@cofounder/core';
+                  <code className="text-gray-300">{`import { detectInjection } from '@aicofounder/core';
 
 const result = detectInjection(userInput);
 if (result.isInjection) {
@@ -223,7 +223,7 @@ if (result.isInjection) {
               <div className="p-6 rounded-xl border border-gray-800 bg-gray-900/50">
                 <h3 className="text-lg font-medium mb-3">Testing</h3>
                 <pre className="p-3 rounded-lg bg-black/50 text-sm overflow-x-auto">
-                  <code className="text-gray-300">{`import { aiTest } from '@cofounder/testing';
+                  <code className="text-gray-300">{`import { aiTest } from '@aicofounder/testing';
 
 aiTest('responds helpfully', async () => {
   const response = await cofounder.chat('Help');
@@ -234,7 +234,7 @@ aiTest('responds helpfully', async () => {
               <div className="p-6 rounded-xl border border-gray-800 bg-gray-900/50">
                 <h3 className="text-lg font-medium mb-3">Observability</h3>
                 <pre className="p-3 rounded-lg bg-black/50 text-sm overflow-x-auto">
-                  <code className="text-gray-300">{`import { createTracer } from '@cofounder/core';
+                  <code className="text-gray-300">{`import { createTracer } from '@aicofounder/core';
 
 const tracer = createTracer();
 // All requests automatically traced

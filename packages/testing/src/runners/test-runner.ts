@@ -1,6 +1,6 @@
 /**
  * AI Test Runner
- * The heart of @cofounder/testing - runs AI tests with grace and power
+ * The heart of @aicofounder/testing - runs AI tests with grace and power
  *
  * Inspired by Jest/Vitest but designed for AI's unique challenges:
  * - Non-deterministic outputs

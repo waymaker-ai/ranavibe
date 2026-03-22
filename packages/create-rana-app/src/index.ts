@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 
 /**
- * create-cofounder-app
+ * create-aicofounder-app
  *
  * Create a new CoFounder AI application in seconds
  *
  * @example
  * ```bash
- * npx create-cofounder-app my-ai-app
- * npx create-cofounder-app my-ai-app --template chatbot
- * npx create-cofounder-app my-ai-app --template rag --provider anthropic
+ * npx create-aicofounder-app my-ai-app
+ * npx create-aicofounder-app my-ai-app --template chatbot
+ * npx create-aicofounder-app my-ai-app --template rag --provider anthropic
  * ```
  */
 
@@ -56,7 +56,7 @@ const PROVIDERS: Record<Provider, { name: string; env: string }> = {
 const banner = `
 ${chalk.bold.cyan('╔═══════════════════════════════════════════════════════════╗')}
 ${chalk.bold.cyan('║')}                                                             ${chalk.bold.cyan('║')}
-${chalk.bold.cyan('║')}   ${chalk.bold.white('create-cofounder-app')}                                        ${chalk.bold.cyan('║')}
+${chalk.bold.cyan('║')}   ${chalk.bold.white('create-aicofounder-app')}                                        ${chalk.bold.cyan('║')}
 ${chalk.bold.cyan('║')}   ${chalk.gray('Create production-ready AI apps in seconds')}              ${chalk.bold.cyan('║')}
 ${chalk.bold.cyan('║')}                                                             ${chalk.bold.cyan('║')}
 ${chalk.bold.cyan('╚═══════════════════════════════════════════════════════════╝')}
@@ -66,7 +66,7 @@ async function main() {
   console.log(banner);
 
   const program = new Command()
-    .name('create-cofounder-app')
+    .name('create-aicofounder-app')
     .description('Create a new CoFounder AI application')
     .version('2.0.0')
     .argument('[project-name]', 'Name of your project')
@@ -195,7 +195,7 @@ async function createApp(projectName: string, options: CreateOptions) {
       try {
         execSync('git init', { cwd: projectPath, stdio: 'ignore' });
         execSync('git add -A', { cwd: projectPath, stdio: 'ignore' });
-        execSync('git commit -m "Initial commit from create-cofounder-app"', { cwd: projectPath, stdio: 'ignore' });
+        execSync('git commit -m "Initial commit from create-aicofounder-app"', { cwd: projectPath, stdio: 'ignore' });
         spinner.succeed('Git initialized!');
       } catch {
         spinner.warn('Git initialization failed (git may not be installed)');
@@ -272,12 +272,12 @@ async function generateTemplate(
       lint: options.typescript ? 'tsc --noEmit' : 'echo "No lint configured"',
     },
     dependencies: {
-      '@cofounder/core': '^2.0.0',
-      ...(options.template === 'rag' && { '@cofounder/rag': '^2.0.0' }),
+      '@aicofounder/core': '^2.0.0',
+      ...(options.template === 'rag' && { '@aicofounder/rag': '^2.0.0' }),
       ...(options.template === 'api' && { express: '^4.18.0' }),
     },
     devDependencies: {
-      '@cofounder/testing': '^2.0.0',
+      '@aicofounder/testing': '^2.0.0',
       tsx: '^4.7.0',
       ...(options.typescript && {
         typescript: '^5.5.0',
@@ -464,7 +464,7 @@ async function generateDefaultTemplate(projectPath: string, ext: string, provide
  * Full-featured starter with chat, RAG, and agents
  */
 
-import { createCoFounder } from '@cofounder/core';
+import { createCoFounder } from '@aicofounder/core';
 
 // Initialize CoFounder
 const cofounder = createCoFounder({
@@ -512,7 +512,7 @@ main().catch(console.error);
  * AI Tests
  */
 
-import { describe, aiTest } from '@cofounder/testing';
+import { describe, aiTest } from '@aicofounder/testing';
 
 describe('AI Application', () => {
   aiTest('should respond helpfully', async ({ expect }) => {
@@ -531,7 +531,7 @@ async function generateChatbotTemplate(projectPath: string, ext: string, provide
  * Conversational AI with streaming
  */
 
-import { createCoFounder } from '@cofounder/core';
+import { createCoFounder } from '@aicofounder/core';
 import * as readline from 'readline';
 
 const cofounder = createCoFounder({
@@ -599,7 +599,7 @@ async function generateRagTemplate(projectPath: string, ext: string, provider: s
  * Document Q&A with retrieval-augmented generation
  */
 
-import { createCoFounder } from '@cofounder/core';
+import { createCoFounder } from '@aicofounder/core';
 
 const cofounder = createCoFounder({
   providers: {
@@ -611,7 +611,7 @@ const cofounder = createCoFounder({
 const documents = [
   { content: 'CoFounder supports 9 different LLM providers including OpenAI, Anthropic, and Google.', source: 'docs' },
   { content: 'CoFounder can reduce AI costs by up to 70% through smart caching and model selection.', source: 'docs' },
-  { content: 'The @cofounder/testing package provides AI-native testing with semantic matching.', source: 'docs' },
+  { content: 'The @aicofounder/testing package provides AI-native testing with semantic matching.', source: 'docs' },
 ];
 
 async function askQuestion(question${ext === 'ts' ? ': string' : ''}) {
@@ -648,7 +648,7 @@ async function main() {
 
   await askQuestion('How many providers does CoFounder support?');
   await askQuestion('How can CoFounder reduce costs?');
-  await askQuestion('What is @cofounder/testing?');
+  await askQuestion('What is @aicofounder/testing?');
 }
 
 main().catch(console.error);
@@ -663,7 +663,7 @@ async function generateAgentTemplate(projectPath: string, ext: string, provider:
  * Autonomous agent with tools and multi-step reasoning
  */
 
-import { createCoFounder, LLMAgent, calculatorTool, dateTimeTool } from '@cofounder/core';
+import { createCoFounder, LLMAgent, calculatorTool, dateTimeTool } from '@aicofounder/core';
 
 const cofounder = createCoFounder({
   providers: {
@@ -715,7 +715,7 @@ async function generateApiTemplate(projectPath: string, ext: string, provider: s
  */
 
 import express from 'express';
-import { createCoFounder } from '@cofounder/core';
+import { createCoFounder } from '@aicofounder/core';
 
 const app = express();
 app.use(express.json());
@@ -812,7 +812,7 @@ async function generateMinimalTemplate(projectPath: string, ext: string, provide
  * Minimal CoFounder Application
  */
 
-import { createCoFounder } from '@cofounder/core';
+import { createCoFounder } from '@aicofounder/core';
 
 const cofounder = createCoFounder({
   providers: {

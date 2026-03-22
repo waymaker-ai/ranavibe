@@ -1,5 +1,5 @@
 /**
- * @cofounder/agents/tools
+ * @aicofounder/agents/tools
  * Common tools and tool utilities
  */
 

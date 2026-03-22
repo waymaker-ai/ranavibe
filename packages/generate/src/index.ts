@@ -1,11 +1,11 @@
 /**
- * @cofounder/generate - Natural Language Code Generation
+ * @aicofounder/generate - Natural Language Code Generation
  *
  * Generate production-ready code from natural language descriptions.
  *
  * @example
  * ```typescript
- * import { generate, parseIntent, createPlan } from '@cofounder/generate';
+ * import { generate, parseIntent, createPlan } from '@aicofounder/generate';
  *
  * // Quick generation
  * const files = await generate('User authentication with OAuth');
@@ -463,7 +463,7 @@ export async function analyzeCodebase(cwd: string): Promise<CodebaseContext> {
  *
  * @example
  * ```typescript
- * import { FileIntegrator } from '@cofounder/generate';
+ * import { FileIntegrator } from '@aicofounder/generate';
  *
  * const integrator = new FileIntegrator();
  * const result = await integrator.integrate(files, context);

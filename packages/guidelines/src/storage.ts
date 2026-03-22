@@ -1,5 +1,5 @@
 /**
- * @cofounder/guidelines - Storage implementations
+ * @aicofounder/guidelines - Storage implementations
  */
 
 import type { Guideline, GuidelineStorage } from './types';

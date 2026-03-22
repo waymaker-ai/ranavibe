@@ -11,7 +11,7 @@ const tiers = [
     description: 'Bring your own API keys - No credit card required',
     icon: Sparkles,
     features: [
-      'All CoFounder packages (@cofounder/helpers, @cofounder/prompts, @cofounder/rag)',
+      'All CoFounder packages (@aicofounder/helpers, @aicofounder/prompts, @aicofounder/rag)',
       '25+ CLI commands',
       '9 LLM provider integrations',
       'Security & design guardrails',

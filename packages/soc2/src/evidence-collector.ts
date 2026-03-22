@@ -119,7 +119,7 @@ function collectDashboardEvidence(
     title: 'System Metrics Overview',
     description: `Aggregate guardrail metrics for period ${config.auditPeriod.startDate} to ${config.auditPeriod.endDate}`,
     collectedAt: now,
-    source: 'cofounder-dashboard',
+    source: 'aicofounder-dashboard',
     data: {
       totalRequests: metrics.totalRequests,
       blockedRequests: metrics.blockedRequests,
@@ -138,7 +138,7 @@ function collectDashboardEvidence(
     title: 'PII Detection Metrics',
     description: `PII detection statistics for the audit period`,
     collectedAt: now,
-    source: 'cofounder-dashboard',
+    source: 'aicofounder-dashboard',
     data: {
       totalDetections: metrics.piiDetections,
       detectionRate: metrics.totalRequests > 0
@@ -154,7 +154,7 @@ function collectDashboardEvidence(
     title: 'Injection Detection Metrics',
     description: `Injection attempt detection statistics for the audit period`,
     collectedAt: now,
-    source: 'cofounder-dashboard',
+    source: 'aicofounder-dashboard',
     data: {
       totalAttempts: metrics.injectionAttempts,
       attemptRate: metrics.totalRequests > 0
@@ -170,7 +170,7 @@ function collectDashboardEvidence(
     title: 'Compliance Violation Metrics',
     description: `Compliance violation statistics for the audit period`,
     collectedAt: now,
-    source: 'cofounder-dashboard',
+    source: 'aicofounder-dashboard',
     data: {
       totalViolations: metrics.complianceViolations,
       violationRate: metrics.totalRequests > 0
@@ -186,7 +186,7 @@ function collectDashboardEvidence(
     title: 'System Availability Metrics',
     description: `System uptime and availability for the audit period`,
     collectedAt: now,
-    source: 'cofounder-dashboard',
+    source: 'aicofounder-dashboard',
     data: {
       uptimePercentage: metrics.uptime,
       meetsTarget: metrics.uptime >= 99.9,
@@ -225,7 +225,7 @@ function collectAuditLogEvidence(
     title: 'Security Events Summary',
     description: `Summary of security events during audit period (${securityEvents.length} events)`,
     collectedAt: now,
-    source: 'cofounder-audit-log',
+    source: 'aicofounder-audit-log',
     data: {
       totalEvents: securityEvents.length,
       bySeverity: countBy(securityEvents, 'severity'),
@@ -245,7 +245,7 @@ function collectAuditLogEvidence(
     title: 'Access Events Summary',
     description: `Summary of access and authentication events during audit period`,
     collectedAt: now,
-    source: 'cofounder-audit-log',
+    source: 'aicofounder-audit-log',
     data: {
       totalEvents: accessEvents.length,
       successfulAccess: accessEvents.filter((e) => e.outcome === 'success').length,
@@ -265,7 +265,7 @@ function collectAuditLogEvidence(
     title: 'Configuration Change Events',
     description: `Summary of configuration and policy changes during audit period`,
     collectedAt: now,
-    source: 'cofounder-audit-log',
+    source: 'aicofounder-audit-log',
     data: {
       totalChanges: changeEvents.length,
       byAction: countBy(changeEvents, 'action'),
@@ -284,7 +284,7 @@ function collectAuditLogEvidence(
     title: 'Violation Events Summary',
     description: `Summary of blocked/violation events during audit period`,
     collectedAt: now,
-    source: 'cofounder-audit-log',
+    source: 'aicofounder-audit-log',
     data: {
       totalViolations: violationEvents.length,
       byEventType: countBy(violationEvents, 'eventType'),
@@ -312,7 +312,7 @@ function collectPolicyEvidence(
     title: 'Active Compliance Policies',
     description: `Summary of active CoFounder compliance policies as of ${config.auditPeriod.endDate}`,
     collectedAt: now,
-    source: 'cofounder-policies',
+    source: 'aicofounder-policies',
     data: {
       totalPolicies: policyData.policies.length,
       policies: policyData.policies.map((p) => ({
@@ -335,7 +335,7 @@ function collectPolicyEvidence(
       title: `Policy: ${policy.name}`,
       description: `Details of policy "${policy.name}" v${policy.version}`,
       collectedAt: now,
-      source: 'cofounder-policies',
+      source: 'aicofounder-policies',
       data: {
         policyId: policy.id,
         name: policy.name,
@@ -375,7 +375,7 @@ function collectCIScanEvidence(
     title: 'CI/CD Scan Results Summary',
     description: `Summary of CI/CD compliance scans during audit period`,
     collectedAt: now,
-    source: 'cofounder-ci-scans',
+    source: 'aicofounder-ci-scans',
     data: {
       totalScans: periodScans.length,
       passed: passedScans.length,
@@ -397,7 +397,7 @@ function collectCIScanEvidence(
       title: 'Failed CI/CD Scans',
       description: `Details of failed CI/CD scans during audit period`,
       collectedAt: now,
-      source: 'cofounder-ci-scans',
+      source: 'aicofounder-ci-scans',
       data: {
         failedScans: failedScans.map((s) => ({
           scanId: s.scanId,
@@ -435,7 +435,7 @@ function collectGuardReportEvidence(
     title: 'Guard Effectiveness Overview',
     description: `Aggregate guard effectiveness metrics for audit period`,
     collectedAt: now,
-    source: 'cofounder-guard'',
+    source: 'aicofounder-guard'',
     data: {
       totalChecks,
       totalViolations,
@@ -458,7 +458,7 @@ function collectGuardReportEvidence(
       title: `Guard Report: ${report.guardType}`,
       description: `Detailed report for ${report.guardType} guard`,
       collectedAt: now,
-      source: 'cofounder-guard'',
+      source: 'aicofounder-guard'',
       data: {
         guardType: report.guardType,
         totalChecks: report.totalChecks,

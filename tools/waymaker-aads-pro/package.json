@@ -1,10 +1,10 @@
 {
-  "name": "@waymaker/cofounder-pro",
+  "name": "@waymaker/aicofounder-pro",
   "version": "0.1.0",
   "description": "Waymaker CoFounder Pro - Enhanced Rapid AI Native Architecture with team collaboration and analytics",
   "main": "dist/index.js",
   "bin": {
-    "waymaker-cofounder": "dist/cli.js"
+    "waymaker-aicofounder": "dist/cli.js"
   },
   "type": "module",
   "scripts": {
@@ -31,14 +31,14 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/waymaker/cofounder.git",
-    "directory": "tools/waymaker-cofounder-pro"
+    "directory": "tools/waymaker-aicofounder-pro"
   },
   "bugs": {
     "url": "https://github.com/waymaker/cofounder/issues"
   },
   "homepage": "https://waymaker.com/cofounder",
   "dependencies": {
-    "@cofounder/cli": "^0.1.0",
+    "@aicofounder/cli": "^0.1.0",
     "chalk": "^5.3.0",
     "commander": "^11.1.0",
     "inquirer": "^9.2.12",

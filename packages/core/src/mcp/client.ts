@@ -1,10 +1,10 @@
 /**
- * @cofounder/mcp/client
+ * @aicofounder/mcp/client
  * MCP Client implementation for connecting to MCP servers
  *
  * @example
  * ```typescript
- * import { createMCPClient, StdioTransport } from '@cofounder/core';
+ * import { createMCPClient, StdioTransport } from '@aicofounder/core';
  *
  * const client = createMCPClient({
  *   name: 'my-app',

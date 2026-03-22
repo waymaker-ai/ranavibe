@@ -184,7 +184,7 @@ export class PoliciesViewProvider implements vscode.TreeDataProvider<PolicyNode>
       `    action: flag`,
       ``,
       `# Customize this policy for your needs.`,
-      `# See https://docs.cofounder.dev/policies for full reference.`,
+      `# See https://docs.aicofounder.dev/policies for full reference.`,
     ].join('\n');
 
     try {

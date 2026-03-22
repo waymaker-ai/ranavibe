@@ -1,5 +1,5 @@
 /**
- * @cofounder/multi-tenant - Types for multi-tenant policy management
+ * @aicofounder/multi-tenant - Types for multi-tenant policy management
  */
 
 export interface Tenant {

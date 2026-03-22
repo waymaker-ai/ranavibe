@@ -31,8 +31,8 @@ const queryEngine = index.asQueryEngine();
 // Query
 const response = await queryEngine.query("Your question here");
 console.log(response.toString());`,
-    cofounder: `import { createCoFounder } from '@cofounder/core';
-import { createRAG } from '@cofounder/rag';
+    cofounder: `import { createCoFounder } from '@aicofounder/core';
+import { createRAG } from '@aicofounder/rag';
 
 const cofounder = createCoFounder();
 const rag = createRAG({ cofounder });
@@ -69,8 +69,8 @@ const index = await VectorStoreIndex.fromDocuments(
   documents,
   { serviceContext }
 );`,
-    cofounder: `import { createCoFounder } from '@cofounder/core';
-import { createRAG } from '@cofounder/rag';
+    cofounder: `import { createCoFounder } from '@aicofounder/core';
+import { createRAG } from '@aicofounder/rag';
 
 const cofounder = createCoFounder();
 const rag = createRAG({
@@ -110,8 +110,8 @@ const stream = await queryEngine.query(
 for await (const chunk of stream) {
   process.stdout.write(chunk.response);
 }`,
-    cofounder: `import { createCoFounder } from '@cofounder/core';
-import { createRAG } from '@cofounder/rag';
+    cofounder: `import { createCoFounder } from '@aicofounder/core';
+import { createRAG } from '@aicofounder/rag';
 
 const cofounder = createCoFounder({ model: 'gpt-4' });
 const rag = createRAG({ cofounder });
@@ -159,7 +159,7 @@ const features = [
     feature: 'Built-in Testing',
     llamaindex: false,
     cofounder: true,
-    note: 'CoFounder has @cofounder/testing',
+    note: 'CoFounder has @aicofounder/testing',
   },
   {
     feature: 'Security Features',

@@ -1,10 +1,10 @@
 /**
- * @cofounder/compliance
+ * @aicofounder/compliance
  * Enterprise compliance enforcement for CoFounder agents
  *
  * @example
  * ```typescript
- * import { createComplianceEnforcer, PresetRules } from '@cofounder/compliance';
+ * import { createComplianceEnforcer, PresetRules } from '@aicofounder/compliance';
  *
  * const enforcer = createComplianceEnforcer({
  *   enableAllPresets: true,

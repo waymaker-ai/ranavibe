@@ -1,5 +1,5 @@
 {
-  "name": "@cofounder/rag",
+  "name": "@aicofounder/rag",
   "version": "1.0.0",
   "description": "Advanced RAG (Retrieval Augmented Generation) for CoFounder Framework",
   "main": "dist/index.js",
@@ -45,7 +45,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@cofounder/core": "^2.0.0",
+    "@aicofounder/core": "^2.0.0",
     "@supabase/supabase-js": "^2.39.0",
     "zod": "^3.22.4"
   },

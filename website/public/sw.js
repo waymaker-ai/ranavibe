@@ -1,5 +1,5 @@
-// RANA Framework Service Worker
-const CACHE_NAME = 'rana-v1';
+// CoFounder Framework Service Worker
+const CACHE_NAME = 'aicofounder-v1';
 const OFFLINE_URL = '/offline';
 
 // Assets to cache immediately

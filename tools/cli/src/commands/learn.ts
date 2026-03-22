@@ -72,7 +72,7 @@ Let's build your first AI-powered feature!
       {
         title: 'Install CoFounder',
         content: 'First, install the CoFounder core package:',
-        code: 'npm install @cofounder/core',
+        code: 'npm install @aicofounder/core',
         action: 'show-example',
       },
       {
@@ -90,7 +90,7 @@ Run this command to securely store your key:
         title: 'Your First AI Call',
         content: 'Create a simple chat completion:',
         code: `
-import { CoFounderClient } from '@cofounder/core';
+import { CoFounderClient } from '@aicofounder/core';
 
 const cofounder = new CoFounderClient();
 
@@ -138,20 +138,20 @@ Prompts are the "code" of AI applications. Just like code, they need:
   • A/B testing - optimize for quality and cost
   • Organization - find and reuse prompts
 
-CoFounder's @cofounder/prompts package solves all of this.
+CoFounder's @aicofounder/prompts package solves all of this.
         `.trim(),
       },
       {
         title: 'Install Prompts Package',
         content: 'Add the prompts package to your project:',
-        code: 'npm install @cofounder/prompts',
+        code: 'npm install @aicofounder/prompts',
         action: 'show-example',
       },
       {
         title: 'Register a Prompt',
         content: 'Create and register your first managed prompt:',
         code: `
-import { PromptManager } from '@cofounder/prompts';
+import { PromptManager } from '@aicofounder/prompts';
 
 const pm = new PromptManager({ workspace: 'my-app' });
 
@@ -214,14 +214,14 @@ Perfect for:
       {
         title: 'Install RAG Package',
         content: 'Add the RAG package:',
-        code: 'npm install @cofounder/rag',
+        code: 'npm install @aicofounder/rag',
         action: 'show-example',
       },
       {
         title: 'Create a RAG Pipeline',
         content: 'Build your first RAG system in 10 lines:',
         code: `
-import { RAGPresets } from '@cofounder/rag';
+import { RAGPresets } from '@aicofounder/rag';
 
 // Use the balanced preset (good quality + speed)
 const pipeline = RAGPresets.balanced();
@@ -267,7 +267,7 @@ Think of them as AI assistants that can actually DO things.
         title: 'Create Your First Agent',
         content: 'Build an agent with tools:',
         code: `
-import { LLMAgent, calculatorTool, webSearchTool } from '@cofounder/core';
+import { LLMAgent, calculatorTool, webSearchTool } from '@aicofounder/core';
 
 const agent = new LLMAgent({
   name: 'Assistant',
@@ -286,7 +286,7 @@ const result = await agent.run('What is 15% of 847?');
         title: 'Multi-Agent Systems',
         content: 'Have agents work together:',
         code: `
-import { Orchestrator, LLMAgent } from '@cofounder/core';
+import { Orchestrator, LLMAgent } from '@aicofounder/core';
 
 const researcher = new LLMAgent({
   name: 'Researcher',
@@ -326,7 +326,7 @@ Testing AI is different because:
   • "Correct" is subjective
   • You can't do exact string matching
 
-CoFounder's @cofounder/testing solves this with:
+CoFounder's @aicofounder/testing solves this with:
 
   • Semantic matching (compare meaning, not strings)
   • Statistical assertions (80% should be X)
@@ -338,7 +338,7 @@ CoFounder's @cofounder/testing solves this with:
         title: 'Write Your First AI Test',
         content: 'Test AI outputs by meaning:',
         code: `
-import { describe, aiTest, runTimes } from '@cofounder/testing';
+import { describe, aiTest, runTimes } from '@aicofounder/testing';
 
 describe('Summarization', () => {
   aiTest('should summarize correctly', async ({ expect }) => {
@@ -408,7 +408,7 @@ CoFounder helps you:
         title: 'Enable Caching',
         content: 'Cache identical requests:',
         code: `
-import { CoFounderClient } from '@cofounder/core';
+import { CoFounderClient } from '@aicofounder/core';
 
 const cofounder = new CoFounderClient({
   cache: {

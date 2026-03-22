@@ -14,7 +14,7 @@ export function registerScanWorkspaceCommand(
   dashboardView: DashboardViewProvider,
   statusBar: RanaStatusBar
 ): vscode.Disposable {
-  return vscode.commands.registerCommand('cofounder.scanWorkspace', async () => {
+  return vscode.commands.registerCommand('aicofounder.scanWorkspace', async () => {
     const workspaceFolders = vscode.workspace.workspaceFolders;
     if (!workspaceFolders || workspaceFolders.length === 0) {
       vscode.window.showWarningMessage('CoFounder: No workspace folder open.');

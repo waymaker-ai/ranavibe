@@ -23,7 +23,7 @@ const response = await chat.invoke([
 ]);
 
 console.log(response.content);`,
-        after: `import { Agent } from '@cofounder/core';
+        after: `import { Agent } from '@aicofounder/core';
 
 const agent = new Agent({
   model: 'gpt-4',
@@ -50,14 +50,14 @@ const result = await chain.call({
   language: 'Spanish',
   text: 'Hello world'
 });`,
-        after: `import { translate } from '@cofounder/helpers';
+        after: `import { translate } from '@aicofounder/helpers';
 
 const result = await translate('Hello world', {
   to: 'Spanish'
 });
 
 // Or with PromptManager for complex prompts
-import { PromptManager } from '@cofounder/prompts';
+import { PromptManager } from '@aicofounder/prompts';
 
 const pm = new PromptManager({ workspace: 'app' });
 await pm.register('translate', {
@@ -85,7 +85,7 @@ const chain = RetrievalQAChain.fromLLM(chat, vectorStore.asRetriever());
 const response = await chain.call({
   query: 'What is the refund policy?'
 });`,
-        after: `import { RAGPresets } from '@cofounder/rag';
+        after: `import { RAGPresets } from '@aicofounder/rag';
 
 const pipeline = RAGPresets.balanced();
 
@@ -120,7 +120,7 @@ const result = await streamText({
 for await (const chunk of result.textStream) {
   process.stdout.write(chunk);
 }`,
-        after: `import { Agent } from '@cofounder/core';
+        after: `import { Agent } from '@aicofounder/core';
 
 const agent = new Agent({ model: 'gpt-4' });
 
@@ -129,7 +129,7 @@ for await (const chunk of agent.stream('Hello!')) {
 }
 
 // Or with React hook
-import { useChat } from '@cofounder/react';
+import { useChat } from '@aicofounder/react';
 
 function Chat() {
   const { messages, input, send } = useChat();
@@ -156,7 +156,7 @@ const result = await streamText({
   },
   messages: [{ role: 'user', content: 'Weather in NYC?' }]
 });`,
-        after: `import { Agent, Tool } from '@cofounder/core';
+        after: `import { Agent, Tool } from '@aicofounder/core';
 
 const weatherTool = new Tool({
   name: 'weather',
@@ -196,7 +196,7 @@ const completion = await openai.chat.completions.create({
 });
 
 console.log(completion.choices[0].message.content);`,
-        after: `import { Agent } from '@cofounder/core';
+        after: `import { Agent } from '@aicofounder/core';
 
 const agent = new Agent({
   model: 'gpt-4',
@@ -223,7 +223,7 @@ console.log(result);
 for await (const chunk of stream) {
   process.stdout.write(chunk.choices[0]?.delta?.content || '');
 }`,
-        after: `import { Agent } from '@cofounder/core';
+        after: `import { Agent } from '@aicofounder/core';
 
 const agent = new Agent({ model: 'gpt-4' });
 
@@ -258,7 +258,7 @@ if (completion.choices[0].message.function_call) {
   const weather = await getWeather(args.city);
   // Need to send another request with the result...
 }`,
-        after: `import { Agent, Tool } from '@cofounder/core';
+        after: `import { Agent, Tool } from '@aicofounder/core';
 
 const agent = new Agent({
   model: 'gpt-4',
@@ -424,7 +424,7 @@ export default function MigrationPage() {
               <div>
                 <strong>Install CoFounder packages</strong>
                 <div className="code-block font-mono text-sm mt-2">
-                  npm install @cofounder/core @cofounder/helpers @cofounder/prompts @cofounder/rag
+                  npm install @aicofounder/core @aicofounder/helpers @aicofounder/prompts @aicofounder/rag
                 </div>
               </div>
             </li>

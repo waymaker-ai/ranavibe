@@ -17,7 +17,7 @@ export class RanaStatusBar implements vscode.Disposable {
       vscode.StatusBarAlignment.Left,
       100
     );
-    this.statusBarItem.command = 'cofounder.showDashboard';
+    this.statusBarItem.command = 'aicofounder.showDashboard';
     this.update();
     this.statusBarItem.show();
   }

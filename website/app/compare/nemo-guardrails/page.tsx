@@ -56,7 +56,7 @@ response = rails.generate(
 
           <div className="rounded-xl border border-blue-800/50 bg-blue-900/10 p-6">
             <h3 className="text-lg font-semibold text-blue-400 mb-4">CoFounder (TypeScript, zero deps)</h3>
-            <pre className="text-sm text-gray-300 overflow-x-auto"><code>{`import { createGuard } from '@cofounder/guard';
+            <pre className="text-sm text-gray-300 overflow-x-auto"><code>{`import { createGuard } from '@aicofounder/guard';
 
 // One line — everything enabled
 const g = createGuard({
@@ -71,7 +71,7 @@ const g = createGuard({
 const client = g.wrap(new Anthropic());
 
 // Or use pre-built compliant agents
-import { createHIPAAAgent } from '@cofounder/agent-sdk';
+import { createHIPAAAgent } from '@aicofounder/agent-sdk';
 const agent = createHIPAAAgent({
   model: 'claude-sonnet-4-6',
   auditPath: './hipaa-audit.log',
@@ -105,7 +105,7 @@ const agent = createHIPAAAgent({
                 ['CI/CD Integration', '✓ GitHub Action + SARIF', '✗'],
                 ['Observability Dashboard', '✓ metrics, alerts, API', '✗'],
                 ['Declarative Policies', '✓ YAML with 9 presets', '✓ Colang DSL'],
-                ['Zero Dependencies', '✓ @cofounder/guard', '✗ heavy Python deps'],
+                ['Zero Dependencies', '✓ @aicofounder/guard', '✗ heavy Python deps'],
                 ['GPU Acceleration', '✗ not needed (regex-based)', '✓ NIM microservices'],
                 ['Hallucination Detection', '✓ via fact-check rails', '✓ built-in'],
                 ['Multi-provider', '✓ 9+ LLM providers', '✓ OpenAI, NVIDIA'],

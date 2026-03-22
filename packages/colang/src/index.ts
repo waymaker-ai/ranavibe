@@ -15,7 +15,7 @@ import { ConversionResult, ParsedColang } from './types';
  *
  * @example
  * ```typescript
- * import { importColangFile } from '@cofounder/colang';
+ * import { importColangFile } from '@aicofounder/colang';
  * import { readFileSync } from 'fs';
  *
  * const source = readFileSync('./guardrails.co', 'utf-8');

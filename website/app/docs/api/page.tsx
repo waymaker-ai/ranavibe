@@ -6,7 +6,7 @@ import { ArrowLeft, ExternalLink } from 'lucide-react';
 
 const apiSections = [
   {
-    package: '@cofounder/helpers',
+    package: '@aicofounder/helpers',
     exports: [
       {
         name: 'summarize',
@@ -49,7 +49,7 @@ const apiSections = [
     ],
   },
   {
-    package: '@cofounder/prompts',
+    package: '@aicofounder/prompts',
     exports: [
       {
         name: 'PromptManager',
@@ -83,7 +83,7 @@ const apiSections = [
     ],
   },
   {
-    package: '@cofounder/rag',
+    package: '@aicofounder/rag',
     exports: [
       {
         name: 'RAGPresets',

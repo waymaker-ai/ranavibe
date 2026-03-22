@@ -1,5 +1,5 @@
 {
-  "name": "cofounder-rag-example",
+  "name": "aicofounder-rag-example",
   "version": "1.0.0",
   "description": "RAG (Retrieval-Augmented Generation) example using CoFounder",
   "main": "index.ts",
@@ -9,8 +9,8 @@
     "dev": "npx tsx watch index.ts"
   },
   "dependencies": {
-    "@cofounder/core": "file:../../packages/core",
-    "@cofounder/rag": "file:../../packages/rag"
+    "@aicofounder/core": "file:../../packages/core",
+    "@aicofounder/rag": "file:../../packages/rag"
   },
   "devDependencies": {
     "tsx": "^4.7.0",

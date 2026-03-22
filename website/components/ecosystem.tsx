@@ -71,7 +71,7 @@ const layers: EcosystemLayer[] = [
       { name: 'streaming', description: 'Token-by-token guardrail evaluation on streaming responses', isNew: true },
       { name: 'VS Code Extension', description: 'Inline PII highlighting, injection warnings, policy quickfixes', isNew: true },
       { name: 'cli', description: 'Command-line guardrail scanning and policy management' },
-      { name: 'create-cofounder-app', description: 'Project scaffolding with guardrails pre-configured' },
+      { name: 'create-aicofounder-app', description: 'Project scaffolding with guardrails pre-configured' },
     ],
   },
 ];

@@ -1,5 +1,5 @@
 /**
- * @cofounder/testing - Type Definitions
+ * @aicofounder/testing - Type Definitions
  * AI-native testing framework types
  */
 

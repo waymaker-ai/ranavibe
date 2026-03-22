@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// @cofounder/openclaw - OpenClaw Skill
+// @aicofounder/openclaw - OpenClaw Skill
 // ---------------------------------------------------------------------------
 // The main CoFounder OpenClaw skill that registers with OpenClaw's skill system.
 // OpenClaw skills export a manifest and handler functions. This skill adds
@@ -230,7 +230,7 @@ function guardText(
  *
  * @example
  * ```typescript
- * import { createCoFounderSkill } from '@cofounder/openclaw';
+ * import { createCoFounderSkill } from '@aicofounder/openclaw';
  *
  * const cofounderSkill = createCoFounderSkill({
  *   pii: 'redact',
@@ -356,7 +356,7 @@ export function createCoFounderSkill(config?: Partial<OpenClawSkillConfig>): Ope
   // =========================================================================
 
   const manifest: SkillManifest = {
-    name: 'cofounder-guardrails',
+    name: 'aicofounder-guardrails',
     description: 'AI guardrails - PII detection, prompt injection blocking, compliance enforcement, cost tracking',
     version: '1.0.0',
     author: 'Waymaker',
@@ -519,7 +519,7 @@ export function createCoFounderSkill(config?: Partial<OpenClawSkillConfig>): Ope
   // =========================================================================
 
   const commands: OpenClawSkill['commands'] = {
-    '/cofounder-status': async (context: OpenClawContext): Promise<string> => {
+    '/aicofounder-status': async (context: OpenClawContext): Promise<string> => {
       const report: GuardReport = {
         totalChecks: stats.totalChecks,
         blocked: stats.blocked,
@@ -546,7 +546,7 @@ export function createCoFounderSkill(config?: Partial<OpenClawSkillConfig>): Ope
       return formatGuardReport(report, context.channel);
     },
 
-    '/cofounder-cost': async (context: OpenClawContext): Promise<string> => {
+    '/aicofounder-cost': async (context: OpenClawContext): Promise<string> => {
       if (!budgetTracker) {
         return 'Cost tracking is not enabled. Configure a budget to enable cost tracking.';
       }
@@ -564,7 +564,7 @@ export function createCoFounderSkill(config?: Partial<OpenClawSkillConfig>): Ope
       return formatCostReport(report, context.channel);
     },
 
-    '/cofounder-compliance': async (context: OpenClawContext): Promise<string> => {
+    '/aicofounder-compliance': async (context: OpenClawContext): Promise<string> => {
       if (mergedConfig.compliance.length === 0) {
         return `No compliance frameworks configured. Available: ${getAvailableFrameworks().join(', ')}`;
       }
@@ -584,9 +584,9 @@ export function createCoFounderSkill(config?: Partial<OpenClawSkillConfig>): Ope
       return formatComplianceReport(report, context.channel);
     },
 
-    '/cofounder-scan': async (context: OpenClawContext, text: string): Promise<string> => {
+    '/aicofounder-scan': async (context: OpenClawContext, text: string): Promise<string> => {
       if (!text || text.trim().length === 0) {
-        return 'Usage: /cofounder-scan <text to scan>\nScans text for PII, injection attempts, toxicity, and compliance violations.';
+        return 'Usage: /aicofounder-scan <text to scan>\nScans text for PII, injection attempts, toxicity, and compliance violations.';
       }
 
       const result = guardText(text, mergedConfig, 'input', null, context);

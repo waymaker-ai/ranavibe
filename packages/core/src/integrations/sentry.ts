@@ -1,5 +1,5 @@
 /**
- * @cofounder/integrations/sentry
+ * @aicofounder/integrations/sentry
  * Sentry error reporting integration
  *
  * Features:
@@ -11,7 +11,7 @@
  *
  * @example
  * ```typescript
- * import { createSentryIntegration } from '@cofounder/core';
+ * import { createSentryIntegration } from '@aicofounder/core';
  *
  * const sentry = createSentryIntegration({
  *   dsn: process.env.SENTRY_DSN,

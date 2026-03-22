@@ -4,7 +4,7 @@
  *
  * @example
  * ```typescript
- * import { createEdgeRuntime, EdgeModel } from '@cofounder/core';
+ * import { createEdgeRuntime, EdgeModel } from '@aicofounder/core';
  *
  * // Create edge runtime
  * const edge = createEdgeRuntime({
@@ -596,7 +596,7 @@ export class ModelManager extends EventEmitter {
   private cacheDir: string;
   private downloadQueue: Map<string, Promise<string>> = new Map();
 
-  constructor(cacheDir: string = './.cofounder-models') {
+  constructor(cacheDir: string = './.aicofounder-models') {
     super();
     this.cacheDir = cacheDir;
   }

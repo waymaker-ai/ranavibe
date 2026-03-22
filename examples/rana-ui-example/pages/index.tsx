@@ -11,7 +11,7 @@ import {
   CleanModeCardHeader,
   CleanModeCardTitle,
   CleanModeCardContent,
-} from '@cofounder/ui';
+} from '@aicofounder/ui';
 
 export default function Home() {
   return (

@@ -1,5 +1,5 @@
 /**
- * @cofounder/integrations
+ * @aicofounder/integrations
  * Third-party service integrations for CoFounder
  */
 

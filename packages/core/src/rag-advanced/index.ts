@@ -8,7 +8,7 @@
  *   createAdvancedRAG,
  *   createMultiModalRetriever,
  *   createSelfCorrectingRAG,
- * } from '@cofounder/core';
+ * } from '@aicofounder/core';
  *
  * // Multi-modal RAG with images
  * const mmRAG = createAdvancedRAG({

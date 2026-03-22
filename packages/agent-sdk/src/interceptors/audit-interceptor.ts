@@ -14,7 +14,7 @@ export class AuditInterceptor implements Interceptor {
     const c = config === true ? {} : config;
     this.config = {
       destination: c.destination || 'console',
-      filePath: c.filePath || './cofounder-audit.log',
+      filePath: c.filePath || './aicofounder-audit.log',
       events: c.events || ['request', 'response', 'tool_call', 'violation', 'cost', 'error'],
       includePayload: c.includePayload ?? false,
       tamperProof: c.tamperProof ?? false,

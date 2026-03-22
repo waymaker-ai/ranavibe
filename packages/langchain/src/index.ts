@@ -1,5 +1,5 @@
 /**
- * @cofounder/langchain
+ * @aicofounder/langchain
  * LangChain adapter for CoFounder Framework
  *
  * Provides a LangChain-compatible chat model that uses CoFounder
@@ -7,8 +7,8 @@
  *
  * @example
  * ```typescript
- * import { RanaChatModel } from '@cofounder/langchain';
- * import { createCoFounder } from '@cofounder/core';
+ * import { RanaChatModel } from '@aicofounder/langchain';
+ * import { createCoFounder } from '@aicofounder/core';
  *
  * const cofounder = createCoFounder({
  *   providers: { openai: process.env.OPENAI_API_KEY }
@@ -176,7 +176,7 @@ export class RanaChatModel {
    * Get the model name
    */
   get modelName(): string {
-    return this.config.model || 'cofounder-default';
+    return this.config.model || 'aicofounder-default';
   }
 }
 

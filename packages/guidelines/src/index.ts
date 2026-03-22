@@ -1,10 +1,10 @@
 /**
- * @cofounder/guidelines
+ * @aicofounder/guidelines
  * Dynamic guideline management for CoFounder agents
  *
  * @example
  * ```typescript
- * import { createGuidelineManager, createGuideline, Conditions } from '@cofounder/guidelines';
+ * import { createGuidelineManager, createGuideline, Conditions } from '@aicofounder/guidelines';
  *
  * const manager = createGuidelineManager();
  *

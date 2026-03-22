@@ -1,5 +1,5 @@
 /**
- * @cofounder/benchmark - Types for detection accuracy benchmarking
+ * @aicofounder/benchmark - Types for detection accuracy benchmarking
  */
 
 export interface BenchmarkConfig {

@@ -1,5 +1,5 @@
 /**
- * @cofounder/integrations/vercel
+ * @aicofounder/integrations/vercel
  * Vercel one-click deploy integration
  *
  * Features:
@@ -11,11 +11,11 @@
  *
  * @example
  * ```typescript
- * import { createVercelConfig, deployToVercel } from '@cofounder/core';
+ * import { createVercelConfig, deployToVercel } from '@aicofounder/core';
  *
  * // Generate vercel.json
  * const config = createVercelConfig({
- *   name: 'my-cofounder-app',
+ *   name: 'my-aicofounder-app',
  *   framework: 'nextjs',
  *   regions: ['iad1', 'sfo1'],
  * });
@@ -23,7 +23,7 @@
  * // Deploy programmatically
  * const deployment = await deployToVercel({
  *   token: process.env.VERCEL_TOKEN,
- *   projectName: 'my-cofounder-app',
+ *   projectName: 'my-aicofounder-app',
  * });
  * ```
  */
@@ -316,7 +316,7 @@ export function createCoFounderVercelConfig(options: {
   providers?: string[];
   streaming?: boolean;
   edgeFunctions?: boolean;
-} = { name: 'cofounder-app' }): VercelJson {
+} = { name: 'aicofounder-app' }): VercelJson {
   // Build environment variables for common AI providers
   const buildEnv: Record<string, string> = {};
   const providers = options.providers || ['ANTHROPIC', 'OPENAI'];

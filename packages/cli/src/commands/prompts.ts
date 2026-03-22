@@ -957,7 +957,7 @@ Respond with [format type] containing:
   prompts
     .command('export')
     .description('Export prompts to file')
-    .option('-o, --output <file>', 'Output file', 'cofounder-prompts.json')
+    .option('-o, --output <file>', 'Output file', 'aicofounder-prompts.json')
     .option('-c, --category <category>', 'Export only specific category')
     .action(async (options) => {
       const store = loadStore();

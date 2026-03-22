@@ -1,5 +1,5 @@
 {
-  "name": "@cofounder/testing",
+  "name": "@aicofounder/testing",
   "version": "1.0.0",
   "description": "AI-native testing framework - Test AI code like regular code",
   "main": "dist/index.js",
@@ -46,10 +46,10 @@
     "vitest": "^1.6.0"
   },
   "peerDependencies": {
-    "@cofounder/core": "^2.0.0"
+    "@aicofounder/core": "^2.0.0"
   },
   "peerDependenciesMeta": {
-    "@cofounder/core": {
+    "@aicofounder/core": {
       "optional": true
     }
   },

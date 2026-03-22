@@ -1,5 +1,5 @@
 /**
- * Type definitions for @cofounder/helpers
+ * Type definitions for @aicofounder/helpers
  */
 
 import { z } from 'zod';

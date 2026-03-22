@@ -1,6 +1,6 @@
 import type { GitHubContext } from '../types.js';
 
-const COMMENT_MARKER = '<!-- cofounder-ci-scan -->';
+const COMMENT_MARKER = '<!-- aicofounder-ci-scan -->';
 
 /**
  * Make a GitHub API request using native fetch (Node 18+).

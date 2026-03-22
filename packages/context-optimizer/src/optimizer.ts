@@ -1,5 +1,5 @@
 /**
- * @cofounder/context-optimizer - Context Optimizer
+ * @aicofounder/context-optimizer - Context Optimizer
  */
 
 import type {

@@ -44,12 +44,12 @@ export default function Lesson3Page() {
           <h2>Step 1: Create a New Project</h2>
 
           <p>
-            The fastest way to start is with create-cofounder-app:
+            The fastest way to start is with create-aicofounder-app:
           </p>
 
           <div className="code-block">
             <pre>
-              <code>{`npx create-cofounder-app my-ai-app
+              <code>{`npx create-aicofounder-app my-ai-app
 cd my-ai-app`}</code>
             </pre>
           </div>
@@ -124,9 +124,9 @@ CoFounder_DEFAULT_MODEL=claude-sonnet-4-20250514`}</code>
             <pre>
               <code>{`✓ Node.js version: 20.10.0
 ✓ npm version: 10.2.3
-✓ @cofounder/core: 1.0.0
-✓ @cofounder/react: 1.0.0
-✓ @cofounder/prompts: 1.0.0
+✓ @aicofounder/core: 1.0.0
+✓ @aicofounder/react: 1.0.0
+✓ @aicofounder/prompts: 1.0.0
 ✓ ANTHROPIC_API_KEY: configured
 ✓ TypeScript: configured
 ✓ Next.js: configured
@@ -230,7 +230,7 @@ npm install`}</code>
             <ul className="space-y-2">
               <li className="flex items-center gap-2">
                 <CheckCircle2 className="h-5 w-5 text-green-500" />
-                <span>Created project with create-cofounder-app</span>
+                <span>Created project with create-aicofounder-app</span>
               </li>
               <li className="flex items-center gap-2">
                 <CheckCircle2 className="h-5 w-5 text-green-500" />

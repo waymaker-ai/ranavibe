@@ -1,10 +1,10 @@
 /**
- * @cofounder/core
+ * @aicofounder/core
  * Core SDK for CoFounder - Rapid AI Native Architecture
  *
  * @example
  * ```typescript
- * import { createCoFounder } from '@cofounder/core';
+ * import { createCoFounder } from '@aicofounder/core';
  *
  * const cofounder = createCoFounder({
  *   providers: {

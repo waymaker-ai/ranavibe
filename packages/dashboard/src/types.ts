@@ -1,5 +1,5 @@
 /**
- * @cofounder/dashboard - Type Definitions
+ * @aicofounder/dashboard - Type Definitions
  * AI observability dashboard types
  */
 

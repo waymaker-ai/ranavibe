@@ -65,7 +65,7 @@ export async function testCommand(
     console.log(chalk.gray('\nExample test file:\n'));
     console.log(
       chalk.white(`
-import { describe, aiTest, runTimes } from '@cofounder/testing';
+import { describe, aiTest, runTimes } from '@aicofounder/testing';
 
 describe('My AI Feature', () => {
   aiTest('should work correctly', async ({ expect }) => {
@@ -90,15 +90,15 @@ describe('My AI Feature', () => {
     console.log(chalk.gray(`Cost budget: $${options.maxCost.toFixed(2)}\n`));
   }
 
-  // Dynamic import of @cofounder/testing
+  // Dynamic import of @aicofounder/testing
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let testing: any = null;
 
   try {
-    testing = await (Function('return import("@cofounder/testing")')() as Promise<unknown>);
+    testing = await (Function('return import("@aicofounder/testing")')() as Promise<unknown>);
   } catch {
-    // @cofounder/testing not installed, use built-in runner
-    console.log(chalk.yellow('Note: @cofounder/testing not installed, using built-in runner'));
+    // @aicofounder/testing not installed, use built-in runner
+    console.log(chalk.yellow('Note: @aicofounder/testing not installed, using built-in runner'));
   }
 
   const startTime = Date.now();
@@ -294,7 +294,7 @@ export async function generateTest(
  * Tests for ${path.basename(targetFile)}
  */
 
-import { describe, aiTest, runTimes } from '@cofounder/testing';
+import { describe, aiTest, runTimes } from '@aicofounder/testing';
 
 describe('${path.basename(targetFile, path.extname(targetFile))}', () => {
   aiTest('should work correctly', async ({ expect }) => {

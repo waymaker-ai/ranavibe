@@ -55,7 +55,7 @@ export default function Lesson4Page() {
           <div className="code-block">
             <pre>
               <code>{`// lib/agent.ts
-import { Agent } from '@cofounder/core';
+import { Agent } from '@aicofounder/core';
 
 export const chatAgent = new Agent({
   name: 'ChatAssistant',
@@ -79,7 +79,7 @@ export const chatAgent = new Agent({
             <pre>
               <code>{`// app/api/chat/route.ts
 import { chatAgent } from '@/lib/agent';
-import { streamResponse } from '@cofounder/helpers';
+import { streamResponse } from '@aicofounder/helpers';
 
 export async function POST(request: Request) {
   try {
@@ -119,7 +119,7 @@ export async function POST(request: Request) {
               <code>{`// components/Chat.tsx
 'use client';
 
-import { useChat } from '@cofounder/react';
+import { useChat } from '@aicofounder/react';
 import { useState } from 'react';
 
 export function Chat() {

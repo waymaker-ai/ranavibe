@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// @cofounder/policies - Core type definitions
+// @aicofounder/policies - Core type definitions
 // ---------------------------------------------------------------------------
 
 /** Severity level for a violation. */

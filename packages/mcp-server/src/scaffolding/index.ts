@@ -5,7 +5,7 @@
  *
  * @example
  * ```typescript
- * import { createMCPServer, addTool, addResource } from '@cofounder/mcp-server/scaffolding';
+ * import { createMCPServer, addTool, addResource } from '@aicofounder/mcp-server/scaffolding';
  *
  * // Create new server
  * await createMCPServer({

@@ -1,5 +1,5 @@
 /**
- * @cofounder/agents - VibeSpec
+ * @aicofounder/agents - VibeSpec
  * Declarative agent configuration through "vibes"
  */
 

@@ -3,7 +3,7 @@
  *
  * @example
  * ```typescript
- * import { extract } from '@cofounder/helpers';
+ * import { extract } from '@aicofounder/helpers';
  *
  * // Simple extraction
  * const result = await extract(

@@ -1,12 +1,12 @@
 /**
- * @cofounder/openclaw Demo
+ * @aicofounder/openclaw Demo
  *
  * Run with: npx tsx index.ts
  *
  * Demonstrates how CoFounder integrates with OpenClaw agents as a skill,
  * providing guard hooks for messages and tool calls.
  *
- * Note: This example uses the @cofounder/openclaw types and demonstrates
+ * Note: This example uses the @aicofounder/openclaw types and demonstrates
  * the skill/bridge pattern. The actual OpenClaw runtime is not required.
  */
 
@@ -18,10 +18,10 @@ import type {
   GuardResult,
   BridgeConfig,
   SkillManifest,
-} from '@cofounder/openclaw';
+} from '@aicofounder/openclaw';
 
 // ─── Helper: Simulated guard logic ─────────────────────────────────────────────
-// In production, the @cofounder/openclaw package provides createCoFounderSkill()
+// In production, the @aicofounder/openclaw package provides createCoFounderSkill()
 // and OpenClawBridge. Here we simulate the pattern to show the integration.
 
 function createCoFounderSkill(config: OpenClawSkillConfig = {}): OpenClawSkill {
@@ -31,7 +31,7 @@ function createCoFounderSkill(config: OpenClawSkillConfig = {}): OpenClawSkill {
   let blocked = 0;
 
   const manifest: SkillManifest = {
-    name: 'cofounder-guard',
+    name: 'aicofounder-guard',
     description: 'CoFounder AI guardrails - PII, injection, compliance, cost tracking',
     version: '1.0.0',
     author: 'Waymaker',
@@ -188,7 +188,7 @@ class OpenClawBridge {
 
 async function main() {
   console.log('╔══════════════════════════════════════════════╗');
-  console.log('║       @cofounder/openclaw Demo               ║');
+  console.log('║       @aicofounder/openclaw Demo               ║');
   console.log('╚══════════════════════════════════════════════╝\n');
 
   // ─── 1. Create skill ─────────────────────────────────────────────────────

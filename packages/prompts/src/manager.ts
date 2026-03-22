@@ -126,7 +126,7 @@ export class PromptManager {
     // Render template
     const renderedPrompt = this.registry.render(prompt.template, options.variables);
 
-    // Call LLM (simplified - would use @cofounder/core in production)
+    // Call LLM (simplified - would use @aicofounder/core in production)
     const response = await this.callLLM(renderedPrompt, {
       model: options.model || prompt.model || this.config.defaultModel || 'gpt-4o-mini',
       provider: options.provider || prompt.provider || this.config.defaultProvider || 'openai',
@@ -304,7 +304,7 @@ export class PromptManager {
     outputTokens: number;
     cost: number;
   }> {
-    // This would integrate with @cofounder/core in production
+    // This would integrate with @aicofounder/core in production
     // For now, return a mock response
     const inputTokens = Math.ceil(prompt.length / 4);
     const outputTokens = 100;

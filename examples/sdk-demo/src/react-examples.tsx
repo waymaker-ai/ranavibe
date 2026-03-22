@@ -4,7 +4,7 @@
  */
 
 import React, { useState } from 'react';
-import { createCoFounder } from '@cofounder/core';
+import { createCoFounder } from '@aicofounder/core';
 import {
   RanaProvider,
   useCoFounderChat,
@@ -12,7 +12,7 @@ import {
   useCoFounderCost,
   useCoFounderConversation,
   useCoFounderOptimize,
-} from '@cofounder/react';
+} from '@aicofounder/react';
 
 // Initialize CoFounder client
 const cofounder = createCoFounder({

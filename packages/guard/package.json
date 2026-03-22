@@ -1,5 +1,5 @@
 {
-  "name": "@cofounder/guard",
+  "name": "@aicofounder/guard",
   "version": "1.0.0",
   "description": "Lightweight runtime guardrails for LLM APIs - PII, injection, cost, compliance in one import",
   "main": "dist/index.js",

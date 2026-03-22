@@ -1,5 +1,5 @@
 {
-  "name": "@cofounder/policies",
+  "name": "@aicofounder/policies",
   "version": "1.0.0",
   "description": "Declarative policy engine for AI guardrails - HIPAA, GDPR, SEC, PCI compliance presets",
   "main": "dist/index.js",

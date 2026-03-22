@@ -1,11 +1,11 @@
 {
-  "name": "@cofounder/ci",
+  "name": "@aicofounder/ci",
   "version": "1.0.0",
   "description": "CI/CD guardrails for AI - GitHub Action, pre-commit hooks, PR scanning",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "bin": { "cofounder-ci": "./dist/cli.js" },
+  "bin": { "aicofounder-ci": "./dist/cli.js" },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",

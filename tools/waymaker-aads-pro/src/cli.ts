@@ -2,9 +2,9 @@
 
 import { Command } from 'commander';
 import chalk from 'chalk';
-import { initCommand } from '@cofounder/cli/dist/commands/init.js';
-import { checkCommand } from '@cofounder/cli/dist/commands/check.js';
-import { deployCommand } from '@cofounder/cli/dist/commands/deploy.js';
+import { initCommand } from '@aicofounder/cli/dist/commands/init.js';
+import { checkCommand } from '@aicofounder/cli/dist/commands/check.js';
+import { deployCommand } from '@aicofounder/cli/dist/commands/deploy.js';
 import { analyticsCommand } from './commands/analytics.js';
 import { teamCommand } from './commands/team.js';
 import { syncCommand } from './commands/sync.js';
@@ -27,7 +27,7 @@ ${chalk.gray('Powered by CoFounder - Rapid AI Native Architecture')}
 
 console.log(banner);
 
-// Core CoFounder commands (inherit from @cofounder/cli)
+// Core CoFounder commands (inherit from @aicofounder/cli)
 program
   .command('init')
   .description('Initialize CoFounder in your project (with Waymaker integration)')

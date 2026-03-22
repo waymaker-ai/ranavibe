@@ -33,9 +33,9 @@ export default function Home() {
 
           <div className="bg-gray-800 text-green-400 p-6 rounded-lg font-mono text-left max-w-2xl mx-auto">
             <div className="text-gray-400"># For Claude Desktop (MCP)</div>
-            <div>npm install -g @cofounder/mcp-server</div>
+            <div>npm install -g @aicofounder/mcp-server</div>
             <div className="mt-4 text-gray-400"># For CLI</div>
-            <div>npm install -g @cofounder/cli</div>
+            <div>npm install -g @aicofounder/cli</div>
             <div>cofounder init</div>
           </div>
         </div>
@@ -125,7 +125,7 @@ export default function Home() {
             <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
               Beautiful glass morphism components with gradients, built with Tailwind CSS
             </p>
-            <code className="text-xs bg-gray-100 dark:bg-gray-900 px-2 py-1 rounded">cofounder-ui add glass-card</code>
+            <code className="text-xs bg-gray-100 dark:bg-gray-900 px-2 py-1 rounded">aicofounder-ui add glass-card</code>
           </div>
 
           <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
@@ -143,7 +143,7 @@ export default function Home() {
             <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
               MCP server with 6 tools, 3 resources, and guided prompts for seamless Claude integration
             </p>
-            <code className="text-xs bg-gray-100 dark:bg-gray-900 px-2 py-1 rounded">@cofounder/mcp-server</code>
+            <code className="text-xs bg-gray-100 dark:bg-gray-900 px-2 py-1 rounded">@aicofounder/mcp-server</code>
           </div>
 
           <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
@@ -152,7 +152,7 @@ export default function Home() {
             <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
               Programmatic access to all CoFounder features for custom integrations and automation
             </p>
-            <code className="text-xs bg-gray-100 dark:bg-gray-900 px-2 py-1 rounded">@cofounder/sdk</code>
+            <code className="text-xs bg-gray-100 dark:bg-gray-900 px-2 py-1 rounded">@aicofounder/sdk</code>
           </div>
 
           <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">

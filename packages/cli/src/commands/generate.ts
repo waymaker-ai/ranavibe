@@ -10,7 +10,7 @@ import ora from 'ora';
 import * as fs from 'fs';
 import * as path from 'path';
 
-// Import from @cofounder/generate
+// Import from @aicofounder/generate
 import {
   generate,
   parseIntent,
@@ -22,14 +22,14 @@ import {
   getAllTemplates,
   getTemplatesByCategory,
   searchTemplates,
-} from '@cofounder/generate';
+} from '@aicofounder/generate';
 
 import type {
   GeneratedFile,
   ParsedIntent,
   ImplementationPlan,
   ValidationResult,
-} from '@cofounder/generate';
+} from '@aicofounder/generate';
 
 /**
  * Register generate commands

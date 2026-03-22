@@ -1,5 +1,5 @@
 {
-  "name": "@cofounder/langchain",
+  "name": "@aicofounder/langchain",
   "version": "1.0.0",
   "description": "LangChain adapter for CoFounder Framework",
   "main": "dist/index.js",
@@ -23,7 +23,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@cofounder/core": "workspace:*"
+    "@aicofounder/core": "workspace:*"
   },
   "peerDependencies": {
     "@langchain/core": ">=0.1.0",

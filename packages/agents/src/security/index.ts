@@ -1,5 +1,5 @@
 /**
- * @cofounder/agents/security
+ * @aicofounder/agents/security
  * Comprehensive security utilities for agents and tools
  */
 

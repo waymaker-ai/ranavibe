@@ -3,7 +3,7 @@
  *
  * @example
  * ```typescript
- * import { rewrite } from '@cofounder/helpers';
+ * import { rewrite } from '@aicofounder/helpers';
  *
  * // Make it formal
  * const formal = await rewrite('hey whats up', { style: 'formal' });

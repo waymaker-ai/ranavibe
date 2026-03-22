@@ -1,41 +1,41 @@
 {
-  "name": "cofounder-guardrails",
+  "name": "aicofounder-guardrails",
   "displayName": "CoFounder Guardrails",
   "description": "AI guardrails for VS Code - PII scanning, injection detection, compliance checking, cost tracking",
   "version": "1.0.0",
   "publisher": "waymaker",
   "engines": { "vscode": "^1.85.0" },
   "categories": ["Linters", "Other"],
-  "activationEvents": ["onLanguage:typescript", "onLanguage:javascript", "onLanguage:python", "onCommand:cofounder.scan"],
+  "activationEvents": ["onLanguage:typescript", "onLanguage:javascript", "onLanguage:python", "onCommand:aicofounder.scan"],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
-      { "command": "cofounder.scan", "title": "CoFounder: Scan Current File" },
-      { "command": "cofounder.scanWorkspace", "title": "CoFounder: Scan Workspace" },
-      { "command": "cofounder.showDashboard", "title": "CoFounder: Show Dashboard" },
-      { "command": "cofounder.checkCompliance", "title": "CoFounder: Check Compliance" },
-      { "command": "cofounder.estimateCost", "title": "CoFounder: Estimate Cost" }
+      { "command": "aicofounder.scan", "title": "CoFounder: Scan Current File" },
+      { "command": "aicofounder.scanWorkspace", "title": "CoFounder: Scan Workspace" },
+      { "command": "aicofounder.showDashboard", "title": "CoFounder: Show Dashboard" },
+      { "command": "aicofounder.checkCompliance", "title": "CoFounder: Check Compliance" },
+      { "command": "aicofounder.estimateCost", "title": "CoFounder: Estimate Cost" }
     ],
     "configuration": {
       "title": "CoFounder Guardrails",
       "properties": {
-        "cofounder.enableInlineScan": { "type": "boolean", "default": true, "description": "Enable real-time inline scanning" },
-        "cofounder.piiMode": { "type": "string", "enum": ["detect", "redact", "block"], "default": "detect" },
-        "cofounder.injectionSensitivity": { "type": "string", "enum": ["low", "medium", "high"], "default": "medium" },
-        "cofounder.approvedModels": { "type": "array", "default": [], "description": "Approved model names" },
-        "cofounder.complianceFrameworks": { "type": "array", "default": ["safety"], "description": "Active compliance frameworks" }
+        "aicofounder.enableInlineScan": { "type": "boolean", "default": true, "description": "Enable real-time inline scanning" },
+        "aicofounder.piiMode": { "type": "string", "enum": ["detect", "redact", "block"], "default": "detect" },
+        "aicofounder.injectionSensitivity": { "type": "string", "enum": ["low", "medium", "high"], "default": "medium" },
+        "aicofounder.approvedModels": { "type": "array", "default": [], "description": "Approved model names" },
+        "aicofounder.complianceFrameworks": { "type": "array", "default": ["safety"], "description": "Active compliance frameworks" }
       }
     },
     "viewsContainers": {
       "activitybar": [
-        { "id": "cofounder", "title": "CoFounder Guardrails", "icon": "$(shield)" }
+        { "id": "aicofounder", "title": "CoFounder Guardrails", "icon": "$(shield)" }
       ]
     },
     "views": {
-      "cofounder": [
-        { "id": "cofounder.findings", "name": "Findings" },
-        { "id": "cofounder.policies", "name": "Policies" },
-        { "id": "cofounder.dashboard", "name": "Dashboard" }
+      "aicofounder": [
+        { "id": "aicofounder.findings", "name": "Findings" },
+        { "id": "aicofounder.policies", "name": "Policies" },
+        { "id": "aicofounder.dashboard", "name": "Dashboard" }
       ]
     }
   },

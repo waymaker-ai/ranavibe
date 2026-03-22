@@ -53,7 +53,7 @@ runs:
     - name: Install CoFounder CLI
       shell: bash
       run: |
-        npm install -g @cofounder/cli || npm install -g ./tools/cli
+        npm install -g @aicofounder/cli || npm install -g ./tools/cli
 
     - name: Run Security Audit
       id: security

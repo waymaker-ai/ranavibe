@@ -40,7 +40,7 @@ export default function QuickStartPage() {
             Install Packages
           </h2>
           <div className="code-block font-mono text-sm">
-            <div>npm install @cofounder/helpers @cofounder/prompts @cofounder/rag</div>
+            <div>npm install @aicofounder/helpers @aicofounder/prompts @aicofounder/rag</div>
           </div>
         </motion.section>
 
@@ -55,10 +55,10 @@ export default function QuickStartPage() {
             <span className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-r from-gradient-from to-gradient-to text-white text-sm font-bold mr-3">
               2
             </span>
-            Use @cofounder/helpers for One-Line AI
+            Use @aicofounder/helpers for One-Line AI
           </h2>
           <div className="code-block font-mono text-sm overflow-x-auto">
-            <pre>{`import { summarize, translate, classify, extract } from '@cofounder/helpers';
+            <pre>{`import { summarize, translate, classify, extract } from '@aicofounder/helpers';
 
 // Summarize any text
 const summary = await summarize(longDocument, { style: 'brief' });
@@ -89,10 +89,10 @@ const data = await extract(resume, {
             <span className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-r from-gradient-from to-gradient-to text-white text-sm font-bold mr-3">
               3
             </span>
-            Use @cofounder/prompts for Enterprise Management
+            Use @aicofounder/prompts for Enterprise Management
           </h2>
           <div className="code-block font-mono text-sm overflow-x-auto">
-            <pre>{`import { PromptManager } from '@cofounder/prompts';
+            <pre>{`import { PromptManager } from '@aicofounder/prompts';
 
 const pm = new PromptManager({ workspace: 'my-app' });
 
@@ -129,10 +129,10 @@ await pm.createABTest('greeting', {
             <span className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-r from-gradient-from to-gradient-to text-white text-sm font-bold mr-3">
               4
             </span>
-            Use @cofounder/rag for Advanced Retrieval
+            Use @aicofounder/rag for Advanced Retrieval
           </h2>
           <div className="code-block font-mono text-sm overflow-x-auto">
-            <pre>{`import { RAGPresets, createRAGPipeline } from '@cofounder/rag';
+            <pre>{`import { RAGPresets, createRAGPipeline } from '@aicofounder/rag';
 
 // Use a preset for quick setup
 const pipeline = RAGPresets.balanced();

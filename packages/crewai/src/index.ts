@@ -1,5 +1,5 @@
 /**
- * @cofounder/crewai
+ * @aicofounder/crewai
  * CrewAI adapter for CoFounder Framework
  *
  * Provides a CrewAI-compatible model wrapper that uses CoFounder
@@ -7,8 +7,8 @@
  *
  * @example
  * ```typescript
- * import { RanaCrewModel } from '@cofounder/crewai';
- * import { createCoFounder } from '@cofounder/core';
+ * import { RanaCrewModel } from '@aicofounder/crewai';
+ * import { createCoFounder } from '@aicofounder/core';
  *
  * const cofounder = createCoFounder({
  *   providers: { anthropic: process.env.ANTHROPIC_API_KEY }

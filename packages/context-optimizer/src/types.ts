@@ -1,5 +1,5 @@
 /**
- * @cofounder/context-optimizer - Type definitions
+ * @aicofounder/context-optimizer - Type definitions
  */
 
 /**

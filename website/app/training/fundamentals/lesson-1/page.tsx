@@ -68,7 +68,7 @@ export default function Lesson1Page() {
 
           <div className="code-block">
             <pre>
-              <code>{`import { useAgent } from '@cofounder/react';
+              <code>{`import { useAgent } from '@aicofounder/react';
 
 // Full type inference
 const { send, messages, isLoading } = useAgent({
@@ -126,20 +126,20 @@ messages.map(msg => msg.content); // ✅ Type-safe`}</code>
 
           <p>CoFounder consists of three main packages:</p>
 
-          <h3>@cofounder/core</h3>
+          <h3>@aicofounder/core</h3>
           <p>
             The core LLM client library. Handles API communication, streaming,
             error handling, and retry logic. Works with any JavaScript environment.
           </p>
 
-          <h3>@cofounder/react</h3>
+          <h3>@aicofounder/react</h3>
           <p>
             React hooks and components for building AI interfaces. Provides
             <code>useAgent</code>, <code>useChat</code>, and other hooks for
             managing agent state.
           </p>
 
-          <h3>@cofounder/cli</h3>
+          <h3>@aicofounder/cli</h3>
           <p>
             Command-line tools for project initialization, validation, and
             deployment. Includes generators for common patterns and best practices.

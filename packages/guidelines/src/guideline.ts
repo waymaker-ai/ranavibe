@@ -1,5 +1,5 @@
 /**
- * @cofounder/guidelines - Guideline factory and helpers
+ * @aicofounder/guidelines - Guideline factory and helpers
  */
 
 import type {

@@ -360,7 +360,7 @@ Answer the question based on the context above. Cite sources when relevant.`;
 
 const SAMPLE_DOCUMENTS: Document[] = [
   {
-    id: 'cofounder-overview',
+    id: 'aicofounder-overview',
     title: 'CoFounder Framework Overview',
     source: 'docs/overview.md',
     content: `CoFounder (Rapid AI Native Architecture) is a production-quality AI development framework designed for modern applications. It provides a unified interface to work with 9 different LLM providers including OpenAI, Anthropic, Google, Groq, Mistral, Cohere, Together AI, xAI, and Ollama.
@@ -442,7 +442,7 @@ const result = await agent.run('Find the GDP of Japan and calculate per capita')
 
 **Installation**:
 \`\`\`bash
-npm install @cofounder/core @cofounder/helpers @cofounder/react
+npm install @aicofounder/core @aicofounder/helpers @aicofounder/react
 \`\`\`
 
 **Quick Setup**:
@@ -466,7 +466,7 @@ cofounder config:set --provider openai
 
 **Basic Usage**:
 \`\`\`typescript
-import { cofounder } from '@cofounder/core';
+import { cofounder } from '@aicofounder/core';
 
 // Simple chat
 const response = await cofounder.chat('Hello!');

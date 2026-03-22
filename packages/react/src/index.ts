@@ -1,11 +1,11 @@
 /**
- * @cofounder/react
+ * @aicofounder/react
  * React hooks and components for CoFounder
  *
  * @example
  * ```tsx
- * import { createCoFounder } from '@cofounder/core';
- * import { RanaProvider, useCoFounderChat } from '@cofounder/react';
+ * import { createCoFounder } from '@aicofounder/core';
+ * import { RanaProvider, useCoFounderChat } from '@aicofounder/react';
  *
  * const cofounder = createCoFounder({
  *   providers: {

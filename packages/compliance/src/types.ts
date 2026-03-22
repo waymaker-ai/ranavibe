@@ -1,5 +1,5 @@
 /**
- * @cofounder/compliance - Type definitions
+ * @aicofounder/compliance - Type definitions
  */
 
 /**

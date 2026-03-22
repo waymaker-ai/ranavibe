@@ -1,5 +1,5 @@
 /**
- * Type definitions for @cofounder/prompts
+ * Type definitions for @aicofounder/prompts
  */
 
 import { z } from 'zod';

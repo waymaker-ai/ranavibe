@@ -3,7 +3,7 @@
  * Demonstrates Git-like version control for prompts
  */
 
-import { PromptRegistry, PromptVersion, PromptReview } from '@cofounder/core';
+import { PromptRegistry, PromptVersion, PromptReview } from '@aicofounder/core';
 
 async function main() {
   // Example 1: Basic prompt registry

@@ -108,7 +108,7 @@ export function formatSarif(result: ScanResult): string {
       {
         tool: {
           driver: {
-            name: 'cofounder-ci',
+            name: 'aicofounder-ci',
             semanticVersion: '1.0.0',
             informationUri: 'https://cofounder.cx',
             rules,

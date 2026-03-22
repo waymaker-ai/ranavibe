@@ -1,10 +1,10 @@
 {
-  "name": "@cofounder/cli",
+  "name": "@aicofounder/cli",
   "version": "0.1.0",
   "description": "CLI tool for Rapid AI Native Architecture (CoFounder)",
   "main": "dist/index.js",
   "bin": {
-    "cofounder": "dist/cli.js"
+    "aicofounder": "dist/cli.js"
   },
   "type": "module",
   "scripts": {

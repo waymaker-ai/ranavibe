@@ -1,5 +1,5 @@
 /**
- * @cofounder/guidelines - Guideline Manager
+ * @aicofounder/guidelines - Guideline Manager
  */
 
 import type {
