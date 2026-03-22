@@ -346,7 +346,7 @@ export default function MigrationPage() {
                   <tr key={b.feature} className="border-b border-border">
                     <td className="py-3 px-4">{b.feature}</td>
                     <td className="text-center py-3 px-4">
-                      {b.cofounder ? (
+                      {b.aicofounder ? (
                         <Check className="inline h-5 w-5 text-green-500" />
                       ) : (
                         <X className="inline h-5 w-5 text-red-500" />

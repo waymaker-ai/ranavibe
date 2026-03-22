@@ -211,7 +211,7 @@ export function CodeComparison() {
             </div>
             <div className="code-block overflow-x-auto max-h-96">
               <pre className="text-sm">
-                <code className="text-foreground-secondary">{comparison.cofounder}</code>
+                <code className="text-foreground-secondary">{comparison.aicofounder}</code>
               </pre>
             </div>
           </div>
