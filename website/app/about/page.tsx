@@ -8,19 +8,13 @@ const team = [
   {
     name: 'Ashley Kays',
     role: 'Creator & Lead',
-    company: 'Waymaker.cx / Betr.ai',
+    company: 'Waymaker.cx',
     linkedin: 'https://linkedin.com/in/ashleykaysdesigner',
   },
   {
     name: 'Christian Moore',
     role: 'Co-Creator',
     company: 'Core Development',
-  },
-  {
-    name: 'Joshua Schrager',
-    role: 'Co-Creator',
-    company: 'Core Development',
-    linkedin: 'https://www.linkedin.com/in/joshschrager/',
   },
 ];
 
@@ -201,8 +195,8 @@ export default function AboutPage() {
             <h2 className="text-2xl font-bold mb-4">Sponsors & Acknowledgments</h2>
             <p className="text-foreground-secondary mb-6">
               CoFounder is proudly sponsored by{' '}
-              <Link href="https://betr.ai" target="_blank" className="text-foreground font-medium hover:underline">
-                Betr.ai
+              <Link href="https://waymaker.cx" target="_blank" className="text-foreground font-medium hover:underline">
+                Waymaker.cx
               </Link>
             </p>
             <div className="border-t border-border pt-6 mt-6">
@@ -231,13 +225,6 @@ export default function AboutPage() {
               className="text-2xl font-bold text-foreground-secondary hover:text-foreground transition-colors"
             >
               Waymaker.cx
-            </Link>
-            <Link
-              href="https://betr.ai"
-              target="_blank"
-              className="text-2xl font-bold text-foreground-secondary hover:text-foreground transition-colors"
-            >
-              Betr.ai
             </Link>
           </div>
         </motion.div>

@@ -680,7 +680,6 @@ We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for:
 
 **Organizations:**
 - [Waymaker.cx](https://waymaker.cx)
-- [Betr.ai](https://betr.ai)
 
 **Named after:** Ashley's son (CoFounder = his nickname, like a piranha)
 
