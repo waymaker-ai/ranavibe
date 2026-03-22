@@ -254,7 +254,7 @@ export default function LlamaIndexComparisonPage() {
                     )}
                   </td>
                   <td className="py-4 px-6 text-center">
-                    {item.cofounder ? (
+                    {item.aicofounder ? (
                       <span className="text-green-400">✓</span>
                     ) : (
                       <span className="text-red-400">✗</span>
