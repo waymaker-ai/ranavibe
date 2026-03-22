@@ -12,6 +12,11 @@ const team = [
     linkedin: 'https://linkedin.com/in/ashleykaysdesigner',
   },
   {
+    name: 'Chuck Kays',
+    role: 'Cofounder & Advisor',
+    company: 'Strategy & Operations',
+  },
+  {
     name: 'Christian Moore',
     role: 'Co-Creator',
     company: 'Core Development',

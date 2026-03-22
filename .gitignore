@@ -33,3 +33,4 @@ coverage/
 *.log
 .cache/
 .vercel
+.superpowers/
