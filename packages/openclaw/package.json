@@ -1,5 +1,5 @@
 {
-  "name": "@cofounder/openclaw",
+  "name": "@aicofounder/openclaw",
   "version": "1.0.0",
   "description": "CoFounder guardrails for OpenClaw agents - PII, injection, compliance, cost tracking as an OpenClaw skill",
   "main": "dist/index.js",

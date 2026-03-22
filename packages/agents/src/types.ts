@@ -1,10 +1,10 @@
 /**
- * @cofounder/agents - Core Types
+ * @aicofounder/agents - Core Types
  * Agent Development Kit (ADK) for CoFounder Framework
  */
 
 // Re-export CoFounderClient type for convenience
-export type { CoFounderClient, RanaChatRequest, RanaChatResponse } from '@cofounder/core';
+export type { CoFounderClient, RanaChatRequest, RanaChatResponse } from '@aicofounder/core';
 
 /**
  * User identity for authentication and authorization

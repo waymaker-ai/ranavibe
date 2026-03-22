@@ -3,7 +3,7 @@
  *
  * @example
  * ```typescript
- * import { translate } from '@cofounder/helpers';
+ * import { translate } from '@aicofounder/helpers';
  *
  * const result = await translate('Hello, world!', { to: 'es' });
  * console.log(result.translation); // "¡Hola, mundo!"

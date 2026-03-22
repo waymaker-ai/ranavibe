@@ -5,9 +5,9 @@
  * with comprehensive guidelines and compliance enforcement.
  */
 
-import { createCoFounder } from '@cofounder/core';
-import { createGuidelineManager, Conditions, PresetGuidelines } from '@cofounder/guidelines';
-import { createComplianceEnforcer, PresetRules } from '@cofounder/compliance';
+import { createCoFounder } from '@aicofounder/core';
+import { createGuidelineManager, Conditions, PresetGuidelines } from '@aicofounder/guidelines';
+import { createComplianceEnforcer, PresetRules } from '@aicofounder/compliance';
 
 interface ConversationContext {
   userId: string;

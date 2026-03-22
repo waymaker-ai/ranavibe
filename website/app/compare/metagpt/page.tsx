@@ -23,7 +23,7 @@ team.run_project(idea="Build a weather app")
 
 # Complex setup with roles, actions, and memories
 # Requires understanding MetaGPT's role-based architecture`,
-    cofounder: `import { createTeam, createOrchestrator } from '@cofounder/agents';
+    cofounder: `import { createTeam, createOrchestrator } from '@aicofounder/agents';
 
 const orchestrator = createOrchestrator();
 
@@ -71,7 +71,7 @@ class CustomRole(Role):
         return Message(content=result, role=self.profile)
 
 # Requires understanding OOP patterns and async execution`,
-    cofounder: `import { AgentOrchestrator } from '@cofounder/agents';
+    cofounder: `import { AgentOrchestrator } from '@aicofounder/agents';
 
 const orchestrator = new AgentOrchestrator();
 
@@ -118,7 +118,7 @@ class MyRole(Role):
         # Access memory for context
         memories = self.rc.memory.get()
         # Complex memory management`,
-    cofounder: `import { SharedStateManager } from '@cofounder/agents';
+    cofounder: `import { SharedStateManager } from '@aicofounder/agents';
 
 const stateManager = new SharedStateManager({ taskCount: 0 });
 
@@ -159,7 +159,7 @@ for role in team.roles:
 
 # Count votes manually
 consensus = sum(results) > len(results) / 2`,
-    cofounder: `import { createConsensusGroup } from '@cofounder/agents';
+    cofounder: `import { createConsensusGroup } from '@aicofounder/agents';
 
 const { vote } = createConsensusGroup([
   { id: 'reviewer-1', name: 'Reviewer 1', capabilities: ['review'] },

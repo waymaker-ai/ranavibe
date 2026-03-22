@@ -27,7 +27,7 @@ const defaultConfig: BenchmarkConfig = {
  *
  * @example
  * ```typescript
- * import { runBenchmarks } from '@cofounder/benchmark';
+ * import { runBenchmarks } from '@aicofounder/benchmark';
  *
  * const report = await runBenchmarks({
  *   detectors: [

@@ -141,7 +141,7 @@ export class MCPClient {
       config,
       connected: true,
       info: {
-        name: 'cofounder-builtin',
+        name: 'aicofounder-builtin',
         version: '2.0.0',
         capabilities: { tools: true },
       },

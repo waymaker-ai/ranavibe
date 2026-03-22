@@ -359,7 +359,7 @@ function displayRecommendations(report: VelocityReport) {
 }
 
 function exportReport(report: VelocityReport, format: string) {
-  const filename = `cofounder-velocity-report-${new Date().toISOString().split('T')[0]}`;
+  const filename = `aicofounder-velocity-report-${new Date().toISOString().split('T')[0]}`;
 
   if (format === 'json') {
     fs.writeFileSync(`${filename}.json`, JSON.stringify(report, null, 2));

@@ -1,5 +1,5 @@
 /**
- * @cofounder/mcp
+ * @aicofounder/mcp
  * Model Context Protocol support for CoFounder
  *
  * This module provides:

@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 const packages = [
   {
-    name: '@cofounder/agent-sdk',
+    name: '@aicofounder/agent-sdk',
     icon: Cpu,
     description: 'Wrap Anthropic Agent SDK with guardrails — PII, injection, compliance, cost',
     features: ['7 Interceptors', 'HIPAA Agent', 'GDPR Agent', 'Financial Agent'],
@@ -22,19 +22,19 @@ const packages = [
     isNew: true,
   },
   {
-    name: '@cofounder/guard',
+    name: '@aicofounder/guard',
     icon: Lock,
     description: 'Zero-dependency runtime guard — one import, any framework',
     features: ['Zero Deps', 'Client Proxy', 'PII/Injection', '25+ Models'],
     color: 'from-red-500 to-pink-500',
-    example: `import { createGuard } from '@cofounder/guard';
+    example: `import { createGuard } from '@aicofounder/guard';
 const g = createGuard({ pii: 'redact', injection: 'block' });
 const client = g.wrap(new Anthropic());
 // All calls now guarded automatically`,
     isNew: true,
   },
   {
-    name: '@cofounder/policies',
+    name: '@aicofounder/policies',
     icon: FileCheck,
     description: 'Declarative YAML policies with 9 compliance presets',
     features: ['HIPAA', 'GDPR', 'SEC', 'PCI', 'SOX', 'FERPA', 'CCPA'],
@@ -47,13 +47,13 @@ const result = engine.evaluate(text, {
     isNew: true,
   },
   {
-    name: '@cofounder/ci',
+    name: '@aicofounder/ci',
     icon: GitBranch,
     description: 'GitHub Action & CLI for AI security scanning in CI/CD',
     features: ['PR Scanning', 'SARIF Output', 'Key Detection', 'Cost Estimation'],
     color: 'from-green-500 to-emerald-500',
     example: `# .github/workflows/cofounder.yml
-- uses: waymaker-ai/cofounder-ci@v1
+- uses: waymaker-ai/aicofounder-ci@v1
   with:
     fail-on: 'high'
     approved-models: 'claude-sonnet-4-6,gpt-4o'
@@ -61,20 +61,20 @@ const result = engine.evaluate(text, {
     isNew: true,
   },
   {
-    name: '@cofounder/dashboard',
+    name: '@aicofounder/dashboard',
     icon: Activity,
     description: 'AI observability — cost tracking, security alerts, compliance metrics',
     features: ['Real-time Metrics', 'Anomaly Detection', 'Prometheus Export', 'HTTP API'],
     color: 'from-violet-500 to-purple-500',
     example: `const dashboard = new CoFounderDashboard({
-  storage: new FileStorage('./cofounder-data')
+  storage: new FileStorage('./aicofounder-data')
 });
 dashboard.collect(event);
 await dashboard.serve({ port: 3456 });`,
     isNew: true,
   },
   {
-    name: '@cofounder/mcp-server',
+    name: '@aicofounder/mcp-server',
     icon: Eye,
     description: '15+ MCP tools for Claude Desktop, Code, and Cursor',
     features: ['PII Scan', 'Injection Detect', 'Cost Estimate', 'Code Safety'],
@@ -82,13 +82,13 @@ await dashboard.serve({ port: 3456 });`,
     example: `// In Claude Desktop settings:
 { "mcpServers": { "cofounder": {
   "command": "npx",
-  "args": ["@cofounder/mcp-server"]
+  "args": ["@aicofounder/mcp-server"]
 }}}
 // Now use cofounder_scan_pii, cofounder_detect_injection...`,
     isNew: true,
   },
   {
-    name: '@cofounder/compliance',
+    name: '@aicofounder/compliance',
     icon: Shield,
     description: 'Automatic HIPAA, SEC, GDPR, CCPA compliance enforcement',
     features: ['PII Detection', 'Auto Redaction', 'Audit Trail', 'Disclaimers'],
@@ -100,7 +100,7 @@ await dashboard.serve({ port: 3456 });`,
 const result = await enforcer.enforce(request);`,
   },
   {
-    name: '@cofounder/guidelines',
+    name: '@aicofounder/guidelines',
     icon: Scale,
     description: 'Dynamic behavioral control with context-aware rules',
     features: ['Priority Rules', 'Analytics', 'Violations', '8+ Presets'],
@@ -112,7 +112,7 @@ await manager.addGuideline(
 const matched = await manager.match(context);`,
   },
   {
-    name: '@cofounder/context-optimizer',
+    name: '@aicofounder/context-optimizer',
     icon: Layers,
     description: 'Handle 400K+ token contexts with 70% cost savings',
     features: ['400K Tokens', '70% Savings', 'Smart Chunking', 'Caching'],

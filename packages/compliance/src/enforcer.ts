@@ -1,5 +1,5 @@
 /**
- * @cofounder/compliance - Compliance Enforcer
+ * @aicofounder/compliance - Compliance Enforcer
  */
 
 import type {

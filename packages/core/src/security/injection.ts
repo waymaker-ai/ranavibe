@@ -9,7 +9,7 @@
  *
  * @example
  * ```typescript
- * import { PromptInjectionDetector } from '@cofounder/core';
+ * import { PromptInjectionDetector } from '@aicofounder/core';
  *
  * const detector = new PromptInjectionDetector({ sensitivity: 'high' });
  * const result = detector.detect('Ignore all previous instructions and...');

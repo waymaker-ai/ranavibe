@@ -752,7 +752,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: cofounder-ingress
+  name: aicofounder-ingress
 spec:
   rules:
   - host: ${host}

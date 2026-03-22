@@ -8,10 +8,10 @@
  *
  * @example
  * ```typescript
- * import { createOTelExporter } from '@cofounder/core';
+ * import { createOTelExporter } from '@aicofounder/core';
  *
  * const exporter = createOTelExporter({
- *   serviceName: 'my-cofounder-service',
+ *   serviceName: 'my-aicofounder-service',
  *   endpoint: 'https://otel-collector.example.com/v1/traces',
  *   headers: {
  *     'x-api-key': process.env.OTEL_API_KEY
@@ -389,7 +389,7 @@ export class OTelExporter {
           scopeSpans: [
             {
               scope: {
-                name: '@cofounder/core',
+                name: '@aicofounder/core',
                 version: '2.0.0',
               },
               spans: this.spanBatch,

@@ -312,8 +312,8 @@ class SimpleEmbeddingProvider implements EmbeddingProvider {
  *
  * @example
  * ```typescript
- * import { createCoFounder } from '@cofounder/core';
- * import { DocsPlugin } from '@cofounder/core/plugins/docs';
+ * import { createCoFounder } from '@aicofounder/core';
+ * import { DocsPlugin } from '@aicofounder/core/plugins/docs';
  *
  * const cofounder = createCoFounder({ ... });
  * const docs = new DocsPlugin({

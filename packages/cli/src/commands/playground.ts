@@ -34,7 +34,7 @@ type PlaygroundCommand = {
 };
 
 // Constants
-const PLAYGROUND_DIR = path.join(os.homedir(), '.cofounder', 'playground');
+const PLAYGROUND_DIR = path.join(os.homedir(), '.aicofounder', 'playground');
 const HISTORY_FILE = path.join(PLAYGROUND_DIR, 'history.json');
 
 // Ensure directories exist
@@ -51,7 +51,7 @@ function generateSessionId(): string {
 
 // Sample code templates for quick testing
 const QUICK_TEMPLATES: Record<string, string> = {
-  agent: `import { createAgent, createCoFounder } from '@cofounder/agents';
+  agent: `import { createAgent, createCoFounder } from '@aicofounder/agents';
 
 const cofounder = createCoFounder({
   providers: { anthropic: process.env.ANTHROPIC_API_KEY }
@@ -74,7 +74,7 @@ const result = await agent.handle({
 
 console.log(result);`,
 
-  tool: `import { createTool } from '@cofounder/agents';
+  tool: `import { createTool } from '@aicofounder/agents';
 
 const myTool = createTool({
   name: 'greet',
@@ -95,7 +95,7 @@ const myTool = createTool({
 const result = await myTool.handler({ name: 'Developer' });
 console.log(result);`,
 
-  orchestrator: `import { createOrchestrator, createPipeline } from '@cofounder/agents';
+  orchestrator: `import { createOrchestrator, createPipeline } from '@aicofounder/agents';
 
 const orchestrator = createOrchestrator();
 
@@ -159,7 +159,7 @@ await server.connect(transport);`,
   InjectionDetector,
   PIIDetector,
   wrapToolWithSafety
-} from '@cofounder/agents';
+} from '@aicofounder/agents';
 
 // Detect prompt injection
 const injectionDetector = new InjectionDetector();
@@ -179,7 +179,7 @@ const safeTool = wrapToolWithSafety(myTool, {
   rateLimit: { maxRequests: 10, windowMs: 60000 },
 });`,
 
-  generate: `import { generate, validateCode } from '@cofounder/generate';
+  generate: `import { generate, validateCode } from '@aicofounder/generate';
 
 const result = await generate({
   prompt: 'Create a React button component with loading state',
@@ -404,10 +404,10 @@ ${chalk.white('Core Concepts:')}
   ${chalk.cyan('• Security')}      - Injection detection, PII filtering
 
 ${chalk.white('Packages:')}
-  ${chalk.green('@cofounder/agents')}   - Agent Development Kit
-  ${chalk.green('@cofounder/core')}     - Core utilities and configs
-  ${chalk.green('@cofounder/generate')} - Natural language code generation
-  ${chalk.green('@cofounder/cli')}      - Command line interface
+  ${chalk.green('@aicofounder/agents')}   - Agent Development Kit
+  ${chalk.green('@aicofounder/core')}     - Core utilities and configs
+  ${chalk.green('@aicofounder/generate')} - Natural language code generation
+  ${chalk.green('@aicofounder/cli')}      - Command line interface
 
 ${chalk.white('Quick Links:')}
   ${chalk.gray('GitHub:')} https://github.com/waymaker-ai/cofounder

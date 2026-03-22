@@ -88,7 +88,7 @@ export function generateSOC2Report(
     overallStatus,
     exceptions,
     metadata: {
-      generator: '@cofounder/soc2',
+      generator: '@aicofounder/soc2',
       format: config.exportFormat,
       auditorName: config.auditorName,
       auditorFirm: config.auditorFirm,
@@ -136,11 +136,11 @@ function attachEvidenceToControls(
 ): void {
   // Map evidence to controls based on source and type
   const sourceMapping: Record<string, string[]> = {
-    'cofounder-dashboard': ['CC7.2', 'A1.1', 'PI1.1'],
-    'cofounder-audit-log': ['CC7.1', 'CC7.3', 'CC6.1', 'CC6.2', 'CC6.3'],
-    'cofounder-policies': ['CC6.6', 'CC6.7', 'CC8.1', 'P3.1', 'P3.2', 'P6.1', 'P6.7', 'C1.1', 'C1.2'],
-    'cofounder-ci-scans': ['CC6.8', 'CC8.1'],
-    'cofounder-guards': ['CC6.6', 'CC6.7', 'PI1.1', 'P3.1', 'P6.1', 'C1.1'],
+    'aicofounder-dashboard': ['CC7.2', 'A1.1', 'PI1.1'],
+    'aicofounder-audit-log': ['CC7.1', 'CC7.3', 'CC6.1', 'CC6.2', 'CC6.3'],
+    'aicofounder-policies': ['CC6.6', 'CC6.7', 'CC8.1', 'P3.1', 'P3.2', 'P6.1', 'P6.7', 'C1.1', 'C1.2'],
+    'aicofounder-ci-scans': ['CC6.8', 'CC8.1'],
+    'aicofounder-guards': ['CC6.6', 'CC6.7', 'PI1.1', 'P3.1', 'P6.1', 'C1.1'],
   };
 
   for (const ev of evidence) {

@@ -1,11 +1,11 @@
 /**
  * Database Schema Generation Examples
  *
- * This example demonstrates how to use @cofounder/generate to create
+ * This example demonstrates how to use @aicofounder/generate to create
  * database schemas for Prisma, Drizzle, and raw SQL.
  */
 
-import { DatabaseGenerator, type Entity } from '@cofounder/generate';
+import { DatabaseGenerator, type Entity } from '@aicofounder/generate';
 
 // ============================================================================
 // Example 1: Simple User Entity with Prisma

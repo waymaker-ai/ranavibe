@@ -1,5 +1,5 @@
 /**
- * @cofounder/llm-detect - Type definitions for LLM-augmented detection
+ * @aicofounder/llm-detect - Type definitions for LLM-augmented detection
  */
 
 /** Supported LLM providers */

@@ -1,5 +1,5 @@
 /**
- * @cofounder/adapters - Type definitions for enterprise guardrail adapters
+ * @aicofounder/adapters - Type definitions for enterprise guardrail adapters
  */
 
 // ---------------------------------------------------------------------------

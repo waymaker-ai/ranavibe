@@ -1,10 +1,10 @@
 /**
- * @cofounder/mcp/server
+ * @aicofounder/mcp/server
  * MCP Server implementation for creating tool servers
  *
  * @example
  * ```typescript
- * import { createMCPServer } from '@cofounder/core';
+ * import { createMCPServer } from '@aicofounder/core';
  *
  * const server = createMCPServer({
  *   name: 'my-tools',

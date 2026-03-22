@@ -428,8 +428,8 @@ export async function GET() {
   }
 
   // Save config
-  if (!fs.existsSync('.cofounder')) {
-    fs.mkdirSync('.cofounder', { recursive: true });
+  if (!fs.existsSync('.aicofounder')) {
+    fs.mkdirSync('.aicofounder', { recursive: true });
   }
 
   fs.writeFileSync('.cofounder/health.json', JSON.stringify({
@@ -549,8 +549,8 @@ export async function monitorSetup() {
   };
 
   // Save config (without API key in plain text)
-  if (!fs.existsSync('.cofounder')) {
-    fs.mkdirSync('.cofounder', { recursive: true });
+  if (!fs.existsSync('.aicofounder')) {
+    fs.mkdirSync('.aicofounder', { recursive: true });
   }
 
   fs.writeFileSync('.cofounder/monitor.json', JSON.stringify({

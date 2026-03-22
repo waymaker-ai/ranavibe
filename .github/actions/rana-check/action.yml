@@ -53,7 +53,7 @@ runs:
     - name: Install CoFounder CLI
       shell: bash
       run: |
-        npm install -g @cofounder/cli || npm install -g ./tools/cli
+        npm install -g @aicofounder/cli || npm install -g ./tools/cli
 
     - name: Run Security Audit
       id: security
@@ -62,7 +62,7 @@ runs:
       run: |
         echo "🔒 Running CoFounder Security Audit..."
         set +e
-        output=$(cofounder security:audit 2>&1)
+        output=$(aicofounder security:audit 2>&1)
         exit_code=$?
         echo "$output"
 
@@ -82,7 +82,7 @@ runs:
       run: |
         echo "🔍 Running CoFounder SEO Check..."
         set +e
-        output=$(cofounder seo:check 2>&1)
+        output=$(aicofounder seo:check 2>&1)
         exit_code=$?
         echo "$output"
 
@@ -102,7 +102,7 @@ runs:
       run: |
         echo "💰 Running CoFounder LLM Cost Analysis..."
         set +e
-        output=$(cofounder llm:analyze 2>&1)
+        output=$(aicofounder llm:analyze 2>&1)
         echo "$output"
 
         # Extract estimated cost from output

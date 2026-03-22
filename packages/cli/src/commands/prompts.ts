@@ -55,7 +55,7 @@ interface PromptAnalysis {
 }
 
 // Constants
-const STORE_DIR = path.join(os.homedir(), '.cofounder');
+const STORE_DIR = path.join(os.homedir(), '.aicofounder');
 const STORE_FILE = path.join(STORE_DIR, 'prompts.json');
 
 const DEFAULT_CATEGORIES: Record<PromptCategory, { color: string; description: string }> = {
@@ -957,7 +957,7 @@ Respond with [format type] containing:
   prompts
     .command('export')
     .description('Export prompts to file')
-    .option('-o, --output <file>', 'Output file', 'cofounder-prompts.json')
+    .option('-o, --output <file>', 'Output file', 'aicofounder-prompts.json')
     .option('-c, --category <category>', 'Export only specific category')
     .action(async (options) => {
       const store = loadStore();

@@ -40,18 +40,18 @@ export default function Lesson2Page() {
               <code>{`┌─────────────────────────────────────────┐
 │           Your Application              │
 ├─────────────────────────────────────────┤
-│     @cofounder/react (Hooks & Components)    │
+│     @aicofounder/react (Hooks & Components)    │
 ├─────────────────────────────────────────┤
-│     @cofounder/prompts (Prompt Management)   │
+│     @aicofounder/prompts (Prompt Management)   │
 ├─────────────────────────────────────────┤
-│     @cofounder/core (LLM Client & Agents)    │
+│     @aicofounder/core (LLM Client & Agents)    │
 ├─────────────────────────────────────────┤
 │        LLM Providers (OpenAI, etc)      │
 └─────────────────────────────────────────┘`}</code>
             </pre>
           </div>
 
-          <h2>@cofounder/core - The Foundation</h2>
+          <h2>@aicofounder/core - The Foundation</h2>
 
           <p>
             The core package provides the fundamental building blocks:
@@ -65,7 +65,7 @@ export default function Lesson2Page() {
 
           <div className="code-block">
             <pre>
-              <code>{`import { Agent } from '@cofounder/core';
+              <code>{`import { Agent } from '@aicofounder/core';
 
 const agent = new Agent({
   name: 'Assistant',
@@ -93,7 +93,7 @@ for await (const chunk of agent.stream('Tell me a story')) {
 
           <div className="code-block">
             <pre>
-              <code>{`import { configureProviders } from '@cofounder/core';
+              <code>{`import { configureProviders } from '@aicofounder/core';
 
 configureProviders({
   anthropic: { apiKey: process.env.ANTHROPIC_API_KEY },
@@ -108,7 +108,7 @@ const agent3 = new Agent({ model: 'gemini-pro' }); // Google`}</code>
             </pre>
           </div>
 
-          <h2>@cofounder/react - React Integration</h2>
+          <h2>@aicofounder/react - React Integration</h2>
 
           <p>
             The React package provides hooks that manage state and side effects
@@ -118,7 +118,7 @@ const agent3 = new Agent({ model: 'gemini-pro' }); // Google`}</code>
           <h3>useChat Hook</h3>
           <div className="code-block">
             <pre>
-              <code>{`import { useChat } from '@cofounder/react';
+              <code>{`import { useChat } from '@aicofounder/react';
 
 function ChatComponent() {
   const {
@@ -149,7 +149,7 @@ function ChatComponent() {
           <h3>useAgent Hook</h3>
           <div className="code-block">
             <pre>
-              <code>{`import { useAgent } from '@cofounder/react';
+              <code>{`import { useAgent } from '@aicofounder/react';
 
 function AgentComponent() {
   const {
@@ -178,7 +178,7 @@ function AgentComponent() {
             </pre>
           </div>
 
-          <h2>@cofounder/prompts - Prompt Management</h2>
+          <h2>@aicofounder/prompts - Prompt Management</h2>
 
           <p>
             Enterprise-grade prompt management with versioning, A/B testing,
@@ -187,7 +187,7 @@ function AgentComponent() {
 
           <div className="code-block">
             <pre>
-              <code>{`import { PromptManager } from '@cofounder/prompts';
+              <code>{`import { PromptManager } from '@aicofounder/prompts';
 
 const pm = new PromptManager({ workspace: 'my-app' });
 

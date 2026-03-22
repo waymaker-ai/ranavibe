@@ -1,5 +1,5 @@
 /**
- * @cofounder/agents - BaseAgent
+ * @aicofounder/agents - BaseAgent
  * Abstract base class for all CoFounder agents
  */
 

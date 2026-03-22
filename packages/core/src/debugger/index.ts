@@ -4,7 +4,7 @@
  *
  * @example
  * ```typescript
- * import { createAgentDebugger, debug } from '@cofounder/core';
+ * import { createAgentDebugger, debug } from '@aicofounder/core';
  *
  * // Quick start with global debugger
  * const session = debug('MyAgent');

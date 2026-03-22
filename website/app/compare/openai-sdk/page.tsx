@@ -20,7 +20,7 @@ const completion = await openai.chat.completions.create({
 });
 
 console.log(completion.choices[0].message.content);`,
-    cofounder: `import { createCoFounder } from '@cofounder/core';
+    cofounder: `import { createCoFounder } from '@aicofounder/core';
 
 const cofounder = createCoFounder();
 
@@ -51,7 +51,7 @@ const anthropicResponse = await anthropic.messages.create({
   max_tokens: 1024,
   messages: [{ role: 'user', content: 'Hello' }],
 });`,
-    cofounder: `import { createCoFounder } from '@cofounder/core';
+    cofounder: `import { createCoFounder } from '@aicofounder/core';
 
 const cofounder = createCoFounder();
 
@@ -105,7 +105,7 @@ if (toolCall) {
   const args = JSON.parse(toolCall.function.arguments);
   // Execute function, make another API call...
 }`,
-    cofounder: `import { createCoFounder, createTool } from '@cofounder/core';
+    cofounder: `import { createCoFounder, createTool } from '@aicofounder/core';
 
 const cofounder = createCoFounder();
 
@@ -144,7 +144,7 @@ for await (const chunk of stream) {
     process.stdout.write(content);
   }
 }`,
-    cofounder: `import { createCoFounder } from '@cofounder/core';
+    cofounder: `import { createCoFounder } from '@aicofounder/core';
 
 const cofounder = createCoFounder();
 

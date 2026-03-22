@@ -1,10 +1,10 @@
 /**
- * @cofounder/context-optimizer
+ * @aicofounder/context-optimizer
  * Extended context optimization for CoFounder - Efficiently handle 400K+ token contexts
  *
  * @example
  * ```typescript
- * import { createContextOptimizer } from '@cofounder/context-optimizer';
+ * import { createContextOptimizer } from '@aicofounder/context-optimizer';
  *
  * const optimizer = createContextOptimizer({
  *   strategy: 'hybrid',

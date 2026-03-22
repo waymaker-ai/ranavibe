@@ -1,5 +1,5 @@
 {
-  "name": "@cofounder/ui",
+  "name": "@aicofounder/ui",
   "version": "0.1.0",
   "description": "CoFounder UI - Beautiful glass morphism component library for React",
   "main": "./dist/index.js",
@@ -52,7 +52,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/waymaker-ai/cofounder.git",
-    "directory": "packages/cofounder-ui"
+    "directory": "packages/aicofounder-ui"
   },
   "homepage": "https://cofounder.cx",
   "files": [

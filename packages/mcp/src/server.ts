@@ -197,7 +197,7 @@ export class MCPServer {
  */
 export function createRanaMCPServer(): MCPServer {
   const server = new MCPServer({
-    name: 'cofounder-mcp-server',
+    name: 'aicofounder-mcp-server',
     version: '2.0.0',
     capabilities: {
       tools: true,

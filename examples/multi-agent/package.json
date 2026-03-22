@@ -1,5 +1,5 @@
 {
-  "name": "cofounder-multi-agent-example",
+  "name": "aicofounder-multi-agent-example",
   "version": "1.0.0",
   "description": "Multi-agent orchestration example using CoFounder",
   "main": "index.ts",
@@ -9,7 +9,7 @@
     "dev": "npx tsx watch index.ts"
   },
   "dependencies": {
-    "@cofounder/core": "^2.0.0"
+    "@aicofounder/core": "^2.0.0"
   },
   "devDependencies": {
     "tsx": "^4.7.0",

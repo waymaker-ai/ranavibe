@@ -1,5 +1,5 @@
 /**
- * @cofounder/streaming
+ * @aicofounder/streaming
  *
  * Guard SSE/streaming LLM responses token-by-token.
  * Catch PII, injection, and toxicity mid-stream in real-time.

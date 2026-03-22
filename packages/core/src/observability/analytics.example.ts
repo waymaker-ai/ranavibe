@@ -86,7 +86,7 @@ async function example1_basicUsage() {
 async function example2_filePersistence() {
   console.log('\n=== Example 2: File-Based Persistence ===\n');
 
-  const filePath = './cofounder-analytics.json';
+  const filePath = './aicofounder-analytics.json';
 
   // Create analytics with file persistence
   const analytics = createFileAnalytics(filePath, {
@@ -315,7 +315,7 @@ async function example6_exportImport() {
 async function example7_autoSave() {
   console.log('\n=== Example 7: Auto-Save with Intervals ===\n');
 
-  const filePath = './cofounder-analytics-autosave.json';
+  const filePath = './aicofounder-analytics-autosave.json';
 
   // Create analytics with auto-save every 30 seconds
   const analytics = createAutoSaveAnalytics(filePath, 30000, {

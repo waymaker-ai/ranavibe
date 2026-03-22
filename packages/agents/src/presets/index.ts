@@ -1,5 +1,5 @@
 /**
- * @cofounder/agents/presets
+ * @aicofounder/agents/presets
  * Pre-built agent configurations for common use cases
  */
 

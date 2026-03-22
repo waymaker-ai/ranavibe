@@ -1,5 +1,5 @@
 {
-  "name": "@cofounder/soc2",
+  "name": "@aicofounder/soc2",
   "version": "1.0.0",
   "description": "CoFounder soc2 package",
   "main": "dist/index.js",

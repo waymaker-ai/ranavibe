@@ -270,7 +270,7 @@ class BedrockAdapter implements Adapter {
     }
 
     const guardrailConfig = {
-      name: `cofounder-guardrail-${this.config.guardrailId}`,
+      name: `aicofounder-guardrail-${this.config.guardrailId}`,
       contentPolicyConfig: { filtersConfig: contentFilters },
       sensitiveInformationPolicyConfig: { piiEntitiesConfig: piiEntities },
       topicPolicyConfig: { topicsConfig: topicPolicies },

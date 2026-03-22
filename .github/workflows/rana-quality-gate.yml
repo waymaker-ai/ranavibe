@@ -6,7 +6,7 @@
 #
 #   jobs:
 #     quality-gate:
-#       uses: waymaker-ai/cofounder/.github/workflows/cofounder-quality-gate.yml@main
+#       uses: waymaker-ai/cofounder/.github/workflows/aicofounder-quality-gate.yml@main
 #       with:
 #         security: true
 #         seo: true
@@ -58,7 +58,7 @@ jobs:
         run: npm ci
 
       - name: Install CoFounder CLI
-        run: npm install -g @cofounder/cli || true
+        run: npm install -g @aicofounder/cli || true
 
       # Security Audit
       - name: 🔒 Security Audit
@@ -69,7 +69,7 @@ jobs:
           set +e
 
           # Run audit and capture output
-          cofounder security:audit 2>&1 | tee security-output.txt
+          aicofounder security:audit 2>&1 | tee security-output.txt
           exit_code=${PIPESTATUS[0]}
 
           # Parse results
@@ -96,7 +96,7 @@ jobs:
           echo "Running CoFounder SEO Check..."
           set +e
 
-          cofounder seo:check 2>&1 | tee seo-output.txt
+          aicofounder seo:check 2>&1 | tee seo-output.txt
           exit_code=${PIPESTATUS[0]}
 
           # Parse results
@@ -120,7 +120,7 @@ jobs:
           echo "Running CoFounder LLM Cost Analysis..."
           set +e
 
-          cofounder llm:analyze 2>&1 | tee llm-output.txt
+          aicofounder llm:analyze 2>&1 | tee llm-output.txt
 
           # Extract cost estimate
           cost=$(grep -oP '\$[\d,]+' llm-output.txt | head -1 | tr -d '$,' || echo "0")

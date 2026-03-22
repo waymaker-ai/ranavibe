@@ -12,7 +12,7 @@
  *
  * @example
  * ```typescript
- * import { N8nIntegration } from '@cofounder/core';
+ * import { N8nIntegration } from '@aicofounder/core';
  *
  * const n8n = new N8nIntegration({
  *   baseUrl: 'https://your-n8n-instance.com',
@@ -25,7 +25,7 @@
  * });
  *
  * // Listen for n8n webhooks
- * n8n.onWebhook('cofounder-trigger', async (data) => {
+ * n8n.onWebhook('aicofounder-trigger', async (data) => {
  *   const response = await cofounder.chat({ messages: data.messages });
  *   return { response: response.content };
  * });
@@ -663,7 +663,7 @@ export class N8nIntegration extends EventEmitter {
         type: 'n8n-nodes-base.webhook',
         position: [250, yPosition],
         parameters: {
-          path: `cofounder-${options.name.toLowerCase().replace(/\s+/g, '-')}`,
+          path: `aicofounder-${options.name.toLowerCase().replace(/\s+/g, '-')}`,
           httpMethod: 'POST',
         },
       });
@@ -693,7 +693,7 @@ export class N8nIntegration extends EventEmitter {
         message: '={{ $json.message }}',
         model: 'gpt-4o',
       },
-      credentials: { cofounderApi: { id: 'cofounder-credentials', name: 'CoFounder API' } },
+      credentials: { cofounderApi: { id: 'aicofounder-credentials', name: 'CoFounder API' } },
     });
 
     return {

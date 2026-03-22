@@ -58,7 +58,7 @@ interface AlertsConfig {
   lastAlertSent?: string;
 }
 
-const CONFIG_DIR = path.join(os.homedir(), '.cofounder');
+const CONFIG_DIR = path.join(os.homedir(), '.aicofounder');
 const ALERTS_FILE = path.join(CONFIG_DIR, 'alerts.json');
 
 /**

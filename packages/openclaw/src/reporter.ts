@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// @cofounder/openclaw - Report formatting for OpenClaw chat platforms
+// @aicofounder/openclaw - Report formatting for OpenClaw chat platforms
 // ---------------------------------------------------------------------------
 // Formats guard reports as chat-friendly markdown messages suitable for
 // Slack, Telegram, WhatsApp, Discord, and web interfaces.
@@ -285,7 +285,7 @@ export function formatComplianceReport(report: ComplianceReport, channel?: OpenC
 // =========================================================================
 
 /**
- * Format a text scan result for the /cofounder-scan command.
+ * Format a text scan result for the /aicofounder-scan command.
  */
 export function formatScanResult(result: GuardResult, textPreview: string, channel?: OpenClawChannel): string {
   const lines: string[] = [];

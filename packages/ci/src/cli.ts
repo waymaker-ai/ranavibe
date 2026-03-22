@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
 /**
- * @cofounder/ci CLI
+ * @aicofounder/ci CLI
  *
  * Usage:
- *   cofounder-ci scan [path] [--rules all] [--format console] [--fail-on high]
- *   cofounder-ci validate [config-path]
- *   cofounder-ci check [path] [--format github-pr]
+ *   aicofounder-ci scan [path] [--rules all] [--format console] [--fail-on high]
+ *   aicofounder-ci validate [config-path]
+ *   aicofounder-ci check [path] [--format github-pr]
  */
 
 import type { ReportFormat, Severity, ScanConfig } from './types.js';
@@ -78,10 +78,10 @@ function printUsage(): void {
 CoFounder CI - AI Guardrails Scanner
 
 Usage:
-  cofounder-ci scan [path]       Scan codebase for AI security issues
-  cofounder-ci validate [config] Validate .cofounder.yml configuration
-  cofounder-ci check [path]      Scan and post results to GitHub PR
-  cofounder-ci help              Show this help message
+  aicofounder-ci scan [path]       Scan codebase for AI security issues
+  aicofounder-ci validate [config] Validate .cofounder.yml configuration
+  aicofounder-ci check [path]      Scan and post results to GitHub PR
+  aicofounder-ci help              Show this help message
 
 Options:
   --rules <rules>     Comma-separated rules or "all" (default: all)
@@ -96,10 +96,10 @@ Environment:
   GITHUB_EVENT_PATH   Path to GitHub event payload JSON
 
 Examples:
-  cofounder-ci scan ./src --rules no-hardcoded-keys,no-pii-in-prompts --format json
-  cofounder-ci scan . --fail-on critical --format sarif > results.sarif
-  cofounder-ci validate .cofounder.yml
-  cofounder-ci check . --format github-pr
+  aicofounder-ci scan ./src --rules no-hardcoded-keys,no-pii-in-prompts --format json
+  aicofounder-ci scan . --fail-on critical --format sarif > results.sarif
+  aicofounder-ci validate .cofounder.yml
+  aicofounder-ci check . --format github-pr
 `;
   process.stdout.write(usage + '\n');
 }
@@ -271,7 +271,7 @@ async function main(): Promise<void> {
     case 'version':
     case '--version':
     case '-v':
-      process.stdout.write('cofounder-ci v1.0.0\n');
+      process.stdout.write('aicofounder-ci v1.0.0\n');
       exitCode = 0;
       break;
     default:

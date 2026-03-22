@@ -3,7 +3,7 @@
  * Demonstrates step-through debugging for AI agents
  */
 
-import { AgentDebugger, DebugSession, Agent } from '@cofounder/core';
+import { AgentDebugger, DebugSession, Agent } from '@aicofounder/core';
 
 // Define a sample agent for debugging
 class ResearchAgent extends Agent {

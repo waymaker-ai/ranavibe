@@ -76,7 +76,7 @@ quality_gates:
 deployment:
   npm:
     enabled: true
-    package_name: "@cofounder/cli"
+    package_name: "@aicofounder/cli"
     registry: "https://registry.npmjs.org/"
 
   github:
@@ -100,7 +100,7 @@ ai_assistant:
 # Tooling
 tools:
   cli:
-    name: "@cofounder/cli"
+    name: "@aicofounder/cli"
     version: "0.1.0"
     commands:
       - init

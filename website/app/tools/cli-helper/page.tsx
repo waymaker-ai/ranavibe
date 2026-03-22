@@ -5,7 +5,7 @@ import { Terminal, Copy, Check } from 'lucide-react';
 
 const commands = {
   init: {
-    command: 'npx @cofounder/cli init',
+    command: 'npx @aicofounder/cli init',
     description: 'Initialize a new CoFounder project',
     flags: [
       { flag: '--template <name>', description: 'Use a specific template' },
@@ -15,7 +15,7 @@ const commands = {
     ],
   },
   check: {
-    command: 'npx @cofounder/cli check',
+    command: 'npx @aicofounder/cli check',
     description: 'Validate your CoFounder configuration',
     flags: [
       { flag: '--fix', description: 'Automatically fix issues' },
@@ -23,7 +23,7 @@ const commands = {
     ],
   },
   db: {
-    command: 'npx @cofounder/cli db',
+    command: 'npx @aicofounder/cli db',
     description: 'Database management commands',
     subcommands: [
       { command: 'migrate', description: 'Run database migrations' },
@@ -33,7 +33,7 @@ const commands = {
     ],
   },
   deploy: {
-    command: 'npx @cofounder/cli deploy',
+    command: 'npx @aicofounder/cli deploy',
     description: 'Deploy your CoFounder application',
     flags: [
       { flag: '--prod', description: 'Deploy to production' },
@@ -42,7 +42,7 @@ const commands = {
     ],
   },
   analyze: {
-    command: 'npx @cofounder/cli analyze',
+    command: 'npx @aicofounder/cli analyze',
     description: 'Analyze your project for issues',
     flags: [
       { flag: '--performance', description: 'Focus on performance issues' },
@@ -185,7 +185,7 @@ export default function CLIHelperPage() {
                         Create a new project with TypeScript:
                       </div>
                       <div className="code-block font-mono text-sm">
-                        npx @cofounder/cli init my-agent
+                        npx @aicofounder/cli init my-agent
                       </div>
                     </div>
                     <div>
@@ -193,7 +193,7 @@ export default function CLIHelperPage() {
                         Use a specific template:
                       </div>
                       <div className="code-block font-mono text-sm">
-                        npx @cofounder/cli init my-agent --template chatbot
+                        npx @aicofounder/cli init my-agent --template chatbot
                       </div>
                     </div>
                   </>
@@ -206,7 +206,7 @@ export default function CLIHelperPage() {
                         Check configuration:
                       </div>
                       <div className="code-block font-mono text-sm">
-                        npx @cofounder/cli check
+                        npx @aicofounder/cli check
                       </div>
                     </div>
                     <div>
@@ -214,7 +214,7 @@ export default function CLIHelperPage() {
                         Auto-fix issues:
                       </div>
                       <div className="code-block font-mono text-sm">
-                        npx @cofounder/cli check --fix
+                        npx @aicofounder/cli check --fix
                       </div>
                     </div>
                   </>
@@ -227,7 +227,7 @@ export default function CLIHelperPage() {
                         Run migrations:
                       </div>
                       <div className="code-block font-mono text-sm">
-                        npx @cofounder/cli db migrate
+                        npx @aicofounder/cli db migrate
                       </div>
                     </div>
                     <div>
@@ -235,7 +235,7 @@ export default function CLIHelperPage() {
                         Check migration status:
                       </div>
                       <div className="code-block font-mono text-sm">
-                        npx @cofounder/cli db status
+                        npx @aicofounder/cli db status
                       </div>
                     </div>
                   </>
@@ -248,7 +248,7 @@ export default function CLIHelperPage() {
                         Deploy to production:
                       </div>
                       <div className="code-block font-mono text-sm">
-                        npx @cofounder/cli deploy --prod
+                        npx @aicofounder/cli deploy --prod
                       </div>
                     </div>
                     <div>
@@ -256,7 +256,7 @@ export default function CLIHelperPage() {
                         Create preview deployment:
                       </div>
                       <div className="code-block font-mono text-sm">
-                        npx @cofounder/cli deploy --preview
+                        npx @aicofounder/cli deploy --preview
                       </div>
                     </div>
                   </>
@@ -269,7 +269,7 @@ export default function CLIHelperPage() {
                         Analyze all aspects:
                       </div>
                       <div className="code-block font-mono text-sm">
-                        npx @cofounder/cli analyze
+                        npx @aicofounder/cli analyze
                       </div>
                     </div>
                     <div>
@@ -277,7 +277,7 @@ export default function CLIHelperPage() {
                         Focus on security:
                       </div>
                       <div className="code-block font-mono text-sm">
-                        npx @cofounder/cli analyze --security
+                        npx @aicofounder/cli analyze --security
                       </div>
                     </div>
                   </>

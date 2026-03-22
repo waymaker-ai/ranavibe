@@ -9,7 +9,7 @@ import {
   ListPromptsRequestSchema,
   GetPromptRequestSchema,
 } from '@modelcontextprotocol/sdk/types.js';
-import { ConfigParser, QualityGateChecker, REPMValidator, TemplateManager } from '@cofounder/core';
+import { ConfigParser, QualityGateChecker, REPMValidator, TemplateManager } from '@aicofounder/core';
 import * as path from 'path';
 import * as fs from 'fs';
 
@@ -18,7 +18,7 @@ import * as fs from 'fs';
 // ============================================================================
 
 const server = new Server({
-  name: 'cofounder-mcp',
+  name: 'aicofounder-mcp',
   version: '2.1.0',
 });
 

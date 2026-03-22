@@ -22,7 +22,7 @@ import type { GeneratedFile, ParsedIntent, ImplementationPlan } from '../types';
 const program = new Command();
 
 program
-  .name('cofounder-generate')
+  .name('aicofounder-generate')
   .description('Generate production-ready code from natural language')
   .version('1.0.0');
 

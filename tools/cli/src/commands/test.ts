@@ -65,7 +65,7 @@ export async function testCommand(
     console.log(chalk.gray('\nExample test file:\n'));
     console.log(
       chalk.white(`
-import { describe, aiTest, runTimes } from '@cofounder/testing';
+import { describe, aiTest, runTimes } from '@aicofounder/testing';
 
 describe('My AI Feature', () => {
   aiTest('should work correctly', async ({ expect }) => {
@@ -90,15 +90,15 @@ describe('My AI Feature', () => {
     console.log(chalk.gray(`Cost budget: $${options.maxCost.toFixed(2)}\n`));
   }
 
-  // Dynamic import of @cofounder/testing
+  // Dynamic import of @aicofounder/testing
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let testing: any = null;
 
   try {
-    testing = await (Function('return import("@cofounder/testing")')() as Promise<unknown>);
+    testing = await (Function('return import("@aicofounder/testing")')() as Promise<unknown>);
   } catch {
-    // @cofounder/testing not installed, use built-in runner
-    console.log(chalk.yellow('Note: @cofounder/testing not installed, using built-in runner'));
+    // @aicofounder/testing not installed, use built-in runner
+    console.log(chalk.yellow('Note: @aicofounder/testing not installed, using built-in runner'));
   }
 
   const startTime = Date.now();
@@ -249,7 +249,7 @@ export async function watchTests(pattern?: string): Promise<void> {
   const watcher = chokidar.watch(
     pattern || ['**/*.test.ts', '**/*.spec.ts', 'src/**/*.ts'],
     {
-      ignored: ['node_modules', 'dist', '.cofounder'],
+      ignored: ['node_modules', 'dist', '.aicofounder'],
       persistent: true,
     }
   );
@@ -294,7 +294,7 @@ export async function generateTest(
  * Tests for ${path.basename(targetFile)}
  */
 
-import { describe, aiTest, runTimes } from '@cofounder/testing';
+import { describe, aiTest, runTimes } from '@aicofounder/testing';
 
 describe('${path.basename(targetFile, path.extname(targetFile))}', () => {
   aiTest('should work correctly', async ({ expect }) => {
@@ -349,7 +349,7 @@ describe('${path.basename(targetFile, path.extname(targetFile))}', () => {
  * Show test coverage report
  */
 export async function showCoverage(): Promise<void> {
-  const coverageDir = path.join(process.cwd(), '.cofounder', 'coverage');
+  const coverageDir = path.join(process.cwd(), '.aicofounder', 'coverage');
 
   if (!fs.existsSync(coverageDir)) {
     console.log(chalk.yellow('No coverage data found. Run tests with --coverage first.'));
@@ -365,7 +365,7 @@ export async function showCoverage(): Promise<void> {
  * List all baselines
  */
 export async function listBaselines(): Promise<void> {
-  const baselineDir = path.join(process.cwd(), '.cofounder', 'baselines');
+  const baselineDir = path.join(process.cwd(), '.aicofounder', 'baselines');
 
   if (!fs.existsSync(baselineDir)) {
     console.log(chalk.yellow('No baselines found.'));

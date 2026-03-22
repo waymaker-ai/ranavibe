@@ -1,5 +1,5 @@
 /**
- * @cofounder/sandbox - Type definitions
+ * @aicofounder/sandbox - Type definitions
  * Lightweight Node.js agent execution sandbox
  */
 

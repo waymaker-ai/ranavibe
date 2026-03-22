@@ -1,5 +1,5 @@
 {
-  "name": "@cofounder/helpers",
+  "name": "@aicofounder/helpers",
   "version": "1.0.0",
   "description": "Quick LLM helpers - One-line AI functions for common tasks",
   "main": "dist/index.js",
@@ -34,7 +34,7 @@
   "author": "Waymaker",
   "license": "MIT",
   "dependencies": {
-    "@cofounder/core": "^2.0.0",
+    "@aicofounder/core": "workspace:*",
     "zod": "^3.22.4"
   },
   "devDependencies": {

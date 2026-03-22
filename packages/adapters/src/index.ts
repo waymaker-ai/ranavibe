@@ -1,5 +1,5 @@
 /**
- * @cofounder/adapters — Integration adapters for enterprise guardrail products.
+ * @aicofounder/adapters — Integration adapters for enterprise guardrail products.
  *
  * Provides unified conversion between CoFounder policies and Lakera Guard,
  * AWS Bedrock Guardrails, and Galileo evaluation formats.

@@ -254,9 +254,9 @@ quality_gates:
 # Tool Integration
 tools:
   design_system:
-    checker: "cofounder check-design-system"
-    coverage: "cofounder design-coverage"
-    violations: "cofounder design-violations --fix"
+    checker: "aicofounder check-design-system"
+    coverage: "aicofounder design-coverage"
+    violations: "aicofounder design-violations --fix"
 
   accessibility:
     audit: "npm run a11y-audit"
@@ -313,7 +313,7 @@ ai_assistant:
 deployment:
   checks:
     - name: "Design system consistency"
-      command: "cofounder check-design-system"
+      command: "aicofounder check-design-system"
       fail_on_error: true
 
     - name: "Accessibility compliance"

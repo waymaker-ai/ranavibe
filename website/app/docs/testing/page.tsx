@@ -9,7 +9,7 @@ const features = [
     icon: FlaskConical,
     title: 'AI Test Runner',
     description: 'Purpose-built test runner for AI applications with special matchers',
-    code: `import { aiTest, expect } from '@cofounder/testing';
+    code: `import { aiTest, expect } from '@aicofounder/testing';
 
 aiTest('summarizes articles correctly', async () => {
   const result = await summarize(article);
@@ -25,7 +25,7 @@ aiTest('summarizes articles correctly', async () => {
     icon: CheckCircle,
     title: 'Semantic Matching',
     description: 'Compare outputs by meaning, not exact strings',
-    code: `import { semanticMatch, semanticSimilarity } from '@cofounder/testing';
+    code: `import { semanticMatch, semanticSimilarity } from '@aicofounder/testing';
 
 // Check if two texts have the same meaning
 const match = await semanticMatch(
@@ -42,7 +42,7 @@ const score = await semanticSimilarity(text1, text2);
     icon: BarChart3,
     title: 'Statistical Assertions',
     description: 'Handle non-deterministic AI outputs with statistical testing',
-    code: `import { aiTest, expect } from '@cofounder/testing';
+    code: `import { aiTest, expect } from '@aicofounder/testing';
 
 aiTest('classifier is mostly accurate', async () => {
   const results = await runMultiple(100, () =>
@@ -63,7 +63,7 @@ aiTest('classifier is mostly accurate', async () => {
     icon: Clock,
     title: 'Latency Assertions',
     description: 'Ensure responses meet performance requirements',
-    code: `import { aiTest, expect } from '@cofounder/testing';
+    code: `import { aiTest, expect } from '@aicofounder/testing';
 
 aiTest('responds within SLA', async () => {
   const result = await timed(() => chat('Hello'));
@@ -80,7 +80,7 @@ aiTest('responds within SLA', async () => {
     icon: DollarSign,
     title: 'Cost Assertions',
     description: 'Control costs with per-test budget limits',
-    code: `import { aiTest, expect } from '@cofounder/testing';
+    code: `import { aiTest, expect } from '@aicofounder/testing';
 
 aiTest('stays within budget', async () => {
   const result = await tracked(() =>
@@ -101,7 +101,7 @@ aiTest('stays within budget', async () => {
     icon: Camera,
     title: 'Snapshot Testing',
     description: 'Catch regressions with semantic snapshots',
-    code: `import { aiTest, expect } from '@cofounder/testing';
+    code: `import { aiTest, expect } from '@aicofounder/testing';
 
 aiTest('prompt output is stable', async () => {
   const result = await generate(prompt);
@@ -146,7 +146,7 @@ export default function TestingPage() {
             statistical assertions, cost tracking, and regression testing.
           </p>
           <div className="mt-4 code-block font-mono text-sm">
-            npm install @cofounder/testing
+            npm install @aicofounder/testing
           </div>
         </motion.div>
 
@@ -186,7 +186,7 @@ export default function TestingPage() {
           <h2 className="text-2xl font-bold mb-4">Configuration</h2>
           <div className="code-block font-mono text-sm overflow-x-auto">
             <pre>{`// cofounder.test.config.ts
-import { defineConfig } from '@cofounder/testing';
+import { defineConfig } from '@aicofounder/testing';
 
 export default defineConfig({
   // Run tests in parallel
@@ -224,7 +224,7 @@ export default defineConfig({
           </p>
           <div className="code-block font-mono text-sm overflow-x-auto">
             <pre>{`// jest.setup.ts
-import '@cofounder/testing/jest';
+import '@aicofounder/testing/jest';
 
 // Now use in any Jest test
 test('AI output is correct', async () => {

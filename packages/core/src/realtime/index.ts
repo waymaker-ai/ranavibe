@@ -4,7 +4,7 @@
  *
  * @example
  * ```typescript
- * import { createVoiceSession, VoiceSession } from '@cofounder/core';
+ * import { createVoiceSession, VoiceSession } from '@aicofounder/core';
  *
  * // Create voice session
  * const session = createVoiceSession({

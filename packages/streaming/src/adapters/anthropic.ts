@@ -1,5 +1,5 @@
 /**
- * @cofounder/streaming - Anthropic Adapter
+ * @aicofounder/streaming - Anthropic Adapter
  *
  * Parses Anthropic SSE streaming responses and extracts text deltas.
  * Handles the Anthropic Messages API streaming format with

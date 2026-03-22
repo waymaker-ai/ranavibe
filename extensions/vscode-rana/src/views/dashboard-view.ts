@@ -6,7 +6,7 @@ import { WorkspaceFinding } from '../scanners/workspace-scanner';
  * Shows cost summary, security summary, and compliance score.
  */
 export class DashboardViewProvider implements vscode.WebviewViewProvider {
-  public static readonly viewType = 'cofounder.dashboard';
+  public static readonly viewType = 'aicofounder.dashboard';
 
   private webviewView?: vscode.WebviewView;
   private findings: WorkspaceFinding[] = [];
@@ -44,7 +44,7 @@ export class DashboardViewProvider implements vscode.WebviewViewProvider {
     webviewView.webview.onDidReceiveMessage((message) => {
       switch (message.command) {
         case 'scan':
-          vscode.commands.executeCommand('cofounder.scanWorkspace');
+          vscode.commands.executeCommand('aicofounder.scanWorkspace');
           break;
         case 'openSettings':
           vscode.commands.executeCommand('workbench.action.openSettings', 'cofounder');

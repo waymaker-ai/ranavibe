@@ -21,7 +21,7 @@ interface RanaCredentials {
   lastUpdated: string;
 }
 
-const CREDENTIALS_DIR = path.join(os.homedir(), '.cofounder');
+const CREDENTIALS_DIR = path.join(os.homedir(), '.aicofounder');
 const CREDENTIALS_FILE = path.join(CREDENTIALS_DIR, 'credentials.json');
 
 const PROVIDERS = [
@@ -200,7 +200,7 @@ export async function configSet(options: { provider?: string; key?: string } = {
   // Show usage
   console.log(chalk.bold('Usage:\n'));
   console.log(chalk.gray('  In your code:'));
-  console.log(chalk.cyan(`    import { cofounder } from '@cofounder/core';`));
+  console.log(chalk.cyan(`    import { cofounder } from '@aicofounder/core';`));
   console.log(chalk.cyan(`    const response = await cofounder.chat('Hello!');`));
   console.log();
   console.log(chalk.gray('  Or set environment variable:'));

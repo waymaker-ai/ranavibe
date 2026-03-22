@@ -10,9 +10,9 @@ const examples = [
     title: 'AI Chatbot with RAG',
     description: 'Build a knowledge-grounded chatbot that answers questions from your documentation',
     icon: MessageSquare,
-    tags: ['@cofounder/rag', '@cofounder/prompts', 'Next.js'],
-    code: `import { RAGPresets } from '@cofounder/rag';
-import { PromptManager } from '@cofounder/prompts';
+    tags: ['@aicofounder/rag', '@aicofounder/prompts', 'Next.js'],
+    code: `import { RAGPresets } from '@aicofounder/rag';
+import { PromptManager } from '@aicofounder/prompts';
 
 // Setup RAG pipeline
 const rag = RAGPresets.chat();
@@ -49,8 +49,8 @@ export async function chat(question: string) {
     title: 'Document Summarizer',
     description: 'Summarize long documents with customizable styles and automatic caching',
     icon: FileText,
-    tags: ['@cofounder/helpers', 'Caching'],
-    code: `import { summarize, extract } from '@cofounder/helpers';
+    tags: ['@aicofounder/helpers', 'Caching'],
+    code: `import { summarize, extract } from '@aicofounder/helpers';
 
 // Summarize a document
 const summary = await summarize(longDocument, {
@@ -73,8 +73,8 @@ console.log(keyPoints);`,
     title: 'Email Classifier',
     description: 'Automatically classify and route incoming emails to the right department',
     icon: Brain,
-    tags: ['@cofounder/helpers', 'Classification'],
-    code: `import { classify, extract, sentiment } from '@cofounder/helpers';
+    tags: ['@aicofounder/helpers', 'Classification'],
+    code: `import { classify, extract, sentiment } from '@aicofounder/helpers';
 
 async function processEmail(email: string) {
   // Classify into departments
@@ -108,8 +108,8 @@ async function processEmail(email: string) {
     title: 'Multi-Language Support',
     description: 'Translate content to multiple languages with preserved formatting',
     icon: Sparkles,
-    tags: ['@cofounder/helpers', 'Translation'],
-    code: `import { translate, rewrite } from '@cofounder/helpers';
+    tags: ['@aicofounder/helpers', 'Translation'],
+    code: `import { translate, rewrite } from '@aicofounder/helpers';
 
 const content = "Welcome to our platform!";
 
@@ -137,8 +137,8 @@ const ukVersion = await rewrite(content, {
     title: 'Code Documentation RAG',
     description: 'Search and answer questions about your codebase',
     icon: Code,
-    tags: ['@cofounder/rag', 'Code Search'],
-    code: `import { RAGPresets, CodeChunker } from '@cofounder/rag';
+    tags: ['@aicofounder/rag', 'Code Search'],
+    code: `import { RAGPresets, CodeChunker } from '@aicofounder/rag';
 
 // Create code-optimized pipeline
 const pipeline = RAGPresets.code('typescript');
@@ -167,8 +167,8 @@ console.log('Relevant files:', result.sources);`,
     title: 'A/B Testing Prompts',
     description: 'Test different prompt variants and measure performance',
     icon: Search,
-    tags: ['@cofounder/prompts', 'A/B Testing'],
-    code: `import { PromptManager } from '@cofounder/prompts';
+    tags: ['@aicofounder/prompts', 'A/B Testing'],
+    code: `import { PromptManager } from '@aicofounder/prompts';
 
 const pm = new PromptManager({
   workspace: 'my-app',

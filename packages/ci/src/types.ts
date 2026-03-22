@@ -1,5 +1,5 @@
 /**
- * @cofounder/ci - Type definitions
+ * @aicofounder/ci - Type definitions
  * Zero-dependency CI guardrails for AI applications
  */
 

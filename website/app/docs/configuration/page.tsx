@@ -9,7 +9,7 @@ const features = [
     icon: Settings,
     title: 'Global Configuration',
     description: 'Configure CoFounder settings for your entire application',
-    code: `import { configure, getConfig } from '@cofounder/core';
+    code: `import { configure, getConfig } from '@aicofounder/core';
 
 // Configure CoFounder globally
 configure({
@@ -50,7 +50,7 @@ console.log(config.defaultModel);  // 'claude-sonnet-4-20250514'`,
     icon: Key,
     title: 'Provider Configuration',
     description: 'Set up API keys and provider settings',
-    code: `import { configureProviders } from '@cofounder/core';
+    code: `import { configureProviders } from '@aicofounder/core';
 
 configureProviders({
   anthropic: {
@@ -121,7 +121,7 @@ CoFounder_OTLP_ENDPOINT=http://localhost:4318`,
     icon: Database,
     title: 'Storage Configuration',
     description: 'Configure storage backends for various features',
-    code: `import { configureStorage } from '@cofounder/core';
+    code: `import { configureStorage } from '@aicofounder/core';
 
 configureStorage({
   // Prompt storage
@@ -142,7 +142,7 @@ configureStorage({
     type: 'pinecone',
     apiKey: process.env.PINECONE_API_KEY,
     environment: 'us-east-1',
-    indexName: 'cofounder-vectors'
+    indexName: 'aicofounder-vectors'
   },
 
   // Cache storage
@@ -164,7 +164,7 @@ configureStorage({
     icon: Shield,
     title: 'Security Configuration',
     description: 'Configure security settings and policies',
-    code: `import { configureSecurity } from '@cofounder/core';
+    code: `import { configureSecurity } from '@aicofounder/core';
 
 configureSecurity({
   // PII detection and redaction
@@ -213,7 +213,7 @@ configureSecurity({
     icon: Zap,
     title: 'Performance Configuration',
     description: 'Tune performance and optimization settings',
-    code: `import { configurePerformance } from '@cofounder/core';
+    code: `import { configurePerformance } from '@aicofounder/core';
 
 configurePerformance({
   // Concurrency limits
@@ -283,7 +283,7 @@ export default function ConfigurationPage() {
             security, and performance settings.
           </p>
           <div className="mt-4 code-block font-mono text-sm">
-            npm install @cofounder/core
+            npm install @aicofounder/core
           </div>
         </motion.div>
 
@@ -326,7 +326,7 @@ export default function ConfigurationPage() {
           </p>
           <div className="code-block font-mono text-sm overflow-x-auto">
             <pre>{`// cofounder.config.ts
-import { defineConfig } from '@cofounder/core';
+import { defineConfig } from '@aicofounder/core';
 
 export default defineConfig({
   defaultModel: 'claude-sonnet-4-20250514',
@@ -373,7 +373,7 @@ export default defineConfig({
             Validate your configuration at startup:
           </p>
           <div className="code-block font-mono text-sm overflow-x-auto">
-            <pre>{`import { validateConfig } from '@cofounder/core';
+            <pre>{`import { validateConfig } from '@aicofounder/core';
 
 const { valid, errors, warnings } = validateConfig();
 

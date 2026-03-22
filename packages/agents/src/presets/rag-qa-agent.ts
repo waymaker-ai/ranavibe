@@ -1,5 +1,5 @@
 /**
- * @cofounder/agents - RAG QA Agent
+ * @aicofounder/agents - RAG QA Agent
  * Answers questions using knowledge base retrieval
  */
 

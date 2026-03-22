@@ -1,5 +1,5 @@
 /**
- * @cofounder/integrations/huggingface
+ * @aicofounder/integrations/huggingface
  * Hugging Face models integration
  *
  * Supports:
@@ -10,7 +10,7 @@
  *
  * @example
  * ```typescript
- * import { createHuggingFaceProvider } from '@cofounder/core';
+ * import { createHuggingFaceProvider } from '@aicofounder/core';
  *
  * const hf = createHuggingFaceProvider({
  *   apiKey: process.env.HF_API_KEY,

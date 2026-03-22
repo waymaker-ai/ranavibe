@@ -1,5 +1,5 @@
 {
-  "name": "@cofounder/streaming",
+  "name": "@aicofounder/streaming",
   "version": "1.0.0",
   "description": "CoFounder streaming package",
   "main": "dist/index.js",

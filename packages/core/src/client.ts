@@ -567,7 +567,7 @@ class RanaChatBuilder {
  * Create a CoFounder client instance
  *
  * @example
- * import { createCoFounder } from '@cofounder/core';
+ * import { createCoFounder } from '@aicofounder/core';
  *
  * const cofounder = createCoFounder({
  *   providers: {

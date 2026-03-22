@@ -4,7 +4,7 @@
  *
  * @example
  * ```typescript
- * import { createPromptLibrary, PromptVersion } from '@cofounder/core';
+ * import { createPromptLibrary, PromptVersion } from '@aicofounder/core';
  *
  * const library = createPromptLibrary({
  *   storage: 'file',

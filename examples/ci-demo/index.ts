@@ -1,5 +1,5 @@
 /**
- * @cofounder/ci Demo
+ * @aicofounder/ci Demo
  *
  * Run with: npx tsx index.ts
  *
@@ -13,7 +13,7 @@ import {
   runAndFormat,
   ALL_RULES,
   getRules,
-} from '@cofounder/ci';
+} from '@aicofounder/ci';
 
 // ─── 1. List available rules ────────────────────────────────────────────────────
 

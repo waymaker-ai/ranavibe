@@ -1,5 +1,5 @@
 /**
- * @cofounder/guard Demo
+ * @aicofounder/guard Demo
  *
  * Run with: npx tsx index.ts
  *
@@ -7,7 +7,7 @@
  * cost tracking, and the reporting API.
  */
 
-import { createGuard, guard, detectPII, redactPII, hasInjection } from '@cofounder/guard';
+import { createGuard, guard, detectPII, redactPII, hasInjection } from '@aicofounder/guard';
 
 // ─── 1. One-shot guard check ───────────────────────────────────────────────────
 

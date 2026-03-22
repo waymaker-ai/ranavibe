@@ -9,7 +9,7 @@ const plugins = [
     icon: Hash,
     title: 'Slack Integration',
     description: 'Build AI-powered Slack bots with conversation context',
-    code: `import { SlackPlugin } from '@cofounder/plugins/slack';
+    code: `import { SlackPlugin } from '@aicofounder/plugins/slack';
 
 const slack = new SlackPlugin({
   token: process.env.SLACK_BOT_TOKEN,
@@ -42,7 +42,7 @@ await slack.start();`,
     icon: MessageSquare,
     title: 'Discord Integration',
     description: 'Create Discord bots with slash commands and threads',
-    code: `import { DiscordPlugin } from '@cofounder/plugins/discord';
+    code: `import { DiscordPlugin } from '@aicofounder/plugins/discord';
 
 const discord = new DiscordPlugin({
   token: process.env.DISCORD_BOT_TOKEN,
@@ -75,7 +75,7 @@ await discord.start();`,
     icon: Mic,
     title: 'Voice Integration',
     description: 'Build voice-enabled AI applications',
-    code: `import { VoicePlugin } from '@cofounder/plugins/voice';
+    code: `import { VoicePlugin } from '@aicofounder/plugins/voice';
 
 const voice = new VoicePlugin({
   sttProvider: 'whisper',       // Speech-to-text
@@ -107,7 +107,7 @@ const response = await voice.converse(audioInput, async (text) => {
     icon: Mail,
     title: 'Email Integration',
     description: 'AI-powered email processing and responses',
-    code: `import { EmailPlugin } from '@cofounder/plugins/email';
+    code: `import { EmailPlugin } from '@aicofounder/plugins/email';
 
 const email = new EmailPlugin({
   imap: {
@@ -147,7 +147,7 @@ await email.start();`,
     icon: FileText,
     title: 'Document Processing',
     description: 'Extract and process documents with AI',
-    code: `import { DocsPlugin } from '@cofounder/plugins/docs';
+    code: `import { DocsPlugin } from '@aicofounder/plugins/docs';
 
 const docs = new DocsPlugin({
   ocrProvider: 'google-vision',   // For scanned documents
@@ -180,7 +180,7 @@ const summary = await docs.summarize(fileBuffer, {
     icon: Plug,
     title: 'Custom Plugins',
     description: 'Create your own plugins with the plugin API',
-    code: `import { createPlugin, PluginContext } from '@cofounder/core';
+    code: `import { createPlugin, PluginContext } from '@aicofounder/core';
 
 const myPlugin = createPlugin({
   name: 'my-plugin',
@@ -247,7 +247,7 @@ export default function PluginsPage() {
             and document processing. Or create your own custom plugins.
           </p>
           <div className="mt-4 code-block font-mono text-sm">
-            npm install @cofounder/plugins
+            npm install @aicofounder/plugins
           </div>
         </motion.div>
 
@@ -287,14 +287,14 @@ export default function PluginsPage() {
           <h2 className="text-2xl font-bold mb-6">All Available Plugins</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              '@cofounder/plugins/slack',
-              '@cofounder/plugins/discord',
-              '@cofounder/plugins/voice',
-              '@cofounder/plugins/email',
-              '@cofounder/plugins/docs',
-              '@cofounder/plugins/notion',
-              '@cofounder/plugins/github',
-              '@cofounder/plugins/jira'
+              '@aicofounder/plugins/slack',
+              '@aicofounder/plugins/discord',
+              '@aicofounder/plugins/voice',
+              '@aicofounder/plugins/email',
+              '@aicofounder/plugins/docs',
+              '@aicofounder/plugins/notion',
+              '@aicofounder/plugins/github',
+              '@aicofounder/plugins/jira'
             ].map((pkg) => (
               <div
                 key={pkg}

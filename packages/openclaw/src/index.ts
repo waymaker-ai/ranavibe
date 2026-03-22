@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// @cofounder/openclaw - CoFounder guardrails for OpenClaw agents
+// @aicofounder/openclaw - CoFounder guardrails for OpenClaw agents
 // ---------------------------------------------------------------------------
 // Zero-dependency integration providing PII detection, prompt injection
 // blocking, toxicity detection, compliance enforcement, and cost tracking

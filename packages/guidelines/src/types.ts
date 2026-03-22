@@ -1,5 +1,5 @@
 /**
- * @cofounder/guidelines - Type definitions
+ * @aicofounder/guidelines - Type definitions
  */
 
 /**

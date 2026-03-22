@@ -134,9 +134,9 @@ export default function CLIPage() {
           className="code-block font-mono text-sm mb-12"
         >
           <div className="text-foreground-secondary"># Install globally</div>
-          <div>npm install -g @cofounder/cli</div>
+          <div>npm install -g @aicofounder/cli</div>
           <div className="mt-4 text-foreground-secondary"># Or use with npx</div>
-          <div>npx @cofounder/cli init</div>
+          <div>npx @aicofounder/cli init</div>
         </motion.div>
 
         <div className="space-y-12">

@@ -14,13 +14,13 @@ const faqs = [
         answer: `Install all packages at once:
 
 \`\`\`bash
-npm install @cofounder/core @cofounder/helpers @cofounder/prompts @cofounder/rag
+npm install @aicofounder/core @aicofounder/helpers @aicofounder/prompts @aicofounder/rag
 \`\`\`
 
 Or install the CLI globally:
 
 \`\`\`bash
-npm install -g @cofounder/cli
+npm install -g @aicofounder/cli
 \`\`\``,
       },
       {
@@ -109,7 +109,7 @@ npx cofounder doctor
 Or use environment-specific configuration:
 
 \`\`\`typescript
-import { configure } from '@cofounder/core';
+import { configure } from '@aicofounder/core';
 
 configure({
   providers: {
@@ -162,7 +162,7 @@ const agent = new Agent({
 For additional control:
 
 \`\`\`typescript
-import { RateLimiter } from '@cofounder/core';
+import { RateLimiter } from '@aicofounder/core';
 
 const limiter = new RateLimiter({
   requests: { max: 100, window: '1m' }
@@ -211,7 +211,7 @@ const compressor = new MemoryCompressor({
         answer: `CoFounder tracks costs automatically:
 
 \`\`\`typescript
-import { CostTracker } from '@cofounder/core';
+import { CostTracker } from '@aicofounder/core';
 
 const tracker = new CostTracker();
 
@@ -233,7 +233,7 @@ npx cofounder dashboard
         answer: `Set hard budget limits to prevent overspending:
 
 \`\`\`typescript
-import { BudgetManager } from '@cofounder/core';
+import { BudgetManager } from '@aicofounder/core';
 
 const budget = new BudgetManager();
 
@@ -256,7 +256,7 @@ await budget.setUserBudget(userId, {
 4. **Use model routing** - automatically pick cheapest suitable model
 
 \`\`\`typescript
-import { CostOptimizer } from '@cofounder/core';
+import { CostOptimizer } from '@aicofounder/core';
 
 const optimizer = new CostOptimizer({
   strategies: ['caching', 'model-routing', 'prompt-compression']
@@ -299,13 +299,13 @@ Solutions:
 1. **Use a model with larger context** (e.g., claude-3 has 200k tokens)
 2. **Compress your prompt**:
 \`\`\`typescript
-import { compressPrompt } from '@cofounder/helpers';
+import { compressPrompt } from '@aicofounder/helpers';
 const compressed = await compressPrompt(longPrompt);
 \`\`\`
 
 3. **Chunk your input**:
 \`\`\`typescript
-import { SemanticChunker } from '@cofounder/rag';
+import { SemanticChunker } from '@aicofounder/rag';
 const chunks = await chunker.chunk(longDocument);
 \`\`\``,
       },
@@ -314,7 +314,7 @@ const chunks = await chunker.chunk(longDocument);
         answer: `The AI provider is temporarily down. CoFounder can auto-fallback:
 
 \`\`\`typescript
-import { FallbackChain } from '@cofounder/core';
+import { FallbackChain } from '@aicofounder/core';
 
 const chain = new FallbackChain({
   providers: [
@@ -334,7 +334,7 @@ const result = await chain.chat({ messages });
 Use structured output to ensure correct format:
 
 \`\`\`typescript
-import { extract } from '@cofounder/helpers';
+import { extract } from '@aicofounder/helpers';
 
 const data = await extract(text, {
   name: 'string',

@@ -120,7 +120,7 @@ export async function costOptimizeCommand(options: {
  * Load usage data from cost store
  */
 async function loadUsageData(): Promise<UsagePattern[]> {
-  const configDir = path.join(os.homedir(), '.cofounder');
+  const configDir = path.join(os.homedir(), '.aicofounder');
   const costFile = path.join(configDir, 'costs.json');
 
   try {
@@ -365,7 +365,7 @@ async function applyOptimizations(optimizations: Optimization[]): Promise<void> 
 
       case 'batching':
         console.log(chalk.green('  ✓ Use batchProcess() for multiple requests:'));
-        console.log(chalk.gray('    import { batchProcess } from "@cofounder/core";'));
+        console.log(chalk.gray('    import { batchProcess } from "@aicofounder/core";'));
         break;
 
       default:

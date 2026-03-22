@@ -22,7 +22,7 @@ const messages = [
 
 const response = await model.invoke(messages);
 console.log(response.content);`,
-    cofounder: `import { createCoFounder } from '@cofounder/core';
+    cofounder: `import { createCoFounder } from '@aicofounder/core';
 
 const cofounder = createCoFounder();
 
@@ -66,8 +66,8 @@ const retrievalChain = await createRetrievalChain({
 });
 
 const response = await retrievalChain.invoke({ input: "question" });`,
-    cofounder: `import { createCoFounder } from '@cofounder/core';
-import { createRAG } from '@cofounder/rag';
+    cofounder: `import { createCoFounder } from '@aicofounder/core';
+import { createRAG } from '@aicofounder/rag';
 
 const cofounder = createCoFounder();
 const rag = createRAG({ cofounder });
@@ -103,7 +103,7 @@ const model = new ChatOpenAI({
 
 const response = await model.invoke("Weather in SF?");
 // Handle tool calls manually...`,
-    cofounder: `import { createCoFounder, createTool } from '@cofounder/core';
+    cofounder: `import { createCoFounder, createTool } from '@aicofounder/core';
 
 const cofounder = createCoFounder();
 

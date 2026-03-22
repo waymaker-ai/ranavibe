@@ -17,7 +17,7 @@ interface ComplianceResult {
 export function registerCheckComplianceCommand(
   context: vscode.ExtensionContext
 ): vscode.Disposable {
-  return vscode.commands.registerCommand('cofounder.checkCompliance', async () => {
+  return vscode.commands.registerCommand('aicofounder.checkCompliance', async () => {
     const editor = vscode.window.activeTextEditor;
     if (!editor) {
       vscode.window.showWarningMessage('CoFounder: No active editor for compliance check.');

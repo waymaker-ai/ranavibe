@@ -1,5 +1,5 @@
 /**
- * @cofounder/ui - Beautiful glass morphism component library
+ * @aicofounder/ui - Beautiful glass morphism component library
  *
  * A collection of beautifully designed React components with glass morphism effects,
  * gradients, and modern aesthetics built with Tailwind CSS.

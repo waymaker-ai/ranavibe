@@ -58,7 +58,7 @@ export class WebhookReporter {
       await fetch(this.url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ source: 'cofounder-guard', events: batch }),
+        body: JSON.stringify({ source: 'aicofounder-guard', events: batch }),
       });
     } catch {
       // Re-queue on failure

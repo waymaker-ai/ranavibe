@@ -6,7 +6,7 @@
  *
  * @example
  * ```typescript
- * import { MakeIntegration } from '@cofounder/core';
+ * import { MakeIntegration } from '@aicofounder/core';
  *
  * const make = new MakeIntegration({
  *   apiKey: process.env.MAKE_API_KEY,

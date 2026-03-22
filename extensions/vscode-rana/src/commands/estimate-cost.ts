@@ -8,7 +8,7 @@ import { detectModels, estimateTokens, estimateCost, getModelCost } from '../det
 export function registerEstimateCostCommand(
   context: vscode.ExtensionContext
 ): vscode.Disposable {
-  return vscode.commands.registerCommand('cofounder.estimateCost', async () => {
+  return vscode.commands.registerCommand('aicofounder.estimateCost', async () => {
     const editor = vscode.window.activeTextEditor;
     if (!editor) {
       vscode.window.showWarningMessage('CoFounder: No active editor for cost estimation.');

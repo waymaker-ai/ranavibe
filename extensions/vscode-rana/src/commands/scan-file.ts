@@ -8,7 +8,7 @@ export function registerScanFileCommand(
   context: vscode.ExtensionContext,
   inlineScanner: InlineScanner
 ): vscode.Disposable {
-  return vscode.commands.registerCommand('cofounder.scan', () => {
+  return vscode.commands.registerCommand('aicofounder.scan', () => {
     const editor = vscode.window.activeTextEditor;
     if (!editor) {
       vscode.window.showWarningMessage('CoFounder: No active editor to scan.');

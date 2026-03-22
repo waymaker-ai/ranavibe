@@ -13,9 +13,9 @@ export {
   type CoFounderConfig,
   type QualityGate,
   type REPMPhase,
-} from '@cofounder/core';
+} from '@aicofounder/core';
 
-import { ConfigParser, QualityGateChecker, REPMValidator, TemplateManager } from '@cofounder/core';
+import { ConfigParser, QualityGateChecker, REPMValidator, TemplateManager } from '@aicofounder/core';
 import * as fs from 'fs';
 import * as path from 'path';
 

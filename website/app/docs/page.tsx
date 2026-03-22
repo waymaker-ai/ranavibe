@@ -19,7 +19,7 @@ const sections = [
   {
     icon: Package,
     title: 'Packages',
-    description: 'Learn about @cofounder/helpers, @cofounder/prompts, and @cofounder/rag',
+    description: 'Learn about @aicofounder/helpers, @aicofounder/prompts, and @aicofounder/rag',
     href: '/docs/packages',
   },
   {
@@ -208,9 +208,9 @@ export default function DocsPage() {
           <h2 className="text-2xl font-bold mb-4 text-center">Quick Install</h2>
           <div className="code-block font-mono text-sm">
             <div className="text-foreground-secondary"># Install all CoFounder packages</div>
-            <div className="mt-2">npm install @cofounder/core @cofounder/helpers @cofounder/prompts @cofounder/rag</div>
+            <div className="mt-2">npm install @aicofounder/core @aicofounder/helpers @aicofounder/prompts @aicofounder/rag</div>
             <div className="mt-4 text-foreground-secondary"># Or install the CLI globally</div>
-            <div className="mt-2">npm install -g @cofounder/cli</div>
+            <div className="mt-2">npm install -g @aicofounder/cli</div>
           </div>
         </motion.div>
 

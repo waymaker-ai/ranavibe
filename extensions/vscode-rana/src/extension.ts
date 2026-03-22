@@ -33,10 +33,10 @@ export function activate(context: vscode.ExtensionContext): void {
   const dashboardView = new DashboardViewProvider(context.extensionUri);
 
   context.subscriptions.push(
-    vscode.window.registerTreeDataProvider('cofounder.findings', findingsView)
+    vscode.window.registerTreeDataProvider('aicofounder.findings', findingsView)
   );
   context.subscriptions.push(
-    vscode.window.registerTreeDataProvider('cofounder.policies', policiesView)
+    vscode.window.registerTreeDataProvider('aicofounder.policies', policiesView)
   );
   context.subscriptions.push(
     vscode.window.registerWebviewViewProvider(DashboardViewProvider.viewType, dashboardView)
@@ -60,7 +60,7 @@ export function activate(context: vscode.ExtensionContext): void {
 
   // Show Dashboard command opens the full dashboard panel
   context.subscriptions.push(
-    vscode.commands.registerCommand('cofounder.showDashboard', () => {
+    vscode.commands.registerCommand('aicofounder.showDashboard', () => {
       dashboardView.showFullDashboard();
     })
   );
@@ -78,7 +78,7 @@ export function activate(context: vscode.ExtensionContext): void {
   // -----------------------------------------------------------------------
   context.subscriptions.push(
     vscode.workspace.onDidChangeConfiguration((event) => {
-      if (event.affectsConfiguration('cofounder.enableInlineScan')) {
+      if (event.affectsConfiguration('aicofounder.enableInlineScan')) {
         const config = vscode.workspace.getConfiguration('cofounder');
         const enabled = config.get<boolean>('enableInlineScan', true);
         inlineScanner.setEnabled(enabled);
@@ -86,8 +86,8 @@ export function activate(context: vscode.ExtensionContext): void {
       }
 
       if (
-        event.affectsConfiguration('cofounder.injectionSensitivity') ||
-        event.affectsConfiguration('cofounder.piiMode')
+        event.affectsConfiguration('aicofounder.injectionSensitivity') ||
+        event.affectsConfiguration('aicofounder.piiMode')
       ) {
         // Re-scan all open documents with new settings
         for (const doc of vscode.workspace.textDocuments) {
@@ -101,7 +101,7 @@ export function activate(context: vscode.ExtensionContext): void {
   // Policy view context menu commands
   // -----------------------------------------------------------------------
   context.subscriptions.push(
-    vscode.commands.registerCommand('cofounder.togglePolicy', (node: any) => {
+    vscode.commands.registerCommand('aicofounder.togglePolicy', (node: any) => {
       if (node && node.kind === 'file') {
         policiesView.togglePolicy(node);
       }
@@ -109,7 +109,7 @@ export function activate(context: vscode.ExtensionContext): void {
   );
 
   context.subscriptions.push(
-    vscode.commands.registerCommand('cofounder.createPolicy', async (node: any) => {
+    vscode.commands.registerCommand('aicofounder.createPolicy', async (node: any) => {
       if (node && node.kind === 'preset') {
         await policiesView.createFromPreset(node.presetName);
       } else {
@@ -131,7 +131,7 @@ export function activate(context: vscode.ExtensionContext): void {
   );
 
   context.subscriptions.push(
-    vscode.commands.registerCommand('cofounder.refreshPolicies', () => {
+    vscode.commands.registerCommand('aicofounder.refreshPolicies', () => {
       policiesView.refreshPolicies();
     })
   );

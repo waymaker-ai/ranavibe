@@ -3,7 +3,7 @@
  * Demonstrates how to export CoFounder traces to OpenTelemetry collectors
  */
 
-import { createCoFounder, createOTelExporter, createOTelPlugin } from '@cofounder/core';
+import { createCoFounder, createOTelExporter, createOTelPlugin } from '@aicofounder/core';
 
 // ============================================================================
 // Basic Setup
@@ -15,7 +15,7 @@ import { createCoFounder, createOTelExporter, createOTelPlugin } from '@cofounde
 async function basicOTelExport() {
   // Create the exporter
   const exporter = createOTelExporter({
-    serviceName: 'my-cofounder-service',
+    serviceName: 'my-aicofounder-service',
     endpoint: 'http://localhost:4318/v1/traces',
     batchSize: 50,
     batchInterval: 5000,
@@ -48,7 +48,7 @@ async function basicOTelExport() {
  */
 async function authenticatedOTelExport() {
   const exporter = createOTelExporter({
-    serviceName: 'production-cofounder-app',
+    serviceName: 'production-aicofounder-app',
     endpoint: 'https://otel-collector.example.com/v1/traces',
     headers: {
       'x-api-key': process.env.OTEL_API_KEY!,
