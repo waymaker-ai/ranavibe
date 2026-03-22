@@ -12,7 +12,7 @@ import {
   estimateCost,
   redactText,
   PIIMatch,
-} from '../page';
+} from '../detection';
 
 // -----------------------------------------------------------------------
 // PII Detection
