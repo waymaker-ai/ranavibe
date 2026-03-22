@@ -1,4 +1,4 @@
-# RANA Deployment & Integration Guide
+# CoFounder Deployment & Integration Guide
 
 **Version:** 2.0
 **Last Updated:** 2025-11-09
@@ -17,13 +17,13 @@
 7. [Third-Party Tools](#third-party-tools)
 8. [Design Tool Integration](#design-tool-integration)
 9. [Custom Deployments](#custom-deployments)
-10. [RANA Quality Gates](#aads-quality-gates)
+10. [CoFounder Quality Gates](#aads-quality-gates)
 
 ---
 
 ## Overview
 
-RANA is designed to work seamlessly with all major deployment platforms and integrates deeply with AI agents, MCPs, and design tools.
+CoFounder is designed to work seamlessly with all major deployment platforms and integrates deeply with AI agents, MCPs, and design tools.
 
 ### Key Principles
 
@@ -57,7 +57,7 @@ RANA is designed to work seamlessly with all major deployment platforms and inte
 
 ### Overview
 
-Vercel is the **recommended platform** for RANA projects, especially Next.js apps.
+Vercel is the **recommended platform** for CoFounder projects, especially Next.js apps.
 
 ### Quick Setup
 
@@ -65,7 +65,7 @@ Vercel is the **recommended platform** for RANA projects, especially Next.js app
 # Install Vercel CLI
 npm i -g vercel
 
-# Deploy from RANA project
+# Deploy from CoFounder project
 aads deploy --platform vercel
 
 # Or use Vercel directly
@@ -142,7 +142,7 @@ export default {
     hooks: {
       preBuild: async () => {
         console.log('Running pre-build checks...');
-        // Run RANA quality gates
+        // Run CoFounder quality gates
         await exec('aads check');
       },
       postBuild: async () => {
@@ -185,7 +185,7 @@ export async function GET(request: Request) {
 git push
 
 # Vercel automatically:
-# 1. Runs RANA quality gates
+# 1. Runs CoFounder quality gates
 # 2. Builds the project
 # 3. Deploys to preview URL
 # 4. Comments on PR with link
@@ -414,7 +414,7 @@ const subscription = supabase
 
 ### Overview
 
-RANA has **first-class support for Model Context Protocol (MCP)** and agent systems.
+CoFounder has **first-class support for Model Context Protocol (MCP)** and agent systems.
 
 ### MCP Server Setup
 
@@ -432,7 +432,7 @@ export const mcpServer = new McpServer({
   },
 });
 
-// Register RANA tools
+// Register CoFounder tools
 mcpServer.tool('deploy', {
   description: 'Deploy application to specified platform',
   parameters: {
@@ -495,7 +495,7 @@ mcpServer.resource('codebase', {
 import { Agent } from '@google-genai/agent';
 
 export const deploymentAgent = new Agent({
-  name: 'RANA Deployment Agent',
+  name: 'CoFounder Deployment Agent',
   description: 'Handles deployment and infrastructure',
   tools: [
     mcpServer.getTool('deploy'),
@@ -842,12 +842,12 @@ curl http://localhost:3000/api/health
 
 ---
 
-## RANA Quality Gates
+## CoFounder Quality Gates
 
 ### Pre-Deployment Checks
 
 ```yaml
-# .rana.yml
+# .cofounder.yml
 deploy:
   pre_checks:
     - security_audit: true # Run security scan
@@ -881,7 +881,7 @@ aads deploy
 
 ## Summary
 
-RANA provides:
+CoFounder provides:
 
 1. ✅ **One-command deployment** to any platform
 2. ✅ **Deep MCP integration** for agent systems
@@ -894,4 +894,4 @@ RANA provides:
 
 ---
 
-*Ashley Kays | Waymaker | RANA v2.0*
+*Ashley Kays | Waymaker | CoFounder v2.0*

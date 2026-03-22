@@ -3,7 +3,7 @@
  *
  * @example
  * ```typescript
- * import { generate } from '@rana/helpers';
+ * import { generate } from '@cofounder/helpers';
  *
  * // Generate a tweet
  * const tweet = await generate('new product launch', { type: 'tweet' });

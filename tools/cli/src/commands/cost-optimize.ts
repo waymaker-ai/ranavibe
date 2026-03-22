@@ -1,18 +1,18 @@
 /**
- * RANA Cost Optimization Suggestions
+ * CoFounder Cost Optimization Suggestions
  *
  * Analyzes usage patterns and suggests cost savings
  *
  * @example
  * ```bash
  * # Get optimization suggestions
- * rana cost:optimize
+ * cofounder cost:optimize
  *
  * # Apply suggestions automatically
- * rana cost:optimize --apply
+ * cofounder cost:optimize --apply
  *
  * # Show detailed analysis
- * rana cost:optimize --detailed
+ * cofounder cost:optimize --detailed
  * ```
  */
 
@@ -86,14 +86,14 @@ export async function costOptimizeCommand(options: {
   apply?: boolean;
   detailed?: boolean;
 }): Promise<void> {
-  console.log(chalk.bold.cyan('\n💰 RANA Cost Optimization Analysis\n'));
+  console.log(chalk.bold.cyan('\n💰 CoFounder Cost Optimization Analysis\n'));
 
   // Load usage data
   const usage = await loadUsageData();
 
   if (!usage || usage.length === 0) {
     console.log(chalk.yellow('No usage data found.'));
-    console.log(chalk.gray('Start using RANA to collect usage data for optimization suggestions.\n'));
+    console.log(chalk.gray('Start using CoFounder to collect usage data for optimization suggestions.\n'));
     showQuickTips();
     return;
   }
@@ -120,7 +120,7 @@ export async function costOptimizeCommand(options: {
  * Load usage data from cost store
  */
 async function loadUsageData(): Promise<UsagePattern[]> {
-  const configDir = path.join(os.homedir(), '.rana');
+  const configDir = path.join(os.homedir(), '.cofounder');
   const costFile = path.join(configDir, 'costs.json');
 
   try {
@@ -222,7 +222,7 @@ function generateOptimizations(usage: UsagePattern[]): Optimization[] {
         savingsPercent: 100,
         effort: 'low',
         impact: 'high',
-        command: 'rana ollama:pull llama3.2',
+        command: 'cofounder ollama:pull llama3.2',
       });
     }
 
@@ -328,7 +328,7 @@ function displayOptimizations(optimizations: Optimization[], detailed: boolean):
   }
 
   console.log(chalk.gray('─'.repeat(60)));
-  console.log(chalk.gray('\nApply all suggestions: ') + chalk.cyan('rana cost:optimize --apply'));
+  console.log(chalk.gray('\nApply all suggestions: ') + chalk.cyan('cofounder cost:optimize --apply'));
   console.log('');
 }
 
@@ -348,7 +348,7 @@ async function applyOptimizations(optimizations: Optimization[]): Promise<void> 
         break;
 
       case 'caching':
-        console.log(chalk.green('  ✓ Add to your RANA config:'));
+        console.log(chalk.green('  ✓ Add to your CoFounder config:'));
         console.log(chalk.gray('    cache: { enabled: true, ttl: 3600 }'));
         break;
 
@@ -365,7 +365,7 @@ async function applyOptimizations(optimizations: Optimization[]): Promise<void> 
 
       case 'batching':
         console.log(chalk.green('  ✓ Use batchProcess() for multiple requests:'));
-        console.log(chalk.gray('    import { batchProcess } from "@rana/core";'));
+        console.log(chalk.gray('    import { batchProcess } from "@cofounder/core";'));
         break;
 
       default:
@@ -385,25 +385,25 @@ function showQuickTips(): void {
   console.log(chalk.bold('💡 Quick Cost-Saving Tips:\n'));
 
   console.log(chalk.white('1. Use local models for development'));
-  console.log(chalk.gray('   rana ollama:pull llama3.2\n'));
+  console.log(chalk.gray('   cofounder ollama:pull llama3.2\n'));
 
   console.log(chalk.white('2. Enable caching for repeated queries'));
-  console.log(chalk.gray('   const rana = createRana({ cache: true });\n'));
+  console.log(chalk.gray('   const cofounder = createCoFounder({ cache: true });\n'));
 
   console.log(chalk.white('3. Use smaller models when possible'));
   console.log(chalk.gray('   gpt-4o-mini is 16x cheaper than gpt-4o\n'));
 
   console.log(chalk.white('4. Set budget limits'));
-  console.log(chalk.gray('   rana budget:set --limit 10 --period daily\n'));
+  console.log(chalk.gray('   cofounder budget:set --limit 10 --period daily\n'));
 
   console.log(chalk.white('5. Monitor costs in real-time'));
-  console.log(chalk.gray('   rana dashboard --live\n'));
+  console.log(chalk.gray('   cofounder dashboard --live\n'));
 }
 
 /**
  * Quick cost tips command
  */
 export async function costTipsCommand(): Promise<void> {
-  console.log(chalk.bold.cyan('\n💡 RANA Cost Optimization Tips\n'));
+  console.log(chalk.bold.cyan('\n💡 CoFounder Cost Optimization Tips\n'));
   showQuickTips();
 }

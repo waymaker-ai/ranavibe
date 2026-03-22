@@ -1,6 +1,6 @@
-# RANA Next.js + Supabase Template
+# CoFounder Next.js + Supabase Template
 
-**Production-ready Next.js template with all RANA frameworks pre-configured.**
+**Production-ready Next.js template with all CoFounder frameworks pre-configured.**
 
 ---
 
@@ -12,7 +12,7 @@ This template includes everything you need to build production-ready AI applicat
 ✅ **Supabase** for database + authentication
 ✅ **TypeScript** throughout
 ✅ **Tailwind CSS** for styling
-✅ **All RANA Frameworks** pre-configured:
+✅ **All CoFounder Frameworks** pre-configured:
 - Database (Supabase with RLS)
 - Security (Auth + rate limiting)
 - LLM optimization (70% cost reduction)
@@ -21,7 +21,7 @@ This template includes everything you need to build production-ready AI applicat
 
 ✅ **Working authentication** (email + OAuth)
 ✅ **Example components** for each framework
-✅ **Quality gates** (.rana.yml)
+✅ **Quality gates** (.cofounder.yml)
 ✅ **Production deployment** ready
 
 ---
@@ -43,7 +43,7 @@ npm install
 ### 2. Setup Supabase
 
 ```bash
-# Initialize RANA
+# Initialize CoFounder
 npx aads init
 
 # Setup database
@@ -74,7 +74,7 @@ ANTHROPIC_API_KEY=sk-ant-...
 
 # Site Config
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
-NEXT_PUBLIC_SITE_NAME="My RANA App"
+NEXT_PUBLIC_SITE_NAME="My CoFounder App"
 ```
 
 ### 4. Run Development Server
@@ -113,7 +113,7 @@ my-app/
 │   ├── security/           # Security utilities
 │   └── utils.ts            # Helper functions
 ├── middleware.ts            # Auth + rate limiting middleware
-├── .rana.yml               # RANA configuration
+├── .cofounder.yml               # CoFounder configuration
 └── package.json
 ```
 
@@ -274,7 +274,7 @@ npm run dev                  # Start dev server
 npm run build                # Build for production
 npm run start                # Start production server
 
-# RANA CLI
+# CoFounder CLI
 npx aads check               # Check compliance
 npx aads security:audit      # Security scan
 npx aads seo:check           # SEO validation
@@ -371,7 +371,7 @@ STRIPE_WEBHOOK_SECRET=
 
 ## Quality Gates
 
-This template includes RANA quality gates in `.rana.yml`:
+This template includes CoFounder quality gates in `.cofounder.yml`:
 
 ```yaml
 quality:
@@ -548,7 +548,7 @@ Built with:
 - [Next.js](https://nextjs.org) - React framework
 - [Supabase](https://supabase.com) - Database + Auth
 - [Tailwind CSS](https://tailwindcss.com) - Styling
-- [Waymaker](https://waymaker.ai) - Agency behind RANA
+- [Waymaker](https://waymaker.ai) - Agency behind CoFounder
 
 ---
 

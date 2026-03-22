@@ -2,12 +2,12 @@
 
 ## Executive Summary
 
-**Feature**: Natural Language Code Generation for RANA Framework
+**Feature**: Natural Language Code Generation for CoFounder Framework
 **Priority**: P0 (Critical Gap)
 **Impact**: Developer Experience & Competitive Positioning
 **Timeline**: Q1 2025 (8-10 weeks)
 
-This specification defines how RANA will implement natural language code generation to compete with MetaGPT, Cursor, and v0.dev. The feature enables developers to generate production-ready code from plain English descriptions while maintaining RANA's enterprise security and quality standards.
+This specification defines how CoFounder will implement natural language code generation to compete with MetaGPT, Cursor, and v0.dev. The feature enables developers to generate production-ready code from plain English descriptions while maintaining CoFounder's enterprise security and quality standards.
 
 ---
 
@@ -15,15 +15,15 @@ This specification defines how RANA will implement natural language code generat
 
 ### Current State
 
-RANA developers must:
+CoFounder developers must:
 - Manually write all boilerplate code
 - Switch to external AI tools (Cursor, Claude, ChatGPT) for code generation
-- Copy/paste generated code without RANA's quality gates
-- Miss out on RANA's security best practices during initial generation
+- Copy/paste generated code without CoFounder's quality gates
+- Miss out on CoFounder's security best practices during initial generation
 
 ### Competitive Landscape
 
-| Tool | Capability | RANA Gap |
+| Tool | Capability | CoFounder Gap |
 |------|-----------|----------|
 | **MetaGPT** | Generate full apps from PRDs | ✗ No equivalent |
 | **Cursor** | Inline code generation | ✗ No equivalent |
@@ -34,7 +34,7 @@ RANA developers must:
 
 ```bash
 # Generate complete features from natural language
-rana generate "User authentication with email and Google OAuth, following OWASP best practices"
+cofounder generate "User authentication with email and Google OAuth, following OWASP best practices"
 
 # Output: Generates secure auth implementation with:
 # - Email/password registration with bcrypt
@@ -53,7 +53,7 @@ rana generate "User authentication with email and Google OAuth, following OWASP 
 ### 1. Core Components
 
 ```
-@rana/generate
+@cofounder/generate
 ├── cli/
 │   ├── generate.ts          # Main CLI command
 │   ├── interactive.ts        # Interactive wizard
@@ -137,7 +137,7 @@ export class ClaudeProvider implements LLMProvider {
     const response = await this.client.messages.create({
       model: 'claude-sonnet-4',
       max_tokens: 8000,
-      system: RANA_SYSTEM_PROMPT,
+      system: CoFounder_SYSTEM_PROMPT,
       messages: [{ role: 'user', content: prompt }],
     });
 
@@ -146,7 +146,7 @@ export class ClaudeProvider implements LLMProvider {
 
   private buildPrompt(request: GenerateRequest): string {
     return `
-You are a RANA code generator. Generate production-ready code following these requirements:
+You are a CoFounder code generator. Generate production-ready code following these requirements:
 
 INTENT:
 ${request.intent}
@@ -165,7 +165,7 @@ Generate code that:
 2. Includes comprehensive TypeScript types
 3. Has 80%+ test coverage
 4. Includes JSDoc documentation
-5. Uses RANA's hooks and utilities
+5. Uses CoFounder's hooks and utilities
 6. Integrates seamlessly with existing code
 
 Output format:
@@ -188,10 +188,10 @@ Output format:
 
 ```bash
 # Basic generation
-rana generate <description>
+cofounder generate <description>
 
 # With options
-rana generate <description> \
+cofounder generate <description> \
   --framework react \
   --style functional \
   --tests \
@@ -199,28 +199,28 @@ rana generate <description> \
   --dry-run
 
 # Interactive mode
-rana generate --interactive
+cofounder generate --interactive
 
 # From file
-rana generate --from requirements.md
+cofounder generate --from requirements.md
 
 # With custom provider
-rana generate "..." --provider claude-opus
+cofounder generate "..." --provider claude-opus
 
 # Examples
-rana generate "Stripe checkout flow with webhook handling"
-rana generate "User profile page with avatar upload to S3"
-rana generate "GraphQL API for blog posts with pagination"
-rana generate "Real-time chat with WebSockets and Redis"
+cofounder generate "Stripe checkout flow with webhook handling"
+cofounder generate "User profile page with avatar upload to S3"
+cofounder generate "GraphQL API for blog posts with pagination"
+cofounder generate "Real-time chat with WebSockets and Redis"
 ```
 
 ### Interactive Wizard
 
 ```
-$ rana generate --interactive
+$ cofounder generate --interactive
 
 ╭─────────────────────────────────────────────────╮
-│   RANA Code Generator                          │
+│   CoFounder Code Generator                          │
 │   Generate production-ready code from ideas    │
 ╰─────────────────────────────────────────────────╯
 
@@ -290,7 +290,7 @@ Running quality gates...
 Code generated successfully!
 
 Next steps:
-1. Review generated code: rana review --last-generated
+1. Review generated code: cofounder review --last-generated
 2. Run tests: npm test
 3. Start dev server: npm run dev
 4. Customize components as needed
@@ -1131,7 +1131,7 @@ Git Commit (optional)
 
 ```bash
 # Explain generated code
-rana explain src/components/Dashboard.tsx
+cofounder explain src/components/Dashboard.tsx
 
 ╭──────────────────────────────────────────╮
 │ Dashboard Component Explanation          │
@@ -1177,19 +1177,19 @@ View detailed explanation? (Y/n)
 
 ```bash
 # Initial generation
-rana generate "User profile page"
+cofounder generate "User profile page"
 
 # Review and provide feedback
-rana refine --feedback "Add avatar upload and social links"
+cofounder refine --feedback "Add avatar upload and social links"
 
 # Further refinement
-rana refine --feedback "Make avatar upload support drag and drop"
+cofounder refine --feedback "Make avatar upload support drag and drop"
 
 # Explain specific section
-rana explain src/components/AvatarUpload.tsx --section "handleDrop"
+cofounder explain src/components/AvatarUpload.tsx --section "handleDrop"
 
 # Regenerate specific file
-rana regenerate src/components/AvatarUpload.tsx --prompt "Optimize image compression before upload"
+cofounder regenerate src/components/AvatarUpload.tsx --prompt "Optimize image compression before upload"
 ```
 
 ---
@@ -1295,7 +1295,7 @@ export interface GenerationMetrics {
 }
 
 // Analytics dashboard
-rana generate --analytics
+cofounder generate --analytics
 
 ╭────────────────────────────────────────────╮
 │ Generation Analytics (Last 30 Days)       │
@@ -1353,7 +1353,7 @@ export interface QualityMetrics {
 ### Phase 1: MVP (Weeks 1-4)
 
 **Features:**
-- Basic CLI command: `rana generate <description>`
+- Basic CLI command: `cofounder generate <description>`
 - Support for React components only
 - Single LLM provider (Claude)
 - 5 component templates
@@ -1496,7 +1496,7 @@ export interface QualityMetrics {
 **Risk**: Users prefer existing tools (Cursor, Copilot)
 
 **Mitigation**:
-- Differentiate with RANA integration (quality gates, security)
+- Differentiate with CoFounder integration (quality gates, security)
 - Focus on enterprise features (compliance, audit)
 - Waymaker services upsell
 - Comprehensive templates
@@ -1512,7 +1512,7 @@ export interface QualityMetrics {
 
 ```bash
 Input:
-rana generate "Button component with loading state"
+cofounder generate "Button component with loading state"
 
 Output:
 ✓ src/components/Button.tsx (42 lines)
@@ -1528,7 +1528,7 @@ Cost: $0.04
 
 ```bash
 Input:
-rana generate "REST API for blog posts with pagination and search"
+cofounder generate "REST API for blog posts with pagination and search"
 
 Output:
 ✓ src/app/api/posts/route.ts (145 lines)
@@ -1546,7 +1546,7 @@ Cost: $0.12
 
 ```bash
 Input:
-rana generate "User authentication with email and Google OAuth"
+cofounder generate "User authentication with email and Google OAuth"
 
 Output:
 ✓ src/app/api/auth/[...nextauth]/route.ts (67 lines)
@@ -1605,22 +1605,22 @@ Initial template collection (20 templates):
 ### C. FAQ
 
 **Q: How is this different from GitHub Copilot?**
-A: Copilot provides autocomplete suggestions. RANA Generate creates complete, production-ready features with built-in security, tests, and documentation. It also integrates with RANA's quality gates.
+A: Copilot provides autocomplete suggestions. CoFounder Generate creates complete, production-ready features with built-in security, tests, and documentation. It also integrates with CoFounder's quality gates.
 
 **Q: Can I use my own LLM?**
-A: Yes, RANA supports local models via Ollama and any OpenAI-compatible API.
+A: Yes, CoFounder supports local models via Ollama and any OpenAI-compatible API.
 
 **Q: What if the generated code has bugs?**
-A: Use `rana refine --feedback "..."` to iteratively improve. All code goes through validation before integration.
+A: Use `cofounder refine --feedback "..."` to iteratively improve. All code goes through validation before integration.
 
 **Q: Does this work with existing codebases?**
-A: Yes, RANA analyzes your codebase to match existing patterns, styles, and conventions.
+A: Yes, CoFounder analyzes your codebase to match existing patterns, styles, and conventions.
 
 **Q: How much does it cost?**
 A: Average $0.10 per generation. You can use local models for free (slower).
 
 **Q: Can I create custom templates?**
-A: Yes, create templates in `.rana/templates/` and share with your team.
+A: Yes, create templates in `.cofounder/templates/` and share with your team.
 
 **Q: Is generated code secure?**
 A: All code passes OWASP security validation. We auto-fix common vulnerabilities and provide security notes for manual review.
@@ -1631,4 +1631,4 @@ A: All code passes OWASP security validation. We auto-fix common vulnerabilities
 **Version**: 1.0
 **Last Updated**: 2025-11-25
 **Next Review**: After Phase 1 MVP
-**Feedback**: [GitHub Discussions](https://github.com/waymaker-ai/rana/discussions)
+**Feedback**: [GitHub Discussions](https://github.com/waymaker-ai/cofounder/discussions)

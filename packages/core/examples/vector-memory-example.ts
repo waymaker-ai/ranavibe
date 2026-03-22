@@ -350,7 +350,7 @@ async function example6_chatbotMemory() {
 
 async function main() {
   console.log('╔════════════════════════════════════════════╗');
-  console.log('║   RANA Vector Memory Examples              ║');
+  console.log('║   CoFounder Vector Memory Examples              ║');
   console.log('╚════════════════════════════════════════════╝');
 
   try {

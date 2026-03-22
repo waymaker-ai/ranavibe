@@ -1,12 +1,94 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Package, Sparkles, Brain, Search, Shield, Scale, Layers, ArrowRight } from 'lucide-react';
+import { Package, Sparkles, Brain, Search, Shield, Scale, Layers, ArrowRight, Lock, Activity, GitBranch, Eye, Cpu, FileCheck } from 'lucide-react';
 import Link from 'next/link';
 
 const packages = [
   {
-    name: '@rana/compliance',
+    name: '@cofounder/agent-sdk',
+    icon: Cpu,
+    description: 'Wrap Anthropic Agent SDK with guardrails — PII, injection, compliance, cost',
+    features: ['7 Interceptors', 'HIPAA Agent', 'GDPR Agent', 'Financial Agent'],
+    color: 'from-amber-500 to-orange-500',
+    example: `const agent = createGuardedAgent({
+  model: 'claude-sonnet-4-6',
+  guards: {
+    pii: { mode: 'redact' },
+    injection: { sensitivity: 'high' },
+    compliance: { frameworks: ['hipaa'] }
+  }
+});`,
+    isNew: true,
+  },
+  {
+    name: '@cofounder/guard',
+    icon: Lock,
+    description: 'Zero-dependency runtime guard — one import, any framework',
+    features: ['Zero Deps', 'Client Proxy', 'PII/Injection', '25+ Models'],
+    color: 'from-red-500 to-pink-500',
+    example: `import { createGuard } from '@cofounder/guard';
+const g = createGuard({ pii: 'redact', injection: 'block' });
+const client = g.wrap(new Anthropic());
+// All calls now guarded automatically`,
+    isNew: true,
+  },
+  {
+    name: '@cofounder/policies',
+    icon: FileCheck,
+    description: 'Declarative YAML policies with 9 compliance presets',
+    features: ['HIPAA', 'GDPR', 'SEC', 'PCI', 'SOX', 'FERPA', 'CCPA'],
+    color: 'from-blue-500 to-indigo-500',
+    example: `const engine = PolicyEngine.fromPresets(['hipaa', 'gdpr']);
+const result = engine.evaluate(text, {
+  direction: 'input', model: 'claude-sonnet-4-6'
+});
+// { allowed: false, violations: [...] }`,
+    isNew: true,
+  },
+  {
+    name: '@cofounder/ci',
+    icon: GitBranch,
+    description: 'GitHub Action & CLI for AI security scanning in CI/CD',
+    features: ['PR Scanning', 'SARIF Output', 'Key Detection', 'Cost Estimation'],
+    color: 'from-green-500 to-emerald-500',
+    example: `# .github/workflows/cofounder.yml
+- uses: waymaker-ai/cofounder-ci@v1
+  with:
+    fail-on: 'high'
+    approved-models: 'claude-sonnet-4-6,gpt-4o'
+    comment-on-pr: 'true'`,
+    isNew: true,
+  },
+  {
+    name: '@cofounder/dashboard',
+    icon: Activity,
+    description: 'AI observability — cost tracking, security alerts, compliance metrics',
+    features: ['Real-time Metrics', 'Anomaly Detection', 'Prometheus Export', 'HTTP API'],
+    color: 'from-violet-500 to-purple-500',
+    example: `const dashboard = new CoFounderDashboard({
+  storage: new FileStorage('./cofounder-data')
+});
+dashboard.collect(event);
+await dashboard.serve({ port: 3456 });`,
+    isNew: true,
+  },
+  {
+    name: '@cofounder/mcp-server',
+    icon: Eye,
+    description: '15+ MCP tools for Claude Desktop, Code, and Cursor',
+    features: ['PII Scan', 'Injection Detect', 'Cost Estimate', 'Code Safety'],
+    color: 'from-cyan-500 to-teal-500',
+    example: `// In Claude Desktop settings:
+{ "mcpServers": { "cofounder": {
+  "command": "npx",
+  "args": ["@cofounder/mcp-server"]
+}}}
+// Now use cofounder_scan_pii, cofounder_detect_injection...`,
+    isNew: true,
+  },
+  {
+    name: '@cofounder/compliance',
     icon: Shield,
     description: 'Automatic HIPAA, SEC, GDPR, CCPA compliance enforcement',
     features: ['PII Detection', 'Auto Redaction', 'Audit Trail', 'Disclaimers'],
@@ -16,63 +98,30 @@ const packages = [
   PresetRules.gdpr()
 ]);
 const result = await enforcer.enforce(request);`,
-    isNew: true,
   },
   {
-    name: '@rana/guidelines',
+    name: '@cofounder/guidelines',
     icon: Scale,
     description: 'Dynamic behavioral control with context-aware rules',
     features: ['Priority Rules', 'Analytics', 'Violations', '8+ Presets'],
-    color: 'from-blue-500 to-indigo-500',
+    color: 'from-blue-400 to-indigo-400',
     example: `const manager = createGuidelineManager();
 await manager.addGuideline(
   PresetGuidelines.noMedicalAdvice()
 );
 const matched = await manager.match(context);`,
-    isNew: true,
   },
   {
-    name: '@rana/context-optimizer',
+    name: '@cofounder/context-optimizer',
     icon: Layers,
     description: 'Handle 400K+ token contexts with 70% cost savings',
     features: ['400K Tokens', '70% Savings', 'Smart Chunking', 'Caching'],
-    color: 'from-violet-500 to-purple-500',
+    color: 'from-violet-400 to-purple-400',
     example: `const optimizer = new ContextOptimizer({
   strategy: 'hybrid'
 });
 const result = await optimizer.optimize(context);
 // 2.5M tokens → 400K tokens`,
-    isNew: true,
-  },
-  {
-    name: '@rana/helpers',
-    icon: Sparkles,
-    description: '10 one-line AI functions for common tasks',
-    features: ['summarize()', 'translate()', 'classify()', 'extract()', 'sentiment()'],
-    color: 'from-pink-500 to-rose-500',
-    example: `const summary = await summarize(longText);
-const spanish = await translate(text, { to: 'es' });
-const category = await classify(text, ['spam', 'ham']);`,
-  },
-  {
-    name: '@rana/prompts',
-    icon: Brain,
-    description: 'Enterprise prompt management with A/B testing',
-    features: ['Versioning', 'A/B Testing', 'Analytics', 'Optimization'],
-    color: 'from-cyan-500 to-teal-500',
-    example: `const pm = new PromptManager({ workspace: 'app' });
-await pm.register('greeting', { template: '...' });
-const result = await pm.execute('greeting', vars);`,
-  },
-  {
-    name: '@rana/rag',
-    icon: Search,
-    description: 'Advanced RAG with hybrid retrieval & re-ranking',
-    features: ['Semantic Chunking', 'Hybrid Search', 'Re-ranking', 'Streaming'],
-    color: 'from-emerald-500 to-green-500',
-    example: `const pipeline = RAGPresets.balanced();
-await pipeline.index(documents);
-const result = await pipeline.query({ query: '...' });`,
   },
 ];
 
@@ -88,7 +137,7 @@ export function Packages() {
             className="inline-flex items-center space-x-2 px-4 py-1.5 mb-6 rounded-full border border-border bg-background"
           >
             <Package className="h-4 w-4 text-gradient-from" />
-            <span className="text-sm font-medium">New in 2025</span>
+            <span className="text-sm font-medium">New in CoFounder 3.1</span>
           </motion.div>
 
           <motion.h2
@@ -98,7 +147,7 @@ export function Packages() {
             transition={{ duration: 0.5 }}
             className="text-3xl md:text-5xl font-bold mb-4"
           >
-            Six Powerful Packages
+            35 Production-Ready Packages
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -107,7 +156,7 @@ export function Packages() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-lg text-foreground-secondary max-w-2xl mx-auto"
           >
-            Production-ready AI building blocks with built-in compliance, guidelines, and context optimization
+            The complete AI guardrail ecosystem — from core detection to enterprise compliance, CI/CD, streaming, sandbox, and VS Code extension
           </motion.p>
         </div>
 
@@ -163,7 +212,7 @@ export function Packages() {
           className="mt-12 text-center"
         >
           <Link
-            href="https://github.com/waymaker-ai/ranavibe"
+            href="https://github.com/waymaker-ai/cofounder"
             target="_blank"
             className="btn-primary px-6 py-3 text-base group inline-flex items-center"
           >

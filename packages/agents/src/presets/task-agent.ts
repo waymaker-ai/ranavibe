@@ -1,5 +1,5 @@
 /**
- * @rana/agents - Task Agent
+ * @cofounder/agents - Task Agent
  * Agent for executing structured tasks with tools
  */
 

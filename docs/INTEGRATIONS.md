@@ -1,6 +1,6 @@
-# RANA Integrations Guide
+# CoFounder Integrations Guide
 
-This guide covers all available integrations in RANA, enabling you to connect AI capabilities with your favorite tools and platforms.
+This guide covers all available integrations in CoFounder, enabling you to connect AI capabilities with your favorite tools and platforms.
 
 ## Table of Contents
 
@@ -30,7 +30,7 @@ n8n is a workflow automation tool that lets you connect various services togethe
 #### Installation
 
 ```typescript
-import { createN8nIntegration } from '@rana/core';
+import { createN8nIntegration } from '@cofounder/core';
 
 const n8n = createN8nIntegration({
   baseUrl: 'http://localhost:5678', // Your n8n instance
@@ -41,7 +41,7 @@ const n8n = createN8nIntegration({
 #### Features
 
 - **Workflow Management**: List, trigger, and manage workflows
-- **Custom RANA Nodes**: Pre-built nodes for AI operations
+- **Custom CoFounder Nodes**: Pre-built nodes for AI operations
 - **Webhook Handling**: Receive and process n8n webhooks
 - **Credential Integration**: Secure credential management
 
@@ -53,27 +53,27 @@ const workflows = await n8n.listWorkflows();
 
 // Trigger a workflow
 const execution = await n8n.triggerWorkflow('workflow-id', {
-  data: { message: 'Hello from RANA!' },
+  data: { message: 'Hello from CoFounder!' },
   wait: true,
 });
 
 // Register webhook handler
-n8n.onWebhook('/rana-webhook', async (data, headers) => {
+n8n.onWebhook('/cofounder-webhook', async (data, headers) => {
   console.log('Received webhook:', data);
   return { success: true };
 });
 
-// Get RANA node definitions for n8n
+// Get CoFounder node definitions for n8n
 const nodeDefinitions = n8n.getRanaNodeDefinitions();
 ```
 
 #### Custom Nodes
 
-RANA provides pre-built n8n nodes:
+CoFounder provides pre-built n8n nodes:
 
 - **Chat Completion**: Generate AI responses
 - **Text Embedding**: Create vector embeddings
-- **Agent Execute**: Run RANA agents
+- **Agent Execute**: Run CoFounder agents
 - **RAG Query**: Query knowledge bases
 - **Summarize**: Summarize text content
 
@@ -81,12 +81,12 @@ RANA provides pre-built n8n nodes:
 
 ### Zapier
 
-Connect RANA with 6,000+ apps through Zapier.
+Connect CoFounder with 6,000+ apps through Zapier.
 
 #### Installation
 
 ```typescript
-import { createZapierIntegration } from '@rana/core';
+import { createZapierIntegration } from '@cofounder/core';
 
 const zapier = createZapierIntegration({
   clientId: process.env.ZAPIER_CLIENT_ID,
@@ -112,7 +112,7 @@ zapier.onTrigger('new_chat_response', async (bundle) => {
 
 // Register an action handler
 zapier.onAction('send_message', async (bundle) => {
-  const response = await rana.chat({
+  const response = await cofounder.chat({
     messages: [{ role: 'user', content: bundle.inputData.message }],
   });
   return { response: response.content };
@@ -127,11 +127,11 @@ const appDefinition = zapier.getAppDefinition();
 | Type | Key | Description |
 |------|-----|-------------|
 | Trigger | `new_chat_response` | Fires on new AI responses |
-| Action | `send_message` | Send a message to RANA |
+| Action | `send_message` | Send a message to CoFounder |
 | Action | `summarize_text` | Summarize any text |
 | Action | `classify_text` | Classify content into categories |
 | Action | `query_rag` | Query knowledge base |
-| Action | `run_agent` | Execute a RANA agent |
+| Action | `run_agent` | Execute a CoFounder agent |
 | Search | `find_conversation` | Search conversation history |
 
 ---
@@ -143,7 +143,7 @@ Visual automation platform for complex workflows.
 #### Installation
 
 ```typescript
-import { createMakeIntegration } from '@rana/core';
+import { createMakeIntegration } from '@cofounder/core';
 
 const make = createMakeIntegration({
   apiKey: process.env.MAKE_API_KEY,
@@ -155,7 +155,7 @@ const make = createMakeIntegration({
 #### Features
 
 - **Scenario Management**: Create and trigger scenarios
-- **RANA Modules**: Pre-built modules for AI operations
+- **CoFounder Modules**: Pre-built modules for AI operations
 - **Webhook Processing**: Handle Make webhooks
 - **Blueprint Generation**: Create reusable templates
 
@@ -177,18 +177,18 @@ make.registerWebhook('webhook-id', {
   },
 });
 
-// Get RANA module definitions
+// Get CoFounder module definitions
 const modules = make.getRanaModuleDefinitions();
 ```
 
-#### RANA Modules for Make
+#### CoFounder Modules for Make
 
 - **Chat**: Send messages and receive AI responses
 - **Embed**: Generate embeddings for text
 - **RAG Query**: Search knowledge bases
 - **Summarize**: Generate summaries
 - **Classify**: Categorize content
-- **Agent**: Execute RANA agents
+- **Agent**: Execute CoFounder agents
 
 ---
 
@@ -201,7 +201,7 @@ Persistent memory for AI agents using Mem0.
 #### Installation
 
 ```typescript
-import { createMem0Integration, withMemory } from '@rana/core';
+import { createMem0Integration, withMemory } from '@cofounder/core';
 
 const mem0 = createMem0Integration({
   apiKey: process.env.MEM0_API_KEY,
@@ -275,7 +275,7 @@ Long-term memory store with automatic summarization.
 #### Installation
 
 ```typescript
-import { createZepIntegration, createZepConversation } from '@rana/core';
+import { createZepIntegration, createZepConversation } from '@cofounder/core';
 
 const zep = createZepIntegration({
   apiKey: process.env.ZEP_API_KEY,
@@ -343,7 +343,7 @@ AI-powered content management for Webflow CMS.
 #### Installation
 
 ```typescript
-import { createWebflowIntegration } from '@rana/core';
+import { createWebflowIntegration } from '@cofounder/core';
 
 const webflow = createWebflowIntegration({
   apiToken: process.env.WEBFLOW_API_TOKEN,
@@ -399,7 +399,7 @@ await webflow.publishSite();
 
 ```typescript
 const tools = webflow.getToolDefinitions();
-// Use with RANA agents for autonomous CMS management
+// Use with CoFounder agents for autonomous CMS management
 ```
 
 ---
@@ -411,7 +411,7 @@ Build AI-powered components and interactions for Framer.
 #### Installation
 
 ```typescript
-import { createFramerIntegration } from '@rana/core';
+import { createFramerIntegration } from '@cofounder/core';
 
 const framer = createFramerIntegration({
   debug: true,
@@ -468,7 +468,7 @@ const hoverEffect = framer.generateOverride({
 // Get API route handler
 const chatHandler = framer.generateAPIHandler({
   type: 'chat',
-  ranaConfig: { model: 'gpt-4' },
+  cofounderConfig: { model: 'gpt-4' },
 });
 ```
 
@@ -483,7 +483,7 @@ AI-powered database operations with Airtable.
 #### Installation
 
 ```typescript
-import { createAirtableIntegration } from '@rana/core';
+import { createAirtableIntegration } from '@cofounder/core';
 
 const airtable = createAirtableIntegration({
   apiKey: process.env.AIRTABLE_API_KEY,
@@ -560,7 +560,7 @@ AI-powered knowledge management with Notion.
 #### Installation
 
 ```typescript
-import { createNotionIntegration } from '@rana/core';
+import { createNotionIntegration } from '@cofounder/core';
 
 const notion = createNotionIntegration({
   apiKey: process.env.NOTION_API_KEY,
@@ -649,41 +649,41 @@ const divider = notion.createDivider();
 
 ## Existing Integrations
 
-RANA also includes these pre-built integrations:
+CoFounder also includes these pre-built integrations:
 
 ### Hugging Face
 Model inference and embeddings from Hugging Face.
 
 ```typescript
-import { createHuggingFaceProvider } from '@rana/core';
+import { createHuggingFaceProvider } from '@cofounder/core';
 ```
 
 ### Vercel
 Deploy and manage Vercel projects.
 
 ```typescript
-import { createVercelClient } from '@rana/core';
+import { createVercelClient } from '@cofounder/core';
 ```
 
 ### Supabase
 Vector storage with Supabase pgvector.
 
 ```typescript
-import { createSupabaseVectorStore } from '@rana/core';
+import { createSupabaseVectorStore } from '@cofounder/core';
 ```
 
 ### Weights & Biases
 Experiment tracking and logging.
 
 ```typescript
-import { createWandbTracker } from '@rana/core';
+import { createWandbTracker } from '@cofounder/core';
 ```
 
 ### Sentry
 Error tracking and performance monitoring.
 
 ```typescript
-import { createSentryIntegration } from '@rana/core';
+import { createSentryIntegration } from '@cofounder/core';
 ```
 
 ---

@@ -1,19 +1,19 @@
-# RANA Framer Integration Guide
+# CoFounder Framer Integration Guide
 
 ## Overview
 
-This guide explains how to integrate Framer-designed marketing pages with the RANA Next.js documentation site. The hybrid approach allows you to:
+This guide explains how to integrate Framer-designed marketing pages with the CoFounder Next.js documentation site. The hybrid approach allows you to:
 
 - **Design in Framer**: Create and iterate on marketing pages visually
 - **Code in Next.js**: Build documentation, training, and interactive features
-- **Deploy Together**: Unified experience under rana.cx domain
+- **Deploy Together**: Unified experience under cofounder.cx domain
 
 ---
 
 ## Architecture
 
 ```
-rana.cx/
+cofounder.cx/
 ├── /                    → Next.js (Homepage with code)
 ├── /features            → Framer (Visual marketing page)
 ├── /pricing             → Framer (Visual marketing page)
@@ -194,10 +194,10 @@ Use 8px grid system:
 
 1. **Create design system in code**
    ```tsx
-   // framer/RANAButton.tsx
+   // framer/CoFounderButton.tsx
    import { motion } from 'framer-motion';
 
-   export function RANAButton(props) {
+   export function CoFounderButton(props) {
      return (
        <motion.button
          whileHover={{ scale: 1.02 }}
@@ -216,9 +216,9 @@ Use 8px grid system:
    ```tsx
    import { addPropertyControls, ControlType } from 'framer';
 
-   export function RANAButton(props) { /* ... */ }
+   export function CoFounderButton(props) { /* ... */ }
 
-   addPropertyControls(RANAButton, {
+   addPropertyControls(CoFounderButton, {
      text: { type: ControlType.String, defaultValue: 'Click me' },
      variant: { type: ControlType.Enum, options: ['primary', 'secondary'] },
    });
@@ -304,11 +304,11 @@ Ensure the navigation matches across Framer and Next.js:
 ### Next.js Deployment
 1. Push to GitHub
 2. Vercel auto-deploys
-3. Set custom domain to `rana.cx`
+3. Set custom domain to `cofounder.cx`
 
 ### Domain Setup
 ```
-rana.cx
+cofounder.cx
 ├── Vercel (primary)
 └── Rewrites to Framer for specific paths
 ```
@@ -341,7 +341,7 @@ rana.cx
 2. **Design 3 marketing pages** (features, pricing, about)
 3. **Publish to Framer hosting**
 4. **Update environment variables** in Vercel
-5. **Test the integrated site** at rana.cx
+5. **Test the integrated site** at cofounder.cx
 
 ---
 

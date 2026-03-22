@@ -1,4 +1,4 @@
-# @rana/prompts
+# @cofounder/prompts
 
 Enterprise-grade prompt management with versioning, A/B testing, and analytics.
 
@@ -13,13 +13,13 @@ Enterprise-grade prompt management with versioning, A/B testing, and analytics.
 ## Installation
 
 ```bash
-npm install @rana/prompts
+npm install @cofounder/prompts
 ```
 
 ## Quick Start
 
 ```typescript
-import { PromptManager } from '@rana/prompts';
+import { PromptManager } from '@cofounder/prompts';
 
 // Initialize
 const pm = new PromptManager({
@@ -198,7 +198,7 @@ console.log(report);
 Get suggestions to improve your prompts:
 
 ```typescript
-import { PromptOptimizer } from '@rana/prompts';
+import { PromptOptimizer } from '@cofounder/prompts';
 
 const optimizer = new PromptOptimizer({
   costThreshold: 0.01,
@@ -232,7 +232,7 @@ const suggestions = await optimizer.analyze(prompt, analytics);
 ### Setup Provider
 
 ```tsx
-import { PromptProvider } from '@rana/prompts';
+import { PromptProvider } from '@cofounder/prompts';
 
 function App() {
   return (
@@ -252,7 +252,7 @@ function App() {
 ### usePrompt Hook
 
 ```tsx
-import { usePrompt } from '@rana/prompts';
+import { usePrompt } from '@cofounder/prompts';
 
 function ChatInput() {
   const { execute, loading, error, response } = usePrompt('chat');
@@ -275,7 +275,7 @@ function ChatInput() {
 ### usePromptStream Hook
 
 ```tsx
-import { usePromptStream } from '@rana/prompts';
+import { usePromptStream } from '@cofounder/prompts';
 
 function StreamingChat() {
   const { execute, content, isStreaming, stop } = usePromptStream('chat');
@@ -295,7 +295,7 @@ function StreamingChat() {
 ### usePromptABTest Hook
 
 ```tsx
-import { usePromptABTest } from '@rana/prompts';
+import { usePromptABTest } from '@cofounder/prompts';
 
 function ABTestChat() {
   const { execute, recordConversion, results, currentVariant } = usePromptABTest('test-123');

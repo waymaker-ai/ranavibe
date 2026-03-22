@@ -1,12 +1,12 @@
-# RANA vs Cursor
+# CoFounder vs Cursor
 
-**A comprehensive comparison of RANA and Cursor for AI-assisted development.**
+**A comprehensive comparison of CoFounder and Cursor for AI-assisted development.**
 
 ---
 
 ## 🎯 TL;DR
 
-| Feature | RANA | Cursor |
+| Feature | CoFounder | Cursor |
 |---------|------|--------|
 | **Type** | Framework/Library | AI-Powered IDE |
 | **Integration** | Programmatic API | Editor Extension |
@@ -16,18 +16,18 @@
 | **Control** | ✅ Full programmatic | ⚠️ UI-driven |
 | **Deployment** | ✅ Production services | ❌ Development only |
 
-**Key Insight**: RANA and Cursor solve different problems. Cursor helps you write code faster. RANA helps you build compliant, production-ready systems programmatically.
+**Key Insight**: CoFounder and Cursor solve different problems. Cursor helps you write code faster. CoFounder helps you build compliant, production-ready systems programmatically.
 
 ---
 
 ## 📊 What They Are
 
-### RANA
+### CoFounder
 
 **A TypeScript framework for AI-assisted development**
 
 ```typescript
-import { APIGenerator, createComplianceEnforcer } from '@rana/generate';
+import { APIGenerator, createComplianceEnforcer } from '@cofounder/generate';
 
 // Programmatic code generation
 const api = APIGenerator.generateCRUD({
@@ -72,10 +72,10 @@ const safe = await enforcer.enforce(input, output, context);
 
 ### 1. Integration Model
 
-#### RANA
+#### CoFounder
 ```typescript
 // Library you import
-import { generate } from '@rana/generate';
+import { generate } from '@cofounder/generate';
 
 // Use programmatically
 const files = await generate('user auth system');
@@ -112,7 +112,7 @@ app.post('/api/generate', async (req, res) => {
 
 ### 2. Code Generation Approach
 
-#### RANA
+#### CoFounder
 
 **Structured, template-based generation:**
 
@@ -164,10 +164,10 @@ Cursor: [Generates code based on conversation]
 
 ### 3. Compliance & Safety
 
-#### RANA
+#### CoFounder
 
 ```typescript
-import { createComplianceEnforcer, PresetRules } from '@rana/compliance';
+import { createComplianceEnforcer, PresetRules } from '@cofounder/compliance';
 
 const enforcer = createComplianceEnforcer({
   enableAllPresets: true,
@@ -201,16 +201,16 @@ const result = await enforcer.enforce(
 - ⚠️ **Manual review** required
 - ⚠️ **You implement** compliance
 
-**Verdict**: RANA is the only framework with built-in compliance
+**Verdict**: CoFounder is the only framework with built-in compliance
 
 ---
 
 ### 4. Cost Management
 
-#### RANA
+#### CoFounder
 
 ```typescript
-import { createContextOptimizer } from '@rana/context-optimizer';
+import { createContextOptimizer } from '@cofounder/context-optimizer';
 
 const optimizer = createContextOptimizer({
   strategy: 'hybrid',
@@ -243,18 +243,18 @@ console.log(`Cost saved: ${result.costSaved}%`);      // 84%
 - ❌ **No caching** (you can't control)
 - ⚠️ **Can get expensive** for teams
 
-**Verdict**: RANA provides better cost control for production use
+**Verdict**: CoFounder provides better cost control for production use
 
 ---
 
 ### 5. Production Deployment
 
-#### RANA
+#### CoFounder
 
 ```typescript
 // Deploy as a microservice
 import express from 'express';
-import { generate, createComplianceEnforcer } from '@rana/generate';
+import { generate, createComplianceEnforcer } from '@cofounder/generate';
 
 const app = express();
 const enforcer = createComplianceEnforcer({ enableAllPresets: true });
@@ -300,19 +300,19 @@ app.listen(3000);
 - ❌ **No automation** - Manual interaction
 - ❌ **Can't build services**
 
-**Verdict**: Only RANA supports production deployment
+**Verdict**: Only CoFounder supports production deployment
 
 ---
 
 ### 6. Use Case Comparison
 
-#### When to Use RANA
+#### When to Use CoFounder
 
 1. **Building Internal Tools**
    ```typescript
    // CLI tool for your team
    #!/usr/bin/env node
-   import { generate } from '@rana/generate';
+   import { generate } from '@cofounder/generate';
 
    const description = process.argv[2];
    const files = await generate(description, { autoFix: true });
@@ -341,7 +341,7 @@ app.listen(3000);
 4. **CI/CD Automation**
    ```yaml
    # .github/workflows/generate.yml
-   - run: npx rana generate api --spec openapi.json
+   - run: npx cofounder generate api --spec openapi.json
    - run: npm test
    ```
 
@@ -383,7 +383,7 @@ app.listen(3000);
 
 ### Scenario 1: Generate a CRUD API
 
-#### RANA
+#### CoFounder
 ```typescript
 const api = APIGenerator.generateCRUD({
   entity: 'User',
@@ -421,7 +421,7 @@ Cursor: [Modifies code]
 **Result**: Good code, but quality varies
 **Cost**: API calls to Claude
 
-**Winner**: **RANA** - Faster, more consistent, production-ready
+**Winner**: **CoFounder** - Faster, more consistent, production-ready
 
 ---
 
@@ -429,7 +429,7 @@ Cursor: [Modifies code]
 
 **Task**: Add a new field to an existing component
 
-#### RANA
+#### CoFounder
 Not designed for this - you'd write code manually
 
 #### Cursor
@@ -445,7 +445,7 @@ Not designed for this - you'd write code manually
 
 **Task**: Ensure financial advice includes disclaimers
 
-#### RANA
+#### CoFounder
 ```typescript
 const enforcer = createComplianceEnforcer({
   enableAllPresets: true,
@@ -460,7 +460,7 @@ const safe = await enforcer.enforce(
 // Automatically adds disclaimers or blocks output
 ```
 
-**Winner**: **RANA** - Only option with built-in compliance
+**Winner**: **CoFounder** - Only option with built-in compliance
 
 #### Cursor
 You'd need to:
@@ -474,15 +474,15 @@ You'd need to:
 
 **Task**: Generate API boilerplate for 10 microservices
 
-#### RANA
+#### CoFounder
 ```bash
 #!/bin/bash
 for service in users orders products invoices; do
-  npx rana generate api --entity $service --framework next
+  npx cofounder generate api --entity $service --framework next
 done
 ```
 
-**Winner**: **RANA** - Designed for automation
+**Winner**: **CoFounder** - Designed for automation
 
 #### Cursor
 - Open each project
@@ -494,7 +494,7 @@ done
 
 ## 💰 Pricing Comparison
 
-### RANA
+### CoFounder
 
 **Open Source (MIT License)**
 - ✅ **Free** to use
@@ -504,8 +504,8 @@ done
 - ✅ Cost optimization (70% savings)
 
 **Cost Example (1M tokens/month):**
-- Without RANA: $10-30/month (LLM costs)
-- With RANA: $3-9/month (70% savings)
+- Without CoFounder: $10-30/month (LLM costs)
+- With CoFounder: $3-9/month (70% savings)
 
 ### Cursor
 
@@ -526,7 +526,7 @@ done
 
 ## 🎯 Decision Matrix
 
-| Your Need | Choose RANA | Choose Cursor |
+| Your Need | Choose CoFounder | Choose Cursor |
 |-----------|-------------|---------------|
 | **Programmatic code generation** | ✅ | ❌ |
 | **Compliance (HIPAA, SEC, GDPR)** | ✅ | ❌ |
@@ -553,7 +553,7 @@ done
 - Debugging
 - Refactoring
 
-**Use RANA for**:
+**Use CoFounder for**:
 - Generating API boilerplate
 - Database migrations
 - Compliance enforcement
@@ -563,14 +563,14 @@ done
 ### Example Workflow
 
 ```bash
-# 1. Use RANA to scaffold API
-npx rana generate api --entity User --framework next
+# 1. Use CoFounder to scaffold API
+npx cofounder generate api --entity User --framework next
 
 # 2. Use Cursor to customize
 # Open in Cursor, add custom logic
 
-# 3. Use RANA for compliance
-npx rana compliance check ./src
+# 3. Use CoFounder for compliance
+npx cofounder compliance check ./src
 
 # 4. Use Cursor for refinement
 # Polish the code in Cursor
@@ -580,7 +580,7 @@ npx rana compliance check ./src
 
 ## 📊 Feature Matrix
 
-| Feature | RANA | Cursor |
+| Feature | CoFounder | Cursor |
 |---------|------|--------|
 | **Code Generation** | ✅ Structured | ✅ Freeform |
 | **API Generation** | ✅ | ⚠️ Manual |
@@ -602,9 +602,9 @@ npx rana compliance check ./src
 
 ## 🏆 Final Verdict
 
-### RANA and Cursor are **complementary, not competitive**
+### CoFounder and Cursor are **complementary, not competitive**
 
-**RANA** is a framework for building production AI features:
+**CoFounder** is a framework for building production AI features:
 - Code generation services
 - Compliance enforcement
 - Automation tools
@@ -619,17 +619,17 @@ npx rana compliance check ./src
 ### The Best Approach:
 Use **both** in your workflow:
 1. **Cursor** for day-to-day coding
-2. **RANA** for structured generation, compliance, and production services
+2. **CoFounder** for structured generation, compliance, and production services
 
 ---
 
 ## 📚 Resources
 
-- **RANA**: [github.com/waymaker-ai/ranavibe](https://github.com/waymaker-ai/ranavibe)
+- **CoFounder**: [github.com/waymaker-ai/cofounder](https://github.com/waymaker-ai/cofounder)
 - **Cursor**: [cursor.sh](https://cursor.sh)
 
 ---
 
 **Last Updated**: January 2026
-**RANA Version**: 2.1
+**CoFounder Version**: 2.1
 **Cursor Version**: 0.41.x

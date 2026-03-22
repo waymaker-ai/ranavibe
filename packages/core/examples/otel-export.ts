@@ -1,9 +1,9 @@
 /**
  * OpenTelemetry Export Example
- * Demonstrates how to export RANA traces to OpenTelemetry collectors
+ * Demonstrates how to export CoFounder traces to OpenTelemetry collectors
  */
 
-import { createRana, createOTelExporter, createOTelPlugin } from '@rana/core';
+import { createCoFounder, createOTelExporter, createOTelPlugin } from '@cofounder/core';
 
 // ============================================================================
 // Basic Setup
@@ -15,7 +15,7 @@ import { createRana, createOTelExporter, createOTelPlugin } from '@rana/core';
 async function basicOTelExport() {
   // Create the exporter
   const exporter = createOTelExporter({
-    serviceName: 'my-rana-service',
+    serviceName: 'my-cofounder-service',
     endpoint: 'http://localhost:4318/v1/traces',
     batchSize: 50,
     batchInterval: 5000,
@@ -23,7 +23,7 @@ async function basicOTelExport() {
   });
 
   // Use as a plugin
-  const rana = createRana({
+  const cofounder = createCoFounder({
     providers: {
       anthropic: process.env.ANTHROPIC_API_KEY,
       openai: process.env.OPENAI_API_KEY,
@@ -32,7 +32,7 @@ async function basicOTelExport() {
   });
 
   // Make requests - they'll automatically be traced
-  const response = await rana.chat('Tell me about OpenTelemetry');
+  const response = await cofounder.chat('Tell me about OpenTelemetry');
   console.log('Response:', response.content.substring(0, 100));
 
   // Shutdown to flush remaining spans
@@ -48,7 +48,7 @@ async function basicOTelExport() {
  */
 async function authenticatedOTelExport() {
   const exporter = createOTelExporter({
-    serviceName: 'production-rana-app',
+    serviceName: 'production-cofounder-app',
     endpoint: 'https://otel-collector.example.com/v1/traces',
     headers: {
       'x-api-key': process.env.OTEL_API_KEY!,
@@ -69,7 +69,7 @@ async function authenticatedOTelExport() {
     },
   });
 
-  const rana = createRana({
+  const cofounder = createCoFounder({
     providers: {
       anthropic: process.env.ANTHROPIC_API_KEY,
       openai: process.env.OPENAI_API_KEY,
@@ -78,7 +78,7 @@ async function authenticatedOTelExport() {
   });
 
   // Your application code
-  const response = await rana.chat({
+  const response = await cofounder.chat({
     messages: [{ role: 'user', content: 'Hello!' }],
     provider: 'anthropic',
     model: 'claude-3-5-sonnet-20241022',
@@ -97,7 +97,7 @@ async function authenticatedOTelExport() {
  * Example 3: Using createOTelPlugin for simpler setup
  */
 async function pluginPattern() {
-  const rana = createRana({
+  const cofounder = createCoFounder({
     providers: {
       anthropic: process.env.ANTHROPIC_API_KEY,
     },
@@ -112,7 +112,7 @@ async function pluginPattern() {
     ],
   });
 
-  await rana.chat('What is TypeScript?');
+  await cofounder.chat('What is TypeScript?');
 }
 
 // ============================================================================
@@ -124,27 +124,27 @@ async function pluginPattern() {
  */
 async function multipleExporters() {
   const localExporter = createOTelExporter({
-    serviceName: 'dev-rana',
+    serviceName: 'dev-cofounder',
     endpoint: 'http://localhost:4318/v1/traces',
     debug: true,
   });
 
   const prodExporter = createOTelExporter({
-    serviceName: 'prod-rana',
+    serviceName: 'prod-cofounder',
     endpoint: 'https://prod-otel.example.com/v1/traces',
     headers: {
       'x-api-key': process.env.PROD_OTEL_KEY!,
     },
   });
 
-  const rana = createRana({
+  const cofounder = createCoFounder({
     providers: {
       anthropic: process.env.ANTHROPIC_API_KEY,
     },
     plugins: [localExporter.asPlugin(), prodExporter.asPlugin()],
   });
 
-  await rana.chat('Explain distributed tracing');
+  await cofounder.chat('Explain distributed tracing');
 
   await Promise.all([localExporter.shutdown(), prodExporter.shutdown()]);
 }
@@ -162,7 +162,7 @@ async function traceGrouping() {
     endpoint: 'http://localhost:4318/v1/traces',
   });
 
-  const rana = createRana({
+  const cofounder = createCoFounder({
     providers: {
       anthropic: process.env.ANTHROPIC_API_KEY,
     },
@@ -175,9 +175,9 @@ async function traceGrouping() {
 
   try {
     // All these requests will be part of the same trace
-    await rana.chat('What is a microservice?');
-    await rana.chat('What is a monolith?');
-    await rana.chat('Compare them');
+    await cofounder.chat('What is a microservice?');
+    await cofounder.chat('What is a monolith?');
+    await cofounder.chat('Compare them');
   } finally {
     // End the trace
     exporter.endTrace();
@@ -196,7 +196,7 @@ async function traceGrouping() {
 async function conditionalExport() {
   const isProd = process.env.NODE_ENV === 'production';
 
-  const rana = createRana({
+  const cofounder = createCoFounder({
     providers: {
       anthropic: process.env.ANTHROPIC_API_KEY,
     },
@@ -213,7 +213,7 @@ async function conditionalExport() {
       : [],
   });
 
-  await rana.chat('Is OpenTelemetry enabled?');
+  await cofounder.chat('Is OpenTelemetry enabled?');
 }
 
 // ============================================================================
@@ -230,7 +230,7 @@ async function errorTracking() {
     debug: true,
   });
 
-  const rana = createRana({
+  const cofounder = createCoFounder({
     providers: {
       anthropic: process.env.ANTHROPIC_API_KEY,
     },
@@ -239,7 +239,7 @@ async function errorTracking() {
 
   try {
     // This might fail (e.g., rate limit, network error)
-    await rana.chat({
+    await cofounder.chat({
       messages: [{ role: 'user', content: 'Test' }],
       provider: 'anthropic',
       // Invalid model to trigger error

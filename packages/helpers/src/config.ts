@@ -1,5 +1,5 @@
 /**
- * Configuration for @rana/helpers
+ * Configuration for @cofounder/helpers
  */
 
 import type { Provider, HelperConfig } from './types';
@@ -23,7 +23,7 @@ let globalConfig: HelperConfig = { ...defaultConfig };
  *
  * @example
  * ```typescript
- * import { configure } from '@rana/helpers';
+ * import { configure } from '@cofounder/helpers';
  *
  * configure({
  *   provider: 'anthropic',

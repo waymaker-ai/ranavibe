@@ -1,7 +1,7 @@
 /**
  * File Integration Examples
  *
- * This example demonstrates how to use @rana/generate to intelligently
+ * This example demonstrates how to use @cofounder/generate to intelligently
  * integrate generated files into an existing codebase.
  */
 
@@ -11,7 +11,7 @@ import {
   integrateFiles,
   FileIntegrator,
   type GeneratedFile,
-} from '@rana/generate';
+} from '@cofounder/generate';
 
 // ============================================================================
 // Example 1: Analyze Existing Codebase

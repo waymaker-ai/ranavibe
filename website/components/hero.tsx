@@ -22,7 +22,7 @@ export function Hero() {
             className="inline-flex items-center space-x-2 px-4 py-1.5 mb-8 rounded-full border border-border bg-background-secondary"
           >
             <Sparkles className="h-4 w-4 text-gradient-from" />
-            <span className="text-sm font-medium">New: RANA 2.1 with Compliance & Guidelines</span>
+            <span className="text-sm font-medium">New: CoFounder 3.1 — 35 Packages, Sandbox, Streaming, Benchmarks, VS Code</span>
           </motion.div>
 
           {/* Heading */}
@@ -32,8 +32,8 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-balance mb-6"
           >
-            The Only Framework{' '}
-            <span className="gradient-text">With Built-in Compliance</span>
+            The AI Guardrail Layer{' '}
+            <span className="gradient-text">For Every Agent Framework</span>
           </motion.h1>
 
           {/* Description */}
@@ -43,7 +43,7 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-lg md:text-xl text-foreground-secondary text-balance mb-10 max-w-2xl mx-auto"
           >
-            Production-ready TypeScript framework with <span className="text-foreground font-semibold">HIPAA, SEC, GDPR compliance, dynamic guidelines, 400K context optimization</span>, and 70% cost savings. Works with Cursor, Windsurf, Antigravity, and all your favorite tools.
+            Production-ready guardrails for AI agents. <span className="text-foreground font-semibold">PII detection, prompt injection blocking, 9 compliance frameworks, sandbox, streaming, benchmarks, and observability</span> — wrapping Anthropic Agent SDK, OpenClaw, and any LLM provider. Like NeMo Guardrails, but TypeScript-first with 35 packages, CI/CD, MCP, and VS Code built in.
           </motion.p>
 
           {/* CTAs */}
@@ -84,7 +84,7 @@ export function Hero() {
               <div className="text-sm text-foreground-secondary mt-1">Token Context</div>
             </div>
             <div className="text-center p-4 rounded-lg bg-background-secondary border border-border">
-              <div className="text-3xl md:text-4xl font-bold gradient-text">17+</div>
+              <div className="text-3xl md:text-4xl font-bold gradient-text">35</div>
               <div className="text-sm text-foreground-secondary mt-1">Packages</div>
             </div>
             <div className="text-center p-4 rounded-lg bg-background-secondary border border-border">
@@ -101,11 +101,11 @@ export function Hero() {
             className="mt-16 text-left"
           >
             <div className="code-block font-mono text-sm">
-              <div className="text-foreground-secondary">$ npm install @rana/compliance @rana/guidelines @rana/context-optimizer</div>
-              <div className="mt-2 text-gradient-from">✓ Installed RANA 2.1 packages</div>
-              <div className="text-foreground-secondary mt-2">{`import { ComplianceEnforcer, PresetRules } from '@rana/compliance';`}</div>
-              <div className="text-foreground-secondary">{`import { GuidelineManager, Conditions } from '@rana/guidelines';`}</div>
-              <div className="text-foreground-secondary">{`import { ContextOptimizer } from '@rana/context-optimizer';`}</div>
+              <div className="text-foreground-secondary">$ npm install @cofounder/guard @cofounder/policies @cofounder/agent-sdk</div>
+              <div className="mt-2 text-gradient-from">✓ Installed CoFounder 3.1 packages</div>
+              <div className="text-foreground-secondary mt-2">{`import { ComplianceEnforcer, PresetRules } from '@cofounder/compliance';`}</div>
+              <div className="text-foreground-secondary">{`import { GuidelineManager, Conditions } from '@cofounder/guidelines';`}</div>
+              <div className="text-foreground-secondary">{`import { ContextOptimizer } from '@cofounder/context-optimizer';`}</div>
               <div className="mt-2 text-gradient-to">{`// HIPAA-compliant AI with built-in guardrails`}</div>
               <div className="text-foreground-secondary">{`const enforcer = new ComplianceEnforcer([PresetRules.hipaa()]);`}</div>
             </div>

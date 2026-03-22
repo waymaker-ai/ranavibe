@@ -49,7 +49,7 @@ export async function promptVersionCommand(
 
   console.log('└─────────┴──────────┴──────────┴────────────────────────────────────┘');
 
-  console.log(chalk.gray(`\nShow diff with: rana prompt:version ${id} --diff 1:4\n`));
+  console.log(chalk.gray(`\nShow diff with: cofounder prompt:version ${id} --diff 1:4\n`));
 }
 
 export async function promptCommitCommand(
@@ -60,7 +60,7 @@ export async function promptCommitCommand(
 
   if (!options.message) {
     console.log(chalk.yellow('⚠ No commit message provided. Use -m to add a message.'));
-    console.log(chalk.gray('  Example: rana prompt:commit my-prompt -m "Updated instructions"\n'));
+    console.log(chalk.gray('  Example: cofounder prompt:commit my-prompt -m "Updated instructions"\n'));
     return;
   }
 
@@ -75,7 +75,7 @@ export async function promptCommitCommand(
   console.log(`  ${chalk.green('✓')} Commit message: "${options.message}"`);
 
   console.log(chalk.green(`\n✓ Prompt committed successfully`));
-  console.log(chalk.gray(`\nRequest review with: rana prompt:review ${id}\n`));
+  console.log(chalk.gray(`\nRequest review with: cofounder prompt:review ${id}\n`));
 }
 
 export async function promptReviewCommand(
@@ -94,7 +94,7 @@ export async function promptReviewCommand(
     }
 
     console.log(chalk.green(`\n✓ Review submitted`));
-    console.log(chalk.gray(`\nPublish with: rana prompt:publish ${id}\n`));
+    console.log(chalk.gray(`\nPublish with: cofounder prompt:publish ${id}\n`));
     return;
   }
 
@@ -124,7 +124,7 @@ export async function promptReviewCommand(
   console.log(chalk.bold('\nComments:'));
   console.log(`  ${chalk.gray('[alice, 1h ago]')} "LGTM! Clear and concise."`);
 
-  console.log(chalk.gray('\nApprove with: rana prompt:review ' + id + ' --approve\n'));
+  console.log(chalk.gray('\nApprove with: cofounder prompt:review ' + id + ' --approve\n'));
 }
 
 export async function promptPublishCommand(
@@ -154,7 +154,7 @@ export async function promptPublishCommand(
   console.log(`  Previous: ${chalk.gray('v' + (version - 1) + ' (archived)')}`);
 
   console.log(chalk.green(`\n✓ Prompt published successfully`));
-  console.log(chalk.gray(`\nRollback if needed: rana prompt:rollback ${id} --version ${version - 1}\n`));
+  console.log(chalk.gray(`\nRollback if needed: cofounder prompt:rollback ${id} --version ${version - 1}\n`));
 }
 
 export async function promptRollbackCommand(

@@ -1,5 +1,5 @@
 /**
- * Notion Integration for RANA
+ * Notion Integration for CoFounder
  *
  * Enables AI-powered knowledge management with Notion.
  * Create, query, and manage pages, databases, and blocks.
@@ -860,11 +860,11 @@ Only return the JSON array, no explanation.`;
   }
 
   // ===========================================================================
-  // RANA Integration Helpers
+  // CoFounder Integration Helpers
   // ===========================================================================
 
   /**
-   * Get tool definitions for RANA agents
+   * Get tool definitions for CoFounder agents
    */
   getToolDefinitions(): Array<{
     name: string;

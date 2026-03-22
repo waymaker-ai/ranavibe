@@ -1,4 +1,4 @@
-# RANA Project Conventions
+# CoFounder Project Conventions
 
 > Standards and patterns for consistent development across the project.
 
@@ -62,7 +62,7 @@ Use consistent markers for tracking:
 
 ```
 packages/
-├── core/                 # @rana/core
+├── core/                 # @cofounder/core
 │   ├── src/
 │   │   ├── index.ts     # Public exports
 │   │   ├── client.ts    # Main client
@@ -70,18 +70,18 @@ packages/
 │   │   ├── utils/       # Utilities
 │   │   └── providers/   # Provider implementations
 │   └── package.json
-├── testing/             # @rana/testing
-└── mcp/                 # @rana/mcp
+├── testing/             # @cofounder/testing
+└── mcp/                 # @cofounder/mcp
 
 tools/
-└── cli/                 # rana CLI
+└── cli/                 # cofounder CLI
     ├── src/
     │   ├── cli.ts       # Command registration
     │   ├── commands/    # Individual commands
     │   └── utils/       # CLI utilities
     └── package.json
 
-website/                 # rana.dev
+website/                 # cofounder.dev
 ```
 
 ### 2.2 Naming Conventions
@@ -93,7 +93,7 @@ website/                 # rana.dev
 | Functions | camelCase | `calculateCost()` |
 | Constants | UPPER_SNAKE | `MAX_RETRIES` |
 | Types/Interfaces | PascalCase | `RanaConfig` |
-| CLI Commands | kebab:colon | `rana config:set` |
+| CLI Commands | kebab:colon | `cofounder config:set` |
 
 ### 2.3 Export Patterns
 
@@ -137,14 +137,14 @@ export class RanaBudgetExceededError extends RanaError { }
 // tools/cli/src/commands/example.ts
 
 /**
- * RANA Example Command
+ * CoFounder Example Command
  *
  * Brief description of what this does.
  *
  * @example
  * ```bash
- * rana example
- * rana example:subcommand --option value
+ * cofounder example
+ * cofounder example:subcommand --option value
  * ```
  */
 
@@ -163,18 +163,18 @@ export async function exampleCommand(options: {
 
 ### 3.2 Command Naming
 
-- Main command: `rana <noun>`
-- Subcommands: `rana <noun>:<verb>`
+- Main command: `cofounder <noun>`
+- Subcommands: `cofounder <noun>:<verb>`
 - Aliases: Short forms for common commands
 
 ```
-rana budget              # Status (noun alone = status)
-rana budget:set          # Action
-rana budget:clear        # Action
+cofounder budget              # Status (noun alone = status)
+cofounder budget:set          # Action
+cofounder budget:clear        # Action
 
-rana config              # Show config
-rana config:set          # Modify
-rana config:list         # List
+cofounder config              # Show config
+cofounder config:set          # Modify
+cofounder config:list         # List
 ```
 
 ### 3.3 Output Formatting
@@ -266,10 +266,10 @@ describe('CostTracker', () => {
 ### 5.3 AI Test Patterns
 
 ```typescript
-import { aiTest, semanticMatch, toMostlyBe } from '@rana/testing';
+import { aiTest, semanticMatch, toMostlyBe } from '@cofounder/testing';
 
-aiTest('should generate greeting', async ({ rana }) => {
-  const response = await rana.chat('Say hello');
+aiTest('should generate greeting', async ({ cofounder }) => {
+  const response = await cofounder.chat('Say hello');
   expect(response).toMatchSemantic('a friendly greeting');
 });
 ```
@@ -282,21 +282,21 @@ aiTest('should generate greeting', async ({ rana }) => {
 
 ```typescript
 /**
- * Create a new RANA client instance.
+ * Create a new CoFounder client instance.
  *
  * @param config - Configuration options
  * @param config.providers - API keys for providers
  * @param config.cache - Enable response caching
- * @returns Configured RANA client
+ * @returns Configured CoFounder client
  *
  * @example
  * ```typescript
- * const rana = createRana({
+ * const cofounder = createCoFounder({
  *   providers: { openai: process.env.OPENAI_KEY }
  * });
  * ```
  */
-export function createRana(config: RanaConfig): RanaClient {
+export function createCoFounder(config: RanaConfig): RanaClient {
 ```
 
 ### 6.2 README Structure

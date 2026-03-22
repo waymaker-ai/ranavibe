@@ -1,5 +1,5 @@
 /**
- * Slack Bot Framework Plugin for RANA
+ * Slack Bot Framework Plugin for CoFounder
  *
  * Provides a comprehensive Slack integration with:
  * - Message handling (direct messages, mentions, channels)
@@ -12,8 +12,8 @@
  *
  * @example
  * ```typescript
- * import { createRana } from '@rana/core';
- * import { createSlackPlugin } from '@rana/core/plugins/slack';
+ * import { createCoFounder } from '@cofounder/core';
+ * import { createSlackPlugin } from '@cofounder/core/plugins/slack';
  *
  * const slack = createSlackPlugin({
  *   botToken: process.env.SLACK_BOT_TOKEN,
@@ -24,13 +24,13 @@
  *
  * // Handle messages
  * slack.onMessage(async (message) => {
- *   const response = await rana.chat(message.text);
+ *   const response = await cofounder.chat(message.text);
  *   await slack.reply(message.channel, response.content);
  * });
  *
  * // Handle slash commands
  * slack.onCommand('ask', async (command) => {
- *   const response = await rana.chat(command.text);
+ *   const response = await cofounder.chat(command.text);
  *   return response.content;
  * });
  *
@@ -52,7 +52,7 @@ export interface SlackConfig {
   appToken?: string;
   /** Slack Signing Secret for request verification */
   signingSecret?: string;
-  /** Default model to use for RANA chat */
+  /** Default model to use for CoFounder chat */
   defaultModel?: LLMModel;
   /** Rate limit: max requests per minute (default: 60) */
   maxRequestsPerMinute?: number;
@@ -260,7 +260,7 @@ export class SlackBot {
    * @example
    * ```typescript
    * slack.onCommand('ask', async (command) => {
-   *   const response = await rana.chat(command.text);
+   *   const response = await cofounder.chat(command.text);
    *   return response.content;
    * });
    * ```
@@ -711,7 +711,7 @@ export class SlackBot {
 // ============================================================================
 
 /**
- * Create a Slack bot plugin for RANA
+ * Create a Slack bot plugin for CoFounder
  *
  * @example
  * ```typescript
@@ -727,20 +727,20 @@ export function createSlackPlugin(config: SlackConfig): SlackBot {
 }
 
 // ============================================================================
-// RANA Plugin Definition
+// CoFounder Plugin Definition
 // ============================================================================
 
 /**
- * Slack plugin for RANA with automatic chat integration
+ * Slack plugin for CoFounder with automatic chat integration
  *
- * This plugin automatically integrates Slack messages with RANA's chat API.
+ * This plugin automatically integrates Slack messages with CoFounder's chat API.
  *
  * @example
  * ```typescript
- * import { createRana } from '@rana/core';
- * import { slackPlugin } from '@rana/core/plugins/slack';
+ * import { createCoFounder } from '@cofounder/core';
+ * import { slackPlugin } from '@cofounder/core/plugins/slack';
  *
- * const rana = createRana({
+ * const cofounder = createCoFounder({
  *   providers: {
  *     anthropic: process.env.ANTHROPIC_API_KEY
  *   },
@@ -755,13 +755,13 @@ export function createSlackPlugin(config: SlackConfig): SlackBot {
  */
 export function slackPlugin(config: SlackConfig & { autoReply?: boolean }): RanaPlugin {
   let bot: SlackBot;
-  let ranaInstance: any;
+  let cofounderInstance: any;
 
   return definePlugin({
     name: 'slack',
     version: '1.0.0',
 
-    async onInit(ranaConfig) {
+    async onInit(cofounderConfig) {
       bot = new SlackBot(config);
 
       // Auto-reply to messages if enabled
@@ -785,15 +785,15 @@ export function slackPlugin(config: SlackConfig & { autoReply?: boolean }): Rana
               content: message.text,
             });
 
-            // Prepare RANA request
+            // Prepare CoFounder request
             const request: RanaChatRequest = {
               messages: context.conversationHistory,
               model: config.defaultModel,
             };
 
-            // Get response from RANA
-            // Note: In actual implementation, this would use the RANA client instance
-            // const response = await ranaInstance.chat(request);
+            // Get response from CoFounder
+            // Note: In actual implementation, this would use the CoFounder client instance
+            // const response = await cofounderInstance.chat(request);
 
             // Simulate response for now
             const response = {

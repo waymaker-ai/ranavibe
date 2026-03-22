@@ -1,10 +1,10 @@
 {
-  "name": "@rana/cli",
+  "name": "@cofounder/cli",
   "version": "0.1.0",
-  "description": "CLI tool for Rapid AI Native Architecture (RANA)",
+  "description": "CLI tool for Rapid AI Native Architecture (CoFounder)",
   "main": "dist/index.js",
   "bin": {
-    "rana": "dist/cli.js"
+    "cofounder": "dist/cli.js"
   },
   "type": "module",
   "scripts": {
@@ -15,7 +15,7 @@
     "prepublishOnly": "npm run build"
   },
   "keywords": [
-    "rana",
+    "cofounder",
     "ai",
     "development",
     "standards",
@@ -25,20 +25,20 @@
     "gpt",
     "copilot"
   ],
-  "author": "RANA Contributors",
+  "author": "CoFounder Contributors",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/waymaker/rana.git",
+    "url": "git+https://github.com/waymaker/cofounder.git",
     "directory": "tools/cli"
   },
   "bugs": {
-    "url": "https://github.com/waymaker/rana/issues"
+    "url": "https://github.com/waymaker/cofounder/issues"
   },
-  "homepage": "https://rana.dev",
+  "homepage": "https://cofounder.dev",
   "funding": {
     "type": "individual",
-    "url": "https://waymaker.com/rana"
+    "url": "https://waymaker.com/cofounder"
   },
   "dependencies": {
     "@types/prompts": "^2.4.9",

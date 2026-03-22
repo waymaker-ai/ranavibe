@@ -10,17 +10,17 @@ const faqs = [
     icon: Terminal,
     items: [
       {
-        question: 'How do I install RANA?',
+        question: 'How do I install CoFounder?',
         answer: `Install all packages at once:
 
 \`\`\`bash
-npm install @rana/core @rana/helpers @rana/prompts @rana/rag
+npm install @cofounder/core @cofounder/helpers @cofounder/prompts @cofounder/rag
 \`\`\`
 
 Or install the CLI globally:
 
 \`\`\`bash
-npm install -g @rana/cli
+npm install -g @cofounder/cli
 \`\`\``,
       },
       {
@@ -49,7 +49,7 @@ node --version
       },
       {
         question: 'TypeScript types are not working',
-        answer: `RANA is fully typed. Make sure you have:
+        answer: `CoFounder is fully typed. Make sure you have:
 
 1. TypeScript 5.0 or higher
 2. Proper moduleResolution in tsconfig.json
@@ -93,7 +93,7 @@ For production, use your platform's environment variable system (Vercel, Railway
 
 \`\`\`bash
 # Validate your setup
-npx rana doctor
+npx cofounder doctor
 \`\`\``,
       },
       {
@@ -109,7 +109,7 @@ npx rana doctor
 Or use environment-specific configuration:
 
 \`\`\`typescript
-import { configure } from '@rana/core';
+import { configure } from '@cofounder/core';
 
 configure({
   providers: {
@@ -157,12 +157,12 @@ const agent = new Agent({
       },
       {
         question: 'How do I handle rate limits?',
-        answer: `RANA handles rate limits automatically with retries and backoff.
+        answer: `CoFounder handles rate limits automatically with retries and backoff.
 
 For additional control:
 
 \`\`\`typescript
-import { RateLimiter } from '@rana/core';
+import { RateLimiter } from '@cofounder/core';
 
 const limiter = new RateLimiter({
   requests: { max: 100, window: '1m' }
@@ -208,10 +208,10 @@ const compressor = new MemoryCompressor({
     items: [
       {
         question: 'How do I track my AI spending?',
-        answer: `RANA tracks costs automatically:
+        answer: `CoFounder tracks costs automatically:
 
 \`\`\`typescript
-import { CostTracker } from '@rana/core';
+import { CostTracker } from '@cofounder/core';
 
 const tracker = new CostTracker();
 
@@ -225,7 +225,7 @@ console.log(result.cost);  // $0.0023
 Or use the dashboard:
 
 \`\`\`bash
-npx rana dashboard
+npx cofounder dashboard
 \`\`\``,
       },
       {
@@ -233,7 +233,7 @@ npx rana dashboard
         answer: `Set hard budget limits to prevent overspending:
 
 \`\`\`typescript
-import { BudgetManager } from '@rana/core';
+import { BudgetManager } from '@cofounder/core';
 
 const budget = new BudgetManager();
 
@@ -256,7 +256,7 @@ await budget.setUserBudget(userId, {
 4. **Use model routing** - automatically pick cheapest suitable model
 
 \`\`\`typescript
-import { CostOptimizer } from '@rana/core';
+import { CostOptimizer } from '@cofounder/core';
 
 const optimizer = new CostOptimizer({
   strategies: ['caching', 'model-routing', 'prompt-compression']
@@ -299,22 +299,22 @@ Solutions:
 1. **Use a model with larger context** (e.g., claude-3 has 200k tokens)
 2. **Compress your prompt**:
 \`\`\`typescript
-import { compressPrompt } from '@rana/helpers';
+import { compressPrompt } from '@cofounder/helpers';
 const compressed = await compressPrompt(longPrompt);
 \`\`\`
 
 3. **Chunk your input**:
 \`\`\`typescript
-import { SemanticChunker } from '@rana/rag';
+import { SemanticChunker } from '@cofounder/rag';
 const chunks = await chunker.chunk(longDocument);
 \`\`\``,
       },
       {
         question: 'Error: "Provider unavailable"',
-        answer: `The AI provider is temporarily down. RANA can auto-fallback:
+        answer: `The AI provider is temporarily down. CoFounder can auto-fallback:
 
 \`\`\`typescript
-import { FallbackChain } from '@rana/core';
+import { FallbackChain } from '@cofounder/core';
 
 const chain = new FallbackChain({
   providers: [
@@ -334,7 +334,7 @@ const result = await chain.chat({ messages });
 Use structured output to ensure correct format:
 
 \`\`\`typescript
-import { extract } from '@rana/helpers';
+import { extract } from '@cofounder/helpers';
 
 const data = await extract(text, {
   name: 'string',
@@ -387,7 +387,7 @@ export default function TroubleshootingPage() {
             Check the CLI doctor command or join our Discord.
           </p>
           <div className="mt-4 code-block font-mono text-sm">
-            npx rana doctor
+            npx cofounder doctor
           </div>
         </motion.div>
 
@@ -406,7 +406,7 @@ export default function TroubleshootingPage() {
                 Run the doctor command to diagnose common issues:
               </p>
               <div className="code-block font-mono text-sm">
-                npx rana doctor
+                npx cofounder doctor
               </div>
               <p className="text-foreground-secondary mt-3 text-sm">
                 This checks: API keys, dependencies, configuration, and connectivity.
@@ -463,21 +463,21 @@ export default function TroubleshootingPage() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
-              href="https://discord.gg/rana"
+              href="https://discord.gg/cofounder"
               target="_blank"
               className="btn-primary"
             >
               Join Discord
             </Link>
             <Link
-              href="https://github.com/waymaker-ai/ranavibe/issues"
+              href="https://github.com/waymaker-ai/cofounder/issues"
               target="_blank"
               className="btn-secondary"
             >
               Open an Issue
             </Link>
             <Link
-              href="https://github.com/waymaker-ai/ranavibe/discussions"
+              href="https://github.com/waymaker-ai/cofounder/discussions"
               target="_blank"
               className="btn-secondary"
             >

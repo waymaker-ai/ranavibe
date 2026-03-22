@@ -81,16 +81,16 @@ npx @anthropic-ai/mcp-inspector node dist/weather-server.js
 
 ## Creating Your Own Server
 
-Use the RANA CLI to scaffold a new server:
+Use the CoFounder CLI to scaffold a new server:
 
 ```bash
-rana mcp create my-server
+cofounder mcp create my-server
 ```
 
 Or use the scaffolding API:
 
 ```typescript
-import { scaffoldMCPServer, TEMPLATES } from '@rana/mcp';
+import { scaffoldMCPServer, TEMPLATES } from '@cofounder/mcp';
 
 const result = scaffoldMCPServer({
   name: 'my-server',

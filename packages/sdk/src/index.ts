@@ -1,7 +1,7 @@
 /**
- * RANA SDK - Programmatic access to RANA framework
+ * CoFounder SDK - Programmatic access to CoFounder framework
  *
- * Use this SDK to integrate RANA quality gates and REPM validation
+ * Use this SDK to integrate CoFounder quality gates and REPM validation
  * into your own tools, CI/CD pipelines, or applications.
  */
 
@@ -10,19 +10,19 @@ export {
   QualityGateChecker,
   REPMValidator,
   TemplateManager,
-  type RanaConfig,
+  type CoFounderConfig,
   type QualityGate,
   type REPMPhase,
-} from '@rana/core';
+} from '@cofounder/core';
 
-import { ConfigParser, QualityGateChecker, REPMValidator, TemplateManager } from '@rana/core';
+import { ConfigParser, QualityGateChecker, REPMValidator, TemplateManager } from '@cofounder/core';
 import * as fs from 'fs';
 import * as path from 'path';
 
 /**
- * Main RANA SDK class for convenient access to all functionality
+ * Main CoFounder SDK class for convenient access to all functionality
  */
-export class RANA {
+export class CoFounder {
   private configPath: string | null;
 
   constructor(configPath?: string) {
@@ -30,7 +30,7 @@ export class RANA {
   }
 
   /**
-   * Initialize a new RANA project
+   * Initialize a new CoFounder project
    */
   static init(options: {
     projectName: string;
@@ -49,7 +49,7 @@ export class RANA {
       .replace('type: "fullstack"', `type: "${options.projectType || 'fullstack'}"`);
 
     const outputPath = options.outputPath || process.cwd();
-    const configFile = path.join(outputPath, '.rana.yml');
+    const configFile = path.join(outputPath, '.cofounder.yml');
 
     fs.writeFileSync(configFile, customConfig, 'utf8');
   }
@@ -59,7 +59,7 @@ export class RANA {
    */
   validate(): boolean {
     if (!this.configPath) {
-      throw new Error('No .rana.yml file found');
+      throw new Error('No .cofounder.yml file found');
     }
 
     try {
@@ -75,7 +75,7 @@ export class RANA {
    */
   checkPhase(phase: 'pre_implementation' | 'implementation' | 'testing' | 'deployment') {
     if (!this.configPath) {
-      throw new Error('No .rana.yml file found');
+      throw new Error('No .cofounder.yml file found');
     }
 
     const config = ConfigParser.parse(this.configPath);
@@ -88,7 +88,7 @@ export class RANA {
    */
   isMajorFeature(description: string): boolean {
     if (!this.configPath) {
-      throw new Error('No .rana.yml file found');
+      throw new Error('No .cofounder.yml file found');
     }
 
     const config = ConfigParser.parse(this.configPath);
@@ -124,7 +124,7 @@ export class RANA {
    */
   getConfig() {
     if (!this.configPath) {
-      throw new Error('No .rana.yml file found');
+      throw new Error('No .cofounder.yml file found');
     }
 
     return ConfigParser.parse(this.configPath);
@@ -134,16 +134,16 @@ export class RANA {
 /**
  * Convenience exports for direct usage
  */
-export const rana = {
+export const cofounder = {
   /**
-   * Initialize a new RANA project
+   * Initialize a new CoFounder project
    */
-  init: RANA.init,
+  init: CoFounder.init,
 
   /**
-   * Create a RANA instance
+   * Create a CoFounder instance
    */
-  create: (configPath?: string) => new RANA(configPath),
+  create: (configPath?: string) => new CoFounder(configPath),
 
   /**
    * Parse a config file
@@ -156,4 +156,4 @@ export const rana = {
   findConfig: ConfigParser.findConfig,
 };
 
-export default RANA;
+export default CoFounder;

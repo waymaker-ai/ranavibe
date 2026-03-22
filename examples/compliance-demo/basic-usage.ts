@@ -1,5 +1,5 @@
 /**
- * @rana/compliance - Basic Usage Example
+ * @cofounder/compliance - Basic Usage Example
  *
  * This example demonstrates how to use the compliance enforcer
  * to ensure AI outputs meet regulatory requirements.
@@ -10,10 +10,10 @@ import {
   PresetRules,
   detectPII,
   redactPII,
-} from '@rana/compliance';
+} from '@cofounder/compliance';
 
 async function main() {
-  console.log('🛡️ RANA Compliance - Basic Usage\n');
+  console.log('🛡️ CoFounder Compliance - Basic Usage\n');
 
   // Create compliance enforcer
   const enforcer = createComplianceEnforcer({

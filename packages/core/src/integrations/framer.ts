@@ -1,5 +1,5 @@
 /**
- * Framer Integration for RANA
+ * Framer Integration for CoFounder
  *
  * Enables AI-powered interactions with Framer sites.
  * Supports code components, overrides, and CMS integration.
@@ -273,7 +273,7 @@ interface ${name}Props {
 }
 
 /**
- * AI Chat Widget powered by RANA
+ * AI Chat Widget powered by CoFounder
  *
  * @framerSupportedLayoutWidth auto
  * @framerSupportedLayoutHeight auto
@@ -859,7 +859,7 @@ import { motion } from "framer-motion"
   }
 
   // ===========================================================================
-  // RANA Integration Helpers
+  // CoFounder Integration Helpers
   // ===========================================================================
 
   /**
@@ -867,20 +867,20 @@ import { motion } from "framer-motion"
    */
   generateAPIHandler(options: {
     type: 'chat' | 'search' | 'cms';
-    ranaConfig?: Record<string, any>;
+    cofounderConfig?: Record<string, any>;
   }): string {
-    const { type, ranaConfig } = options;
+    const { type, cofounderConfig } = options;
 
     switch (type) {
       case 'chat':
-        return `import { createRANA } from '@rana/core';
+        return `import { createCoFounder } from '@cofounder/core';
 
-const rana = createRANA(${JSON.stringify(ranaConfig || {}, null, 2)});
+const cofounder = createCoFounder(${JSON.stringify(cofounderConfig || {}, null, 2)});
 
 export async function POST(request: Request) {
   const { messages } = await request.json();
 
-  const stream = await rana.chat({
+  const stream = await cofounder.chat({
     messages,
     stream: true,
   });
@@ -895,16 +895,16 @@ export async function POST(request: Request) {
 }`;
 
       case 'search':
-        return `import { createRANA } from '@rana/core';
+        return `import { createCoFounder } from '@cofounder/core';
 
-const rana = createRANA(${JSON.stringify(ranaConfig || {}, null, 2)});
+const cofounder = createCoFounder(${JSON.stringify(cofounderConfig || {}, null, 2)});
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const query = searchParams.get('q') || '';
   const limit = parseInt(searchParams.get('limit') || '10');
 
-  const results = await rana.search({
+  const results = await cofounder.search({
     query,
     limit,
     semantic: true,
@@ -914,27 +914,27 @@ export async function GET(request: Request) {
 }`;
 
       case 'cms':
-        return `import { createRANA } from '@rana/core';
+        return `import { createCoFounder } from '@cofounder/core';
 
-const rana = createRANA(${JSON.stringify(ranaConfig || {}, null, 2)});
+const cofounder = createCoFounder(${JSON.stringify(cofounderConfig || {}, null, 2)});
 
 export async function POST(request: Request) {
   const { action, data } = await request.json();
 
   switch (action) {
     case 'generate':
-      const content = await rana.generate({
+      const content = await cofounder.generate({
         prompt: data.prompt,
         schema: data.schema,
       });
       return Response.json({ content });
 
     case 'summarize':
-      const summary = await rana.summarize(data.text);
+      const summary = await cofounder.summarize(data.text);
       return Response.json({ summary });
 
     case 'translate':
-      const translation = await rana.translate({
+      const translation = await cofounder.translate({
         text: data.text,
         targetLanguage: data.language,
       });
@@ -954,14 +954,14 @@ export async function POST(request: Request) {
    * Get integration setup instructions
    */
   getSetupInstructions(): string {
-    return `# RANA + Framer Integration Setup
+    return `# CoFounder + Framer Integration Setup
 
 ## 1. Install Dependencies
 
 In your Framer project, add the following to your code components:
 
 \`\`\`bash
-npm install @rana/core framer-motion
+npm install @cofounder/core framer-motion
 \`\`\`
 
 ## 2. Create API Route

@@ -1,4 +1,4 @@
-# RANA Template Guide
+# CoFounder Template Guide
 
 **Complete guide to using the Next.js + Supabase template**
 
@@ -41,7 +41,7 @@ NEXT_PUBLIC_SITE_URL=http://localhost:3000
 NEXT_PUBLIC_SITE_NAME="My App"
 ```
 
-### 3. Initialize RANA
+### 3. Initialize CoFounder
 
 ```bash
 npx aads init
@@ -90,7 +90,7 @@ my-app/
 │   └── security/
 │       └── rate-limit.ts    # Rate limiting
 ├── middleware.ts            # Auth + rate limiting
-├── .rana.yml               # RANA configuration
+├── .cofounder.yml               # CoFounder configuration
 ├── .env.example            # Environment template
 ├── next.config.js          # Next.js config
 ├── tailwind.config.ts      # Tailwind config
@@ -99,7 +99,7 @@ my-app/
 
 ---
 
-## RANA Frameworks
+## CoFounder Frameworks
 
 ### 1. Database Framework
 
@@ -536,7 +536,7 @@ npm run test:coverage        # Coverage report
 ### Pre-Deployment Checks
 
 ```bash
-# Run all RANA checks
+# Run all CoFounder checks
 npx aads check
 npx aads security:audit
 npx aads seo:check

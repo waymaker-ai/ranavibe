@@ -1,5 +1,5 @@
 /**
- * Mem0 Integration for RANA
+ * Mem0 Integration for CoFounder
  *
  * Mem0 (formerly MemGPT) provides persistent memory for AI agents.
  * This integration enables long-term memory storage and retrieval.
@@ -459,11 +459,11 @@ export class Mem0Integration extends EventEmitter {
   }
 
   // ===========================================================================
-  // RANA Integration Helpers
+  // CoFounder Integration Helpers
   // ===========================================================================
 
   /**
-   * Create a RANA middleware for automatic memory management
+   * Create a CoFounder middleware for automatic memory management
    */
   createMiddleware(options: {
     extractMemories?: boolean;

@@ -1,9 +1,9 @@
 /**
  * Voice Plugin Examples
- * Demonstrates various usage patterns for the RANA Voice Plugin
+ * Demonstrates various usage patterns for the CoFounder Voice Plugin
  */
 
-import { createRana } from '../client';
+import { createCoFounder } from '../client';
 import {
   createVoicePlugin,
   VoicePlugin,
@@ -20,8 +20,8 @@ import {
 async function example1_BasicSetup() {
   console.log('=== Example 1: Basic Setup with OpenAI ===\n');
 
-  // Create RANA client
-  const rana = createRana({
+  // Create CoFounder client
+  const cofounder = createCoFounder({
     providers: {
       openai: process.env.OPENAI_API_KEY!,
     },
@@ -42,7 +42,7 @@ async function example1_BasicSetup() {
 
   // Create and register the plugin
   const voicePlugin = createVoicePlugin(voiceConfig);
-  await rana.use(voicePlugin);
+  await cofounder.use(voicePlugin);
 
   console.log('Voice plugin registered successfully!');
 }
@@ -107,7 +107,7 @@ async function example3_TextToSpeech() {
 
   // Basic synthesis
   const result = await voicePlugin.synthesize(
-    'Hello! I am a RANA voice assistant. How can I help you today?'
+    'Hello! I am a CoFounder voice assistant. How can I help you today?'
   );
 
   console.log('Audio generated:', {
@@ -196,7 +196,7 @@ async function example5_VoiceSession() {
     console.log('User said:', result.text);
 
     // Process with LLM and respond
-    // (You would integrate with RANA chat here)
+    // (You would integrate with CoFounder chat here)
   });
 
   // Listen for speech synthesis
@@ -319,8 +319,8 @@ async function example7_VoiceActivityDetection() {
 async function example8_CompleteVoiceAssistant() {
   console.log('=== Example 8: Complete Voice Assistant ===\n');
 
-  // Initialize RANA with voice plugin
-  const rana = createRana({
+  // Initialize CoFounder with voice plugin
+  const cofounder = createCoFounder({
     providers: {
       openai: process.env.OPENAI_API_KEY!,
       anthropic: process.env.ANTHROPIC_API_KEY!,
@@ -352,7 +352,7 @@ async function example8_CompleteVoiceAssistant() {
     console.log('User:', transcription.text);
 
     // Process with LLM
-    const response = await rana.chat({
+    const response = await cofounder.chat({
       messages: [
         { role: 'user', content: transcription.text },
       ],

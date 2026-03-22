@@ -1,0 +1,15 @@
+{
+  "name": "@cofounder/benchmark",
+  "version": "1.0.0",
+  "description": "CoFounder benchmark package",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": { ".": { "types": "./dist/index.d.ts", "import": "./dist/index.mjs", "require": "./dist/index.js" } },
+  "files": ["dist", "README.md"],
+  "scripts": { "build": "tsup src/index.ts --format cjs,esm --dts", "dev": "tsup src/index.ts --format cjs,esm --dts --watch", "test": "vitest", "typecheck": "tsc --noEmit" },
+  "devDependencies": { "@types/node": "^20.10.0", "tsup": "^8.0.1", "typescript": "^5.3.3", "vitest": "^1.0.0" },
+  "author": "Waymaker", "license": "MIT",
+  "repository": { "type": "git", "url": "https://github.com/waymaker-ai/cofounder.git", "directory": "packages/benchmark" },
+  "homepage": "https://cofounder.cx", "publishConfig": { "access": "public" }
+}

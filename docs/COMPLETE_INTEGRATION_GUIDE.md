@@ -1,4 +1,4 @@
-# Complete RANA Integration Guide: MCP, ADK, and Vibe Coding
+# Complete CoFounder Integration Guide: MCP, ADK, and Vibe Coding
 
 **Version:** 1.0.0
 **Last Updated:** 2025-11-09
@@ -10,7 +10,7 @@
 
 This comprehensive guide brings together three powerful frameworks to create a complete, production-ready AI development workflow:
 
-1. **RANA** (Rapid AI Native Architecture) - Quality gates and workflows
+1. **CoFounder** (Rapid AI Native Architecture) - Quality gates and workflows
 2. **MCP** (Model Context Protocol) - Standardized AI-to-system connections
 3. **Google ADK** (Agent Development Kit) - Multi-agent orchestration
 4. **Vibe Coding Standards** - Design distinctiveness and component best practices
@@ -36,7 +36,7 @@ Together, these create a unified approach to building production-quality applica
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│                    RANA Framework                       │
+│                    CoFounder Framework                       │
 │  Quality Gates │ Workflows │ Standards │ Compliance    │
 └────────────────────┬────────────────────────────────────┘
                      │
@@ -65,7 +65,7 @@ Together, these create a unified approach to building production-quality applica
 
 ### What Each Component Does
 
-**RANA (Foundation)**
+**CoFounder (Foundation)**
 - Defines quality gates
 - Enforces standards (no mocks, error handling, testing)
 - Manages deployment workflow
@@ -96,7 +96,7 @@ Together, these create a unified approach to building production-quality applica
 ### 1. Install Dependencies
 
 ```bash
-# RANA CLI
+# CoFounder CLI
 npm install -g @aads/cli
 
 # MCP SDK
@@ -110,14 +110,14 @@ npm install class-variance-authority tailwindcss-animate framer-motion
 npx shadcn-ui@latest init
 ```
 
-### 2. Initialize RANA
+### 2. Initialize CoFounder
 
 ```bash
 cd your-project
 aads init
 ```
 
-### 3. Configure .rana.yml
+### 3. Configure .cofounder.yml
 
 ```yaml
 version: 1.0.0
@@ -126,7 +126,7 @@ project:
   name: "My App"
   type: "fullstack"
 
-# RANA Standards
+# CoFounder Standards
 standards:
   principles:
     - search_before_create
@@ -212,7 +212,7 @@ mkdir -p components/design-system/{primitives,brand,compositions}
 ### 5. Start Building
 
 ```bash
-# Use RANA workflow
+# Use CoFounder workflow
 aads flow feature "Add user dashboard"
 
 # The workflow will:
@@ -252,7 +252,7 @@ aads flow feature "Add user dashboard"
 └─────────────────────────────────────────────────────────┘
                          ↕
 ┌─────────────────────────────────────────────────────────┐
-│ Layer 2: Quality Gates (RANA)                          │
+│ Layer 2: Quality Gates (CoFounder)                          │
 │ - Pre-implementation checks                             │
 │ - Implementation standards                              │
 │ - Testing requirements                                  │
@@ -283,7 +283,7 @@ from aads.quality_gates import AADSComplianceAgent
 class FullStackFeatureAgent(SequentialAgent):
     """
     Complete feature development with:
-    - RANA quality gates
+    - CoFounder quality gates
     - MCP data access
     - ADK orchestration
     - Design standards
@@ -308,11 +308,11 @@ class FullStackFeatureAgent(SequentialAgent):
         super().__init__(
             name="fullstack_feature",
             agents=[
-                # Phase 1: RANA Understanding & Research
+                # Phase 1: CoFounder Understanding & Research
                 LlmAgent(
                     name="researcher",
                     instructions="""
-                    RANA Phase 1-2: Understanding & Research
+                    CoFounder Phase 1-2: Understanding & Research
 
                     Use MCP tools to:
                     1. Search existing codebase
@@ -329,7 +329,7 @@ class FullStackFeatureAgent(SequentialAgent):
                 LlmAgent(
                     name="planner",
                     instructions="""
-                    RANA Phase 3: Planning
+                    CoFounder Phase 3: Planning
 
                     Design approach considering:
                     - Existing patterns (from research)
@@ -353,7 +353,7 @@ class FullStackFeatureAgent(SequentialAgent):
                         LlmAgent(
                             name="backend",
                             instructions="""
-                            RANA Implementation Standards:
+                            CoFounder Implementation Standards:
                             ✅ Real data only (use MCP database tools)
                             ✅ Error handling on all async operations
                             ✅ Input validation
@@ -368,7 +368,7 @@ class FullStackFeatureAgent(SequentialAgent):
                         LlmAgent(
                             name="frontend",
                             instructions="""
-                            RANA + Design Standards:
+                            CoFounder + Design Standards:
                             ✅ Use design system components only
                             ✅ Add loading states
                             ✅ Add error states
@@ -412,7 +412,7 @@ class FullStackFeatureAgent(SequentialAgent):
         )
 ```
 
-### Pattern 2: MCP Server with RANA Compliance
+### Pattern 2: MCP Server with CoFounder Compliance
 
 ```typescript
 // mcp-servers/aads-compliant/src/index.ts
@@ -424,7 +424,7 @@ class AADSCompliantMCPServer {
   private aadsConfig: any;
 
   constructor() {
-    // Load RANA configuration
+    // Load CoFounder configuration
     this.aadsConfig = this.loadAADSConfig();
 
     this.server = new Server(
@@ -436,19 +436,19 @@ class AADSCompliantMCPServer {
   }
 
   private loadAADSConfig() {
-    // Load and validate .rana.yml
+    // Load and validate .cofounder.yml
     const yaml = require('js-yaml');
     const fs = require('fs');
-    return yaml.load(fs.readFileSync('.rana.yml', 'utf8'));
+    return yaml.load(fs.readFileSync('.cofounder.yml', 'utf8'));
   }
 
   private setupHandlers() {
-    // Tool: Check RANA Compliance
+    // Tool: Check CoFounder Compliance
     this.server.setRequestHandler("tools/list", async () => ({
       tools: [
         {
           name: "check_aads_compliance",
-          description: "Check if code follows RANA standards",
+          description: "Check if code follows CoFounder standards",
           inputSchema: {
             type: "object",
             properties: {
@@ -486,13 +486,13 @@ class AADSCompliantMCPServer {
       }
     });
 
-    // Resource: RANA Configuration
+    // Resource: CoFounder Configuration
     this.server.setRequestHandler("resources/list", async () => ({
       resources: [
         {
           uri: "aads://config",
-          name: "RANA Configuration",
-          description: "Current RANA standards and quality gates",
+          name: "CoFounder Configuration",
+          description: "Current CoFounder standards and quality gates",
           mimeType: "application/json",
         },
         {
@@ -646,7 +646,7 @@ import type { LucideIcon } from 'lucide-react';
 /**
  * FeatureCard Component
  *
- * ✅ RANA Compliant:
+ * ✅ CoFounder Compliant:
  * - No mock data (accepts real props)
  * - Error handling (TypeScript types)
  * - Design system component
@@ -680,7 +680,7 @@ export function FeatureCard({
   variant = 'default',
   className,
 }: FeatureCardProps) {
-  // ✅ RANA: No mock data - all data from props
+  // ✅ CoFounder: No mock data - all data from props
 
   const variants = {
     default: 'bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800',
@@ -721,7 +721,7 @@ export function FeatureCard({
             {description}
           </p>
 
-          {/* ✅ RANA: Conditional rendering with proper state handling */}
+          {/* ✅ CoFounder: Conditional rendering with proper state handling */}
           {action && (
             <BrandButton
               onClick={action.onClick}
@@ -741,7 +741,7 @@ export function FeatureCard({
   );
 }
 
-// ✅ RANA: Component has tests
+// ✅ CoFounder: Component has tests
 // See: FeatureCard.test.tsx
 ```
 
@@ -752,13 +752,13 @@ export function FeatureCard({
 ### End-to-End: "Add User Profile Feature"
 
 ```bash
-# Step 1: Initialize feature with RANA
+# Step 1: Initialize feature with CoFounder
 aads flow feature "Add user profile page"
 ```
 
 The workflow executes:
 
-#### Phase 1: Understanding & Research (RANA + MCP)
+#### Phase 1: Understanding & Research (CoFounder + MCP)
 
 ```python
 # Agent uses MCP to search codebase
@@ -778,7 +778,7 @@ researcher_agent = LlmAgent(
 # ✅ Quality Gate: Pre-implementation checks pass
 ```
 
-#### Phase 2: Planning (RANA + ADK + Design)
+#### Phase 2: Planning (CoFounder + ADK + Design)
 
 ```python
 # Agent plans implementation
@@ -787,7 +787,7 @@ planner_agent = LlmAgent(
     instructions="""
     Plan user profile implementation:
 
-    RANA Requirements:
+    CoFounder Requirements:
     - Use existing user service
     - Real data from database
     - Error handling
@@ -819,7 +819,7 @@ implementation_team = ParallelAgent(
             instructions="""
             Implement /api/profile endpoint:
 
-            RANA:
+            CoFounder:
             ✅ Use real database (MCP postgres tool)
             ✅ Add try-catch error handling
             ✅ Validate inputs
@@ -844,7 +844,7 @@ implementation_team = ParallelAgent(
             ✅ Add animations (framer-motion)
             ✅ Custom typography
 
-            RANA:
+            CoFounder:
             ✅ Real API calls (no mocks)
             ✅ Loading states
             ✅ Error states
@@ -861,7 +861,7 @@ implementation_team = ParallelAgent(
 # ✅ Quality Gate: Implementation standards met
 ```
 
-#### Phase 4: Testing (RANA + ADK)
+#### Phase 4: Testing (CoFounder + ADK)
 
 ```python
 # Sequential testing workflow
@@ -874,7 +874,7 @@ testing_workflow = SequentialAgent(
             instructions="""
             Write tests for profile feature:
 
-            RANA Requirements:
+            CoFounder Requirements:
             - Unit tests for API endpoint
             - Component tests for ProfilePage
             - Integration test for full flow
@@ -888,7 +888,7 @@ testing_workflow = SequentialAgent(
             execute=lambda: subprocess.run(['npm', 'test'])
         ),
 
-        # RANA compliance check
+        # CoFounder compliance check
         AADSComplianceAgent(),
 
         # Design compliance check
@@ -899,7 +899,7 @@ testing_workflow = SequentialAgent(
 # ✅ Quality Gate: All tests pass, compliance verified
 ```
 
-#### Phase 5: Deployment (RANA)
+#### Phase 5: Deployment (CoFounder)
 
 ```python
 # Deployment workflow
@@ -937,7 +937,7 @@ Implementation:
 - Frontend: /profile page
 - Tests: 87% coverage (15 tests, all passing)
 - Design: BrandCard, BrandButton, custom animations
-- RANA Compliance: 100%
+- CoFounder Compliance: 100%
 - Design Compliance: 100%
 
 Deployed:
@@ -958,7 +958,7 @@ Time: 2 hours (vs 8 hours traditional)
 
 ## Configuration
 
-### Complete .rana.yml Template
+### Complete .cofounder.yml Template
 
 ```yaml
 version: 1.0.0
@@ -975,7 +975,7 @@ project:
     - "fastapi"
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# RANA STANDARDS
+# CoFounder STANDARDS
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 standards:
@@ -1021,11 +1021,11 @@ mcp:
         DATABASE_URL: "${POSTGRES_URL}"
       description: "Query database"
 
-    # Custom RANA server
+    # Custom CoFounder server
     - name: "aads-compliance"
       command: "node"
       args: ["mcp-servers/aads-compliant/dist/index.js"]
-      description: "RANA compliance checking"
+      description: "CoFounder compliance checking"
 
   # MCP-specific quality gates
   quality_gates:
@@ -1217,12 +1217,12 @@ deployment:
 
 ## Best Practices
 
-### 1. Start with RANA Foundation
+### 1. Start with CoFounder Foundation
 
-Always begin with RANA standards - they're the foundation everything else builds on.
+Always begin with CoFounder standards - they're the foundation everything else builds on.
 
 ```bash
-# ✅ GOOD: Initialize RANA first
+# ✅ GOOD: Initialize CoFounder first
 aads init
 # Then add MCP, ADK, design system
 
@@ -1236,7 +1236,7 @@ npm install everything
 Add capabilities incrementally:
 
 ```
-Week 1: RANA basics
+Week 1: CoFounder basics
 Week 2: + MCP for data access
 Week 3: + ADK for multi-agent
 Week 4: + Design system polish
@@ -1244,11 +1244,11 @@ Week 4: + Design system polish
 
 ### 3. Maintain Single Source of Truth
 
-`.rana.yml` is your configuration hub:
+`.cofounder.yml` is your configuration hub:
 
 ```yaml
 # ✅ GOOD: Centralized configuration
-# .rana.yml defines everything
+# .cofounder.yml defines everything
 # All tools read from this file
 
 # ❌ BAD: Configuration scattered
@@ -1262,7 +1262,7 @@ Week 4: + Design system polish
 Verify each integration works before adding the next:
 
 ```bash
-# Test RANA
+# Test CoFounder
 aads check
 
 # Test MCP
@@ -1281,7 +1281,7 @@ Each layer should have clear documentation:
 
 ```
 docs/
-├── AADS_STANDARDS.md         # RANA quality gates
+├── AADS_STANDARDS.md         # CoFounder quality gates
 ├── MCP_INTEGRATION.md        # MCP servers and tools
 ├── AGENT_ARCHITECTURE.md     # ADK agent design
 └── DESIGN_SYSTEM.md          # Design standards
@@ -1308,7 +1308,7 @@ node mcp-servers/your-server/dist/index.js
 echo $DATABASE_URL  # Should be set
 ```
 
-#### Issue 2: Agents Not Following RANA Standards
+#### Issue 2: Agents Not Following CoFounder Standards
 
 ```python
 # Symptom: Agent generates mock data
@@ -1317,7 +1317,7 @@ echo $DATABASE_URL  # Should be set
 LlmAgent(
     name="developer",
     instructions="""
-    CRITICAL: Follow RANA standards strictly.
+    CRITICAL: Follow CoFounder standards strictly.
 
     ❌ NEVER use mock data
     ✅ ALWAYS use MCP database tools for real data
@@ -1375,18 +1375,18 @@ aads check --verbose
 aads check
 
 # 4. Commit when passing
-git commit -m "Fix RANA compliance violations"
+git commit -m "Fix CoFounder compliance violations"
 ```
 
 ---
 
 ## Conclusion
 
-By integrating RANA, MCP, Google ADK, and vibe coding standards, you create a comprehensive framework for building production-quality applications with AI assistance.
+By integrating CoFounder, MCP, Google ADK, and vibe coding standards, you create a comprehensive framework for building production-quality applications with AI assistance.
 
 **The Complete System Provides:**
 
-✅ **Quality Assurance** (RANA)
+✅ **Quality Assurance** (CoFounder)
 - Enforced standards
 - Quality gates
 - Production readiness
@@ -1419,11 +1419,11 @@ Production-quality code, shipped fast, with excellent design.
    - [ADK Integration Guide](./AGENT_DEVELOPMENT_KIT_GUIDE.md)
    - [Vibe Coding Standards](./VIBE_CODING_DESIGN_STANDARDS.md)
 3. **Examples**: Check the `examples/` directory
-4. **Community**: Join the RANA Discord for support
+4. **Community**: Join the CoFounder Discord for support
 
 ---
 
-*Part of the RANA Framework - Production-Quality AI Development*
+*Part of the CoFounder Framework - Production-Quality AI Development*
 
 **Version:** 1.0.0
 **Last Updated:** 2025-11-09

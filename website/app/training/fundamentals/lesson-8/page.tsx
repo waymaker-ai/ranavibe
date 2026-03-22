@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { ArrowLeft, CheckCircle2 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Building Your First Agent | RANA Fundamentals',
+  title: 'Building Your First Agent | CoFounder Fundamentals',
   description: 'Create a complete AI agent with tools, memory, and error handling',
 };
 
@@ -51,7 +51,7 @@ export default function Lesson8Page() {
           <div className="code-block">
             <pre>
               <code>{`// lib/tools.ts
-import { Tool, z } from '@rana/core';
+import { Tool, z } from '@cofounder/core';
 
 export const searchTool = new Tool({
   name: 'web_search',
@@ -120,7 +120,7 @@ export const recallTool = new Tool({
           <div className="code-block">
             <pre>
               <code>{`// lib/research-agent.ts
-import { Agent } from '@rana/core';
+import { Agent } from '@cofounder/core';
 import { searchTool, calculatorTool, memoryTool, recallTool } from './tools';
 
 export const researchAgent = new Agent({
@@ -169,7 +169,7 @@ Guidelines:
             <pre>
               <code>{`// app/api/agent/route.ts
 import { researchAgent } from '@/lib/research-agent';
-import { streamResponse } from '@rana/helpers';
+import { streamResponse } from '@cofounder/helpers';
 
 export async function POST(request: Request) {
   try {
@@ -216,7 +216,7 @@ export async function POST(request: Request) {
               <code>{`// components/ResearchAgent.tsx
 'use client';
 
-import { useAgent } from '@rana/react';
+import { useAgent } from '@cofounder/react';
 import { useState } from 'react';
 
 export function ResearchAgent() {
@@ -413,7 +413,7 @@ export default function Home() {
           <h2>Next Steps</h2>
 
           <p>
-            Congratulations on completing RANA Fundamentals! You now have a solid
+            Congratulations on completing CoFounder Fundamentals! You now have a solid
             foundation for building AI applications. Here&apos;s what to explore next:
           </p>
 
@@ -435,7 +435,7 @@ export default function Home() {
           <div className="card bg-gradient-subtle mt-8">
             <h3 className="text-xl font-bold mb-4">Course Complete!</h3>
             <p className="text-foreground-secondary mb-4">
-              You&apos;ve completed all 8 lessons in RANA Fundamentals. You&apos;re now
+              You&apos;ve completed all 8 lessons in CoFounder Fundamentals. You&apos;re now
               ready to build production AI applications.
             </p>
             <div className="flex gap-4">

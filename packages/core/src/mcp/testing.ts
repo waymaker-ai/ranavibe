@@ -1,10 +1,10 @@
 /**
- * @rana/mcp/testing
+ * @cofounder/mcp/testing
  * MCP Testing utilities for testing MCP servers and tools
  *
  * @example
  * ```typescript
- * import { createMCPTestClient, mockTransport } from '@rana/core';
+ * import { createMCPTestClient, mockTransport } from '@cofounder/core';
  *
  * describe('My MCP Server', () => {
  *   it('should handle get_weather tool', async () => {

@@ -17,7 +17,7 @@ export * from './advanced-rag';
 // Quick demo
 async function quickDemo() {
   console.log('='.repeat(60));
-  console.log('RANA Phase 3.1 Features Quick Demo');
+  console.log('CoFounder Phase 3.1 Features Quick Demo');
   console.log('='.repeat(60));
 
   console.log(`
@@ -84,7 +84,7 @@ Run individual examples for detailed demonstrations:
 `);
 
   console.log('='.repeat(60));
-  console.log('For full documentation: https://rana.dev/docs/phase-3');
+  console.log('For full documentation: https://cofounder.dev/docs/phase-3');
   console.log('='.repeat(60));
 }
 

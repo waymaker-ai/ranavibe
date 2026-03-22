@@ -1,6 +1,6 @@
 # Shared Memory System
 
-The Shared Memory system enables multiple RANA agents to share memory space with namespace isolation, permission management, and event-driven synchronization.
+The Shared Memory system enables multiple CoFounder agents to share memory space with namespace isolation, permission management, and event-driven synchronization.
 
 ## Features
 
@@ -58,7 +58,7 @@ The Shared Memory system enables multiple RANA agents to share memory space with
 ## Basic Usage
 
 ```typescript
-import { createSharedMemory } from '@rana-ai/core';
+import { createSharedMemory } from '@cofounder-ai/core';
 
 // Create shared memory instance
 const memory = createSharedMemory({
@@ -317,8 +317,8 @@ memory.on('namespace:deleted', (event) => {
 ## Multi-Agent Collaboration Pattern
 
 ```typescript
-import { createSharedMemory } from '@rana-ai/core';
-import { BaseAgent } from '@rana-ai/core';
+import { createSharedMemory } from '@cofounder-ai/core';
+import { BaseAgent } from '@cofounder-ai/core';
 
 // Create shared memory
 const sharedMemory = createSharedMemory();
@@ -409,12 +409,12 @@ class WorkerAgent extends BaseAgent {
    - Set reasonable cleanup intervals
    - Limit log size appropriately
 
-## Integration with RANA Agents
+## Integration with CoFounder Agents
 
-The SharedMemory system is designed to work seamlessly with RANA's agent framework:
+The SharedMemory system is designed to work seamlessly with CoFounder's agent framework:
 
 ```typescript
-import { BaseAgent, createSharedMemory } from '@rana-ai/core';
+import { BaseAgent, createSharedMemory } from '@cofounder-ai/core';
 
 // Create shared memory for all agents
 const sharedMemory = createSharedMemory();

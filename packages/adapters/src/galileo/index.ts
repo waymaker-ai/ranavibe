@@ -1,0 +1,1 @@
+export { createGalileoAdapter } from './adapter';

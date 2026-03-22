@@ -1,5 +1,5 @@
 /**
- * API Key Management for RANA
+ * API Key Management for CoFounder
  *
  * Supports two modes:
  * 1. Free Tier: Users bring their own API keys
@@ -154,7 +154,7 @@ export class ApiKeyManager {
  */
 export function createApiKeyManagerFromEnv(): ApiKeyManager {
   // Check if Waymaker token is present (paid tier)
-  const waymakerToken = process.env.WAYMAKER_TOKEN || process.env.RANA_WAYMAKER_TOKEN;
+  const waymakerToken = process.env.WAYMAKER_TOKEN || process.env.CoFounder_WAYMAKER_TOKEN;
 
   if (waymakerToken) {
     return new ApiKeyManager({

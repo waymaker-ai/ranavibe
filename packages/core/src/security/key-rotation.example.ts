@@ -104,7 +104,7 @@ async function encryptedStorageExample() {
     overlap_period: 24,
     auto_rotate: false,
     storage: new EncryptedFileStorage({
-      filePath: '/Users/you/.rana/production-keys.enc',
+      filePath: '/Users/you/.cofounder/production-keys.enc',
       encryptionKey: process.env.KEY_ENCRYPTION_SECRET,
     }),
   });
@@ -122,7 +122,7 @@ async function encryptedStorageExample() {
     overlap_period: 24,
     auto_rotate: false,
     storage: new EncryptedFileStorage({
-      filePath: '/Users/you/.rana/production-keys.enc',
+      filePath: '/Users/you/.cofounder/production-keys.enc',
       encryptionKey: process.env.KEY_ENCRYPTION_SECRET,
     }),
   });

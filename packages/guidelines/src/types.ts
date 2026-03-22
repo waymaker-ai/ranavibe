@@ -1,5 +1,5 @@
 /**
- * @rana/guidelines - Type definitions
+ * @cofounder/guidelines - Type definitions
  */
 
 /**

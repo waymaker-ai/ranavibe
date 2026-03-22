@@ -1,10 +1,10 @@
 /**
- * RANA Email Plugin
+ * CoFounder Email Plugin
  * AI-powered email processing with support for multiple providers
  */
 
 import { definePlugin } from './helpers';
-import type { RanaClient } from '../client';
+import type { CoFounderClient } from '../client';
 import type { RanaChatRequest } from '../types';
 
 // ============================================================================
@@ -165,7 +165,7 @@ export type EmailHandler = (email: Email) => void | Promise<void>;
 
 export class EmailPlugin {
   private config: EmailPluginConfig;
-  private ranaClient?: RanaClient;
+  private cofounderClient?: CoFounderClient;
   private handlers: EmailHandler[] = [];
   private connected: boolean = false;
   private pollingTimer?: NodeJS.Timeout;
@@ -181,10 +181,10 @@ export class EmailPlugin {
   }
 
   /**
-   * Set the RANA client for AI processing
+   * Set the CoFounder client for AI processing
    */
-  setRanaClient(client: RanaClient): void {
-    this.ranaClient = client;
+  setCoFounderClient(client: CoFounderClient): void {
+    this.cofounderClient = client;
   }
 
   /**
@@ -268,13 +268,13 @@ export class EmailPlugin {
    * Classify an email using AI
    */
   async classify(email: Email): Promise<EmailClassification> {
-    if (!this.ranaClient) {
-      throw new Error('RANA client not set. Call setRanaClient() first.');
+    if (!this.cofounderClient) {
+      throw new Error('CoFounder client not set. Call setCoFounderClient() first.');
     }
 
     const prompt = this.buildClassificationPrompt(email);
 
-    const response = await this.ranaClient.chat({
+    const response = await this.cofounderClient.chat({
       messages: [
         {
           role: 'system',
@@ -311,13 +311,13 @@ export class EmailPlugin {
       includeOriginal?: boolean;
     }
   ): Promise<EmailReply> {
-    if (!this.ranaClient) {
-      throw new Error('RANA client not set. Call setRanaClient() first.');
+    if (!this.cofounderClient) {
+      throw new Error('CoFounder client not set. Call setCoFounderClient() first.');
     }
 
     const prompt = this.buildReplyPrompt(email, context);
 
-    const response = await this.ranaClient.chat({
+    const response = await this.cofounderClient.chat({
       messages: [
         {
           role: 'system',
@@ -346,8 +346,8 @@ export class EmailPlugin {
    * Summarize an email thread
    */
   async summarize(emails: Email[]): Promise<EmailSummary> {
-    if (!this.ranaClient) {
-      throw new Error('RANA client not set. Call setRanaClient() first.');
+    if (!this.cofounderClient) {
+      throw new Error('CoFounder client not set. Call setCoFounderClient() first.');
     }
 
     if (emails.length === 0) {
@@ -356,7 +356,7 @@ export class EmailPlugin {
 
     const prompt = this.buildSummarizationPrompt(emails);
 
-    const response = await this.ranaClient.chat({
+    const response = await this.cofounderClient.chat({
       messages: [
         {
           role: 'system',
@@ -910,7 +910,7 @@ Provide a JSON response with the following structure:
  *
  * @example
  * ```typescript
- * import { createEmailPlugin } from '@rana/core';
+ * import { createEmailPlugin } from '@cofounder/core';
  *
  * const emailPlugin = createEmailPlugin({
  *   provider: 'gmail',
@@ -925,12 +925,12 @@ Provide a JSON response with the following structure:
  *   autoClassify: true,
  * });
  *
- * // Use with RANA
- * const rana = new RanaClient({
+ * // Use with CoFounder
+ * const cofounder = new CoFounderClient({
  *   providers: { anthropic: 'sk-...' },
  * });
  *
- * emailPlugin.setRanaClient(rana);
+ * emailPlugin.setCoFounderClient(cofounder);
  * await emailPlugin.connect();
  *
  * // Handle incoming emails
@@ -950,14 +950,14 @@ export function createEmailPlugin(config: EmailPluginConfig): EmailPlugin {
 }
 
 /**
- * RANA plugin definition for email processing
+ * CoFounder plugin definition for email processing
  *
  * @example
  * ```typescript
- * import { RanaClient } from '@rana/core';
- * import { emailPlugin } from '@rana/core/plugins/email';
+ * import { CoFounderClient } from '@cofounder/core';
+ * import { emailPlugin } from '@cofounder/core/plugins/email';
  *
- * const rana = new RanaClient({
+ * const cofounder = new CoFounderClient({
  *   providers: { anthropic: 'sk-...' },
  *   plugins: [emailPlugin],
  * });

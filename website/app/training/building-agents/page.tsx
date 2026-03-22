@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { ArrowLeft, CheckCircle2, Circle, Play } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Building AI Agents | RANA Training',
+  title: 'Building AI Agents | CoFounder Training',
   description: 'Learn to create production-ready AI agents from scratch',
 };
 
@@ -95,7 +95,7 @@ export default function BuildingAgentsPage() {
             </li>
             <li className="flex items-start gap-3">
               <CheckCircle2 className="h-5 w-5 text-gradient-from flex-shrink-0 mt-0.5" />
-              <span>Test and debug agents with RANA&apos;s testing framework</span>
+              <span>Test and debug agents with CoFounder&apos;s testing framework</span>
             </li>
           </ul>
         </div>
@@ -103,7 +103,7 @@ export default function BuildingAgentsPage() {
         <div className="mt-8 card bg-yellow-500/10 border-yellow-500/30">
           <p className="text-yellow-400 font-medium mb-2">Prerequisites</p>
           <p className="text-foreground-secondary">
-            Complete the RANA Fundamentals course before starting this module.
+            Complete the CoFounder Fundamentals course before starting this module.
           </p>
           <Link href="/training/fundamentals" className="btn-secondary mt-4 inline-block">
             Start with Fundamentals

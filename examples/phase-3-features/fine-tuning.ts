@@ -3,7 +3,7 @@
  * Demonstrates dataset preparation and model fine-tuning
  */
 
-import { FineTuningPipeline, DatasetPreparer, ModelEvaluator } from '@rana/core';
+import { FineTuningPipeline, DatasetPreparer, ModelEvaluator } from '@cofounder/core';
 
 async function main() {
   // Example 1: Basic fine-tuning job

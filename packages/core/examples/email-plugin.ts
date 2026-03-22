@@ -1,17 +1,17 @@
 /**
- * RANA Email Plugin Example
+ * CoFounder Email Plugin Example
  * Demonstrates AI-powered email processing
  */
 
-import { RanaClient, createEmailPlugin } from '@rana/core';
+import { CoFounderClient, createEmailPlugin } from '@cofounder/core';
 
 // ============================================================================
 // Example 1: Gmail Integration with Auto-Classification
 // ============================================================================
 
 async function gmailExample() {
-  // Create RANA client
-  const rana = new RanaClient({
+  // Create CoFounder client
+  const cofounder = new CoFounderClient({
     providers: {
       anthropic: process.env.ANTHROPIC_API_KEY!,
     },
@@ -33,8 +33,8 @@ async function gmailExample() {
     llmModel: 'claude-3-5-sonnet-20241022',
   });
 
-  // Connect RANA client
-  emailPlugin.setRanaClient(rana);
+  // Connect CoFounder client
+  emailPlugin.setCoFounderClient(cofounder);
 
   // Connect to Gmail
   await emailPlugin.connect();
@@ -82,7 +82,7 @@ async function gmailExample() {
 // ============================================================================
 
 async function imapExample() {
-  const rana = new RanaClient({
+  const cofounder = new CoFounderClient({
     providers: {
       openai: process.env.OPENAI_API_KEY!,
     },
@@ -118,7 +118,7 @@ async function imapExample() {
     },
   });
 
-  emailPlugin.setRanaClient(rana);
+  emailPlugin.setCoFounderClient(cofounder);
   await emailPlugin.connect();
 
   console.log('✅ IMAP/SMTP plugin connected');
@@ -129,7 +129,7 @@ async function imapExample() {
 // ============================================================================
 
 async function threadSummaryExample() {
-  const rana = new RanaClient({
+  const cofounder = new CoFounderClient({
     providers: {
       anthropic: process.env.ANTHROPIC_API_KEY!,
     },
@@ -146,7 +146,7 @@ async function threadSummaryExample() {
     },
   });
 
-  emailPlugin.setRanaClient(rana);
+  emailPlugin.setCoFounderClient(cofounder);
   await emailPlugin.connect();
 
   // Fetch emails from a specific thread
@@ -189,7 +189,7 @@ async function threadSummaryExample() {
 // ============================================================================
 
 async function smartRoutingExample() {
-  const rana = new RanaClient({
+  const cofounder = new CoFounderClient({
     providers: {
       anthropic: process.env.ANTHROPIC_API_KEY!,
     },
@@ -208,7 +208,7 @@ async function smartRoutingExample() {
     autoClassify: true,
   });
 
-  emailPlugin.setRanaClient(rana);
+  emailPlugin.setCoFounderClient(cofounder);
   await emailPlugin.connect();
 
   emailPlugin.onEmail(async (email) => {
@@ -253,7 +253,7 @@ async function smartRoutingExample() {
 // ============================================================================
 
 async function batchAnalysisExample() {
-  const rana = new RanaClient({
+  const cofounder = new CoFounderClient({
     providers: {
       anthropic: process.env.ANTHROPIC_API_KEY!,
     },
@@ -273,7 +273,7 @@ async function batchAnalysisExample() {
     },
   });
 
-  emailPlugin.setRanaClient(rana);
+  emailPlugin.setCoFounderClient(cofounder);
   await emailPlugin.connect();
 
   // Fetch last 100 emails
@@ -325,7 +325,7 @@ async function batchAnalysisExample() {
 // ============================================================================
 
 async function customEmailExample() {
-  const rana = new RanaClient({
+  const cofounder = new CoFounderClient({
     providers: {
       anthropic: process.env.ANTHROPIC_API_KEY!,
     },
@@ -342,7 +342,7 @@ async function customEmailExample() {
     },
   });
 
-  emailPlugin.setRanaClient(rana);
+  emailPlugin.setCoFounderClient(cofounder);
   await emailPlugin.connect();
 
   // Send a simple email
@@ -382,7 +382,7 @@ async function customEmailExample() {
 // ============================================================================
 
 async function main() {
-  console.log('RANA Email Plugin Examples\n');
+  console.log('CoFounder Email Plugin Examples\n');
 
   // Uncomment the example you want to run:
 

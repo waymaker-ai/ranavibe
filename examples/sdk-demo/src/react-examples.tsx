@@ -1,21 +1,21 @@
 /**
- * RANA React Examples
+ * CoFounder React Examples
  * Complete demonstrations of React hooks
  */
 
 import React, { useState } from 'react';
-import { createRana } from '@rana/core';
+import { createCoFounder } from '@cofounder/core';
 import {
   RanaProvider,
-  useRanaChat,
-  useRanaStream,
-  useRanaCost,
-  useRanaConversation,
-  useRanaOptimize,
-} from '@rana/react';
+  useCoFounderChat,
+  useCoFounderStream,
+  useCoFounderCost,
+  useCoFounderConversation,
+  useCoFounderOptimize,
+} from '@cofounder/react';
 
-// Initialize RANA client
-const rana = createRana({
+// Initialize CoFounder client
+const cofounder = createCoFounder({
   providers: {
     anthropic: process.env.ANTHROPIC_API_KEY || '',
     openai: process.env.OPENAI_API_KEY || '',
@@ -31,7 +31,7 @@ const rana = createRana({
 
 function SimpleChatExample() {
   const [input, setInput] = useState('');
-  const { chat, response, loading, error, cost } = useRanaChat(rana, {
+  const { chat, response, loading, error, cost } = useCoFounderChat(cofounder, {
     provider: 'anthropic',
     optimize: 'cost',
   });
@@ -84,7 +84,7 @@ function SimpleChatExample() {
 
 function StreamingChatExample() {
   const [input, setInput] = useState('');
-  const { stream, content, loading, done } = useRanaStream(rana, {
+  const { stream, content, loading, done } = useCoFounderStream(cofounder, {
     provider: 'anthropic',
   });
 
@@ -125,7 +125,7 @@ function StreamingChatExample() {
 // ============================================================================
 
 function CostDashboardExample() {
-  const { stats, loading, refresh } = useRanaCost(rana);
+  const { stats, loading, refresh } = useCoFounderCost(cofounder);
 
   if (loading) {
     return <div className="loading">Loading cost stats...</div>;
@@ -197,7 +197,7 @@ function ConversationExample() {
     clearConversation,
     loading,
     error,
-  } = useRanaConversation(rana, {
+  } = useCoFounderConversation(cofounder, {
     provider: 'anthropic',
     optimize: 'balanced',
   });
@@ -254,7 +254,7 @@ function ConversationExample() {
 // ============================================================================
 
 function OptimizationPanelExample() {
-  const { savings, recommendations } = useRanaOptimize(rana);
+  const { savings, recommendations } = useCoFounderOptimize(cofounder);
 
   return (
     <div className="optimization-panel">
@@ -294,10 +294,10 @@ export function App() {
   >('chat');
 
   return (
-    <RanaProvider client={rana}>
+    <RanaProvider client={cofounder}>
       <div className="app">
         <header>
-          <h1>🐟 RANA React Examples</h1>
+          <h1>🐟 CoFounder React Examples</h1>
           <p>Complete demonstration of React hooks</p>
         </header>
 
@@ -343,7 +343,7 @@ export function App() {
         </main>
 
         <footer>
-          <p>Made with ❤️ using RANA SDK</p>
+          <p>Made with ❤️ using CoFounder SDK</p>
         </footer>
       </div>
     </RanaProvider>

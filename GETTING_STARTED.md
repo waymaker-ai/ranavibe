@@ -1,33 +1,33 @@
-# Getting Started with RANA
+# Getting Started with CoFounder
 
 > **Build Production AI Apps in Minutes, Not Months**
 
-Welcome to RANA (Rapid AI Native Architecture) - the complete AI development framework that makes enterprise AI accessible to everyone.
+Welcome to CoFounder (Rapid AI Native Architecture) - the complete AI development framework that makes enterprise AI accessible to everyone.
 
 ## 🚀 5-Minute Quick Start
 
-### 1. Install RANA CLI
+### 1. Install CoFounder CLI
 
 ```bash
-npm install -g @rana/cli
+npm install -g @cofounder/cli
 ```
 
 ### 2. Initialize Your Project
 
 ```bash
 # Create new project
-npx create-rana-app my-ai-app
+npx create-cofounder-app my-ai-app
 cd my-ai-app
 
 # Or add to existing project
-rana init
+cofounder init
 ```
 
 ### 3. Configure Your LLM Provider
 
 ```bash
 # Interactive setup
-rana llm:setup
+cofounder llm:setup
 
 # Or set environment variables
 export OPENAI_API_KEY=sk-...
@@ -38,7 +38,7 @@ export ANTHROPIC_API_KEY=sk-ant-...
 
 ```bash
 # Generate code from natural language
-rana generate "create a React component for user profile"
+cofounder generate "create a React component for user profile"
 
 # Run the development server
 npm run dev
@@ -48,14 +48,14 @@ npm run dev
 
 ## 📦 What's Included
 
-RANA 2025 comes with three powerful packages:
+CoFounder 2025 comes with three powerful packages:
 
-### @rana/helpers - Quick LLM Functions
+### @cofounder/helpers - Quick LLM Functions
 
 One-line AI operations for common tasks:
 
 ```typescript
-import { summarize, translate, classify, extract } from '@rana/helpers';
+import { summarize, translate, classify, extract } from '@cofounder/helpers';
 
 // Summarize text
 const summary = await summarize(longText, { style: 'brief' });
@@ -80,12 +80,12 @@ All helpers include:
 - 📊 Cost tracking
 - 🔁 Retry logic
 
-### @rana/prompts - Prompt Management
+### @cofounder/prompts - Prompt Management
 
 Enterprise-grade prompt versioning and A/B testing:
 
 ```typescript
-import { PromptManager } from '@rana/prompts';
+import { PromptManager } from '@cofounder/prompts';
 
 const pm = new PromptManager({ workspace: 'my-app' });
 
@@ -111,12 +111,12 @@ const testId = await pm.createABTest('greeting', {
 });
 ```
 
-### @rana/rag - Advanced RAG
+### @cofounder/rag - Advanced RAG
 
 Production-ready retrieval augmented generation:
 
 ```typescript
-import { RAGPresets, createRAGPipeline } from '@rana/rag';
+import { RAGPresets, createRAGPipeline } from '@cofounder/rag';
 
 // Use a preset
 const pipeline = RAGPresets.balanced();
@@ -144,74 +144,74 @@ console.log(result.citations);
 
 ```bash
 # Initialize project
-rana init
+cofounder init
 
 # Check compliance
-rana check
+cofounder check
 
 # Auto-fix issues
-rana fix
+cofounder fix
 
 # View dashboard
-rana dashboard
+cofounder dashboard
 
 # Run diagnostics
-rana doctor
+cofounder doctor
 ```
 
 ### Code Generation
 
 ```bash
 # Generate from natural language
-rana generate "create a user authentication API"
+cofounder generate "create a user authentication API"
 
 # List templates
-rana generate:templates
+cofounder generate:templates
 
 # Interactive mode
-rana generate:interactive
+cofounder generate:interactive
 ```
 
 ### LLM Management
 
 ```bash
 # Setup providers
-rana llm:setup
+cofounder llm:setup
 
 # Compare pricing
-rana llm:compare
+cofounder llm:compare
 
 # Analyze usage
-rana llm:analyze
+cofounder llm:analyze
 
 # Cost estimation
-rana cost:estimate
+cofounder cost:estimate
 ```
 
 ### Database Operations
 
 ```bash
 # Setup database
-rana db:setup
+cofounder db:setup
 
 # Run migrations
-rana db:migrate
+cofounder db:migrate
 
 # Open Prisma Studio
-rana db:studio
+cofounder db:studio
 ```
 
 ### Security & SEO
 
 ```bash
 # Security audit
-rana security:audit
+cofounder security:audit
 
 # SEO check
-rana seo:check
+cofounder seo:check
 
 # Generate sitemap
-rana seo:generate
+cofounder seo:generate
 ```
 
 ---
@@ -221,8 +221,8 @@ rana seo:generate
 ### 1. Build a Chatbot
 
 ```typescript
-import { PromptManager } from '@rana/prompts';
-import { RAGPresets } from '@rana/rag';
+import { PromptManager } from '@cofounder/prompts';
+import { RAGPresets } from '@cofounder/rag';
 
 // Setup RAG for knowledge base
 const rag = RAGPresets.chat();
@@ -260,7 +260,7 @@ async function handleQuery(question: string) {
 ### 2. Content Generation
 
 ```typescript
-import { generate, rewrite, summarize } from '@rana/helpers';
+import { generate, rewrite, summarize } from '@cofounder/helpers';
 
 // Generate blog post
 const blog = await generate('Write a blog post about AI trends', {
@@ -282,7 +282,7 @@ const tweet = await summarize(blog, {
 ### 3. Data Extraction
 
 ```typescript
-import { extract, classify } from '@rana/helpers';
+import { extract, classify } from '@cofounder/helpers';
 
 // Extract structured data from emails
 const emailData = await extract(email, {
@@ -306,20 +306,20 @@ const category = await classify(email, [
 
 ## 💰 Cost Optimization
 
-RANA helps you reduce LLM costs by up to 70%:
+CoFounder helps you reduce LLM costs by up to 70%:
 
 ```bash
 # Analyze current costs
-rana llm:analyze
+cofounder llm:analyze
 
 # Get optimization suggestions
-rana optimize
+cofounder optimize
 
 # Compare provider pricing
-rana cost:compare
+cofounder cost:compare
 
 # Estimate costs for usage scenarios
-rana cost:estimate --scenario enterprise
+cofounder cost:estimate --scenario enterprise
 ```
 
 ### Built-in Optimizations
@@ -350,7 +350,7 @@ console.log(report.topPrompts);
 
 ## 🔧 Configuration
 
-### .rana.yml
+### .cofounder.yml
 
 ```yaml
 version: "2.0"
@@ -379,10 +379,10 @@ monitoring:
 
 ## 📚 Learn More
 
-- **Documentation**: https://rana.dev/docs
-- **API Reference**: https://rana.dev/api
-- **Examples**: https://github.com/rana-framework/examples
-- **Discord**: https://discord.gg/rana
+- **Documentation**: https://cofounder.dev/docs
+- **API Reference**: https://cofounder.dev/api
+- **Examples**: https://github.com/cofounder-framework/examples
+- **Discord**: https://discord.gg/cofounder
 
 ---
 
@@ -390,26 +390,26 @@ monitoring:
 
 ```bash
 # View all commands
-rana --help
+cofounder --help
 
 # Get command help
-rana <command> --help
+cofounder <command> --help
 
 # Run diagnostics
-rana doctor
+cofounder doctor
 
 # Check project status
-rana status
+cofounder status
 ```
 
 ---
 
 ## 🎉 What's New in 2025
 
-- **@rana/helpers** - 10 one-line AI functions
-- **@rana/prompts** - Enterprise prompt management with A/B testing
-- **@rana/rag** - Advanced RAG with hybrid retrieval and re-ranking
-- **Natural Language Code Generation** - `rana generate` command
+- **@cofounder/helpers** - 10 one-line AI functions
+- **@cofounder/prompts** - Enterprise prompt management with A/B testing
+- **@cofounder/rag** - Advanced RAG with hybrid retrieval and re-ranking
+- **Natural Language Code Generation** - `cofounder generate` command
 - **Process Intelligence** - Velocity metrics and legacy analysis
 - **Enhanced Cost Tracking** - Per-request cost estimation
 
@@ -417,4 +417,4 @@ rana status
 
 Made with ❤️ by [Waymaker](https://hatchworks.com)
 
-**RANA** - Rapid AI Native Architecture
+**CoFounder** - Rapid AI Native Architecture

@@ -15,16 +15,16 @@ AI-powered documentation Q&A with semantic search and source citations.
 ## Installation
 
 ```bash
-npm install @rana/core
+npm install @cofounder/core
 ```
 
 ## Quick Start
 
 ```typescript
-import { createRana, DocsPlugin } from '@rana/core';
+import { createCoFounder, DocsPlugin } from '@cofounder/core';
 
-// Create RANA client
-const rana = createRana({
+// Create CoFounder client
+const cofounder = createCoFounder({
   providers: {
     openai: process.env.OPENAI_API_KEY,
   },
@@ -32,7 +32,7 @@ const rana = createRana({
 
 // Create docs plugin
 const docs = new DocsPlugin({
-  rana,
+  cofounder,
   sources: [
     { type: 'markdown', location: './docs' },
     { type: 'github', location: 'owner/repo' },
@@ -54,8 +54,8 @@ console.log('Sources:', answer.sources);
 
 ```typescript
 interface DocsPluginConfig {
-  // Required: RANA client instance
-  rana: RanaClient;
+  // Required: CoFounder client instance
+  cofounder: RanaClient;
 
   // Documentation sources
   sources?: DocumentSource[];
@@ -248,7 +248,7 @@ await docs.close();
 
 ```typescript
 const docs = new DocsPlugin({
-  rana,
+  cofounder,
   sources: [{ type: 'markdown', location: './docs' }],
 });
 
@@ -269,7 +269,7 @@ answer.sources.forEach((source, i) => {
 
 ```typescript
 const docs = new DocsPlugin({
-  rana,
+  cofounder,
   sources: [{ type: 'markdown', location: './docs' }],
   persistencePath: './docs-index.json',
 });
@@ -300,7 +300,7 @@ const embeddingProvider = {
 };
 
 const docs = new DocsPlugin({
-  rana,
+  cofounder,
   embeddingProvider,
   sources: [{ type: 'markdown', location: './docs' }],
 });
@@ -309,7 +309,7 @@ const docs = new DocsPlugin({
 ### Conversational Context
 
 ```typescript
-await docs.ask('What is RANA?');
+await docs.ask('What is CoFounder?');
 // Uses context from previous question
 const answer = await docs.ask('How much does it cost?', {
   useContext: true,

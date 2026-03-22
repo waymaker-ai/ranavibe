@@ -3,7 +3,7 @@ import { Terminal, Code, Database, Shield, Rocket } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Quick Reference',
-  description: 'Quick reference guide for RANA framework commands, APIs, and patterns',
+  description: 'Quick reference guide for CoFounder framework commands, APIs, and patterns',
 };
 
 const sections = [
@@ -12,19 +12,19 @@ const sections = [
     icon: Terminal,
     items: [
       {
-        command: 'npx @rana/cli init',
-        description: 'Initialize a new RANA project',
+        command: 'npx @cofounder/cli init',
+        description: 'Initialize a new CoFounder project',
       },
       {
-        command: 'npx @rana/cli check',
-        description: 'Validate your RANA configuration',
+        command: 'npx @cofounder/cli check',
+        description: 'Validate your CoFounder configuration',
       },
       {
-        command: 'npx @rana/cli db migrate',
+        command: 'npx @cofounder/cli db migrate',
         description: 'Run database migrations',
       },
       {
-        command: 'npx @rana/cli deploy',
+        command: 'npx @cofounder/cli deploy',
         description: 'Deploy to production',
       },
     ],
@@ -127,7 +127,7 @@ export default function QuickReferencePage() {
         <div className="mb-16 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Quick Reference</h1>
           <p className="text-lg text-foreground-secondary max-w-2xl mx-auto">
-            Essential commands, APIs, and patterns for RANA framework development.
+            Essential commands, APIs, and patterns for CoFounder framework development.
             Bookmark this page for quick access.
           </p>
         </div>
@@ -170,7 +170,7 @@ export default function QuickReferencePage() {
             <div>
               <h3 className="font-semibold mb-3">Basic Agent Setup</h3>
               <div className="code-block font-mono text-sm">
-                <pre>{`import { useAgent } from '@rana/react';
+                <pre>{`import { useAgent } from '@cofounder/react';
 
 function MyAgent() {
   const { send, messages, isLoading } = useAgent({
@@ -186,7 +186,7 @@ function MyAgent() {
             <div>
               <h3 className="font-semibold mb-3">Database Query</h3>
               <div className="code-block font-mono text-sm">
-                <pre>{`import { createClient } from '@rana/core';
+                <pre>{`import { createClient } from '@cofounder/core';
 
 async function getConversations() {
   const db = createClient();
@@ -203,9 +203,9 @@ async function getConversations() {
             <div>
               <h3 className="font-semibold mb-3">Streaming Response</h3>
               <div className="code-block font-mono text-sm">
-                <pre>{`import { RANAClient } from '@rana/core';
+                <pre>{`import { CoFounderClient } from '@cofounder/core';
 
-const client = new RANAClient({ apiKey: process.env.OPENAI_API_KEY });
+const client = new CoFounderClient({ apiKey: process.env.OPENAI_API_KEY });
 
 const stream = await client.chat({
   messages: [{ role: 'user', content: 'Hello' }],

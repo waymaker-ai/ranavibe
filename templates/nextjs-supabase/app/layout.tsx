@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     default: process.env.NEXT_PUBLIC_SITE_NAME || 'RANA App',
     template: `%s | ${process.env.NEXT_PUBLIC_SITE_NAME || 'RANA App'}`,
   },
-  description: process.env.NEXT_PUBLIC_SITE_DESCRIPTION || 'Built with RANA Framework',
+  description: process.env.NEXT_PUBLIC_SITE_DESCRIPTION || 'Built with CoFounder Framework',
   keywords: ['nextjs', 'supabase', 'aads', 'ai', 'app'],
   authors: [{ name: 'Your Name' }],
   creator: 'Your Name',

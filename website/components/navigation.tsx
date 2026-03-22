@@ -37,7 +37,7 @@ export function Navigation() {
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
-              RANA
+              CoFounder
             </motion.div>
             <span className="px-2 py-0.5 text-xs font-semibold rounded-full bg-gradient-to-r from-gradient-from to-gradient-to text-white">
               BETA
@@ -88,7 +88,7 @@ export function Navigation() {
 
             {/* GitHub link */}
             <Link
-              href="https://github.com/waymaker-ai/ranavibe"
+              href="https://github.com/waymaker-ai/cofounder"
               target="_blank"
               rel="noopener noreferrer"
               className="hidden md:inline-flex btn-secondary px-4 py-2"
@@ -141,7 +141,7 @@ export function Navigation() {
               ))}
               <div className="flex flex-col space-y-2 px-4 pt-2">
                 <Link
-                  href="https://github.com/waymaker-ai/ranavibe"
+                  href="https://github.com/waymaker-ai/cofounder"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-secondary px-4 py-2 text-center"

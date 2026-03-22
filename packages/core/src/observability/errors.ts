@@ -1,7 +1,7 @@
 /**
- * Error Tracking Integration for RANA Observability
+ * Error Tracking Integration for CoFounder Observability
  *
- * Captures, classifies, and reports errors from RANA SDK operations.
+ * Captures, classifies, and reports errors from CoFounder SDK operations.
  * Supports integration with external error tracking services like Sentry
  * and custom webhook endpoints.
  */
@@ -640,7 +640,7 @@ export class ErrorTracker extends EventEmitter {
    * Log error to console with formatting
    */
   private logToConsole(error: TrackedError): void {
-    const prefix = `[RANA Error ${error.level.toUpperCase()}]`;
+    const prefix = `[CoFounder Error ${error.level.toUpperCase()}]`;
     const details = [
       error.message,
       error.provider ? `Provider: ${error.provider}` : null,
@@ -781,7 +781,7 @@ export class ErrorTracker extends EventEmitter {
  *
  * // Capture an error
  * try {
- *   await rana.chat({ ... });
+ *   await cofounder.chat({ ... });
  * } catch (error) {
  *   tracker.captureError(error, {
  *     provider: 'anthropic',

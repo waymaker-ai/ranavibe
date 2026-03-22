@@ -18,18 +18,18 @@ interface CheckResult {
 }
 
 export async function checkCommand(options: CheckOptions) {
-  console.log(chalk.bold.cyan('\n🔍 Checking RANA compliance...\n'));
+  console.log(chalk.bold.cyan('\n🔍 Checking CoFounder compliance...\n'));
 
   const results: CheckResult[] = [];
 
-  // 1. Check if .rana.yml exists
-  const spinner = ora('Checking for .rana.yml...').start();
-  const configPath = path.join(process.cwd(), '.rana.yml');
+  // 1. Check if .cofounder.yml exists
+  const spinner = ora('Checking for .cofounder.yml...').start();
+  const configPath = path.join(process.cwd(), '.cofounder.yml');
 
   try {
     const configContent = await fs.readFile(configPath, 'utf-8');
     const config = yaml.load(configContent) as any;
-    spinner.succeed('Found .rana.yml');
+    spinner.succeed('Found .cofounder.yml');
 
     // 2. Validate configuration
     spinner.start('Validating configuration...');
@@ -102,9 +102,9 @@ export async function checkCommand(options: CheckOptions) {
 
   } catch (error: any) {
     if (error.code === 'ENOENT') {
-      spinner.fail('.rana.yml not found');
-      console.log(chalk.yellow('\n�  No .rana.yml configuration found'));
-      console.log(chalk.gray('   Run ') + chalk.cyan('aads init') + chalk.gray(' to initialize RANA\n'));
+      spinner.fail('.cofounder.yml not found');
+      console.log(chalk.yellow('\n�  No .cofounder.yml configuration found'));
+      console.log(chalk.gray('   Run ') + chalk.cyan('aads init') + chalk.gray(' to initialize CoFounder\n'));
       process.exit(1);
     } else {
       spinner.fail('Error during check');
@@ -341,7 +341,7 @@ function displayResults(results: CheckResult[], verbose: boolean) {
   const failed = results.filter(r => !r.passed).length;
   const total = results.length;
 
-  console.log(chalk.bold('\n=� RANA Compliance Report\n'));
+  console.log(chalk.bold('\n=� CoFounder Compliance Report\n'));
 
   if (verbose) {
     console.log(chalk.gray('Detailed Results:\n'));

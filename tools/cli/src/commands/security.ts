@@ -18,7 +18,7 @@ interface SecurityIssue {
  * Scans codebase for security vulnerabilities
  */
 export async function securityAudit(options: { fix?: boolean; verbose?: boolean } = {}) {
-  console.log(chalk.bold.cyan('\n🔒 RANA Security Audit\n'));
+  console.log(chalk.bold.cyan('\n🔒 CoFounder Security Audit\n'));
 
   const issues: SecurityIssue[] = [];
 
@@ -84,7 +84,7 @@ export async function securityAudit(options: { fix?: boolean; verbose?: boolean 
  * Interactive wizard for security setup
  */
 export async function securitySetup() {
-  console.log(chalk.bold.cyan('\n🔒 RANA Security Setup\n'));
+  console.log(chalk.bold.cyan('\n🔒 CoFounder Security Setup\n'));
 
   // Authentication provider selection
   const { authProvider } = await prompts({

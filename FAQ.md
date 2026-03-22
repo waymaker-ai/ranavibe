@@ -1,6 +1,6 @@
-# RANA v2.0 - Frequently Asked Questions
+# CoFounder v2.0 - Frequently Asked Questions
 
-Complete FAQ for RANA v2.0 launch and beyond.
+Complete FAQ for CoFounder v2.0 launch and beyond.
 
 ---
 
@@ -19,9 +19,9 @@ Complete FAQ for RANA v2.0 launch and beyond.
 
 ## General Questions
 
-### What is RANA?
+### What is CoFounder?
 
-RANA (Rapid AI Native Architecture) is a complete framework for building production-ready AI applications in minutes instead of hours or days.
+CoFounder (Rapid AI Native Architecture) is a complete framework for building production-ready AI applications in minutes instead of hours or days.
 
 It provides:
 - **5 Core Frameworks:** Database, Security, LLM Optimization, SEO, Mobile
@@ -34,7 +34,7 @@ It provides:
 
 ---
 
-### Why was RANA created?
+### Why was CoFounder created?
 
 **The Problem:**
 AI code generators (Claude Code, Cursor, v0.dev, etc.) can create prototypes quickly, but the code often:
@@ -46,13 +46,13 @@ AI code generators (Claude Code, Cursor, v0.dev, etc.) can create prototypes qui
 - Takes 20-40 hours to make production-ready
 
 **The Solution:**
-RANA provides a framework that makes AI-generated code production-ready from the start. Quality gates enforce standards. CLI tools automate tedious tasks. The result is professional code in 5 minutes.
+CoFounder provides a framework that makes AI-generated code production-ready from the start. Quality gates enforce standards. CLI tools automate tedious tasks. The result is professional code in 5 minutes.
 
 ---
 
-### Is RANA free?
+### Is CoFounder free?
 
-**Yes!** RANA framework is completely free and open source (MIT License).
+**Yes!** CoFounder framework is completely free and open source (MIT License).
 
 **What's free:**
 - All framework code
@@ -67,11 +67,11 @@ RANA provides a framework that makes AI-generated code production-ready from the
 - Development services ($25K-$50K)
 - Consulting services ($2,500-$20K)
 
-**You can use RANA commercially without paying anything.**
+**You can use CoFounder commercially without paying anything.**
 
 ---
 
-### Who is RANA for?
+### Who is CoFounder for?
 
 **Perfect for:**
 - Solo developers building AI apps
@@ -87,7 +87,7 @@ RANA provides a framework that makes AI-generated code production-ready from the
 
 ---
 
-### What can I build with RANA?
+### What can I build with CoFounder?
 
 **Examples:**
 - AI chatbots and assistants
@@ -101,13 +101,13 @@ RANA provides a framework that makes AI-generated code production-ready from the
 - Multi-agent systems
 - AI-powered mobile apps
 
-**Any application that uses LLMs can benefit from RANA.**
+**Any application that uses LLMs can benefit from CoFounder.**
 
 ---
 
 ## Technical Questions
 
-### What technologies does RANA use?
+### What technologies does CoFounder use?
 
 **Core Stack:**
 - **Frontend:** Next.js 14 (App Router), React 18, TypeScript
@@ -135,16 +135,16 @@ RANA provides a framework that makes AI-generated code production-ready from the
 
 ---
 
-### Can I use RANA with my existing project?
+### Can I use CoFounder with my existing project?
 
 **Yes!** Two options:
 
-**Option 1: Start with RANA template**
+**Option 1: Start with CoFounder template**
 ```bash
 npx create-aads-app my-app --template nextjs-supabase
 ```
 
-**Option 2: Add RANA to existing Next.js project**
+**Option 2: Add CoFounder to existing Next.js project**
 ```bash
 npm install -g @aads/cli
 cd my-existing-project
@@ -152,7 +152,7 @@ aads init
 aads install --framework all
 ```
 
-Both work great. Template is faster, but RANA integrates smoothly into existing projects.
+Both work great. Template is faster, but CoFounder integrates smoothly into existing projects.
 
 ---
 
@@ -233,7 +233,7 @@ Both work great. Template is faster, but RANA integrates smoothly into existing 
 
 ### Can I deploy to platforms other than Vercel?
 
-**Yes!** RANA works with any Node.js hosting:
+**Yes!** CoFounder works with any Node.js hosting:
 
 **Recommended:**
 - Vercel (easiest, best Next.js support)
@@ -253,9 +253,9 @@ Both work great. Template is faster, but RANA integrates smoothly into existing 
 
 ---
 
-### Is RANA production-ready?
+### Is CoFounder production-ready?
 
-**Absolutely!** RANA is designed for production from day one.
+**Absolutely!** CoFounder is designed for production from day one.
 
 **Production features:**
 - Error handling and logging
@@ -267,13 +267,13 @@ Both work great. Template is faster, but RANA integrates smoothly into existing 
 - Quality gates
 - CI/CD examples
 
-**Many developers are already using RANA in production.**
+**Many developers are already using CoFounder in production.**
 
 ---
 
-### Can I use RANA with TypeScript?
+### Can I use CoFounder with TypeScript?
 
-**Yes!** RANA is built with TypeScript and includes:
+**Yes!** CoFounder is built with TypeScript and includes:
 - Full type definitions
 - Strict mode enabled
 - Type-safe database queries
@@ -286,7 +286,7 @@ Both work great. Template is faster, but RANA integrates smoothly into existing 
 
 ## Cost & Pricing
 
-### How much does RANA save me?
+### How much does CoFounder save me?
 
 **Time Savings:**
 - Setup: 20-40 hours → 5 minutes (120x faster)
@@ -321,7 +321,7 @@ Both work great. Template is faster, but RANA integrates smoothly into existing 
 **Ollama:**
 - Free (runs locally, no API costs)
 
-**RANA helps you save 70% on these costs through optimization.**
+**CoFounder helps you save 70% on these costs through optimization.**
 
 ---
 
@@ -337,13 +337,13 @@ Both work great. Template is faster, but RANA integrates smoothly into existing 
 - Upgrade to Pro ($25/mo) when needed
 - Much cheaper than managing your own database
 
-**RANA optimizes database queries to minimize costs.**
+**CoFounder optimizes database queries to minimize costs.**
 
 ---
 
 ### Are there any hidden costs?
 
-**No!** RANA itself is completely free.
+**No!** CoFounder itself is completely free.
 
 **Your only costs are:**
 - LLM API usage (OpenAI, Anthropic, etc.)
@@ -357,7 +357,7 @@ Both work great. Template is faster, but RANA integrates smoothly into existing 
 
 ## Comparison Questions
 
-### RANA vs Create Next App?
+### CoFounder vs Create Next App?
 
 **Create Next App:**
 - Blank Next.js template
@@ -365,17 +365,17 @@ Both work great. Template is faster, but RANA integrates smoothly into existing 
 - 20-40 hours to production-ready
 - No optimization, no quality gates
 
-**RANA:**
+**CoFounder:**
 - Complete template with database, auth, AI, security, SEO, mobile
 - Production-ready in 5 minutes
 - Automatic cost optimization
 - Quality gates enforced
 
-**Use RANA when building AI apps. Use CNA for non-AI projects.**
+**Use CoFounder when building AI apps. Use CNA for non-AI projects.**
 
 ---
 
-### RANA vs Rails?
+### CoFounder vs Rails?
 
 **Rails:**
 - Full-stack framework for traditional web apps
@@ -383,17 +383,17 @@ Both work great. Template is faster, but RANA integrates smoothly into existing 
 - Great for CRUD apps
 - Not AI-native
 
-**RANA:**
+**CoFounder:**
 - Framework specifically for AI applications
 - TypeScript/JavaScript
 - LLM cost optimization built-in
 - AI-native patterns
 
-**RANA is "Rails for AI development".**
+**CoFounder is "Rails for AI development".**
 
 ---
 
-### RANA vs v0.dev / Bolt / Lovable?
+### CoFounder vs v0.dev / Bolt / Lovable?
 
 **v0.dev / Bolt / Lovable:**
 - AI code generators
@@ -403,7 +403,7 @@ Both work great. Template is faster, but RANA integrates smoothly into existing 
 - No cost optimization
 - No quality gates
 
-**RANA:**
+**CoFounder:**
 - Production framework
 - Works with any code generator
 - Takes generated code to production quality
@@ -411,11 +411,11 @@ Both work great. Template is faster, but RANA integrates smoothly into existing 
 - Quality gates enforced
 - CLI tools for maintenance
 
-**Use them together!** Generate with v0/Bolt/Lovable, deploy with RANA.
+**Use them together!** Generate with v0/Bolt/Lovable, deploy with CoFounder.
 
 ---
 
-### RANA vs Cursor / Claude Code?
+### CoFounder vs Cursor / Claude Code?
 
 **Cursor / Claude Code:**
 - AI coding assistants
@@ -423,17 +423,17 @@ Both work great. Template is faster, but RANA integrates smoothly into existing 
 - No framework or structure
 - Still need to handle production concerns
 
-**RANA:**
+**CoFounder:**
 - Production framework
 - Structure and patterns provided
 - Quality gates and optimization built-in
 - CLI tools for common tasks
 
-**They're complementary!** Use Cursor/Claude Code to write code, use RANA as your framework.
+**They're complementary!** Use Cursor/Claude Code to write code, use CoFounder as your framework.
 
 ---
 
-### RANA vs building from scratch?
+### CoFounder vs building from scratch?
 
 **From Scratch:**
 - Time: 20-40 hours setup
@@ -441,21 +441,21 @@ Both work great. Template is faster, but RANA integrates smoothly into existing 
 - Quality: Variable (depends on your expertise)
 - Maintenance: High (you own everything)
 
-**With RANA:**
+**With CoFounder:**
 - Time: 5 minutes setup
 - Cost: 70% lower (automatic optimization)
 - Quality: 95+ scores (enforced)
 - Maintenance: Lower (CLI tools + updates)
 
-**RANA saves you weeks of work and thousands of dollars.**
+**CoFounder saves you weeks of work and thousands of dollars.**
 
 ---
 
 ## Training & Certification
 
-### Do I need training to use RANA?
+### Do I need training to use CoFounder?
 
-**No!** RANA includes comprehensive documentation and guides.
+**No!** CoFounder includes comprehensive documentation and guides.
 
 **Self-serve resources:**
 - Quick Start Guide (5 minutes)
@@ -465,7 +465,7 @@ Both work great. Template is faster, but RANA integrates smoothly into existing 
 - Video tutorials (coming soon)
 
 **Training is optional** and recommended for:
-- Teams standardizing on RANA
+- Teams standardizing on CoFounder
 - Enterprises needing formal certification
 - Developers wanting expert guidance
 - Advanced use cases and customization
@@ -476,17 +476,17 @@ Both work great. Template is faster, but RANA integrates smoothly into existing 
 
 **Individual Programs:**
 
-**RANA Fundamentals (2 days, $2,500)**
+**CoFounder Fundamentals (2 days, $2,500)**
 - Core concepts
 - Hands-on workshop
 - Build sample app
 - Certificate of completion
 
-**RANA Certification (4 weeks, $5,000)**
+**CoFounder Certification (4 weeks, $5,000)**
 - Comprehensive curriculum
 - Weekly live sessions
 - Capstone project
-- Official RANA certification
+- Official CoFounder certification
 
 **Team Programs:**
 
@@ -507,11 +507,11 @@ Both work great. Template is faster, but RANA integrates smoothly into existing 
 ### Is certification worth it?
 
 **Benefits:**
-- Validate your RANA expertise
+- Validate your CoFounder expertise
 - Stand out in job market
 - Access to certified developers network
 - Priority support
-- Listed in RANA directory
+- Listed in CoFounder directory
 - Job referrals from Waymaker
 
 **Who should get certified:**
@@ -567,7 +567,7 @@ Both work great. Template is faster, but RANA integrates smoothly into existing 
 **GitHub Issues:** [github.com/waymaker-ai/aads-framework/issues](https://github.com/waymaker-ai/aads-framework/issues)
 
 **Include:**
-- RANA version (`aads --version`)
+- CoFounder version (`aads --version`)
 - Node.js version (`node --version`)
 - Operating system
 - Clear description of the bug
@@ -595,9 +595,9 @@ Both work great. Template is faster, but RANA integrates smoothly into existing 
 
 ## Contributing
 
-### Can I contribute to RANA?
+### Can I contribute to CoFounder?
 
-**Yes!** RANA is open source and we welcome contributions.
+**Yes!** CoFounder is open source and we welcome contributions.
 
 **Ways to contribute:**
 - Report bugs
@@ -641,7 +641,7 @@ Both work great. Template is faster, but RANA integrates smoothly into existing 
 - Mentioned in release notes
 
 **For significant contributions:**
-- Free RANA training
+- Free CoFounder training
 - Free certification
 - Invited to contributor calls
 - Early access to new features
@@ -652,7 +652,7 @@ Both work great. Template is faster, but RANA integrates smoothly into existing 
 
 ## Business & Licensing
 
-### What license is RANA under?
+### What license is CoFounder under?
 
 **MIT License** - Very permissive!
 
@@ -671,31 +671,31 @@ Both work great. Template is faster, but RANA integrates smoothly into existing 
 
 ---
 
-### Can I use RANA for client work?
+### Can I use CoFounder for client work?
 
 **Absolutely!** You can:
-- Build client projects with RANA
+- Build client projects with CoFounder
 - Charge clients for your work
-- White-label RANA-based solutions
+- White-label CoFounder-based solutions
 - Include in your agency's stack
 
 **No royalties, no fees, no restrictions.**
 
 ---
 
-### Can I sell RANA-based products?
+### Can I sell CoFounder-based products?
 
 **Yes!** You can:
-- Build SaaS products with RANA
-- Sell templates built on RANA
-- Create and sell courses about RANA
+- Build SaaS products with CoFounder
+- Sell templates built on CoFounder
+- Create and sell courses about CoFounder
 - Offer consulting services
 
-**Optional:** Add "Built with RANA" badge to show support
+**Optional:** Add "Built with CoFounder" badge to show support
 
 ---
 
-### Can I modify RANA?
+### Can I modify CoFounder?
 
 **Yes!** Fork it, modify it, extend it however you want.
 
@@ -711,7 +711,7 @@ Both work great. Template is faster, but RANA integrates smoothly into existing 
 
 ### Does Waymaker offer services?
 
-**Yes!** Waymaker (the company behind RANA) offers:
+**Yes!** Waymaker (the company behind CoFounder) offers:
 
 **Development Services:**
 - MVP Development ($25K-$50K)
@@ -719,9 +719,9 @@ Both work great. Template is faster, but RANA integrates smoothly into existing 
 - AI Integration ($12K-$25K)
 
 **Consulting Services:**
-- RANA Implementation ($8K-$20K)
+- CoFounder Implementation ($8K-$20K)
 - Architecture Review ($5K-$12K)
-- RANA Audit ($2,500)
+- CoFounder Audit ($2,500)
 
 **Training Services:**
 - See "Training & Certification" section above
@@ -730,7 +730,7 @@ Both work great. Template is faster, but RANA integrates smoothly into existing 
 
 ---
 
-### How is RANA funded?
+### How is CoFounder funded?
 
 **Dual model:**
 
@@ -889,6 +889,6 @@ npx aads db:check
 
 ---
 
-*RANA v2.0 FAQ*
+*CoFounder v2.0 FAQ*
 *Last updated: 2025-11-09*
 *Ashley Kays | Waymaker*

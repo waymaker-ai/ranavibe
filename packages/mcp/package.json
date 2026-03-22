@@ -1,7 +1,7 @@
 {
-  "name": "@ranavibe/mcp",
+  "name": "@cofounder/mcp",
   "version": "2.0.0",
-  "description": "Model Context Protocol (MCP) support for RANA - Connect AI to tools and data",
+  "description": "Model Context Protocol (MCP) support for CoFounder - Connect AI to tools and data",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -27,7 +27,7 @@
     "llm",
     "tools",
     "agents",
-    "rana",
+    "cofounder",
     "anthropic"
   ],
   "author": "Waymaker",
@@ -43,14 +43,14 @@
     "vitest": "^1.6.0"
   },
   "peerDependencies": {
-    "@ranavibe/core": "^2.0.0"
+    "@cofounder/core": "^2.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/waymaker-ai/ranavibe.git",
+    "url": "https://github.com/waymaker-ai/cofounder.git",
     "directory": "packages/mcp"
   },
-  "homepage": "https://rana.cx",
+  "homepage": "https://cofounder.cx",
   "files": [
     "dist",
     "README.md"

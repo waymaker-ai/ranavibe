@@ -1,6 +1,6 @@
-# @rana/context-optimizer
+# @cofounder/context-optimizer
 
-> Extended context optimization for RANA - Efficiently handle 400K+ token contexts
+> Extended context optimization for CoFounder - Efficiently handle 400K+ token contexts
 
 Capitalize on GPT-5.2 (400K tokens), Gemini 3, and Claude 4.5's extended context windows without breaking the bank!
 
@@ -29,13 +29,13 @@ New LLMs support massive context windows (400K+ tokens):
 ## Installation
 
 ```bash
-npm install @rana/context-optimizer
+npm install @cofounder/context-optimizer
 ```
 
 ## Quick Start
 
 ```typescript
-import { createContextOptimizer } from '@rana/context-optimizer';
+import { createContextOptimizer } from '@cofounder/context-optimizer';
 
 const optimizer = createContextOptimizer({
   strategy: 'hybrid',      // Smart mix of strategies
@@ -57,7 +57,7 @@ console.log(`Cost saved: ${result.costSaved}%`);
 console.log(`Quality score: ${result.qualityScore}`);
 
 // Pass to LLM
-const response = await rana.chat({
+const response = await cofounder.chat({
   messages: result.messages,
 });
 ```
@@ -183,13 +183,13 @@ const optimizer = createContextOptimizer({
 
 ## Advanced Usage
 
-### With RANA Core
+### With CoFounder Core
 
 ```typescript
-import { createRana } from '@rana/core';
-import { createContextOptimizer } from '@rana/context-optimizer';
+import { createCoFounder } from '@cofounder/core';
+import { createContextOptimizer } from '@cofounder/context-optimizer';
 
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: { anthropic: process.env.ANTHROPIC_API_KEY },
 });
 
@@ -204,8 +204,8 @@ const optimized = await optimizer.optimize({
   codebase: myLargeCodebase,
 });
 
-// Use with RANA
-const response = await rana.chat({
+// Use with CoFounder
+const response = await cofounder.chat({
   messages: optimized.messages,
   model: 'claude-3-5-sonnet-20241022',
 });
@@ -216,14 +216,14 @@ console.log(response.content);
 ### Custom Summarization
 
 ```typescript
-import { createRana } from '@rana/core';
+import { createCoFounder } from '@cofounder/core';
 
-const rana = createRana({ /* ... */ });
+const cofounder = createCoFounder({ /* ... */ });
 
 const optimizer = createContextOptimizer({
   summarize: async (text, targetTokens) => {
     // Use LLM for smart summarization
-    const summary = await rana.chat({
+    const summary = await cofounder.chat({
       messages: [{
         role: 'user',
         content: `Summarize this in ~${targetTokens * 4} characters:\n\n${text}`
@@ -260,7 +260,7 @@ optimizer.clearCache();
 
 ```typescript
 import fs from 'fs/promises';
-import { createContextOptimizer } from '@rana/context-optimizer';
+import { createContextOptimizer } from '@cofounder/context-optimizer';
 
 // Load entire codebase
 const files = await loadCodebase('./src');
@@ -303,7 +303,7 @@ const result = await optimizer.optimize({
 });
 
 // All API files in full context
-const docs = await rana.chat({
+const docs = await cofounder.chat({
   messages: result.messages,
   model: 'gpt-5.2-thinking', // Use reasoning model
 });

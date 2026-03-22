@@ -3,7 +3,7 @@
  * Demonstrates schema-based LLM response generation and validation
  */
 
-import { StructuredOutput, SchemaGenerator } from '@rana/core';
+import { StructuredOutput, SchemaGenerator } from '@cofounder/core';
 import { z } from 'zod';
 
 async function main() {

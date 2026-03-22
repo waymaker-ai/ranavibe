@@ -1,14 +1,14 @@
-# Contributing to RANA 🚀
+# Contributing to CoFounder 🚀
 
-Thank you for your interest in contributing to RANA! We're building the most helpful, accessible AI framework for developers.
+Thank you for your interest in contributing to CoFounder! We're building the most helpful, accessible AI framework for developers.
 
-**RANA succeeds when developers succeed.** Every contribution, big or small, helps make AI development better for everyone.
+**CoFounder succeeds when developers succeed.** Every contribution, big or small, helps make AI development better for everyone.
 
 ---
 
 ## Vision
 
-RANA is a **comprehensive AI development framework** that emphasizes:
+CoFounder is a **comprehensive AI development framework** that emphasizes:
 
 - **Quality & Compliance**: Built-in HIPAA, SEC, GDPR enforcement
 - **Production-Ready**: Enterprise-grade from day one
@@ -26,7 +26,7 @@ If that resonates with you, welcome!
 You don't need to be an expert! Here are many ways to help:
 
 ### 1. Help Others (Most Valuable!)
-- Answer questions in [Discussions](https://github.com/waymaker-ai/ranavibe/discussions)
+- Answer questions in [Discussions](https://github.com/waymaker-ai/cofounder/discussions)
 - Help troubleshoot issues
 - Share your knowledge and experience
 - Write blog posts and tutorials
@@ -48,19 +48,19 @@ You don't need to be an expert! Here are many ways to help:
 - Industry-specific examples
 
 ### 5. Enhance Compliance
-- Add new compliance rules (@rana/compliance)
+- Add new compliance rules (@cofounder/compliance)
 - Improve PII detection patterns
 - Add industry-specific regulations
 - Test compliance enforcement
 
 ### 6. Improve Guidelines
-- Create preset guidelines (@rana/guidelines)
+- Create preset guidelines (@cofounder/guidelines)
 - Add condition builders
 - Improve matching logic
 - Build analytics features
 
 ### 7. Optimize Context Handling
-- Enhance context optimization strategies (@rana/context-optimizer)
+- Enhance context optimization strategies (@cofounder/context-optimizer)
 - Improve file prioritization
 - Add better summarization
 - Test with large codebases
@@ -85,11 +85,11 @@ You don't need to be an expert! Here are many ways to help:
 
 ```bash
 # Fork the repo on GitHub, then clone your fork
-git clone https://github.com/YOUR_USERNAME/rana.git
-cd rana
+git clone https://github.com/YOUR_USERNAME/cofounder.git
+cd cofounder
 
 # Add upstream remote
-git remote add upstream https://github.com/AshleyMcKays/rana.git
+git remote add upstream https://github.com/AshleyMcKays/cofounder.git
 ```
 
 ### 2. Install Dependencies
@@ -129,7 +129,7 @@ git checkout -b fix/bug-description
 
 ### Build for Production
 
-RANA is a **comprehensive AI development framework** that emphasizes quality, compliance, and developer experience:
+CoFounder is a **comprehensive AI development framework** that emphasizes quality, compliance, and developer experience:
 
 - Focus on features that make production deployment easier
 - Prioritize safety, validation, and monitoring
@@ -139,7 +139,7 @@ RANA is a **comprehensive AI development framework** that emphasizes quality, co
 ### Keep It Integration-Friendly
 
 - Adapters should be thin wrappers
-- Don't force users into RANA-specific patterns
+- Don't force users into CoFounder-specific patterns
 - Support existing tools and frameworks (LangChain, CrewAI, AutoGen)
 - Work seamlessly with any LLM provider
 
@@ -197,6 +197,200 @@ If your contribution doesn't align with our values, we'll work with you to find 
 
 ---
 
+## Creating Custom CoFounder Policies
+
+CoFounder policies define guardrail behavior through declarative configuration. To create a custom policy:
+
+### 1. Define Your Policy File
+
+Create a new TypeScript file in `packages/policies/src/presets/`:
+
+```typescript
+import type { PolicyConfig } from '../types';
+
+export const myCustomPolicy: PolicyConfig = {
+  name: 'my-custom-policy',
+  version: '1.0.0',
+  description: 'Description of what this policy enforces',
+  rules: {
+    pii: {
+      enabled: true,
+      enabledTypes: ['email', 'phone', 'ssn', 'creditCard', 'ipAddress'],
+      region: 'US',
+      action: 'redact',
+    },
+    injection: {
+      enabled: true,
+      sensitivity: 'medium',
+    },
+    toxicity: {
+      enabled: true,
+      minSeverity: 'low',
+    },
+    budget: {
+      limit: 10.0,
+      period: 'day',
+      warningThreshold: 0.8,
+      onExceeded: 'block',
+    },
+    compliance: ['hipaa', 'gdpr'],
+  },
+};
+```
+
+### 2. Register the Policy
+
+Export your policy from the presets index so it can be discovered by the policy engine.
+
+### 3. Add Custom PII Patterns (Optional)
+
+If your policy requires domain-specific PII detection:
+
+```typescript
+const customPatterns = [
+  {
+    name: 'Employee ID',
+    pattern: /\bEMP-\d{6}\b/g,
+    placeholder: '[EMPLOYEE_ID]',
+  },
+];
+```
+
+Pass these to the PII detector via the `customPatterns` field in the detector configuration.
+
+### 4. Configure Compliance Frameworks
+
+Reference existing frameworks (`hipaa`, `gdpr`, `sec`, `pci`, `ferpa`) or define custom compliance checks within your policy rules.
+
+---
+
+## Submitting Policies to the Marketplace
+
+To share your policy with the CoFounder community:
+
+1. **Ensure your policy is well-tested** -- include unit tests for every rule in your policy.
+2. **Add documentation** in a comment block at the top of your policy file explaining its purpose, target audience, and any regulatory context.
+3. **Include example usage** showing how to activate the policy.
+4. **Submit a pull request** following the [PR process](#submitting-pull-requests) with the `policy` label.
+5. **Marketplace metadata**: Add a `marketplace` field to your policy config with `tags`, `category`, and `author` so it can be indexed and discovered.
+
+---
+
+## Creating CoFounder Skills for OpenClaw
+
+CoFounder skills are packaged as OpenClaw-compatible skill definitions. To create a new skill:
+
+### Skill Directory Structure
+
+```
+packages/openclaw/skill/
+  SKILL.md          # The skill definition (frontmatter + instructions)
+  references/       # Supporting reference documents
+    *.md
+```
+
+### Write the SKILL.md
+
+The SKILL.md file uses YAML frontmatter followed by markdown instructions that an AI agent will follow:
+
+```markdown
+---
+name: your-skill-name
+description: What the skill does
+version: 1.0.0
+metadata:
+  openclaw:
+    emoji: "..."
+    homepage: https://your-url.com
+    requires:
+      bins:
+        - node
+      env: []
+    primaryEnv: ""
+---
+
+# Skill Title
+
+Instructions that the AI agent follows when this skill is active.
+```
+
+### Add Reference Documents
+
+Place supporting materials in the `references/` directory. These provide the AI with detailed knowledge it can consult (compliance frameworks, detection pattern catalogs, pricing tables, etc.).
+
+### Test Locally
+
+Load your skill in a compatible OpenClaw environment and verify that the AI follows the instructions correctly across a range of test scenarios.
+
+### Submit to ClawHub
+
+Package the skill directory and submit via the ClawHub submission process. See `clawhub-submission/` in this repository for an example of the required structure.
+
+---
+
+## Writing Detection Patterns
+
+CoFounder uses regular expressions organized by category. When adding new detection patterns:
+
+### Pattern Structure
+
+```typescript
+// PII pattern (VS Code extension style)
+{
+  name: 'Pattern Name',
+  regex: /your-regex-here/g,
+  severity: 'error' | 'warning',
+}
+
+// Injection pattern (core detector style)
+const INJECTION_PATTERNS = {
+  categoryName: [
+    /pattern-one/gi,
+    /pattern-two/gi,
+  ],
+};
+
+// Toxicity pattern
+{
+  category: 'category_name',
+  severity: 'low' | 'medium' | 'high' | 'critical',
+  patterns: [/pattern/gi],
+}
+```
+
+### Guidelines
+
+1. **Always use the `g` flag** for patterns that need to find multiple matches.
+2. **Use `gi` flags** for injection and toxicity patterns (case-insensitive matching is important).
+3. **Anchor with `\b`** word boundaries to avoid false positives inside larger words.
+4. **Test against false positives**: Run your pattern against the benchmark datasets in `packages/benchmark/src/datasets/`.
+5. **Assign appropriate severity**: `critical` for patterns that must always block, `high` for likely threats, `medium` for suspicious content, `low` for informational flags.
+6. **Document each pattern** with a comment explaining what it catches and an example match.
+7. **Consider multi-region support**: PII patterns may need variants for US, EU, UK, CA, AU, and global contexts.
+
+### Where to Add Patterns
+
+- **PII patterns**: `packages/core/src/security/pii.ts` (core) or `extensions/vscode-cofounder/src/detectors.ts` (VS Code)
+- **Injection patterns**: `packages/core/src/security/injection.ts` (core) or `extensions/vscode-cofounder/src/detectors.ts` (VS Code)
+- **Toxicity patterns**: `packages/guard/src/detectors/toxicity.ts`
+- **API key patterns**: `extensions/vscode-cofounder/src/detectors.ts`
+
+---
+
+## Testing Requirements
+
+All contributions must include tests:
+
+1. **Unit tests** for new detection patterns, policies, and utility functions.
+2. **Test files** should be colocated with source (e.g., `pii.test.ts` next to `pii.ts`) or in a `__tests__/` subdirectory.
+3. **Minimum coverage**: All new patterns must have at least one positive match test and one negative (false positive) test.
+4. **Benchmark tests**: For detection patterns, add entries to the benchmark datasets in `packages/benchmark/` so performance can be tracked.
+5. **Run the full test suite** before submitting: `pnpm test`
+6. **TypeScript compilation** must pass without errors: `pnpm build`
+7. **Zero new runtime dependencies** unless explicitly justified and approved by a maintainer.
+
+---
+
 ## Contact
 
 - **GitHub Issues**: For bugs and feature requests
@@ -207,7 +401,7 @@ If your contribution doesn't align with our values, we'll work with you to find 
 
 ## Recognition & Community
 
-### RANA Champions Program
+### CoFounder Champions Program
 
 We celebrate contributors who:
 
@@ -216,7 +410,7 @@ We celebrate contributors who:
 - Build templates and starter projects
 - Report and fix bugs
 - Improve documentation
-- Share RANA with others
+- Share CoFounder with others
 
 **Benefits:**
 - Featured in our newsletter and social media
@@ -225,7 +419,7 @@ We celebrate contributors who:
 - Direct access to core team
 - Recognition in our Hall of Fame
 
-[Learn more about the Champions Program](./docs/COMMUNITY_GROWTH_STRATEGY.md#rana-champions-program)
+[Learn more about the Champions Program](./docs/COMMUNITY_GROWTH_STRATEGY.md#cofounder-champions-program)
 
 ---
 

@@ -1,4 +1,4 @@
-# RANA AI Collaboration Framework
+# CoFounder AI Collaboration Framework
 
 > Guidelines and tools for effective AI-assisted development.
 
@@ -10,7 +10,7 @@
 
 ## Overview
 
-This directory contains the AI collaboration framework for RANA. These documents guide AI assistants (like Claude, GPT, etc.) in working effectively on this codebase.
+This directory contains the AI collaboration framework for CoFounder. These documents guide AI assistants (like Claude, GPT, etc.) in working effectively on this codebase.
 
 ## Documents
 
@@ -35,7 +35,7 @@ This directory contains the AI collaboration framework for RANA. These documents
 
 2. **Check status** anytime:
    ```bash
-   rana docs:status
+   cofounder docs:status
    ```
 
 3. **Track progress** in ROADMAP.md:
@@ -55,19 +55,19 @@ This directory contains the AI collaboration framework for RANA. These documents
 
 ```bash
 # Document health check
-rana docs:check
+cofounder docs:check
 
 # List all documents
-rana docs:list
+cofounder docs:list
 
 # Project status summary
-rana docs:status
+cofounder docs:status
 
 # Validate frontmatter
-rana docs:validate
+cofounder docs:validate
 
 # Archive deprecated docs
-rana docs:archive
+cofounder docs:archive
 ```
 
 ## Key Principles

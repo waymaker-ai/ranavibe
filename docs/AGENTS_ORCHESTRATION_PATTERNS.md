@@ -1,6 +1,6 @@
 # Agent Orchestration Patterns Guide
 
-RANA provides 7 built-in orchestration patterns for coordinating multi-agent workflows. This guide covers each pattern with real-world examples and best practices.
+CoFounder provides 7 built-in orchestration patterns for coordinating multi-agent workflows. This guide covers each pattern with real-world examples and best practices.
 
 ## Overview
 
@@ -17,7 +17,7 @@ RANA provides 7 built-in orchestration patterns for coordinating multi-agent wor
 ## Quick Start
 
 ```typescript
-import { createOrchestrator, createLLMAgent } from '@rana/agents';
+import { createOrchestrator, createLLMAgent } from '@cofounder/agents';
 
 // Create orchestrator
 const orchestrator = createOrchestrator();

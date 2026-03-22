@@ -1,4 +1,4 @@
-# 🎉 What's New in RANA - 2026 Edition
+# 🎉 What's New in CoFounder - 2026 Edition
 
 **Last Updated**: January 1, 2026
 **Status**: Production Ready
@@ -7,17 +7,17 @@
 
 ## Welcome to the New Era of AI Development! 🚀
 
-We've been busy making RANA the **most comprehensive, helpful, and accessible AI framework** for developers. Here's everything new:
+We've been busy making CoFounder the **most comprehensive, helpful, and accessible AI framework** for developers. Here's everything new:
 
 ---
 
 ## 🆕 Brand New Packages
 
-### 1. @rana/guidelines - Dynamic Behavioral Control
+### 1. @cofounder/guidelines - Dynamic Behavioral Control
 **Make your AI agents follow rules automatically**
 
 ```typescript
-import { createGuidelineManager, Conditions } from '@rana/guidelines';
+import { createGuidelineManager, Conditions } from '@cofounder/guidelines';
 
 const manager = createGuidelineManager();
 
@@ -46,11 +46,11 @@ const matched = await manager.match({ topic: 'support' });
 
 ---
 
-### 2. @rana/compliance - Enterprise Compliance Enforcement
+### 2. @cofounder/compliance - Enterprise Compliance Enforcement
 **HIPAA, SEC, GDPR compliance built-in**
 
 ```typescript
-import { createComplianceEnforcer, PresetRules } from '@rana/compliance';
+import { createComplianceEnforcer, PresetRules } from '@cofounder/compliance';
 
 const enforcer = createComplianceEnforcer({
   enableAllPresets: true  // HIPAA, SEC, GDPR, CCPA, Legal, Safety
@@ -74,11 +74,11 @@ const result = await enforcer.enforce(input, output, context);
 
 ---
 
-### 3. @rana/context-optimizer - Extended Context Optimization
+### 3. @cofounder/context-optimizer - Extended Context Optimization
 **Handle 400K+ tokens efficiently**
 
 ```typescript
-import { createContextOptimizer } from '@rana/context-optimizer';
+import { createContextOptimizer } from '@cofounder/context-optimizer';
 
 const optimizer = createContextOptimizer({
   strategy: 'hybrid',      // Smart optimization
@@ -107,7 +107,7 @@ console.log(`Cost saved: ${result.costSaved}%`);
 
 ---
 
-## 🌟 What Makes RANA Special
+## 🌟 What Makes CoFounder Special
 
 ### The ONLY Framework With:
 
@@ -126,11 +126,11 @@ console.log(`Cost saved: ${result.costSaved}%`);
 ### For Beginners
 
 ```bash
-# Install RANA
-npm install @rana/core
+# Install CoFounder
+npm install @cofounder/core
 
 # Try your first AI agent
-npm create rana-app my-first-agent
+npm create cofounder-app my-first-agent
 cd my-first-agent
 npm run dev
 ```
@@ -140,10 +140,10 @@ npm run dev
 ### For Healthcare Developers
 
 ```bash
-npm install @rana/core @rana/compliance
+npm install @cofounder/core @cofounder/compliance
 
 # Use HIPAA-compliant template
-npx create-rana-app --template healthcare
+npx create-cofounder-app --template healthcare
 ```
 
 [📖 Healthcare Compliance Guide](./GUIDELINES_AND_COMPLIANCE_LAUNCH.md)
@@ -151,19 +151,19 @@ npx create-rana-app --template healthcare
 ### For FinTech Developers
 
 ```bash
-npm install @rana/core @rana/compliance
+npm install @cofounder/core @cofounder/compliance
 
 # Use SEC/FINRA-compliant template
-npx create-rana-app --template finance
+npx create-cofounder-app --template finance
 ```
 
 ### For Enterprise Teams
 
 ```bash
-npm install @rana/core @rana/guidelines @rana/compliance @rana/context-optimizer
+npm install @cofounder/core @cofounder/guidelines @cofounder/compliance @cofounder/context-optimizer
 
 # Use enterprise starter
-npx create-rana-app --template enterprise
+npx create-cofounder-app --template enterprise
 ```
 
 ---
@@ -187,7 +187,7 @@ npx create-rana-app --template enterprise
 - "Build Your First AI Agent in 5 Minutes"
 - "Add Compliance in 10 Minutes"
 - "Multi-Agent Systems Made Simple"
-- "Voice AI with RANA"
+- "Voice AI with CoFounder"
 
 ---
 
@@ -199,7 +199,7 @@ Real-time help, showcase projects, pair programming sessions
 
 ### GitHub Discussions
 Ask questions, share best practices, feature requests
-[Join Discussions](https://github.com/waymaker-ai/ranavibe/discussions)
+[Join Discussions](https://github.com/waymaker-ai/cofounder/discussions)
 
 ### Newsletter
 Weekly updates, tutorials, community highlights
@@ -207,38 +207,38 @@ Weekly updates, tutorials, community highlights
 
 ### Contributors Program
 Help others, get recognized, co-create content
-[Learn More](./COMMUNITY_GROWTH_STRATEGY.md#rana-champions-program)
+[Learn More](./COMMUNITY_GROWTH_STRATEGY.md#cofounder-champions-program)
 
 ---
 
 ## 🚀 What's Coming Next
 
 ### Q1 2026
-- [x] @rana/guidelines ✅
-- [x] @rana/compliance ✅
-- [x] @rana/context-optimizer ✅
+- [x] @cofounder/guidelines ✅
+- [x] @cofounder/compliance ✅
+- [x] @cofounder/context-optimizer ✅
 - [ ] Interactive Playground
 - [ ] Video Tutorial Series
 - [ ] Template Library (20+ templates)
 
 ### Q2 2026
-- [ ] @rana/graph (Stateful agent orchestration)
-- [ ] @rana/observability (Production monitoring)
+- [ ] @cofounder/graph (Stateful agent orchestration)
+- [ ] @cofounder/observability (Production monitoring)
 - [ ] MCP Marketplace
 - [ ] Multi-model smart routing
 
 ### Q3 2026
-- [ ] @rana/multimodal (Voice + vision)
+- [ ] @cofounder/multimodal (Voice + vision)
 - [ ] Universal Agent Protocol
 - [ ] Enterprise certifications (SOC 2)
 
-[📖 Full Roadmap](../RANA_2025_ROADMAP.md)
+[📖 Full Roadmap](../CoFounder_2025_ROADMAP.md)
 
 ---
 
 ## 💬 Testimonials
 
-> "RANA's compliance features saved us 6 months of development. We shipped a HIPAA-compliant chatbot in 2 weeks."
+> "CoFounder's compliance features saved us 6 months of development. We shipped a HIPAA-compliant chatbot in 2 weeks."
 > — Healthcare Startup
 
 > "We reduced our LLM costs by 73% with context optimization. Game changer for our enterprise deployment."
@@ -313,13 +313,13 @@ Help others, get recognized, co-create content
 
 ## 🤔 FAQ
 
-**Q: Is RANA really free?**
+**Q: Is CoFounder really free?**
 A: Yes! MIT licensed, no hidden costs, no bait-and-switch.
 
-**Q: Which LLMs does RANA support?**
+**Q: Which LLMs does CoFounder support?**
 A: OpenAI, Anthropic, Google Gemini, xAI, Mistral, Cohere, Together.ai, Groq, Ollama
 
-**Q: Can I use RANA in production?**
+**Q: Can I use CoFounder in production?**
 A: Absolutely! It's designed for production from day one.
 
 **Q: Do I need to be an AI expert?**
@@ -338,14 +338,14 @@ A: Discord, GitHub Discussions, documentation, video tutorials.
 
 ## 📣 Spread the Word
 
-**Love RANA? Here's how you can help:**
+**Love CoFounder? Here's how you can help:**
 
 1. ⭐ **Star on GitHub** - Show your support
-2. 📱 **Share on social** - Use #BuiltWithRANA
+2. 📱 **Share on social** - Use #BuiltWithCoFounder
 3. ✍️ **Write a blog post** - Share your experience
 4. 🎥 **Create a video** - Tutorial or demo
 5. 💬 **Answer questions** - Help in Discord
-6. 🐛 **Report bugs** - Make RANA better
+6. 🐛 **Report bugs** - Make CoFounder better
 7. 🔧 **Contribute code** - Add features
 
 ---
@@ -353,7 +353,7 @@ A: Discord, GitHub Discussions, documentation, video tutorials.
 ## 🙏 Thank You
 
 To everyone who:
-- Uses RANA in their projects
+- Uses CoFounder in their projects
 - Contributes code and ideas
 - Helps others in the community
 - Shares feedback
@@ -365,10 +365,10 @@ To everyone who:
 
 ## 📞 Contact
 
-- **Website**: [rana.cx](https://rana.cx)
-- **GitHub**: [waymaker-ai/ranavibe](https://github.com/waymaker-ai/ranavibe)
+- **Website**: [cofounder.cx](https://cofounder.cx)
+- **GitHub**: [waymaker-ai/cofounder](https://github.com/waymaker-ai/cofounder)
 - **Email**: support@waymaker.cx
-- **Twitter**: [@ranavibe](#)
+- **Twitter**: [@cofounder](#)
 
 ---
 
@@ -376,4 +376,4 @@ To everyone who:
 
 ---
 
-*Made with 💜 by the RANA Community*
+*Made with 💜 by the CoFounder Community*

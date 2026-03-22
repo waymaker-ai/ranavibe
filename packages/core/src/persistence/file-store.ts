@@ -16,7 +16,7 @@ export class FileCostStore implements CostStore {
   constructor(filePath?: string) {
     this.filePath = filePath || path.join(
       process.env.HOME || process.env.USERPROFILE || '.',
-      '.rana',
+      '.cofounder',
       'cost-history.json'
     );
   }

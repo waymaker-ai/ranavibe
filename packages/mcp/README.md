@@ -1,11 +1,11 @@
-# @rana/mcp
+# @cofounder/mcp
 
-Model Context Protocol (MCP) client, server, scaffolding, and testing utilities for RANA applications.
+Model Context Protocol (MCP) client, server, scaffolding, and testing utilities for CoFounder applications.
 
 ## Installation
 
 ```bash
-npm install @rana/mcp
+npm install @cofounder/mcp
 ```
 
 ## Quick Start
@@ -15,7 +15,7 @@ npm install @rana/mcp
 Connect to MCP servers and use their tools:
 
 ```typescript
-import { createMCPClient } from '@rana/mcp';
+import { createMCPClient } from '@cofounder/mcp';
 
 const client = await createMCPClient({
   name: 'my-app',
@@ -50,9 +50,9 @@ console.log(result);
 Create your own MCP server:
 
 ```typescript
-import { createRanaMCPServer } from '@rana/mcp';
+import { createCoFounderMCPServer } from '@cofounder/mcp';
 
-const server = createRanaMCPServer({
+const server = createCoFounderMCPServer({
   name: 'my-server',
   version: '1.0.0',
   tools: [
@@ -93,7 +93,7 @@ await server.start();
 Generate production-ready MCP servers from templates:
 
 ```typescript
-import { scaffoldMCPServer, TEMPLATES } from '@rana/mcp';
+import { scaffoldMCPServer, TEMPLATES } from '@cofounder/mcp';
 
 // List available templates
 console.log(TEMPLATES);
@@ -128,13 +128,13 @@ console.log('Generated files:', result.files);
 
 ```bash
 # Create MCP server from template
-rana mcp create my-server --template database
+cofounder mcp create my-server --template database
 
 # Add a tool to existing server
-rana mcp add-tool search
+cofounder mcp add-tool search
 
 # Add a resource
-rana mcp add-resource users
+cofounder mcp add-resource users
 ```
 
 ## Testing
@@ -147,7 +147,7 @@ import {
   runToolTests,
   assertToolExists,
   assertToolSuccess
-} from '@rana/mcp';
+} from '@cofounder/mcp';
 
 // Create a mock server for testing
 const mockServer = createMockServer({
@@ -211,7 +211,7 @@ await assertResultContains(server, 'search', { query: 'test' }, 'found');
 ### Snapshot Testing
 
 ```typescript
-import { createSnapshot, compareSnapshot } from '@rana/mcp';
+import { createSnapshot, compareSnapshot } from '@cofounder/mcp';
 
 // Create snapshot of server state
 const snapshot = await createSnapshot(server);
@@ -246,7 +246,7 @@ See the `examples/` directory for complete examples:
 
 | Function | Description |
 |----------|-------------|
-| `createRanaMCPServer(config)` | Create MCP server |
+| `createCoFounderMCPServer(config)` | Create MCP server |
 | `server.start()` | Start server |
 | `server.stop()` | Stop server |
 

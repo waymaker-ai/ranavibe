@@ -1,26 +1,26 @@
 /**
- * React Context Provider for RANA
+ * React Context Provider for CoFounder
  */
 
 import React, { createContext, useContext, ReactNode } from 'react';
-import type { RanaClient } from './types';
+import type { CoFounderClient } from './types';
 
-const RanaContext = createContext<RanaClient | null>(null);
+const RanaContext = createContext<CoFounderClient | null>(null);
 
 export interface RanaProviderProps {
-  client: RanaClient;
+  client: CoFounderClient;
   children: ReactNode;
 }
 
 /**
- * Provider component for RANA
+ * Provider component for CoFounder
  *
  * @example
  * ```tsx
- * import { createRana } from '@rana/core';
- * import { RanaProvider } from '@rana/react';
+ * import { createCoFounder } from '@cofounder/core';
+ * import { RanaProvider } from '@cofounder/react';
  *
- * const rana = createRana({
+ * const cofounder = createCoFounder({
  *   providers: {
  *     anthropic: process.env.ANTHROPIC_API_KEY
  *   }
@@ -28,7 +28,7 @@ export interface RanaProviderProps {
  *
  * function App() {
  *   return (
- *     <RanaProvider client={rana}>
+ *     <RanaProvider client={cofounder}>
  *       <YourApp />
  *     </RanaProvider>
  *   );
@@ -40,20 +40,20 @@ export function RanaProvider({ client, children }: RanaProviderProps) {
 }
 
 /**
- * Hook to access the RANA client from context
+ * Hook to access the CoFounder client from context
  *
  * @example
  * ```tsx
  * function MyComponent() {
- *   const rana = useRana();
- *   // Use rana client
+ *   const cofounder = useCoFounder();
+ *   // Use cofounder client
  * }
  * ```
  */
-export function useRana(): RanaClient {
+export function useCoFounder(): CoFounderClient {
   const context = useContext(RanaContext);
   if (!context) {
-    throw new Error('useRana must be used within a RanaProvider');
+    throw new Error('useCoFounder must be used within a RanaProvider');
   }
   return context;
 }

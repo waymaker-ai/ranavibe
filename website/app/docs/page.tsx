@@ -13,13 +13,13 @@ const sections = [
   {
     icon: Zap,
     title: 'Quick Start',
-    description: 'Get up and running with RANA in 5 minutes',
+    description: 'Get up and running with CoFounder in 5 minutes',
     href: '/docs/quick-start',
   },
   {
     icon: Package,
     title: 'Packages',
-    description: 'Learn about @rana/helpers, @rana/prompts, and @rana/rag',
+    description: 'Learn about @cofounder/helpers, @cofounder/prompts, and @cofounder/rag',
     href: '/docs/packages',
   },
   {
@@ -136,7 +136,7 @@ const resources = [
   {
     icon: GitCompare,
     title: 'Comparisons',
-    description: 'See how RANA compares to LangChain, Vercel AI SDK, and more',
+    description: 'See how CoFounder compares to LangChain, Vercel AI SDK, and more',
     href: '/compare',
   },
   {
@@ -148,7 +148,7 @@ const resources = [
   {
     icon: BookOpen,
     title: 'Case Studies',
-    description: 'Real-world examples of teams using RANA in production',
+    description: 'Real-world examples of teams using CoFounder in production',
     href: '/case-studies',
   },
 ];
@@ -164,7 +164,7 @@ export default function DocsPage() {
         >
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Documentation</h1>
           <p className="text-lg text-foreground-secondary">
-            Everything you need to build production AI applications with RANA
+            Everything you need to build production AI applications with CoFounder
           </p>
         </motion.div>
 
@@ -207,10 +207,10 @@ export default function DocsPage() {
         >
           <h2 className="text-2xl font-bold mb-4 text-center">Quick Install</h2>
           <div className="code-block font-mono text-sm">
-            <div className="text-foreground-secondary"># Install all RANA packages</div>
-            <div className="mt-2">npm install @rana/core @rana/helpers @rana/prompts @rana/rag</div>
+            <div className="text-foreground-secondary"># Install all CoFounder packages</div>
+            <div className="mt-2">npm install @cofounder/core @cofounder/helpers @cofounder/prompts @cofounder/rag</div>
             <div className="mt-4 text-foreground-secondary"># Or install the CLI globally</div>
-            <div className="mt-2">npm install -g @rana/cli</div>
+            <div className="mt-2">npm install -g @cofounder/cli</div>
           </div>
         </motion.div>
 

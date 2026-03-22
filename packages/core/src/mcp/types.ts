@@ -1,5 +1,5 @@
 /**
- * @rana/mcp/types
+ * @cofounder/mcp/types
  * Model Context Protocol types and interfaces
  */
 

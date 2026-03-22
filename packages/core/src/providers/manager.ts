@@ -128,7 +128,7 @@ export class ProviderManager {
       onRetry: (error, attempt, delay) => {
         // Log retry attempts if configured
         console.log(
-          `[RANA Retry] ${provider} - Attempt ${attempt} failed, retrying in ${delay}ms. Error: ${error.message}`
+          `[CoFounder Retry] ${provider} - Attempt ${attempt} failed, retrying in ${delay}ms. Error: ${error.message}`
         );
         // Call user-provided callback if exists
         if (this.retryConfig?.onRetry) {

@@ -1,5 +1,5 @@
 /**
- * @rana/compliance - Compliance rule factory and presets
+ * @cofounder/compliance - Compliance rule factory and presets
  */
 
 import type {

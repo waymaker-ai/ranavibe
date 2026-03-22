@@ -163,5 +163,5 @@ export async function routerConfigCommand(options: {
     console.log(`  • capability-match  - Match model to task requirements`);
   }
 
-  console.log(chalk.gray('\nConfiguration saved to .rana.yml\n'));
+  console.log(chalk.gray('\nConfiguration saved to .cofounder.yml\n'));
 }

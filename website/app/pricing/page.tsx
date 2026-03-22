@@ -11,7 +11,7 @@ const tiers = [
     description: 'Bring your own API keys - No credit card required',
     icon: Sparkles,
     features: [
-      'All RANA packages (@rana/helpers, @rana/prompts, @rana/rag)',
+      'All CoFounder packages (@cofounder/helpers, @cofounder/prompts, @cofounder/rag)',
       '25+ CLI commands',
       '9 LLM provider integrations',
       'Security & design guardrails',
@@ -68,20 +68,20 @@ const tiers = [
 
 const faqs = [
   {
-    q: 'Is RANA really free?',
-    a: 'Yes! All RANA packages are open source under the MIT license. Free tier requires you to bring your own API keys. Waymaker Pro ($29/mo) includes API tokens so you don&apos;t need to manage keys.',
+    q: 'Is CoFounder really free?',
+    a: 'Yes! All CoFounder packages are open source under the MIT license. Free tier requires you to bring your own API keys. Waymaker Pro ($29/mo) includes API tokens so you don&apos;t need to manage keys.',
   },
   {
     q: 'What does "bring your own API keys" mean?',
     a: 'In the free tier, you provide your own OpenAI, Anthropic, Google, or other provider API keys. You pay those providers directly. Waymaker Pro includes $50/month in API tokens, so we handle the keys and billing.',
   },
   {
-    q: 'Can I use RANA with Google Antigravity, Cursor, or Windsurf?',
-    a: 'Yes! RANA is a complementary framework that works WITH all your favorite tools. Use it in any IDE or AI coding assistant to add security guardrails, design enforcement, and prompt management.',
+    q: 'Can I use CoFounder with Google Antigravity, Cursor, or Windsurf?',
+    a: 'Yes! CoFounder is a complementary framework that works WITH all your favorite tools. Use it in any IDE or AI coding assistant to add security guardrails, design enforcement, and prompt management.',
   },
   {
     q: 'What&apos;s included in the Waymaker.cx integration?',
-    a: 'Waymaker Pro ($29/mo) includes RANA framework access, API tokens ($50 value), priority support, analytics dashboard, and integration with the full Waymaker platform for project management and collaboration.',
+    a: 'Waymaker Pro ($29/mo) includes CoFounder framework access, API tokens ($50 value), priority support, analytics dashboard, and integration with the full Waymaker platform for project management and collaboration.',
   },
 ];
 
@@ -175,7 +175,7 @@ export default function PricingPage() {
               Save Up to 70% on LLM Costs
             </h2>
             <p className="text-foreground-secondary text-center mb-8">
-              RANA&apos;s built-in optimizations automatically reduce your AI infrastructure costs
+              CoFounder&apos;s built-in optimizations automatically reduce your AI infrastructure costs
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {[
@@ -223,7 +223,7 @@ export default function PricingPage() {
         >
           <h2 className="text-2xl font-bold mb-4">Ready to Get Started?</h2>
           <p className="text-foreground-secondary mb-6">
-            Join thousands of developers building AI applications with RANA
+            Join thousands of developers building AI applications with CoFounder
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/docs/quick-start" className="btn-primary px-6 py-3">

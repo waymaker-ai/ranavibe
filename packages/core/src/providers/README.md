@@ -1,6 +1,6 @@
 # Provider Reliability System
 
-The RANA Provider Reliability System includes multiple features to ensure your application stays resilient and performant when working with LLM providers.
+The CoFounder Provider Reliability System includes multiple features to ensure your application stays resilient and performant when working with LLM providers.
 
 ## Features
 
@@ -23,9 +23,9 @@ The RANA Provider Reliability System includes multiple features to ensure your a
 ## Quick Start
 
 ```typescript
-import { createRana } from '@rana/core';
+import { createCoFounder } from '@cofounder/core';
 
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: {
     openai: process.env.OPENAI_API_KEY,
     anthropic: process.env.ANTHROPIC_API_KEY,
@@ -40,7 +40,7 @@ const rana = createRana({
 });
 
 // Automatically tries providers in order until one succeeds
-const response = await rana.chat('Hello, world!');
+const response = await cofounder.chat('Hello, world!');
 ```
 
 ## Configuration Options
@@ -75,7 +75,7 @@ const response = await rana.chat('Hello, world!');
 You can configure different retry behaviors for specific providers:
 
 ```typescript
-import { createRana, createFallbackManager, ProviderManager } from '@rana/core';
+import { createCoFounder, createFallbackManager, ProviderManager } from '@cofounder/core';
 
 const providerManager = new ProviderManager({
   openai: process.env.OPENAI_API_KEY,
@@ -108,7 +108,7 @@ fallbackManager.configureProviderRetry({
 Ensure your application keeps working even during provider outages:
 
 ```typescript
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: {
     openai: process.env.OPENAI_API_KEY,
     anthropic: process.env.ANTHROPIC_API_KEY,
@@ -127,7 +127,7 @@ const rana = createRana({
 Try cheaper providers first, fall back to premium ones only if needed:
 
 ```typescript
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: {
     google: process.env.GOOGLE_API_KEY,      // Free during preview
     anthropic: process.env.ANTHROPIC_API_KEY, // Mid-tier pricing
@@ -147,7 +147,7 @@ const rana = createRana({
 Automatically switch providers when hitting rate limits:
 
 ```typescript
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: {
     openai: process.env.OPENAI_API_KEY,
     anthropic: process.env.ANTHROPIC_API_KEY,
@@ -170,7 +170,7 @@ Track fallback usage to identify provider reliability issues:
 ```typescript
 let fallbackCount = 0;
 
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: {
     openai: process.env.OPENAI_API_KEY,
     anthropic: process.env.ANTHROPIC_API_KEY,
@@ -194,7 +194,7 @@ const rana = createRana({
 Fallback responses include detailed metadata about the attempt:
 
 ```typescript
-const response = await rana.chat('Hello!');
+const response = await cofounder.chat('Hello!');
 
 if ('fallbackMetadata' in response) {
   const metadata = response.fallbackMetadata;
@@ -216,10 +216,10 @@ if ('fallbackMetadata' in response) {
 
 ### Works with Cost Tracking
 
-Fallback responses automatically integrate with RANA's cost tracking:
+Fallback responses automatically integrate with CoFounder's cost tracking:
 
 ```typescript
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: { /* ... */ },
   fallback: {
     order: ['google', 'anthropic', 'openai'],
@@ -230,22 +230,22 @@ const rana = createRana({
   },
 });
 
-const response = await rana.chat('Hello!');
+const response = await cofounder.chat('Hello!');
 
 // Cost is tracked regardless of which provider was used
 console.log('Cost:', response.cost.total_cost);
 
 // View overall cost stats
-const stats = await rana.cost.stats();
+const stats = await cofounder.cost.stats();
 console.log('Total spent:', stats.total_spent);
 ```
 
 ### Works with Caching
 
-Fallback works seamlessly with RANA's caching system:
+Fallback works seamlessly with CoFounder's caching system:
 
 ```typescript
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: { /* ... */ },
   fallback: {
     order: ['openai', 'anthropic'],
@@ -257,10 +257,10 @@ const rana = createRana({
 });
 
 // First request tries providers
-const response1 = await rana.chat('What is AI?');
+const response1 = await cofounder.chat('What is AI?');
 
 // Second request returns from cache (no providers called)
-const response2 = await rana.chat('What is AI?');
+const response2 = await cofounder.chat('What is AI?');
 ```
 
 ### Works with Budget Enforcement
@@ -268,7 +268,7 @@ const response2 = await rana.chat('What is AI?');
 Fallback respects budget limits:
 
 ```typescript
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: { /* ... */ },
   fallback: {
     order: ['openai', 'anthropic', 'google'],
@@ -285,7 +285,7 @@ const rana = createRana({
 
 // Budget is checked BEFORE attempting any provider
 try {
-  const response = await rana.chat('Hello!');
+  const response = await cofounder.chat('Hello!');
 } catch (error) {
   if (error.name === 'RanaBudgetExceededError') {
     console.log('Budget exceeded - no providers were called');
@@ -299,7 +299,7 @@ When all providers fail, a comprehensive error is thrown:
 
 ```typescript
 try {
-  const response = await rana.chat('Hello!');
+  const response = await cofounder.chat('Hello!');
 } catch (error) {
   // Error message includes all attempted providers and their failures
   console.error(error.message);
@@ -399,9 +399,9 @@ The circuit breaker has three states:
 ## Quick Start
 
 ```typescript
-import { createRana } from '@rana/core';
+import { createCoFounder } from '@cofounder/core';
 
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: {
     anthropic: process.env.ANTHROPIC_API_KEY,
     openai: process.env.OPENAI_API_KEY,
@@ -417,7 +417,7 @@ const rana = createRana({
 
 // Make requests as normal - circuit breaker handles failures automatically
 try {
-  const response = await rana.chat('Hello!');
+  const response = await cofounder.chat('Hello!');
 } catch (error) {
   if (error.name === 'CircuitBreakerError') {
     console.log('Provider circuit is open - using fallback or waiting');
@@ -466,10 +466,10 @@ interface CircuitBreakerConfig {
 ### Check Individual Provider
 
 ```typescript
-const state = rana.circuitBreaker.getState('anthropic');
+const state = cofounder.circuitBreaker.getState('anthropic');
 console.log(state); // 'CLOSED' | 'OPEN' | 'HALF_OPEN'
 
-const stats = rana.circuitBreaker.getStats('anthropic');
+const stats = cofounder.circuitBreaker.getStats('anthropic');
 console.log(stats);
 // {
 //   state: 'CLOSED',
@@ -483,7 +483,7 @@ console.log(stats);
 ### Check All Providers
 
 ```typescript
-const allStats = rana.circuitBreaker.getAllStats();
+const allStats = cofounder.circuitBreaker.getAllStats();
 for (const [provider, stats] of Object.entries(allStats)) {
   console.log(`${provider}: ${stats.state} (${stats.failureRate}% failure rate)`);
 }
@@ -495,17 +495,17 @@ for (const [provider, stats] of Object.entries(allStats)) {
 
 ```typescript
 // Reset a specific provider's circuit (force close)
-rana.circuitBreaker.reset('anthropic');
+cofounder.circuitBreaker.reset('anthropic');
 
 // Reset all circuits
-rana.circuitBreaker.resetAll();
+cofounder.circuitBreaker.resetAll();
 ```
 
 ### Update Configuration
 
 ```typescript
 // Change circuit breaker settings at runtime
-rana.circuitBreaker.configure({
+cofounder.circuitBreaker.configure({
   failureThreshold: 10,
   resetTimeout: 60000,
 });
@@ -516,7 +516,7 @@ rana.circuitBreaker.configure({
 Circuit breaker works seamlessly with the fallback system:
 
 ```typescript
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: {
     anthropic: process.env.ANTHROPIC_API_KEY,
     openai: process.env.OPENAI_API_KEY,
@@ -534,14 +534,14 @@ const rana = createRana({
 });
 
 // If anthropic's circuit is open, fallback will try openai, then google
-const response = await rana.chat('Hello!');
+const response = await cofounder.chat('Hello!');
 ```
 
 ## Advanced: Direct Access
 
 ```typescript
 // Get circuit breaker instance for advanced control
-const breaker = rana.circuitBreaker.instance();
+const breaker = cofounder.circuitBreaker.instance();
 
 // Listen to events
 breaker.on('open', (provider, failureCount) => {

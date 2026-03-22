@@ -1,7 +1,7 @@
 {
-  "name": "@ranavibe/react",
+  "name": "@cofounder/react",
   "version": "2.0.0",
-  "description": "React hooks and components for RANA - Rapid AI Native Architecture",
+  "description": "React hooks and components for CoFounder - Rapid AI Native Architecture",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -23,7 +23,7 @@
     "typecheck": "tsc --noEmit"
   },
   "keywords": [
-    "rana",
+    "cofounder",
     "react",
     "hooks",
     "llm",
@@ -33,10 +33,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/waymaker-ai/ranavibe.git",
+    "url": "https://github.com/waymaker-ai/cofounder.git",
     "directory": "packages/react"
   },
-  "homepage": "https://rana.cx",
+  "homepage": "https://cofounder.cx",
   "publishConfig": {
     "access": "public"
   },

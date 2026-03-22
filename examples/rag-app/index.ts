@@ -1,5 +1,5 @@
 /**
- * RANA RAG (Retrieval-Augmented Generation) Example
+ * CoFounder RAG (Retrieval-Augmented Generation) Example
  * A complete RAG implementation for question answering
  *
  * Features:
@@ -360,12 +360,12 @@ Answer the question based on the context above. Cite sources when relevant.`;
 
 const SAMPLE_DOCUMENTS: Document[] = [
   {
-    id: 'rana-overview',
-    title: 'RANA Framework Overview',
+    id: 'cofounder-overview',
+    title: 'CoFounder Framework Overview',
     source: 'docs/overview.md',
-    content: `RANA (Rapid AI Native Architecture) is a production-quality AI development framework designed for modern applications. It provides a unified interface to work with 9 different LLM providers including OpenAI, Anthropic, Google, Groq, Mistral, Cohere, Together AI, xAI, and Ollama.
+    content: `CoFounder (Rapid AI Native Architecture) is a production-quality AI development framework designed for modern applications. It provides a unified interface to work with 9 different LLM providers including OpenAI, Anthropic, Google, Groq, Mistral, Cohere, Together AI, xAI, and Ollama.
 
-Key features of RANA include:
+Key features of CoFounder include:
 - Multi-provider support with automatic fallback
 - Cost optimization through intelligent model routing
 - Semantic caching to reduce redundant API calls
@@ -374,33 +374,33 @@ Key features of RANA include:
 - Agent orchestration framework
 - RAG (Retrieval-Augmented Generation) pipeline
 
-RANA can achieve up to 70% cost reduction compared to using a single premium model for all tasks. It automatically selects the most appropriate model based on task complexity, using cheaper models for simple tasks and premium models for complex ones.
+CoFounder can achieve up to 70% cost reduction compared to using a single premium model for all tasks. It automatically selects the most appropriate model based on task complexity, using cheaper models for simple tasks and premium models for complex ones.
 
 The framework is designed to be developer-friendly with TypeScript support, comprehensive documentation, and a CLI tool for project management.`,
   },
   {
     id: 'cost-optimization',
-    title: 'RANA Cost Optimization Guide',
+    title: 'CoFounder Cost Optimization Guide',
     source: 'docs/cost-optimization.md',
-    content: `RANA provides multiple strategies for reducing LLM API costs:
+    content: `CoFounder provides multiple strategies for reducing LLM API costs:
 
-1. **Intelligent Model Routing**: RANA analyzes each request and routes it to the most cost-effective model that can handle the task. Simple queries go to cheaper models like GPT-4o Mini or Claude Haiku, while complex reasoning tasks use premium models.
+1. **Intelligent Model Routing**: CoFounder analyzes each request and routes it to the most cost-effective model that can handle the task. Simple queries go to cheaper models like GPT-4o Mini or Claude Haiku, while complex reasoning tasks use premium models.
 
-2. **Semantic Caching**: RANA caches responses for similar queries. When a new query is semantically similar to a cached one, it returns the cached response instead of making a new API call. This can reduce costs by 30-50% for applications with repetitive queries.
+2. **Semantic Caching**: CoFounder caches responses for similar queries. When a new query is semantically similar to a cached one, it returns the cached response instead of making a new API call. This can reduce costs by 30-50% for applications with repetitive queries.
 
-3. **Prompt Optimization**: RANA automatically compresses prompts while preserving meaning. This reduces token usage without sacrificing quality. Techniques include removing redundant whitespace, simplifying instructions, and using efficient formatting.
+3. **Prompt Optimization**: CoFounder automatically compresses prompts while preserving meaning. This reduces token usage without sacrificing quality. Techniques include removing redundant whitespace, simplifying instructions, and using efficient formatting.
 
-4. **Batch Processing**: For non-time-sensitive tasks, RANA can batch multiple requests together to take advantage of bulk pricing.
+4. **Batch Processing**: For non-time-sensitive tasks, CoFounder can batch multiple requests together to take advantage of bulk pricing.
 
-5. **Provider Arbitrage**: Different providers have different pricing. RANA can automatically switch between providers based on current pricing and availability.
+5. **Provider Arbitrage**: Different providers have different pricing. CoFounder can automatically switch between providers based on current pricing and availability.
 
 Cost tracking is built-in, providing real-time visibility into spending across all providers and models.`,
   },
   {
     id: 'agent-framework',
-    title: 'RANA Agent Framework',
+    title: 'CoFounder Agent Framework',
     source: 'docs/agents.md',
-    content: `The RANA Agent Framework enables building sophisticated AI agents that can use tools and collaborate with other agents.
+    content: `The CoFounder Agent Framework enables building sophisticated AI agents that can use tools and collaborate with other agents.
 
 **Agent Types**:
 - BaseAgent: The foundation class for all agents
@@ -436,19 +436,19 @@ const result = await agent.run('Find the GDP of Japan and calculate per capita')
   },
   {
     id: 'getting-started',
-    title: 'Getting Started with RANA',
+    title: 'Getting Started with CoFounder',
     source: 'docs/getting-started.md',
-    content: `Getting started with RANA is straightforward:
+    content: `Getting started with CoFounder is straightforward:
 
 **Installation**:
 \`\`\`bash
-npm install @rana/core @rana/helpers @rana/react
+npm install @cofounder/core @cofounder/helpers @cofounder/react
 \`\`\`
 
 **Quick Setup**:
 \`\`\`bash
-npx rana init
-npx rana wizard
+npx cofounder init
+npx cofounder wizard
 \`\`\`
 
 **Configuration**:
@@ -460,30 +460,30 @@ OPENAI_API_KEY=sk-...
 
 Or use the CLI:
 \`\`\`bash
-rana config:set --provider anthropic
-rana config:set --provider openai
+cofounder config:set --provider anthropic
+cofounder config:set --provider openai
 \`\`\`
 
 **Basic Usage**:
 \`\`\`typescript
-import { rana } from '@rana/core';
+import { cofounder } from '@cofounder/core';
 
 // Simple chat
-const response = await rana.chat('Hello!');
+const response = await cofounder.chat('Hello!');
 
 // With options
-const response = await rana
+const response = await cofounder
   .provider('anthropic')
   .model('claude-3-5-sonnet')
   .chat('Explain quantum computing');
 \`\`\`
 
-The RANA CLI provides commands for:
-- Project initialization (rana init)
-- Interactive setup wizard (rana wizard)
-- Cost dashboard (rana dashboard)
-- Security audits (rana audit)
-- Deployment (rana deploy)`,
+The CoFounder CLI provides commands for:
+- Project initialization (cofounder init)
+- Interactive setup wizard (cofounder wizard)
+- Cost dashboard (cofounder dashboard)
+- Security audits (cofounder audit)
+- Deployment (cofounder deploy)`,
   },
 ];
 
@@ -494,7 +494,7 @@ The RANA CLI provides commands for:
 async function main() {
   console.log('\x1b[36m');
   console.log('╔═══════════════════════════════════════════╗');
-  console.log('║   📚 RANA RAG (Question Answering) Demo   ║');
+  console.log('║   📚 CoFounder RAG (Question Answering) Demo   ║');
   console.log('╚═══════════════════════════════════════════╝');
   console.log('\x1b[0m');
 
@@ -559,10 +559,10 @@ async function main() {
 
   // Example questions
   console.log('\x1b[90mTry asking:\x1b[0m');
-  console.log('\x1b[90m  - What is RANA?\x1b[0m');
-  console.log('\x1b[90m  - How does RANA reduce costs?\x1b[0m');
+  console.log('\x1b[90m  - What is CoFounder?\x1b[0m');
+  console.log('\x1b[90m  - How does CoFounder reduce costs?\x1b[0m');
   console.log('\x1b[90m  - What is the agent framework?\x1b[0m');
-  console.log('\x1b[90m  - How do I get started with RANA?\x1b[0m\n');
+  console.log('\x1b[90m  - How do I get started with CoFounder?\x1b[0m\n');
 
   prompt();
 }

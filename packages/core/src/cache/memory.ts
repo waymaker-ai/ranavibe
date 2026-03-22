@@ -14,7 +14,7 @@ export class MemoryCache implements CacheProvider {
     this.config = {
       ttl: 3600, // 1 hour default
       maxSize: 1000,
-      prefix: 'rana:',
+      prefix: 'cofounder:',
       ...config,
     };
   }

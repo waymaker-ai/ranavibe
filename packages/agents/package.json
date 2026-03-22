@@ -1,7 +1,7 @@
 {
-  "name": "@ranavibe/agents",
+  "name": "@cofounder/agents",
   "version": "1.0.0",
-  "description": "Agent Development Kit (ADK) for RANA Framework",
+  "description": "Agent Development Kit (ADK) for CoFounder Framework",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -39,8 +39,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@ranavibe/core": "workspace:*",
-    "@ranavibe/rag": "workspace:*",
+    "@cofounder/core": "workspace:*",
+    "@cofounder/rag": "workspace:*",
     "zod": "^3.22.4",
     "js-yaml": "^4.1.0"
   },
@@ -52,7 +52,7 @@
     "vitest": "^1.0.0"
   },
   "keywords": [
-    "rana",
+    "cofounder",
     "agents",
     "adk",
     "llm",
@@ -64,10 +64,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/waymaker-ai/ranavibe.git",
+    "url": "https://github.com/waymaker-ai/cofounder.git",
     "directory": "packages/agents"
   },
-  "homepage": "https://rana.cx",
+  "homepage": "https://cofounder.cx",
   "publishConfig": {
     "access": "public"
   }

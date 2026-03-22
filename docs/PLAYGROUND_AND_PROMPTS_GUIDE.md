@@ -1,32 +1,32 @@
 # Playground & Prompt Management Guide
 
-RANA provides interactive tools for testing features and managing prompts efficiently.
+CoFounder provides interactive tools for testing features and managing prompts efficiently.
 
 ## Playground (REPL)
 
-The playground provides an interactive environment for experimenting with RANA features without writing full applications.
+The playground provides an interactive environment for experimenting with CoFounder features without writing full applications.
 
 ### Quick Start
 
 ```bash
 # Start interactive playground
-rana playground
+cofounder playground
 
 # Run quick demo
-rana demo
+cofounder demo
 
 # Show quickstart guide
-rana quickstart
+cofounder quickstart
 ```
 
 ### Interactive REPL
 
-When you run `rana playground`, you enter an interactive session:
+When you run `cofounder playground`, you enter an interactive session:
 
 ```
-$ rana playground
+$ cofounder playground
 
-RANA Playground v2.1.0
+CoFounder Playground v2.1.0
 Type 'help' for available commands, 'exit' to quit.
 
 playground> help
@@ -58,14 +58,14 @@ playground> template agent
 
 Loads:
 ```typescript
-import { createAgent, createRana } from '@rana/agents';
+import { createAgent, createCoFounder } from '@cofounder/agents';
 
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: { anthropic: process.env.ANTHROPIC_API_KEY }
 });
 
 const agent = createAgent({
-  rana,
+  cofounder,
   tools: [],
   user: { id: 'user-1', orgId: 'org-1', roles: ['user'] },
 }, {
@@ -94,10 +94,10 @@ Available templates:
 
 ### Demo Mode
 
-Run a quick demonstration of RANA features:
+Run a quick demonstration of CoFounder features:
 
 ```bash
-rana demo
+cofounder demo
 ```
 
 This shows:
@@ -127,40 +127,40 @@ playground> export session-2024-01-15.json
 
 ## Prompt Management
 
-Manage, organize, and improve prompts for your RANA projects.
+Manage, organize, and improve prompts for your CoFounder projects.
 
 ### Commands Overview
 
 ```bash
 # Save a new prompt
-rana prompts save
+cofounder prompts save
 
 # List all prompts
-rana prompts list
+cofounder prompts list
 
 # Get and use a prompt
-rana prompts use <name>
+cofounder prompts use <name>
 
 # Analyze prompt quality
-rana prompts analyze
+cofounder prompts analyze
 
 # Get improvement suggestions
-rana prompts improve
+cofounder prompts improve
 
 # Compare two prompts
-rana prompts compare <a> <b>
+cofounder prompts compare <a> <b>
 
 # Import prompts
-rana prompts import <file>
+cofounder prompts import <file>
 
 # Export prompts
-rana prompts export [--category <cat>]
+cofounder prompts export [--category <cat>]
 ```
 
 ### Saving Prompts
 
 ```bash
-$ rana prompts save
+$ cofounder prompts save
 
 ? Enter prompt name: research-agent
 ? Enter description: Agent for deep research tasks
@@ -195,7 +195,7 @@ Prompt saved successfully!
 ### Listing Prompts
 
 ```bash
-$ rana prompts list
+$ cofounder prompts list
 
 Saved Prompts (12 total)
 
@@ -215,14 +215,14 @@ Saved Prompts (12 total)
   ├─ translate          Translation task                  6 uses
   └─ ... (3 more)
 
-Use 'rana prompts use <name>' to get a prompt
-Use 'rana prompts list --category agent' to filter
+Use 'cofounder prompts use <name>' to get a prompt
+Use 'cofounder prompts list --category agent' to filter
 ```
 
 ### Using Prompts
 
 ```bash
-$ rana prompts use research-agent
+$ cofounder prompts use research-agent
 
 research-agent
 Category: agent | Tags: research, analysis, web
@@ -244,7 +244,7 @@ Copied to clipboard!
 With variable substitution:
 
 ```bash
-$ rana prompts use greeting-template --vars name=Alice,role=Developer
+$ cofounder prompts use greeting-template --vars name=Alice,role=Developer
 
 Hello {{name}}, welcome as our new {{role}}!
 → Hello Alice, welcome as our new Developer!
@@ -255,7 +255,7 @@ Hello {{name}}, welcome as our new {{role}}!
 Get quality scores and suggestions:
 
 ```bash
-$ rana prompts analyze research-agent
+$ cofounder prompts analyze research-agent
 
 Prompt Analysis: research-agent
 ─────────────────────────────────────────────
@@ -288,7 +288,7 @@ Suggestions:
 Get AI-powered improvement suggestions:
 
 ```bash
-$ rana prompts improve research-agent
+$ cofounder prompts improve research-agent
 
 Analyzing prompt for improvements...
 
@@ -328,7 +328,7 @@ Apply suggestions? (y/n)
 Side-by-side comparison:
 
 ```bash
-$ rana prompts compare research-agent research-agent-v2
+$ cofounder prompts compare research-agent research-agent-v2
 
 Prompt Comparison
 ─────────────────────────────────────────────
@@ -354,25 +354,25 @@ Share prompts between projects:
 
 ```bash
 # Export all prompts
-rana prompts export --output my-prompts.json
+cofounder prompts export --output my-prompts.json
 
 # Export by category
-rana prompts export --category agent --output agent-prompts.json
+cofounder prompts export --category agent --output agent-prompts.json
 
 # Import prompts
-rana prompts import team-prompts.json
+cofounder prompts import team-prompts.json
 
 # Import with merge strategy
-rana prompts import team-prompts.json --strategy merge  # merge with existing
-rana prompts import team-prompts.json --strategy replace  # replace existing
+cofounder prompts import team-prompts.json --strategy merge  # merge with existing
+cofounder prompts import team-prompts.json --strategy replace  # replace existing
 ```
 
 ### Built-in Templates
 
-RANA includes pre-built prompt templates:
+CoFounder includes pre-built prompt templates:
 
 ```bash
-$ rana prompts templates
+$ cofounder prompts templates
 
 Available Templates:
 
@@ -392,7 +392,7 @@ Available Templates:
   • tool-description   - MCP tool descriptions
   • resource-schema    - Resource definitions
 
-Use 'rana prompts use-template <name>' to start with a template
+Use 'cofounder prompts use-template <name>' to start with a template
 ```
 
 ### Prompt Variables
@@ -405,7 +405,7 @@ Focus on {{domain}} topics and respond in {{language}}.
 ```
 
 ```bash
-$ rana prompts use my-prompt --vars role=technical,user_type=enterprise,domain=security,language=English
+$ cofounder prompts use my-prompt --vars role=technical,user_type=enterprise,domain=security,language=English
 ```
 
 ### Analytics
@@ -413,7 +413,7 @@ $ rana prompts use my-prompt --vars role=technical,user_type=enterprise,domain=s
 View prompt usage statistics:
 
 ```bash
-$ rana prompts analytics
+$ cofounder prompts analytics
 
 Prompt Usage Analytics (Last 30 days)
 ─────────────────────────────────────────────

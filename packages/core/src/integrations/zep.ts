@@ -1,5 +1,5 @@
 /**
- * Zep Integration for RANA
+ * Zep Integration for CoFounder
  *
  * Zep is a long-term memory store for LLM applications.
  * It provides automatic memory extraction, summarization, and retrieval.
@@ -560,11 +560,11 @@ export class ZepIntegration extends EventEmitter {
   }
 
   // ===========================================================================
-  // RANA Integration Helpers
+  // CoFounder Integration Helpers
   // ===========================================================================
 
   /**
-   * Create RANA middleware for automatic memory management
+   * Create CoFounder middleware for automatic memory management
    */
   createMiddleware(options: {
     sessionIdGetter: (ctx: any) => string;

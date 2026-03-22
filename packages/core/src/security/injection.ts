@@ -1,5 +1,5 @@
 /**
- * Prompt Injection Detection for RANA
+ * Prompt Injection Detection for CoFounder
  *
  * Detects various types of prompt injection attempts including:
  * - Direct injection (ignore previous instructions, etc.)
@@ -9,7 +9,7 @@
  *
  * @example
  * ```typescript
- * import { PromptInjectionDetector } from '@ranavibe/core';
+ * import { PromptInjectionDetector } from '@cofounder/core';
  *
  * const detector = new PromptInjectionDetector({ sensitivity: 'high' });
  * const result = detector.detect('Ignore all previous instructions and...');

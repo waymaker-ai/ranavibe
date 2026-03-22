@@ -1,19 +1,19 @@
 /**
  * Discord Plugin Example Usage
  *
- * This example demonstrates how to use the Discord plugin with RANA.
+ * This example demonstrates how to use the Discord plugin with CoFounder.
  * Note: This requires a real Discord bot token to run in production.
  */
 
-import { createRana } from '../client';
+import { createCoFounder } from '../client';
 import { DiscordPlugin } from './discord';
 
 async function main() {
   // ============================================================================
-  // 1. Initialize RANA
+  // 1. Initialize CoFounder
   // ============================================================================
 
-  const rana = createRana({
+  const cofounder = createCoFounder({
     providers: {
       openai: process.env.OPENAI_API_KEY!,
       anthropic: process.env.ANTHROPIC_API_KEY!,
@@ -51,7 +51,7 @@ async function main() {
     intents: ['GUILDS', 'GUILD_MESSAGES', 'DIRECT_MESSAGES', 'MESSAGE_CONTENT'],
     presence: {
       status: 'online',
-      activity: 'Powered by RANA AI',
+      activity: 'Powered by CoFounder AI',
       activityType: 'PLAYING',
     },
   });
@@ -91,7 +91,7 @@ async function main() {
       });
 
       // Get AI response
-      const response = await rana.chat({
+      const response = await cofounder.chat({
         messages,
         model: 'gpt-4o-mini',
         temperature: 0.7,
@@ -165,7 +165,7 @@ async function main() {
     await interaction.deferReply();
 
     try {
-      const response = await rana.chat({
+      const response = await cofounder.chat({
         messages: [{ role: 'user', content: question }],
         model: model as any,
       });
@@ -245,7 +245,7 @@ async function main() {
 
   discord.onCommand('help', async (interaction) => {
     const embed = DiscordPlugin.formatAsEmbed('', {
-      title: '🤖 RANA AI Bot Help',
+      title: '🤖 CoFounder AI Bot Help',
       color: 0x00AE86,
     });
 

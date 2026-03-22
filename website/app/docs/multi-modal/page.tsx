@@ -9,7 +9,7 @@ const features = [
     icon: Eye,
     title: 'Image Understanding',
     description: 'Analyze images with object detection, scene understanding, OCR, and visual Q&A',
-    code: `import { analyzeImage, askAboutImage, extractTextFromImage } from '@rana/core';
+    code: `import { analyzeImage, askAboutImage, extractTextFromImage } from '@cofounder/core';
 
 // Comprehensive image analysis
 const analysis = await analyzeImage(imageUrl, {
@@ -30,7 +30,7 @@ console.log(answer.confidence);   // 0.95`,
     icon: Image,
     title: 'Image Generation',
     description: 'Generate, edit, and transform images with AI',
-    code: `import { generateImage, editImage, upscaleImage } from '@rana/core';
+    code: `import { generateImage, editImage, upscaleImage } from '@cofounder/core';
 
 // Generate from text
 const images = await generateImage("A sunset over mountains", {
@@ -56,7 +56,7 @@ const upscaled = await upscaleImage(imageBuffer, { scale: 4 });`,
   transcribeAudio,
   transcribeToSRT,
   transcribeToVTT
-} from '@rana/core';
+} from '@cofounder/core';
 
 // Basic transcription
 const result = await transcribeAudio(audioFile, {
@@ -77,14 +77,14 @@ const vtt = await transcribeToVTT(audioFile);  // WebVTT format`,
     icon: Volume2,
     title: 'Text-to-Speech',
     description: 'Convert text to natural-sounding speech with multiple voices',
-    code: `import { speak, getVoices, speakStream } from '@rana/core';
+    code: `import { speak, getVoices, speakStream } from '@cofounder/core';
 
 // List available voices
 const voices = await getVoices();
 // [{ id: 'alloy', name: 'Alloy', gender: 'neutral' }, ...]
 
 // Generate speech
-const audio = await speak("Hello, welcome to RANA!", {
+const audio = await speak("Hello, welcome to CoFounder!", {
   voice: 'nova',
   speed: 1.0,
   format: 'mp3'
@@ -108,7 +108,7 @@ const ssml = tts.textToSSML("Hello", {
   askAboutVideo,
   summarizeVideo,
   searchVideo
-} from '@rana/core';
+} from '@cofounder/core';
 
 // Full video analysis
 const analysis = await analyzeVideo(videoFile, {
@@ -131,7 +131,7 @@ const results = await searchVideo(videoFile, "person walking");`,
     icon: Layers,
     title: 'Unified Multi-Modal',
     description: 'Work with all modalities through a single interface',
-    code: `import { createMultiModal } from '@rana/core';
+    code: `import { createMultiModal } from '@cofounder/core';
 
 const mm = createMultiModal({
   imageUnderstanding: { provider: 'openai' },

@@ -33,9 +33,9 @@ const footerLinks: Record<string, FooterSection> = {
   resources: {
     title: 'Resources',
     links: [
-      { label: 'GitHub', href: 'https://github.com/waymaker-ai/ranavibe', external: true },
-      { label: 'npm', href: 'https://www.npmjs.com/org/rana', external: true },
-      { label: 'Discord', href: 'https://discord.gg/rana', external: true },
+      { label: 'GitHub', href: 'https://github.com/waymaker-ai/cofounder', external: true },
+      { label: 'npm', href: 'https://www.npmjs.com/org/cofounder', external: true },
+      { label: 'Discord', href: 'https://discord.gg/cofounder', external: true },
       { label: 'Contact', href: 'mailto:hello@waymaker.cx', external: true },
     ],
   },
@@ -59,7 +59,7 @@ export function Footer() {
           <div className="max-w-xl mx-auto text-center">
             <h3 className="text-xl font-bold mb-2">Stay Updated</h3>
             <p className="text-foreground-secondary mb-4">
-              Get the latest RANA updates, tutorials, and AI development tips.
+              Get the latest CoFounder updates, tutorials, and AI development tips.
             </p>
             <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
               <input
@@ -108,7 +108,7 @@ export function Footer() {
         {/* Bottom Section */}
         <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center space-x-2">
-            <span className="font-bold gradient-text">RANA</span>
+            <span className="font-bold gradient-text">CoFounder</span>
             <span className="px-2 py-0.5 text-xs font-semibold rounded-full bg-gradient-to-r from-gradient-from to-gradient-to text-white">
               BETA
             </span>
@@ -135,7 +135,7 @@ export function Footer() {
             </Link>
             {/* GitHub */}
             <Link
-              href="https://github.com/waymaker-ai/ranavibe"
+              href="https://github.com/waymaker-ai/cofounder"
               target="_blank"
               rel="noopener noreferrer"
               className="text-foreground-secondary hover:text-foreground transition-colors"
@@ -159,7 +159,7 @@ export function Footer() {
             </Link>
             {/* Discord */}
             <Link
-              href="https://discord.gg/rana"
+              href="https://discord.gg/cofounder"
               target="_blank"
               rel="noopener noreferrer"
               className="text-foreground-secondary hover:text-foreground transition-colors"

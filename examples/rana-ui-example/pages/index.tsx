@@ -11,7 +11,7 @@ import {
   CleanModeCardHeader,
   CleanModeCardTitle,
   CleanModeCardContent,
-} from '@rana/ui';
+} from '@cofounder/ui';
 
 export default function Home() {
   return (
@@ -20,7 +20,7 @@ export default function Home() {
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 bg-clip-text text-transparent">
-            RANA UI Examples
+            CoFounder UI Examples
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-400">
             Beautiful glass morphism components for React
@@ -220,12 +220,12 @@ export default function Home() {
           <p className="text-gray-600 dark:text-gray-400">
             Built with{' '}
             <a
-              href="https://github.com/waymaker-ai/ranavibe"
+              href="https://github.com/waymaker-ai/cofounder"
               className="text-purple-600 dark:text-purple-400 hover:underline"
             >
-              RANA UI
+              CoFounder UI
             </a>{' '}
-            and RANA
+            and CoFounder
           </p>
           <p className="text-gray-600 dark:text-gray-400 text-sm mt-2">
             Created with ❤️ by{' '}

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Successfully implemented a comprehensive long-term vector memory system for RANA with similarity search capabilities, multiple storage backends, and flexible embedding support.
+Successfully implemented a comprehensive long-term vector memory system for CoFounder with similarity search capabilities, multiple storage backends, and flexible embedding support.
 
 ## What Was Created
 
@@ -82,7 +82,7 @@ Updated files:
 - `/packages/core/src/memory/index.ts` - Module exports
 - `/packages/core/src/index.ts` - Main package exports
 
-All classes, types, and utilities are exported from `@rana/core`:
+All classes, types, and utilities are exported from `@cofounder/core`:
 
 ```typescript
 import {
@@ -92,13 +92,13 @@ import {
   VectorMemoryBackend,
   EmbeddingProvider,
   cosineSimilarity,
-} from '@rana/core';
+} from '@cofounder/core';
 ```
 
 ### Compatibility
 
 - ✅ Does not break existing code
-- ✅ Follows existing RANA patterns
+- ✅ Follows existing CoFounder patterns
 - ✅ Compatible with MemoryManager (context compression)
 - ✅ Can be used standalone or combined
 
@@ -286,11 +286,11 @@ const context = await getContextWithMemories(query);
 
 ```bash
 # Build successful
-npm run build --workspace=@rana/core
+npm run build --workspace=@cofounder/core
 # ✅ CJS, ESM, and DTS builds passed
 
 # Exports verified
-node -e "const rana = require('./dist/index.js'); console.log(typeof rana.VectorMemory);"
+node -e "const cofounder = require('./dist/index.js'); console.log(typeof cofounder.VectorMemory);"
 # ✅ function
 
 # Examples run successfully
@@ -306,7 +306,7 @@ npx tsx examples/hybrid-memory-example.ts
 A complete, production-ready vector memory system that:
 
 - ✅ Meets all requirements
-- ✅ Follows RANA patterns
+- ✅ Follows CoFounder patterns
 - ✅ Includes comprehensive documentation
 - ✅ Has working examples
 - ✅ Is fully tested
@@ -315,4 +315,4 @@ A complete, production-ready vector memory system that:
 - ✅ Supports multiple backends
 - ✅ Has flexible embedding options
 
-Ready for immediate use in RANA projects!
+Ready for immediate use in CoFounder projects!

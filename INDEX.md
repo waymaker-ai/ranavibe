@@ -1,4 +1,4 @@
-# 📚 RANA 2025 Strategic Plan - Complete Index
+# 📚 CoFounder 2025 Strategic Plan - Complete Index
 
 > **Created**: November 25, 2025
 > **Status**: ✅ Complete & Deployed
@@ -10,7 +10,7 @@
 
 **New to this plan?** Start here:
 1. Read **[START_HERE_2025.md](./START_HERE_2025.md)** (5 min)
-2. Review **[RANA_2025_ROADMAP.md](./RANA_2025_ROADMAP.md)** (30 min)
+2. Review **[CoFounder_2025_ROADMAP.md](./CoFounder_2025_ROADMAP.md)** (30 min)
 3. Check **[SESSION_SUMMARY.md](./SESSION_SUMMARY.md)** for details
 
 **Ready to execute?**
@@ -26,7 +26,7 @@
 | Document | Size | Purpose | Read Time |
 |----------|------|---------|-----------|
 | **[START_HERE_2025.md](./START_HERE_2025.md)** | 36KB | Quick start guide | 10 min |
-| **[RANA_2025_ROADMAP.md](./RANA_2025_ROADMAP.md)** | 40KB | 6-month strategic plan | 30 min |
+| **[CoFounder_2025_ROADMAP.md](./CoFounder_2025_ROADMAP.md)** | 40KB | 6-month strategic plan | 30 min |
 | **[DEPLOYMENT_COMPLETE.md](./DEPLOYMENT_COMPLETE.md)** | 40KB | Deployment summary | 15 min |
 | **[SESSION_SUMMARY.md](./SESSION_SUMMARY.md)** | 50KB | Complete session docs | 20 min |
 
@@ -52,7 +52,7 @@ Q1 2025 (Jan-Mar)          Q2 2025 (Apr-Jun)          H2 2025 (Jul-Dec)
 Week 6:  Quick Helpers     Week 20: Code Generation   Q3: SOC 2 Type 1
 Week 10: Prompt Mgmt       Week 21: Advanced RAG      Q3: Multi-Agent v2
                            Week 22: MCP Creation      Q4: Visual Tools
-                           Week 24: RANA 2.0 🎉
+                           Week 24: CoFounder 2.0 🎉
 ```
 
 ### Investment & ROI
@@ -95,7 +95,7 @@ Break-even:  Month 9 (Q4 2025)
 ### Q2 2025: Advanced Features
 
 **3. Natural Language Code Generation** (10 weeks → v1.0 Week 20)
-- Command: `rana generate "feature description"`
+- Command: `cofounder generate "feature description"`
 - 20+ templates, quality gates
 - Smart codebase integration
 - Success: 95% compilation, 85% acceptance
@@ -112,7 +112,7 @@ Break-even:  Month 9 (Q4 2025)
 - Publishing workflow
 - Success: 50+ servers created
 
-**6. RANA 2.0 Major Release** (Week 24) 🎉
+**6. CoFounder 2.0 Major Release** (Week 24) 🎉
 - All features integrated
 - Complete documentation
 - Production ready
@@ -146,7 +146,7 @@ Break-even:  Month 9 (Q4 2025)
 
 ### For Leadership
 **Read First**:
-1. [RANA_2025_ROADMAP.md](./RANA_2025_ROADMAP.md) - Strategic overview
+1. [CoFounder_2025_ROADMAP.md](./CoFounder_2025_ROADMAP.md) - Strategic overview
 2. Investment section: $335K for $750K ARR (2.2x ROI)
 3. Competitive positioning vs LangChain, MetaGPT, Cursor
 
@@ -213,7 +213,7 @@ Break-even:  Month 9 (Q4 2025)
 | Same as Q1 | $90K | 2 devs + marketing |
 | 3rd Developer (Mid) | $30K | 3 months @ $120K/yr |
 | Increased Infra | $10K | Higher usage |
-| Marketing Campaign | $10K | RANA 2.0 launch |
+| Marketing Campaign | $10K | CoFounder 2.0 launch |
 | **Q2 Total** | **$140K** | |
 
 ### H2 2025 (July - December)
@@ -321,11 +321,11 @@ Break-even:  Month 9 (Q4 2025)
 
 ### Production
 - **Website**: https://website-f4bd8f2j5-waymakerai.vercel.app
-- **GitHub**: https://github.com/waymaker-ai/ranavibe
+- **GitHub**: https://github.com/waymaker-ai/cofounder
 - **Vercel**: https://vercel.com/waymakerai/website
 
 ### Documentation
-- **Roadmap**: [RANA_2025_ROADMAP.md](./RANA_2025_ROADMAP.md)
+- **Roadmap**: [CoFounder_2025_ROADMAP.md](./CoFounder_2025_ROADMAP.md)
 - **Specs**: [docs/](./docs/)
 - **Summary**: [SESSION_SUMMARY.md](./SESSION_SUMMARY.md)
 
@@ -366,7 +366,7 @@ Break-even:  Month 9 (Q4 2025)
 ## 🚀 Success Vision
 
 ### 6 Months From Now (June 2025)
-- ✅ RANA 2.0 released with 4 major features
+- ✅ CoFounder 2.0 released with 4 major features
 - ✅ 10,000+ GitHub stars
 - ✅ 25,000+ weekly downloads
 - ✅ 10+ enterprise pilot customers
@@ -402,7 +402,7 @@ Break-even:  Month 9 (Q4 2025)
 - AI development tools market is huge
 - Developers need production solutions
 - Enterprises need security & compliance
-- RANA uniquely positioned to win
+- CoFounder uniquely positioned to win
 
 **Let's build the future of enterprise AI!** 🚀
 
@@ -410,13 +410,13 @@ Break-even:  Month 9 (Q4 2025)
 
 **Quick Links**:
 - 📖 [Start Here](./START_HERE_2025.md)
-- 🗺️ [Roadmap](./RANA_2025_ROADMAP.md)
+- 🗺️ [Roadmap](./CoFounder_2025_ROADMAP.md)
 - 📋 [Session Summary](./SESSION_SUMMARY.md)
 - 🚀 [Deployment Status](./DEPLOYMENT_COMPLETE.md)
 
 **Status**: ✅ Complete & Ready for Execution
 **Next Review**: December 1, 2025
-**Contact**: RANA Core Team
+**Contact**: CoFounder Core Team
 
 ---
 

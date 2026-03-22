@@ -15,10 +15,10 @@ export class FileCache implements CacheProvider {
   constructor(config: CacheConfig & { cacheDir?: string } = {}) {
     this.config = {
       ttl: 3600,
-      prefix: 'rana_',
+      prefix: 'cofounder_',
       cacheDir: config.cacheDir || path.join(
         process.env.HOME || process.env.USERPROFILE || '.',
-        '.rana',
+        '.cofounder',
         'cache'
       ),
       ...config,

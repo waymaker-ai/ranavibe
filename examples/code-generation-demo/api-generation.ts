@@ -1,11 +1,11 @@
 /**
  * API Generation Examples
  *
- * This example demonstrates how to use @rana/generate to create
+ * This example demonstrates how to use @cofounder/generate to create
  * complete CRUD APIs with authentication, validation, and rate limiting.
  */
 
-import { APIGenerator, type CRUDSpec } from '@rana/generate';
+import { APIGenerator, type CRUDSpec } from '@cofounder/generate';
 
 // ============================================================================
 // Example 1: Simple REST API

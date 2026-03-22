@@ -1,5 +1,5 @@
 /**
- * @rana/context-optimizer - Context Optimizer
+ * @cofounder/context-optimizer - Context Optimizer
  */
 
 import type {

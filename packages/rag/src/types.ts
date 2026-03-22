@@ -1,5 +1,5 @@
 /**
- * Type definitions for @rana/rag
+ * Type definitions for @cofounder/rag
  * Advanced RAG (Retrieval Augmented Generation)
  */
 

@@ -1,4 +1,4 @@
-# RANA CLI Commands Reference
+# CoFounder CLI Commands Reference
 
 **Version:** 2.2
 **Last Updated:** 2025-12-11
@@ -7,62 +7,62 @@
 
 ## Complete Command List
 
-RANA now has **30+ production-ready CLI commands** across all frameworks!
+CoFounder now has **30+ production-ready CLI commands** across all frameworks!
 
 ---
 
 ## 📦 Core Commands
 
-### `rana init`
-Initialize RANA in your project
+### `cofounder init`
+Initialize CoFounder in your project
 ```bash
-rana init                    # Default template
-rana init -t nextjs          # Next.js template
-rana init -f                 # Force overwrite
+cofounder init                    # Default template
+cofounder init -t nextjs          # Next.js template
+cofounder init -f                 # Force overwrite
 ```
 
-### `rana check`
-Check compliance with RANA standards
+### `cofounder check`
+Check compliance with CoFounder standards
 ```bash
-rana check                   # Quick check
-rana check -v                # Verbose output
-rana check -f                # Auto-fix issues
+cofounder check                   # Quick check
+cofounder check -v                # Verbose output
+cofounder check -f                # Auto-fix issues
 ```
 
-### `rana deploy`
-Deploy with RANA verification workflow
+### `cofounder deploy`
+Deploy with CoFounder verification workflow
 ```bash
-rana deploy                  # Deploy to default platform
-rana deploy --verify         # Verify deployment
-rana deploy --skip-tests     # Skip tests (not recommended)
+cofounder deploy                  # Deploy to default platform
+cofounder deploy --verify         # Verify deployment
+cofounder deploy --skip-tests     # Skip tests (not recommended)
 ```
 
-### `rana status`
-Show RANA project status
+### `cofounder status`
+Show CoFounder project status
 ```bash
-rana status                  # Current project status
+cofounder status                  # Current project status
 ```
 
-### `rana config`
-Show current RANA configuration
+### `cofounder config`
+Show current CoFounder configuration
 ```bash
-rana config                  # Display configuration
+cofounder config                  # Display configuration
 ```
 
-### `rana validate`
-Validate .rana.yml configuration
+### `cofounder validate`
+Validate .cofounder.yml configuration
 ```bash
-rana validate                # Validate config file
+cofounder validate                # Validate config file
 ```
 
 ---
 
 ## 🗄️ Database Commands
 
-### `rana db:setup`
+### `cofounder db:setup`
 Interactive database setup wizard
 ```bash
-rana db:setup               # Choose: Supabase, Prisma, MySQL, SQLite
+cofounder db:setup               # Choose: Supabase, Prisma, MySQL, SQLite
 ```
 
 **Features:**
@@ -71,46 +71,46 @@ rana db:setup               # Choose: Supabase, Prisma, MySQL, SQLite
 - .env configuration
 - Migration setup
 
-### `rana db:migrate`
+### `cofounder db:migrate`
 Run database migrations
 ```bash
-rana db:migrate             # Run all pending migrations
+cofounder db:migrate             # Run all pending migrations
 ```
 
-### `rana db:seed`
+### `cofounder db:seed`
 Seed database with data
 ```bash
-rana db:seed                # Run seed script
+cofounder db:seed                # Run seed script
 ```
 
-### `rana db:reset`
+### `cofounder db:reset`
 Reset database (WARNING: deletes all data)
 ```bash
-rana db:reset               # Reset with confirmation
+cofounder db:reset               # Reset with confirmation
 ```
 
-### `rana db:studio`
+### `cofounder db:studio`
 Open Prisma Studio
 ```bash
-rana db:studio              # Visual database editor
+cofounder db:studio              # Visual database editor
 ```
 
-### `rana db:status`
+### `cofounder db:status`
 Show database status
 ```bash
-rana db:status              # Show tables, models, connection
+cofounder db:status              # Show tables, models, connection
 ```
 
 ---
 
 ## 🔒 Security Commands
 
-### `rana security:audit`
+### `cofounder security:audit`
 Run comprehensive security audit
 ```bash
-rana security:audit          # Quick audit
-rana security:audit --fix    # Auto-fix issues
-rana security:audit --verbose # Detailed output
+cofounder security:audit          # Quick audit
+cofounder security:audit --fix    # Auto-fix issues
+cofounder security:audit --verbose # Detailed output
 ```
 
 **Checks:**
@@ -131,10 +131,10 @@ rana security:audit --verbose # Detailed output
 - Fix suggestions
 - Auto-fix capabilities
 
-### `rana security:setup`
+### `cofounder security:setup`
 Interactive security setup wizard
 ```bash
-rana security:setup          # Configure auth, rate limiting, headers
+cofounder security:setup          # Configure auth, rate limiting, headers
 ```
 
 **Features:**
@@ -147,11 +147,11 @@ rana security:setup          # Configure auth, rate limiting, headers
 
 ## 🤖 LLM Commands
 
-### `rana llm:analyze`
+### `cofounder llm:analyze`
 Analyze LLM usage and costs
 ```bash
-rana llm:analyze             # Cost analysis
-rana llm:analyze --detailed  # Detailed breakdown
+cofounder llm:analyze             # Cost analysis
+cofounder llm:analyze --detailed  # Detailed breakdown
 ```
 
 **Analysis:**
@@ -161,11 +161,11 @@ rana llm:analyze --detailed  # Detailed breakdown
 - Optimization opportunities
 - Potential savings (70%+ reduction)
 
-### `rana llm:optimize`
+### `cofounder llm:optimize`
 Apply LLM cost optimizations
 ```bash
-rana llm:optimize            # Interactive selection
-rana llm:optimize --all      # Apply all optimizations
+cofounder llm:optimize            # Interactive selection
+cofounder llm:optimize --all      # Apply all optimizations
 ```
 
 **Optimizations:**
@@ -179,10 +179,10 @@ rana llm:optimize --all      # Apply all optimizations
 - Model selection logic
 - Cost tracking utilities
 
-### `rana llm:compare`
+### `cofounder llm:compare`
 Compare LLM models and pricing
 ```bash
-rana llm:compare             # Show all models with costs
+cofounder llm:compare             # Show all models with costs
 ```
 
 **Models Covered:**
@@ -194,10 +194,10 @@ rana llm:compare             # Show all models with costs
 - Gemini Pro
 - Local (Ollama)
 
-### `rana llm:setup`
+### `cofounder llm:setup`
 Setup LLM providers
 ```bash
-rana llm:setup               # Configure API keys
+cofounder llm:setup               # Configure API keys
 ```
 
 **Providers:**
@@ -211,12 +211,12 @@ rana llm:setup               # Configure API keys
 
 ## 🔍 SEO Commands
 
-### `rana seo:check`
+### `cofounder seo:check`
 Validate SEO setup
 ```bash
-rana seo:check               # Quick check
-rana seo:check --fix         # Auto-fix issues
-rana seo:check --verbose     # Detailed output
+cofounder seo:check               # Quick check
+cofounder seo:check --fix         # Auto-fix issues
+cofounder seo:check --verbose     # Detailed output
 ```
 
 **Checks:**
@@ -234,11 +234,11 @@ rana seo:check --verbose     # Detailed output
 - Category scores
 - Fix suggestions
 
-### `rana seo:generate`
+### `cofounder seo:generate`
 Generate sitemap, robots.txt, and other SEO files
 ```bash
-rana seo:generate            # Interactive selection
-rana seo:generate --all      # Generate all files
+cofounder seo:generate            # Interactive selection
+cofounder seo:generate --all      # Generate all files
 ```
 
 **Generates:**
@@ -248,10 +248,10 @@ rana seo:generate --all      # Generate all files
 - `components/SEO.tsx` - SEO component
 - `components/StructuredData.tsx` - JSON-LD templates
 
-### `rana seo:analyze`
+### `cofounder seo:analyze`
 Analyze pages for SEO
 ```bash
-rana seo:analyze             # Analyze all pages
+cofounder seo:analyze             # Analyze all pages
 ```
 
 **Per-page Analysis:**
@@ -261,10 +261,10 @@ rana seo:analyze             # Analyze all pages
 - Structured data
 - SEO score
 
-### `rana seo:setup`
+### `cofounder seo:setup`
 Interactive SEO setup wizard
 ```bash
-rana seo:setup               # Complete SEO setup
+cofounder seo:setup               # Complete SEO setup
 ```
 
 **Configures:**
@@ -277,13 +277,13 @@ rana seo:setup               # Complete SEO setup
 
 ## 📊 Process Intelligence Commands ⭐ NEW
 
-### `rana analyze:velocity`
+### `cofounder analyze:velocity`
 Analyze development velocity and DORA metrics
 ```bash
-rana analyze:velocity              # 30-day analysis
-rana analyze:velocity -p 7d        # Last 7 days
-rana analyze:velocity --detailed   # Show contributors
-rana analyze:velocity --export json # Export report
+cofounder analyze:velocity              # 30-day analysis
+cofounder analyze:velocity -p 7d        # Last 7 days
+cofounder analyze:velocity --detailed   # Show contributors
+cofounder analyze:velocity --export json # Export report
 ```
 
 **Metrics Tracked:**
@@ -299,13 +299,13 @@ rana analyze:velocity --export json # Export report
 - DORA performance levels
 - Actionable recommendations
 
-### `rana analyze:legacy`
+### `cofounder analyze:legacy`
 AI-powered legacy code analysis
 ```bash
-rana analyze:legacy                # Analyze current directory
-rana analyze:legacy --path ./src   # Specific directory
-rana analyze:legacy --detailed     # All issues
-rana analyze:legacy --export md    # Markdown report
+cofounder analyze:legacy                # Analyze current directory
+cofounder analyze:legacy --path ./src   # Specific directory
+cofounder analyze:legacy --detailed     # All issues
+cofounder analyze:legacy --export md    # Markdown report
 ```
 
 **Patterns Detected:**
@@ -321,24 +321,24 @@ rana analyze:legacy --export md    # Markdown report
 - Modernization plan (phased)
 - Prioritized recommendations
 
-### `rana velocity:setup`
+### `cofounder velocity:setup`
 Setup velocity tracking
 ```bash
-rana velocity:setup                # Configure tracking
+cofounder velocity:setup                # Configure tracking
 ```
 
 ---
 
 ## 💰 Cost & Benchmarking Commands ⭐ NEW
 
-### `rana cost:estimate`
+### `cofounder cost:estimate`
 Estimate LLM costs for your application
 ```bash
-rana cost:estimate                 # Medium scenario (default)
-rana cost:estimate -s light        # Hobby usage
-rana cost:estimate -s enterprise   # Enterprise usage
-rana cost:estimate -r 5000         # Custom daily requests
-rana cost                          # Shortcut alias
+cofounder cost:estimate                 # Medium scenario (default)
+cofounder cost:estimate -s light        # Hobby usage
+cofounder cost:estimate -s enterprise   # Enterprise usage
+cofounder cost:estimate -r 5000         # Custom daily requests
+cofounder cost                          # Shortcut alias
 ```
 
 **Usage Scenarios:**
@@ -349,15 +349,15 @@ rana cost                          # Shortcut alias
 
 **Output:**
 - Monthly cost estimates for all providers
-- Standard vs RANA-optimized costs
+- Standard vs CoFounder-optimized costs
 - 70% savings breakdown
 - Cheapest/most expensive options
 - Recommendations by use case
 
-### `rana cost:compare`
+### `cofounder cost:compare`
 Compare LLM provider pricing
 ```bash
-rana cost:compare                  # All providers pricing table
+cofounder cost:compare                  # All providers pricing table
 ```
 
 **Providers Covered (Jan 2025 pricing):**
@@ -367,13 +367,13 @@ rana cost:compare                  # All providers pricing table
 - Groq (Llama 3.1 70B/8B, Mixtral)
 - Together (Llama 3.1 70B/8B, Qwen 2.5)
 
-### `rana benchmark:run`
+### `cofounder benchmark:run`
 Benchmark LLM providers for your specific use case
 ```bash
-rana benchmark:run                 # All providers
-rana benchmark:run -p openai,groq  # Specific providers
-rana benchmark:run -i 5            # 5 iterations
-rana benchmark                     # Shortcut alias
+cofounder benchmark:run                 # All providers
+cofounder benchmark:run -p openai,groq  # Specific providers
+cofounder benchmark:run -i 5            # 5 iterations
+cofounder benchmark                     # Shortcut alias
 ```
 
 **Metrics:**
@@ -387,12 +387,12 @@ rana benchmark                     # Shortcut alias
 - Ranked benchmark results
 - Color-coded performance indicators
 - Recommendations by use case (speed, quality, cost, throughput)
-- RANA smart routing suggestions
+- CoFounder smart routing suggestions
 
-### `rana benchmark:quick`
+### `cofounder benchmark:quick`
 Quick latency check for all providers
 ```bash
-rana benchmark:quick               # Check all provider latencies
+cofounder benchmark:quick               # Check all provider latencies
 ```
 
 **Output:**
@@ -404,18 +404,18 @@ rana benchmark:quick               # Check all provider latencies
 
 ## 🩺 Diagnostic Commands ⭐ NEW
 
-### `rana doctor`
+### `cofounder doctor`
 Diagnose project setup and fix common issues
 ```bash
-rana doctor                        # Run diagnostics
-rana doctor --fix                  # Auto-fix issues
-rana doctor --verbose              # Detailed output
+cofounder doctor                        # Run diagnostics
+cofounder doctor --fix                  # Auto-fix issues
+cofounder doctor --verbose              # Detailed output
 ```
 
 **Checks Performed:**
 - Node.js version (>= 18 required)
 - package.json presence
-- .rana.yml configuration
+- .cofounder.yml configuration
 - node_modules installation
 - Git repository
 - TypeScript configuration
@@ -443,12 +443,12 @@ rana doctor --verbose              # Detailed output
 
 ## 📱 Mobile Commands
 
-### `rana mobile:validate`
+### `cofounder mobile:validate`
 Validate mobile-first compliance
 ```bash
-rana mobile:validate         # Quick validation
-rana mobile:validate --fix   # Auto-fix issues
-rana mobile:validate --verbose # Detailed output
+cofounder mobile:validate         # Quick validation
+cofounder mobile:validate --fix   # Auto-fix issues
+cofounder mobile:validate --verbose # Detailed output
 ```
 
 **Checks:**
@@ -466,10 +466,10 @@ rana mobile:validate --verbose # Detailed output
 - Issue categorization
 - Fix suggestions
 
-### `rana mobile:test`
+### `cofounder mobile:test`
 Test on different mobile viewports
 ```bash
-rana mobile:test             # Show viewport guide
+cofounder mobile:test             # Show viewport guide
 ```
 
 **Viewports:**
@@ -481,10 +481,10 @@ rana mobile:test             # Show viewport guide
 - Galaxy S21 (360x800)
 - Pixel 5 (393x851)
 
-### `rana mobile:setup`
+### `cofounder mobile:setup`
 Interactive mobile setup wizard
 ```bash
-rana mobile:setup            # Configure mobile features
+cofounder mobile:setup            # Configure mobile features
 ```
 
 **Features:**
@@ -499,10 +499,10 @@ rana mobile:setup            # Configure mobile features
 
 ## 🎮 Playground Commands ⭐ NEW
 
-### `rana playground`
-Interactive REPL for testing RANA features
+### `cofounder playground`
+Interactive REPL for testing CoFounder features
 ```bash
-rana playground              # Start interactive playground
+cofounder playground              # Start interactive playground
 ```
 
 **Available REPL Commands:**
@@ -518,26 +518,26 @@ rana playground              # Start interactive playground
 - `help` - Show help
 - `exit` - Exit playground
 
-### `rana demo`
+### `cofounder demo`
 Run quick feature demonstration
 ```bash
-rana demo                    # Show RANA features in action
+cofounder demo                    # Show CoFounder features in action
 ```
 
-### `rana quickstart`
+### `cofounder quickstart`
 Show interactive quickstart guide
 ```bash
-rana quickstart              # Step-by-step getting started
+cofounder quickstart              # Step-by-step getting started
 ```
 
 ---
 
 ## 📝 Prompt Management Commands ⭐ NEW
 
-### `rana prompts save`
+### `cofounder prompts save`
 Save a new prompt
 ```bash
-rana prompts save            # Interactive prompt creation
+cofounder prompts save            # Interactive prompt creation
 ```
 
 **Prompts Include:**
@@ -546,25 +546,25 @@ rana prompts save            # Interactive prompt creation
 - Tags for organization
 - Variable placeholders ({{variable}})
 
-### `rana prompts list`
+### `cofounder prompts list`
 List all saved prompts
 ```bash
-rana prompts list            # All prompts
-rana prompts list --category agent  # Filter by category
-rana prompts list --search "code"   # Search prompts
+cofounder prompts list            # All prompts
+cofounder prompts list --category agent  # Filter by category
+cofounder prompts list --search "code"   # Search prompts
 ```
 
-### `rana prompts use <name>`
+### `cofounder prompts use <name>`
 Get and use a saved prompt
 ```bash
-rana prompts use my-prompt   # Copy to clipboard
-rana prompts use my-prompt --vars name=John,role=dev  # With variables
+cofounder prompts use my-prompt   # Copy to clipboard
+cofounder prompts use my-prompt --vars name=John,role=dev  # With variables
 ```
 
-### `rana prompts analyze`
+### `cofounder prompts analyze`
 Analyze prompt quality
 ```bash
-rana prompts analyze my-prompt  # Quality analysis
+cofounder prompts analyze my-prompt  # Quality analysis
 ```
 
 **Metrics:**
@@ -574,53 +574,53 @@ rana prompts analyze my-prompt  # Quality analysis
 - Estimated tokens
 - Issues and suggestions
 
-### `rana prompts improve`
+### `cofounder prompts improve`
 Get AI-powered improvement suggestions
 ```bash
-rana prompts improve my-prompt  # Get suggestions
-rana prompts improve my-prompt --apply  # Apply changes
+cofounder prompts improve my-prompt  # Get suggestions
+cofounder prompts improve my-prompt --apply  # Apply changes
 ```
 
-### `rana prompts compare <a> <b>`
+### `cofounder prompts compare <a> <b>`
 Compare two prompts side-by-side
 ```bash
-rana prompts compare old-prompt new-prompt
+cofounder prompts compare old-prompt new-prompt
 ```
 
-### `rana prompts import/export`
+### `cofounder prompts import/export`
 Import and export prompts
 ```bash
-rana prompts export --output prompts.json
-rana prompts export --category agent --output agent-prompts.json
-rana prompts import team-prompts.json
-rana prompts import prompts.json --strategy merge
+cofounder prompts export --output prompts.json
+cofounder prompts export --category agent --output agent-prompts.json
+cofounder prompts import team-prompts.json
+cofounder prompts import prompts.json --strategy merge
 ```
 
-### `rana prompts analytics`
+### `cofounder prompts analytics`
 View prompt usage analytics
 ```bash
-rana prompts analytics       # Usage statistics
+cofounder prompts analytics       # Usage statistics
 ```
 
 ---
 
 ## 🔧 Code Generation Commands
 
-### `rana generate <description>`
+### `cofounder generate <description>`
 Generate code from natural language
 ```bash
-rana generate "create a login form with email and password"
-rana generate --template react-component "UserProfile"
-rana generate --dry-run "button component"  # Preview only
-rana generate --output ./src/components "modal"
+cofounder generate "create a login form with email and password"
+cofounder generate --template react-component "UserProfile"
+cofounder generate --dry-run "button component"  # Preview only
+cofounder generate --output ./src/components "modal"
 ```
 
-### `rana templates`
+### `cofounder templates`
 List available code generation templates
 ```bash
-rana templates               # All templates
-rana templates --category react  # Filter by category
-rana templates --search "form"   # Search templates
+cofounder templates               # All templates
+cofounder templates --category react  # Filter by category
+cofounder templates --search "form"   # Search templates
 ```
 
 **Available Templates (30+):**
@@ -631,21 +631,21 @@ rana templates --search "form"   # Search templates
 - Database: prisma-model, drizzle-schema, supabase-migration
 - Utilities: error-boundary, loading-skeleton, utility-hook
 
-### `rana explain <file>`
+### `cofounder explain <file>`
 Explain code in a file
 ```bash
-rana explain ./src/utils/auth.ts  # Get code explanation
+cofounder explain ./src/utils/auth.ts  # Get code explanation
 ```
 
 ---
 
 ## 🔌 MCP Commands
 
-### `rana mcp create <name>`
+### `cofounder mcp create <name>`
 Create a new MCP server
 ```bash
-rana mcp create my-server    # Interactive MCP server creation
-rana mcp create my-server --template database  # From template
+cofounder mcp create my-server    # Interactive MCP server creation
+cofounder mcp create my-server --template database  # From template
 ```
 
 **Templates:**
@@ -655,16 +655,16 @@ rana mcp create my-server --template database  # From template
 - `slack` - Slack integration
 - `notion` - Notion integration
 
-### `rana mcp add-tool <name>`
+### `cofounder mcp add-tool <name>`
 Add a tool to MCP server
 ```bash
-rana mcp add-tool search     # Interactive tool creation
+cofounder mcp add-tool search     # Interactive tool creation
 ```
 
-### `rana mcp add-resource <name>`
+### `cofounder mcp add-resource <name>`
 Add a resource to MCP server
 ```bash
-rana mcp add-resource users  # Interactive resource creation
+cofounder mcp add-resource users  # Interactive resource creation
 ```
 
 ---
@@ -753,26 +753,26 @@ rana mcp add-resource users  # Interactive resource creation
 
 ### New Project Setup
 ```bash
-# 1. Initialize RANA
-rana init -t nextjs
+# 1. Initialize CoFounder
+cofounder init -t nextjs
 
 # 2. Setup database
-rana db:setup
+cofounder db:setup
 
 # 3. Setup security
-rana security:setup
+cofounder security:setup
 
 # 4. Setup LLM providers
-rana llm:setup
+cofounder llm:setup
 
 # 5. Setup SEO
-rana seo:setup
+cofounder seo:setup
 
 # 6. Setup mobile
-rana mobile:setup
+cofounder mobile:setup
 
 # 7. Check everything
-rana check
+cofounder check
 
 # Total time: ~10 minutes
 ```
@@ -780,32 +780,32 @@ rana check
 ### Pre-Deployment Checklist
 ```bash
 # Run all checks
-rana check
-rana security:audit
-rana seo:check
-rana mobile:validate
-rana llm:analyze
+cofounder check
+cofounder security:audit
+cofounder seo:check
+cofounder mobile:validate
+cofounder llm:analyze
 
 # Fix issues
-rana check --fix
-rana security:audit --fix
-rana seo:check --fix
-rana mobile:validate --fix
+cofounder check --fix
+cofounder security:audit --fix
+cofounder seo:check --fix
+cofounder mobile:validate --fix
 
 # Deploy
-rana deploy
+cofounder deploy
 ```
 
 ### Cost Optimization
 ```bash
 # 1. Analyze current costs
-rana llm:analyze --detailed
+cofounder llm:analyze --detailed
 
 # 2. See potential savings
-rana llm:compare
+cofounder llm:compare
 
 # 3. Apply optimizations
-rana llm:optimize --all
+cofounder llm:optimize --all
 
 # Expected: 70% cost reduction
 ```
@@ -813,31 +813,31 @@ rana llm:optimize --all
 ### SEO Optimization
 ```bash
 # 1. Check current SEO
-rana seo:check --verbose
+cofounder seo:check --verbose
 
 # 2. Generate missing files
-rana seo:generate --all
+cofounder seo:generate --all
 
 # 3. Analyze all pages
-rana seo:analyze
+cofounder seo:analyze
 
 # 4. Fix issues
-rana seo:check --fix
+cofounder seo:check --fix
 ```
 
 ### Mobile Optimization
 ```bash
 # 1. Validate mobile compliance
-rana mobile:validate --verbose
+cofounder mobile:validate --verbose
 
 # 2. Setup mobile features
-rana mobile:setup
+cofounder mobile:setup
 
 # 3. Test viewports
-rana mobile:test
+cofounder mobile:test
 
 # 4. Fix issues
-rana mobile:validate --fix
+cofounder mobile:validate --fix
 ```
 
 ---
@@ -847,16 +847,16 @@ rana mobile:validate --fix
 ### Chaining Commands
 ```bash
 # Setup everything
-rana db:setup && rana security:setup && rana llm:setup
+cofounder db:setup && cofounder security:setup && cofounder llm:setup
 
 # Run all checks
-rana check && rana security:audit && rana seo:check && rana mobile:validate
+cofounder check && cofounder security:audit && cofounder seo:check && cofounder mobile:validate
 
 # Generate all files
-rana seo:generate --all && rana db:migrate
+cofounder seo:generate --all && cofounder db:migrate
 
 # Deploy with checks
-rana security:audit && rana deploy --verify
+cofounder security:audit && cofounder deploy --verify
 ```
 
 ### CI/CD Integration
@@ -865,25 +865,25 @@ rana security:audit && rana deploy --verify
 jobs:
   deploy:
     steps:
-      - run: rana check
-      - run: rana security:audit
-      - run: rana seo:check
-      - run: rana mobile:validate
-      - run: rana deploy
+      - run: cofounder check
+      - run: cofounder security:audit
+      - run: cofounder seo:check
+      - run: cofounder mobile:validate
+      - run: cofounder deploy
 ```
 
 ### Git Hooks
 ```bash
 # .husky/pre-commit
 #!/bin/sh
-rana check
-rana security:audit
+cofounder check
+cofounder security:audit
 
 # .husky/pre-push
 #!/bin/sh
-rana check --fix
-rana security:audit --fix
-rana seo:check --fix
+cofounder check --fix
+cofounder security:audit --fix
+cofounder seo:check --fix
 ```
 
 ---
@@ -904,21 +904,21 @@ rana seo:check --fix
 ### Phase 2 Commands (Next Release)
 ```bash
 # Natural language interface
-rana add "Stripe checkout with subscriptions"
-rana add "Auth with email + Google OAuth"
+cofounder add "Stripe checkout with subscriptions"
+cofounder add "Auth with email + Google OAuth"
 
 # Smart analysis
-rana analyze                 # Complete project analysis
-rana optimize --all          # Auto-optimize everything
+cofounder analyze                 # Complete project analysis
+cofounder optimize --all          # Auto-optimize everything
 
 # Agent commands
-rana agent:deploy            # Deploy with AI agent
-rana agent:fix               # Fix issues with AI
+cofounder agent:deploy            # Deploy with AI agent
+cofounder agent:fix               # Fix issues with AI
 
 # Template commands
-rana template:create         # Create custom template
-rana template:list           # List available templates
-rana template:install        # Install community template
+cofounder template:create         # Create custom template
+cofounder template:list           # List available templates
+cofounder template:install        # Install community template
 ```
 
 ---
@@ -927,18 +927,18 @@ rana template:install        # Install community template
 
 ```bash
 # General help
-rana --help
+cofounder --help
 
 # Command-specific help
-rana db:setup --help
-rana security:audit --help
-rana llm:analyze --help
+cofounder db:setup --help
+cofounder security:audit --help
+cofounder llm:analyze --help
 
 # Version
-rana --version
+cofounder --version
 
 # Documentation
-rana docs                    # Open documentation
+cofounder docs                    # Open documentation
 ```
 
 ---
@@ -962,7 +962,7 @@ rana docs                    # Open documentation
 - Mobile setup (feature selection)
 
 ### Quality Gates
-All commands integrate with `.rana.yml` quality gates:
+All commands integrate with `.cofounder.yml` quality gates:
 - Minimum security score: 90
 - Maximum LLM cost: $500/mo
 - SEO score: 85+
@@ -971,7 +971,7 @@ All commands integrate with `.rana.yml` quality gates:
 
 ---
 
-## 💎 Why RANA CLI is Unique
+## 💎 Why CoFounder CLI is Unique
 
 **No competitor offers:**
 1. **30+ integrated commands** across all frameworks
@@ -994,5 +994,5 @@ All commands integrate with `.rana.yml` quality gates:
 
 ---
 
-*Ashley Kays | Waymaker | RANA v2.0*
+*Ashley Kays | Waymaker | CoFounder v2.0*
 *All commands production-ready and tested*

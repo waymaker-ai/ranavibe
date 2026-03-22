@@ -1,4 +1,4 @@
-# RANA Process Intelligence Guide
+# CoFounder Process Intelligence Guide
 
 > **Track development velocity, optimize costs, and modernize legacy code with AI-powered analytics**
 
@@ -6,7 +6,7 @@
 
 ## Overview
 
-RANA Process Intelligence provides visibility into your development process, helping you:
+CoFounder Process Intelligence provides visibility into your development process, helping you:
 
 - **Track Development Velocity** - Commits, code changes, DORA metrics
 - **Measure AI Usage** - Estimate AI-assisted code generation
@@ -21,13 +21,13 @@ This competes with enterprise tools like HatchWorks GenIQ while being completely
 
 ```bash
 # Analyze development velocity
-rana analyze:velocity
+cofounder analyze:velocity
 
 # Analyze legacy code
-rana analyze:legacy
+cofounder analyze:legacy
 
 # View real-time cost dashboard
-rana dashboard --live
+cofounder dashboard --live
 ```
 
 ---
@@ -39,12 +39,12 @@ rana dashboard --live
 The velocity analysis command tracks your development progress using git history and provides insights based on DORA metrics.
 
 ```bash
-rana analyze:velocity
+cofounder analyze:velocity
 ```
 
 **Output:**
 ```
-📊 RANA Velocity Analysis
+📊 CoFounder Velocity Analysis
 
 📈 Development Velocity
 ────────────────────────────────────────────────────────────
@@ -63,8 +63,8 @@ rana analyze:velocity
 💰 Cost Analysis
 ────────────────────────────────────────────────────────────
   Estimated LLM Calls:     452
-  Cost Without RANA:       $22.60
-  Cost With RANA:          $6.78
+  Cost Without CoFounder:       $22.60
+  Cost With CoFounder:          $6.78
   Savings:                 $15.82 (70%)
 
 🎯 DORA Metrics
@@ -78,7 +78,7 @@ rana analyze:velocity
 ────────────────────────────────────────────────────────────
   📈 Velocity increased 28% this week
   🤖 High AI assistance detected (~65% of code)
-  💰 Estimated 70% cost savings with RANA ($15.82)
+  💰 Estimated 70% cost savings with CoFounder ($15.82)
 ```
 
 ### Options
@@ -93,13 +93,13 @@ rana analyze:velocity
 
 ```bash
 # Last 7 days with detailed contributor breakdown
-rana analyze:velocity --period 7d --detailed
+cofounder analyze:velocity --period 7d --detailed
 
 # Export to JSON for CI/CD integration
-rana analyze:velocity --export json
+cofounder analyze:velocity --export json
 
 # Quick weekly summary
-rana velocity -p 7d
+cofounder velocity -p 7d
 ```
 
 ---
@@ -111,7 +111,7 @@ rana velocity -p 7d
 The legacy analysis command scans your codebase for outdated patterns and generates a modernization plan.
 
 ```bash
-rana analyze:legacy
+cofounder analyze:legacy
 ```
 
 **Detected Patterns:**
@@ -127,7 +127,7 @@ rana analyze:legacy
 
 **Output:**
 ```
-🔍 RANA Legacy Code Analysis
+🔍 CoFounder Legacy Code Analysis
 
 📊 Analysis Summary
 ────────────────────────────────────────────────────────────
@@ -181,13 +181,13 @@ rana analyze:legacy
 
 ```bash
 # Analyze specific directory
-rana analyze:legacy --path ./src/legacy
+cofounder analyze:legacy --path ./src/legacy
 
 # Export modernization plan as markdown
-rana analyze:legacy --export md
+cofounder analyze:legacy --export md
 
 # Detailed analysis with all issues
-rana legacy --detailed
+cofounder legacy --detailed
 ```
 
 ---
@@ -199,13 +199,13 @@ rana legacy --detailed
 The dashboard command provides real-time visibility into your LLM costs.
 
 ```bash
-rana dashboard
+cofounder dashboard
 ```
 
 **Output:**
 ```
 ╔═══════════════════════════════════════════════════════════════╗
-║                    RANA Cost Dashboard                         ║
+║                    CoFounder Cost Dashboard                         ║
 ╠═══════════════════════════════════════════════════════════════╣
 ║  Today            │  This Week        │  This Month           ║
 ║  $12.45           │  $67.80           │  $234.50              ║
@@ -218,14 +218,14 @@ rana dashboard
 ║  └─ Groq              $76.60 (33%)  ███████                   ║
 ╠═══════════════════════════════════════════════════════════════╣
 ║  Savings This Month: $548.50 (70% reduction)                  ║
-║  Without RANA: $783.00 → With RANA: $234.50                   ║
+║  Without CoFounder: $783.00 → With CoFounder: $234.50                   ║
 ╚═══════════════════════════════════════════════════════════════╝
 ```
 
 ### Live Mode
 
 ```bash
-rana dashboard --live
+cofounder dashboard --live
 ```
 
 Updates every 5 seconds with real-time cost tracking.
@@ -234,7 +234,7 @@ Updates every 5 seconds with real-time cost tracking.
 
 ## DORA Metrics Explained
 
-RANA tracks the four key DORA metrics that indicate software delivery performance:
+CoFounder tracks the four key DORA metrics that indicate software delivery performance:
 
 ### 1. Deployment Frequency
 How often you deploy to production.
@@ -285,7 +285,7 @@ Time to recover from a failure.
 Add velocity tracking to your CI/CD pipeline:
 
 ```yaml
-name: RANA Analytics
+name: CoFounder Analytics
 
 on:
   schedule:
@@ -299,17 +299,17 @@ jobs:
         with:
           fetch-depth: 0  # Full history for git analysis
 
-      - name: Install RANA CLI
-        run: npm install -g @rana/cli
+      - name: Install CoFounder CLI
+        run: npm install -g @cofounder/cli
 
       - name: Generate Velocity Report
-        run: rana analyze:velocity --period 7d --export json
+        run: cofounder analyze:velocity --period 7d --export json
 
       - name: Upload Report
         uses: actions/upload-artifact@v4
         with:
           name: velocity-report
-          path: rana-velocity-report-*.json
+          path: cofounder-velocity-report-*.json
 ```
 
 ### GitLab CI
@@ -318,11 +318,11 @@ jobs:
 velocity-report:
   image: node:20
   script:
-    - npm install -g @rana/cli
-    - rana analyze:velocity --period 7d --export json
+    - npm install -g @cofounder/cli
+    - cofounder analyze:velocity --period 7d --export json
   artifacts:
     paths:
-      - rana-velocity-report-*.json
+      - cofounder-velocity-report-*.json
   only:
     - schedules
 ```
@@ -331,7 +331,7 @@ velocity-report:
 
 ## Web Dashboard (Coming Soon)
 
-RANA v2.1 will include a web-based dashboard for visualizing:
+CoFounder v2.1 will include a web-based dashboard for visualizing:
 
 - Historical velocity trends
 - Cost tracking over time
@@ -342,7 +342,7 @@ RANA v2.1 will include a web-based dashboard for visualizing:
 **Preview:**
 ```
 ┌────────────────────────────────────────────────────────────────┐
-│ RANA Analytics Dashboard                          [rana.dev]   │
+│ CoFounder Analytics Dashboard                          [cofounder.dev]   │
 ├────────────────────────────────────────────────────────────────┤
 │                                                                │
 │  Velocity Trend (30 days)         Cost Savings                 │
@@ -370,7 +370,7 @@ RANA v2.1 will include a web-based dashboard for visualizing:
 ### Velocity Analysis
 
 ```typescript
-import { analyzeVelocity } from '@rana/core';
+import { analyzeVelocity } from '@cofounder/core';
 
 const report = await analyzeVelocity({
   period: '30d',
@@ -385,7 +385,7 @@ console.log(report.insights);
 ### Legacy Analysis
 
 ```typescript
-import { analyzeLegacy } from '@rana/core';
+import { analyzeLegacy } from '@cofounder/core';
 
 const report = await analyzeLegacy({
   path: './src',
@@ -406,14 +406,14 @@ Run velocity analysis weekly to catch trends early.
 
 ```bash
 # Add to your Monday routine
-rana analyze:velocity --period 7d
+cofounder analyze:velocity --period 7d
 ```
 
 ### 2. Monitor Costs Daily
 Use the live dashboard during development to prevent cost surprises.
 
 ```bash
-rana dashboard --live
+cofounder dashboard --live
 ```
 
 ### 3. Address Critical Issues First
@@ -423,8 +423,8 @@ Legacy analysis prioritizes issues. Always fix critical/high before medium/low.
 Export reports for team retrospectives and planning.
 
 ```bash
-rana analyze:velocity --export json > reports/week-$(date +%V).json
-rana analyze:legacy --export md > reports/tech-debt.md
+cofounder analyze:velocity --export json > reports/week-$(date +%V).json
+cofounder analyze:legacy --export md > reports/tech-debt.md
 ```
 
 ### 5. Integrate with CI/CD
@@ -434,7 +434,7 @@ Automated weekly reports help track progress over time.
 
 ## Comparison with Alternatives
 
-| Feature | RANA | HatchWorks GenIQ | Other Tools |
+| Feature | CoFounder | HatchWorks GenIQ | Other Tools |
 |---------|------|------------------|-------------|
 | Open Source | ✅ Free | ❌ Proprietary | Varies |
 | Velocity Tracking | ✅ | ✅ | Some |
@@ -457,7 +457,7 @@ Velocity analysis requires git. Run from a git repository.
 AI-generated code detection is heuristic-based. Actual percentages may vary.
 
 ### Missing cost data
-Cost tracking requires LLM calls to go through RANA's unified client.
+Cost tracking requires LLM calls to go through CoFounder's unified client.
 
 ### Legacy analysis slow
 For large codebases (10k+ files), use `--path` to analyze specific directories.
@@ -466,12 +466,12 @@ For large codebases (10k+ files), use `--path` to analyze specific directories.
 
 ## Support
 
-- **Documentation:** https://rana.dev/docs/process-intelligence
-- **Discord:** https://discord.gg/rana
-- **GitHub Issues:** https://github.com/waymaker/rana/issues
+- **Documentation:** https://cofounder.dev/docs/process-intelligence
+- **Discord:** https://discord.gg/cofounder
+- **GitHub Issues:** https://github.com/waymaker/cofounder/issues
 
 ---
 
-*RANA Process Intelligence*
+*CoFounder Process Intelligence*
 *Free, open-source development analytics*
-*https://rana.dev*
+*https://cofounder.dev*

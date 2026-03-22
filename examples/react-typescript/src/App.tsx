@@ -3,9 +3,9 @@ import './App.css';
 import { userService, type User } from './services/userService';
 
 /**
- * RANA-Compliant React Component Example
+ * CoFounder-Compliant React Component Example
  *
- * This component demonstrates RANA best practices:
+ * This component demonstrates CoFounder best practices:
  * - Real data from API (no mocks)
  * - Proper error handling
  * - Loading states
@@ -27,11 +27,11 @@ function App() {
       setLoading(true);
       setError(null);
 
-      // ✅ RANA: Real data from API, not mocks
+      // ✅ CoFounder: Real data from API, not mocks
       const data = await userService.getUsers();
       setUsers(data);
     } catch (err) {
-      // ✅ RANA: Proper error handling
+      // ✅ CoFounder: Proper error handling
       console.error('Error loading users:', err);
       setError(err as Error);
     } finally {
@@ -39,7 +39,7 @@ function App() {
     }
   };
 
-  // ✅ RANA: Loading state
+  // ✅ CoFounder: Loading state
   if (loading) {
     return (
       <div className="app">
@@ -51,7 +51,7 @@ function App() {
     );
   }
 
-  // ✅ RANA: Error state
+  // ✅ CoFounder: Error state
   if (error) {
     return (
       <div className="app">
@@ -64,12 +64,12 @@ function App() {
     );
   }
 
-  // ✅ RANA: Success state with real data
+  // ✅ CoFounder: Success state with real data
   return (
     <div className="app">
       <header>
-        <h1>RANA React Example</h1>
-        <p>This app demonstrates RANA best practices</p>
+        <h1>CoFounder React Example</h1>
+        <p>This app demonstrates CoFounder best practices</p>
       </header>
 
       <main>
@@ -88,7 +88,7 @@ function App() {
       </main>
 
       <footer>
-        <p>Built with RANA standards ✅</p>
+        <p>Built with CoFounder standards ✅</p>
         <ul>
           <li>✅ Real data (no mocks)</li>
           <li>✅ Error handling</li>

@@ -1,6 +1,6 @@
-# RANA Framework Website
+# CoFounder Framework Website
 
-Professional, minimalistic website for the RANA framework with Vercel-inspired black & white design, comprehensive training documentation, and Progressive Web App features.
+Professional, minimalistic website for the CoFounder framework with Vercel-inspired black & white design, comprehensive training documentation, and Progressive Web App features.
 
 ## Features
 
@@ -173,7 +173,7 @@ FRAMER_ABOUT_URL=https://...
 
 ### Custom Domain
 
-1. Add `rana.cx` to Vercel project
+1. Add `cofounder.cx` to Vercel project
 2. Update DNS records:
    - A record: 76.76.21.21
    - CNAME: cname.vercel-dns.com
@@ -182,8 +182,8 @@ FRAMER_ABOUT_URL=https://...
 
 ### Modules
 
-1. **RANA Fundamentals** (8 lessons, 2 hours)
-   - What is RANA?
+1. **CoFounder Fundamentals** (8 lessons, 2 hours)
+   - What is CoFounder?
    - Core architecture
    - Environment setup
    - First project
@@ -235,9 +235,9 @@ MIT License - see [LICENSE](../LICENSE) for details
 
 ## Support
 
-- **Documentation**: https://rana.cx/docs
-- **Training**: https://rana.cx/training
-- **GitHub**: https://github.com/ashleykays/ranavibe
+- **Documentation**: https://cofounder.cx/docs
+- **Training**: https://cofounder.cx/training
+- **GitHub**: https://github.com/ashleykays/cofounder
 - **Email**: ashley@waymaker.cx
 
 ---

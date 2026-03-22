@@ -13,75 +13,112 @@ import {
   Scale,
   Layers,
   FileCheck,
-  AlertTriangle
+  AlertTriangle,
+  Cpu,
+  Eye,
+  GitBranch,
+  Activity,
+  Fingerprint,
+  ServerCrash,
+  Box,
+  Radio,
+  BarChart3,
+  MonitorSmartphone,
 } from 'lucide-react';
 
 const features = [
   {
-    icon: Shield,
-    title: 'Built-in Compliance',
-    description: 'Automatic HIPAA, SEC, GDPR, CCPA enforcement. PII detection, redaction, audit trails, and disclaimers out of the box.',
+    icon: Cpu,
+    title: 'Agent SDK Guardrails',
+    description: 'Wrap Anthropic Agent SDK with 7 composable interceptors. Pre-built HIPAA, GDPR, Financial, and Safe agent factories. Works with or without the SDK installed.',
     highlight: true,
     isNew: true,
   },
   {
-    icon: Scale,
-    title: 'Dynamic Guidelines',
-    description: 'Context-aware behavioral control with priority-based rules. 8+ presets for medical, financial, legal, and brand guidelines.',
-    isNew: true,
-  },
-  {
-    icon: Layers,
-    title: '400K Token Contexts',
-    description: 'Handle massive codebases efficiently. Smart chunking, caching, and optimization reduce 2.5M tokens to 400K with 70% cost savings.',
-    isNew: true,
-  },
-  {
-    icon: Code2,
-    title: 'Advanced Code Generation',
-    description: 'Generate complete CRUD APIs, database schemas, and smart file integration for Next.js, Express, Fastify, Prisma, and Drizzle.',
-    isNew: true,
-  },
-  {
-    icon: Database,
-    title: 'Prompt Management',
-    description: 'Version control for prompts, A/B testing, analytics, and team collaboration. Manage AI behavior like code.',
-  },
-  {
-    icon: Zap,
-    title: 'Real Data Only',
-    description: 'Framework prevents fake/mock data in production. Connect to real databases and APIs with type-safe queries.',
-  },
-  {
     icon: Lock,
-    title: 'Quality Gates',
-    description: 'Automated enforcement of security, compliance, and quality standards. Every change must pass before deployment.',
+    title: 'Zero-Dep Runtime Guard',
+    description: 'One import, zero dependencies. Proxy-wraps Anthropic, OpenAI, and Google clients. PII redaction, injection blocking, cost tracking, and rate limiting in a single createGuard() call.',
+    isNew: true,
+  },
+  {
+    icon: FileCheck,
+    title: 'Declarative Policy Engine',
+    description: '9 compliance presets (HIPAA, GDPR, CCPA, SEC, PCI, FERPA, SOX, Safety, Enterprise) in YAML. Policy composition with strictest/first/last conflict resolution.',
+    isNew: true,
+  },
+  {
+    icon: GitBranch,
+    title: 'CI/CD Security Scanning',
+    description: 'GitHub Action that scans PRs for hardcoded API keys, PII in prompts, injection vulnerabilities, unapproved models. SARIF output for GitHub Security tab.',
+    isNew: true,
+  },
+  {
+    icon: Activity,
+    title: 'Observability Dashboard',
+    description: 'Real-time cost tracking, security incident monitoring, compliance scoring, performance metrics. Anomaly detection, Prometheus export, and HTTP API server.',
+    isNew: true,
+  },
+  {
+    icon: Eye,
+    title: '15+ MCP Tools',
+    description: 'Use CoFounder guardrails from Claude Desktop, Claude Code, or Cursor without writing code. PII scanning, injection detection, cost estimation, and code safety analysis via MCP.',
+    isNew: true,
+  },
+  {
+    icon: Fingerprint,
+    title: 'PII Detection & Redaction',
+    description: 'Detect and redact emails, SSNs, credit cards (with Luhn validation), phones, IPs, DOB, addresses, medical records, passports. 20+ patterns across all packages.',
+    isNew: true,
+  },
+  {
+    icon: ServerCrash,
+    title: 'Prompt Injection Blocking',
+    description: '25+ attack patterns: direct injection, system prompt leaking, jailbreaks, role manipulation, delimiter injection, encoding attacks, multi-language attempts. Scoring with configurable sensitivity.',
+    isNew: true,
+  },
+  {
+    icon: Shield,
+    title: '9 Compliance Frameworks',
+    description: 'HIPAA (18 PHI identifiers), GDPR (data minimization, consent), SEC (disclaimers), PCI-DSS (card data), SOX (financial records), FERPA (student records), CCPA, and more.',
   },
   {
     icon: Gauge,
-    title: 'Works With Your Tools',
-    description: 'Use RANA with Cursor, Windsurf, Google Antigravity, Claude Code, or any IDE. Complementary, not competitive.',
-  },
-  {
-    icon: Search,
-    title: 'Zero Vendor Lock-in',
-    description: 'Switch between 9 LLM providers in one line. OpenAI, Anthropic, Google, xAI, Mistral, Cohere, Together, Groq, Ollama.',
+    title: 'Works With Everything',
+    description: 'Wraps Anthropic Agent SDK, OpenClaw agents, LangChain, CrewAI. Use with Cursor, Windsurf, Claude Code, or any IDE. Complementary guardrail layer, not a replacement.',
   },
   {
     icon: Smartphone,
     title: '70% Cost Savings',
-    description: 'Automatic cost reduction through intelligent model routing, caching, prompt optimization, and context optimization.',
+    description: 'Real-time cost tracking with pricing for 25+ models. Budget enforcement, model routing, caching, and prompt optimization. Projected monthly cost reports.',
   },
   {
-    icon: FileCheck,
-    title: 'Enterprise RAG',
-    description: 'Advanced retrieval with semantic chunking, hybrid search, cross-encoder re-ranking, and streaming responses.',
-  },
-  {
-    icon: AlertTriangle,
-    title: 'Violation Tracking',
-    description: 'Real-time monitoring of compliance violations, guideline breaches, and security issues with comprehensive audit logs.',
+    icon: Box,
+    title: 'Sandboxed Execution',
+    description: 'Run untrusted AI-generated code safely with @cofounder/sandbox. Process isolation, resource limits, timeout enforcement, and output capture. Evaluate agent tool calls without risk.',
     isNew: true,
+  },
+  {
+    icon: Radio,
+    title: 'Streaming Guards',
+    description: 'Real-time guardrail evaluation on streaming LLM responses with @cofounder/streaming. Token-by-token PII detection, injection scanning, and policy enforcement without buffering the full response.',
+    isNew: true,
+  },
+  {
+    icon: BarChart3,
+    title: 'Detection Benchmarks',
+    description: 'Measure detection accuracy with @cofounder/benchmark. 252 curated test cases across PII, injection, and toxicity. Per-category metrics, confusion matrices, and NeMo Guardrails comparison.',
+    isNew: true,
+  },
+  {
+    icon: MonitorSmartphone,
+    title: 'VS Code Extension',
+    description: 'Inline guardrail warnings, PII highlighting, injection detection, and compliance checks directly in your editor. One-click redaction and policy violation quickfixes.',
+    isNew: true,
+  },
+  {
+    icon: Scale,
+    title: 'Like NeMo Guardrails, But Better',
+    description: 'Everything NVIDIA NeMo Guardrails does — PII, injection, topical control, content safety — plus compliance frameworks, cost tracking, CI/CD, dashboard, sandbox, streaming, and MCP. TypeScript-first with 35 packages.',
   },
 ];
 
@@ -106,7 +143,7 @@ export function Features() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-lg text-foreground-secondary max-w-2xl mx-auto"
           >
-            The only TypeScript framework with built-in compliance, guidelines, and 400K context optimization
+            35 packages covering detection, compliance, sandbox, streaming, benchmarks, CI/CD, MCP, and VS Code integration
           </motion.p>
         </div>
 

@@ -639,7 +639,7 @@ Add to \`claude_desktop_config.json\`:
 ${template.tools.map(t => `### ${t.name}\n${t.description}\n`).join('\n')}
 
 ---
-Generated with [RANA](https://rana.cx)
+Generated with [CoFounder](https://cofounder.cx)
 `;
 }
 

@@ -63,9 +63,9 @@ export function PWAInstall() {
             <Download className="h-5 w-5" />
           </div>
           <div className="flex-1">
-            <h3 className="font-semibold mb-1">Install RANA</h3>
+            <h3 className="font-semibold mb-1">Install CoFounder</h3>
             <p className="text-sm text-foreground-secondary mb-3">
-              Install the RANA app for offline access to docs and quick
+              Install the CoFounder app for offline access to docs and quick
               reference.
             </p>
             <div className="flex gap-2">

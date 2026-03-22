@@ -107,7 +107,7 @@ export class EncryptedFileStorage implements KeyStorageAdapter {
   } = {}) {
     this.filePath = options.filePath || path.join(
       process.env.HOME || process.env.USERPROFILE || '.',
-      '.rana',
+      '.cofounder',
       'keys.enc'
     );
 

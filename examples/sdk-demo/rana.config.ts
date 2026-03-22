@@ -1,4 +1,4 @@
-import { defineConfig } from '@rana/core';
+import { defineConfig } from '@cofounder/core';
 
 export default defineConfig({
   // Provider API keys

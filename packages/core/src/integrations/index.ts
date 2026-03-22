@@ -1,6 +1,6 @@
 /**
- * @rana/integrations
- * Third-party service integrations for RANA
+ * @cofounder/integrations
+ * Third-party service integrations for CoFounder
  */
 
 // Hugging Face

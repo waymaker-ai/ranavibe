@@ -1,4 +1,4 @@
-# LLM Optimization Guide for RANA
+# LLM Optimization Guide for CoFounder
 
 **Version:** 1.0.0
 **Last Updated:** 2025-11-09
@@ -10,7 +10,7 @@
 
 LLM costs can spiral out of control quickly. A typical application can spend $1,000-$5,000/month on LLM API calls. This guide shows you how to **reduce costs by 70%** while maintaining or improving quality through systematic optimization.
 
-**RANA Principle:** Optimize by default. Every LLM call should be efficient, cached when possible, and cost-monitored.
+**CoFounder Principle:** Optimize by default. Every LLM call should be efficient, cached when possible, and cost-monitored.
 
 ---
 
@@ -25,7 +25,7 @@ LLM costs can spiral out of control quickly. A typical application can spend $1,
 7. [Vector Databases](#vector-databases)
 8. [Local LLMs](#local-llms)
 9. [Cost Monitoring](#cost-monitoring)
-10. [RANA Quality Gates](#aads-quality-gates)
+10. [CoFounder Quality Gates](#aads-quality-gates)
 
 ---
 
@@ -37,7 +37,7 @@ LLM costs can spiral out of control quickly. A typical application can spend $1,
 // lib/llm/cost-calculator.ts
 
 /**
- * ✅ RANA: LLM cost calculation utilities
+ * ✅ CoFounder: LLM cost calculation utilities
  */
 
 export const MODEL_COSTS = {
@@ -122,7 +122,7 @@ GPT-4 Turbo:
 import { encoding_for_model } from 'tiktoken';
 
 /**
- * ✅ RANA: Count tokens before API calls
+ * ✅ CoFounder: Count tokens before API calls
  */
 
 const encoder = encoding_for_model('gpt-4');
@@ -170,7 +170,7 @@ async function generateResponse(prompt: string) {
 // lib/llm/context-manager.ts
 
 /**
- * ✅ RANA: Manage conversation history efficiently
+ * ✅ CoFounder: Manage conversation history efficiently
  */
 
 interface Message {
@@ -220,7 +220,7 @@ export class ContextManager {
     return this.messages;
   }
 
-  // ✅ RANA: Summarize old context to save tokens
+  // ✅ CoFounder: Summarize old context to save tokens
   async summarizeHistory() {
     if (this.messages.length < 10) return;
 
@@ -265,7 +265,7 @@ context.addMessage('user', 'Tell me more...');
 // lib/llm/prompt-optimizer.ts
 
 /**
- * ✅ RANA: Compress prompts to reduce tokens
+ * ✅ CoFounder: Compress prompts to reduce tokens
  */
 
 export function compressPrompt(prompt: string): string {
@@ -317,7 +317,7 @@ const compressedPrompt = `
 import { redis } from '@/lib/redis';
 
 /**
- * ✅ RANA: Cache LLM responses to avoid repeat calls
+ * ✅ CoFounder: Cache LLM responses to avoid repeat calls
  */
 
 interface CacheOptions {
@@ -376,7 +376,7 @@ const response = await cachedLLMCall(
 import { embedText, cosineSimilarity } from '@/lib/embeddings';
 
 /**
- * ✅ RANA: Semantic caching for similar prompts
+ * ✅ CoFounder: Semantic caching for similar prompts
  * If a prompt is 95% similar to cached prompt, use cached response
  */
 
@@ -456,7 +456,7 @@ const response2 = await cache.get('Can you explain React?');
 // lib/llm/anthropic-prompt-cache.ts
 
 /**
- * ✅ RANA: Use Anthropic's prompt caching
+ * ✅ CoFounder: Use Anthropic's prompt caching
  * Cache large context (docs, codebase) to save 90% on input tokens
  */
 
@@ -477,7 +477,7 @@ async function chatWithCachedContext(
       {
         type: 'text',
         text: systemContext,
-        // ✅ RANA: Cache this - saves 90% on repeated calls
+        // ✅ CoFounder: Cache this - saves 90% on repeated calls
         cache_control: { type: 'ephemeral' },
       },
     ],
@@ -521,7 +521,7 @@ const answer2 = await chatWithCachedContext(docs, 'How do I make a POST request?
 // lib/llm/model-router.ts
 
 /**
- * ✅ RANA: Route tasks to appropriate models
+ * ✅ CoFounder: Route tasks to appropriate models
  */
 
 type TaskType =
@@ -579,7 +579,7 @@ const model = selectOptimalModel('simple-classification', 'low');
 // lib/llm/cascade.ts
 
 /**
- * ✅ RANA: Try cheaper models first, escalate if needed
+ * ✅ CoFounder: Try cheaper models first, escalate if needed
  */
 
 export async function cascadingLLMCall(prompt: string): Promise<string> {
@@ -642,7 +642,7 @@ function isHighQuality(response: string): boolean {
 
 ```typescript
 /**
- * ✅ RANA: Few-shot prompts for better results with smaller models
+ * ✅ CoFounder: Few-shot prompts for better results with smaller models
  */
 
 function createFewShotPrompt(task: string, examples: Array<{input: string; output: string}>) {
@@ -673,7 +673,7 @@ const prompt = createFewShotPrompt(
 
 ```typescript
 /**
- * ✅ RANA: Use chain-of-thought for complex reasoning
+ * ✅ CoFounder: Use chain-of-thought for complex reasoning
  */
 
 async function chainOfThought(problem: string): Promise<string> {
@@ -707,7 +707,7 @@ Your response:
 import { embedText, search } from '@/lib/vector-db';
 
 /**
- * ✅ RANA: RAG reduces token usage by fetching relevant context only
+ * ✅ CoFounder: RAG reduces token usage by fetching relevant context only
  */
 
 export async function ragQuery(question: string, collection: string): Promise<string> {
@@ -757,7 +757,7 @@ Answer:
 // lib/rag/advanced.ts
 
 /**
- * ✅ RANA: Two-stage retrieval for better accuracy
+ * ✅ CoFounder: Two-stage retrieval for better accuracy
  */
 
 export async function advancedRAG(question: string): Promise<string> {
@@ -816,7 +816,7 @@ async function rerank(
 -- migrations/create_vector_store.sql
 
 /**
- * ✅ RANA: Vector storage for RAG
+ * ✅ CoFounder: Vector storage for RAG
  */
 
 -- Enable pgvector extension
@@ -874,7 +874,7 @@ import OpenAI from 'openai';
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 /**
- * ✅ RANA: Vector database operations
+ * ✅ CoFounder: Vector database operations
  */
 
 export async function embedText(text: string): Promise<number[]> {
@@ -959,7 +959,7 @@ const results = await searchDocuments('How do I use React?');
 // lib/llm/grok.ts
 
 /**
- * ✅ RANA: xAI Grok integration
+ * ✅ CoFounder: xAI Grok integration
  */
 
 import OpenAI from 'openai';
@@ -1007,7 +1007,7 @@ XAI_API_KEY=xai-...
 // lib/llm/providers.ts
 
 /**
- * ✅ RANA: Multi-provider strategy with Grok
+ * ✅ CoFounder: Multi-provider strategy with Grok
  */
 
 export async function smartMultiProviderCall(
@@ -1073,7 +1073,7 @@ export async function POST(request: Request) {
 // lib/llm/router.ts
 
 /**
- * ✅ RANA: Smart provider routing
+ * ✅ CoFounder: Smart provider routing
  */
 
 export function selectProvider(
@@ -1131,7 +1131,7 @@ ollama serve
 // lib/llm/local.ts
 
 /**
- * ✅ RANA: Use local LLMs for development/simple tasks
+ * ✅ CoFounder: Use local LLMs for development/simple tasks
  * Cost: $0 (runs on your hardware)
  */
 
@@ -1176,7 +1176,7 @@ export async function smartLLMCall(prompt: string): Promise<string> {
 import { prisma } from '@/lib/prisma';
 
 /**
- * ✅ RANA: Track every LLM call for cost analysis
+ * ✅ CoFounder: Track every LLM call for cost analysis
  */
 
 export async function trackLLMCall(data: {
@@ -1251,10 +1251,10 @@ console.log('LLM Analytics:', analytics);
 
 ---
 
-## RANA Quality Gates
+## CoFounder Quality Gates
 
 ```yaml
-# .rana.yml LLM optimization quality gates
+# .cofounder.yml LLM optimization quality gates
 
 quality_gates:
   llm_optimization:
@@ -1338,7 +1338,7 @@ quality_gates:
 
 ## Cost Reduction Results
 
-### Before RANA Optimization
+### Before CoFounder Optimization
 ```
 Monthly Cost: $1,500
 - GPT-4 for everything: $1,200
@@ -1346,7 +1346,7 @@ Monthly Cost: $1,500
 - Large context windows: $100
 ```
 
-### After RANA Optimization
+### After CoFounder Optimization
 ```
 Monthly Cost: $450 (70% reduction)
 - Task-based routing: $250 (saved $950)
@@ -1371,4 +1371,4 @@ LLM optimization is **critical** for sustainable AI applications. Following thes
 
 ---
 
-*Part of the RANA Framework - Production-Quality AI Development*
+*Part of the CoFounder Framework - Production-Quality AI Development*

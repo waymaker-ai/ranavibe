@@ -3,14 +3,14 @@ import Link from 'next/link';
 import { ArrowLeft, CheckCircle2, Circle, Play } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'RANA Fundamentals Training',
-  description: 'Learn the core concepts and architecture of the RANA framework',
+  title: 'CoFounder Fundamentals Training',
+  description: 'Learn the core concepts and architecture of the CoFounder framework',
 };
 
 const lessons = [
   {
     id: 1,
-    title: 'What is RANA?',
+    title: 'What is CoFounder?',
     duration: '10 min',
     type: 'video',
     completed: false,
@@ -31,7 +31,7 @@ const lessons = [
   },
   {
     id: 4,
-    title: 'Your First RANA Project',
+    title: 'Your First CoFounder Project',
     duration: '20 min',
     type: 'tutorial',
     completed: false,
@@ -81,9 +81,9 @@ export default function FundamentalsTrainingPage() {
 
         {/* Header */}
         <div className="mb-12">
-          <h1 className="text-4xl font-bold mb-4">RANA Fundamentals</h1>
+          <h1 className="text-4xl font-bold mb-4">CoFounder Fundamentals</h1>
           <p className="text-lg text-foreground-secondary mb-6">
-            Learn the core concepts and architecture of the RANA framework.
+            Learn the core concepts and architecture of the CoFounder framework.
             Perfect for beginners starting their AI agent development journey.
           </p>
           <div className="flex items-center gap-6 text-sm text-foreground-secondary">
@@ -133,7 +133,7 @@ export default function FundamentalsTrainingPage() {
             <li className="flex items-start gap-3">
               <CheckCircle2 className="h-5 w-5 text-gradient-from flex-shrink-0 mt-0.5" />
               <span>
-                Understand the RANA framework architecture and design principles
+                Understand the CoFounder framework architecture and design principles
               </span>
             </li>
             <li className="flex items-start gap-3">

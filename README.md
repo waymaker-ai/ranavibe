@@ -1,11 +1,11 @@
-# RANA
+# CoFounder
 
 **Guardrails & Guidance for AI-Assisted Development**
 
-> **RANA is a free, open-source, integration-friendly guardrail layer for AI-assisted development.**
+> **CoFounder is a free, open-source, integration-friendly guardrail layer for AI-assisted development.**
 > It plugs into your existing stack (Vercel AI SDK, Supabase, LangChain, CrewAI, etc.) and makes sure agents **don't trash your codebase, ignore your design system and business rules, ship mock-only work, or waste your time and budget.**
 
-RANA's job is to be the **safety harness and brain coach for AI agents** so they build **real, safe, on-spec product work** — not cute demos that create mess.
+CoFounder's job is to be the **safety harness and brain coach for AI agents** so they build **real, safe, on-spec product work** — not cute demos that create mess.
 
 Everything else (RAG, specs, flows, integrations) exists to support that.
 
@@ -13,9 +13,9 @@ Everything else (RAG, specs, flows, integrations) exists to support that.
 - Bring-your-own LLM providers and tools
 - Designed for real products, not toy demos
 
-[![GitHub Stars](https://img.shields.io/github/stars/waymaker-ai/ranavibe?style=social)](https://github.com/waymaker-ai/ranavibe)
+[![GitHub Stars](https://img.shields.io/github/stars/waymaker-ai/cofounder?style=social)](https://github.com/waymaker-ai/cofounder)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![npm version](https://badge.fury.io/js/%40ranavibe%2Fcore.svg)](https://www.npmjs.com/package/@ranavibe/core)
+[![npm version](https://badge.fury.io/js/%40cofounder%2Fcore.svg)](https://www.npmjs.com/package/@cofounder/core)
 
 ---
 
@@ -25,7 +25,7 @@ AI frameworks love to promise:
 
 > "Ship a production-ready product in 30 minutes."
 
-**RANA is deliberately not that.**
+**CoFounder is deliberately not that.**
 
 You can't build a real, scalable, secure product in 30 minutes — not if you care about:
 
@@ -35,11 +35,11 @@ You can't build a real, scalable, secure product in 30 minutes — not if you ca
 - uptime, monitoring, and incident response
 - business rules, compliance, and long-term maintainability
 
-**RANA refuses that hype.**
+**CoFounder refuses that hype.**
 
-Instead, RANA's promise is:
+Instead, CoFounder's promise is:
 
-> **RANA helps AI-assisted development move faster *without* becoming sloppier — by stopping agents from doing things no responsible engineer would do.**
+> **CoFounder helps AI-assisted development move faster *without* becoming sloppier — by stopping agents from doing things no responsible engineer would do.**
 
 Not "magic production in 30 minutes," but:
 
@@ -48,7 +48,7 @@ Not "magic production in 30 minutes," but:
 - fewer "WTF did this agent just change?" moments
 - more signal, less chaos
 
-RANA focuses on:
+CoFounder focuses on:
 
 - turning **feature ideas → clear specs → safe draft implementations**
 - enforcing **design systems, business rules, and engineering hygiene**
@@ -56,13 +56,13 @@ RANA focuses on:
 - helping humans **ship real features faster** instead of cleaning up after reckless agents
 
 **You still need engineers, reviews, and real operations.**
-RANA just makes the AI-powered parts safer, sharper, and less painful.
+CoFounder just makes the AI-powered parts safer, sharper, and less painful.
 
 ---
 
 ## Core Guardrails
 
-RANA is an **integration-friendly guardrail & guidance layer** for AI agents working in real codebases and products.
+CoFounder is an **integration-friendly guardrail & guidance layer** for AI agents working in real codebases and products.
 
 ### 1. Stop Bad Agent Behavior
 
@@ -100,9 +100,9 @@ RANA is an **integration-friendly guardrail & guidance layer** for AI agents wor
 
 ---
 
-## What RANA *Is* / *Isn't*
+## What CoFounder *Is* / *Isn't*
 
-### RANA *is*:
+### CoFounder *is*:
 
 - **Free & open source**
   Built to be inspected, forked, extended, and improved by the community.
@@ -130,7 +130,7 @@ RANA is an **integration-friendly guardrail & guidance layer** for AI agents wor
 
 ---
 
-### RANA is *not*:
+### CoFounder is *not*:
 
 - **A "ship-a-startup-in-30-minutes" magic button**
   It won't pretend you can build a full, scalable production product in half an hour.
@@ -145,48 +145,48 @@ RANA is an **integration-friendly guardrail & guidance layer** for AI agents wor
 
 - **A sandbox for throwaway prototypes**
   It's not about "cool toy demos."
-  RANA is meant for **serious apps** where breaking things has real cost.
+  CoFounder is meant for **serious apps** where breaking things has real cost.
 
 ---
 
 ## Quickstart
 
-RANA is designed to sit *under* the tools you already use.
+CoFounder is designed to sit *under* the tools you already use.
 
 ### 1. Install
 
 ```bash
 # Core library + CLI
-npm install @ranavibe/core
-npm install --save-dev @ranavibe/cli
+npm install @cofounder/core
+npm install --save-dev @cofounder/cli
 ```
 
 Or with pnpm:
 
 ```bash
-pnpm add @ranavibe/core
-pnpm add -D @ranavibe/cli
+pnpm add @cofounder/core
+pnpm add -D @cofounder/cli
 ```
 
-### 2. Initialize RANA in your app
+### 2. Initialize CoFounder in your app
 
 From your app root (for example, a Vercel AI SDK + Supabase app):
 
 ```bash
-npx rana init
+npx cofounder init
 ```
 
 This will:
-- create a basic `.rana.yml` config
+- create a basic `.cofounder.yml` config
 - add example VibeSpecs (behavior/constraints)
-- optionally add package.json scripts for `rana check`, `rana feature:new`, etc.
+- optionally add package.json scripts for `cofounder check`, `cofounder feature:new`, etc.
 
 ### 3. Configure providers and basic rules
 
-Example `rana.config.ts`:
+Example `cofounder.config.ts`:
 
 ```typescript
-import { defineConfig } from '@ranavibe/core';
+import { defineConfig } from '@cofounder/core';
 
 export default defineConfig({
   providers: {
@@ -216,23 +216,23 @@ export default defineConfig({
 });
 ```
 
-### 4. Use RANA in your server code
+### 4. Use CoFounder in your server code
 
 Example with a Vercel AI SDK–style handler:
 
 ```typescript
-// app/api/rana-chat/route.ts
+// app/api/cofounder-chat/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { createRana } from '@ranavibe/core';
-import config from '../../../rana.config';
+import { createCoFounder } from '@cofounder/core';
+import config from '../../../cofounder.config';
 
-const rana = createRana(config);
+const cofounder = createCoFounder(config);
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
   const { messages } = body;
 
-  const result = await rana.chat({
+  const result = await cofounder.chat({
     messages,
     vibe: 'default', // refers to a VibeSpec in config/vibes/default.yml
   });
@@ -242,15 +242,15 @@ export async function POST(req: NextRequest) {
 ```
 
 You still use your usual stack (Vercel AI SDK + Supabase, LangChain, CrewAI, etc.)—
-RANA just centralizes providers, routing, and guardrails underneath.
+CoFounder just centralizes providers, routing, and guardrails underneath.
 
 ---
 
 ## Feature Flow: From Idea → Spec → Branch → Safe Draft
 
-RANA's flagship experience is a **feature flow** that helps agents work in your codebase without wrecking it.
+CoFounder's flagship experience is a **feature flow** that helps agents work in your codebase without wrecking it.
 
-Instead of "ship a startup in 30 minutes," RANA focuses on:
+Instead of "ship a startup in 30 minutes," CoFounder focuses on:
 
 > **Feature idea → spec → branch → draft implementation + tests + checks**
 > under your rules, using your stack.
@@ -258,13 +258,13 @@ Instead of "ship a startup in 30 minutes," RANA focuses on:
 ### CLI Overview
 
 ```bash
-npx rana init            # one-time setup in your app
-rana feature:new         # turn a feature idea into a clear spec
-rana feature:implement   # create a branch + safe draft changes
-rana check               # run safety gates (tests, lint, design, mock-data checks)
+npx cofounder init            # one-time setup in your app
+cofounder feature:new         # turn a feature idea into a clear spec
+cofounder feature:implement   # create a branch + safe draft changes
+cofounder check               # run safety gates (tests, lint, design, mock-data checks)
 ```
 
-### Step 1: `rana feature:new` — Guided Spec, Not Guesswork
+### Step 1: `cofounder feature:new` — Guided Spec, Not Guesswork
 
 You start with a human-sized idea, e.g.:
 > "Add a 'team billing' settings page so admins can upgrade from monthly to annual."
@@ -272,10 +272,10 @@ You start with a human-sized idea, e.g.:
 Then run:
 
 ```bash
-rana feature:new
+cofounder feature:new
 ```
 
-RANA will:
+CoFounder will:
 
 1. **Ask clarifying questions:**
    - What user roles can see this?
@@ -297,15 +297,15 @@ RANA will:
 
 This spec becomes the **source of truth** for any later agent work.
 
-### Step 2: `rana feature:implement` — Branch + Scoped Changes
+### Step 2: `cofounder feature:implement` — Branch + Scoped Changes
 
 Once the spec looks good, you run:
 
 ```bash
-rana feature:implement specs/feature-team-billing.yml
+cofounder feature:implement specs/feature-team-billing.yml
 ```
 
-RANA will:
+CoFounder will:
 
 1. **Create a feature branch**, e.g. `feat/team-billing`.
 
@@ -321,29 +321,29 @@ RANA will:
    - call real DB/APIs, not mocks, in production code paths,
    - add or update tests for new behavior.
 
-**RANA does not merge or deploy.**
+**CoFounder does not merge or deploy.**
 It prepares a draft commit/PR that you can review, edit, and ship.
 
-### Step 3: `rana check` — Don't Let Agents Cowboy-Code
+### Step 3: `cofounder check` — Don't Let Agents Cowboy-Code
 
 Before you open a PR, or as part of CI, run:
 
 ```bash
-rana check
+cofounder check
 ```
 
-By default, `rana check` can be wired to:
+By default, `cofounder check` can be wired to:
 
 - compile / typecheck (e.g. `tsc`, Next.js build)
 - run tests (`npm test`, vitest, etc.)
 - run lint (eslint, biome, etc.)
-- enforce RANA-specific guardrails, such as:
+- enforce CoFounder-specific guardrails, such as:
   - No mock/demo data in production code
   - No inline hex colors / raw CSS if you use a design system
   - No unauthorized large refactors or file renames
   - No changes outside the declared changeset / scope
 
-If any of these fail, the run is considered **unsafe**, and RANA will tell you why.
+If any of these fail, the run is considered **unsafe**, and CoFounder will tell you why.
 
 **The goal is not "perfect code with no humans," but:**
 
@@ -403,21 +403,21 @@ Specs live as **plain config in your repo**, so:
 
 ---
 
-## Using RANA with LangChain
+## Using CoFounder with LangChain
 
-RANA is **not** trying to replace LangChain.
+CoFounder is **not** trying to replace LangChain.
 Instead, it acts as a **guardrail + provider layer** underneath it.
 
-### Wrap RANA as a LangChain ChatModel
+### Wrap CoFounder as a LangChain ChatModel
 
 ```typescript
-import { RanaChatModel } from '@ranavibe/langchain';
-import { createRana } from '@ranavibe/core';
+import { RanaChatModel } from '@cofounder/langchain';
+import { createCoFounder } from '@cofounder/core';
 
-const rana = createRana(config);
+const cofounder = createCoFounder(config);
 
 const model = new RanaChatModel({
-  rana,
+  cofounder,
   vibe: 'feature_work', // uses VibeSpec: design system, DB rules, etc.
 });
 
@@ -429,42 +429,42 @@ const result = await chain.invoke({ input: 'Help me add a settings page' });
 ### Key idea:
 
 - **LangChain** stays your orchestrator
-- **RANA** provides:
+- **CoFounder** provides:
   - provider routing (OpenAI/Anthropic/etc.)
   - VibeSpec (design system rules, "ask before acting", no mock data, etc.)
   - logging, cost-awareness, and optional checks
 
 ---
 
-## Using RANA with CrewAI
+## Using CoFounder with CrewAI
 
-RANA plays nicely with CrewAI: **CrewAI owns the crew/graph orchestration; RANA provides the LLM + guardrails + context rules.**
+CoFounder plays nicely with CrewAI: **CrewAI owns the crew/graph orchestration; CoFounder provides the LLM + guardrails + context rules.**
 
-### Wrap RANA as a CrewAI-compatible LLM
+### Wrap CoFounder as a CrewAI-compatible LLM
 
 ```typescript
-import { createRanaCrewModel } from '@ranavibe/crewai';
-import { createRana } from '@ranavibe/core';
+import { createCoFounderCrewModel } from '@cofounder/crewai';
+import { createCoFounder } from '@cofounder/core';
 
-const rana = createRana(config);
+const cofounder = createCoFounder(config);
 
-const ranaLLM = createRanaCrewModel({
-  rana,
-  vibe: 'feature_work', // agent inherits RANA's feature-work guardrails
+const cofounderLLM = createCoFounderCrewModel({
+  cofounder,
+  vibe: 'feature_work', // agent inherits CoFounder's feature-work guardrails
 });
 
 // Use with CrewAI agents
 const featureAgent = new Agent({
   name: 'Feature Implementer',
   role: 'Implement features safely in an existing codebase.',
-  llm: ranaLLM,
+  llm: cofounderLLM,
 });
 ```
 
 ### Key idea:
 
 - **CrewAI** defines who the agents are and how they coordinate
-- **RANA** defines:
+- **CoFounder** defines:
   - how each agent should behave (via VibeSpecs)
   - which providers/models to use
   - what constraints apply (no mock data, DS rules, ask-before-acting, etc.)
@@ -475,14 +475,14 @@ const featureAgent = new Agent({
 
 | Package | Description |
 |---------|-------------|
-| `@ranavibe/core` | Unified LLM client, cost tracking, plugins, security |
-| `@ranavibe/cli` | CLI for init, check, feature flows, deploy |
-| `@ranavibe/rag` | RAG pipeline: chunking, retrieval, reranking, synthesis |
-| `@ranavibe/agents` | Agent Development Kit (ADK): BaseAgent, tools, vibes |
-| `@ranavibe/langchain` | LangChain adapter |
-| `@ranavibe/crewai` | CrewAI adapter |
-| `@ranavibe/mcp` | Model Context Protocol server & client |
-| `@ranavibe/react` | React hooks for chat, RAG, streaming |
+| `@cofounder/core` | Unified LLM client, cost tracking, plugins, security |
+| `@cofounder/cli` | CLI for init, check, feature flows, deploy |
+| `@cofounder/rag` | RAG pipeline: chunking, retrieval, reranking, synthesis |
+| `@cofounder/agents` | Agent Development Kit (ADK): BaseAgent, tools, vibes |
+| `@cofounder/langchain` | LangChain adapter |
+| `@cofounder/crewai` | CrewAI adapter |
+| `@cofounder/mcp` | Model Context Protocol server & client |
+| `@cofounder/react` | React hooks for chat, RAG, streaming |
 
 ---
 
@@ -544,7 +544,7 @@ These features are implemented but not production-hardened:
 
 ### Known Limitations
 
-1. **No Production Deployments Yet**: RANA has not been deployed at scale in production environments. Use with appropriate caution.
+1. **No Production Deployments Yet**: CoFounder has not been deployed at scale in production environments. Use with appropriate caution.
 
 2. **Integration Testing**: While unit tests pass, end-to-end integration testing with all providers is ongoing.
 
@@ -556,9 +556,9 @@ These features are implemented but not production-hardened:
 
 For a new project today, we recommend using:
 
-- `@ranavibe/core` for LLM client, cost tracking, security features
-- `@ranavibe/helpers` for quick LLM tasks
-- `@ranavibe/prompts` for prompt versioning
+- `@cofounder/core` for LLM client, cost tracking, security features
+- `@cofounder/helpers` for quick LLM tasks
+- `@cofounder/prompts` for prompt versioning
 
 Other packages are suitable for experimentation and early adoption but should be validated for your specific use case.
 
@@ -568,49 +568,49 @@ Other packages are suitable for experimentation and early adoption but should be
 
 ### Core Commands
 ```bash
-rana init                # Initialize RANA in your project
-rana check               # Run safety gates (tests, lint, guardrails)
-rana check --fix         # Auto-fix issues where possible
+cofounder init                # Initialize CoFounder in your project
+cofounder check               # Run safety gates (tests, lint, guardrails)
+cofounder check --fix         # Auto-fix issues where possible
 ```
 
 ### Feature Commands
 ```bash
-rana feature:new         # Guided spec creation from an idea
-rana feature:implement   # Branch + scoped implementation
+cofounder feature:new         # Guided spec creation from an idea
+cofounder feature:implement   # Branch + scoped implementation
 ```
 
 ### LLM Commands
 ```bash
-rana llm:setup           # Configure providers
-rana llm:analyze         # Cost and usage analysis
-rana llm:compare         # Compare providers for your use case
+cofounder llm:setup           # Configure providers
+cofounder llm:analyze         # Cost and usage analysis
+cofounder llm:compare         # Compare providers for your use case
 ```
 
 ### Database Commands
 ```bash
-rana db:setup            # Setup wizard
-rana db:migrate          # Run migrations
-rana db:check            # Validate schema
+cofounder db:setup            # Setup wizard
+cofounder db:migrate          # Run migrations
+cofounder db:check            # Validate schema
 ```
 
 ### Security Commands
 ```bash
-rana security:audit      # Run security scan
-rana security:setup      # Setup security config
+cofounder security:audit      # Run security scan
+cofounder security:setup      # Setup security config
 ```
 
 ### Agent Commands
 ```bash
-rana agent:new           # Scaffold a new agent
-rana agent:test          # Run agent tests
-rana agent:serve         # Start agent as API server
+cofounder agent:new           # Scaffold a new agent
+cofounder agent:test          # Run agent tests
+cofounder agent:serve         # Start agent as API server
 ```
 
 ### Vibe Commands
 ```bash
-rana vibe:new            # Create new VibeSpec
-rana vibe:validate       # Validate VibeSpec YAML
-rana vibe:compile        # Show compiled system prompt
+cofounder vibe:new            # Create new VibeSpec
+cofounder vibe:validate       # Validate VibeSpec YAML
+cofounder vibe:compile        # Show compiled system prompt
 ```
 
 ---
@@ -620,7 +620,7 @@ rana vibe:compile        # Show compiled system prompt
 ### Getting Started
 - **[START_HERE.md](START_HERE.md)** - Navigation hub
 - **[QUICK_START_GUIDE.md](QUICK_START_GUIDE.md)** - 5-minute tutorial
-- **[docs/rana-os-spec.md](docs/rana-os-spec.md)** - Full API specification
+- **[docs/cofounder-os-spec.md](docs/cofounder-os-spec.md)** - Full API specification
 
 ### Framework Guides
 - **[docs/LLM_OPTIMIZATION_GUIDE.md](docs/LLM_OPTIMIZATION_GUIDE.md)** - Cost optimization
@@ -629,14 +629,14 @@ rana vibe:compile        # Show compiled system prompt
 - **[docs/MCP_INTEGRATION_GUIDE.md](docs/MCP_INTEGRATION_GUIDE.md)** - MCP integration
 
 ### Technical
-- **[RANA_WHITEPAPER.md](RANA_WHITEPAPER.md)** - Technical whitepaper
+- **[CoFounder_WHITEPAPER.md](CoFounder_WHITEPAPER.md)** - Technical whitepaper
 - **[CLI_COMMANDS_REFERENCE.md](CLI_COMMANDS_REFERENCE.md)** - All CLI commands
 
 ---
 
 ## Free & Open Source
 
-RANA is **free and open source**.
+CoFounder is **free and open source**.
 
 - No per-seat license
 - No proprietary runtime lock-in
@@ -645,7 +645,7 @@ RANA is **free and open source**.
   - your data and logs
   - your CI/CD and deployment pipeline
 
-Use RANA as:
+Use CoFounder as:
 
 - a drop-in guardrail layer in your existing projects
 - a foundation for your own internal AI dev tools
@@ -661,7 +661,7 @@ We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for:
 
 - Where to start (guardrails, vibes, flows, integrations)
 - Code style expectations
-- Vision guidelines (to avoid turning RANA into Another Orchestrator™)
+- Vision guidelines (to avoid turning CoFounder into Another Orchestrator™)
 
 **Key areas for contribution:**
 
@@ -682,7 +682,7 @@ We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for:
 - [Waymaker.cx](https://waymaker.cx)
 - [Betr.ai](https://betr.ai)
 
-**Named after:** Ashley's son (RANA = his nickname, like a piranha)
+**Named after:** Ashley's son (CoFounder = his nickname, like a piranha)
 
 ---
 
@@ -690,24 +690,24 @@ We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for:
 
 ```bash
 # Install
-npm install @ranavibe/core @ranavibe/cli
+npm install @cofounder/core @cofounder/cli
 
 # Initialize in your project
-npx rana init
+npx cofounder init
 
 # Create your first feature spec
-rana feature:new
+cofounder feature:new
 
 # Run safety checks
-rana check
+cofounder check
 ```
 
 **Questions?**
-- GitHub Issues: https://github.com/waymaker-ai/ranavibe/issues
+- GitHub Issues: https://github.com/waymaker-ai/cofounder/issues
 - Email: ashley@waymaker.cx or christian@waymaker.cx
 
 ---
 
-**RANA** - Guardrails & Guidance for AI-Assisted Development
+**CoFounder** - Guardrails & Guidance for AI-Assisted Development
 
 *Made with love to help you build real products, safely.*

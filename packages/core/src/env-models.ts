@@ -1,19 +1,19 @@
 /**
- * RANA Environment-Based Model Selection
+ * CoFounder Environment-Based Model Selection
  *
  * Automatically selects models based on NODE_ENV and configuration.
  * Uses cheap/local models in development, production models in prod.
  *
  * @example
  * ```typescript
- * import { getModelForEnv, createEnvAwareRana } from '@rana/core';
+ * import { getModelForEnv, createEnvAwareCoFounder } from '@cofounder/core';
  *
  * // Get model based on environment
  * const model = getModelForEnv('chat');
  * // dev: 'llama3.2' (Ollama), prod: 'gpt-4o-mini'
  *
- * // Or use env-aware RANA instance
- * const rana = createEnvAwareRana({
+ * // Or use env-aware CoFounder instance
+ * const cofounder = createEnvAwareRana({
  *   providers: { openai: process.env.OPENAI_API_KEY }
  * });
  * ```
@@ -99,7 +99,7 @@ const DEFAULT_MODELS: Record<ModelPurpose, EnvModelConfig> = {
 };
 
 /**
- * Custom model overrides (can be set via RANA_MODELS env var or config)
+ * Custom model overrides (can be set via CoFounder_MODELS env var or config)
  */
 let customModelOverrides: Partial<Record<ModelPurpose, Partial<EnvModelConfig>>> = {};
 
@@ -129,7 +129,7 @@ export function getModelForEnv(purpose: ModelPurpose = 'chat'): ModelConfig {
   }
 
   // Check for environment variable override
-  const envVarName = `RANA_MODEL_${purpose.toUpperCase()}`;
+  const envVarName = `CoFounder_MODEL_${purpose.toUpperCase()}`;
   const envOverride = process.env[envVarName];
   if (envOverride) {
     const [provider, model] = envOverride.split(':');
@@ -189,7 +189,7 @@ export async function getBestModelForEnv(purpose: ModelPurpose = 'chat'): Promis
     const ollamaAvailable = await isOllamaAvailable();
 
     if (!ollamaAvailable && config.fallback) {
-      console.warn(`[RANA] Ollama not available, falling back to ${config.fallback.provider}:${config.fallback.model}`);
+      console.warn(`[CoFounder] Ollama not available, falling back to ${config.fallback.provider}:${config.fallback.model}`);
       return config.fallback;
     }
   }
@@ -198,7 +198,7 @@ export async function getBestModelForEnv(purpose: ModelPurpose = 'chat'): Promis
 }
 
 /**
- * Configuration for environment-aware RANA
+ * Configuration for environment-aware CoFounder
  */
 export interface EnvAwareConfig {
   providers: Record<string, string>;
@@ -207,7 +207,7 @@ export interface EnvAwareConfig {
 }
 
 /**
- * Model selection helper that integrates with RANA
+ * Model selection helper that integrates with CoFounder
  */
 export const envModels = {
   /**
@@ -278,7 +278,7 @@ export const envModels = {
  */
 export function printEnvModelConfig(): void {
   const env = getCurrentEnv();
-  console.log(`\n🔧 RANA Environment Model Configuration`);
+  console.log(`\n🔧 CoFounder Environment Model Configuration`);
   console.log(`   Environment: ${env.toUpperCase()}\n`);
 
   const models = getAllModelsForEnv();
@@ -290,5 +290,5 @@ export function printEnvModelConfig(): void {
   }
 
   console.log('\n   Set custom models via environment variables:');
-  console.log('   RANA_MODEL_CHAT=anthropic:claude-3-5-sonnet-20241022\n');
+  console.log('   CoFounder_MODEL_CHAT=anthropic:claude-3-5-sonnet-20241022\n');
 }

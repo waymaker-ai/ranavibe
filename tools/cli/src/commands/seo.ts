@@ -28,7 +28,7 @@ interface SEOScore {
  * Validates SEO setup and provides recommendations
  */
 export async function seoCheck(options: { fix?: boolean; verbose?: boolean } = {}) {
-  console.log(chalk.bold.cyan('\n🔍 RANA SEO Check\n'));
+  console.log(chalk.bold.cyan('\n🔍 CoFounder SEO Check\n'));
 
   const issues: SEOIssue[] = [];
 
@@ -87,7 +87,7 @@ export async function seoCheck(options: { fix?: boolean; verbose?: boolean } = {
  * Generates sitemap, robots.txt, and other SEO files
  */
 export async function seoGenerate(options: { all?: boolean } = {}) {
-  console.log(chalk.bold.cyan('\n🚀 RANA SEO Generator\n'));
+  console.log(chalk.bold.cyan('\n🚀 CoFounder SEO Generator\n'));
 
   let selections = ['sitemap', 'robots', 'manifest'];
 
@@ -143,7 +143,7 @@ export async function seoGenerate(options: { all?: boolean } = {}) {
  * Analyzes pages and provides detailed SEO report
  */
 export async function seoAnalyze() {
-  console.log(chalk.bold.cyan('\n📊 RANA SEO Analysis\n'));
+  console.log(chalk.bold.cyan('\n📊 CoFounder SEO Analysis\n'));
 
   // Find all pages
   const pages = await findPages();
@@ -180,7 +180,7 @@ export async function seoAnalyze() {
  * SEO Setup Command
  */
 export async function seoSetup() {
-  console.log(chalk.bold.cyan('\n🔍 RANA SEO Setup\n'));
+  console.log(chalk.bold.cyan('\n🔍 CoFounder SEO Setup\n'));
 
   const config = await prompts([
     {

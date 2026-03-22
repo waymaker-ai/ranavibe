@@ -1,10 +1,10 @@
-# RANA Performance Monitoring
+# CoFounder Performance Monitoring
 
 Comprehensive performance monitoring system for tracking request latency, provider health, cache metrics, and system performance.
 
 ## Overview
 
-The PerformanceMonitor class provides real-time performance tracking and analytics for RANA, including:
+The PerformanceMonitor class provides real-time performance tracking and analytics for CoFounder, including:
 
 - **Request Latency Tracking** - P50, P95, P99 percentiles
 - **Provider Health Monitoring** - Success rates, error rates, costs
@@ -15,16 +15,16 @@ The PerformanceMonitor class provides real-time performance tracking and analyti
 
 ## Installation
 
-The performance monitoring is included in `@rana/core`:
+The performance monitoring is included in `@cofounder/core`:
 
 ```typescript
-import { createPerformanceMonitor } from '@rana/core';
+import { createPerformanceMonitor } from '@cofounder/core';
 ```
 
 ## Quick Start
 
 ```typescript
-import { createPerformanceMonitor } from '@rana/core';
+import { createPerformanceMonitor } from '@cofounder/core';
 
 // Create a performance monitor
 const monitor = createPerformanceMonitor({
@@ -244,14 +244,14 @@ createPerformanceMonitor(config?: PerformanceMonitorConfig): PerformanceMonitor
 - `getConfig(): PerformanceMonitorConfig` - Get current configuration
 - `updateConfig(config): void` - Update configuration
 
-## Integration with RANA Client
+## Integration with CoFounder Client
 
-Example of integrating performance monitoring with the RANA client:
+Example of integrating performance monitoring with the CoFounder client:
 
 ```typescript
-import { createRana, createPerformanceMonitor } from '@rana/core';
+import { createCoFounder, createPerformanceMonitor } from '@cofounder/core';
 
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: {
     anthropic: process.env.ANTHROPIC_API_KEY,
     openai: process.env.OPENAI_API_KEY,
@@ -266,7 +266,7 @@ const monitor = createPerformanceMonitor({
 async function monitoredChat(provider, message) {
   const startTime = Date.now();
   try {
-    const response = await rana.provider(provider).chat(message);
+    const response = await cofounder.provider(provider).chat(message);
     
     monitor.recordRequest({
       timestamp: startTime,

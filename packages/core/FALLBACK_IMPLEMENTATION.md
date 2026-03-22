@@ -2,7 +2,7 @@
 
 ## Overview
 
-I've successfully implemented an automatic fallback system for the @rana/core package that allows seamless switching between LLM providers when one fails. The system includes retry logic, detailed tracking, and full integration with existing RANA features like cost tracking, caching, and budget enforcement.
+I've successfully implemented an automatic fallback system for the @cofounder/core package that allows seamless switching between LLM providers when one fails. The system includes retry logic, detailed tracking, and full integration with existing CoFounder features like cost tracking, caching, and budget enforcement.
 
 ## Files Created
 
@@ -26,7 +26,7 @@ Comprehensive documentation covering:
 - Quick start guide
 - Configuration options
 - Use cases (high availability, cost optimization, rate limit handling, monitoring)
-- Integration with other RANA features
+- Integration with other CoFounder features
 - Best practices
 - Complete API reference
 - Examples
@@ -83,9 +83,9 @@ Exported new fallback functionality:
 ## Usage Example
 
 ```typescript
-import { createRana } from '@rana/core';
+import { createCoFounder } from '@cofounder/core';
 
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: {
     openai: process.env.OPENAI_API_KEY,
     anthropic: process.env.ANTHROPIC_API_KEY,
@@ -102,7 +102,7 @@ const rana = createRana({
 });
 
 // Automatically tries providers in order until one succeeds
-const response = await rana.chat('Hello, world!');
+const response = await cofounder.chat('Hello, world!');
 console.log(`Provider used: ${response.provider}`);
 
 // Access fallback metadata
@@ -206,4 +206,4 @@ The fallback system is:
 - ✅ Type-safe
 - ✅ Production-ready
 
-The implementation builds on top of the existing ProviderManager without breaking any functionality, and seamlessly integrates with RANA's cost tracking, caching, and budget enforcement features.
+The implementation builds on top of the existing ProviderManager without breaking any functionality, and seamlessly integrates with CoFounder's cost tracking, caching, and budget enforcement features.

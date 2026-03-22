@@ -1,16 +1,16 @@
-# RANA Implementation Status
+# CoFounder Implementation Status
 
 Last Updated: December 7, 2025
 
 ## Overview
 
-This document tracks the implementation status of RANA framework components.
+This document tracks the implementation status of CoFounder framework components.
 
 ---
 
 ## Completed Features
 
-### 1. Security Layer (`@rana/agents/security`)
+### 1. Security Layer (`@cofounder/agents/security`)
 
 **Status: ✅ Complete**
 
@@ -38,7 +38,7 @@ This document tracks the implementation status of RANA framework components.
   - Configurable limits per user/org/path
   - Presets: standard, strict, relaxed, per-second, daily, LLM API
 
-### 2. VibeSpec Runtime Enforcer (`@rana/agents/middleware`)
+### 2. VibeSpec Runtime Enforcer (`@cofounder/agents/middleware`)
 
 **Status: ✅ Complete**
 
@@ -50,7 +50,7 @@ This document tracks the implementation status of RANA framework components.
   - Tool argument constraints
   - Middleware function for agent integration
 
-### 3. Observability (`@rana/agents/observability`)
+### 3. Observability (`@cofounder/agents/observability`)
 
 **Status: ✅ Complete**
 
@@ -67,7 +67,7 @@ This document tracks the implementation status of RANA framework components.
   - Console exporter
   - AI-specific metrics (LLM, agent, tool, RAG, security)
 
-### 4. Audit Logging (`@rana/agents/audit`)
+### 4. Audit Logging (`@cofounder/agents/audit`)
 
 **Status: ✅ Complete**
 
@@ -79,25 +79,25 @@ This document tracks the implementation status of RANA framework components.
   - Query interface with filtering
   - Memory storage (Supabase storage can be added)
 
-### 5. CLI (`@rana/cli`)
+### 5. CLI (`@cofounder/cli`)
 
 **Status: ✅ Complete**
 
 - **Feature Workflow** (`commands/feature.ts`)
-  - `rana feature new` - Create feature specs
-  - `rana feature list` - List all features
-  - `rana feature show` - Show feature details
-  - `rana feature approve` - Approve for implementation
-  - `rana feature implement` - Start implementation (creates git branch)
-  - `rana feature check` - Check against guardrails
-  - `rana feature done` - Mark as complete
+  - `cofounder feature new` - Create feature specs
+  - `cofounder feature list` - List all features
+  - `cofounder feature show` - Show feature details
+  - `cofounder feature approve` - Approve for implementation
+  - `cofounder feature implement` - Start implementation (creates git branch)
+  - `cofounder feature check` - Check against guardrails
+  - `cofounder feature done` - Mark as complete
 
 - **Security Scanning** (`commands/security.ts`)
-  - `rana security scan` - Full codebase scan for secrets/PII
-  - `rana security check` - Quick security check
-  - `rana check` - Run all guardrail checks
+  - `cofounder security scan` - Full codebase scan for secrets/PII
+  - `cofounder security check` - Quick security check
+  - `cofounder check` - Run all guardrail checks
 
-### 6. Knowledge Base (`@rana/rag/knowledge-base`)
+### 6. Knowledge Base (`@cofounder/rag/knowledge-base`)
 
 **Status: ✅ Complete**
 
@@ -112,9 +112,9 @@ This document tracks the implementation status of RANA framework components.
 
 **Status: ✅ Complete**
 
-- **@rana/langchain** - RanaChatModel for LangChain
-- **@rana/crewai** - RanaCrewModel for CrewAI
-- **@rana/mcp** - MCP server integration (pre-existing)
+- **@cofounder/langchain** - RanaChatModel for LangChain
+- **@cofounder/crewai** - RanaCrewModel for CrewAI
+- **@cofounder/mcp** - MCP server integration (pre-existing)
 
 ---
 
@@ -166,7 +166,7 @@ packages/
 ### Security
 
 ```typescript
-import { checkInput, securityPresets, detectPII, checkForInjection } from '@rana/agents';
+import { checkInput, securityPresets, detectPII, checkForInjection } from '@cofounder/agents';
 
 // Check input with preset
 const result = await checkInput(userMessage, securityPresets.healthcare);
@@ -186,7 +186,7 @@ console.log(injection.blocked); // true
 ### VibeSpec Enforcer
 
 ```typescript
-import { createVibeEnforcer, loadVibeSpec } from '@rana/agents';
+import { createVibeEnforcer, loadVibeSpec } from '@cofounder/agents';
 
 const vibeConfig = await loadVibeSpec('./config/vibes/customer-support.yml');
 const enforcer = createVibeEnforcer({ vibeConfig, strictMode: true });
@@ -204,7 +204,7 @@ if (!result.allowed) {
 ### Observability
 
 ```typescript
-import { initTracer, initMetrics, AIAttributes, AIMetrics } from '@rana/agents';
+import { initTracer, initMetrics, AIAttributes, AIMetrics } from '@cofounder/agents';
 
 const tracer = initTracer({ serviceName: 'my-agent' });
 const metrics = initMetrics({ prefix: 'myapp' });
@@ -223,7 +223,7 @@ metrics.histogram(AIMetrics.LLM_LATENCY, 250, { model: 'claude-3-5-sonnet' });
 ### Audit Logging
 
 ```typescript
-import { initAuditLogger, MemoryAuditStorage } from '@rana/agents';
+import { initAuditLogger, MemoryAuditStorage } from '@cofounder/agents';
 
 const auditLogger = initAuditLogger({
   serviceName: 'my-agent',
@@ -258,14 +258,14 @@ const events = await auditLogger.query({
 
 | Feature | Package | Path |
 |---------|---------|------|
-| PII Detection | @rana/agents | `packages/agents/src/security/pii-detector.ts` |
-| Injection Detection | @rana/agents | `packages/agents/src/security/injection-detector.ts` |
-| Output Validation | @rana/agents | `packages/agents/src/security/output-validator.ts` |
-| Rate Limiting | @rana/agents | `packages/agents/src/security/rate-limiter.ts` |
-| Vibe Enforcer | @rana/agents | `packages/agents/src/middleware/vibe-enforcer.ts` |
-| Tracer | @rana/agents | `packages/agents/src/observability/tracer.ts` |
-| Metrics | @rana/agents | `packages/agents/src/observability/metrics.ts` |
-| Audit Logger | @rana/agents | `packages/agents/src/audit/audit-logger.ts` |
-| Feature CLI | @rana/cli | `packages/cli/src/commands/feature.ts` |
-| Security CLI | @rana/cli | `packages/cli/src/commands/security.ts` |
-| Knowledge Base | @rana/rag | `packages/rag/src/knowledge-base/` |
+| PII Detection | @cofounder/agents | `packages/agents/src/security/pii-detector.ts` |
+| Injection Detection | @cofounder/agents | `packages/agents/src/security/injection-detector.ts` |
+| Output Validation | @cofounder/agents | `packages/agents/src/security/output-validator.ts` |
+| Rate Limiting | @cofounder/agents | `packages/agents/src/security/rate-limiter.ts` |
+| Vibe Enforcer | @cofounder/agents | `packages/agents/src/middleware/vibe-enforcer.ts` |
+| Tracer | @cofounder/agents | `packages/agents/src/observability/tracer.ts` |
+| Metrics | @cofounder/agents | `packages/agents/src/observability/metrics.ts` |
+| Audit Logger | @cofounder/agents | `packages/agents/src/audit/audit-logger.ts` |
+| Feature CLI | @cofounder/cli | `packages/cli/src/commands/feature.ts` |
+| Security CLI | @cofounder/cli | `packages/cli/src/commands/security.ts` |
+| Knowledge Base | @cofounder/rag | `packages/rag/src/knowledge-base/` |

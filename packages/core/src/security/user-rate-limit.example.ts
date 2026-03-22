@@ -364,10 +364,10 @@ async function slidingWindowExample() {
 }
 
 // ============================================================================
-// Example 10: Integration with RANA Client
+// Example 10: Integration with CoFounder Client
 // ============================================================================
 
-async function ranaIntegrationExample() {
+async function cofounderIntegrationExample() {
   const limiter = createUserRateLimiter({
     defaultTier: 'free',
     tiers: {
@@ -399,8 +399,8 @@ async function ranaIntegrationExample() {
       };
     }
 
-    // Process the RANA request
-    // const response = await ranaClient.chat.create(request);
+    // Process the CoFounder request
+    // const response = await cofounderClient.chat.create(request);
 
     // Return response with rate limit headers
     return {

@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Core Architecture Overview | RANA Fundamentals',
-  description: 'Understanding the architecture and design patterns of RANA',
+  title: 'Core Architecture Overview | CoFounder Fundamentals',
+  description: 'Understanding the architecture and design patterns of CoFounder',
 };
 
 export default function Lesson2Page() {
@@ -28,7 +28,7 @@ export default function Lesson2Page() {
           <h1>Core Architecture Overview</h1>
 
           <p className="lead">
-            RANA is built on a layered architecture that separates concerns and
+            CoFounder is built on a layered architecture that separates concerns and
             enables flexibility. Understanding this architecture will help you
             build better applications and extend the framework when needed.
           </p>
@@ -40,18 +40,18 @@ export default function Lesson2Page() {
               <code>{`┌─────────────────────────────────────────┐
 │           Your Application              │
 ├─────────────────────────────────────────┤
-│     @rana/react (Hooks & Components)    │
+│     @cofounder/react (Hooks & Components)    │
 ├─────────────────────────────────────────┤
-│     @rana/prompts (Prompt Management)   │
+│     @cofounder/prompts (Prompt Management)   │
 ├─────────────────────────────────────────┤
-│     @rana/core (LLM Client & Agents)    │
+│     @cofounder/core (LLM Client & Agents)    │
 ├─────────────────────────────────────────┤
 │        LLM Providers (OpenAI, etc)      │
 └─────────────────────────────────────────┘`}</code>
             </pre>
           </div>
 
-          <h2>@rana/core - The Foundation</h2>
+          <h2>@cofounder/core - The Foundation</h2>
 
           <p>
             The core package provides the fundamental building blocks:
@@ -65,7 +65,7 @@ export default function Lesson2Page() {
 
           <div className="code-block">
             <pre>
-              <code>{`import { Agent } from '@rana/core';
+              <code>{`import { Agent } from '@cofounder/core';
 
 const agent = new Agent({
   name: 'Assistant',
@@ -87,13 +87,13 @@ for await (const chunk of agent.stream('Tell me a story')) {
 
           <h3>Provider Abstraction</h3>
           <p>
-            RANA abstracts away provider-specific details, allowing you to switch
+            CoFounder abstracts away provider-specific details, allowing you to switch
             between OpenAI, Anthropic, Google, and other providers seamlessly.
           </p>
 
           <div className="code-block">
             <pre>
-              <code>{`import { configureProviders } from '@rana/core';
+              <code>{`import { configureProviders } from '@cofounder/core';
 
 configureProviders({
   anthropic: { apiKey: process.env.ANTHROPIC_API_KEY },
@@ -108,7 +108,7 @@ const agent3 = new Agent({ model: 'gemini-pro' }); // Google`}</code>
             </pre>
           </div>
 
-          <h2>@rana/react - React Integration</h2>
+          <h2>@cofounder/react - React Integration</h2>
 
           <p>
             The React package provides hooks that manage state and side effects
@@ -118,7 +118,7 @@ const agent3 = new Agent({ model: 'gemini-pro' }); // Google`}</code>
           <h3>useChat Hook</h3>
           <div className="code-block">
             <pre>
-              <code>{`import { useChat } from '@rana/react';
+              <code>{`import { useChat } from '@cofounder/react';
 
 function ChatComponent() {
   const {
@@ -149,7 +149,7 @@ function ChatComponent() {
           <h3>useAgent Hook</h3>
           <div className="code-block">
             <pre>
-              <code>{`import { useAgent } from '@rana/react';
+              <code>{`import { useAgent } from '@cofounder/react';
 
 function AgentComponent() {
   const {
@@ -178,7 +178,7 @@ function AgentComponent() {
             </pre>
           </div>
 
-          <h2>@rana/prompts - Prompt Management</h2>
+          <h2>@cofounder/prompts - Prompt Management</h2>
 
           <p>
             Enterprise-grade prompt management with versioning, A/B testing,
@@ -187,7 +187,7 @@ function AgentComponent() {
 
           <div className="code-block">
             <pre>
-              <code>{`import { PromptManager } from '@rana/prompts';
+              <code>{`import { PromptManager } from '@cofounder/prompts';
 
 const pm = new PromptManager({ workspace: 'my-app' });
 
@@ -210,7 +210,7 @@ const stats = await pm.getAnalytics('greeting');`}</code>
 
           <h2>Data Flow</h2>
 
-          <p>Understanding how data flows through RANA:</p>
+          <p>Understanding how data flows through CoFounder:</p>
 
           <ol>
             <li><strong>User Input</strong> - User sends a message via UI</li>
@@ -226,7 +226,7 @@ const stats = await pm.getAnalytics('greeting');`}</code>
 
           <h3>Composition over Inheritance</h3>
           <p>
-            RANA favors composition. You build complex agents by combining
+            CoFounder favors composition. You build complex agents by combining
             simple, focused components.
           </p>
 
@@ -257,7 +257,7 @@ const stats = await pm.getAnalytics('greeting');`}</code>
             className="text-foreground-secondary hover:text-foreground transition-colors"
           >
             <ArrowLeft className="inline mr-2 h-4 w-4" />
-            Previous: What is RANA?
+            Previous: What is CoFounder?
           </Link>
           <Link
             href="/training/fundamentals/lesson-3"

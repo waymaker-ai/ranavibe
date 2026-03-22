@@ -1,11 +1,11 @@
-# @rana/helpers
+# @cofounder/helpers
 
 Quick LLM Helpers - One-line AI functions for common tasks.
 
 ## Installation
 
 ```bash
-npm install @rana/helpers
+npm install @cofounder/helpers
 ```
 
 ## Quick Start
@@ -22,7 +22,7 @@ import {
   generate,
   compare,
   moderate
-} from '@rana/helpers';
+} from '@cofounder/helpers';
 
 // Summarize any text
 const summary = await summarize(longArticle);
@@ -296,7 +296,7 @@ const result = await moderate(userContent, {
 ## Configuration
 
 ```typescript
-import { configure } from '@rana/helpers';
+import { configure } from '@cofounder/helpers';
 
 configure({
   provider: 'anthropic',

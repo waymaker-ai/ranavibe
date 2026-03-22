@@ -1,5 +1,5 @@
 /**
- * @rana/testing
+ * @cofounder/testing
  *
  * AI-Native Testing Framework
  * Test AI code like regular code - with semantic matching,
@@ -7,7 +7,7 @@
  *
  * @example
  * ```typescript
- * import { describe, aiTest, expect, runTimes } from '@rana/testing';
+ * import { describe, aiTest, expect, runTimes } from '@cofounder/testing';
  *
  * describe('My AI Feature', () => {
  *   aiTest('should summarize correctly', async ({ expect }) => {

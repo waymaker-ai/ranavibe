@@ -1,5 +1,5 @@
 /**
- * @rana/agents/presets
+ * @cofounder/agents/presets
  * Pre-built agent configurations for common use cases
  */
 

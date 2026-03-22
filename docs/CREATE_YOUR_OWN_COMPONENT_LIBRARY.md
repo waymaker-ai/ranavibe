@@ -552,9 +552,9 @@ export default function MyPage() {
 
 ---
 
-## Step 6: RANA Integration
+## Step 6: CoFounder Integration
 
-### Add to `.rana.yml`
+### Add to `.cofounder.yml`
 
 ```yaml
 design_system:
@@ -598,7 +598,7 @@ quality_gates:
         grep -r "className=" src/features/ && exit 1 || exit 0
 ```
 
-### RANA CLI Integration
+### CoFounder CLI Integration
 
 ```typescript
 // packages/cli/src/commands/check.ts
@@ -767,7 +767,7 @@ export const check = new Command()
 | **Design** | Generic | ✅ **Your brand** |
 | **Business logic** | Generic | ✅ **Your patterns** |
 | **Monetization** | None | ✅ **Unlimited** |
-| **RANA integration** | Manual | ✅ **Built-in** |
+| **CoFounder integration** | Manual | ✅ **Built-in** |
 | **White label** | No | ✅ **Yes** |
 
 ---
@@ -777,9 +777,9 @@ export const check = new Command()
 ### Option 1: Quick Start (Use This Template)
 
 ```bash
-# Clone RANA component library starter
-git clone https://github.com/waymaker-ai/rana-component-library
-cd rana-component-library
+# Clone CoFounder component library starter
+git clone https://github.com/waymaker-ai/cofounder-component-library
+cd cofounder-component-library
 
 # Customize
 npm run customize
@@ -800,20 +800,20 @@ npm run dev
 5. **Month 2**: Scale to 20+ components
 6. **Month 3**: Launch beta
 
-### Option 3: RANA Does It For You
+### Option 3: CoFounder Does It For You
 
-If you want RANA to build this for you:
+If you want CoFounder to build this for you:
 
 ```bash
 # Generate complete component library
-rana generate:library --name "YourUI" --brand your-brand
+cofounder generate:library --name "YourUI" --brand your-brand
 
 # AI builds:
 # - All base components
 # - CLI tool
 # - Documentation site
 # - Figma kit
-# - RANA integration
+# - CoFounder integration
 ```
 
 ---
@@ -841,8 +841,8 @@ rana generate:library --name "YourUI" --brand your-brand
 Want help building your component library? Let's chat:
 - **Email**: support@waymaker.cx
 - **Twitter**: @waymaker_ai
-- **Discord**: https://discord.gg/rana
+- **Discord**: https://discord.gg/cofounder
 
 ---
 
-**Built with RANA** 🚀
+**Built with CoFounder** 🚀

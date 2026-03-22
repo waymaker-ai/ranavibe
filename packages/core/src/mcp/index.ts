@@ -1,6 +1,6 @@
 /**
- * @rana/mcp
- * Model Context Protocol support for RANA
+ * @cofounder/mcp
+ * Model Context Protocol support for CoFounder
  *
  * This module provides:
  * - MCP Server creation for building tool servers

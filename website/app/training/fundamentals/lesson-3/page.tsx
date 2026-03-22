@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { ArrowLeft, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Setting Up Your Environment | RANA Fundamentals',
-  description: 'Configure your development environment for RANA development',
+  title: 'Setting Up Your Environment | CoFounder Fundamentals',
+  description: 'Configure your development environment for CoFounder development',
 };
 
 export default function Lesson3Page() {
@@ -28,7 +28,7 @@ export default function Lesson3Page() {
           <h1>Setting Up Your Environment</h1>
 
           <p className="lead">
-            Let&apos;s configure your development environment for RANA development.
+            Let&apos;s configure your development environment for CoFounder development.
             This lesson covers installation, configuration, and verification.
           </p>
 
@@ -44,12 +44,12 @@ export default function Lesson3Page() {
           <h2>Step 1: Create a New Project</h2>
 
           <p>
-            The fastest way to start is with create-rana-app:
+            The fastest way to start is with create-cofounder-app:
           </p>
 
           <div className="code-block">
             <pre>
-              <code>{`npx create-rana-app my-ai-app
+              <code>{`npx create-cofounder-app my-ai-app
 cd my-ai-app`}</code>
             </pre>
           </div>
@@ -61,7 +61,7 @@ cd my-ai-app`}</code>
           <ul>
             <li>Next.js 14 with App Router</li>
             <li>TypeScript configuration</li>
-            <li>RANA packages pre-installed</li>
+            <li>CoFounder packages pre-installed</li>
             <li>Example chat component</li>
             <li>API route template</li>
             <li>Environment file template</li>
@@ -93,7 +93,7 @@ OPENAI_API_KEY=sk-...
 GOOGLE_API_KEY=AIza...
 
 # Optional: Default model
-RANA_DEFAULT_MODEL=claude-sonnet-4-20250514`}</code>
+CoFounder_DEFAULT_MODEL=claude-sonnet-4-20250514`}</code>
             </pre>
           </div>
 
@@ -112,7 +112,7 @@ RANA_DEFAULT_MODEL=claude-sonnet-4-20250514`}</code>
 
           <div className="code-block">
             <pre>
-              <code>{`npx rana doctor`}</code>
+              <code>{`npx cofounder doctor`}</code>
             </pre>
           </div>
 
@@ -124,9 +124,9 @@ RANA_DEFAULT_MODEL=claude-sonnet-4-20250514`}</code>
             <pre>
               <code>{`✓ Node.js version: 20.10.0
 ✓ npm version: 10.2.3
-✓ @rana/core: 1.0.0
-✓ @rana/react: 1.0.0
-✓ @rana/prompts: 1.0.0
+✓ @cofounder/core: 1.0.0
+✓ @cofounder/react: 1.0.0
+✓ @cofounder/prompts: 1.0.0
 ✓ ANTHROPIC_API_KEY: configured
 ✓ TypeScript: configured
 ✓ Next.js: configured
@@ -230,7 +230,7 @@ npm install`}</code>
             <ul className="space-y-2">
               <li className="flex items-center gap-2">
                 <CheckCircle2 className="h-5 w-5 text-green-500" />
-                <span>Created project with create-rana-app</span>
+                <span>Created project with create-cofounder-app</span>
               </li>
               <li className="flex items-center gap-2">
                 <CheckCircle2 className="h-5 w-5 text-green-500" />
@@ -238,7 +238,7 @@ npm install`}</code>
               </li>
               <li className="flex items-center gap-2">
                 <CheckCircle2 className="h-5 w-5 text-green-500" />
-                <span>Verified with rana doctor</span>
+                <span>Verified with cofounder doctor</span>
               </li>
               <li className="flex items-center gap-2">
                 <CheckCircle2 className="h-5 w-5 text-green-500" />
@@ -255,7 +255,7 @@ npm install`}</code>
 
           <p>
             Your environment is ready! In the next lesson, we&apos;ll build your
-            first RANA project from scratch to understand all the pieces.
+            first CoFounder project from scratch to understand all the pieces.
           </p>
         </article>
 
@@ -272,7 +272,7 @@ npm install`}</code>
             href="/training/fundamentals/lesson-4"
             className="btn-primary px-6 py-3 group"
           >
-            Next: Your First RANA Project
+            Next: Your First CoFounder Project
             <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>

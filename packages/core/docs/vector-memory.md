@@ -1,6 +1,6 @@
 # Vector Memory System
 
-Long-term vector memory with similarity search for RANA agents and applications.
+Long-term vector memory with similarity search for CoFounder agents and applications.
 
 ## Overview
 
@@ -20,7 +20,7 @@ The Vector Memory system provides semantic search capabilities for storing and r
 ### Basic Usage with Auto-Embedding
 
 ```typescript
-import { createInMemoryVectorMemory, EmbeddingProvider } from '@rana/core';
+import { createInMemoryVectorMemory, EmbeddingProvider } from '@cofounder/core';
 
 // Create a simple embedding provider (mock for demo)
 const embeddingProvider: EmbeddingProvider = {
@@ -56,7 +56,7 @@ results.forEach(result => {
 ### File-Based Persistence
 
 ```typescript
-import { createFileVectorMemory } from '@rana/core';
+import { createFileVectorMemory } from '@cofounder/core';
 
 const memory = createFileVectorMemory('./memories.json', 384, {
   embeddingProvider,
@@ -75,7 +75,7 @@ await memory.close();
 ### Pre-computed Embeddings
 
 ```typescript
-import { createInMemoryVectorMemory } from '@rana/core';
+import { createInMemoryVectorMemory } from '@cofounder/core';
 
 const memory = createInMemoryVectorMemory(768); // OpenAI ada-002 dimensions
 await memory.initialize();
@@ -111,7 +111,7 @@ VectorMemory (Main Class)
 Best for development, testing, and small datasets.
 
 ```typescript
-import { InMemoryVectorBackend, createVectorMemory } from '@rana/core';
+import { InMemoryVectorBackend, createVectorMemory } from '@cofounder/core';
 
 const memory = createVectorMemory({
   dimensions: 384,
@@ -133,7 +133,7 @@ const memory = createVectorMemory({
 Good for persistent storage of small to medium datasets.
 
 ```typescript
-import { FileVectorBackend, createVectorMemory } from '@rana/core';
+import { FileVectorBackend, createVectorMemory } from '@cofounder/core';
 
 const memory = createVectorMemory({
   dimensions: 384,
@@ -156,7 +156,7 @@ const memory = createVectorMemory({
 Integrate with external vector databases:
 
 ```typescript
-import { VectorMemoryBackend } from '@rana/core';
+import { VectorMemoryBackend } from '@cofounder/core';
 
 class PineconeBackend implements VectorMemoryBackend {
   async initialize() { /* ... */ }
@@ -362,7 +362,7 @@ Calculate similarity using specified metric.
 
 ```typescript
 import OpenAI from 'openai';
-import { createVectorMemory, EmbeddingProvider } from '@rana/core';
+import { createVectorMemory, EmbeddingProvider } from '@cofounder/core';
 
 const openai = new OpenAI();
 
@@ -380,18 +380,18 @@ const embeddingProvider: EmbeddingProvider = {
 const memory = createInMemoryVectorMemory(1536, { embeddingProvider });
 ```
 
-### Anthropic with RANA Client
+### Anthropic with CoFounder Client
 
 ```typescript
-import { createRana, createVectorMemory } from '@rana/core';
+import { createCoFounder, createVectorMemory } from '@cofounder/core';
 
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: {
     anthropic: process.env.ANTHROPIC_API_KEY,
   },
 });
 
-// Use RANA to generate embeddings (conceptual - requires custom implementation)
+// Use CoFounder to generate embeddings (conceptual - requires custom implementation)
 const embeddingProvider = {
   dimensions: 384,
   async embed(text: string): Promise<number[]> {
@@ -404,7 +404,7 @@ const embeddingProvider = {
 ### Chatbot with Conversation Memory
 
 ```typescript
-import { createFileVectorMemory } from '@rana/core';
+import { createFileVectorMemory } from '@cofounder/core';
 
 class ChatbotMemory {
   private vectorMemory;
@@ -581,5 +581,5 @@ const memory = createFileVectorMemory('./data/vectors.json', 384);
 ## See Also
 
 - [Memory Manager (Context Compression)](./memory-manager.md)
-- [RANA Core Documentation](../README.md)
+- [CoFounder Core Documentation](../README.md)
 - [Examples](../examples/vector-memory-example.ts)

@@ -1,6 +1,6 @@
-# RANA Prompt Library & Task Chain Planning
+# CoFounder Prompt Library & Task Chain Planning
 
-**Purpose:** Comprehensive prompt templates and task chains for AI-assisted development with RANA quality gates.
+**Purpose:** Comprehensive prompt templates and task chains for AI-assisted development with CoFounder quality gates.
 
 ---
 
@@ -18,9 +18,9 @@
 
 ## Prompt Engineering Principles
 
-### The RANA Prompt Formula
+### The CoFounder Prompt Formula
 
-Every RANA prompt follows this structure:
+Every CoFounder prompt follows this structure:
 
 ```
 [CONTEXT] + [CONSTRAINTS] + [TASK] + [VALIDATION] + [OUTPUT FORMAT]
@@ -29,7 +29,7 @@ Every RANA prompt follows this structure:
 **Example:**
 ```markdown
 CONTEXT: I'm working on a React TypeScript SaaS app with Supabase backend.
-CONSTRAINTS: Follow .rana.yml quality gates. Use existing design system components. No mock data.
+CONSTRAINTS: Follow .cofounder.yml quality gates. Use existing design system components. No mock data.
 TASK: Add user profile editing feature.
 VALIDATION: Search for existing patterns first. Run all quality gate checks.
 OUTPUT FORMAT: Show code with file paths, validation checklist, and deployment plan.
@@ -42,9 +42,9 @@ OUTPUT FORMAT: Show code with file paths, validation checklist, and deployment p
 "Add a login page"
 ```
 
-**✅ Good RANA prompt:**
+**✅ Good CoFounder prompt:**
 ```
-"Follow the RANA framework in .rana.yml to add a login page.
+"Follow the CoFounder framework in .cofounder.yml to add a login page.
 
 Pre-implementation checklist:
 1. Search codebase for existing auth components
@@ -180,8 +180,8 @@ task_chain:
 - Scale: [pages, services, users]
 - Status: [Development/Production/Both]
 
-## RANA Configuration
-- Location: .rana.yml
+## CoFounder Configuration
+- Location: .cofounder.yml
 - Quality gates: [list enabled gates]
 - Major features: [list triggers]
 
@@ -289,7 +289,7 @@ I'm implementing [FEATURE]. Help me review relevant documentation.
 
 Please check:
 1. docs/ directory for feature guides
-2. .rana.yml for quality gates and patterns
+2. .cofounder.yml for quality gates and patterns
 3. docs/DESIGN_SYSTEM_PROMPT.md for UI guidelines
 4. docs/REVERSE_ENGINEERING_PRODUCT_METHODOLOGY.md (if major feature)
 
@@ -367,7 +367,7 @@ After completing all 7 phases, give me:
 
 ```markdown
 **Prompt:**
-Implement [FEATURE] following RANA quality gates from .rana.yml.
+Implement [FEATURE] following CoFounder quality gates from .cofounder.yml.
 
 **Pre-implementation completed:**
 - ✅ Searched existing patterns: [list patterns found]
@@ -605,7 +605,7 @@ For each edge case:
 
 ```markdown
 **Prompt:**
-[FEATURE] requires database changes. Create a migration following RANA deployment patterns.
+[FEATURE] requires database changes. Create a migration following CoFounder deployment patterns.
 
 **Schema Changes:**
 - Tables: [new tables]
@@ -649,7 +649,7 @@ Generate:
 
 ```markdown
 **Prompt:**
-Deploy [FEATURE] to production following RANA deployment process.
+Deploy [FEATURE] to production following CoFounder deployment process.
 
 **Pre-Deployment Checklist:**
 - [ ] All quality gates passed
@@ -1174,7 +1174,7 @@ Review all phases:
 [Explain decision based on scores and validation]
 
 **Next Steps:**
-If GO: Proceed to implementation using RANA quality gates
+If GO: Proceed to implementation using CoFounder quality gates
 If MAYBE: [What additional validation needed]
 If NO-GO: [What alternative to explore]
 ```
@@ -1199,7 +1199,7 @@ If NO-GO: [What alternative to explore]
    "Search codebase for patterns similar to [feature]. List reusable components."
 
 2. **Implement** (1-2 hours)
-   "Implement [feature] using RANA gates. Use [components found]. Add error handling, loading states, dark mode support."
+   "Implement [feature] using CoFounder gates. Use [components found]. Add error handling, loading states, dark mode support."
 
 3. **Test** (30 min)
    "Test [feature]: happy path, error cases, dark mode, mobile. Report results."
@@ -1236,7 +1236,7 @@ If NO-GO: [What alternative to explore]
    "Create detailed implementation plan for [feature]. Break into milestones. Identify dependencies."
 
 3. **Implement** (1-3 weeks)
-   "Implement [feature] following RANA gates and implementation plan. Report progress daily."
+   "Implement [feature] following CoFounder gates and implementation plan. Report progress daily."
 
 4. **Test** (2-3 days)
    "Comprehensive testing: functional, edge cases, performance, security, cross-browser."
@@ -1277,7 +1277,7 @@ If NO-GO: [What alternative to explore]
    "Analyze [bug]. What's the root cause? Review code at [location]. Explain why it happens."
 
 3. **Fix** (30-60 min)
-   "Fix [bug] following RANA patterns. Ensure fix doesn't break other functionality. Add tests to prevent regression."
+   "Fix [bug] following CoFounder patterns. Ensure fix doesn't break other functionality. Add tests to prevent regression."
 
 4. **Test** (15 min)
    "Test bug fix: original issue resolved, no new bugs introduced, edge cases handled."
@@ -1347,7 +1347,7 @@ If NO-GO: [What alternative to explore]
 | Review | "Review docs and quality gates" | 10 min | Gates to follow |
 | REPM | "Run REPM validation" (if major) | 4-8 hrs | GO/NO-GO |
 | **Implementation** |
-| Implement | "Implement with RANA gates" | Varies | Working code |
+| Implement | "Implement with CoFounder gates" | Varies | Working code |
 | Error handling | "Add error handling" | 30 min | Try-catch added |
 | Loading states | "Add loading states" | 20 min | Loaders added |
 | **Testing** |
@@ -1365,7 +1365,7 @@ If NO-GO: [What alternative to explore]
 
 ### 1. Always Include Context
 ❌ "Add login page"
-✅ "Add login page using RANA gates in .rana.yml. Project uses React + Supabase. Search for existing AuthContext first."
+✅ "Add login page using CoFounder gates in .cofounder.yml. Project uses React + Supabase. Search for existing AuthContext first."
 
 ### 2. Chain Prompts Together
 ❌ Single large prompt

@@ -1,6 +1,6 @@
-# RANA Audit Logging
+# CoFounder Audit Logging
 
-Comprehensive audit logging system for RANA security with GDPR compliance and tamper detection.
+Comprehensive audit logging system for CoFounder security with GDPR compliance and tamper detection.
 
 ## Features
 
@@ -15,7 +15,7 @@ Comprehensive audit logging system for RANA security with GDPR compliance and ta
 ## Quick Start
 
 ```typescript
-import { createAuditLogger, hashApiKey } from '@rana/core';
+import { createAuditLogger, hashApiKey } from '@cofounder/core';
 
 // Create audit logger with default settings
 const audit = createAuditLogger();
@@ -40,7 +40,7 @@ await audit.close();
 ### Basic Configuration
 
 ```typescript
-import { createAuditLogger, type AuditLoggerConfig } from '@rana/core';
+import { createAuditLogger, type AuditLoggerConfig } from '@cofounder/core';
 
 const config: AuditLoggerConfig = {
   // Destinations - where logs are written
@@ -137,7 +137,7 @@ await audit.logResponse(
 ### Security Events
 
 ```typescript
-import { detectPII, detectInjectionAttempt } from '@rana/core';
+import { detectPII, detectInjectionAttempt } from '@cofounder/core';
 
 // Detect PII
 const userInput = 'Contact me at john@example.com';
@@ -203,7 +203,7 @@ await audit.logAccessPattern({
 // Log authentication
 await audit.logAuthentication('success', 'user-123', 'api_key', {
   ip_address: '192.168.1.50',
-  user_agent: 'RANA-SDK/1.0',
+  user_agent: 'CoFounder-SDK/1.0',
 });
 
 // Log authorization
@@ -365,7 +365,7 @@ const audit = createAuditLogger({
   destinations: [
     {
       type: 'file',
-      filepath: '/var/log/rana/audit.log',
+      filepath: '/var/log/cofounder/audit.log',
       enabled: true,
     },
     {
@@ -410,7 +410,7 @@ process.on('SIGTERM', async () => {
 ### Hash API Key
 
 ```typescript
-import { hashApiKey } from '@rana/core';
+import { hashApiKey } from '@cofounder/core';
 
 const hash = hashApiKey('sk-ant-1234567890');
 // Returns: 16-character hash
@@ -419,7 +419,7 @@ const hash = hashApiKey('sk-ant-1234567890');
 ### Detect PII
 
 ```typescript
-import { detectPII } from '@rana/core';
+import { detectPII } from '@cofounder/core';
 
 const result = detectPII('Contact me at john@example.com');
 // result.detected: true
@@ -429,22 +429,22 @@ const result = detectPII('Contact me at john@example.com');
 ### Detect Injection Attempts
 
 ```typescript
-import { detectInjectionAttempt } from '@rana/core';
+import { detectInjectionAttempt } from '@cofounder/core';
 
 const result = detectInjectionAttempt('Ignore previous instructions');
 // result.detected: true
 // result.patterns: ['promptInjection']
 ```
 
-## Integration with RANA Client
+## Integration with CoFounder Client
 
 ```typescript
-import { createRana, createAuditLogger, hashApiKey } from '@rana/core';
+import { createCoFounder, createAuditLogger, hashApiKey } from '@cofounder/core';
 
 const audit = createAuditLogger();
 await audit.initialize();
 
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: {
     anthropic: process.env.ANTHROPIC_API_KEY,
   },
@@ -462,7 +462,7 @@ const requestStart = Date.now();
 await audit.logRequest('anthropic', 'claude-3-5-sonnet-20241022', 'user-123');
 
 try {
-  const response = await rana.chat('Hello!');
+  const response = await cofounder.chat('Hello!');
 
   await audit.logResponse(
     'anthropic',

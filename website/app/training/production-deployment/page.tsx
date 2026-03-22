@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { ArrowLeft, CheckCircle2, Circle, Play } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Production Deployment | RANA Training',
+  title: 'Production Deployment | CoFounder Training',
   description: 'Deploy, monitor, and scale your AI agents in production',
 };
 
@@ -126,7 +126,7 @@ export default function ProductionDeploymentPage() {
         <div className="mt-8 card bg-yellow-500/10 border-yellow-500/30">
           <p className="text-yellow-400 font-medium mb-2">Prerequisites</p>
           <p className="text-foreground-secondary">
-            Complete RANA Fundamentals and Building AI Agents before starting
+            Complete CoFounder Fundamentals and Building AI Agents before starting
             this module.
           </p>
         </div>

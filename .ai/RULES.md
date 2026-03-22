@@ -1,4 +1,4 @@
-# RANA AI Collaboration Rules
+# CoFounder AI Collaboration Rules
 
 > These rules guide AI assistants working on this project. They ensure consistency,
 > transparency, and effective human-AI collaboration.
@@ -112,8 +112,8 @@ When deprecating a document:
 
 ## 5. Project-Specific Rules
 
-### 5.1 RANA Framework
-- Follow the RANA Philosophy (see ROADMAP.md)
+### 5.1 CoFounder Framework
+- Follow the CoFounder Philosophy (see ROADMAP.md)
 - Prioritize developer experience over feature count
 - Always consider cost implications of AI features
 - Maintain TypeScript type safety

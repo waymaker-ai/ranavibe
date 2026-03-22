@@ -1,6 +1,6 @@
 /**
  * Code generation commands
- * rana generate, rana templates, rana explain
+ * cofounder generate, cofounder templates, cofounder explain
  */
 
 import { Command } from 'commander';
@@ -10,7 +10,7 @@ import ora from 'ora';
 import * as fs from 'fs';
 import * as path from 'path';
 
-// Import from @rana/generate
+// Import from @cofounder/generate
 import {
   generate,
   parseIntent,
@@ -22,14 +22,14 @@ import {
   getAllTemplates,
   getTemplatesByCategory,
   searchTemplates,
-} from '@rana/generate';
+} from '@cofounder/generate';
 
 import type {
   GeneratedFile,
   ParsedIntent,
   ImplementationPlan,
   ValidationResult,
-} from '@rana/generate';
+} from '@cofounder/generate';
 
 /**
  * Register generate commands
@@ -233,7 +233,7 @@ export function registerGenerateCommands(program: Command): void {
 async function runInteractiveWizard(options: any): Promise<string> {
   console.log();
   console.log(chalk.cyan('╭─────────────────────────────────────────────────╮'));
-  console.log(chalk.cyan('│   RANA Code Generator                          │'));
+  console.log(chalk.cyan('│   CoFounder Code Generator                          │'));
   console.log(chalk.cyan('│   Generate production-ready code from ideas    │'));
   console.log(chalk.cyan('╰─────────────────────────────────────────────────╯'));
   console.log();

@@ -1,5 +1,5 @@
 /**
- * Performance Monitoring for RANA Observability
+ * Performance Monitoring for CoFounder Observability
  * Tracks request latency, provider health, cache metrics, and more
  */
 

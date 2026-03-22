@@ -48,7 +48,7 @@ export class CostTracker {
     this.costs.push(response);
 
     if (this.config?.log_to_console) {
-      console.log(`[RANA Cost] $${response.cost.total_cost.toFixed(4)} | ${response.provider} | ${response.usage.total_tokens} tokens`);
+      console.log(`[CoFounder Cost] $${response.cost.total_cost.toFixed(4)} | ${response.provider} | ${response.usage.total_tokens} tokens`);
     }
 
     // TODO: Save to database if enabled
@@ -170,12 +170,12 @@ export class CostTracker {
           );
         case 'warn':
           console.warn(
-            `[RANA BUDGET WARNING] Budget exceeded: $${status.spent.toFixed(4)} / $${status.limit.toFixed(2)}`
+            `[CoFounder BUDGET WARNING] Budget exceeded: $${status.spent.toFixed(4)} / $${status.limit.toFixed(2)}`
           );
           break;
         case 'log':
           console.log(
-            `[RANA BUDGET] Exceeded: $${status.spent.toFixed(4)} / $${status.limit.toFixed(2)}`
+            `[CoFounder BUDGET] Exceeded: $${status.spent.toFixed(4)} / $${status.limit.toFixed(2)}`
           );
           break;
       }
@@ -192,7 +192,7 @@ export class CostTracker {
       }
 
       console.warn(
-        `[RANA BUDGET WARNING] ${status.percentUsed.toFixed(1)}% of budget used ` +
+        `[CoFounder BUDGET WARNING] ${status.percentUsed.toFixed(1)}% of budget used ` +
           `($${status.spent.toFixed(4)} / $${status.limit.toFixed(2)})`
       );
     }
@@ -338,7 +338,7 @@ export class CostTracker {
   }
 
   /**
-   * Estimate cost without RANA optimization
+   * Estimate cost without CoFounder optimization
    * Assumes everything would be GPT-4o without caching
    */
   private estimateWithoutOptimization(costs: RanaChatResponse[]): number {
@@ -346,7 +346,7 @@ export class CostTracker {
     const GPT4O_OUTPUT_COST = 10.0 / 1_000_000; // $10.00 per 1M tokens
 
     return costs.reduce((sum, c) => {
-      // Skip cached responses (wouldn't exist without RANA)
+      // Skip cached responses (wouldn't exist without CoFounder)
       if (c.cached) return sum;
 
       const input_cost = c.usage.prompt_tokens * GPT4O_INPUT_COST;

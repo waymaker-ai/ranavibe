@@ -48,7 +48,7 @@ crew = Crew(
 )
 
 result = crew.kickoff()`,
-    rana: `import { createPipeline } from '@rana/agents';
+    cofounder: `import { createPipeline } from '@cofounder/agents';
 
 const { orchestrator, execute } = createPipeline([
   {
@@ -91,7 +91,7 @@ crew = Crew(
 )
 
 result = crew.kickoff()`,
-    rana: `import { createWorkerPool } from '@rana/agents';
+    cofounder: `import { createWorkerPool } from '@cofounder/agents';
 
 const { execute } = createWorkerPool([
   { id: 'analyst-1', name: 'Analyst 1', capabilities: ['analyze'] },
@@ -127,7 +127,7 @@ agent = Agent(
 
 # Tool execution is handled by the agent
 # Custom tools require specific interface implementation`,
-    rana: `import { createTool, createAgent } from '@rana/agents';
+    cofounder: `import { createTool, createAgent } from '@cofounder/agents';
 
 // Simple tool creation
 const searchTool = createTool({
@@ -172,7 +172,7 @@ agent = Agent(
 
 # Memory is implicit and managed internally
 # Limited control over memory operations`,
-    rana: `import { SharedStateManager, createOrchestrator } from '@rana/agents';
+    cofounder: `import { SharedStateManager, createOrchestrator } from '@cofounder/agents';
 
 const orchestrator = createOrchestrator({
   conversationHistory: [],
@@ -213,11 +213,11 @@ export default function CrewAIComparisonPage() {
 
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            RANA vs CrewAI
+            CoFounder vs CrewAI
           </h1>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
             CrewAI made multi-agent systems accessible but is Python-only.
-            RANA brings similar patterns to TypeScript with better parallel
+            CoFounder brings similar patterns to TypeScript with better parallel
             execution and state management.
           </p>
         </div>
@@ -262,14 +262,14 @@ export default function CrewAIComparisonPage() {
                 <div>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="px-3 py-1 rounded-full bg-green-500/20 text-green-400 text-sm">
-                      RANA
+                      CoFounder
                     </span>
                     <span className="text-gray-500 text-sm">
-                      {example.rana.split('\n').length} lines
+                      {example.cofounder.split('\n').length} lines
                     </span>
                   </div>
                   <pre className="p-4 rounded-xl bg-gray-900 border border-gray-800 overflow-x-auto text-sm">
-                    <code className="text-gray-300">{example.rana}</code>
+                    <code className="text-gray-300">{example.cofounder}</code>
                   </pre>
                 </div>
               </div>
@@ -284,7 +284,7 @@ export default function CrewAIComparisonPage() {
               <thead>
                 <tr className="border-b border-gray-800">
                   <th className="py-4 px-4 font-semibold">Feature</th>
-                  <th className="py-4 px-4 font-semibold text-center">RANA</th>
+                  <th className="py-4 px-4 font-semibold text-center">CoFounder</th>
                   <th className="py-4 px-4 font-semibold text-center">CrewAI</th>
                 </tr>
               </thead>
@@ -335,10 +335,10 @@ export default function CrewAIComparisonPage() {
         </div>
 
         <div className="mt-16 p-8 rounded-2xl border border-gray-800 bg-gradient-to-br from-blue-900/20 to-purple-900/20">
-          <h2 className="text-2xl font-semibold mb-6">When to Choose RANA</h2>
+          <h2 className="text-2xl font-semibold mb-6">When to Choose CoFounder</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <h3 className="text-lg font-medium text-green-400 mb-4">Choose RANA if you:</h3>
+              <h3 className="text-lg font-medium text-green-400 mb-4">Choose CoFounder if you:</h3>
               <ul className="space-y-2 text-gray-300">
                 <li className="flex items-start gap-2">
                   <span className="text-green-400 mt-1">✓</span>
@@ -388,10 +388,10 @@ export default function CrewAIComparisonPage() {
 
         <div className="mt-16 text-center">
           <Link
-            href="https://github.com/waymaker-ai/ranavibe"
+            href="https://github.com/waymaker-ai/cofounder"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-black font-semibold hover:bg-gray-200 transition-colors"
           >
-            Try RANA Now
+            Try CoFounder Now
             <span>→</span>
           </Link>
         </div>

@@ -1,6 +1,6 @@
 /**
  * Logging Middleware
- * Request/Response logging for RANA chat requests
+ * Request/Response logging for CoFounder chat requests
  */
 
 import { randomUUID } from 'crypto';

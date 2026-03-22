@@ -2,7 +2,7 @@
 
 ## Reporting a Vulnerability
 
-The RANA team takes security bugs seriously. We appreciate your efforts to responsibly disclose your findings.
+The CoFounder team takes security bugs seriously. We appreciate your efforts to responsibly disclose your findings.
 
 ### How to Report
 
@@ -53,10 +53,10 @@ Security researchers who responsibly disclose vulnerabilities will be:
 - Use prepared statements (Prisma does this automatically)
 
 ### API Security
-- Implement rate limiting (RANA includes this)
+- Implement rate limiting (CoFounder includes this)
 - Validate all inputs
 - Use HTTPS in production
-- Enable security headers (RANA configures this)
+- Enable security headers (CoFounder configures this)
 
 ### Deployment Security
 - Use environment-specific configurations
@@ -64,9 +64,9 @@ Security researchers who responsibly disclose vulnerabilities will be:
 - Regularly update dependencies
 - Monitor for suspicious activity
 
-## Security Features in RANA
+## Security Features in CoFounder
 
-RANA includes security by default:
+CoFounder includes security by default:
 
 - ✅ **Rate Limiting** - Upstash Ratelimit configured
 - ✅ **Security Headers** - CSP, HSTS, X-Frame-Options
@@ -93,7 +93,7 @@ npx aads security:check
 Security updates are released as soon as possible. We recommend:
 - Enabling GitHub security alerts
 - Regularly running `npm audit`
-- Keeping RANA updated: `npx aads upgrade`
+- Keeping CoFounder updated: `npx aads upgrade`
 
 ## Additional Resources
 
@@ -103,4 +103,4 @@ Security updates are released as soon as possible. We recommend:
 
 ---
 
-**Thank you for helping keep RANA and our users safe! 🔒**
+**Thank you for helping keep CoFounder and our users safe! 🔒**

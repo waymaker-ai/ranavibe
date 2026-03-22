@@ -1,10 +1,10 @@
 /**
- * @rana/helpers - Quick LLM Helpers
+ * @cofounder/helpers - Quick LLM Helpers
  * One-line AI functions for common tasks
  *
  * @example
  * ```typescript
- * import { summarize, translate, classify, extract } from '@rana/helpers';
+ * import { summarize, translate, classify, extract } from '@cofounder/helpers';
  *
  * const summary = await summarize(longText);
  * const spanish = await translate(text, { to: 'es' });

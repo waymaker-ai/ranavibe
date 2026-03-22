@@ -113,7 +113,7 @@ Be strict but fair. A score of 0.8+ is good, 0.9+ is excellent.`;
  */
 export async function loadBaseline(
   baselineId: string,
-  baselineDir: string = '.rana/baselines'
+  baselineDir: string = '.cofounder/baselines'
 ): Promise<Baseline | null> {
   const fs = await import('fs/promises');
   const path = await import('path');
@@ -133,7 +133,7 @@ export async function loadBaseline(
  */
 export async function saveBaseline(
   baseline: Baseline,
-  baselineDir: string = '.rana/baselines'
+  baselineDir: string = '.cofounder/baselines'
 ): Promise<void> {
   const fs = await import('fs/promises');
   const path = await import('path');
@@ -288,7 +288,7 @@ export async function compareVersions(
  * List all baselines
  */
 export async function listBaselines(
-  baselineDir: string = '.rana/baselines'
+  baselineDir: string = '.cofounder/baselines'
 ): Promise<Baseline[]> {
   const fs = await import('fs/promises');
   const path = await import('path');
@@ -317,7 +317,7 @@ export async function listBaselines(
  */
 export async function deleteBaseline(
   baselineId: string,
-  baselineDir: string = '.rana/baselines'
+  baselineDir: string = '.cofounder/baselines'
 ): Promise<boolean> {
   const fs = await import('fs/promises');
   const path = await import('path');

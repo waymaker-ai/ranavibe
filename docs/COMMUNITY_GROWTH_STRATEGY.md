@@ -1,14 +1,14 @@
-# RANA Community Growth & Promotion Strategy
+# CoFounder Community Growth & Promotion Strategy
 
 **Date**: January 1, 2026
-**Mission**: Make RANA the most helpful, accessible AI framework for developers
+**Mission**: Make CoFounder the most helpful, accessible AI framework for developers
 **Model**: Free, open-source, community-driven
 
 ---
 
 ## Core Philosophy
 
-**RANA succeeds when developers succeed.**
+**CoFounder succeeds when developers succeed.**
 
 We're not selling software—we're:
 - ✅ Solving real problems
@@ -23,9 +23,9 @@ We're not selling software—we're:
 
 ### Phase 1: Make It Ridiculously Easy to Succeed (Now - Q1)
 
-#### 1. **Interactive Playground** - Try RANA in 30 seconds
+#### 1. **Interactive Playground** - Try CoFounder in 30 seconds
 ```
-https://rana.cx/playground
+https://cofounder.cx/playground
 ```
 
 **Features:**
@@ -42,11 +42,11 @@ https://rana.cx/playground
 - Share solutions with teammates
 
 #### 2. **Video Tutorials** - YouTube Series
-**"RANA in 5 Minutes"** - Weekly tutorials:
+**"CoFounder in 5 Minutes"** - Weekly tutorials:
 - Episode 1: "Build Your First AI Agent in 5 Minutes"
 - Episode 2: "Add Compliance to Any AI App"
 - Episode 3: "Multi-Agent Systems Made Simple"
-- Episode 4: "Voice AI with RANA"
+- Episode 4: "Voice AI with CoFounder"
 - Episode 5: "Healthcare Chatbot (HIPAA-Compliant)"
 
 **Format:**
@@ -57,7 +57,7 @@ https://rana.cx/playground
 
 #### 3. **Template Library** - Copy-Paste Solutions
 ```
-https://rana.cx/templates
+https://cofounder.cx/templates
 ```
 
 **Templates:**
@@ -77,7 +77,7 @@ https://rana.cx/templates
 - Customization guide
 - Video walkthrough
 
-#### 4. **"30-Day RANA Challenge"** - Learn by Building
+#### 4. **"30-Day CoFounder Challenge"** - Learn by Building
 **Free email course:**
 - Day 1-5: Basics (installation, first agent, tools)
 - Day 6-10: Guidelines & Compliance
@@ -101,7 +101,7 @@ https://rana.cx/templates
 - `#healthcare` - HIPAA-specific
 - `#finance` - SEC/FINRA-specific
 - `#multi-agent` - Complex systems
-- `#contributions` - Contributing to RANA
+- `#contributions` - Contributing to CoFounder
 - `#feature-requests` - What should we build?
 
 **Community Support:**
@@ -125,7 +125,7 @@ https://rana.cx/templates
 - Monthly "Project of the Month"
 - Contributor spotlights
 
-#### 3. **RANA Contributors Program**
+#### 3. **CoFounder Contributors Program**
 **Tiers:**
 - **Contributor**: First PR merged
 - **Active Contributor**: 5+ PRs merged
@@ -134,7 +134,7 @@ https://rana.cx/templates
 
 **Recognition:**
 - Badge on GitHub profile
-- Listing on RANA website
+- Listing on CoFounder website
 - Swag (stickers, t-shirts)
 - Conference speaking opportunities
 - Co-author blog posts
@@ -163,7 +163,7 @@ https://rana.cx/templates
 - "Multi-Agent Systems: Complete Guide"
 - "Voice AI: Building Your First Voice Agent"
 - "Compliance for Startups: What You Need to Know"
-- "Case Study: How [Company] Built [Product] with RANA"
+- "Case Study: How [Company] Built [Product] with CoFounder"
 
 **Format:**
 - Problem → Solution → Code → Results
@@ -173,12 +173,12 @@ https://rana.cx/templates
 
 #### 2. **Developer Guides** - In-Depth Resources
 **Comprehensive guides:**
-- "The Complete Guide to AI Agents with RANA"
+- "The Complete Guide to AI Agents with CoFounder"
 - "Healthcare AI: HIPAA Compliance Handbook"
 - "Financial AI: SEC/FINRA Compliance Guide"
 - "Multi-Agent Systems: Patterns & Best Practices"
 - "Production AI: Monitoring & Observability"
-- "Voice AI Development with RANA"
+- "Voice AI Development with CoFounder"
 
 **Each guide:**
 - 50+ pages
@@ -190,33 +190,33 @@ https://rana.cx/templates
 #### 3. **Case Studies** - Showcase Success
 **Real stories from real users:**
 - "How [Healthcare Startup] Built a HIPAA-Compliant Assistant in 2 Weeks"
-- "How [FinTech] Reduced LLM Costs by 73% with RANA"
+- "How [FinTech] Reduced LLM Costs by 73% with CoFounder"
 - "How [Enterprise] Deployed 50 AI Agents to Production"
 - "How [Legal Tech] Built Compliant Document Analysis"
 
 **Format:**
 - Company background
 - Problem they faced
-- Solution with RANA
+- Solution with CoFounder
 - Results (metrics!)
 - Code samples
 - Lessons learned
 
-#### 4. **Weekly Newsletter** - "RANA Weekly"
+#### 4. **Weekly Newsletter** - "CoFounder Weekly"
 **Content:**
 - New features & updates
 - Community highlights
 - Tutorial of the week
 - Project showcase
 - Tips & tricks
-- Job board (companies hiring RANA developers)
+- Job board (companies hiring CoFounder developers)
 
 ---
 
 ### Phase 4: Strategic Partnerships (Q2-Q4)
 
 #### 1. **Educational Institutions**
-**Program: "RANA for Education"**
+**Program: "CoFounder for Education"**
 - Free curriculum for universities
 - Professor training workshops
 - Student competitions
@@ -239,7 +239,7 @@ https://rana.cx/templates
 
 **Hackathons:**
 - Sponsor major hackathons
-- "Best Use of RANA" prize
+- "Best Use of CoFounder" prize
 - Mentor participants
 - Highlight winning projects
 
@@ -282,7 +282,7 @@ https://rana.cx/templates
 
 **Example tweets:**
 ```
-🚀 New in RANA: Extended Context Optimization
+🚀 New in CoFounder: Extended Context Optimization
 
 Handle 400K tokens efficiently while saving 70% on costs.
 
@@ -299,7 +299,7 @@ Perfect for:
 - Thought leadership articles
 - Case studies
 - Company announcements
-- Job postings (RANA developers)
+- Job postings (CoFounder developers)
 - Industry insights
 
 #### Reddit
@@ -314,7 +314,7 @@ Perfect for:
 **Strategy:**
 - Helpful answers, not promotion
 - Share knowledge first
-- Mention RANA when relevant
+- Mention CoFounder when relevant
 - Host AMAs quarterly
 
 #### YouTube
@@ -337,12 +337,12 @@ Perfect for:
 #### Product Hunt
 **Launches:**
 - Major version releases
-- New packages (@rana/graph, @rana/observability)
+- New packages (@cofounder/graph, @cofounder/observability)
 - Community milestones (10K stars, etc.)
 
 #### Hacker News
 **Posts:**
-- "Show HN: RANA - AI Framework with Built-in Compliance"
+- "Show HN: CoFounder - AI Framework with Built-in Compliance"
 - "Show HN: Extended Context Optimization for GPT-5"
 - Case studies & technical deep-dives
 - Ask HN: for feedback
@@ -375,14 +375,14 @@ Perfect for:
 ### Free Resources We Provide
 
 #### 1. **Starter Kits**
-- Next.js + RANA starter
-- Express + RANA API template
-- React + RANA UI components
-- Vue + RANA integration
-- Svelte + RANA kit
+- Next.js + CoFounder starter
+- Express + CoFounder API template
+- React + CoFounder UI components
+- Vue + CoFounder integration
+- Svelte + CoFounder kit
 
 #### 2. **UI Components**
-- `@rana/ui` - Pre-built chat interfaces
+- `@cofounder/ui` - Pre-built chat interfaces
 - Voice UI components
 - Multi-agent visualizations
 - Cost dashboards
@@ -415,7 +415,7 @@ Perfect for:
 
 ## 🏆 Community Programs
 
-### 1. **RANA Champions Program**
+### 1. **CoFounder Champions Program**
 **Who:** Active community members who help others
 **Benefits:**
 - Early access to features
@@ -447,7 +447,7 @@ Perfect for:
 **We provide:**
 - Free API credits
 - Mentors during event
-- Prizes for best RANA projects
+- Prizes for best CoFounder projects
 - Follow-up support
 - Showcase winning projects
 
@@ -493,7 +493,7 @@ Perfect for:
 
 ## 💡 Unique Value Propositions
 
-**Why developers choose RANA:**
+**Why developers choose CoFounder:**
 
 1. **"It Just Works"** - No config hell, works out of box
 2. **"Actually Free"** - No hidden costs, no bait-and-switch
@@ -554,7 +554,7 @@ Perfect for:
 
 **For developers:**
 1. ⭐ Star the repo
-2. Share your projects (#BuiltWithRANA)
+2. Share your projects (#BuiltWithCoFounder)
 3. Write blog posts
 4. Answer questions
 5. Report bugs
@@ -599,7 +599,7 @@ Perfect for:
 
 ### Days 31-60: Engagement
 - ✅ Host first virtual meetup
-- ✅ Launch RANA Champions program
+- ✅ Launch CoFounder Champions program
 - ✅ Create interactive playground
 - ✅ Start 30-Day Challenge
 - ✅ Publish first case study
@@ -621,4 +621,4 @@ Perfect for:
 
 **Remember: The best promotion is building something so useful that people can't help but talk about it.**
 
-**RANA's superpower = Making developers successful** 🚀
+**CoFounder's superpower = Making developers successful** 🚀

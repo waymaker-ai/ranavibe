@@ -113,7 +113,7 @@ export class AudioTranscriber {
       apiKey: config.apiKey ?? process.env.OPENAI_API_KEY ?? '',
       defaultLanguage: config.defaultLanguage ?? 'en',
       enableCache: config.enableCache ?? true,
-      cacheDir: config.cacheDir ?? '.rana/cache/transcriptions',
+      cacheDir: config.cacheDir ?? '.cofounder/cache/transcriptions',
     };
   }
 

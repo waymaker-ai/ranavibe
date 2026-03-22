@@ -3,7 +3,7 @@
  * Demonstrates local model execution with llama.cpp and ONNX
  */
 
-import { EdgeRuntime, HybridClient, ModelManager } from '@rana/core';
+import { EdgeRuntime, HybridClient, ModelManager } from '@cofounder/core';
 
 async function main() {
   // Example 1: Basic edge inference with llama.cpp

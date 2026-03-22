@@ -8,7 +8,7 @@
 
 ## Overview
 
-RANA provides interactive wizards for generating production-ready code. Each wizard guides you through options and generates complete, tested code.
+CoFounder provides interactive wizards for generating production-ready code. Each wizard guides you through options and generates complete, tested code.
 
 ---
 
@@ -30,31 +30,31 @@ RANA provides interactive wizards for generating production-ready code. Each wiz
 
 ```bash
 # Launch the full wizard
-rana generate wizard
+cofounder generate wizard
 
 # Or use specific wizards directly
-rana generate schema          # Database schema wizard
-rana generate api             # API generation wizard
-rana generate component       # Component wizard
+cofounder generate schema          # Database schema wizard
+cofounder generate api             # API generation wizard
+cofounder generate component       # Component wizard
 
 # Non-interactive mode
-rana generate schema "User, Post, Comment with Prisma"
-rana generate api "REST API for products with CRUD"
-rana generate component UserCard
+cofounder generate schema "User, Post, Comment with Prisma"
+cofounder generate api "REST API for products with CRUD"
+cofounder generate component UserCard
 ```
 
 ---
 
 ## Full Wizard
 
-The full wizard (`rana generate wizard`) provides a guided entry point to all generation options.
+The full wizard (`cofounder generate wizard`) provides a guided entry point to all generation options.
 
 ### Usage
 
 ```bash
-rana generate wizard
+cofounder generate wizard
 # or
-rana generate w
+cofounder generate w
 ```
 
 ### Options
@@ -80,9 +80,9 @@ Generate database schemas, models, and migrations.
 ### Usage
 
 ```bash
-rana generate schema
+cofounder generate schema
 # or
-rana generate schema "User, Post, Comment with Prisma for PostgreSQL"
+cofounder generate schema "User, Post, Comment with Prisma for PostgreSQL"
 ```
 
 ### Options
@@ -143,9 +143,9 @@ Generate REST, GraphQL, or tRPC APIs.
 ### Usage
 
 ```bash
-rana generate api
+cofounder generate api
 # or
-rana generate api "users CRUD API with authentication"
+cofounder generate api "users CRUD API with authentication"
 ```
 
 ### Options
@@ -224,10 +224,10 @@ Generate React/Next.js components with styling and tests.
 ### Usage
 
 ```bash
-rana generate component
+cofounder generate component
 # or
-rana generate component UserCard
-rana generate c UserCard
+cofounder generate component UserCard
+cofounder generate c UserCard
 ```
 
 ### Options
@@ -326,7 +326,7 @@ Generate forms with validation and submission handling.
 ### Usage
 
 ```bash
-rana generate form
+cofounder generate form
 ```
 
 ### Options
@@ -425,7 +425,7 @@ Generate complete authentication flows.
 ### Usage
 
 ```bash
-rana generate auth
+cofounder generate auth
 ```
 
 ### Options
@@ -459,7 +459,7 @@ Generate admin dashboards with charts and data tables.
 ### Usage
 
 ```bash
-rana generate dashboard
+cofounder generate dashboard
 ```
 
 ### Options
@@ -492,7 +492,7 @@ Generate complete full-stack features.
 ### Usage
 
 ```bash
-rana generate feature
+cofounder generate feature
 ```
 
 ### Options
@@ -534,7 +534,7 @@ import {
   parseIntent,
   createPlan,
   generateFromPlan,
-} from '@rana/generate';
+} from '@cofounder/generate';
 
 // High-level API
 const result = await generate('User authentication with OAuth', {
@@ -559,4 +559,4 @@ const files = await generateFromPlan(plan);
 
 - [Code Generation Templates Guide](./CODE_GENERATION_TEMPLATES_GUIDE.md)
 - [Natural Language Code Generation Spec](./NATURAL_LANGUAGE_CODE_GENERATION_SPEC.md)
-- [@rana/generate Package](../packages/generate/)
+- [@cofounder/generate Package](../packages/generate/)

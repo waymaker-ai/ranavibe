@@ -1,7 +1,7 @@
 {
-  "name": "@rana/guidelines",
+  "name": "@cofounder/guidelines",
   "version": "1.0.0",
-  "description": "Dynamic guideline management for RANA agents - Context-aware behavioral rules",
+  "description": "Dynamic guideline management for CoFounder agents - Context-aware behavioral rules",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -20,7 +20,7 @@
     "typecheck": "tsc --noEmit"
   },
   "keywords": [
-    "rana",
+    "cofounder",
     "guidelines",
     "ai-safety",
     "agent-control",
@@ -39,6 +39,6 @@
     "vitest": "^1.6.0"
   },
   "peerDependencies": {
-    "@rana/core": "^2.0.0"
+    "@cofounder/core": "^2.0.0"
   }
 }

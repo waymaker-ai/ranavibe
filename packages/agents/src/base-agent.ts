@@ -1,6 +1,6 @@
 /**
- * @rana/agents - BaseAgent
- * Abstract base class for all RANA agents
+ * @cofounder/agents - BaseAgent
+ * Abstract base class for all CoFounder agents
  */
 
 import {
@@ -14,7 +14,7 @@ import {
 import { compileVibe } from './vibe-spec';
 
 /**
- * Abstract base class for RANA agents
+ * Abstract base class for CoFounder agents
  *
  * @example
  * ```typescript

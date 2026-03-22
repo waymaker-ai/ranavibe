@@ -1,5 +1,5 @@
 /**
- * @rana/integrations/vercel
+ * @cofounder/integrations/vercel
  * Vercel one-click deploy integration
  *
  * Features:
@@ -11,11 +11,11 @@
  *
  * @example
  * ```typescript
- * import { createVercelConfig, deployToVercel } from '@rana/core';
+ * import { createVercelConfig, deployToVercel } from '@cofounder/core';
  *
  * // Generate vercel.json
  * const config = createVercelConfig({
- *   name: 'my-rana-app',
+ *   name: 'my-cofounder-app',
  *   framework: 'nextjs',
  *   regions: ['iad1', 'sfo1'],
  * });
@@ -23,7 +23,7 @@
  * // Deploy programmatically
  * const deployment = await deployToVercel({
  *   token: process.env.VERCEL_TOKEN,
- *   projectName: 'my-rana-app',
+ *   projectName: 'my-cofounder-app',
  * });
  * ```
  */
@@ -309,14 +309,14 @@ export function createVercelConfig(options: VercelConfigOptions = {}): VercelJso
 }
 
 /**
- * Create RANA-optimized vercel.json
+ * Create CoFounder-optimized vercel.json
  */
-export function createRanaVercelConfig(options: {
+export function createCoFounderVercelConfig(options: {
   name: string;
   providers?: string[];
   streaming?: boolean;
   edgeFunctions?: boolean;
-} = { name: 'rana-app' }): VercelJson {
+} = { name: 'cofounder-app' }): VercelJson {
   // Build environment variables for common AI providers
   const buildEnv: Record<string, string> = {};
   const providers = options.providers || ['ANTHROPIC', 'OPENAI'];

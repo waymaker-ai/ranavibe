@@ -6,7 +6,7 @@
 
 import { createContentFilter } from './filter';
 
-console.log('🛡️  RANA Content Filter Demo\n');
+console.log('🛡️  CoFounder Content Filter Demo\n');
 console.log('=' .repeat(50) + '\n');
 
 // Create a filter

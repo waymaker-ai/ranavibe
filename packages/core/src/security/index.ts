@@ -1,5 +1,5 @@
 /**
- * RANA Security Module
+ * CoFounder Security Module
  * Security features for API key management and protection
  */
 

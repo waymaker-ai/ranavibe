@@ -3,13 +3,13 @@
  * Demonstrates request queuing with priority, concurrency, and timeout
  */
 
-import { createRana } from '../src';
+import { createCoFounder } from '../src';
 
 async function main() {
-  console.log('=== RANA Request Queue Example ===\n');
+  console.log('=== CoFounder Request Queue Example ===\n');
 
-  // Create RANA client with queue enabled
-  const rana = createRana({
+  // Create CoFounder client with queue enabled
+  const cofounder = createCoFounder({
     providers: {
       anthropic: process.env.ANTHROPIC_API_KEY || 'demo-key',
       openai: process.env.OPENAI_API_KEY || 'demo-key',
@@ -30,11 +30,11 @@ async function main() {
     },
   });
 
-  console.log('Queue enabled:', rana.queue.enabled());
-  console.log('Initial stats:', rana.queue.stats());
+  console.log('Queue enabled:', cofounder.queue.enabled());
+  console.log('Initial stats:', cofounder.queue.stats());
 
   // Access the queue instance directly for advanced usage
-  const queue = rana.queue.instance();
+  const queue = cofounder.queue.instance();
   if (queue) {
     // Listen to queue events
     queue.on('added', (event) => {
@@ -67,7 +67,7 @@ async function main() {
 
   // Send all requests concurrently
   const promises = requests.map(req =>
-    rana.chat({
+    cofounder.chat({
       messages: [{ role: 'user', content: req.message }],
       priority: req.priority,
       model: 'claude-3-5-haiku-20241022',
@@ -92,7 +92,7 @@ async function main() {
 
   // Example 2: Queue statistics
   console.log('\n--- Example 2: Queue Statistics ---');
-  const finalStats = rana.queue.stats();
+  const finalStats = cofounder.queue.stats();
   if (finalStats) {
     console.log('Final Statistics:');
     console.log(`  Total Completed: ${finalStats.completed}`);

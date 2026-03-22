@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'State Management Patterns | RANA Fundamentals',
+  title: 'State Management Patterns | CoFounder Fundamentals',
   description: 'Learn effective state management patterns for AI applications',
 };
 
@@ -36,13 +36,13 @@ export default function Lesson7Page() {
           <h2>Conversation State</h2>
 
           <p>
-            RANA hooks manage conversation state internally, but you may need
+            CoFounder hooks manage conversation state internally, but you may need
             additional state for complex applications:
           </p>
 
           <div className="code-block">
             <pre>
-              <code>{`import { useChat } from '@rana/react';
+              <code>{`import { useChat } from '@cofounder/react';
 import { create } from 'zustand';
 
 // Global conversation store
@@ -99,7 +99,7 @@ function ChatWithHistory() {
           <div className="code-block">
             <pre>
               <code>{`import { useState, useCallback } from 'react';
-import { useChat } from '@rana/react';
+import { useChat } from '@cofounder/react';
 
 function StreamingChat() {
   // Track streaming state
@@ -270,7 +270,7 @@ const useAgentOrchestrator = create<AgentState>((set, get) => ({
 
           <div className="code-block">
             <pre>
-              <code>{`import { useChat } from '@rana/react';
+              <code>{`import { useChat } from '@cofounder/react';
 import { useEffect } from 'react';
 
 function PersistentChat({ conversationId }) {
@@ -382,7 +382,7 @@ function Chat() {
           <div className="code-block">
             <pre>
               <code>{`import { useMemo } from 'react';
-import { useChat } from '@rana/react';
+import { useChat } from '@cofounder/react';
 
 function ChatAnalytics() {
   const chat = useChat({ api: '/api/chat' });

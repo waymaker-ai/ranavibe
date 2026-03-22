@@ -1,0 +1,53 @@
+{
+  "name": "cofounder-guardrails",
+  "displayName": "CoFounder Guardrails",
+  "description": "AI guardrails for VS Code - PII scanning, injection detection, compliance checking, cost tracking",
+  "version": "1.0.0",
+  "publisher": "waymaker",
+  "engines": { "vscode": "^1.85.0" },
+  "categories": ["Linters", "Other"],
+  "activationEvents": ["onLanguage:typescript", "onLanguage:javascript", "onLanguage:python", "onCommand:cofounder.scan"],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      { "command": "cofounder.scan", "title": "CoFounder: Scan Current File" },
+      { "command": "cofounder.scanWorkspace", "title": "CoFounder: Scan Workspace" },
+      { "command": "cofounder.showDashboard", "title": "CoFounder: Show Dashboard" },
+      { "command": "cofounder.checkCompliance", "title": "CoFounder: Check Compliance" },
+      { "command": "cofounder.estimateCost", "title": "CoFounder: Estimate Cost" }
+    ],
+    "configuration": {
+      "title": "CoFounder Guardrails",
+      "properties": {
+        "cofounder.enableInlineScan": { "type": "boolean", "default": true, "description": "Enable real-time inline scanning" },
+        "cofounder.piiMode": { "type": "string", "enum": ["detect", "redact", "block"], "default": "detect" },
+        "cofounder.injectionSensitivity": { "type": "string", "enum": ["low", "medium", "high"], "default": "medium" },
+        "cofounder.approvedModels": { "type": "array", "default": [], "description": "Approved model names" },
+        "cofounder.complianceFrameworks": { "type": "array", "default": ["safety"], "description": "Active compliance frameworks" }
+      }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        { "id": "cofounder", "title": "CoFounder Guardrails", "icon": "$(shield)" }
+      ]
+    },
+    "views": {
+      "cofounder": [
+        { "id": "cofounder.findings", "name": "Findings" },
+        { "id": "cofounder.policies", "name": "Policies" },
+        { "id": "cofounder.dashboard", "name": "Dashboard" }
+      ]
+    }
+  },
+  "scripts": {
+    "build": "tsup src/extension.ts --format cjs --external vscode",
+    "watch": "tsup src/extension.ts --format cjs --external vscode --watch",
+    "package": "npx vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "^20.10.0",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3"
+  }
+}

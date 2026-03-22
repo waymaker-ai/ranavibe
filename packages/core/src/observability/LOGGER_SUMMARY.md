@@ -1,8 +1,8 @@
-# RANA Logging System - Implementation Summary
+# CoFounder Logging System - Implementation Summary
 
 ## Overview
 
-The RANA logging system provides comprehensive observability for LLM operations with support for structured logging, multiple transports, request/response tracking, and privacy-aware data handling.
+The CoFounder logging system provides comprehensive observability for LLM operations with support for structured logging, multiple transports, request/response tracking, and privacy-aware data handling.
 
 ## Location
 
@@ -61,7 +61,7 @@ logger.info('Config', { api_key: 'sk-123' }); // Logs as '[REDACTED]'
 
 #### Global Logger
 ```typescript
-import { logger, getGlobalLogger, setGlobalLogger } from '@rana/core';
+import { logger, getGlobalLogger, setGlobalLogger } from '@cofounder/core';
 
 logger.info('Using global logger instance');
 ```
@@ -117,7 +117,7 @@ createCustomTransport({
 
 ### 3. Request/Response Logging Middleware (`middleware.ts`)
 
-Specialized middleware for logging RANA chat requests and responses:
+Specialized middleware for logging CoFounder chat requests and responses:
 
 ```typescript
 const middleware = createLoggingMiddleware(logger, {
@@ -261,7 +261,7 @@ interface RequestResponseLog {
 
 ## Public API
 
-### Exports from `@rana/core`
+### Exports from `@cofounder/core`
 
 ```typescript
 // Logger
@@ -272,7 +272,7 @@ import {
   setGlobalLogger,
   logger,
   LOG_LEVELS 
-} from '@rana/core';
+} from '@cofounder/core';
 
 // Transports
 import {
@@ -282,13 +282,13 @@ import {
   createConsoleTransport,
   createFileTransport,
   createCustomTransport
-} from '@rana/core';
+} from '@cofounder/core';
 
 // Middleware
 import {
   RequestResponseLogger,
   createLoggingMiddleware
-} from '@rana/core';
+} from '@cofounder/core';
 
 // Types
 import type {
@@ -307,7 +307,7 @@ import type {
   LoggingMiddlewareConfig,
   LoggingMiddleware,
   LogContext
-} from '@rana/core';
+} from '@cofounder/core';
 ```
 
 ## Usage Examples
@@ -315,7 +315,7 @@ import type {
 ### Basic Logging
 
 ```typescript
-import { createLogger } from '@rana/core';
+import { createLogger } from '@cofounder/core';
 
 const logger = createLogger({ level: 'info' });
 
@@ -350,7 +350,7 @@ const logger = createLogger({
 ### Request/Response Logging
 
 ```typescript
-import { createLoggingMiddleware } from '@rana/core';
+import { createLoggingMiddleware } from '@cofounder/core';
 
 const middleware = createLoggingMiddleware(logger, {
   includeMessages: true,
@@ -363,18 +363,18 @@ const requestId = 'req-123';
 middleware.onRequest(request, requestId);
 
 try {
-  const response = await rana.chat(request);
+  const response = await cofounder.chat(request);
   middleware.onResponse(request, response, duration, requestId);
 } catch (error) {
   middleware.onError(request, error, duration, requestId);
 }
 ```
 
-## Integration with RANA Core
+## Integration with CoFounder Core
 
-The logging system is fully integrated with RANA's existing infrastructure:
+The logging system is fully integrated with CoFounder's existing infrastructure:
 
-1. **Exported from main package** - All logging APIs available via `@rana/core`
+1. **Exported from main package** - All logging APIs available via `@cofounder/core`
 2. **Works with existing types** - Uses `RanaChatRequest`, `RanaChatResponse`, `LLMProvider` types
 3. **Part of observability module** - Alongside tracer, performance monitor, error tracker
 4. **Consistent patterns** - Follows same patterns as cache, persistence, and other modules
@@ -421,7 +421,7 @@ Example file provided at `logger.example.ts` with comprehensive examples:
 ✅ All files compile successfully
 ✅ TypeScript types are correct
 ✅ No build errors
-✅ Exports properly available from `@rana/core`
+✅ Exports properly available from `@cofounder/core`
 
 ## Next Steps
 

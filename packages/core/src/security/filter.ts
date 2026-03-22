@@ -1,5 +1,5 @@
 /**
- * Content Filter for RANA Security
+ * Content Filter for CoFounder Security
  * Filters profanity, harmful content, spam, and custom blocklisted words/phrases
  */
 

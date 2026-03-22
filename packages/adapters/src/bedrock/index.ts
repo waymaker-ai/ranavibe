@@ -1,0 +1,1 @@
+export { createBedrockAdapter } from './adapter';

@@ -1,5 +1,5 @@
 /**
- * @rana/agents - RAG QA Agent
+ * @cofounder/agents - RAG QA Agent
  * Answers questions using knowledge base retrieval
  */
 

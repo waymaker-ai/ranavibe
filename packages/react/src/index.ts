@@ -1,13 +1,13 @@
 /**
- * @rana/react
- * React hooks and components for RANA
+ * @cofounder/react
+ * React hooks and components for CoFounder
  *
  * @example
  * ```tsx
- * import { createRana } from '@rana/core';
- * import { RanaProvider, useRanaChat } from '@rana/react';
+ * import { createCoFounder } from '@cofounder/core';
+ * import { RanaProvider, useCoFounderChat } from '@cofounder/react';
  *
- * const rana = createRana({
+ * const cofounder = createCoFounder({
  *   providers: {
  *     anthropic: process.env.ANTHROPIC_API_KEY
  *   }
@@ -15,14 +15,14 @@
  *
  * function App() {
  *   return (
- *     <RanaProvider client={rana}>
+ *     <RanaProvider client={cofounder}>
  *       <ChatComponent />
  *     </RanaProvider>
  *   );
  * }
  *
  * function ChatComponent() {
- *   const { chat, response, loading } = useRanaChat(rana, {
+ *   const { chat, response, loading } = useCoFounderChat(cofounder, {
  *     provider: 'anthropic',
  *     optimize: 'cost'
  *   });
@@ -38,15 +38,15 @@
  */
 
 // Provider and context
-export { RanaProvider, useRana } from './provider';
+export { RanaProvider, useCoFounder } from './provider';
 
 // Hooks
 export {
-  useRanaChat,
-  useRanaStream,
-  useRanaCost,
-  useRanaOptimize,
-  useRanaConversation,
+  useCoFounderChat,
+  useCoFounderStream,
+  useCoFounderCost,
+  useCoFounderOptimize,
+  useCoFounderConversation,
 } from './hooks';
 
 // Types

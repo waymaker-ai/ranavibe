@@ -1,6 +1,6 @@
 /**
  * Audit Logger Tests
- * Test suite for RANA audit logging functionality
+ * Test suite for CoFounder audit logging functionality
  */
 
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';

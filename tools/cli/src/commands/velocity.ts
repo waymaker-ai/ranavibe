@@ -1,7 +1,7 @@
 /**
  * Velocity Analysis Command
  * Process Intelligence - Development velocity tracking and insights
- * Inspired by HatchWorks GenIQ but with RANA's cost-focused approach
+ * Inspired by HatchWorks GenIQ but with CoFounder's cost-focused approach
  */
 
 import chalk from 'chalk';
@@ -28,8 +28,8 @@ interface VelocityMetrics {
 
 interface CostMetrics {
   estimatedLLMCalls: number;
-  estimatedCostWithoutRANA: number;
-  estimatedCostWithRANA: number;
+  estimatedCostWithoutCoFounder: number;
+  estimatedCostWithCoFounder: number;
   savings: number;
   savingsPercentage: number;
 }
@@ -49,7 +49,7 @@ export async function velocityAnalyze(options: {
 } = {}) {
   const period = options.period || '30d';
 
-  console.log(chalk.bold.cyan('\n📊 RANA Velocity Analysis\n'));
+  console.log(chalk.bold.cyan('\n📊 CoFounder Velocity Analysis\n'));
   console.log(chalk.gray(`Analyzing development velocity for the last ${period}...\n`));
 
   try {
@@ -191,18 +191,18 @@ function estimateCosts(metrics: VelocityMetrics): CostMetrics {
   const estimatedLLMCalls = Math.round(metrics.linesAdded * (metrics.aiGeneratedEstimate / 100) * 0.1);
 
   // Average cost per LLM call without optimization: ~$0.05
-  // Average cost per LLM call with RANA optimization: ~$0.015
-  const estimatedCostWithoutRANA = estimatedLLMCalls * 0.05;
-  const estimatedCostWithRANA = estimatedLLMCalls * 0.015;
-  const savings = estimatedCostWithoutRANA - estimatedCostWithRANA;
-  const savingsPercentage = estimatedCostWithoutRANA > 0
-    ? (savings / estimatedCostWithoutRANA) * 100
+  // Average cost per LLM call with CoFounder optimization: ~$0.015
+  const estimatedCostWithoutCoFounder = estimatedLLMCalls * 0.05;
+  const estimatedCostWithCoFounder = estimatedLLMCalls * 0.015;
+  const savings = estimatedCostWithoutCoFounder - estimatedCostWithCoFounder;
+  const savingsPercentage = estimatedCostWithoutCoFounder > 0
+    ? (savings / estimatedCostWithoutCoFounder) * 100
     : 70;
 
   return {
     estimatedLLMCalls,
-    estimatedCostWithoutRANA,
-    estimatedCostWithRANA,
+    estimatedCostWithoutCoFounder,
+    estimatedCostWithCoFounder,
     savings,
     savingsPercentage: Math.round(savingsPercentage),
   };
@@ -233,7 +233,7 @@ function generateInsights(metrics: VelocityMetrics, costs: CostMetrics): string[
 
   // Cost insight
   if (costs.savings > 100) {
-    insights.push(`💰 Estimated ${costs.savingsPercentage}% cost savings with RANA ($${costs.savings.toFixed(2)})`);
+    insights.push(`💰 Estimated ${costs.savingsPercentage}% cost savings with CoFounder ($${costs.savings.toFixed(2)})`);
   }
 
   // Code churn insight
@@ -254,8 +254,8 @@ function generateRecommendations(metrics: VelocityMetrics, costs: CostMetrics): 
   }
 
   // Cost optimization recommendations
-  if (costs.estimatedCostWithoutRANA > costs.estimatedCostWithRANA * 1.5) {
-    recommendations.push('Run `rana llm:optimize` to apply cost optimizations');
+  if (costs.estimatedCostWithoutCoFounder > costs.estimatedCostWithCoFounder * 1.5) {
+    recommendations.push('Run `cofounder llm:optimize` to apply cost optimizations');
   }
 
   // Velocity recommendations
@@ -312,8 +312,8 @@ function displayCostInsights(report: VelocityReport) {
   console.log(chalk.bold('💰 Cost Analysis'));
   console.log(chalk.gray('─'.repeat(60)));
   console.log(`  ${chalk.white('Estimated LLM Calls:')}     ${chalk.cyan(costs.estimatedLLMCalls.toLocaleString())}`);
-  console.log(`  ${chalk.white('Cost Without RANA:')}       ${chalk.red('$' + costs.estimatedCostWithoutRANA.toFixed(2))}`);
-  console.log(`  ${chalk.white('Cost With RANA:')}          ${chalk.green('$' + costs.estimatedCostWithRANA.toFixed(2))}`);
+  console.log(`  ${chalk.white('Cost Without CoFounder:')}       ${chalk.red('$' + costs.estimatedCostWithoutCoFounder.toFixed(2))}`);
+  console.log(`  ${chalk.white('Cost With CoFounder:')}          ${chalk.green('$' + costs.estimatedCostWithCoFounder.toFixed(2))}`);
   console.log(`  ${chalk.white('Savings:')}                 ${chalk.green('$' + costs.savings.toFixed(2))} (${costs.savingsPercentage}%)`);
   console.log();
 }
@@ -359,7 +359,7 @@ function displayRecommendations(report: VelocityReport) {
 }
 
 function exportReport(report: VelocityReport, format: string) {
-  const filename = `rana-velocity-report-${new Date().toISOString().split('T')[0]}`;
+  const filename = `cofounder-velocity-report-${new Date().toISOString().split('T')[0]}`;
 
   if (format === 'json') {
     fs.writeFileSync(`${filename}.json`, JSON.stringify(report, null, 2));
@@ -384,8 +384,8 @@ function generateCSV(report: VelocityReport): string {
     ['Lines Deleted', metrics.linesDeleted.toString()],
     ['AI Generated %', metrics.aiGeneratedEstimate.toString()],
     ['Estimated LLM Calls', costs.estimatedLLMCalls.toString()],
-    ['Cost Without RANA', costs.estimatedCostWithoutRANA.toFixed(2)],
-    ['Cost With RANA', costs.estimatedCostWithRANA.toFixed(2)],
+    ['Cost Without CoFounder', costs.estimatedCostWithoutCoFounder.toFixed(2)],
+    ['Cost With CoFounder', costs.estimatedCostWithCoFounder.toFixed(2)],
     ['Savings', costs.savings.toFixed(2)],
     ['Savings %', costs.savingsPercentage.toString()],
   ];
@@ -394,7 +394,7 @@ function generateCSV(report: VelocityReport): string {
 }
 
 export async function velocitySetup() {
-  console.log(chalk.bold.cyan('\n📊 RANA Velocity Tracking Setup\n'));
+  console.log(chalk.bold.cyan('\n📊 CoFounder Velocity Tracking Setup\n'));
   console.log(chalk.gray('Setting up development velocity tracking...\n'));
 
   // Check for git
@@ -418,5 +418,5 @@ export async function velocitySetup() {
   };
 
   console.log(chalk.green('✓ Velocity tracking enabled'));
-  console.log(chalk.gray('\nRun `rana analyze:velocity` to see your development metrics.\n'));
+  console.log(chalk.gray('\nRun `cofounder analyze:velocity` to see your development metrics.\n'));
 }

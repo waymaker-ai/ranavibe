@@ -1,4 +1,4 @@
-# RANA Whitepaper
+# CoFounder Whitepaper
 ## Rapid AI Native Architecture: A Unified Framework for Production AI Development
 
 **Version 1.0**
@@ -19,9 +19,9 @@ christian@waymaker.cx
 
 Modern AI application development faces a critical fragmentation problem: developers must integrate multiple Large Language Model (LLM) providers, each with unique APIs, pricing models, and capabilities. This fragmentation creates vendor lock-in, increases costs by an average of 70%, and extends development time from days to weeks.
 
-RANA (Rapid AI Native Architecture) addresses these challenges by providing a unified, production-ready framework that abstracts nine major LLM providers behind a single API. Through intelligent routing, automatic cost optimization, and enterprise-grade security, RANA reduces AI development time by 120x while cutting operational costs by 70%.
+CoFounder (Rapid AI Native Architecture) addresses these challenges by providing a unified, production-ready framework that abstracts nine major LLM providers behind a single API. Through intelligent routing, automatic cost optimization, and enterprise-grade security, CoFounder reduces AI development time by 120x while cutting operational costs by 70%.
 
-This whitepaper presents the technical architecture, economic analysis, and security framework of RANA, demonstrating how open-source infrastructure can accelerate the AI application development ecosystem.
+This whitepaper presents the technical architecture, economic analysis, and security framework of CoFounder, demonstrating how open-source infrastructure can accelerate the AI application development ecosystem.
 
 **Key Findings:**
 - **Development Speed**: 5 minutes vs 40 hours (120x faster)
@@ -36,7 +36,7 @@ This whitepaper presents the technical architecture, economic analysis, and secu
 
 1. [Introduction](#1-introduction)
 2. [The AI Development Problem](#2-the-ai-development-problem)
-3. [RANA Architecture](#3-rana-architecture)
+3. [CoFounder Architecture](#3-cofounder-architecture)
 4. [Technical Implementation](#4-technical-implementation)
 5. [Cost Optimization Framework](#5-cost-optimization-framework)
 6. [Security & Compliance](#6-security--compliance)
@@ -67,7 +67,7 @@ This fragmentation forces developers to either:
 2. **Build custom abstraction layers** (40-200 hours of engineering time)
 3. **Use existing frameworks** (LangChain, etc.) with limited provider support
 
-RANA provides a third option: a production-ready, open-source framework that unifies nine LLM providers behind a single, elegant API.
+CoFounder provides a third option: a production-ready, open-source framework that unifies nine LLM providers behind a single, elegant API.
 
 ### 1.2 Problem Statement
 
@@ -87,7 +87,7 @@ A well-designed framework that abstracts provider differences, optimizes routing
 
 **Research Approach:**
 1. **Literature Review**: Analysis of 50+ AI frameworks, 9 LLM provider APIs, and industry best practices
-2. **Prototype Development**: 18 months building RANA with production deployments
+2. **Prototype Development**: 18 months building CoFounder with production deployments
 3. **Benchmarking**: Comparative analysis of cost, speed, and developer experience
 4. **Case Studies**: Real-world implementations across 5 industries
 5. **Community Feedback**: 100+ developers testing pre-release versions
@@ -158,7 +158,7 @@ For a 10-person engineering team:
 - **Switching costs**: $25K-$100K to change providers
 
 **Market Opportunity:**
-The LLM API integration market represents a **$18B+ annual problem** that RANA addresses.
+The LLM API integration market represents a **$18B+ annual problem** that CoFounder addresses.
 
 ### 2.4 Existing Solutions Analysis
 
@@ -171,7 +171,7 @@ The LLM API integration market represents a **$18B+ annual problem** that RANA a
 | **Semantic Kernel** | 4 | Yes (MIT) | 4-12 hours | Manual | Basic |
 | **LiteLLM** | 8 | Yes (MIT) | 1-4 hours | Basic | None |
 | **Custom Solution** | Variable | N/A | 40-200 hours | Custom | Custom |
-| **RANA** | **9** | **Yes (MIT)** | **5 min** | **Automatic** | **OWASP + GDPR** |
+| **CoFounder** | **9** | **Yes (MIT)** | **5 min** | **Automatic** | **OWASP + GDPR** |
 
 **Gap Analysis:**
 
@@ -182,22 +182,22 @@ Existing solutions fail to address:
 4. **Enterprise features**: No compliance tools, audit trails
 5. **Ecosystem**: No templates, components, or integrations
 
-**RANA addresses all five gaps.**
+**CoFounder addresses all five gaps.**
 
 ---
 
-## 3. RANA Architecture
+## 3. CoFounder Architecture
 
 ### 3.1 Design Principles
 
-RANA is built on five core principles:
+CoFounder is built on five core principles:
 
 #### 1. **Unified Abstraction**
 One API for all providers. Developers learn once, use everywhere.
 
 ```typescript
 // Same code works with ANY provider
-const response = await rana.chat({
+const response = await cofounder.chat({
   provider: 'openai',  // or 'anthropic', 'google', etc.
   model: 'gpt-4o',
   messages: [{ role: 'user', content: 'Hello!' }]
@@ -208,8 +208,8 @@ const response = await rana.chat({
 Automatic provider selection based on cost, latency, and capabilities.
 
 ```typescript
-// RANA chooses the best provider automatically
-const response = await rana.chat({
+// CoFounder chooses the best provider automatically
+const response = await cofounder.chat({
   messages: [{ role: 'user', content: 'Summarize this' }],
   optimize: 'cost'  // or 'speed', 'quality'
 });
@@ -234,7 +234,7 @@ MIT license, extensible plugin system, community-driven development.
                               │
                               ▼
 ┌─────────────────────────────────────────────────────────────┐
-│                      RANA Core SDK                           │
+│                      CoFounder Core SDK                           │
 │  ┌────────────┬────────────┬────────────┬─────────────┐    │
 │  │ Unified    │  Cost      │  Security  │  Monitoring │    │
 │  │ Client API │  Optimizer │  Layer     │  & Logging  │    │
@@ -258,7 +258,7 @@ MIT license, extensible plugin system, community-driven development.
 **Layer Responsibilities:**
 
 1. **Application Layer**: Your custom AI application
-2. **RANA Core SDK**: Unified interface, optimization, security
+2. **CoFounder Core SDK**: Unified interface, optimization, security
 3. **Provider Adapters**: Normalize provider differences
 4. **LLM Provider APIs**: Actual LLM services
 
@@ -277,7 +277,7 @@ MIT license, extensible plugin system, community-driven development.
 
 **Example:**
 ```typescript
-import { UnifiedLLMClient } from '@rana/core';
+import { UnifiedLLMClient } from '@cofounder/core';
 
 const client = new UnifiedLLMClient({
   providers: {
@@ -332,7 +332,7 @@ console.log(response.content);
 // Automatic cost optimization
 const response = await client.chat({
   messages: [{ role: 'user', content: 'What is 2+2?' }],
-  optimize: 'cost'  // RANA chooses Gemini Flash ($0.10/1M)
+  optimize: 'cost'  // CoFounder chooses Gemini Flash ($0.10/1M)
 });
 
 // vs manual approach (defaults to GPT-4: $5/1M)
@@ -372,7 +372,7 @@ const response = await client.chat({
 
 **Example:**
 ```typescript
-import { SecurityLayer } from '@rana/security';
+import { SecurityLayer } from '@cofounder/security';
 
 const secureClient = new UnifiedLLMClient({
   providers: { /* ... */ },
@@ -399,8 +399,8 @@ const secureClient = new UnifiedLLMClient({
 **Purpose**: Normalize differences between LLM providers
 
 **Adapter Responsibilities:**
-- Transform RANA format → provider format
-- Transform provider response → RANA format
+- Transform CoFounder format → provider format
+- Transform provider response → CoFounder format
 - Handle provider-specific errors
 - Retry logic with exponential backoff
 - Streaming normalization
@@ -409,9 +409,9 @@ const secureClient = new UnifiedLLMClient({
 ```typescript
 interface ProviderAdapter {
   name: string;
-  transform(request: RANARequest): ProviderRequest;
-  parse(response: ProviderResponse): RANAResponse;
-  handleError(error: ProviderError): RANAError;
+  transform(request: CoFounderRequest): ProviderRequest;
+  parse(response: ProviderResponse): CoFounderResponse;
+  handleError(error: ProviderError): CoFounderError;
   supportsStreaming: boolean;
   supportsFunctionCalling: boolean;
   supportsMultimodal: boolean;
@@ -433,7 +433,7 @@ class AnthropicAdapter implements ProviderAdapter {
 ```
 User Code
   │
-  ├─> RANA Unified Client
+  ├─> CoFounder Unified Client
   │     │
   │     ├─> Security Layer (validate, sanitize, rate limit)
   │     │     │
@@ -549,7 +549,7 @@ interface ChatResponse {
     prompt_tokens: number;
     completion_tokens: number;
     total_tokens: number;
-    cost_usd: number;  // RANA calculates exact cost
+    cost_usd: number;  // CoFounder calculates exact cost
   };
   metadata: {
     latency_ms: number;
@@ -573,10 +573,10 @@ type Provider =
 
 **Unified Error System:**
 
-All provider errors normalized to RANA error types:
+All provider errors normalized to CoFounder error types:
 
 ```typescript
-class RANAError extends Error {
+class CoFounderError extends Error {
   code: ErrorCode;
   provider: Provider;
   originalError: unknown;
@@ -596,7 +596,7 @@ enum ErrorCode {
   TIMEOUT = 'timeout',
   NETWORK_ERROR = 'network_error',
 
-  // RANA errors
+  // CoFounder errors
   PROVIDER_NOT_CONFIGURED = 'provider_not_configured',
   UNSUPPORTED_FEATURE = 'unsupported_feature'
 }
@@ -624,21 +624,21 @@ const response = await client.chat({
 **Plugin System:**
 
 ```typescript
-interface RANAPlugin {
+interface CoFounderPlugin {
   name: string;
   version: string;
 
   // Hooks
   onRequest?(request: ChatRequest): ChatRequest;
   onResponse?(response: ChatResponse): ChatResponse;
-  onError?(error: RANAError): RANAError;
+  onError?(error: CoFounderError): CoFounderError;
 
   // Custom providers
   providers?: ProviderAdapter[];
 }
 
 // Example: Custom logging plugin
-const loggingPlugin: RANAPlugin = {
+const loggingPlugin: CoFounderPlugin = {
   name: 'logging',
   version: '1.0.0',
 
@@ -671,7 +671,7 @@ const client = new UnifiedLLMClient({
 
 ```typescript
 import { describe, it, expect } from 'vitest';
-import { UnifiedLLMClient } from '@rana/core';
+import { UnifiedLLMClient } from '@cofounder/core';
 
 describe('UnifiedLLMClient', () => {
   it('should work with OpenAI', async () => {
@@ -739,7 +739,7 @@ describe('UnifiedLLMClient', () => {
 **Implementation:**
 
 ```typescript
-import { UnifiedLLMClient } from '@rana/core';
+import { UnifiedLLMClient } from '@cofounder/core';
 import Redis from 'ioredis';
 
 const redis = new Redis(process.env.REDIS_URL);
@@ -750,7 +750,7 @@ const client = new UnifiedLLMClient({
     enabled: true,
     storage: redis,
     ttl: 3600,  // 1 hour
-    keyPrefix: 'rana:cache:'
+    keyPrefix: 'cofounder:cache:'
   }
 });
 
@@ -798,7 +798,7 @@ const response = await client.chat({
   optimize: 'cost'
 });
 
-// RANA detects simple task → uses Gemini Flash ($0.10/1M)
+// CoFounder detects simple task → uses Gemini Flash ($0.10/1M)
 // Manual approach would use GPT-4 ($5/1M) → 50x more expensive
 ```
 
@@ -864,9 +864,9 @@ const response = await openai.chat({
 });
 ```
 
-**RANA RAG Approach:**
+**CoFounder RAG Approach:**
 ```typescript
-import { RAGClient } from '@rana/rag';
+import { RAGClient } from '@cofounder/rag';
 
 const rag = new RAGClient({
   vectorDB: 'pinecone',
@@ -901,13 +901,13 @@ const response = await client.chat({
 |----------|----------|------------|------------|--------------|-------------|
 | Manual (GPT-4) | OpenAI | $0.05 | $500 | $15,000 | $180,000 |
 | Manual (GPT-4o mini) | OpenAI | $0.02 | $200 | $6,000 | $72,000 |
-| RANA (optimized) | Mixed | $0.006 | $60 | $1,800 | $21,600 |
+| CoFounder (optimized) | Mixed | $0.006 | $60 | $1,800 | $21,600 |
 
-**RANA Savings:**
+**CoFounder Savings:**
 - vs GPT-4: **88% ($158,400/year)**
 - vs GPT-4o mini: **70% ($50,400/year)**
 
-**How RANA Achieves $0.006/query:**
+**How CoFounder Achieves $0.006/query:**
 - 40% cache hits ($0.00)
 - 30% simple tasks → Gemini Flash ($0.001)
 - 20% medium tasks → GPT-4o mini ($0.02)
@@ -920,13 +920,13 @@ const response = await client.chat({
 
 ### 6.1 OWASP Top 10 Coverage
 
-RANA implements defenses against all OWASP Top 10 vulnerabilities:
+CoFounder implements defenses against all OWASP Top 10 vulnerabilities:
 
 #### 1. **Broken Access Control**
 
 **Protection:**
 ```typescript
-import { SecurityLayer } from '@rana/security';
+import { SecurityLayer } from '@cofounder/security';
 
 const client = new UnifiedLLMClient({
   providers: { /* ... */ },
@@ -956,7 +956,7 @@ await client.chat({ /* ... */ }, { user: jwtPayload });
 
 **Protection:**
 ```typescript
-import { sanitize } from '@rana/security';
+import { sanitize } from '@cofounder/security';
 
 const userInput = "<script>alert('XSS')</script>";
 const safe = sanitize(userInput);  // Removes script tags
@@ -1051,7 +1051,7 @@ const isValidUrl = (url: string) => {
 
 #### Right to Access
 ```typescript
-import { GDPRClient } from '@rana/security';
+import { GDPRClient } from '@cofounder/security';
 
 const gdpr = new GDPRClient({ storage: 'supabase' });
 
@@ -1123,11 +1123,11 @@ security: {
 **Test Setup:**
 - 1,000 requests per provider
 - Simple prompt: "Say 'test'"
-- Measured from RANA to provider (excludes network)
+- Measured from CoFounder to provider (excludes network)
 
 **Results:**
 
-| Provider | p50 Latency | p95 Latency | p99 Latency | RANA Overhead |
+| Provider | p50 Latency | p95 Latency | p99 Latency | CoFounder Overhead |
 |----------|-------------|-------------|-------------|---------------|
 | **Groq (LPU)** | 150ms | 250ms | 400ms | +5ms (3%) |
 | **Google Gemini** | 400ms | 800ms | 1200ms | +8ms (2%) |
@@ -1136,7 +1136,7 @@ security: {
 | **OpenAI GPT-4o** | 1200ms | 2500ms | 4000ms | +15ms (1.2%) |
 
 **Key Findings:**
-- **RANA overhead: < 2%** across all providers
+- **CoFounder overhead: < 2%** across all providers
 - Cache hits: **< 10ms** (100x faster)
 - Streaming adds **0ms overhead** (passthrough)
 
@@ -1162,23 +1162,23 @@ security: {
 | Approach | RPS | Error Rate | Complexity |
 |----------|-----|------------|------------|
 | Direct SDK | 2,600 | 0.01% | High (9 SDKs) |
-| RANA | 2,500 | 0.02% | Low (1 SDK) |
+| CoFounder | 2,500 | 0.02% | Low (1 SDK) |
 | **Difference** | **-4%** | **+0.01%** | **-90%** |
 
-**Conclusion:** RANA adds < 5% overhead while reducing complexity by 90%.
+**Conclusion:** CoFounder adds < 5% overhead while reducing complexity by 90%.
 
 ### 7.3 Cost Benchmark
 
 **Test Scenario:** 100,000 production queries over 30 days
 
-| Configuration | Total Cost | Cost/Query | vs RANA |
+| Configuration | Total Cost | Cost/Query | vs CoFounder |
 |---------------|------------|------------|---------|
 | **All GPT-4** | $5,000 | $0.05 | +733% |
 | **All GPT-4o mini** | $2,000 | $0.02 | +233% |
 | **All Gemini Flash** | $1,000 | $0.01 | +67% |
-| **RANA (optimized)** | **$600** | **$0.006** | **Baseline** |
+| **CoFounder (optimized)** | **$600** | **$0.006** | **Baseline** |
 
-**RANA Optimization Breakdown:**
+**CoFounder Optimization Breakdown:**
 - Caching: -$2,000 (40% queries cached)
 - Smart routing: -$1,500 (cheap models for simple tasks)
 - Prompt optimization: -$300 (15% token reduction)
@@ -1195,27 +1195,27 @@ security: {
 **Industry:** E-commerce
 **Challenge:** 24/7 customer support chatbot, 15,000 queries/day
 
-**Before RANA:**
+**Before CoFounder:**
 - **Provider:** OpenAI GPT-4 only
 - **Cost:** $22,500/month
 - **Setup time:** 60 hours (custom integration)
 - **Maintenance:** 20 hours/month
 - **Issues:** Frequent rate limits, no fallback
 
-**After RANA:**
+**After CoFounder:**
 - **Providers:** Gemini Flash (simple), Claude (complex), GPT-4 (fallback)
 - **Cost:** $6,750/month (**70% reduction**)
-- **Setup time:** 30 minutes (RANA templates)
+- **Setup time:** 30 minutes (CoFounder templates)
 - **Maintenance:** 2 hours/month
 - **Issues:** Zero downtime (automatic fallback)
 
 **ROI:**
 - **Annual savings:** $189,000
 - **Time saved:** 276 hours/year
-- **Payback period:** Immediate (RANA is free)
+- **Payback period:** Immediate (CoFounder is free)
 
 **Quote:**
-> "RANA cut our AI costs by 70% in the first month. The automatic fallback to Gemini Flash for simple queries alone saved us $10K/month." — CTO
+> "CoFounder cut our AI costs by 70% in the first month. The automatic fallback to Gemini Flash for simple queries alone saved us $10K/month." — CTO
 
 ### 8.2 Case Study: SaaS Content Generation
 
@@ -1223,13 +1223,13 @@ security: {
 **Industry:** Marketing SaaS
 **Challenge:** Generate blog posts, social media, ad copy for 5,000 users
 
-**Before RANA:**
+**Before CoFounder:**
 - **Provider:** OpenAI GPT-4o only
 - **Cost:** $18,000/month
 - **Quality:** Inconsistent (one model for all tasks)
 - **Speed:** 2-3 seconds per generation
 
-**After RANA:**
+**After CoFounder:**
 - **Providers:** Claude (long-form), GPT-4o mini (short-form), Gemini (social)
 - **Cost:** $5,400/month (**70% reduction**)
 - **Quality:** Improved (task-specific models)
@@ -1241,7 +1241,7 @@ security: {
 - **Speed improvement:** 60% faster
 
 **Quote:**
-> "RANA's smart routing uses Claude for blog posts and Gemini Flash for tweets. Better quality, 70% cheaper, 2x faster." — Founder
+> "CoFounder's smart routing uses Claude for blog posts and Gemini Flash for tweets. Better quality, 70% cheaper, 2x faster." — Founder
 
 ### 8.3 Case Study: Healthcare AI Assistant
 
@@ -1249,13 +1249,13 @@ security: {
 **Industry:** Healthcare
 **Challenge:** HIPAA compliance, patient Q&A, 2,000 queries/day
 
-**Before RANA:**
+**Before CoFounder:**
 - **Provider:** Azure OpenAI (BAA required)
 - **Cost:** $12,000/month
 - **Compliance:** Manual (100+ hours audit prep)
 - **Security:** Custom implementation
 
-**After RANA:**
+**After CoFounder:**
 - **Providers:** Azure OpenAI (HIPAA) + on-prem Ollama (extra sensitive)
 - **Cost:** $3,600/month (**70% reduction**)
 - **Compliance:** Built-in GDPR tools, audit logs
@@ -1267,7 +1267,7 @@ security: {
 - **Security score:** 96/100 (third-party audit)
 
 **Quote:**
-> "RANA's built-in security and compliance tools saved us 100 hours of audit prep. The automatic PII masking is a game-changer for HIPAA." — Chief Medical Officer
+> "CoFounder's built-in security and compliance tools saved us 100 hours of audit prep. The automatic PII masking is a game-changer for HIPAA." — Chief Medical Officer
 
 ### 8.4 Case Study: Open Source Project
 
@@ -1275,12 +1275,12 @@ security: {
 **Industry:** Developer Tools
 **Challenge:** AI code assistant, 50,000 users, zero budget
 
-**Before RANA:**
+**Before CoFounder:**
 - **Provider:** N/A (couldn't afford)
 - **Cost:** $0
 - **Features:** None
 
-**After RANA:**
+**After CoFounder:**
 - **Providers:** Groq (free tier) + Gemini Flash (cheap)
 - **Cost:** $500/month (donations cover it)
 - **Features:** Code completion, documentation, debugging
@@ -1291,7 +1291,7 @@ security: {
 - **Net revenue:** $1,500/month
 
 **Quote:**
-> "RANA made AI features financially possible for our open-source project. Groq's free tier + RANA's smart routing = affordable AI for everyone." — Maintainer
+> "CoFounder made AI features financially possible for our open-source project. Groq's free tier + CoFounder's smart routing = affordable AI for everyone." — Maintainer
 
 ---
 
@@ -1299,14 +1299,14 @@ security: {
 
 ### 9.1 Total Cost of Ownership (TCO)
 
-**Comparison: RANA vs Manual Integration (3-year period)**
+**Comparison: CoFounder vs Manual Integration (3-year period)**
 
 **Assumptions:**
 - 10-person engineering team
 - 100,000 LLM queries/month
 - $150K average developer salary
 
-| Cost Category | Manual Integration | RANA | Savings |
+| Cost Category | Manual Integration | CoFounder | Savings |
 |---------------|-------------------|------|---------|
 | **Initial Setup** |
 | Integration dev time | 200 hrs × $75/hr = $15,000 | 1 hr × $75/hr = $75 | $14,925 |
@@ -1324,7 +1324,7 @@ security: {
 | | | | |
 | **3-Year Total** | $590,000 | $146,250 | **$443,750 (75%)** |
 
-**ROI: 303%** (save $3 for every $1 spent... but RANA is free!)
+**ROI: 303%** (save $3 for every $1 spent... but CoFounder is free!)
 
 ### 9.2 Market Opportunity
 
@@ -1342,7 +1342,7 @@ security: {
 - Companies using 2+ LLM providers: 40% of TAM = **$13.2B**
 
 **Serviceable Obtainable Market (SOM):**
-- RANA target (Year 5): 1% of SAM = **$132M**
+- CoFounder target (Year 5): 1% of SAM = **$132M**
 
 ### 9.3 Value Proposition Quantification
 
@@ -1411,7 +1411,7 @@ security: {
 **Features:**
 - [ ] Python SDK (parity with TypeScript)
 - [ ] Go SDK (enterprise demand)
-- [ ] VS Code extension (RANA Studio)
+- [ ] VS Code extension (CoFounder Studio)
 - [ ] Web dashboard (usage analytics)
 - [ ] Video tutorials (10 episodes)
 
@@ -1434,7 +1434,7 @@ security: {
 **Goals:**
 - 10,000 GitHub stars
 - 500 production deployments
-- First RANA Conference (virtual)
+- First CoFounder Conference (virtual)
 
 **Features:**
 - [ ] Plugin marketplace
@@ -1466,7 +1466,7 @@ security: {
 - Acquisition interest
 
 **Features:**
-- [ ] RANA Cloud (managed hosting platform)
+- [ ] CoFounder Cloud (managed hosting platform)
 - [ ] Enterprise SLA (99.99% uptime)
 - [ ] Multi-region deployments
 - [ ] Custom provider adapters (anyone can add providers)
@@ -1476,7 +1476,7 @@ security: {
 
 **Open Source Philosophy:**
 - **License:** MIT (maximum freedom)
-- **Trademark:** "RANA" + logo (protected)
+- **Trademark:** "CoFounder" + logo (protected)
 - **Copyright:** Waymaker (retained)
 
 **Decision-Making:**
@@ -1511,7 +1511,7 @@ security: {
 
 ### 10.4 Sustainability Plan
 
-**How RANA Stays Free Forever:**
+**How CoFounder Stays Free Forever:**
 
 1. **Services Revenue** (Waymaker)
    - Implementation consulting
@@ -1520,8 +1520,8 @@ security: {
    - **Target:** $1M ARR by Year 3
 
 2. **Ecosystem Products** (Waymaker)
-   - RANA Studio (VS Code ext): $49/year
-   - RANA Cloud (hosting): $29-299/month
+   - CoFounder Studio (VS Code ext): $49/year
+   - CoFounder Cloud (hosting): $29-299/month
    - Enterprise support: $5K-50K/year
    - **Target:** $500K ARR by Year 4
 
@@ -1547,7 +1547,7 @@ security: {
 - Infrastructure costs
 - Marketing & conferences
 - Community programs
-- **RANA stays MIT licensed forever**
+- **CoFounder stays MIT licensed forever**
 
 ---
 
@@ -1555,7 +1555,7 @@ security: {
 
 ### 11.1 Summary of Findings
 
-This whitepaper demonstrates that **RANA (Rapid AI Native Architecture)** successfully addresses the critical fragmentation problem in AI application development through:
+This whitepaper demonstrates that **CoFounder (Rapid AI Native Architecture)** successfully addresses the critical fragmentation problem in AI application development through:
 
 1. **Unified Abstraction**: One API for 9 LLM providers reduces integration complexity by 90%
 
@@ -1569,12 +1569,12 @@ This whitepaper demonstrates that **RANA (Rapid AI Native Architecture)** succes
 
 ### 11.2 Impact Projections
 
-**If RANA achieves 1% market penetration in 5 years:**
+**If CoFounder achieves 1% market penetration in 5 years:**
 
 | Metric | Value |
 |--------|-------|
-| **Developers using RANA** | 50,000 |
-| **Companies using RANA** | 8,500 |
+| **Developers using CoFounder** | 50,000 |
+| **Companies using CoFounder** | 8,500 |
 | **Total cost saved (industry-wide)** | $1.3B/year |
 | **Developer hours saved** | 17M hours/year |
 | **CO2 emissions saved** | 50K tons/year (efficient routing = fewer tokens = less compute) |
@@ -1582,27 +1582,27 @@ This whitepaper demonstrates that **RANA (Rapid AI Native Architecture)** succes
 ### 11.3 Recommendations
 
 **For Developers:**
-- Adopt RANA for any new AI application (5-minute setup, zero risk)
-- Migrate existing apps to RANA (70% cost savings justifies migration)
-- Contribute to RANA ecosystem (plugins, templates, docs)
+- Adopt CoFounder for any new AI application (5-minute setup, zero risk)
+- Migrate existing apps to CoFounder (70% cost savings justifies migration)
+- Contribute to CoFounder ecosystem (plugins, templates, docs)
 
 **For Companies:**
-- Evaluate RANA for AI initiatives (free trial, immediate ROI)
+- Evaluate CoFounder for AI initiatives (free trial, immediate ROI)
 - Consider Waymaker implementation services (fastest path to production)
-- Sponsor RANA development (visibility + community goodwill)
+- Sponsor CoFounder development (visibility + community goodwill)
 
 **For Investors:**
-- Monitor RANA adoption metrics (GitHub stars, production deployments)
-- Waymaker represents strong investment opportunity (RANA credibility + services revenue)
+- Monitor CoFounder adoption metrics (GitHub stars, production deployments)
+- Waymaker represents strong investment opportunity (CoFounder credibility + services revenue)
 - Open source infrastructure plays are undervalued (see: Vercel $2.5B, Supabase $2B)
 
 ### 11.4 Future Research
 
 **Open Questions:**
-1. Can RANA's architecture extend to other AI modalities (image gen, voice cloning)?
+1. Can CoFounder's architecture extend to other AI modalities (image gen, voice cloning)?
 2. What is the optimal provider mix for different industries?
-3. How can RANA facilitate multi-agent orchestration at scale?
-4. Can RANA's cost optimization techniques apply to fine-tuning workflows?
+3. How can CoFounder facilitate multi-agent orchestration at scale?
+4. Can CoFounder's cost optimization techniques apply to fine-tuning workflows?
 
 **Planned Studies:**
 - Long-term cost analysis (12-month production tracking)
@@ -1612,26 +1612,26 @@ This whitepaper demonstrates that **RANA (Rapid AI Native Architecture)** succes
 
 ### 11.5 Call to Action
 
-**RANA is open source and free forever.**
+**CoFounder is open source and free forever.**
 
 **Get started today:**
 ```bash
-npx create-rana-app my-ai-app
+npx create-cofounder-app my-ai-app
 cd my-ai-app
 npm run dev
 ```
 
 **Join the community:**
-- GitHub: https://github.com/waymaker/rana
-- Discord: https://discord.gg/rana
-- Docs: https://rana.dev/docs
+- GitHub: https://github.com/waymaker/cofounder
+- Discord: https://discord.gg/cofounder
+- Docs: https://cofounder.dev/docs
 
-**Support RANA:**
+**Support CoFounder:**
 - ⭐ Star on GitHub
 - 🐛 Report bugs & request features
 - 🤝 Contribute code, docs, or templates
 - 💰 Sponsor on GitHub Sponsors
-- 📣 Share RANA with your team
+- 📣 Share CoFounder with your team
 
 **Contact Waymaker:**
 - Implementation services: ashley@waymaker.cx
@@ -1684,12 +1684,12 @@ npm run dev
 
 ## Appendix A: API Reference
 
-**Full API documentation:** https://rana.dev/docs/api
+**Full API documentation:** https://cofounder.dev/docs/api
 
 **Quick Reference:**
 
 ```typescript
-import { UnifiedLLMClient } from '@rana/core';
+import { UnifiedLLMClient } from '@cofounder/core';
 
 // Initialize
 const client = new UnifiedLLMClient({
@@ -1740,7 +1740,7 @@ const response = await client.chat({
 
 ## Appendix B: Migration Guides
 
-### From LangChain to RANA
+### From LangChain to CoFounder
 
 **Before (LangChain):**
 ```python
@@ -1751,9 +1751,9 @@ chat = ChatOpenAI(temperature=0.7)
 response = chat([HumanMessage(content="Hello")])
 ```
 
-**After (RANA):**
+**After (CoFounder):**
 ```typescript
-import { UnifiedLLMClient } from '@rana/core';
+import { UnifiedLLMClient } from '@cofounder/core';
 
 const client = new UnifiedLLMClient({
   providers: { openai: process.env.OPENAI_API_KEY }
@@ -1768,7 +1768,7 @@ const response = await client.chat({
 ```
 
 **Benefits:**
-- 70% cost reduction (RANA optimization)
+- 70% cost reduction (CoFounder optimization)
 - Type safety (TypeScript)
 - 9 providers vs 6
 
@@ -1805,8 +1805,8 @@ vercel --prod
 railway up
 
 # Deploy to Docker
-docker build -t rana-app .
-docker push your-registry/rana-app
+docker build -t cofounder-app .
+docker push your-registry/cofounder-app
 ```
 
 ---
@@ -1817,24 +1817,24 @@ docker push your-registry/rana-app
 
 **Christian Moore** is Co-Founder of Waymaker, specializing in AI architecture and open source development. Previously engineering lead at [redacted]. Advocates for open standards in AI.
 
-**Waymaker** creates tools and frameworks that help developers build AI applications faster. RANA is Waymaker's flagship open-source project, named after Ashley's son.
+**Waymaker** creates tools and frameworks that help developers build AI applications faster. CoFounder is Waymaker's flagship open-source project, named after Ashley's son.
 
 ---
 
 **Published:** January 2025
 **Version:** 1.0
 **License:** This whitepaper is licensed under CC BY 4.0
-**Code:** RANA is licensed under MIT License
+**Code:** CoFounder is licensed under MIT License
 
 **Citation:**
 ```
-Kays, A., & Moore, C. (2025). RANA Whitepaper: Rapid AI Native Architecture.
-Waymaker. https://rana.dev/whitepaper
+Kays, A., & Moore, C. (2025). CoFounder Whitepaper: Rapid AI Native Architecture.
+Waymaker. https://cofounder.dev/whitepaper
 ```
 
 ---
 
 **Made with love to help developers succeed faster ❤️**
 
-🐟 **RANA** - Rapid AI Native Architecture
-https://rana.dev
+🐟 **CoFounder** - Rapid AI Native Architecture
+https://cofounder.dev

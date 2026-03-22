@@ -1,5 +1,5 @@
 /**
- * @rana/guidelines - Guideline factory and helpers
+ * @cofounder/guidelines - Guideline factory and helpers
  */
 
 import type {

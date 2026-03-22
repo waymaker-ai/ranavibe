@@ -5,7 +5,7 @@ import { generateMetadata } from '@/components/SEO';
  */
 export const metadata = generateMetadata({
   title: 'Home',
-  description: 'Welcome to our app built with RANA Framework',
+  description: 'Welcome to our app built with CoFounder Framework',
   image: '/og-image.png',
   url: '/',
 });
@@ -27,12 +27,12 @@ export default function Home() {
           <h1 className="text-4xl md:text-6xl font-bold">
             Welcome to{' '}
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              RANA
+              CoFounder
             </span>
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Your production-ready Next.js + Supabase app with all RANA frameworks
+            Your production-ready Next.js + Supabase app with all CoFounder frameworks
             pre-configured.
           </p>
 

@@ -6,74 +6,74 @@ const features = [
   {
     feature: 'Core Streaming',
     vercel: true,
-    rana: true,
+    cofounder: true,
     note: 'Both support streaming responses',
   },
   {
     feature: 'Multi-Provider',
     vercel: true,
-    rana: true,
+    cofounder: true,
     note: 'Both support multiple AI providers',
   },
   {
     feature: 'Tool Calling',
     vercel: true,
-    rana: true,
+    cofounder: true,
     note: 'Both support function/tool calling',
   },
   {
     feature: 'React Hooks',
     vercel: true,
-    rana: true,
+    cofounder: true,
     note: 'Both provide React integration',
   },
   {
     feature: 'Cost Tracking',
     vercel: false,
-    rana: true,
-    note: 'RANA tracks costs and provides budgets',
+    cofounder: true,
+    note: 'CoFounder tracks costs and provides budgets',
   },
   {
     feature: 'Built-in Testing',
     vercel: false,
-    rana: true,
-    note: 'RANA has @rana/testing for AI testing',
+    cofounder: true,
+    note: 'CoFounder has @cofounder/testing for AI testing',
   },
   {
     feature: 'Prompt Injection Detection',
     vercel: false,
-    rana: true,
-    note: 'RANA includes security features',
+    cofounder: true,
+    note: 'CoFounder includes security features',
   },
   {
     feature: 'PII Redaction',
     vercel: false,
-    rana: true,
-    note: 'RANA can detect and redact PII',
+    cofounder: true,
+    note: 'CoFounder can detect and redact PII',
   },
   {
     feature: 'RAG Pipeline',
     vercel: false,
-    rana: true,
-    note: 'RANA includes @rana/rag for RAG',
+    cofounder: true,
+    note: 'CoFounder includes @cofounder/rag for RAG',
   },
   {
     feature: 'MCP Support',
     vercel: false,
-    rana: true,
-    note: 'RANA supports Model Context Protocol',
+    cofounder: true,
+    note: 'CoFounder supports Model Context Protocol',
   },
   {
     feature: 'Agent Framework',
     vercel: false,
-    rana: true,
-    note: 'RANA includes agent orchestration',
+    cofounder: true,
+    note: 'CoFounder includes agent orchestration',
   },
   {
     feature: 'Observability',
     vercel: false,
-    rana: true,
-    note: 'RANA has built-in tracing and logging',
+    cofounder: true,
+    note: 'CoFounder has built-in tracing and logging',
   },
 ];
 
@@ -90,10 +90,10 @@ export default function VercelAIComparisonPage() {
 
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            RANA vs Vercel AI SDK
+            CoFounder vs Vercel AI SDK
           </h1>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            Vercel AI SDK is great for getting started. RANA builds on those patterns
+            Vercel AI SDK is great for getting started. CoFounder builds on those patterns
             and adds everything you need for production: testing, security, observability, and more.
           </p>
         </div>
@@ -123,7 +123,7 @@ export default function VercelAIComparisonPage() {
               <tr>
                 <th className="py-4 px-6 text-left font-semibold">Feature</th>
                 <th className="py-4 px-6 text-center font-semibold">Vercel AI</th>
-                <th className="py-4 px-6 text-center font-semibold">RANA</th>
+                <th className="py-4 px-6 text-center font-semibold">CoFounder</th>
               </tr>
             </thead>
             <tbody>
@@ -144,7 +144,7 @@ export default function VercelAIComparisonPage() {
                     )}
                   </td>
                   <td className="py-4 px-6 text-center">
-                    {item.rana ? (
+                    {item.cofounder ? (
                       <span className="text-green-400">✓</span>
                     ) : (
                       <span className="text-red-400">✗</span>
@@ -179,15 +179,15 @@ const { text } = await generateText({
               <div>
                 <div className="flex items-center gap-2 mb-3">
                   <span className="px-3 py-1 rounded-full bg-green-500/20 text-green-400 text-sm">
-                    RANA
+                    CoFounder
                   </span>
                 </div>
                 <pre className="p-4 rounded-xl bg-gray-900 border border-gray-800 overflow-x-auto text-sm">
-                  <code className="text-gray-300">{`import { createRana } from '@rana/core';
+                  <code className="text-gray-300">{`import { createCoFounder } from '@cofounder/core';
 
-const rana = createRana();
+const cofounder = createCoFounder();
 
-const response = await rana
+const response = await cofounder
   .model('gpt-4')
   .chat('Hello!');`}</code>
                 </pre>
@@ -201,18 +201,18 @@ const response = await rana
               <div className="p-6 rounded-xl border border-gray-800 bg-gray-900/50">
                 <h3 className="text-lg font-medium mb-3">Cost Tracking</h3>
                 <pre className="p-3 rounded-lg bg-black/50 text-sm overflow-x-auto">
-                  <code className="text-gray-300">{`const rana = createRana({
+                  <code className="text-gray-300">{`const cofounder = createCoFounder({
   budget: { daily: 10 }
 });
 
-const stats = rana.getCostStats();
+const stats = cofounder.getCostStats();
 // { today: 2.34, total: 45.67 }`}</code>
                 </pre>
               </div>
               <div className="p-6 rounded-xl border border-gray-800 bg-gray-900/50">
                 <h3 className="text-lg font-medium mb-3">Security</h3>
                 <pre className="p-3 rounded-lg bg-black/50 text-sm overflow-x-auto">
-                  <code className="text-gray-300">{`import { detectInjection } from '@rana/core';
+                  <code className="text-gray-300">{`import { detectInjection } from '@cofounder/core';
 
 const result = detectInjection(userInput);
 if (result.isInjection) {
@@ -223,10 +223,10 @@ if (result.isInjection) {
               <div className="p-6 rounded-xl border border-gray-800 bg-gray-900/50">
                 <h3 className="text-lg font-medium mb-3">Testing</h3>
                 <pre className="p-3 rounded-lg bg-black/50 text-sm overflow-x-auto">
-                  <code className="text-gray-300">{`import { aiTest } from '@rana/testing';
+                  <code className="text-gray-300">{`import { aiTest } from '@cofounder/testing';
 
 aiTest('responds helpfully', async () => {
-  const response = await rana.chat('Help');
+  const response = await cofounder.chat('Help');
   await expect(response).toPassRegression();
 });`}</code>
                 </pre>
@@ -234,7 +234,7 @@ aiTest('responds helpfully', async () => {
               <div className="p-6 rounded-xl border border-gray-800 bg-gray-900/50">
                 <h3 className="text-lg font-medium mb-3">Observability</h3>
                 <pre className="p-3 rounded-lg bg-black/50 text-sm overflow-x-auto">
-                  <code className="text-gray-300">{`import { createTracer } from '@rana/core';
+                  <code className="text-gray-300">{`import { createTracer } from '@cofounder/core';
 
 const tracer = createTracer();
 // All requests automatically traced
@@ -254,7 +254,7 @@ const tracer = createTracer();
           </p>
           <div className="flex justify-center gap-4">
             <Link
-              href="https://github.com/waymaker-ai/ranavibe"
+              href="https://github.com/waymaker-ai/cofounder"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black font-semibold hover:bg-gray-200 transition-colors"
             >
               Get Started

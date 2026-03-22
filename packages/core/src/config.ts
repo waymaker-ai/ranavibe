@@ -2,15 +2,15 @@
  * Configuration Helpers
  */
 
-import type { RanaConfig } from './types';
+import type { CoFounderConfig } from './types';
 
 /**
- * Define a RANA configuration with TypeScript support
+ * Define a CoFounder configuration with TypeScript support
  *
  * @example
  * ```typescript
- * // rana.config.ts
- * import { defineConfig } from '@rana/core';
+ * // cofounder.config.ts
+ * import { defineConfig } from '@cofounder/core';
  *
  * export default defineConfig({
  *   providers: {
@@ -28,17 +28,17 @@ import type { RanaConfig } from './types';
  * });
  * ```
  */
-export function defineConfig(config: RanaConfig): RanaConfig {
+export function defineConfig(config: CoFounderConfig): CoFounderConfig {
   return config;
 }
 
 /**
  * Load configuration from file or environment
  */
-export async function loadConfig(): Promise<RanaConfig> {
-  // Try to load from rana.config.ts
+export async function loadConfig(): Promise<CoFounderConfig> {
+  // Try to load from cofounder.config.ts
   try {
-    const config = await import(process.cwd() + '/rana.config');
+    const config = await import(process.cwd() + '/cofounder.config');
     return config.default || config;
   } catch {
     // Fall back to environment variables

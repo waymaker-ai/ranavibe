@@ -1,5 +1,5 @@
 /**
- * RANA Documentation Management
+ * CoFounder Documentation Management
  *
  * Tools for managing project documentation, tracking status,
  * and ensuring document health.
@@ -7,19 +7,19 @@
  * @example
  * ```bash
  * # Check document health
- * rana docs:check
+ * cofounder docs:check
  *
  * # List all documents with status
- * rana docs:list
+ * cofounder docs:list
  *
  * # Show project status summary
- * rana docs:status
+ * cofounder docs:status
  *
  * # Archive deprecated documents
- * rana docs:archive
+ * cofounder docs:archive
  *
  * # Validate document frontmatter
- * rana docs:validate
+ * cofounder docs:validate
  * ```
  */
 
@@ -42,11 +42,11 @@ interface DocumentMeta {
  * Check document health across the project
  */
 export async function docsCheckCommand(): Promise<void> {
-  console.log(chalk.bold.cyan('\n📚 RANA Documentation Health Check\n'));
+  console.log(chalk.bold.cyan('\n📚 CoFounder Documentation Health Check\n'));
 
   const projectRoot = findProjectRoot();
   if (!projectRoot) {
-    console.log(chalk.red('Not in a RANA project directory.'));
+    console.log(chalk.red('Not in a CoFounder project directory.'));
     return;
   }
 
@@ -115,7 +115,7 @@ export async function docsCheckCommand(): Promise<void> {
     const deprecated = docs.filter(d => d.status === 'Deprecated');
     if (deprecated.length > 0) {
       console.log(chalk.white('2. Archive deprecated documents:'));
-      console.log(chalk.cyan('   rana docs:archive\n'));
+      console.log(chalk.cyan('   cofounder docs:archive\n'));
     }
 
     const stale = docs.filter(d => isStale(d.lastUpdated));
@@ -134,7 +134,7 @@ export async function docsListCommand(options: { all?: boolean }): Promise<void>
 
   const projectRoot = findProjectRoot();
   if (!projectRoot) {
-    console.log(chalk.red('Not in a RANA project directory.'));
+    console.log(chalk.red('Not in a CoFounder project directory.'));
     return;
   }
 
@@ -194,11 +194,11 @@ export async function docsListCommand(options: { all?: boolean }): Promise<void>
  * Show project status summary
  */
 export async function docsStatusCommand(): Promise<void> {
-  console.log(chalk.bold.cyan('\n📊 RANA Project Status\n'));
+  console.log(chalk.bold.cyan('\n📊 CoFounder Project Status\n'));
 
   const projectRoot = findProjectRoot();
   if (!projectRoot) {
-    console.log(chalk.red('Not in a RANA project directory.'));
+    console.log(chalk.red('Not in a CoFounder project directory.'));
     return;
   }
 
@@ -274,7 +274,7 @@ export async function docsArchiveCommand(options: { dryRun?: boolean }): Promise
 
   const projectRoot = findProjectRoot();
   if (!projectRoot) {
-    console.log(chalk.red('Not in a RANA project directory.'));
+    console.log(chalk.red('Not in a CoFounder project directory.'));
     return;
   }
 
@@ -329,7 +329,7 @@ export async function docsValidateCommand(): Promise<void> {
 
   const projectRoot = findProjectRoot();
   if (!projectRoot) {
-    console.log(chalk.red('Not in a RANA project directory.'));
+    console.log(chalk.red('Not in a CoFounder project directory.'));
     return;
   }
 
@@ -375,7 +375,7 @@ export async function docsValidateCommand(): Promise<void> {
 // ============================================================================
 
 /**
- * Find project root by looking for package.json or .rana.yml
+ * Find project root by looking for package.json or .cofounder.yml
  */
 function findProjectRoot(): string | null {
   let dir = process.cwd();
@@ -383,7 +383,7 @@ function findProjectRoot(): string | null {
   while (dir !== path.dirname(dir)) {
     if (
       fs.existsSync(path.join(dir, 'package.json')) ||
-      fs.existsSync(path.join(dir, '.rana.yml')) ||
+      fs.existsSync(path.join(dir, '.cofounder.yml')) ||
       fs.existsSync(path.join(dir, 'ROADMAP.md'))
     ) {
       return dir;

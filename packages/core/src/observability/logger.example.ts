@@ -1,6 +1,6 @@
 /**
  * Logger Examples
- * Demonstrates how to use the RANA logging system
+ * Demonstrates how to use the CoFounder logging system
  */
 
 import {
@@ -168,7 +168,7 @@ export async function requestResponseLoggingExample() {
 
   const logger = createLogger({
     level: 'debug',
-    category: 'rana',
+    category: 'cofounder',
   });
 
   const middleware = createLoggingMiddleware(logger, {
@@ -268,7 +268,7 @@ export function globalLoggerExample() {
   // Import the global logger
   import('./logger.js').then(({ logger }) => {
     logger.info('Using global logger');
-    logger.setContext({ app: 'rana' });
+    logger.setContext({ app: 'cofounder' });
     logger.info('With context');
   });
 }
@@ -278,7 +278,7 @@ export function globalLoggerExample() {
 // ============================================================================
 
 export async function runAllExamples() {
-  console.log('RANA Logger Examples\n');
+  console.log('CoFounder Logger Examples\n');
   console.log('='.repeat(60));
 
   basicLoggingExample();

@@ -1,7 +1,7 @@
 {
-  "name": "rana-rag-example",
+  "name": "cofounder-rag-example",
   "version": "1.0.0",
-  "description": "RAG (Retrieval-Augmented Generation) example using RANA",
+  "description": "RAG (Retrieval-Augmented Generation) example using CoFounder",
   "main": "index.ts",
   "type": "module",
   "scripts": {
@@ -9,8 +9,8 @@
     "dev": "npx tsx watch index.ts"
   },
   "dependencies": {
-    "@rana/core": "file:../../packages/core",
-    "@rana/rag": "file:../../packages/rag"
+    "@cofounder/core": "file:../../packages/core",
+    "@cofounder/rag": "file:../../packages/rag"
   },
   "devDependencies": {
     "tsx": "^4.7.0",

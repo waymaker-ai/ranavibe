@@ -1,10 +1,10 @@
-# RANA Configuration for RANA Framework
-# This is a self-referential example of RANA in use
+# CoFounder Configuration for CoFounder Framework
+# This is a self-referential example of CoFounder in use
 
 version: 1.0.0
 
 project:
-  name: "RANA Framework"
+  name: "CoFounder Framework"
   type: "tooling"
   description: "Rapid AI Native Architecture - Universal framework for production-quality AI development"
   languages:
@@ -76,7 +76,7 @@ quality_gates:
 deployment:
   npm:
     enabled: true
-    package_name: "@rana/cli"
+    package_name: "@cofounder/cli"
     registry: "https://registry.npmjs.org/"
 
   github:
@@ -100,7 +100,7 @@ ai_assistant:
 # Tooling
 tools:
   cli:
-    name: "@rana/cli"
+    name: "@cofounder/cli"
     version: "0.1.0"
     commands:
       - init
@@ -110,10 +110,10 @@ tools:
 
   documentation:
     framework: "Nextra"
-    url: "https://rana.dev"
+    url: "https://cofounder.dev"
 
 # Community
 community:
-  discord: "https://discord.gg/rana"
-  twitter: "@rana_dev"
+  discord: "https://discord.gg/cofounder"
+  twitter: "@cofounder_dev"
   github_discussions: true

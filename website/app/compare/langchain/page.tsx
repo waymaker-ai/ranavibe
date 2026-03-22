@@ -20,11 +20,11 @@ const messages = [
 
 const response = await model.invoke(messages);
 console.log(response.content);`,
-    rana: `import { createRana } from '@rana/core';
+    cofounder: `import { createCoFounder } from '@cofounder/core';
 
-const rana = createRana();
+const cofounder = createCoFounder();
 
-const response = await rana.chat('Hello!');
+const response = await cofounder.chat('Hello!');
 console.log(response.content);`,
   },
   {
@@ -52,9 +52,9 @@ const model = new ChatOpenAI({
 
 const response = await model.invoke("What's the weather in SF?");
 // Handle tool calls manually...`,
-    rana: `import { createRana, createTool } from '@rana/core';
+    cofounder: `import { createCoFounder, createTool } from '@cofounder/core';
 
-const rana = createRana();
+const cofounder = createCoFounder();
 
 const weather = createTool({
   name: 'get_weather',
@@ -63,7 +63,7 @@ const weather = createTool({
   handler: ({ location }) => \`Weather in \${location}: Sunny, 72°F\`,
 });
 
-const response = await rana
+const response = await cofounder
   .tools([weather])
   .chat('What\\'s the weather in SF?');`,
   },
@@ -102,11 +102,11 @@ const retrievalChain = await createRetrievalChain({
 });
 
 const response = await retrievalChain.invoke({ input: "question" });`,
-    rana: `import { createRana } from '@rana/core';
-import { createRAG } from '@rana/rag';
+    cofounder: `import { createCoFounder } from '@cofounder/core';
+import { createRAG } from '@cofounder/rag';
 
-const rana = createRana();
-const rag = createRAG({ rana });
+const cofounder = createCoFounder();
+const rag = createRAG({ cofounder });
 
 await rag.ingest(text);
 
@@ -127,10 +127,10 @@ export default function LangChainComparisonPage() {
 
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            RANA vs LangChain
+            CoFounder vs LangChain
           </h1>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            LangChain is powerful but complex. RANA gives you the same capabilities
+            LangChain is powerful but complex. CoFounder gives you the same capabilities
             with 90% less code and a gentler learning curve.
           </p>
         </div>
@@ -171,14 +171,14 @@ export default function LangChainComparisonPage() {
                 <div>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="px-3 py-1 rounded-full bg-green-500/20 text-green-400 text-sm">
-                      RANA
+                      CoFounder
                     </span>
                     <span className="text-gray-500 text-sm">
-                      {example.rana.split('\n').length} lines
+                      {example.cofounder.split('\n').length} lines
                     </span>
                   </div>
                   <pre className="p-4 rounded-xl bg-gray-900 border border-gray-800 overflow-x-auto text-sm">
-                    <code className="text-gray-300">{example.rana}</code>
+                    <code className="text-gray-300">{example.cofounder}</code>
                   </pre>
                 </div>
               </div>
@@ -187,10 +187,10 @@ export default function LangChainComparisonPage() {
         </div>
 
         <div className="mt-16 p-8 rounded-2xl border border-gray-800 bg-gradient-to-br from-blue-900/20 to-purple-900/20">
-          <h2 className="text-2xl font-semibold mb-6">When to Choose RANA</h2>
+          <h2 className="text-2xl font-semibold mb-6">When to Choose CoFounder</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <h3 className="text-lg font-medium text-green-400 mb-4">Choose RANA if you:</h3>
+              <h3 className="text-lg font-medium text-green-400 mb-4">Choose CoFounder if you:</h3>
               <ul className="space-y-2 text-gray-300">
                 <li className="flex items-start gap-2">
                   <span className="text-green-400 mt-1">✓</span>
@@ -232,10 +232,10 @@ export default function LangChainComparisonPage() {
 
         <div className="mt-16 text-center">
           <Link
-            href="https://github.com/waymaker-ai/ranavibe"
+            href="https://github.com/waymaker-ai/cofounder"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-black font-semibold hover:bg-gray-200 transition-colors"
           >
-            Try RANA Now
+            Try CoFounder Now
             <span>→</span>
           </Link>
         </div>

@@ -1,5 +1,5 @@
 /**
- * @rana/agents - LLMAgent
+ * @cofounder/agents - LLMAgent
  * Agent that uses LLM for reasoning with tool calling
  */
 
@@ -93,7 +93,7 @@ export class LLMAgent extends BaseAgent {
         this.log('llm:request', { iteration: iterations });
 
         // Call LLM
-        const response = await this.ctx.rana.chat({
+        const response = await this.ctx.cofounder.chat({
           messages: messages.map((m) => ({
             role: m.role as 'user' | 'assistant' | 'system',
             content: m.content,

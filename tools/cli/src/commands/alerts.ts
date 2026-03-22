@@ -1,30 +1,30 @@
 /**
- * RANA Cost Alerts
+ * CoFounder Cost Alerts
  *
  * Configure alerts for cost thresholds via Slack, email, or webhooks
  *
  * @example
  * ```bash
  * # Setup alerts interactively
- * rana alerts:setup
+ * cofounder alerts:setup
  *
  * # Add a Slack webhook
- * rana alerts:add slack https://hooks.slack.com/...
+ * cofounder alerts:add slack https://hooks.slack.com/...
  *
  * # Add an email alert
- * rana alerts:add email team@company.com
+ * cofounder alerts:add email team@company.com
  *
  * # Add a custom webhook
- * rana alerts:add webhook https://api.company.com/alerts
+ * cofounder alerts:add webhook https://api.company.com/alerts
  *
  * # List configured alerts
- * rana alerts:list
+ * cofounder alerts:list
  *
  * # Test alerts
- * rana alerts:test
+ * cofounder alerts:test
  *
  * # Remove an alert
- * rana alerts:remove <id>
+ * cofounder alerts:remove <id>
  * ```
  */
 
@@ -58,7 +58,7 @@ interface AlertsConfig {
   lastAlertSent?: string;
 }
 
-const CONFIG_DIR = path.join(os.homedir(), '.rana');
+const CONFIG_DIR = path.join(os.homedir(), '.cofounder');
 const ALERTS_FILE = path.join(CONFIG_DIR, 'alerts.json');
 
 /**
@@ -100,7 +100,7 @@ function generateId(): string {
  * Interactive alerts setup
  */
 export async function alertsSetupCommand(): Promise<void> {
-  console.log(chalk.bold.cyan('\n🔔 RANA Cost Alerts Setup\n'));
+  console.log(chalk.bold.cyan('\n🔔 CoFounder Cost Alerts Setup\n'));
 
   console.log(chalk.gray('Cost alerts notify you when spending approaches your budget.'));
   console.log(chalk.gray('Supports: Slack, Discord, Email, Custom Webhooks\n'));
@@ -108,16 +108,16 @@ export async function alertsSetupCommand(): Promise<void> {
   console.log(chalk.bold('Quick Setup Commands:\n'));
 
   console.log(chalk.white('1. Add Slack webhook:'));
-  console.log(chalk.cyan('   rana alerts:add slack <webhook-url>\n'));
+  console.log(chalk.cyan('   cofounder alerts:add slack <webhook-url>\n'));
 
   console.log(chalk.white('2. Add Discord webhook:'));
-  console.log(chalk.cyan('   rana alerts:add discord <webhook-url>\n'));
+  console.log(chalk.cyan('   cofounder alerts:add discord <webhook-url>\n'));
 
   console.log(chalk.white('3. Add email notification:'));
-  console.log(chalk.cyan('   rana alerts:add email <email@example.com>\n'));
+  console.log(chalk.cyan('   cofounder alerts:add email <email@example.com>\n'));
 
   console.log(chalk.white('4. Add custom webhook:'));
-  console.log(chalk.cyan('   rana alerts:add webhook <url>\n'));
+  console.log(chalk.cyan('   cofounder alerts:add webhook <url>\n'));
 
   console.log(chalk.gray('─'.repeat(50)));
   console.log(chalk.bold('\nThreshold Configuration:\n'));
@@ -129,7 +129,7 @@ export async function alertsSetupCommand(): Promise<void> {
   console.log(chalk.gray(`  Cooldown: ${config.cooldownMinutes} minutes between alerts\n`));
 
   console.log(chalk.white('To change thresholds:'));
-  console.log(chalk.cyan('  rana alerts:threshold --warning 75 --critical 90\n'));
+  console.log(chalk.cyan('  cofounder alerts:threshold --warning 75 --critical 90\n'));
 }
 
 /**
@@ -137,15 +137,15 @@ export async function alertsSetupCommand(): Promise<void> {
  */
 export async function alertsAddCommand(type: string, target: string): Promise<void> {
   if (!type || !target) {
-    console.log(chalk.yellow('\nUsage: rana alerts:add <type> <target>\n'));
+    console.log(chalk.yellow('\nUsage: cofounder alerts:add <type> <target>\n'));
     console.log('Types:');
     console.log(chalk.gray('  slack    - Slack webhook URL'));
     console.log(chalk.gray('  discord  - Discord webhook URL'));
     console.log(chalk.gray('  email    - Email address'));
     console.log(chalk.gray('  webhook  - Custom webhook URL\n'));
     console.log('Examples:');
-    console.log(chalk.cyan('  rana alerts:add slack https://hooks.slack.com/services/...'));
-    console.log(chalk.cyan('  rana alerts:add email alerts@company.com'));
+    console.log(chalk.cyan('  cofounder alerts:add slack https://hooks.slack.com/services/...'));
+    console.log(chalk.cyan('  cofounder alerts:add email alerts@company.com'));
     console.log('');
     return;
   }
@@ -189,7 +189,7 @@ export async function alertsAddCommand(type: string, target: string): Promise<vo
   console.log(chalk.gray(`  Type:   ${alertType}`));
   console.log(chalk.gray(`  Target: ${maskTarget(alertType, target)}`));
   console.log(chalk.gray(`\nTest your alert:`));
-  console.log(chalk.cyan(`  rana alerts:test ${newAlert.id}\n`));
+  console.log(chalk.cyan(`  cofounder alerts:test ${newAlert.id}\n`));
 }
 
 /**
@@ -203,7 +203,7 @@ export async function alertsListCommand(): Promise<void> {
   if (config.alerts.length === 0) {
     console.log(chalk.yellow('No alerts configured.\n'));
     console.log(chalk.gray('Add an alert:'));
-    console.log(chalk.cyan('  rana alerts:add slack <webhook-url>\n'));
+    console.log(chalk.cyan('  cofounder alerts:add slack <webhook-url>\n'));
     return;
   }
 
@@ -242,7 +242,7 @@ export async function alertsTestCommand(alertId?: string): Promise<void> {
 
   if (config.alerts.length === 0) {
     console.log(chalk.yellow('\nNo alerts configured.'));
-    console.log(chalk.gray('Add an alert first: rana alerts:add slack <url>\n'));
+    console.log(chalk.gray('Add an alert first: cofounder alerts:add slack <url>\n'));
     return;
   }
 
@@ -263,7 +263,7 @@ export async function alertsTestCommand(alertId?: string): Promise<void> {
     try {
       await sendAlert(alert, {
         level: 'test',
-        message: 'This is a test alert from RANA',
+        message: 'This is a test alert from CoFounder',
         spent: 5.00,
         budget: 10.00,
         percentage: 50,
@@ -282,8 +282,8 @@ export async function alertsTestCommand(alertId?: string): Promise<void> {
  */
 export async function alertsRemoveCommand(alertId: string): Promise<void> {
   if (!alertId) {
-    console.log(chalk.yellow('\nUsage: rana alerts:remove <id>\n'));
-    console.log(chalk.gray('List alerts to find IDs: rana alerts:list\n'));
+    console.log(chalk.yellow('\nUsage: cofounder alerts:remove <id>\n'));
+    console.log(chalk.gray('List alerts to find IDs: cofounder alerts:list\n'));
     return;
   }
 
@@ -404,7 +404,7 @@ async function sendSlackAlert(
           type: 'header',
           text: {
             type: 'plain_text',
-            text: `${emoji} RANA Cost Alert: ${level.toUpperCase()}`,
+            text: `${emoji} CoFounder Cost Alert: ${level.toUpperCase()}`,
             emoji: true,
           },
         },
@@ -423,7 +423,7 @@ async function sendSlackAlert(
         {
           type: 'context',
           elements: [
-            { type: 'mrkdwn', text: `Sent by RANA CLI • ${new Date().toISOString()}` },
+            { type: 'mrkdwn', text: `Sent by CoFounder CLI • ${new Date().toISOString()}` },
           ],
         },
       ],
@@ -457,7 +457,7 @@ async function sendDiscordAlert(
 
   const payload = {
     embeds: [{
-      title: `${emoji} RANA Cost Alert: ${level.toUpperCase()}`,
+      title: `${emoji} CoFounder Cost Alert: ${level.toUpperCase()}`,
       color,
       fields: [
         { name: 'Spent', value: `$${spent.toFixed(2)}`, inline: true },
@@ -465,7 +465,7 @@ async function sendDiscordAlert(
         { name: 'Usage', value: `${percentage.toFixed(1)}%`, inline: true },
       ],
       description: message,
-      footer: { text: 'RANA CLI' },
+      footer: { text: 'CoFounder CLI' },
       timestamp: new Date().toISOString(),
     }],
   };
@@ -493,7 +493,7 @@ async function sendWebhookAlert(
   percentage: number
 ): Promise<void> {
   const payload = {
-    type: 'rana_cost_alert',
+    type: 'cofounder_cost_alert',
     level,
     message,
     data: {

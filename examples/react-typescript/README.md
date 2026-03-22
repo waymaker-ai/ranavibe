@@ -1,13 +1,13 @@
-# React + TypeScript RANA Example
+# React + TypeScript CoFounder Example
 
-This is a complete example showing how to use RANA with a React + TypeScript project.
+This is a complete example showing how to use CoFounder with a React + TypeScript project.
 
 ## What's Included
 
-- ✅ Complete `.rana.yml` configuration
-- ✅ RANA documentation in `docs/aads/`
+- ✅ Complete `.cofounder.yml` configuration
+- ✅ CoFounder documentation in `docs/aads/`
 - ✅ TypeScript strict mode enabled
-- ✅ Example React components following RANA
+- ✅ Example React components following CoFounder
 - ✅ Real API integration (no mocks)
 - ✅ Error handling and loading states
 - ✅ Production-ready code
@@ -21,14 +21,14 @@ npm install
 # Run development server
 npm run dev
 
-# Check RANA compliance
+# Check CoFounder compliance
 aads check
 
 # Build for production
 npm run build
 ```
 
-## RANA Principles Demonstrated
+## CoFounder Principles Demonstrated
 
 ### 1. Real Data Only (No Mocks)
 
@@ -82,7 +82,7 @@ const users: User[] = await userService.getUsers();
 
 ```
 react-typescript/
-├── .rana.yml                    # RANA configuration
+├── .cofounder.yml                    # CoFounder configuration
 ├── docs/aads/
 │   ├── AGENT_INSTRUCTIONS.md    # Development rules
 │   └── DEVELOPMENT_CHECKLIST.md # Quality checklist
@@ -99,7 +99,7 @@ react-typescript/
 └── vite.config.ts
 ```
 
-## RANA Compliance Checklist
+## CoFounder Compliance Checklist
 
 This example demonstrates:
 
@@ -115,9 +115,9 @@ This example demonstrates:
 
 ## Learn More
 
-- [RANA Documentation](https://rana.dev)
-- [Configuration Guide](https://rana.dev/docs/configuration)
-- [Best Practices](https://rana.dev/docs/best-practices)
+- [CoFounder Documentation](https://cofounder.dev)
+- [Configuration Guide](https://cofounder.dev/docs/configuration)
+- [Best Practices](https://cofounder.dev/docs/best-practices)
 
 ## License
 

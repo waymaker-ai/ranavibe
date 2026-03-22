@@ -1,5 +1,5 @@
 /**
- * @rana/compliance - Compliance Enforcer
+ * @cofounder/compliance - Compliance Enforcer
  */
 
 import type {

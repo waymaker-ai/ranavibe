@@ -20,7 +20,7 @@ export async function benchmarkRun(options: {
   prompt?: string;
   iterations?: number;
 } = {}) {
-  console.log(chalk.bold.cyan('\n⚡ RANA LLM Benchmark\n'));
+  console.log(chalk.bold.cyan('\n⚡ CoFounder LLM Benchmark\n'));
 
   const providers = options.providers || ['openai', 'anthropic', 'google', 'groq'];
   const iterations = options.iterations || 3;
@@ -136,15 +136,15 @@ export async function benchmarkRun(options: {
   console.log(chalk.white('  Best Throughput:   ') + chalk.green(`${bestThroughput.provider}/${bestThroughput.model} (${bestThroughput.tokensPerSecond} TPS)`));
   console.log(chalk.white('  Lowest Cost:       ') + chalk.green(`${cheapest.provider}/${cheapest.model} ($${cheapest.costPer1K.toFixed(4)}/1K)`));
 
-  console.log(chalk.bold('\n💡 RANA Smart Routing'));
+  console.log(chalk.bold('\n💡 CoFounder Smart Routing'));
   console.log(chalk.gray('─'.repeat(60)));
-  console.log('  RANA automatically routes requests based on:');
+  console.log('  CoFounder automatically routes requests based on:');
   console.log('  • ' + chalk.cyan('Simple tasks') + ' → Gemini Flash or Groq (fast & cheap)');
   console.log('  • ' + chalk.cyan('Complex reasoning') + ' → Claude Sonnet or GPT-4 (quality)');
   console.log('  • ' + chalk.cyan('High volume') + ' → Groq or Together (throughput)');
   console.log('  • ' + chalk.cyan('Cached responses') + ' → Redis (instant, $0)');
 
-  console.log(chalk.green('\n  Run `rana llm:optimize` to enable smart routing.\n'));
+  console.log(chalk.green('\n  Run `cofounder llm:optimize` to enable smart routing.\n'));
 }
 
 export async function benchmarkQuick() {

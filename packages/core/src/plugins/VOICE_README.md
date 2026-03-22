@@ -1,6 +1,6 @@
-# RANA Voice Plugin
+# CoFounder Voice Plugin
 
-The Voice Plugin adds comprehensive voice capabilities to RANA, including Speech-to-Text (STT), Text-to-Speech (TTS), and real-time voice conversation support.
+The Voice Plugin adds comprehensive voice capabilities to CoFounder, including Speech-to-Text (STT), Text-to-Speech (TTS), and real-time voice conversation support.
 
 ## Features
 
@@ -14,19 +14,19 @@ The Voice Plugin adds comprehensive voice capabilities to RANA, including Speech
 
 ## Installation
 
-The Voice Plugin is included in `@rana/core`:
+The Voice Plugin is included in `@cofounder/core`:
 
 ```bash
-npm install @rana/core
+npm install @cofounder/core
 ```
 
 ## Quick Start
 
 ```typescript
-import { createRana, createVoicePlugin } from '@rana/core';
+import { createCoFounder, createVoicePlugin } from '@cofounder/core';
 
-// Create RANA client
-const rana = createRana({
+// Create CoFounder client
+const cofounder = createCoFounder({
   providers: {
     openai: process.env.OPENAI_API_KEY,
   },
@@ -43,7 +43,7 @@ const voicePlugin = createVoicePlugin({
   },
 });
 
-await rana.use(voicePlugin);
+await cofounder.use(voicePlugin);
 ```
 
 ## Configuration
@@ -82,7 +82,7 @@ interface VoiceConfig {
 ### Basic Transcription
 
 ```typescript
-import { VoicePlugin, createAudioBuffer } from '@rana/core';
+import { VoicePlugin, createAudioBuffer } from '@cofounder/core';
 
 const voicePlugin = new VoicePlugin({
   sttProvider: 'openai-whisper',
@@ -126,7 +126,7 @@ const result = await voicePlugin.transcribe('https://example.com/audio.mp3');
 
 ```typescript
 const result = await voicePlugin.synthesize(
-  'Hello! I am a RANA voice assistant.'
+  'Hello! I am a CoFounder voice assistant.'
 );
 
 console.log(result.audio);      // AudioBuffer with generated speech
@@ -347,10 +347,10 @@ const voicePlugin = new VoicePlugin({
 ## Complete Voice Assistant Example
 
 ```typescript
-import { createRana, VoicePlugin } from '@rana/core';
+import { createCoFounder, VoicePlugin } from '@cofounder/core';
 
-// Initialize RANA
-const rana = createRana({
+// Initialize CoFounder
+const cofounder = createCoFounder({
   providers: {
     openai: process.env.OPENAI_API_KEY,
     anthropic: process.env.ANTHROPIC_API_KEY,
@@ -389,7 +389,7 @@ session.onTranscription(async (transcription) => {
   });
 
   // Get AI response
-  const response = await rana.chat({
+  const response = await cofounder.chat({
     messages: conversationHistory,
   });
 
@@ -418,7 +418,7 @@ console.log('Voice assistant ready!');
 ### Create Audio Buffer
 
 ```typescript
-import { createAudioBuffer } from '@rana/core';
+import { createAudioBuffer } from '@cofounder/core';
 
 const buffer = createAudioBuffer(audioData, {
   format: 'wav',
@@ -431,7 +431,7 @@ const buffer = createAudioBuffer(audioData, {
 ### Validate Provider
 
 ```typescript
-import { validateVoiceProvider } from '@rana/core';
+import { validateVoiceProvider } from '@cofounder/core';
 
 const isValid = validateVoiceProvider('openai-whisper', {
   openai: process.env.OPENAI_API_KEY,
@@ -441,7 +441,7 @@ const isValid = validateVoiceProvider('openai-whisper', {
 ### Get Recommended Sample Rate
 
 ```typescript
-import { getRecommendedSampleRate } from '@rana/core';
+import { getRecommendedSampleRate } from '@cofounder/core';
 
 const sampleRate = getRecommendedSampleRate('openai-whisper');
 // Returns: 16000
@@ -450,7 +450,7 @@ const sampleRate = getRecommendedSampleRate('openai-whisper');
 ### Estimate Audio Duration
 
 ```typescript
-import { estimateAudioDuration } from '@rana/core';
+import { estimateAudioDuration } from '@cofounder/core';
 
 const duration = estimateAudioDuration(audioBuffer, 16); // 16 bits per sample
 console.log('Duration:', duration, 'seconds');
@@ -506,7 +506,7 @@ import type {
   VoiceSessionStats,
   CustomVoiceProvider,
   VADResult,
-} from '@rana/core';
+} from '@cofounder/core';
 ```
 
 ## Troubleshooting
@@ -533,4 +533,4 @@ import type {
 
 ## License
 
-Part of the RANA project. See LICENSE for details.
+Part of the CoFounder project. See LICENSE for details.

@@ -1,6 +1,6 @@
-# RANA UI Example
+# CoFounder UI Example
 
-This is an example project showing how to use RANA UI components in a Next.js application.
+This is an example project showing how to use CoFounder UI components in a Next.js application.
 
 ## Getting Started
 
@@ -27,7 +27,7 @@ pnpm dev
 ## Project Structure
 
 ```
-rana-ui-example/
+cofounder-ui-example/
 ├── pages/
 │   └── index.tsx          # Main example page
 ├── styles/
@@ -38,5 +38,5 @@ rana-ui-example/
 
 ## Learn More
 
-- [RANA UI Documentation](../../apps/rana-ui-docs)
-- [RANA Framework](../../README.md)
+- [CoFounder UI Documentation](../../apps/cofounder-ui-docs)
+- [CoFounder Framework](../../README.md)

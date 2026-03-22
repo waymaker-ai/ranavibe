@@ -1,14 +1,14 @@
 /**
  * Rate Limiting Example
  *
- * This example demonstrates how to use rate limiting with RANA
+ * This example demonstrates how to use rate limiting with CoFounder
  */
 
-import { createRana } from '../src';
+import { createCoFounder } from '../src';
 
 async function main() {
-  // Create a RANA client with rate limiting enabled
-  const rana = createRana({
+  // Create a CoFounder client with rate limiting enabled
+  const cofounder = createCoFounder({
     providers: {
       openai: process.env.OPENAI_API_KEY || '',
       anthropic: process.env.ANTHROPIC_API_KEY || '',
@@ -47,7 +47,7 @@ async function main() {
 
   for (let i = 0; i < 10; i++) {
     promises.push(
-      rana.chat({
+      cofounder.chat({
         provider: 'anthropic',
         model: 'claude-3-5-haiku-20241022',
         messages: [
@@ -73,7 +73,7 @@ async function main() {
   // Example 2: Checking rate limit status
   console.log('Example 2: Checking rate limit status\n');
 
-  const status = rana.providers.getRateLimitStatus('anthropic');
+  const status = cofounder.providers.getRateLimitStatus('anthropic');
   if (status) {
     console.log('Anthropic Rate Limit Status:');
     console.log(`  - Requests in last second: ${status.requestsInLastSecond}`);
@@ -97,7 +97,7 @@ async function main() {
   console.log('from provider responses and adjusts throttling accordingly.\n');
 
   // Make a request and show the raw rate limit headers
-  const response = await rana.chat({
+  const response = await cofounder.chat({
     provider: 'anthropic',
     model: 'claude-3-5-haiku-20241022',
     messages: [
@@ -110,7 +110,7 @@ async function main() {
   console.log(`Response: ${response.content}\n`);
 
   // Get updated status after the request
-  const updatedStatus = rana.providers.getRateLimitStatus('anthropic');
+  const updatedStatus = cofounder.providers.getRateLimitStatus('anthropic');
   if (updatedStatus?.rateLimitInfo) {
     console.log('Updated rate limit info from provider response:');
     console.log(`  - Remaining requests: ${updatedStatus.rateLimitInfo.remaining}`);

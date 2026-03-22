@@ -13,7 +13,7 @@ const caseStudies = [
       { label: 'Response Time', value: '-40%' },
       { label: 'Uptime', value: '99.9%' },
     ],
-    quote: 'RANA\'s cost tracking alone saved us $50k/month. The built-in testing gave us confidence to ship faster.',
+    quote: 'CoFounder\'s cost tracking alone saved us $50k/month. The built-in testing gave us confidence to ship faster.',
     author: 'Sarah Chen',
     role: 'VP of Engineering',
     slug: 'techcorp-ai',
@@ -45,7 +45,7 @@ const caseStudies = [
       { label: 'Availability', value: '99.99%' },
       { label: 'Latency P99', value: '<500ms' },
     ],
-    quote: 'RANA\'s automatic fallbacks and circuit breakers mean our students never experience downtime, even during peak hours.',
+    quote: 'CoFounder\'s automatic fallbacks and circuit breakers mean our students never experience downtime, even during peak hours.',
     author: 'Alex Rodriguez',
     role: 'Head of Platform',
     slug: 'edulearn',
@@ -61,7 +61,7 @@ const caseStudies = [
       { label: 'Time to Ship', value: '4 weeks' },
       { label: 'Daily Users', value: '50k+' },
     ],
-    quote: 'Coming from LangChain, RANA felt like a breath of fresh air. We shipped in a quarter of the time.',
+    quote: 'Coming from LangChain, CoFounder felt like a breath of fresh air. We shipped in a quarter of the time.',
     author: 'Maria Santos',
     role: 'Founder',
     slug: 'devtools-inc',
@@ -77,7 +77,7 @@ const caseStudies = [
       { label: 'Models Used', value: '5' },
       { label: 'Accuracy', value: '98.5%' },
     ],
-    quote: 'RANA\'s intelligent model routing automatically picks the cheapest model that meets our quality bar. It\'s like magic.',
+    quote: 'CoFounder\'s intelligent model routing automatically picks the cheapest model that meets our quality bar. It\'s like magic.',
     author: 'David Kim',
     role: 'ML Lead',
     slug: 'financebot',
@@ -94,7 +94,7 @@ export default function CaseStudiesPage() {
             Case Studies
           </h1>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            See how teams are using RANA to build production AI applications
+            See how teams are using CoFounder to build production AI applications
             faster, cheaper, and more reliably.
           </p>
         </div>
@@ -160,10 +160,10 @@ export default function CaseStudiesPage() {
             Want to be featured?
           </h2>
           <p className="text-gray-400 mb-6">
-            We&apos;d love to hear about your RANA success story.
+            We&apos;d love to hear about your CoFounder success story.
           </p>
           <Link
-            href="mailto:casestudies@rana.dev"
+            href="mailto:casestudies@cofounder.dev"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black font-semibold hover:bg-gray-200 transition-colors"
           >
             Share Your Story

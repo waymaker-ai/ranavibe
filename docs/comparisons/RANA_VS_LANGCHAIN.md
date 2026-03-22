@@ -1,12 +1,12 @@
-# RANA vs LangChain
+# CoFounder vs LangChain
 
-**A comprehensive comparison of RANA and LangChain for AI-assisted development.**
+**A comprehensive comparison of CoFounder and LangChain for AI-assisted development.**
 
 ---
 
 ## 🎯 TL;DR
 
-| Feature | RANA | LangChain |
+| Feature | CoFounder | LangChain |
 |---------|------|-----------|
 | **Language** | TypeScript-first | Python-first (TypeScript secondary) |
 | **Focus** | Code generation, guardrails, compliance | LLM orchestration, chains, agents |
@@ -22,7 +22,7 @@
 
 ### 1. Language & Ecosystem
 
-#### RANA
+#### CoFounder
 - **Native TypeScript** - Built from ground up for TypeScript/JavaScript
 - **No Python dependency** - Pure Node.js ecosystem
 - **Modern tooling** - ESM, Bun, Vite support
@@ -34,13 +34,13 @@
 - **API parity gaps** - JS version lags behind Python
 - **Mixed ecosystem** - Some features Python-only
 
-**Winner: RANA** for TypeScript/Node.js projects
+**Winner: CoFounder** for TypeScript/Node.js projects
 
 ---
 
 ### 2. Core Strengths
 
-#### RANA Strengths
+#### CoFounder Strengths
 1. **Code Generation** ⭐
    - Complete CRUD API generation (Next.js, Express, Fastify)
    - Database schemas (Prisma, Drizzle, SQL)
@@ -93,10 +93,10 @@
 
 ### 3. Code Generation
 
-#### RANA
+#### CoFounder
 
 ```typescript
-import { APIGenerator, DatabaseGenerator } from '@rana/generate';
+import { APIGenerator, DatabaseGenerator } from '@cofounder/generate';
 
 // Generate complete CRUD API
 const api = APIGenerator.generateCRUD({
@@ -147,16 +147,16 @@ chain = template | llm
 result = chain.invoke({"entity": "User"})
 ```
 
-**Winner: RANA** - Purpose-built for code generation
+**Winner: CoFounder** - Purpose-built for code generation
 
 ---
 
 ### 4. Compliance & Safety
 
-#### RANA
+#### CoFounder
 
 ```typescript
-import { createComplianceEnforcer, PresetRules } from '@rana/compliance';
+import { createComplianceEnforcer, PresetRules } from '@cofounder/compliance';
 
 const enforcer = createComplianceEnforcer({
   enableAllPresets: true, // HIPAA, SEC, GDPR, CCPA
@@ -200,16 +200,16 @@ class ComplianceCallback(StdOutCallbackHandler):
 - ❌ Manual PII detection
 - ❌ No preset rules
 
-**Winner: RANA** - Only framework with built-in compliance
+**Winner: CoFounder** - Only framework with built-in compliance
 
 ---
 
 ### 5. RAG (Retrieval Augmented Generation)
 
-#### RANA
+#### CoFounder
 
 ```typescript
-import { createRAG } from '@rana/rag';
+import { createRAG } from '@cofounder/rag';
 
 const rag = await createRAG({
   preset: 'accurate',
@@ -262,10 +262,10 @@ result = qa.run("What is our refund policy?")
 
 ### 6. Context Optimization
 
-#### RANA
+#### CoFounder
 
 ```typescript
-import { createContextOptimizer } from '@rana/context-optimizer';
+import { createContextOptimizer } from '@cofounder/context-optimizer';
 
 const optimizer = createContextOptimizer({
   strategy: 'hybrid',     // Smart mix of full + summarized
@@ -311,18 +311,18 @@ chunks = splitter.split_text(codebase)
 - ❌ Manual strategy implementation
 - ❌ No quality metrics
 
-**Winner: RANA** - Purpose-built for large contexts
+**Winner: CoFounder** - Purpose-built for large contexts
 
 ---
 
 ### 7. Multi-Provider Support
 
-#### RANA
+#### CoFounder
 
 ```typescript
-import { createRana } from '@rana/core';
+import { createCoFounder } from '@cofounder/core';
 
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: {
     anthropic: process.env.ANTHROPIC_API_KEY,
     openai: process.env.OPENAI_API_KEY,
@@ -334,7 +334,7 @@ const rana = createRana({
 });
 
 // Automatic provider selection
-const response = await rana.chat({
+const response = await cofounder.chat({
   messages: [{ role: 'user', content: 'Hello' }],
   // Uses cheapest available provider
 });
@@ -368,24 +368,24 @@ def get_llm(task):
 - ❌ No automatic cost optimization
 - ⚠️ Inconsistent APIs across providers
 
-**Winner: RANA** - Better auto-optimization, LangChain - More integrations
+**Winner: CoFounder** - Better auto-optimization, LangChain - More integrations
 
 ---
 
 ### 8. Developer Experience
 
-#### RANA
+#### CoFounder
 
 ```typescript
 // Single import for everything
-import { createRana } from '@rana/core';
-import { createRAG } from '@rana/rag';
-import { createComplianceEnforcer } from '@rana/compliance';
-import { APIGenerator } from '@rana/generate';
+import { createCoFounder } from '@cofounder/core';
+import { createRAG } from '@cofounder/rag';
+import { createComplianceEnforcer } from '@cofounder/compliance';
+import { APIGenerator } from '@cofounder/generate';
 
 // Type-safe, autocomplete works
-const rana = createRana({ /* ... */ });
-const response = await rana.chat(/* fully typed */);
+const cofounder = createCoFounder({ /* ... */ });
+const response = await cofounder.chat(/* fully typed */);
 ```
 
 **DX Features:**
@@ -415,13 +415,13 @@ chain = LLMChain(llm=llm, prompt=template)  # Runtime errors possible
 - ⚠️ API consistency varies
 - ⚠️ Breaking changes between versions
 
-**Winner: RANA** for TypeScript developers
+**Winner: CoFounder** for TypeScript developers
 
 ---
 
-## 🎯 When to Choose RANA
+## 🎯 When to Choose CoFounder
 
-Choose RANA if you:
+Choose CoFounder if you:
 
 1. **Build TypeScript/JavaScript applications**
    - Next.js, React, Node.js, Express
@@ -484,14 +484,14 @@ Choose LangChain if you:
 
 ## 💡 Can You Use Both?
 
-**Yes!** RANA and LangChain can complement each other:
+**Yes!** CoFounder and LangChain can complement each other:
 
 ```typescript
-// Use RANA for TypeScript app with compliance
-import { createRana } from '@rana/core';
-import { createComplianceEnforcer } from '@rana/compliance';
+// Use CoFounder for TypeScript app with compliance
+import { createCoFounder } from '@cofounder/core';
+import { createComplianceEnforcer } from '@cofounder/compliance';
 
-const rana = createRana({ /* ... */ });
+const cofounder = createCoFounder({ /* ... */ });
 const enforcer = createComplianceEnforcer({ enableAllPresets: true });
 
 // Use LangChain for Python ML pipeline
@@ -499,14 +499,14 @@ const enforcer = createComplianceEnforcer({ enableAllPresets: true });
 ```
 
 **Common pattern:**
-- **Frontend/Backend**: RANA (TypeScript, compliance, code gen)
+- **Frontend/Backend**: CoFounder (TypeScript, compliance, code gen)
 - **ML Pipeline**: LangChain (Python, training, advanced chains)
 
 ---
 
 ## 📊 Feature Matrix
 
-| Feature | RANA | LangChain |
+| Feature | CoFounder | LangChain |
 |---------|------|-----------|
 | **TypeScript Native** | ✅ | ⚠️ (Port) |
 | **Code Generation** | ✅ | ❌ |
@@ -526,9 +526,9 @@ const enforcer = createComplianceEnforcer({ enableAllPresets: true });
 
 ## 🏆 Verdict
 
-**RANA** and **LangChain** excel in different areas:
+**CoFounder** and **LangChain** excel in different areas:
 
-### RANA Wins For:
+### CoFounder Wins For:
 - ✅ TypeScript/Node.js applications
 - ✅ Code generation needs
 - ✅ Compliance-first organizations
@@ -543,18 +543,18 @@ const enforcer = createComplianceEnforcer({ enableAllPresets: true });
 - ✅ Research & experimentation
 
 ### The Truth:
-**Different tools for different jobs.** RANA isn't trying to replace LangChain - it's focused on what LangChain doesn't prioritize: TypeScript-first code generation with enterprise compliance.
+**Different tools for different jobs.** CoFounder isn't trying to replace LangChain - it's focused on what LangChain doesn't prioritize: TypeScript-first code generation with enterprise compliance.
 
 ---
 
 ## 📚 Resources
 
-- **RANA**: [github.com/waymaker-ai/ranavibe](https://github.com/waymaker-ai/ranavibe)
+- **CoFounder**: [github.com/waymaker-ai/cofounder](https://github.com/waymaker-ai/cofounder)
 - **LangChain**: [python.langchain.com](https://python.langchain.com)
 - **LangChain.js**: [js.langchain.com](https://js.langchain.com)
 
 ---
 
 **Last Updated**: January 2026
-**RANA Version**: 2.1
+**CoFounder Version**: 2.1
 **LangChain Version**: 0.1.x

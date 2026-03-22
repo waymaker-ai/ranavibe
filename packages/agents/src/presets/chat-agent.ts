@@ -1,5 +1,5 @@
 /**
- * @rana/agents - Chat Agent
+ * @cofounder/agents - Chat Agent
  * Simple conversational agent
  */
 
@@ -74,7 +74,7 @@ export class ChatAgent extends BaseAgent {
     ];
 
     try {
-      const response = await this.ctx.rana.chat({
+      const response = await this.ctx.cofounder.chat({
         messages: messages.map((m) => ({
           role: m.role as 'user' | 'assistant' | 'system',
           content: m.content,

@@ -317,8 +317,8 @@ export const memoryTool: Tool = {
   },
   execute: async (args) => {
     // Use a simple in-memory store
-    const store = (global as any).__ranaMemoryStore || {};
-    (global as any).__ranaMemoryStore = store;
+    const store = (global as any).__cofounderMemoryStore || {};
+    (global as any).__cofounderMemoryStore = store;
 
     const operation = args.operation as string;
     const key = args.key as string | undefined;
@@ -346,7 +346,7 @@ export const memoryTool: Tool = {
         return { success: true, existed };
 
       case 'clear':
-        (global as any).__ranaMemoryStore = {};
+        (global as any).__cofounderMemoryStore = {};
         return { success: true, message: 'Memory cleared' };
 
       default:

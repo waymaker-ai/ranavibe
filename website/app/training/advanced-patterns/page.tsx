@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { ArrowLeft, CheckCircle2, Circle, Play } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Advanced Patterns | RANA Training',
+  title: 'Advanced Patterns | CoFounder Training',
   description: 'Master complex agent patterns, streaming, and state management',
 };
 
@@ -110,7 +110,7 @@ export default function AdvancedPatternsPage() {
         <div className="mt-8 card bg-red-500/10 border-red-500/30">
           <p className="text-red-400 font-medium mb-2">Prerequisites</p>
           <p className="text-foreground-secondary">
-            Complete both RANA Fundamentals and Building AI Agents courses before
+            Complete both CoFounder Fundamentals and Building AI Agents courses before
             starting this advanced module.
           </p>
           <div className="flex gap-4 mt-4">

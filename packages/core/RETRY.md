@@ -1,6 +1,6 @@
 # Retry with Exponential Backoff
 
-RANA Core includes a robust retry system with exponential backoff, jitter, and intelligent error classification to handle transient failures gracefully.
+CoFounder Core includes a robust retry system with exponential backoff, jitter, and intelligent error classification to handle transient failures gracefully.
 
 ## Features
 
@@ -10,14 +10,14 @@ RANA Core includes a robust retry system with exponential backoff, jitter, and i
 - **Provider-Specific Defaults**: Optimized retry configurations for each LLM provider
 - **Configurable**: Full control over retry behavior
 - **Metadata Tracking**: Detailed information about retry attempts
-- **Integration**: Works seamlessly with existing RANA features (caching, fallback, etc.)
+- **Integration**: Works seamlessly with existing CoFounder features (caching, fallback, etc.)
 
 ## Quick Start
 
 ```typescript
-import { createRana } from '@rana/core';
+import { createCoFounder } from '@cofounder/core';
 
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: {
     anthropic: process.env.ANTHROPIC_API_KEY,
   },
@@ -29,7 +29,7 @@ const rana = createRana({
   },
 });
 
-const response = await rana.chat('Hello!');
+const response = await cofounder.chat('Hello!');
 
 // Check if retries were needed
 if (response.retry) {
@@ -43,7 +43,7 @@ if (response.retry) {
 ### Basic Configuration
 
 ```typescript
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: { /* ... */ },
   retry: {
     enabled: true,              // Enable/disable retry (default: true)
@@ -117,7 +117,7 @@ These defaults are automatically applied and can be overridden with your custom 
 ### Custom Retry Logic
 
 ```typescript
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: { /* ... */ },
   retry: {
     maxRetries: 5,
@@ -146,14 +146,14 @@ Retry is enabled globally but you can control it:
 
 ```typescript
 // Disable retry system-wide
-const rana = createRana({
+const cofounder = createCoFounder({
   retry: {
     enabled: false,
   },
 });
 
 // Or use maxRetries: 0 to disable for this config
-const rana = createRana({
+const cofounder = createCoFounder({
   retry: {
     maxRetries: 0,
   },
@@ -163,7 +163,7 @@ const rana = createRana({
 ### Inspect Retry Metadata
 
 ```typescript
-const response = await rana.chat('Hello!');
+const response = await cofounder.chat('Hello!');
 
 if (response.retry) {
   console.log('Retry Information:');
@@ -201,7 +201,7 @@ With jitter, each delay is randomized between 50% and 150% of the calculated val
 The retry system automatically classifies errors:
 
 ```typescript
-import { classifyError } from '@rana/core';
+import { classifyError } from '@cofounder/core';
 
 const error = new Error('Rate limit exceeded');
 error.status = 429;
@@ -212,7 +212,7 @@ const errorType = classifyError(error);
 
 ### Classification Rules
 
-1. **RANA Error Types**: `RanaRateLimitError`, `RanaNetworkError`, etc.
+1. **CoFounder Error Types**: `RanaRateLimitError`, `RanaNetworkError`, etc.
 2. **HTTP Status Codes**: 429 (rate limit), 5xx (server errors), 408 (timeout)
 3. **Error Messages**: Pattern matching on error messages
 4. **Custom Classification**: Via `shouldRetry` callback
@@ -222,7 +222,7 @@ const errorType = classifyError(error);
 ### Retry + Fallback
 
 ```typescript
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: {
     anthropic: process.env.ANTHROPIC_API_KEY,
     openai: process.env.OPENAI_API_KEY,
@@ -244,7 +244,7 @@ const rana = createRana({
 ### Retry + Caching
 
 ```typescript
-const rana = createRana({
+const cofounder = createCoFounder({
   retry: {
     enabled: true,
     maxRetries: 3,
@@ -262,7 +262,7 @@ const rana = createRana({
 ### Retry + Budget
 
 ```typescript
-const rana = createRana({
+const cofounder = createCoFounder({
   retry: {
     enabled: true,
     maxRetries: 3,
@@ -288,7 +288,7 @@ const rana = createRana({
 Use the retry system independently:
 
 ```typescript
-import { withRetry } from '@rana/core';
+import { withRetry } from '@cofounder/core';
 
 async function myApiCall() {
   // Your API call here
@@ -307,7 +307,7 @@ console.log('Retries:', metadata.retryCount);
 ### Create Retry Wrapper
 
 ```typescript
-import { createRetryWrapper } from '@rana/core';
+import { createRetryWrapper } from '@cofounder/core';
 
 const retryFn = createRetryWrapper({
   maxRetries: 5,
@@ -321,7 +321,7 @@ const result2 = await retryFn(() => apiCall2());
 ### Error Classification
 
 ```typescript
-import { classifyError, shouldRetryError } from '@rana/core';
+import { classifyError, shouldRetryError } from '@cofounder/core';
 
 const error = new Error('Service unavailable');
 const errorType = classifyError(error);

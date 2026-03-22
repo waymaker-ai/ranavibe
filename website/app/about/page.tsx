@@ -61,7 +61,7 @@ export default function AboutPage() {
             <span className="gradient-text">AI Coding Challenges</span>
           </h1>
           <p className="text-lg text-foreground-secondary max-w-2xl mx-auto">
-            RANA was born from real frustration with AI-assisted development and a vision to make it better for everyone.
+            CoFounder was born from real frustration with AI-assisted development and a vision to make it better for everyone.
           </p>
         </motion.div>
 
@@ -79,13 +79,13 @@ export default function AboutPage() {
               </div>
               <div>
                 <h2 className="text-xl font-bold">A Message from Ashley Kays</h2>
-                <p className="text-foreground-secondary">Creator of RANA</p>
+                <p className="text-foreground-secondary">Creator of CoFounder</p>
               </div>
             </div>
 
             <div className="prose prose-neutral dark:prose-invert max-w-none space-y-4 text-foreground-secondary">
               <p>
-                I created RANA after experiencing firsthand the trial and error of using AI agents to create products.
+                I created CoFounder after experiencing firsthand the trial and error of using AI agents to create products.
                 AI coding tools are truly magical—they can generate entire features in minutes, help you explore new
                 technologies, and accelerate development in ways that seemed impossible just a few years ago.
               </p>
@@ -105,7 +105,7 @@ export default function AboutPage() {
                 <li><strong>Unpredictable quality</strong> — Sometimes brilliant, sometimes a complete mess</li>
               </ul>
               <p>
-                RANA solves these problems by providing guardrails, design system enforcement, and security validation
+                CoFounder solves these problems by providing guardrails, design system enforcement, and security validation
                 that work alongside your favorite AI coding tools. It doesn&apos;t replace them—it makes them better and
                 more reliable.
               </p>
@@ -126,7 +126,7 @@ export default function AboutPage() {
         >
           <h2 className="text-3xl font-bold text-center mb-4">The Problems We Solve</h2>
           <p className="text-foreground-secondary text-center mb-12 max-w-2xl mx-auto">
-            AI coding tools are powerful, but they come with challenges that RANA addresses head-on.
+            AI coding tools are powerful, but they come with challenges that CoFounder addresses head-on.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {challenges.map((challenge, index) => (
@@ -156,7 +156,7 @@ export default function AboutPage() {
         >
           <h2 className="text-3xl font-bold text-center mb-4">The Team</h2>
           <p className="text-foreground-secondary text-center mb-12 max-w-2xl mx-auto">
-            RANA is built by a dedicated team passionate about improving the AI development experience.
+            CoFounder is built by a dedicated team passionate about improving the AI development experience.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {team.map((member, index) => (
@@ -200,7 +200,7 @@ export default function AboutPage() {
             <Sparkles className="h-8 w-8 mx-auto mb-4 text-gradient-from" />
             <h2 className="text-2xl font-bold mb-4">Sponsors & Acknowledgments</h2>
             <p className="text-foreground-secondary mb-6">
-              RANA is proudly sponsored by{' '}
+              CoFounder is proudly sponsored by{' '}
               <Link href="https://betr.ai" target="_blank" className="text-foreground font-medium hover:underline">
                 Betr.ai
               </Link>
@@ -258,7 +258,7 @@ export default function AboutPage() {
               Get Started
             </Link>
             <Link
-              href="https://github.com/waymaker-ai/ranavibe"
+              href="https://github.com/waymaker-ai/cofounder"
               target="_blank"
               className="btn-secondary px-6 py-3"
             >

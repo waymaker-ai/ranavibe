@@ -5,7 +5,7 @@ import { Star } from 'lucide-react';
 
 const testimonials = [
   {
-    quote: "RANA's cost tracking alone saved us $50k/month. The built-in testing gave us confidence to ship faster.",
+    quote: "CoFounder's cost tracking alone saved us $50k/month. The built-in testing gave us confidence to ship faster.",
     author: 'Sarah Chen',
     role: 'VP of Engineering',
     company: 'TechCorp AI',
@@ -13,7 +13,7 @@ const testimonials = [
     highlight: true,
   },
   {
-    quote: "Coming from LangChain, RANA felt like a breath of fresh air. We shipped in a quarter of the time.",
+    quote: "Coming from LangChain, CoFounder felt like a breath of fresh air. We shipped in a quarter of the time.",
     author: 'Maria Santos',
     role: 'Founder',
     company: 'DevTools Inc',
@@ -27,7 +27,7 @@ const testimonials = [
     avatar: 'JM',
   },
   {
-    quote: "RANA's automatic fallbacks and circuit breakers mean our students never experience downtime.",
+    quote: "CoFounder's automatic fallbacks and circuit breakers mean our students never experience downtime.",
     author: 'Alex Rodriguez',
     role: 'Head of Platform',
     company: 'EduLearn',
@@ -48,7 +48,7 @@ const testimonials = [
     avatar: 'EW',
   },
   {
-    quote: "We evaluated every AI framework. RANA was the only one that had everything we needed out of the box.",
+    quote: "We evaluated every AI framework. CoFounder was the only one that had everything we needed out of the box.",
     author: 'Michael Torres',
     role: 'Engineering Manager',
     company: 'CloudScale',
@@ -69,7 +69,7 @@ const testimonials = [
     avatar: 'CL',
   },
   {
-    quote: "Multi-provider support with automatic fallbacks should be table stakes. RANA is the only one that got it right.",
+    quote: "Multi-provider support with automatic fallbacks should be table stakes. CoFounder is the only one that got it right.",
     author: 'Amanda Foster',
     role: 'DevOps Lead',
     company: 'ReliableAI',
@@ -109,7 +109,7 @@ export function Testimonials() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-lg text-foreground-secondary max-w-2xl mx-auto"
           >
-            Join thousands of developers building production AI apps with RANA
+            Join thousands of developers building production AI apps with CoFounder
           </motion.p>
         </div>
 

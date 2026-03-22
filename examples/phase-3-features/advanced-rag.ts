@@ -3,7 +3,7 @@
  * Demonstrates multi-modal RAG with self-correction and evaluation
  */
 
-import { AdvancedRAG, RAGEvaluator, VectorStore } from '@rana/core';
+import { AdvancedRAG, RAGEvaluator, VectorStore } from '@cofounder/core';
 
 async function main() {
   // Example 1: Basic RAG setup
@@ -97,7 +97,7 @@ async function main() {
   });
 
   const verifiedResult = await selfCorrectingRAG.query({
-    question: 'What are the main features of RANA?',
+    question: 'What are the main features of CoFounder?',
     verify: true,
   });
 
@@ -210,13 +210,13 @@ async function main() {
   // Create test set
   const testSet = [
     {
-      question: 'What is RANA?',
-      expectedAnswer: 'RANA is a production AI development framework...',
+      question: 'What is CoFounder?',
+      expectedAnswer: 'CoFounder is a production AI development framework...',
       relevantDocIds: ['doc1', 'doc2'],
     },
     {
-      question: 'How do I install RANA?',
-      expectedAnswer: 'Run npm install @rana/core...',
+      question: 'How do I install CoFounder?',
+      expectedAnswer: 'Run npm install @cofounder/core...',
       relevantDocIds: ['doc3'],
     },
     // ... more test cases

@@ -1,5 +1,5 @@
 /**
- * @rana/integrations/wandb
+ * @cofounder/integrations/wandb
  * Weights & Biases tracking integration
  *
  * Features:
@@ -11,7 +11,7 @@
  *
  * @example
  * ```typescript
- * import { createWandbTracker } from '@rana/core';
+ * import { createWandbTracker } from '@cofounder/core';
  *
  * const tracker = createWandbTracker({
  *   apiKey: process.env.WANDB_API_KEY,
@@ -52,7 +52,7 @@ export interface WandbConfig {
   baseUrl?: string;
   /** Default tags for all runs */
   defaultTags?: string[];
-  /** Auto-log RANA metrics */
+  /** Auto-log CoFounder metrics */
   autoLog?: boolean;
 }
 
@@ -584,7 +584,7 @@ export class WandbTracker {
 }
 
 // ============================================================================
-// RANA Integration Middleware
+// CoFounder Integration Middleware
 // ============================================================================
 
 export interface RanaWandbMiddleware {
@@ -615,7 +615,7 @@ export interface RanaWandbMiddleware {
 }
 
 /**
- * Create middleware for automatic RANA tracking
+ * Create middleware for automatic CoFounder tracking
  */
 export async function createRanaWandbMiddleware(
   config: WandbConfig & { runConfig?: RunConfig }
@@ -623,7 +623,7 @@ export async function createRanaWandbMiddleware(
   const tracker = new WandbTracker(config);
   const run = await tracker.startRun({
     ...config.runConfig,
-    tags: ['rana', ...(config.runConfig?.tags || [])],
+    tags: ['cofounder', ...(config.runConfig?.tags || [])],
   });
 
   let requestCount = 0;

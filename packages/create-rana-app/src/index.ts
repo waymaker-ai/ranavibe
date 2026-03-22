@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 
 /**
- * create-rana-app
+ * create-cofounder-app
  *
- * Create a new RANA AI application in seconds
+ * Create a new CoFounder AI application in seconds
  *
  * @example
  * ```bash
- * npx create-rana-app my-ai-app
- * npx create-rana-app my-ai-app --template chatbot
- * npx create-rana-app my-ai-app --template rag --provider anthropic
+ * npx create-cofounder-app my-ai-app
+ * npx create-cofounder-app my-ai-app --template chatbot
+ * npx create-cofounder-app my-ai-app --template rag --provider anthropic
  * ```
  */
 
@@ -56,7 +56,7 @@ const PROVIDERS: Record<Provider, { name: string; env: string }> = {
 const banner = `
 ${chalk.bold.cyan('╔═══════════════════════════════════════════════════════════╗')}
 ${chalk.bold.cyan('║')}                                                             ${chalk.bold.cyan('║')}
-${chalk.bold.cyan('║')}   ${chalk.bold.white('create-rana-app')}                                        ${chalk.bold.cyan('║')}
+${chalk.bold.cyan('║')}   ${chalk.bold.white('create-cofounder-app')}                                        ${chalk.bold.cyan('║')}
 ${chalk.bold.cyan('║')}   ${chalk.gray('Create production-ready AI apps in seconds')}              ${chalk.bold.cyan('║')}
 ${chalk.bold.cyan('║')}                                                             ${chalk.bold.cyan('║')}
 ${chalk.bold.cyan('╚═══════════════════════════════════════════════════════════╝')}
@@ -66,8 +66,8 @@ async function main() {
   console.log(banner);
 
   const program = new Command()
-    .name('create-rana-app')
-    .description('Create a new RANA AI application')
+    .name('create-cofounder-app')
+    .description('Create a new CoFounder AI application')
     .version('2.0.0')
     .argument('[project-name]', 'Name of your project')
     .option('-t, --template <template>', 'Template to use', 'default')
@@ -178,7 +178,7 @@ async function createApp(projectName: string, options: CreateOptions) {
     process.exit(1);
   }
 
-  const spinner = ora('Creating your RANA app...').start();
+  const spinner = ora('Creating your CoFounder app...').start();
 
   try {
     // Create directory
@@ -195,7 +195,7 @@ async function createApp(projectName: string, options: CreateOptions) {
       try {
         execSync('git init', { cwd: projectPath, stdio: 'ignore' });
         execSync('git add -A', { cwd: projectPath, stdio: 'ignore' });
-        execSync('git commit -m "Initial commit from create-rana-app"', { cwd: projectPath, stdio: 'ignore' });
+        execSync('git commit -m "Initial commit from create-cofounder-app"', { cwd: projectPath, stdio: 'ignore' });
         spinner.succeed('Git initialized!');
       } catch {
         spinner.warn('Git initialization failed (git may not be installed)');
@@ -234,9 +234,9 @@ async function createApp(projectName: string, options: CreateOptions) {
     console.log(chalk.cyan(`  cd ${projectName}`));
 
     if (options.provider !== 'auto') {
-      console.log(chalk.cyan(`  rana config:set ${options.provider} YOUR_API_KEY`));
+      console.log(chalk.cyan(`  cofounder config:set ${options.provider} YOUR_API_KEY`));
     } else {
-      console.log(chalk.cyan('  rana config:set openai YOUR_API_KEY'));
+      console.log(chalk.cyan('  cofounder config:set openai YOUR_API_KEY'));
     }
 
     console.log(chalk.cyan(`  ${runCmd} dev`));
@@ -268,16 +268,16 @@ async function generateTemplate(
       dev: 'tsx watch src/index.ts',
       build: options.typescript ? 'tsc' : 'echo "No build needed"',
       start: 'node dist/index.js',
-      test: 'rana test',
+      test: 'cofounder test',
       lint: options.typescript ? 'tsc --noEmit' : 'echo "No lint configured"',
     },
     dependencies: {
-      '@rana/core': '^2.0.0',
-      ...(options.template === 'rag' && { '@rana/rag': '^2.0.0' }),
+      '@cofounder/core': '^2.0.0',
+      ...(options.template === 'rag' && { '@cofounder/rag': '^2.0.0' }),
       ...(options.template === 'api' && { express: '^4.18.0' }),
     },
     devDependencies: {
-      '@rana/testing': '^2.0.0',
+      '@cofounder/testing': '^2.0.0',
       tsx: '^4.7.0',
       ...(options.typescript && {
         typescript: '^5.5.0',
@@ -318,9 +318,9 @@ async function generateTemplate(
     );
   }
 
-  // RANA config
-  const ranaConfig = `# RANA Configuration
-# https://rana.dev/docs/config
+  // CoFounder config
+  const cofounderConfig = `# CoFounder Configuration
+# https://cofounder.dev/docs/config
 
 defaults:
   provider: ${provider}
@@ -338,10 +338,10 @@ cost_tracking:
     action: warn
 `;
 
-  fs.writeFileSync(path.join(projectPath, '.rana.yml'), ranaConfig);
+  fs.writeFileSync(path.join(projectPath, '.cofounder.yml'), cofounderConfig);
 
   // Environment file
-  const envFile = `# RANA Environment Variables
+  const envFile = `# CoFounder Environment Variables
 # Get your API keys from:
 # - OpenAI: https://platform.openai.com/api-keys
 # - Anthropic: https://console.anthropic.com/
@@ -364,8 +364,8 @@ dist/
 .env.local
 .env.*.local
 
-# RANA
-.rana/
+# CoFounder
+.cofounder/
 
 # IDE
 .idea/
@@ -413,7 +413,7 @@ npm-debug.log*
   // README
   const readme = `# ${projectName}
 
-A RANA AI application.
+A CoFounder AI application.
 
 ## Getting Started
 
@@ -428,9 +428,9 @@ A RANA AI application.
    # Edit .env with your API key
    \`\`\`
 
-   Or use the RANA CLI:
+   Or use the CoFounder CLI:
    \`\`\`bash
-   rana config:set ${provider} YOUR_API_KEY
+   cofounder config:set ${provider} YOUR_API_KEY
    \`\`\`
 
 3. Start development:
@@ -446,9 +446,9 @@ A RANA AI application.
 
 ## Learn More
 
-- [RANA Documentation](https://rana.dev/docs)
-- [API Reference](https://rana.dev/docs/api)
-- [Examples](https://rana.dev/examples)
+- [CoFounder Documentation](https://cofounder.dev/docs)
+- [API Reference](https://cofounder.dev/docs/api)
+- [Examples](https://cofounder.dev/examples)
 
 ## License
 
@@ -460,14 +460,14 @@ MIT
 
 async function generateDefaultTemplate(projectPath: string, ext: string, provider: string) {
   const mainFile = `/**
- * RANA AI Application
+ * CoFounder AI Application
  * Full-featured starter with chat, RAG, and agents
  */
 
-import { createRana } from '@rana/core';
+import { createCoFounder } from '@cofounder/core';
 
-// Initialize RANA
-const rana = createRana({
+// Initialize CoFounder
+const cofounder = createCoFounder({
   providers: {
     ${provider}: process.env.${PROVIDERS[provider as keyof typeof PROVIDERS]?.env || 'OPENAI_API_KEY'},
   },
@@ -486,17 +486,17 @@ const rana = createRana({
 });
 
 async function main() {
-  console.log('\\n🚀 RANA AI Application\\n');
+  console.log('\\n🚀 CoFounder AI Application\\n');
 
   // Simple chat
   console.log('💬 Chat Example:');
-  const response = await rana.chat('Hello! What can you help me with today?');
+  const response = await cofounder.chat('Hello! What can you help me with today?');
   console.log('Assistant:', response.content);
   console.log('Cost: $' + response.cost.total_cost.toFixed(6));
 
   // Cost tracking
   console.log('\\n📊 Cost Stats:');
-  const stats = rana.cost.stats();
+  const stats = cofounder.cost.stats();
   console.log('Total Spent: $' + stats.total_spent.toFixed(6));
   console.log('Total Saved: $' + stats.total_saved.toFixed(6));
   console.log('Savings: ' + stats.savings_percentage.toFixed(1) + '%');
@@ -512,7 +512,7 @@ main().catch(console.error);
  * AI Tests
  */
 
-import { describe, aiTest } from '@rana/testing';
+import { describe, aiTest } from '@cofounder/testing';
 
 describe('AI Application', () => {
   aiTest('should respond helpfully', async ({ expect }) => {
@@ -527,14 +527,14 @@ describe('AI Application', () => {
 
 async function generateChatbotTemplate(projectPath: string, ext: string, provider: string) {
   const mainFile = `/**
- * RANA Chatbot
+ * CoFounder Chatbot
  * Conversational AI with streaming
  */
 
-import { createRana } from '@rana/core';
+import { createCoFounder } from '@cofounder/core';
 import * as readline from 'readline';
 
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: {
     ${provider}: process.env.${PROVIDERS[provider as keyof typeof PROVIDERS]?.env || 'OPENAI_API_KEY'},
   },
@@ -548,7 +548,7 @@ async function chat(message${ext === 'ts' ? ': string' : ''}) {
   process.stdout.write('\\nAssistant: ');
 
   let fullResponse = '';
-  for await (const chunk of rana.stream({
+  for await (const chunk of cofounder.stream({
     messages: [
       { role: 'system', content: 'You are a helpful, friendly assistant.' },
       ...history,
@@ -563,7 +563,7 @@ async function chat(message${ext === 'ts' ? ': string' : ''}) {
 }
 
 async function main() {
-  console.log('\\n🤖 RANA Chatbot');
+  console.log('\\n🤖 CoFounder Chatbot');
   console.log('Type your message and press Enter. Type "exit" to quit.\\n');
 
   const rl = readline.createInterface({
@@ -595,13 +595,13 @@ main().catch(console.error);
 
 async function generateRagTemplate(projectPath: string, ext: string, provider: string) {
   const mainFile = `/**
- * RANA RAG Application
+ * CoFounder RAG Application
  * Document Q&A with retrieval-augmented generation
  */
 
-import { createRana } from '@rana/core';
+import { createCoFounder } from '@cofounder/core';
 
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: {
     ${provider}: process.env.${PROVIDERS[provider as keyof typeof PROVIDERS]?.env || 'OPENAI_API_KEY'},
   },
@@ -609,9 +609,9 @@ const rana = createRana({
 
 // Sample documents (in production, load from files/database)
 const documents = [
-  { content: 'RANA supports 9 different LLM providers including OpenAI, Anthropic, and Google.', source: 'docs' },
-  { content: 'RANA can reduce AI costs by up to 70% through smart caching and model selection.', source: 'docs' },
-  { content: 'The @rana/testing package provides AI-native testing with semantic matching.', source: 'docs' },
+  { content: 'CoFounder supports 9 different LLM providers including OpenAI, Anthropic, and Google.', source: 'docs' },
+  { content: 'CoFounder can reduce AI costs by up to 70% through smart caching and model selection.', source: 'docs' },
+  { content: 'The @cofounder/testing package provides AI-native testing with semantic matching.', source: 'docs' },
 ];
 
 async function askQuestion(question${ext === 'ts' ? ': string' : ''}) {
@@ -626,7 +626,7 @@ async function askQuestion(question${ext === 'ts' ? ': string' : ''}) {
     ? relevant.map(d => d.content).join('\\n')
     : documents.map(d => d.content).join('\\n');
 
-  const response = await rana.chat({
+  const response = await cofounder.chat({
     messages: [
       {
         role: 'system',
@@ -644,11 +644,11 @@ Context:
 }
 
 async function main() {
-  console.log('\\n📚 RANA RAG Application\\n');
+  console.log('\\n📚 CoFounder RAG Application\\n');
 
-  await askQuestion('How many providers does RANA support?');
-  await askQuestion('How can RANA reduce costs?');
-  await askQuestion('What is @rana/testing?');
+  await askQuestion('How many providers does CoFounder support?');
+  await askQuestion('How can CoFounder reduce costs?');
+  await askQuestion('What is @cofounder/testing?');
 }
 
 main().catch(console.error);
@@ -659,13 +659,13 @@ main().catch(console.error);
 
 async function generateAgentTemplate(projectPath: string, ext: string, provider: string) {
   const mainFile = `/**
- * RANA AI Agent
+ * CoFounder AI Agent
  * Autonomous agent with tools and multi-step reasoning
  */
 
-import { createRana, LLMAgent, calculatorTool, dateTimeTool } from '@rana/core';
+import { createCoFounder, LLMAgent, calculatorTool, dateTimeTool } from '@cofounder/core';
 
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: {
     ${provider}: process.env.${PROVIDERS[provider as keyof typeof PROVIDERS]?.env || 'OPENAI_API_KEY'},
   },
@@ -682,7 +682,7 @@ Always explain your reasoning.\`,
 });
 
 async function main() {
-  console.log('\\n🤖 RANA AI Agent\\n');
+  console.log('\\n🤖 CoFounder AI Agent\\n');
 
   // Agent will use tools automatically
   const tasks = [
@@ -710,17 +710,17 @@ main().catch(console.error);
 
 async function generateApiTemplate(projectPath: string, ext: string, provider: string) {
   const mainFile = `/**
- * RANA API Server
+ * CoFounder API Server
  * REST API with AI endpoints
  */
 
 import express from 'express';
-import { createRana } from '@rana/core';
+import { createCoFounder } from '@cofounder/core';
 
 const app = express();
 app.use(express.json());
 
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: {
     ${provider}: process.env.${PROVIDERS[provider as keyof typeof PROVIDERS]?.env || 'OPENAI_API_KEY'},
   },
@@ -743,7 +743,7 @@ app.post('/api/chat', async (req, res) => {
       return res.status(400).json({ error: 'Message is required' });
     }
 
-    const response = await rana.chat(message);
+    const response = await cofounder.chat(message);
 
     res.json({
       content: response.content,
@@ -769,7 +769,7 @@ app.post('/api/chat/stream', async (req, res) => {
     res.setHeader('Cache-Control', 'no-cache');
     res.setHeader('Connection', 'keep-alive');
 
-    for await (const chunk of rana.stream(message)) {
+    for await (const chunk of cofounder.stream(message)) {
       res.write(\`data: \${JSON.stringify({ delta: chunk.delta })}\\n\\n\`);
     }
 
@@ -783,7 +783,7 @@ app.post('/api/chat/stream', async (req, res) => {
 
 // Cost stats endpoint
 app.get('/api/stats', (req, res) => {
-  const stats = rana.cost.stats();
+  const stats = cofounder.cost.stats();
   res.json(stats);
 });
 
@@ -795,7 +795,7 @@ app.get('/health', (req, res) => {
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log(\`\\n🚀 RANA API Server running on http://localhost:\${PORT}\`);
+  console.log(\`\\n🚀 CoFounder API Server running on http://localhost:\${PORT}\`);
   console.log('\\nEndpoints:');
   console.log('  POST /api/chat         - Chat completion');
   console.log('  POST /api/chat/stream  - Streaming chat');
@@ -809,19 +809,19 @@ app.listen(PORT, () => {
 
 async function generateMinimalTemplate(projectPath: string, ext: string, provider: string) {
   const mainFile = `/**
- * Minimal RANA Application
+ * Minimal CoFounder Application
  */
 
-import { createRana } from '@rana/core';
+import { createCoFounder } from '@cofounder/core';
 
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: {
     ${provider}: process.env.${PROVIDERS[provider as keyof typeof PROVIDERS]?.env || 'OPENAI_API_KEY'},
   },
 });
 
 async function main() {
-  const response = await rana.chat('Hello, RANA!');
+  const response = await cofounder.chat('Hello, CoFounder!');
   console.log(response.content);
 }
 

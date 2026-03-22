@@ -8,12 +8,12 @@
  * 4. Retry metadata inspection
  */
 
-import { createRana } from '../src/index';
+import { createCoFounder } from '../src/index';
 
 async function basicRetryExample() {
   console.log('=== Basic Retry Example ===\n');
 
-  const rana = createRana({
+  const cofounder = createCoFounder({
     providers: {
       anthropic: process.env.ANTHROPIC_API_KEY || '',
       openai: process.env.OPENAI_API_KEY || '',
@@ -33,7 +33,7 @@ async function basicRetryExample() {
   });
 
   try {
-    const response = await rana.chat({
+    const response = await cofounder.chat({
       provider: 'anthropic',
       model: 'claude-3-5-sonnet-20241022',
       messages: [
@@ -66,7 +66,7 @@ async function basicRetryExample() {
 async function customRetryConfigExample() {
   console.log('\n=== Custom Retry Configuration ===\n');
 
-  const rana = createRana({
+  const cofounder = createCoFounder({
     providers: {
       anthropic: process.env.ANTHROPIC_API_KEY || '',
     },
@@ -86,7 +86,7 @@ async function customRetryConfigExample() {
   });
 
   try {
-    const response = await rana.chat('Explain jitter in retry strategies');
+    const response = await cofounder.chat('Explain jitter in retry strategies');
     console.log('Response:', response.content.substring(0, 200) + '...');
   } catch (error) {
     console.error('Error after all retries:', error);
@@ -97,7 +97,7 @@ async function providerSpecificRetryExample() {
   console.log('\n=== Provider-Specific Retry Settings ===\n');
 
   // Each provider has optimized default retry settings
-  const rana = createRana({
+  const cofounder = createCoFounder({
     providers: {
       anthropic: process.env.ANTHROPIC_API_KEY || '',
       openai: process.env.OPENAI_API_KEY || '',
@@ -113,7 +113,7 @@ async function providerSpecificRetryExample() {
   // Anthropic: Uses provider defaults (3 retries, 1s base delay)
   console.log('Testing Anthropic with provider-specific retry settings...');
   try {
-    const anthropicResponse = await rana.chat({
+    const anthropicResponse = await cofounder.chat({
       provider: 'anthropic',
       messages: [{ role: 'user', content: 'Hello!' }],
     });
@@ -125,7 +125,7 @@ async function providerSpecificRetryExample() {
   // Ollama: Uses local-optimized retry settings (2 retries, focus on network errors)
   console.log('\nTesting Ollama with local-optimized retry settings...');
   try {
-    const ollamaResponse = await rana.chat({
+    const ollamaResponse = await cofounder.chat({
       provider: 'ollama',
       model: 'llama3.2',
       messages: [{ role: 'user', content: 'Hello!' }],
@@ -139,7 +139,7 @@ async function providerSpecificRetryExample() {
 async function disableRetryExample() {
   console.log('\n=== Disable Retry Example ===\n');
 
-  const rana = createRana({
+  const cofounder = createCoFounder({
     providers: {
       anthropic: process.env.ANTHROPIC_API_KEY || '',
     },
@@ -149,7 +149,7 @@ async function disableRetryExample() {
   });
 
   try {
-    const response = await rana.chat('Hello without retry');
+    const response = await cofounder.chat('Hello without retry');
     console.log('Response:', response.content);
     console.log('Retry metadata:', response.retry); // Should be undefined
   } catch (error) {
@@ -160,7 +160,7 @@ async function disableRetryExample() {
 async function retryWithFallbackExample() {
   console.log('\n=== Retry + Fallback Example ===\n');
 
-  const rana = createRana({
+  const cofounder = createCoFounder({
     providers: {
       anthropic: process.env.ANTHROPIC_API_KEY || '',
       openai: process.env.OPENAI_API_KEY || '',
@@ -178,7 +178,7 @@ async function retryWithFallbackExample() {
   });
 
   try {
-    const response = await rana.chat({
+    const response = await cofounder.chat({
       messages: [{ role: 'user', content: 'Hello with retry + fallback!' }],
     });
 

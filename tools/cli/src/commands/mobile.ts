@@ -17,7 +17,7 @@ interface MobileIssue {
  * Validates mobile-first compliance
  */
 export async function mobileValidate(options: { fix?: boolean; verbose?: boolean } = {}) {
-  console.log(chalk.bold.cyan('\n📱 RANA Mobile Validation\n'));
+  console.log(chalk.bold.cyan('\n📱 CoFounder Mobile Validation\n'));
 
   const issues: MobileIssue[] = [];
 
@@ -76,7 +76,7 @@ export async function mobileValidate(options: { fix?: boolean; verbose?: boolean
  * Test on different mobile viewports
  */
 export async function mobileTest() {
-  console.log(chalk.bold.cyan('\n📱 RANA Mobile Testing\n'));
+  console.log(chalk.bold.cyan('\n📱 CoFounder Mobile Testing\n'));
 
   const viewports = [
     { name: 'iPhone SE', width: 375, height: 667 },
@@ -108,7 +108,7 @@ export async function mobileTest() {
  * Mobile Setup Command
  */
 export async function mobileSetup() {
-  console.log(chalk.bold.cyan('\n📱 RANA Mobile Setup\n'));
+  console.log(chalk.bold.cyan('\n📱 CoFounder Mobile Setup\n'));
 
   const { features } = await prompts({
     type: 'multiselect',

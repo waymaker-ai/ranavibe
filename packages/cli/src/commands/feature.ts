@@ -1,6 +1,6 @@
 /**
  * Feature workflow commands
- * rana feature:new, rana feature:implement, rana feature:check
+ * cofounder feature:new, cofounder feature:implement, cofounder feature:check
  */
 
 import { Command } from 'commander';
@@ -24,7 +24,7 @@ export interface FeatureSpec {
   status: 'draft' | 'approved' | 'in_progress' | 'review' | 'done';
 }
 
-const FEATURES_DIR = '.rana/features';
+const FEATURES_DIR = '.cofounder/features';
 
 /**
  * Ensure features directory exists
@@ -198,13 +198,13 @@ export function registerFeatureCommands(program: Command): void {
       saveFeature(spec);
 
       console.log(chalk.green.bold('\n✅ Feature spec created!\n'));
-      console.log(chalk.gray('File:'), chalk.white(`.rana/features/${spec.name}.yml`));
+      console.log(chalk.gray('File:'), chalk.white(`.cofounder/features/${spec.name}.yml`));
       console.log(chalk.gray('Branch:'), chalk.white(spec.branch));
       console.log(chalk.gray('Status:'), chalk.yellow(spec.status));
       console.log(chalk.gray('\nNext steps:'));
       console.log(chalk.gray('  1. Review and edit the spec file'));
-      console.log(chalk.gray('  2. Run: rana feature approve ' + spec.name));
-      console.log(chalk.gray('  3. Run: rana feature implement ' + spec.name + '\n'));
+      console.log(chalk.gray('  2. Run: cofounder feature approve ' + spec.name));
+      console.log(chalk.gray('  3. Run: cofounder feature implement ' + spec.name + '\n'));
     });
 
   // feature:list - List all features
@@ -218,7 +218,7 @@ export function registerFeatureCommands(program: Command): void {
 
       if (features.length === 0) {
         console.log(chalk.yellow('\nNo features found.\n'));
-        console.log(chalk.gray('Run: rana feature new\n'));
+        console.log(chalk.gray('Run: cofounder feature new\n'));
         return;
       }
 
@@ -304,7 +304,7 @@ export function registerFeatureCommands(program: Command): void {
       saveFeature(spec);
 
       console.log(chalk.green.bold(`\n✅ Feature approved: ${name}\n`));
-      console.log(chalk.gray('Next step: rana feature implement ' + name + '\n'));
+      console.log(chalk.gray('Next step: cofounder feature implement ' + name + '\n'));
     });
 
   // feature:implement - Start implementing a feature
@@ -321,7 +321,7 @@ export function registerFeatureCommands(program: Command): void {
       }
 
       if (spec.status === 'draft') {
-        console.log(chalk.yellow('\nFeature not approved. Run: rana feature approve ' + name + '\n'));
+        console.log(chalk.yellow('\nFeature not approved. Run: cofounder feature approve ' + name + '\n'));
         return;
       }
 
@@ -366,7 +366,7 @@ export function registerFeatureCommands(program: Command): void {
           console.log(chalk.white(`  • ${c}`));
         }
 
-        console.log(chalk.gray('\n\nWhen done, run: rana feature check ' + name + '\n'));
+        console.log(chalk.gray('\n\nWhen done, run: cofounder feature check ' + name + '\n'));
       } catch (error) {
         spinner.fail(chalk.red('Failed to start implementation'));
         console.error(chalk.red(error instanceof Error ? error.message : String(error)));
@@ -402,7 +402,7 @@ export function registerFeatureCommands(program: Command): void {
 
       if (!spec) {
         console.log(chalk.red('\nNo feature specified or detected.\n'));
-        console.log(chalk.gray('Usage: rana feature check <name>\n'));
+        console.log(chalk.gray('Usage: cofounder feature check <name>\n'));
         return;
       }
 
@@ -447,7 +447,7 @@ export function registerFeatureCommands(program: Command): void {
         console.log(chalk.gray('\nManual verification required for:'));
         console.log(chalk.gray('  • Acceptance criteria'));
         console.log(chalk.gray('  • Manual constraints\n'));
-        console.log(chalk.gray('When ready, run: rana feature done ' + spec.name + '\n'));
+        console.log(chalk.gray('When ready, run: cofounder feature done ' + spec.name + '\n'));
       } else {
         console.log(chalk.red.bold('❌ Some checks failed'));
         console.log(chalk.gray('\nFix the issues and run this command again.\n'));

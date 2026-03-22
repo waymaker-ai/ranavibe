@@ -1,6 +1,6 @@
 # User Rate Limiter
 
-Per-user rate limiting for RANA security with sliding window algorithm.
+Per-user rate limiting for CoFounder security with sliding window algorithm.
 
 ## Features
 
@@ -15,16 +15,16 @@ Per-user rate limiting for RANA security with sliding window algorithm.
 
 ## Installation
 
-The user rate limiter is part of the `@rana/core` security module:
+The user rate limiter is part of the `@cofounder/core` security module:
 
 ```typescript
-import { UserRateLimiter, createUserRateLimiter } from '@rana/core/security';
+import { UserRateLimiter, createUserRateLimiter } from '@cofounder/core/security';
 ```
 
 ## Quick Start
 
 ```typescript
-import { createUserRateLimiter } from '@rana/core/security';
+import { createUserRateLimiter } from '@cofounder/core/security';
 
 // Create a rate limiter
 const limiter = createUserRateLimiter({
@@ -316,7 +316,7 @@ async function downgradeUserTier(userId: string) {
 
 ## Comparison with Provider Rate Limiter
 
-RANA has two rate limiting systems:
+CoFounder has two rate limiting systems:
 
 | Feature | User Rate Limiter | Provider Rate Limiter |
 |---------|------------------|---------------------|
@@ -331,8 +331,8 @@ RANA has two rate limiting systems:
 **Use both together:**
 
 ```typescript
-import { createUserRateLimiter } from '@rana/core/security';
-import { createRateLimiter } from '@rana/core/providers';
+import { createUserRateLimiter } from '@cofounder/core/security';
+import { createRateLimiter } from '@cofounder/core/providers';
 
 // User-level rate limiting
 const userLimiter = createUserRateLimiter({
@@ -442,4 +442,4 @@ See [user-rate-limit.example.ts](./user-rate-limit.example.ts) for comprehensive
 
 ## License
 
-Part of the RANA SDK - see main LICENSE file.
+Part of the CoFounder SDK - see main LICENSE file.

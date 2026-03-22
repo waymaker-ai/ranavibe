@@ -1,6 +1,6 @@
 # Token Usage Analytics
 
-Comprehensive token usage tracking and analytics for RANA observability.
+Comprehensive token usage tracking and analytics for CoFounder observability.
 
 ## Features
 
@@ -15,7 +15,7 @@ Comprehensive token usage tracking and analytics for RANA observability.
 
 ## Installation
 
-The TokenAnalytics module is part of `@rana/core`:
+The TokenAnalytics module is part of `@cofounder/core`:
 
 ```typescript
 import {
@@ -23,7 +23,7 @@ import {
   createMemoryAnalytics,
   createFileAnalytics,
   createAutoSaveAnalytics
-} from '@rana/core';
+} from '@cofounder/core';
 ```
 
 ## Quick Start
@@ -31,20 +31,20 @@ import {
 ### Basic Usage (In-Memory)
 
 ```typescript
-import { createRana, createMemoryAnalytics } from '@rana/core';
+import { createCoFounder, createMemoryAnalytics } from '@cofounder/core';
 
 // Create analytics tracker
 const analytics = createMemoryAnalytics();
 
-// Create RANA client
-const rana = createRana({
+// Create CoFounder client
+const cofounder = createCoFounder({
   providers: {
     anthropic: process.env.ANTHROPIC_API_KEY,
   },
 });
 
 // Make requests
-const response = await rana.chat('Hello, world!');
+const response = await cofounder.chat('Hello, world!');
 
 // Track the response
 await analytics.track(response);
@@ -58,7 +58,7 @@ console.log('Total cost:', summary.totalCost);
 ### File-Based Persistence
 
 ```typescript
-import { createFileAnalytics } from '@rana/core';
+import { createFileAnalytics } from '@cofounder/core';
 
 const analytics = createFileAnalytics('./analytics.json', {
   maxRecords: 1000,
@@ -78,7 +78,7 @@ await analytics.track(response);
 ### Auto-Save with Intervals
 
 ```typescript
-import { createAutoSaveAnalytics } from '@rana/core';
+import { createAutoSaveAnalytics } from '@cofounder/core';
 
 // Auto-save every 60 seconds
 const analytics = createAutoSaveAnalytics(
@@ -100,10 +100,10 @@ analytics.destroy();
 
 #### `track(response: RanaChatResponse): Promise<void>`
 
-Track a single response from RANA.
+Track a single response from CoFounder.
 
 ```typescript
-const response = await rana.chat('Hello!');
+const response = await cofounder.chat('Hello!');
 await analytics.track(response);
 ```
 
@@ -113,9 +113,9 @@ Track multiple responses at once.
 
 ```typescript
 const responses = await Promise.all([
-  rana.chat('Question 1'),
-  rana.chat('Question 2'),
-  rana.chat('Question 3'),
+  cofounder.chat('Question 1'),
+  cofounder.chat('Question 2'),
+  cofounder.chat('Question 3'),
 ]);
 
 await analytics.trackBatch(responses);
@@ -379,14 +379,14 @@ interface PersistenceOptions {
 ### 1. Track and Analyze Usage
 
 ```typescript
-import { createRana, createMemoryAnalytics } from '@rana/core';
+import { createCoFounder, createMemoryAnalytics } from '@cofounder/core';
 
-const rana = createRana({ /* config */ });
+const cofounder = createCoFounder({ /* config */ });
 const analytics = createMemoryAnalytics();
 
 // Make requests
 for (let i = 0; i < 10; i++) {
-  const response = await rana.chat(`Question ${i + 1}`);
+  const response = await cofounder.chat(`Question ${i + 1}`);
   await analytics.track(response);
 }
 
@@ -459,9 +459,9 @@ newAnalytics.import(backup);
 ### 5. Integration with CostTracker
 
 ```typescript
-import { createRana, createMemoryAnalytics } from '@rana/core';
+import { createCoFounder, createMemoryAnalytics } from '@cofounder/core';
 
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: { anthropic: process.env.ANTHROPIC_API_KEY },
   cost_tracking: {
     enabled: true,
@@ -477,7 +477,7 @@ const rana = createRana({
 const analytics = createMemoryAnalytics();
 
 // Make requests
-const response = await rana.chat('Hello!');
+const response = await cofounder.chat('Hello!');
 
 // Track in analytics
 await analytics.track(response);
@@ -532,12 +532,12 @@ import type {
   AnalyticsSummary,
   PersistenceOptions,
   TokenAnalyticsConfig,
-} from '@rana/core';
+} from '@cofounder/core';
 ```
 
 ## Integration with Existing Systems
 
-TokenAnalytics is designed to work alongside the existing RANA cost tracking:
+TokenAnalytics is designed to work alongside the existing CoFounder cost tracking:
 
 - **CostTracker**: Built-in budget enforcement and basic tracking
 - **TokenAnalytics**: Advanced querying, time-based analysis, and persistence
@@ -546,4 +546,4 @@ Use both together for comprehensive cost management and analytics.
 
 ## License
 
-Part of the RANA project. See main LICENSE file.
+Part of the CoFounder project. See main LICENSE file.

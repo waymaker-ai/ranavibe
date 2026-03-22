@@ -1,6 +1,6 @@
 /**
- * RANA Chatbot Example
- * A simple but powerful chatbot that demonstrates RANA's core features
+ * CoFounder Chatbot Example
+ * A simple but powerful chatbot that demonstrates CoFounder's core features
  *
  * Features:
  * - Multi-provider support (auto-selects based on available API keys)
@@ -19,7 +19,7 @@ const CONFIG = {
   // Will auto-detect from environment variables
   provider: process.env.LLM_PROVIDER || 'anthropic',
   model: process.env.LLM_MODEL || 'claude-3-5-sonnet-20241022',
-  systemPrompt: `You are a helpful AI assistant powered by RANA.
+  systemPrompt: `You are a helpful AI assistant powered by CoFounder.
 You are knowledgeable, concise, and friendly.
 If you're unsure about something, say so.
 Format responses with markdown when appropriate.`,
@@ -180,7 +180,7 @@ function formatDuration(ms: number): string {
 async function main() {
   console.log('\x1b[36m');
   console.log('╔═══════════════════════════════════════╗');
-  console.log('║     🐟 RANA Chatbot Example           ║');
+  console.log('║     🐟 CoFounder Chatbot Example           ║');
   console.log('║     Type "exit" to quit               ║');
   console.log('║     Type "stats" for session stats    ║');
   console.log('║     Type "clear" to clear history     ║');

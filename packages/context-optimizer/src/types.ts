@@ -1,5 +1,5 @@
 /**
- * @rana/context-optimizer - Type definitions
+ * @cofounder/context-optimizer - Type definitions
  */
 
 /**

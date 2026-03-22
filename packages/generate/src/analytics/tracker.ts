@@ -68,7 +68,7 @@ export interface TrackerConfig {
 
 const DEFAULT_CONFIG: TrackerConfig = {
   enabled: true,
-  storageDir: '.rana/analytics',
+  storageDir: '.cofounder/analytics',
   retentionDays: 90,
   anonymize: false,
 };
@@ -420,7 +420,7 @@ export class GenerationAnalytics {
   async exportMarkdown(days: number = 30): Promise<string> {
     const summary = await this.getSummary(days);
 
-    let md = `# RANA Code Generation Analytics Report\n\n`;
+    let md = `# CoFounder Code Generation Analytics Report\n\n`;
     md += `**Report Period**: Last ${days} days\n`;
     md += `**Generated**: ${new Date().toISOString()}\n\n`;
 

@@ -1,6 +1,6 @@
-# Discord Plugin for RANA
+# Discord Plugin for CoFounder
 
-A comprehensive Discord integration plugin that enables RANA-powered AI bots with advanced features including conversation memory, rate limiting, rich embeds, slash commands, and more.
+A comprehensive Discord integration plugin that enables CoFounder-powered AI bots with advanced features including conversation memory, rate limiting, rich embeds, slash commands, and more.
 
 ## Features
 
@@ -17,7 +17,7 @@ A comprehensive Discord integration plugin that enables RANA-powered AI bots wit
 ## Installation
 
 ```bash
-npm install @rana/core
+npm install @cofounder/core
 ```
 
 For production use with real Discord bots, also install:
@@ -29,11 +29,11 @@ npm install discord.js
 ## Quick Start
 
 ```typescript
-import { createRana } from '@rana/core';
-import { DiscordPlugin } from '@rana/core/plugins/discord';
+import { createCoFounder } from '@cofounder/core';
+import { DiscordPlugin } from '@cofounder/core/plugins/discord';
 
-// Initialize RANA
-const rana = createRana({
+// Initialize CoFounder
+const cofounder = createCoFounder({
   providers: {
     openai: process.env.OPENAI_API_KEY,
   },
@@ -51,7 +51,7 @@ await discord.createBot({
   intents: ['GUILDS', 'GUILD_MESSAGES', 'DIRECT_MESSAGES', 'MESSAGE_CONTENT'],
   presence: {
     status: 'online',
-    activity: 'Powered by RANA',
+    activity: 'Powered by CoFounder',
   },
 });
 
@@ -59,7 +59,7 @@ await discord.createBot({
 discord.onMessage(async (message) => {
   if (message.author.bot) return;
 
-  const response = await rana.chat(message.content);
+  const response = await cofounder.chat(message.content);
   await discord.reply(message.channel, response.content);
 });
 ```
@@ -152,7 +152,7 @@ discord.onMessage(async (message) => {
   ];
 
   // Get AI response with context
-  const response = await rana.chat({ messages });
+  const response = await cofounder.chat({ messages });
 
   // Reply
   await discord.reply(message.channel, response.content);
@@ -184,7 +184,7 @@ discord.onCommand('ask', async (interaction) => {
 
   await interaction.deferReply();
 
-  const response = await rana.chat(question);
+  const response = await cofounder.chat(question);
   await interaction.followUp(response.content);
 });
 ```
@@ -197,7 +197,7 @@ const embed = DiscordPlugin.formatAsEmbed(
   {
     title: '🤖 AI Response',
     color: 0x00AE86,
-    footer: 'Powered by RANA',
+    footer: 'Powered by CoFounder',
     timestamp: true,
   }
 );
@@ -366,8 +366,8 @@ discord.onCommand('compare', async (interaction) => {
 
   // Get responses from multiple models
   const [gpt4, claude] = await Promise.all([
-    rana.chat({ messages: [{ role: 'user', content: question }], model: 'gpt-4o' }),
-    rana.chat({ messages: [{ role: 'user', content: question }], model: 'claude-3-5-sonnet-20241022' }),
+    cofounder.chat({ messages: [{ role: 'user', content: question }], model: 'gpt-4o' }),
+    cofounder.chat({ messages: [{ role: 'user', content: question }], model: 'claude-3-5-sonnet-20241022' }),
   ]);
 
   const embed = {
@@ -387,7 +387,7 @@ discord.onCommand('compare', async (interaction) => {
 ```typescript
 discord.onMessage(async (message) => {
   try {
-    const response = await rana.chat(message.content);
+    const response = await cofounder.chat(message.content);
     await discord.reply(message.channel, response.content);
   } catch (error) {
     console.error('Error:', error);
@@ -428,7 +428,7 @@ For production use, replace the mock Discord bot with actual Discord.js:
 
 2. Update the `MockDiscordBot` class in `discord.ts` to use Discord.js Client
 
-3. Map Discord.js events to RANA handlers:
+3. Map Discord.js events to CoFounder handlers:
    ```typescript
    client.on('messageCreate', (message) => {
      // Convert Discord.js message to DiscordMessage
@@ -450,7 +450,7 @@ DISCORD_TOKEN=your_bot_token
 DISCORD_CLIENT_ID=your_client_id
 DISCORD_GUILD_ID=your_guild_id  # Optional, for development
 
-# RANA/AI Providers
+# CoFounder/AI Providers
 OPENAI_API_KEY=your_openai_key
 ANTHROPIC_API_KEY=your_anthropic_key
 ```
@@ -464,7 +464,7 @@ ANTHROPIC_API_KEY=your_anthropic_key
 5. **Use deferred replies**: For slow AI responses (>3 seconds)
 6. **Respect Discord limits**: Max 2000 chars per message
 7. **Use threads**: For long conversations
-8. **Monitor costs**: Track RANA usage with cost tracking
+8. **Monitor costs**: Track CoFounder usage with cost tracking
 
 ## License
 

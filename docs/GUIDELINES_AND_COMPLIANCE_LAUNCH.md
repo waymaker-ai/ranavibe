@@ -1,16 +1,16 @@
-# 🎉 RANA Guidelines & Compliance Launch
+# 🎉 CoFounder Guidelines & Compliance Launch
 
 **Date**: January 1, 2026
-**Version**: RANA 2.1 Preview
+**Version**: CoFounder 2.1 Preview
 **Status**: Production Ready
 
 ---
 
 ## What We Built
 
-Two incredible new packages that make RANA the **most comprehensive AI agent framework** for enterprise applications:
+Two incredible new packages that make CoFounder the **most comprehensive AI agent framework** for enterprise applications:
 
-### 📦 Package 1: `@rana/guidelines`
+### 📦 Package 1: `@cofounder/guidelines`
 **Dynamic, context-aware behavioral control for AI agents**
 
 Turn this:
@@ -36,7 +36,7 @@ const matched = await guidelines.match(context);
 // Guidelines automatically apply based on context!
 ```
 
-### 📦 Package 2: `@rana/compliance`
+### 📦 Package 2: `@cofounder/compliance`
 **Enterprise compliance enforcement - HIPAA, SEC, GDPR, and more**
 
 Turn this:
@@ -60,7 +60,7 @@ const result = await enforcer.enforce(input, output, context);
 
 ## Key Features
 
-### @rana/guidelines
+### @cofounder/guidelines
 
 ✨ **Dynamic Matching**
 - Guidelines automatically apply based on conversation context
@@ -86,7 +86,7 @@ const result = await enforcer.enforce(input, output, context);
 - File-based storage
 - Custom storage adapters
 
-### @rana/compliance
+### @cofounder/compliance
 
 🏥 **HIPAA Compliance**
 - No medical advice/diagnoses
@@ -217,12 +217,12 @@ Analytics & Audit Trail
 ## Integration Example
 
 ```typescript
-import { createRana } from '@rana/core';
-import { createGuidelineManager, PresetGuidelines } from '@rana/guidelines';
-import { createComplianceEnforcer, PresetRules } from '@rana/compliance';
+import { createCoFounder } from '@cofounder/core';
+import { createGuidelineManager, PresetGuidelines } from '@cofounder/guidelines';
+import { createComplianceEnforcer, PresetRules } from '@cofounder/compliance';
 
 // Setup
-const rana = createRana({ providers: { anthropic: API_KEY } });
+const cofounder = createCoFounder({ providers: { anthropic: API_KEY } });
 const guidelines = createGuidelineManager();
 const compliance = createComplianceEnforcer({ enableAllPresets: true });
 
@@ -242,7 +242,7 @@ async function protectedChat(message: string, context: any) {
   const systemPrompts = matched.map(m => m.resolvedContent).join('\n\n');
 
   // 3. Generate response
-  const response = await rana.chat({
+  const response = await cofounder.chat({
     messages: [
       { role: 'system', content: systemPrompts },
       { role: 'user', content: message }
@@ -280,7 +280,7 @@ async function protectedChat(message: string, context: any) {
 ### Installation
 
 ```bash
-npm install @rana/guidelines @rana/compliance
+npm install @cofounder/guidelines @cofounder/compliance
 ```
 
 ### Production Configuration
@@ -321,7 +321,7 @@ const compliance = createComplianceEnforcer({
 ❌ No audit trail
 ❌ Regulatory risk
 
-### After (RANA with Guidelines + Compliance)
+### After (CoFounder with Guidelines + Compliance)
 ✅ Dynamic behavioral control
 ✅ Guaranteed guideline enforcement
 ✅ Automatic compliance (HIPAA, SEC, GDPR)
@@ -330,7 +330,7 @@ const compliance = createComplianceEnforcer({
 ✅ Enterprise-ready
 
 ### Market Position
-**RANA is now the ONLY framework with:**
+**CoFounder is now the ONLY framework with:**
 1. Built-in HIPAA compliance
 2. SEC/FINRA financial compliance
 3. GDPR/CCPA privacy compliance
@@ -371,8 +371,8 @@ const compliance = createComplianceEnforcer({
 ## Roadmap
 
 ### Q1 2026 (Completed ✅)
-- [x] @rana/guidelines v1.0
-- [x] @rana/compliance v1.0
+- [x] @cofounder/guidelines v1.0
+- [x] @cofounder/compliance v1.0
 - [x] Preset guidelines (8+)
 - [x] Preset compliance rules (9+)
 - [x] PII detection (10+ types)
@@ -385,7 +385,7 @@ const compliance = createComplianceEnforcer({
 - [ ] Conversation analytics dashboard
 - [ ] LLM-based violation detection
 - [ ] Custom compliance rule builder UI
-- [ ] Integration with @rana/agents
+- [ ] Integration with @cofounder/agents
 
 ### Q3 2026 (Planned)
 - [ ] Explainability system
@@ -409,13 +409,13 @@ const compliance = createComplianceEnforcer({
 
 ### Technical
 - [Feature Enhancement Analysis](./FEATURE_ENHANCEMENT_ANALYSIS.md)
-- [RANA 2025 Roadmap](../RANA_2025_ROADMAP.md)
+- [CoFounder 2025 Roadmap](../CoFounder_2025_ROADMAP.md)
 
 ---
 
 ## Team
 
-Built with 💜 by the RANA Core Team
+Built with 💜 by the CoFounder Core Team
 
 Special thanks to the open-source community and early adopters who provided feedback and inspiration.
 
@@ -430,7 +430,7 @@ MIT © Waymaker
 **Ready to build compliant, enterprise-grade AI agents?**
 
 ```bash
-npm install @rana/guidelines @rana/compliance
+npm install @cofounder/guidelines @cofounder/compliance
 ```
 
 🚀 Let's build something incredible together!

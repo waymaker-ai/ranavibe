@@ -1,13 +1,13 @@
 /**
  * Circuit Breaker Example
- * Demonstrates how to use the circuit breaker pattern with RANA
+ * Demonstrates how to use the circuit breaker pattern with CoFounder
  */
 
-import { createRana } from '../src';
+import { createCoFounder } from '../src';
 
 async function main() {
   // Example 1: Basic circuit breaker configuration
-  const rana = createRana({
+  const cofounder = createCoFounder({
     providers: {
       anthropic: process.env.ANTHROPIC_API_KEY,
       openai: process.env.OPENAI_API_KEY,
@@ -31,7 +31,7 @@ async function main() {
 
   // Example 2: Check circuit breaker status
   console.log('\n=== Circuit Breaker Status ===');
-  const anthropicStats = rana.circuitBreaker.getStats('anthropic');
+  const anthropicStats = cofounder.circuitBreaker.getStats('anthropic');
   console.log('Anthropic Stats:', {
     state: anthropicStats.state,
     failureRate: `${anthropicStats.failureRate.toFixed(1)}%`,
@@ -40,7 +40,7 @@ async function main() {
 
   // Example 3: Make requests - circuit breaker will automatically handle failures
   try {
-    const response = await rana.chat({
+    const response = await cofounder.chat({
       provider: 'anthropic',
       messages: [{ role: 'user', content: 'Hello!' }],
     });
@@ -56,7 +56,7 @@ async function main() {
 
   // Example 4: Get stats for all providers
   console.log('\n=== All Provider Stats ===');
-  const allStats = rana.circuitBreaker.getAllStats();
+  const allStats = cofounder.circuitBreaker.getAllStats();
   for (const [provider, stats] of Object.entries(allStats)) {
     console.log(`${provider}:`, {
       state: stats.state,
@@ -66,11 +66,11 @@ async function main() {
   }
 
   // Example 5: Manual circuit reset (if needed)
-  // rana.circuitBreaker.reset('anthropic');
+  // cofounder.circuitBreaker.reset('anthropic');
   // console.log('\nManually reset anthropic circuit');
 
   // Example 6: Using with fallback for extra resilience
-  const ranaWithFallback = createRana({
+  const cofounderWithFallback = createCoFounder({
     providers: {
       anthropic: process.env.ANTHROPIC_API_KEY,
       openai: process.env.OPENAI_API_KEY,
@@ -95,7 +95,7 @@ async function main() {
 
   // This will automatically fallback if anthropic's circuit is open
   try {
-    const response = await ranaWithFallback.chat('What is AI?');
+    const response = await cofounderWithFallback.chat('What is AI?');
     console.log('\nWith Fallback:', response.provider, '-', response.content.substring(0, 50));
   } catch (error: any) {
     console.error('\nAll providers failed:', error.message);

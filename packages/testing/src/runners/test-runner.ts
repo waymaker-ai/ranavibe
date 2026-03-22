@@ -1,6 +1,6 @@
 /**
  * AI Test Runner
- * The heart of @rana/testing - runs AI tests with grace and power
+ * The heart of @cofounder/testing - runs AI tests with grace and power
  *
  * Inspired by Jest/Vitest but designed for AI's unique challenges:
  * - Non-deterministic outputs
@@ -44,8 +44,8 @@ let globalConfig: AITestConfig = {
   semanticThreshold: 0.8,
   timeout: 30000,
   retries: 0,
-  baselineDir: '.rana/baselines',
-  snapshotDir: '.rana/snapshots',
+  baselineDir: '.cofounder/baselines',
+  snapshotDir: '.cofounder/snapshots',
   reporter: 'default',
   parallel: false,
 };

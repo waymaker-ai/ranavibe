@@ -1,10 +1,10 @@
 /**
- * @rana/guidelines
- * Dynamic guideline management for RANA agents
+ * @cofounder/guidelines
+ * Dynamic guideline management for CoFounder agents
  *
  * @example
  * ```typescript
- * import { createGuidelineManager, createGuideline, Conditions } from '@rana/guidelines';
+ * import { createGuidelineManager, createGuideline, Conditions } from '@cofounder/guidelines';
  *
  * const manager = createGuidelineManager();
  *

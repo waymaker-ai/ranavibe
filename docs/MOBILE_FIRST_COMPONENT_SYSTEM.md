@@ -1,4 +1,4 @@
-# RANA Mobile-First Component System
+# CoFounder Mobile-First Component System
 
 **Version:** 2.0
 **Last Updated:** 2025-11-09
@@ -20,13 +20,13 @@
 10. [Mobile Performance](#mobile-performance)
 11. [Native Mobile Feel](#native-mobile-feel)
 12. [Testing Mobile Components](#testing-mobile-components)
-13. [RANA Quality Gates](#aads-quality-gates)
+13. [CoFounder Quality Gates](#aads-quality-gates)
 
 ---
 
 ## Overview
 
-The RANA Mobile-First Component System ensures your applications feel native on mobile devices while maintaining desktop functionality. This guide provides production-ready components, patterns, and configurations.
+The CoFounder Mobile-First Component System ensures your applications feel native on mobile devices while maintaining desktop functionality. This guide provides production-ready components, patterns, and configurations.
 
 ### Key Principles
 
@@ -47,18 +47,18 @@ The RANA Mobile-First Component System ensures your applications feel native on 
 - **60%** of conversions happen on mobile
 - Mobile users expect **native app experience**
 
-### RANA Competitive Advantage
+### CoFounder Competitive Advantage
 
-Most frameworks (shadcn/ui, Chakra, MUI) are desktop-first. RANA is mobile-first by default.
+Most frameworks (shadcn/ui, Chakra, MUI) are desktop-first. CoFounder is mobile-first by default.
 
-**Before RANA:**
+**Before CoFounder:**
 - Touch targets too small (< 44px)
 - Desktop-optimized components
 - Poor mobile performance
 - No offline support
 - Generic mobile experience
 
-**With RANA:**
+**With CoFounder:**
 - Touch-optimized components (≥ 44px)
 - Mobile-first breakpoints
 - < 3s load time on 3G
@@ -1663,12 +1663,12 @@ describe('SwipeableCard', () => {
 
 ---
 
-## RANA Quality Gates
+## CoFounder Quality Gates
 
 ### Mobile Checklist
 
 ```yaml
-# .rana.yml - Mobile Quality Gates
+# .cofounder.yml - Mobile Quality Gates
 
 mobile:
   enabled: true
@@ -1827,7 +1827,7 @@ npm run dev
 
 ## Summary
 
-The RANA Mobile-First Component System provides:
+The CoFounder Mobile-First Component System provides:
 
 1. ✅ **Touch-optimized components** (≥ 44px targets)
 2. ✅ **Native gestures** (swipe, pull-to-refresh, haptics)
@@ -1838,7 +1838,7 @@ The RANA Mobile-First Component System provides:
 7. ✅ **Native feel** (smooth animations, haptics)
 8. ✅ **Quality gates** (automated validation)
 
-### Before RANA Mobile
+### Before CoFounder Mobile
 
 - Desktop-first approach
 - Touch targets < 44px
@@ -1846,7 +1846,7 @@ The RANA Mobile-First Component System provides:
 - Generic mobile UX
 - Poor performance on 3G
 
-### With RANA Mobile
+### With CoFounder Mobile
 
 - Mobile-first by default
 - Touch-optimized (≥ 44px)
@@ -1858,4 +1858,4 @@ The RANA Mobile-First Component System provides:
 
 **Ready to ship mobile-first apps!** 🚀
 
-*Ashley Kays | Waymaker | RANA v2.0*
+*Ashley Kays | Waymaker | CoFounder v2.0*

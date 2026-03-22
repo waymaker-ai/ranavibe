@@ -1,6 +1,6 @@
 /**
  * PII Detection and Redaction Examples
- * Demonstrates usage of RANA's PII detection and protection features
+ * Demonstrates usage of CoFounder's PII detection and protection features
  */
 
 import {

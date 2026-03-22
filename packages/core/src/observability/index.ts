@@ -1,6 +1,6 @@
 /**
  * Observability Module
- * Logging, tracing, error tracking, and performance monitoring for RANA
+ * Logging, tracing, error tracking, and performance monitoring for CoFounder
  */
 
 // Performance Monitoring

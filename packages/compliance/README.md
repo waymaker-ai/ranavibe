@@ -1,6 +1,6 @@
-# @rana/compliance
+# @cofounder/compliance
 
-> Enterprise compliance enforcement for RANA agents - Healthcare, Finance, Privacy, Security
+> Enterprise compliance enforcement for CoFounder agents - Healthcare, Finance, Privacy, Security
 
 ## Features
 
@@ -15,7 +15,7 @@
 ## Installation
 
 ```bash
-npm install @rana/compliance
+npm install @cofounder/compliance
 ```
 
 ## Quick Start
@@ -23,7 +23,7 @@ npm install @rana/compliance
 ### Enable All Presets
 
 ```typescript
-import { createComplianceEnforcer } from '@rana/compliance';
+import { createComplianceEnforcer } from '@cofounder/compliance';
 
 const enforcer = createComplianceEnforcer({
   enableAllPresets: true,  // Enable all built-in rules
@@ -48,7 +48,7 @@ console.log(result.violations);
 ### Custom Rules
 
 ```typescript
-import { createComplianceEnforcer, createComplianceRule } from '@rana/compliance';
+import { createComplianceEnforcer, createComplianceRule } from '@cofounder/compliance';
 
 const enforcer = createComplianceEnforcer();
 
@@ -78,7 +78,7 @@ enforcer.addRule(createComplianceRule({
 ### Healthcare (HIPAA)
 
 ```typescript
-import { PresetRules } from '@rana/compliance';
+import { PresetRules } from '@cofounder/compliance';
 
 // No medical advice
 enforcer.addRule(PresetRules.hipaaNoMedicalAdvice());
@@ -182,7 +182,7 @@ The system supports 7 enforcement actions:
 ## PII Detection & Redaction
 
 ```typescript
-import { detectPII, redactPII } from '@rana/compliance';
+import { detectPII, redactPII } from '@cofounder/compliance';
 
 // Detect PII
 const text = 'Contact me at john@example.com or 555-1234';
@@ -311,11 +311,11 @@ console.log('Violations:', result.violations.length);
 ## Advanced Example: Complete Integration
 
 ```typescript
-import { createComplianceEnforcer, PresetRules } from '@rana/compliance';
-import { createRana } from '@rana/core';
+import { createComplianceEnforcer, PresetRules } from '@cofounder/compliance';
+import { createCoFounder } from '@cofounder/core';
 
-// Create RANA client
-const rana = createRana({
+// Create CoFounder client
+const cofounder = createCoFounder({
   providers: { anthropic: process.env.ANTHROPIC_API_KEY },
 });
 
@@ -339,7 +339,7 @@ const enforcer = createComplianceEnforcer({
 // Compliant chat function
 async function compliantChat(userMessage: string, context: any) {
   // Generate response
-  const response = await rana.chat({
+  const response = await cofounder.chat({
     messages: [{ role: 'user', content: userMessage }],
   });
 
@@ -380,7 +380,7 @@ async function compliantChat(userMessage: string, context: any) {
 ## Rule Development Guide
 
 ```typescript
-import { createComplianceRule } from '@rana/compliance';
+import { createComplianceRule } from '@cofounder/compliance';
 
 const myRule = createComplianceRule({
   id: 'unique-id',

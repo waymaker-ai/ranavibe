@@ -1,5 +1,5 @@
 /**
- * RANA MCP Client
+ * CoFounder MCP Client
  * Manages connections to MCP servers and provides unified tool access
  */
 
@@ -28,7 +28,7 @@ interface ServerConnection {
 }
 
 /**
- * RANA MCP Client
+ * CoFounder MCP Client
  * Provides a unified interface to multiple MCP servers
  */
 export class MCPClient {
@@ -99,31 +99,31 @@ export class MCPClient {
   }
 
   /**
-   * Connect to built-in RANA MCP server
+   * Connect to built-in CoFounder MCP server
    */
   private async connectBuiltinServer(
     config: MCPServerConfig
   ): Promise<ServerConnection> {
-    // Built-in server provides RANA-specific tools
+    // Built-in server provides CoFounder-specific tools
     const tools: MCPTool[] = [
       {
-        name: 'rana_cost_check',
-        description: 'Check current RANA cost tracking status',
+        name: 'cofounder_cost_check',
+        description: 'Check current CoFounder cost tracking status',
         inputSchema: {
           type: 'object',
           properties: {},
         },
       },
       {
-        name: 'rana_cache_stats',
-        description: 'Get RANA cache statistics',
+        name: 'cofounder_cache_stats',
+        description: 'Get CoFounder cache statistics',
         inputSchema: {
           type: 'object',
           properties: {},
         },
       },
       {
-        name: 'rana_provider_status',
+        name: 'cofounder_provider_status',
         description: 'Check status of LLM providers',
         inputSchema: {
           type: 'object',
@@ -141,7 +141,7 @@ export class MCPClient {
       config,
       connected: true,
       info: {
-        name: 'rana-builtin',
+        name: 'cofounder-builtin',
         version: '2.0.0',
         capabilities: { tools: true },
       },
@@ -341,11 +341,11 @@ export class MCPClient {
   }
 
   /**
-   * Execute built-in RANA tools
+   * Execute built-in CoFounder tools
    */
   private async executeBuiltinTool(call: MCPToolCall): Promise<MCPToolResult> {
     switch (call.name) {
-      case 'rana_cost_check':
+      case 'cofounder_cost_check':
         return {
           content: [
             {
@@ -360,7 +360,7 @@ export class MCPClient {
           ],
         };
 
-      case 'rana_cache_stats':
+      case 'cofounder_cache_stats':
         return {
           content: [
             {
@@ -375,7 +375,7 @@ export class MCPClient {
           ],
         };
 
-      case 'rana_provider_status':
+      case 'cofounder_provider_status':
         return {
           content: [
             {

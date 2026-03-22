@@ -1,4 +1,4 @@
-# RANA Website Deployment Checklist
+# CoFounder Website Deployment Checklist
 
 ## Pre-Deployment
 
@@ -99,7 +99,7 @@ FRAMER_ABOUT_URL=https://your-project.framer.app/about
 ### 1. Push to GitHub
 ```bash
 git add .
-git commit -m "Add RANA website with PWA and training"
+git commit -m "Add CoFounder website with PWA and training"
 git push origin main
 ```
 
@@ -122,7 +122,7 @@ FRAMER_ABOUT_URL=https://...
 
 ### 4. Configure Custom Domain
 1. Go to Project Settings → Domains
-2. Add domain: `rana.cx`
+2. Add domain: `cofounder.cx`
 3. Update your DNS records:
    - **A Record**: Point to `76.76.21.21`
    - **CNAME**: `www` → `cname.vercel-dns.com`
@@ -130,7 +130,7 @@ FRAMER_ABOUT_URL=https://...
 ### 5. Wait for DNS Propagation
 This can take 24-48 hours. Check status:
 ```bash
-dig rana.cx
+dig cofounder.cx
 ```
 
 ---
@@ -138,7 +138,7 @@ dig rana.cx
 ## Post-Deployment
 
 ### 1. Test Production Site
-Visit https://rana.cx and verify:
+Visit https://cofounder.cx and verify:
 - [ ] All pages load
 - [ ] Dark mode works
 - [ ] PWA install prompt appears
@@ -276,7 +276,7 @@ npm audit fix
 
 Before announcing launch:
 
-- [ ] Site loads at rana.cx
+- [ ] Site loads at cofounder.cx
 - [ ] SSL certificate active (HTTPS)
 - [ ] All pages accessible
 - [ ] Mobile responsive
@@ -309,10 +309,10 @@ After deployment:
 ## Support
 
 Need help? Reach out:
-- GitHub Issues: https://github.com/ashleykays/ranavibe/issues
+- GitHub Issues: https://github.com/ashleykays/cofounder/issues
 - Email: ashley@waymaker.cx
-- Docs: https://rana.cx/docs
+- Docs: https://cofounder.cx/docs
 
 ---
 
-Built with ❤️ using RANA Framework
+Built with ❤️ using CoFounder Framework

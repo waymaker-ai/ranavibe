@@ -1,5 +1,5 @@
 /**
- * RANA Agent Framework
+ * CoFounder Agent Framework
  * Export all agent-related classes and utilities
  */
 

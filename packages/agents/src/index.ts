@@ -1,17 +1,17 @@
 /**
- * @rana/agents
- * Agent Development Kit (ADK) for RANA Framework
+ * @cofounder/agents
+ * Agent Development Kit (ADK) for CoFounder Framework
  *
  * @example
  * ```typescript
- * import { createAgent, createRana } from '@rana/agents';
+ * import { createAgent, createCoFounder } from '@cofounder/agents';
  *
- * const rana = createRana({
+ * const cofounder = createCoFounder({
  *   providers: { anthropic: process.env.ANTHROPIC_API_KEY }
  * });
  *
  * const agent = createAgent({
- *   rana,
+ *   cofounder,
  *   tools: [],
  *   user: { id: 'u1', orgId: 'o1', roles: [] },
  * }, {

@@ -1,10 +1,10 @@
 /**
- * RANA Core Client
+ * CoFounder Core Client
  * Main SDK client with fluent API
  */
 
 import type {
-  RanaConfig,
+  CoFounderConfig,
   RanaChatRequest,
   RanaChatResponse,
   RanaStreamChunk,
@@ -20,15 +20,15 @@ import { CacheManager } from './cache-legacy';
 import { ProviderManager } from './providers/manager';
 import { FallbackManager, type FallbackResponse } from './providers/fallback';
 
-export class RanaClient {
-  private config: RanaConfig;
+export class CoFounderClient {
+  private config: CoFounderConfig;
   private costTracker: CostTracker;
   private cache: CacheManager;
   private providers: ProviderManager;
   private fallbackManager: FallbackManager | null = null;
   private plugins: RanaPlugin[] = [];
 
-  constructor(config: RanaConfig) {
+  constructor(config: CoFounderConfig) {
     this.config = this.normalizeConfig(config);
     this.costTracker = new CostTracker(config.cost_tracking);
     this.cache = new CacheManager(config.cache);
@@ -52,7 +52,7 @@ export class RanaClient {
       this.fallbackManager = new FallbackManager(this.providers, this.config.fallback);
     }
 
-    this.log('info', 'RANA client initialized');
+    this.log('info', 'CoFounder client initialized');
   }
 
   // ============================================================================
@@ -64,11 +64,11 @@ export class RanaClient {
    *
    * @example
    * // Simple usage
-   * const response = await rana.chat('Hello!');
+   * const response = await cofounder.chat('Hello!');
    *
    * @example
    * // Advanced usage
-   * const response = await rana.chat({
+   * const response = await cofounder.chat({
    *   provider: 'anthropic',
    *   model: 'claude-3-5-sonnet-20241022',
    *   messages: [{ role: 'user', content: 'Hello!' }],
@@ -149,7 +149,7 @@ export class RanaClient {
    * Streaming chat method
    *
    * @example
-   * for await (const chunk of rana.stream('Tell me a story')) {
+   * for await (const chunk of cofounder.stream('Tell me a story')) {
    *   process.stdout.write(chunk.delta);
    * }
    */
@@ -180,7 +180,7 @@ export class RanaClient {
    * Create a fluent builder for chat requests
    *
    * @example
-   * const response = await rana
+   * const response = await cofounder
    *   .provider('anthropic')
    *   .model('claude-3-5-sonnet-20241022')
    *   .optimize('cost')
@@ -214,7 +214,7 @@ export class RanaClient {
    * Get cost statistics
    *
    * @example
-   * const stats = await rana.cost.stats();
+   * const stats = await cofounder.cost.stats();
    * console.log(`Spent: $${stats.total_spent}`);
    * console.log(`Saved: $${stats.total_saved} (${stats.savings_percentage}%)`);
    */
@@ -242,7 +242,7 @@ export class RanaClient {
    * Get queue statistics and management methods
    *
    * @example
-   * const stats = rana.queue.stats();
+   * const stats = cofounder.queue.stats();
    * console.log(`Queue: ${stats.pending} pending, ${stats.processing} processing`);
    */
   get queue() {
@@ -261,7 +261,7 @@ export class RanaClient {
    * Get circuit breaker statistics and management methods
    *
    * @example
-   * const breaker = rana.circuitBreaker;
+   * const breaker = cofounder.circuitBreaker;
    * const state = breaker.getState('anthropic');
    * const stats = breaker.getStats('anthropic');
    * console.log(`${state}: ${stats.failureRate}% failure rate`);
@@ -287,7 +287,7 @@ export class RanaClient {
    * Register a plugin
    *
    * @example
-   * rana.use(myPlugin);
+   * cofounder.use(myPlugin);
    */
   async use(plugin: RanaPlugin): Promise<void> {
     this.plugins.push(plugin);
@@ -316,7 +316,7 @@ export class RanaClient {
   /**
    * Update configuration
    */
-  configure(config: Partial<RanaConfig>): void {
+  configure(config: Partial<CoFounderConfig>): void {
     this.config = { ...this.config, ...config };
     this.log('info', 'Configuration updated');
   }
@@ -324,7 +324,7 @@ export class RanaClient {
   /**
    * Get current configuration
    */
-  getConfig(): RanaConfig {
+  getConfig(): CoFounderConfig {
     return { ...this.config };
   }
 
@@ -336,7 +336,7 @@ export class RanaClient {
    * Test connection to a provider
    *
    * @example
-   * const isWorking = await rana.test('anthropic');
+   * const isWorking = await cofounder.test('anthropic');
    */
   async test(provider: LLMProvider): Promise<boolean> {
     try {
@@ -362,7 +362,7 @@ export class RanaClient {
   // Private Methods
   // ============================================================================
 
-  private normalizeConfig(config: RanaConfig): RanaConfig {
+  private normalizeConfig(config: CoFounderConfig): CoFounderConfig {
     return {
       providers: config.providers || {},
       defaults: {
@@ -492,7 +492,7 @@ export class RanaClient {
       const messageLevel = levels[level as keyof typeof levels];
 
       if (messageLevel >= configLevel) {
-        console.log(`[RANA ${level.toUpperCase()}] ${message}`);
+        console.log(`[CoFounder ${level.toUpperCase()}] ${message}`);
       }
     }
   }
@@ -505,7 +505,7 @@ export class RanaClient {
 class RanaChatBuilder {
   private request: Partial<RanaChatRequest> = {};
 
-  constructor(private client: RanaClient) {}
+  constructor(private client: CoFounderClient) {}
 
   provider(provider: LLMProvider): this {
     this.request.provider = provider;
@@ -564,25 +564,25 @@ class RanaChatBuilder {
 // ============================================================================
 
 /**
- * Create a RANA client instance
+ * Create a CoFounder client instance
  *
  * @example
- * import { createRana } from '@rana/core';
+ * import { createCoFounder } from '@cofounder/core';
  *
- * const rana = createRana({
+ * const cofounder = createCoFounder({
  *   providers: {
  *     anthropic: process.env.ANTHROPIC_API_KEY,
  *     openai: process.env.OPENAI_API_KEY,
  *   }
  * });
  *
- * const response = await rana.chat('Hello!');
+ * const response = await cofounder.chat('Hello!');
  */
-export function createRana(config: RanaConfig): RanaClient {
-  return new RanaClient(config);
+export function createCoFounder(config: CoFounderConfig): CoFounderClient {
+  return new CoFounderClient(config);
 }
 
 /**
  * Default export for convenience
  */
-export { RanaClient as Rana };
+export { CoFounderClient as CoFounder };

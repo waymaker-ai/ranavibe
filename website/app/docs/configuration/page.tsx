@@ -8,10 +8,10 @@ const features = [
   {
     icon: Settings,
     title: 'Global Configuration',
-    description: 'Configure RANA settings for your entire application',
-    code: `import { configure, getConfig } from '@rana/core';
+    description: 'Configure CoFounder settings for your entire application',
+    code: `import { configure, getConfig } from '@cofounder/core';
 
-// Configure RANA globally
+// Configure CoFounder globally
 configure({
   // Default model for all operations
   defaultModel: 'claude-sonnet-4-20250514',
@@ -50,7 +50,7 @@ console.log(config.defaultModel);  // 'claude-sonnet-4-20250514'`,
     icon: Key,
     title: 'Provider Configuration',
     description: 'Set up API keys and provider settings',
-    code: `import { configureProviders } from '@rana/core';
+    code: `import { configureProviders } from '@cofounder/core';
 
 configureProviders({
   anthropic: {
@@ -103,25 +103,25 @@ AZURE_OPENAI_KEY=...
 AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com
 
 # Default Settings
-RANA_DEFAULT_MODEL=claude-sonnet-4-20250514
-RANA_DEFAULT_PROVIDER=anthropic
-RANA_LOG_LEVEL=info
-RANA_TIMEOUT=30000
+CoFounder_DEFAULT_MODEL=claude-sonnet-4-20250514
+CoFounder_DEFAULT_PROVIDER=anthropic
+CoFounder_LOG_LEVEL=info
+CoFounder_TIMEOUT=30000
 
 # Cache Settings
-RANA_CACHE_ENABLED=true
-RANA_CACHE_TTL=3600
-RANA_CACHE_REDIS_URL=redis://localhost:6379
+CoFounder_CACHE_ENABLED=true
+CoFounder_CACHE_TTL=3600
+CoFounder_CACHE_REDIS_URL=redis://localhost:6379
 
 # Telemetry
-RANA_TELEMETRY=true
-RANA_OTLP_ENDPOINT=http://localhost:4318`,
+CoFounder_TELEMETRY=true
+CoFounder_OTLP_ENDPOINT=http://localhost:4318`,
   },
   {
     icon: Database,
     title: 'Storage Configuration',
     description: 'Configure storage backends for various features',
-    code: `import { configureStorage } from '@rana/core';
+    code: `import { configureStorage } from '@cofounder/core';
 
 configureStorage({
   // Prompt storage
@@ -134,7 +134,7 @@ configureStorage({
   memory: {
     type: 'redis',
     url: process.env.REDIS_URL,
-    prefix: 'rana:memory:'
+    prefix: 'cofounder:memory:'
   },
 
   // Vector store for RAG
@@ -142,21 +142,21 @@ configureStorage({
     type: 'pinecone',
     apiKey: process.env.PINECONE_API_KEY,
     environment: 'us-east-1',
-    indexName: 'rana-vectors'
+    indexName: 'cofounder-vectors'
   },
 
   // Cache storage
   cache: {
     type: 'redis',
     url: process.env.REDIS_URL,
-    prefix: 'rana:cache:'
+    prefix: 'cofounder:cache:'
   },
 
   // Audit logs
   audit: {
     type: 'postgresql',
     connectionString: process.env.DATABASE_URL,
-    tableName: 'rana_audit_logs'
+    tableName: 'cofounder_audit_logs'
   }
 });`,
   },
@@ -164,7 +164,7 @@ configureStorage({
     icon: Shield,
     title: 'Security Configuration',
     description: 'Configure security settings and policies',
-    code: `import { configureSecurity } from '@rana/core';
+    code: `import { configureSecurity } from '@cofounder/core';
 
 configureSecurity({
   // PII detection and redaction
@@ -213,7 +213,7 @@ configureSecurity({
     icon: Zap,
     title: 'Performance Configuration',
     description: 'Tune performance and optimization settings',
-    code: `import { configurePerformance } from '@rana/core';
+    code: `import { configurePerformance } from '@cofounder/core';
 
 configurePerformance({
   // Concurrency limits
@@ -279,11 +279,11 @@ export default function ConfigurationPage() {
             <h1 className="text-4xl md:text-5xl font-bold">Configuration</h1>
           </div>
           <p className="text-lg text-foreground-secondary">
-            Configure RANA for your environment. Set up providers, storage,
+            Configure CoFounder for your environment. Set up providers, storage,
             security, and performance settings.
           </p>
           <div className="mt-4 code-block font-mono text-sm">
-            npm install @rana/core
+            npm install @cofounder/core
           </div>
         </motion.div>
 
@@ -322,11 +322,11 @@ export default function ConfigurationPage() {
         >
           <h2 className="text-2xl font-bold mb-4">Configuration File</h2>
           <p className="text-foreground-secondary mb-4">
-            You can also use a <code className="px-2 py-1 rounded bg-background-secondary font-mono">rana.config.ts</code> file in your project root:
+            You can also use a <code className="px-2 py-1 rounded bg-background-secondary font-mono">cofounder.config.ts</code> file in your project root:
           </p>
           <div className="code-block font-mono text-sm overflow-x-auto">
-            <pre>{`// rana.config.ts
-import { defineConfig } from '@rana/core';
+            <pre>{`// cofounder.config.ts
+import { defineConfig } from '@cofounder/core';
 
 export default defineConfig({
   defaultModel: 'claude-sonnet-4-20250514',
@@ -373,7 +373,7 @@ export default defineConfig({
             Validate your configuration at startup:
           </p>
           <div className="code-block font-mono text-sm overflow-x-auto">
-            <pre>{`import { validateConfig } from '@rana/core';
+            <pre>{`import { validateConfig } from '@cofounder/core';
 
 const { valid, errors, warnings } = validateConfig();
 
@@ -387,7 +387,7 @@ if (warnings.length > 0) {
 }
 
 // Or use the CLI
-// npx rana config:validate`}</pre>
+// npx cofounder config:validate`}</pre>
           </div>
         </motion.div>
       </div>

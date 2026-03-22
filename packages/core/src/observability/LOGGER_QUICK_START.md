@@ -1,11 +1,11 @@
-# RANA Logger - Quick Start Guide
+# CoFounder Logger - Quick Start Guide
 
 ## Installation
 
-The logger is already included in `@rana/core`:
+The logger is already included in `@cofounder/core`:
 
 ```bash
-npm install @rana/core
+npm install @cofounder/core
 ```
 
 ## Quick Examples
@@ -13,7 +13,7 @@ npm install @rana/core
 ### 1. Basic Usage
 
 ```typescript
-import { createLogger } from '@rana/core';
+import { createLogger } from '@cofounder/core';
 
 const logger = createLogger({ level: 'info' });
 
@@ -25,7 +25,7 @@ logger.error('Error occurred', new Error('Details'));
 ### 2. With Request Context
 
 ```typescript
-import { createLogger } from '@rana/core';
+import { createLogger } from '@cofounder/core';
 
 const logger = createLogger();
 
@@ -43,7 +43,7 @@ logger.info('Another action');
 ### 3. Request/Response Logging
 
 ```typescript
-import { createLoggingMiddleware } from '@rana/core';
+import { createLoggingMiddleware } from '@cofounder/core';
 
 const middleware = createLoggingMiddleware(logger, {
   includeMessages: true,
@@ -69,7 +69,7 @@ import {
   createLogger,
   createConsoleTransport,
   createFileTransport 
-} from '@rana/core';
+} from '@cofounder/core';
 
 const logger = createLogger({
   transports: [
@@ -82,7 +82,7 @@ const logger = createLogger({
 ### 5. Custom Handler
 
 ```typescript
-import { createLogger, createCustomTransport } from '@rana/core';
+import { createLogger, createCustomTransport } from '@cofounder/core';
 
 const logger = createLogger({
   transports: [
@@ -99,7 +99,7 @@ const logger = createLogger({
 ### 6. Privacy-Aware Logging
 
 ```typescript
-import { createLoggingMiddleware } from '@rana/core';
+import { createLoggingMiddleware } from '@cofounder/core';
 
 const middleware = createLoggingMiddleware(logger, {
   redactMessages: true,  // Hide message content
@@ -197,7 +197,7 @@ import type {
   LoggerConfig,
   LogTransport,
   LoggingMiddleware
-} from '@rana/core';
+} from '@cofounder/core';
 ```
 
 ## Examples

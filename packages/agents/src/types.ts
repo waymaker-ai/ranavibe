@@ -1,10 +1,10 @@
 /**
- * @rana/agents - Core Types
- * Agent Development Kit (ADK) for RANA Framework
+ * @cofounder/agents - Core Types
+ * Agent Development Kit (ADK) for CoFounder Framework
  */
 
-// Re-export RanaClient type for convenience
-export type { RanaClient, RanaChatRequest, RanaChatResponse } from '@rana/core';
+// Re-export CoFounderClient type for convenience
+export type { CoFounderClient, RanaChatRequest, RanaChatResponse } from '@cofounder/core';
 
 /**
  * User identity for authentication and authorization
@@ -185,8 +185,8 @@ export interface AgentUsage {
  * Agent context - everything an agent needs to operate
  */
 export interface AgentContext {
-  /** RANA client for LLM calls */
-  rana: any; // RanaClient - using any to avoid circular deps
+  /** CoFounder client for LLM calls */
+  cofounder: any; // CoFounderClient - using any to avoid circular deps
   /** Optional RAG client */
   rag?: any; // RAGClient
   /** Available tools */

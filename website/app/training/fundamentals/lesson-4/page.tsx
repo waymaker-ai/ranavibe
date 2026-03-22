@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Your First RANA Project | RANA Fundamentals',
-  description: 'Build your first AI application with RANA step by step',
+  title: 'Your First CoFounder Project | CoFounder Fundamentals',
+  description: 'Build your first AI application with CoFounder step by step',
 };
 
 export default function Lesson4Page() {
@@ -25,7 +25,7 @@ export default function Lesson4Page() {
 
         {/* Content */}
         <article className="prose prose-lg max-w-none">
-          <h1>Your First RANA Project</h1>
+          <h1>Your First CoFounder Project</h1>
 
           <p className="lead">
             Let&apos;s build a complete AI chat application from scratch. We&apos;ll create
@@ -55,7 +55,7 @@ export default function Lesson4Page() {
           <div className="code-block">
             <pre>
               <code>{`// lib/agent.ts
-import { Agent } from '@rana/core';
+import { Agent } from '@cofounder/core';
 
 export const chatAgent = new Agent({
   name: 'ChatAssistant',
@@ -79,7 +79,7 @@ export const chatAgent = new Agent({
             <pre>
               <code>{`// app/api/chat/route.ts
 import { chatAgent } from '@/lib/agent';
-import { streamResponse } from '@rana/helpers';
+import { streamResponse } from '@cofounder/helpers';
 
 export async function POST(request: Request) {
   try {
@@ -119,7 +119,7 @@ export async function POST(request: Request) {
               <code>{`// components/Chat.tsx
 'use client';
 
-import { useChat } from '@rana/react';
+import { useChat } from '@cofounder/react';
 import { useState } from 'react';
 
 export function Chat() {
@@ -320,7 +320,7 @@ const systemPrompts = {
           <h2>What&apos;s Next?</h2>
 
           <p>
-            Congratulations! You&apos;ve built your first RANA application. In the next
+            Congratulations! You&apos;ve built your first CoFounder application. In the next
             lesson, we&apos;ll dive deeper into the LLM client and explore advanced
             configuration options.
           </p>

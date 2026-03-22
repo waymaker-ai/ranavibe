@@ -5,11 +5,11 @@
 import type { RanaPlugin } from '../types';
 
 /**
- * Define a RANA plugin with TypeScript support
+ * Define a CoFounder plugin with TypeScript support
  *
  * @example
  * ```typescript
- * import { definePlugin } from '@rana/core';
+ * import { definePlugin } from '@cofounder/core';
  *
  * export default definePlugin({
  *   name: 'my-plugin',

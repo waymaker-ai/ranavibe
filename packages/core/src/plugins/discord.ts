@@ -1,5 +1,5 @@
 /**
- * Discord Integration Plugin for RANA
+ * Discord Integration Plugin for CoFounder
  *
  * Provides a complete Discord bot integration with:
  * - Message handling (DMs, mentions, channels)
@@ -13,8 +13,8 @@
  *
  * @example
  * ```typescript
- * import { createRana } from '@rana/core';
- * import { DiscordPlugin } from '@rana/core/plugins/discord';
+ * import { createCoFounder } from '@cofounder/core';
+ * import { DiscordPlugin } from '@cofounder/core/plugins/discord';
  *
  * const discord = new DiscordPlugin({
  *   token: process.env.DISCORD_TOKEN!,
@@ -26,7 +26,7 @@
  *   }
  * });
  *
- * const rana = createRana({
+ * const cofounder = createCoFounder({
  *   providers: {
  *     openai: process.env.OPENAI_API_KEY
  *   }
@@ -37,13 +37,13 @@
  *   intents: ['GUILDS', 'GUILD_MESSAGES', 'DIRECT_MESSAGES'],
  *   presence: {
  *     status: 'online',
- *     activity: 'Powered by RANA'
+ *     activity: 'Powered by CoFounder'
  *   }
  * });
  *
  * // Handle messages
  * discord.onMessage(async (message) => {
- *   const response = await rana.chat({
+ *   const response = await cofounder.chat({
  *     messages: [{ role: 'user', content: message.content }],
  *     model: 'gpt-4o-mini'
  *   });
@@ -53,7 +53,7 @@
  * // Handle slash commands
  * discord.onCommand('ask', async (interaction) => {
  *   const question = interaction.options.get('question');
- *   const response = await rana.chat(question.value);
+ *   const response = await cofounder.chat(question.value);
  *   await interaction.reply(response.content);
  * });
  * ```
@@ -415,7 +415,7 @@ class DiscordRateLimiter {
  * To use with real Discord:
  * 1. npm install discord.js
  * 2. Replace MockDiscordBot with actual Discord.js Client
- * 3. Map Discord.js events to RANA handlers
+ * 3. Map Discord.js events to CoFounder handlers
  */
 class MockDiscordBot {
   private config: DiscordBotConfig;
@@ -551,7 +551,7 @@ export class DiscordPlugin {
       intents: config.intents || ['GUILDS', 'GUILD_MESSAGES', 'DIRECT_MESSAGES', 'MESSAGE_CONTENT'],
       presence: config.presence || {
         status: 'online',
-        activity: 'Powered by RANA',
+        activity: 'Powered by CoFounder',
         activityType: 'PLAYING',
       },
       autoReconnect: config.autoReconnect ?? true,
@@ -570,7 +570,7 @@ export class DiscordPlugin {
       await this.bot.setPresence(botConfig.presence);
     }
 
-    console.log('[RANA Discord] Bot initialized successfully');
+    console.log('[CoFounder Discord] Bot initialized successfully');
   }
 
   /**
@@ -618,7 +618,7 @@ export class DiscordPlugin {
     const channelId = typeof channel === 'string' ? channel : channel.id;
 
     if (!this.rateLimiter.canSendMessage(channelId)) {
-      console.warn(`[RANA Discord] Rate limit exceeded for channel ${channelId}`);
+      console.warn(`[CoFounder Discord] Rate limit exceeded for channel ${channelId}`);
       return;
     }
 
@@ -641,7 +641,7 @@ export class DiscordPlugin {
     const channelId = typeof channel === 'string' ? channel : channel.id;
 
     if (!this.rateLimiter.canSendMessage(channelId)) {
-      console.warn(`[RANA Discord] Rate limit exceeded for channel ${channelId}`);
+      console.warn(`[CoFounder Discord] Rate limit exceeded for channel ${channelId}`);
       return;
     }
 
@@ -664,7 +664,7 @@ export class DiscordPlugin {
     const channelId = typeof channel === 'string' ? channel : channel.id;
 
     if (!this.rateLimiter.canSendMessage(channelId)) {
-      console.warn(`[RANA Discord] Rate limit exceeded for channel ${channelId}`);
+      console.warn(`[CoFounder Discord] Rate limit exceeded for channel ${channelId}`);
       return;
     }
 
@@ -792,7 +792,7 @@ export class DiscordPlugin {
       try {
         await handler(message);
       } catch (error) {
-        console.error('[RANA Discord] Error in message handler:', error);
+        console.error('[CoFounder Discord] Error in message handler:', error);
       }
     }
   }
@@ -830,7 +830,7 @@ export class DiscordPlugin {
   }
 
   /**
-   * Helper to format RANA response as Discord embed
+   * Helper to format CoFounder response as Discord embed
    */
   static formatAsEmbed(
     content: string,
@@ -876,7 +876,7 @@ export class DiscordPlugin {
 // ============================================================================
 
 /**
- * Create a RANA plugin from Discord plugin instance
+ * Create a CoFounder plugin from Discord plugin instance
  */
 export function createDiscordPlugin(discord: DiscordPlugin): RanaPlugin {
   return definePlugin({
@@ -884,12 +884,12 @@ export function createDiscordPlugin(discord: DiscordPlugin): RanaPlugin {
     version: '1.0.0',
 
     async onInit(config) {
-      console.log('[RANA Discord Plugin] Initialized');
+      console.log('[CoFounder Discord Plugin] Initialized');
     },
 
     async onDestroy() {
       await discord.shutdown();
-      console.log('[RANA Discord Plugin] Destroyed');
+      console.log('[CoFounder Discord Plugin] Destroyed');
     },
   });
 }

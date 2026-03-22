@@ -1,10 +1,10 @@
 /**
- * @rana/mcp/registry
+ * @cofounder/mcp/registry
  * MCP Registry for discovering and managing MCP servers
  *
  * @example
  * ```typescript
- * import { MCPRegistry, officialServers } from '@rana/core';
+ * import { MCPRegistry, officialServers } from '@cofounder/core';
  *
  * const registry = new MCPRegistry();
  *

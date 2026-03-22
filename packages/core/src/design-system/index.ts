@@ -1,12 +1,12 @@
 /**
  * Design System Quality Gate Checker
- * Enforces design system compliance in RANA projects
+ * Enforces design system compliance in CoFounder projects
  */
 
 import * as fs from 'fs';
 import * as path from 'path';
 import { glob } from 'glob';
-import type { RanaConfig } from '../config/index';
+import type { CoFounderConfig } from '../config/index';
 
 export interface DesignSystemViolation {
   file: string;
@@ -26,10 +26,10 @@ export interface DesignSystemCheckResult {
 }
 
 export class DesignSystemChecker {
-  private config: RanaConfig;
+  private config: CoFounderConfig;
   private designSystemPath: string;
 
-  constructor(config: RanaConfig) {
+  constructor(config: CoFounderConfig) {
     this.config = config;
     this.designSystemPath = config.standards?.design_system?.components?.path || 'src/components/ui';
   }

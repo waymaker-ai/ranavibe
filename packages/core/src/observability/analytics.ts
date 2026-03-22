@@ -1,5 +1,5 @@
 /**
- * Token Usage Analytics for RANA Observability
+ * Token Usage Analytics for CoFounder Observability
  *
  * Provides comprehensive token usage tracking and analytics capabilities:
  * - Real-time token usage tracking (input/output/total)
@@ -158,7 +158,7 @@ export class TokenAnalytics {
   // ============================================================================
 
   /**
-   * Track a response from RANA
+   * Track a response from CoFounder
    */
   async track(response: RanaChatResponse): Promise<void> {
     const record: TokenUsageRecord = {

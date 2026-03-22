@@ -1,4 +1,4 @@
-# RANA Configuration with Custom Design System
+# CoFounder Configuration with Custom Design System
 # Copy this template and customize for your project
 
 version: "1.0.0"
@@ -254,9 +254,9 @@ quality_gates:
 # Tool Integration
 tools:
   design_system:
-    checker: "rana check-design-system"
-    coverage: "rana design-coverage"
-    violations: "rana design-violations --fix"
+    checker: "cofounder check-design-system"
+    coverage: "cofounder design-coverage"
+    violations: "cofounder design-violations --fix"
 
   accessibility:
     audit: "npm run a11y-audit"
@@ -313,7 +313,7 @@ ai_assistant:
 deployment:
   checks:
     - name: "Design system consistency"
-      command: "rana check-design-system"
+      command: "cofounder check-design-system"
       fail_on_error: true
 
     - name: "Accessibility compliance"

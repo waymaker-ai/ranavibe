@@ -1,7 +1,7 @@
 {
-  "name": "rana-chatbot-example",
+  "name": "cofounder-chatbot-example",
   "version": "1.0.0",
-  "description": "Simple chatbot example using RANA",
+  "description": "Simple chatbot example using CoFounder",
   "main": "index.ts",
   "type": "module",
   "scripts": {
@@ -9,7 +9,7 @@
     "dev": "npx tsx watch index.ts"
   },
   "dependencies": {
-    "@rana/core": "^2.0.0"
+    "@cofounder/core": "^2.0.0"
   },
   "devDependencies": {
     "tsx": "^4.7.0",

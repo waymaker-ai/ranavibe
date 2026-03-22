@@ -1,5 +1,5 @@
 /**
- * User-based Rate Limiter for RANA Security
+ * User-based Rate Limiter for CoFounder Security
  * Implements per-user rate limiting with sliding window algorithm
  * Complements the provider-based rate limiter in providers/rate-limiter.ts
  */
@@ -293,7 +293,7 @@ class RedisStorageBackend implements StorageBackend {
   private redisClient: RedisClientLike;
   private keyPrefix: string;
 
-  constructor(redisClient: RedisClientLike, keyPrefix: string = 'rana:ratelimit:') {
+  constructor(redisClient: RedisClientLike, keyPrefix: string = 'cofounder:ratelimit:') {
     this.redisClient = redisClient;
     this.keyPrefix = keyPrefix;
   }

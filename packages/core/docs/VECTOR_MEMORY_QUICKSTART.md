@@ -1,13 +1,13 @@
 # Vector Memory Quick Start
 
-Get started with RANA Vector Memory in 5 minutes.
+Get started with CoFounder Vector Memory in 5 minutes.
 
 ## Installation
 
-Vector Memory is included in `@rana/core`:
+Vector Memory is included in `@cofounder/core`:
 
 ```bash
-npm install @rana/core
+npm install @cofounder/core
 ```
 
 ## Basic Usage (3 Steps)
@@ -15,7 +15,7 @@ npm install @rana/core
 ### 1. Create Memory Instance
 
 ```typescript
-import { createInMemoryVectorMemory, EmbeddingProvider } from '@rana/core';
+import { createInMemoryVectorMemory, EmbeddingProvider } from '@cofounder/core';
 
 // Define your embedding provider (or use OpenAI, Anthropic, etc.)
 const embeddingProvider: EmbeddingProvider = {
@@ -139,7 +139,7 @@ const results = await memory.search(queryEmbedding, 5);
 
 ```typescript
 import OpenAI from 'openai';
-import { createInMemoryVectorMemory, EmbeddingProvider } from '@rana/core';
+import { createInMemoryVectorMemory, EmbeddingProvider } from '@cofounder/core';
 
 const openai = new OpenAI();
 
@@ -160,7 +160,7 @@ const memory = createInMemoryVectorMemory(1536, { embeddingProvider });
 ## File Persistence
 
 ```typescript
-import { createFileVectorMemory } from '@rana/core';
+import { createFileVectorMemory } from '@cofounder/core';
 
 // Auto-saves to file
 const memory = createFileVectorMemory('./memories.json', 384, {

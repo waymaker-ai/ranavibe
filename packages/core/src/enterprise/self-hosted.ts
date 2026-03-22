@@ -649,7 +649,7 @@ export class SelfHostedManager {
 
     for (const component of this.config.deploymentConfig.components) {
       services[component.name] = {
-        image: `rana/${component.type}:latest`,
+        image: `cofounder/${component.type}:latest`,
         replicas: component.replicas ?? 1,
         environment: component.env ?? {},
         resources: {
@@ -722,7 +722,7 @@ spec:
     spec:
       containers:
       - name: ${component.name}
-        image: rana/${component.type}:latest
+        image: cofounder/${component.type}:latest
         resources:
           limits:
             cpu: ${component.resources?.cpu ?? '1'}
@@ -746,13 +746,13 @@ spec:
   }
 
   private generateIngress(): string {
-    const host = this.config.deploymentConfig.networking.ingressHost ?? 'rana.local';
+    const host = this.config.deploymentConfig.networking.ingressHost ?? 'cofounder.local';
 
     return `
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: rana-ingress
+  name: cofounder-ingress
 spec:
   rules:
   - host: ${host}

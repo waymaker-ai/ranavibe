@@ -1,4 +1,4 @@
-# RANA v2.0.0 Release Notes
+# CoFounder v2.0.0 Release Notes
 
 ## 🎉 Major Release: Full SDK with React Hooks
 
@@ -10,22 +10,22 @@
 
 ## 🚀 What's New
 
-RANA v2.0 represents a complete transformation from a CLI-only tool to a comprehensive JavaScript framework. We've rebuilt RANA to be as easy to use as React, with powerful features that save you time and money.
+CoFounder v2.0 represents a complete transformation from a CLI-only tool to a comprehensive JavaScript framework. We've rebuilt CoFounder to be as easy to use as React, with powerful features that save you time and money.
 
-### **New: @rana/core SDK**
+### **New: @cofounder/core SDK**
 
-The heart of RANA v2.0 is the new core SDK that provides a unified, type-safe API for AI development.
+The heart of CoFounder v2.0 is the new core SDK that provides a unified, type-safe API for AI development.
 
 ```typescript
-import { createRana } from '@rana/core';
+import { createCoFounder } from '@cofounder/core';
 
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: {
     anthropic: process.env.ANTHROPIC_API_KEY,
   }
 });
 
-const response = await rana.chat('Hello!');
+const response = await cofounder.chat('Hello!');
 ```
 
 **Features:**
@@ -37,38 +37,38 @@ const response = await rana.chat('Hello!');
 - ✅ **Streaming Support** - AsyncGenerator-based streaming
 - ✅ **Plugin System** - Extend functionality easily
 
-### **New: @rana/react Hooks**
+### **New: @cofounder/react Hooks**
 
 Build AI apps the same way you build React apps.
 
 ```tsx
-import { useRanaChat } from '@rana/react';
+import { useCoFounderChat } from '@cofounder/react';
 
 function ChatApp() {
-  const { chat, response, loading, cost } = useRanaChat(rana);
+  const { chat, response, loading, cost } = useCoFounderChat(cofounder);
   return <div>...</div>;
 }
 ```
 
 **5 Custom Hooks:**
-1. `useRanaChat` - Basic chat functionality
-2. `useRanaStream` - Streaming responses
-3. `useRanaCost` - Cost tracking dashboard
-4. `useRanaOptimize` - Optimization suggestions
-5. `useRanaConversation` - Full conversation management
+1. `useCoFounderChat` - Basic chat functionality
+2. `useCoFounderStream` - Streaming responses
+3. `useCoFounderCost` - Cost tracking dashboard
+4. `useCoFounderOptimize` - Optimization suggestions
+5. `useCoFounderConversation` - Full conversation management
 
 ### **Enhanced: CLI Tools**
 
 New one-word commands for faster development.
 
 ```bash
-rana dashboard     # Real-time cost monitoring
-rana analyze       # AI-powered analysis
-rana optimize      # Auto-optimization
-rana fix           # Auto-fix issues
-rana test          # Run tests
-rana migrate       # Database migrations
-rana audit         # Security audit
+cofounder dashboard     # Real-time cost monitoring
+cofounder analyze       # AI-powered analysis
+cofounder optimize      # Auto-optimization
+cofounder fix           # Auto-fix issues
+cofounder test          # Run tests
+cofounder migrate       # Database migrations
+cofounder audit         # Security audit
 ```
 
 **New Commands:**
@@ -81,7 +81,7 @@ rana audit         # Security audit
 
 ## 💰 70% Cost Reduction (Automatic)
 
-RANA v2.0 includes automatic cost optimization that typically reduces LLM costs by 70%.
+CoFounder v2.0 includes automatic cost optimization that typically reduces LLM costs by 70%.
 
 **How it works:**
 1. **Response Caching (40% savings)** - Identical queries served from cache
@@ -100,46 +100,46 @@ RANA v2.0 includes automatic cost optimization that typically reduces LLM costs 
 
 ### **v1.x to v2.0 Migration**
 
-If you're upgrading from RANA v1.x:
+If you're upgrading from CoFounder v1.x:
 
 **CLI Commands (Still Work)**
 All v1.x CLI commands continue to work:
 ```bash
-rana init
-rana check
-rana deploy
+cofounder init
+cofounder check
+cofounder deploy
 # etc.
 ```
 
 **New SDK Usage**
-You can now also use RANA programmatically:
+You can now also use CoFounder programmatically:
 ```typescript
 // Old: CLI only
-// $ rana llm:chat "Hello"
+// $ cofounder llm:chat "Hello"
 
 // New: SDK
-import { createRana } from '@rana/core';
-const response = await rana.chat('Hello');
+import { createCoFounder } from '@cofounder/core';
+const response = await cofounder.chat('Hello');
 ```
 
 **Configuration**
-- `.rana.yml` still supported
-- New: `rana.config.ts` for TypeScript configuration
+- `.cofounder.yml` still supported
+- New: `cofounder.config.ts` for TypeScript configuration
 
 ### **What Changed**
 
 1. **Package Structure**
-   - Old: `@rana/cli` only
-   - New: `@rana/core`, `@rana/react`, `@rana/cli`
+   - Old: `@cofounder/cli` only
+   - New: `@cofounder/core`, `@cofounder/react`, `@cofounder/cli`
 
 2. **Installation**
    ```bash
    # Old
-   npm install -g @rana/cli
+   npm install -g @cofounder/cli
 
    # New (both work)
-   npm install -g @rana/cli              # CLI only
-   npm install @rana/core @rana/react    # SDK + React
+   npm install -g @cofounder/cli              # CLI only
+   npm install @cofounder/core @cofounder/react    # SDK + React
    ```
 
 3. **No Breaking Changes to CLI**
@@ -150,9 +150,9 @@ const response = await rana.chat('Hello');
 
 ## 📦 New Packages
 
-### **@rana/core**
+### **@cofounder/core**
 ```bash
-npm install @rana/core
+npm install @cofounder/core
 ```
 
 Core SDK with unified LLM client, cost tracking, caching, and plugin system.
@@ -160,12 +160,12 @@ Core SDK with unified LLM client, cost tracking, caching, and plugin system.
 **Size:** ~30KB minified
 **Dependencies:** Minimal (OpenAI, Anthropic, Google SDKs as needed)
 
-### **@rana/react**
+### **@cofounder/react**
 ```bash
-npm install @rana/react
+npm install @cofounder/react
 ```
 
-React hooks for RANA integration.
+React hooks for CoFounder integration.
 
 **Size:** ~10KB minified
 **Peer Dependencies:** React 18+
@@ -179,7 +179,7 @@ React hooks for RANA integration.
 Chain methods for intuitive usage:
 
 ```typescript
-const response = await rana
+const response = await cofounder
   .provider('anthropic')
   .model('claude-3-5-sonnet-20241022')
   .temperature(0.7)
@@ -194,9 +194,9 @@ const response = await rana
 Quick access to specific providers:
 
 ```typescript
-const claude = await rana.anthropic().chat('Hello');
-const gpt = await rana.openai().chat('Hello');
-const gemini = await rana.google().chat('Hello');
+const claude = await cofounder.anthropic().chat('Hello');
+const gpt = await cofounder.openai().chat('Hello');
+const gemini = await cofounder.google().chat('Hello');
 ```
 
 ### **Cost Tracking**
@@ -204,7 +204,7 @@ const gemini = await rana.google().chat('Hello');
 Real-time cost statistics:
 
 ```typescript
-const stats = await rana.cost.stats();
+const stats = await cofounder.cost.stats();
 
 console.log(`Spent: $${stats.total_spent}`);
 console.log(`Saved: $${stats.total_saved}`);
@@ -217,10 +217,10 @@ Automatic response caching:
 
 ```typescript
 // First call: hits API
-const response1 = await rana.chat('What is React?');
+const response1 = await cofounder.chat('What is React?');
 
 // Second call: from cache (< 10ms, $0.00)
-const response2 = await rana.chat('What is React?');
+const response2 = await cofounder.chat('What is React?');
 console.log(response2.cached); // true
 ```
 
@@ -229,14 +229,14 @@ console.log(response2.cached); // true
 AsyncGenerator-based streaming:
 
 ```typescript
-for await (const chunk of rana.stream('Tell me a story')) {
+for await (const chunk of cofounder.stream('Tell me a story')) {
   process.stdout.write(chunk.delta);
 }
 ```
 
 ### **Plugin System**
 
-Extend RANA with custom plugins:
+Extend CoFounder with custom plugins:
 
 ```typescript
 const myPlugin = definePlugin({
@@ -247,7 +247,7 @@ const myPlugin = definePlugin({
   }
 });
 
-await rana.use(myPlugin);
+await cofounder.use(myPlugin);
 ```
 
 ### **TypeScript Configuration**
@@ -255,8 +255,8 @@ await rana.use(myPlugin);
 Type-safe configuration:
 
 ```typescript
-// rana.config.ts
-import { defineConfig } from '@rana/core';
+// cofounder.config.ts
+import { defineConfig } from '@cofounder/core';
 
 export default defineConfig({
   providers: {
@@ -296,7 +296,7 @@ export default defineConfig({
 ### **New Guides**
 
 - [SDK Quick Start](./SDK_QUICK_START.md) - 5-minute tutorial
-- [Complete SDK Guide](./RANA_SDK_GUIDE.md) - Comprehensive documentation
+- [Complete SDK Guide](./CoFounder_SDK_GUIDE.md) - Comprehensive documentation
 - [React Hooks Guide](./packages/react/README.md) - React integration
 - [Before & After Comparison](./BEFORE_AND_AFTER.md) - Visual comparison
 - [Migration Guide](./MIGRATION_GUIDE.md) - Upgrading from v1.x
@@ -314,16 +314,16 @@ export default defineConfig({
 
 ### **v2.1 (Q1 2025)**
 
-- Vue.js composables (`@rana/vue`)
-- Svelte stores (`@rana/svelte`)
+- Vue.js composables (`@cofounder/vue`)
+- Svelte stores (`@cofounder/svelte`)
 - VSCode extension
 - Web dashboard
 - More examples and templates
 
 ### **v2.2 (Q2 2025)**
 
-- Next.js middleware (`@rana/next`)
-- Express middleware (`@rana/express`)
+- Next.js middleware (`@cofounder/next`)
+- Express middleware (`@cofounder/express`)
 - Plugin marketplace
 - Advanced RAG features
 - Mobile SDKs (React Native, Flutter)
@@ -344,9 +344,9 @@ Special thanks to:
 
 ## 📞 Get Help
 
-- 📚 **Docs:** https://rana.dev
-- ⭐ **GitHub:** https://github.com/waymaker/rana
-- 💬 **Discord:** https://discord.gg/rana
+- 📚 **Docs:** https://cofounder.dev
+- ⭐ **GitHub:** https://github.com/waymaker/cofounder
+- 💬 **Discord:** https://discord.gg/cofounder
 - 📧 **Email:** ashley@waymaker.cx
 
 ---
@@ -354,10 +354,10 @@ Special thanks to:
 ## 🔗 Links
 
 - **npm:**
-  - [@rana/core](https://npmjs.com/package/@rana/core)
-  - [@rana/react](https://npmjs.com/package/@rana/react)
-- **GitHub:** https://github.com/waymaker/rana
-- **Docs:** https://rana.dev
+  - [@cofounder/core](https://npmjs.com/package/@cofounder/core)
+  - [@cofounder/react](https://npmjs.com/package/@cofounder/react)
+- **GitHub:** https://github.com/waymaker/cofounder
+- **Docs:** https://cofounder.dev
 - **Examples:** [examples/](./examples/)
 - **Changelog:** [CHANGELOG.md](./CHANGELOG.md)
 
@@ -377,12 +377,12 @@ Special thanks to:
 
 ## ⭐ Star on GitHub
 
-If you find RANA useful, please star us on GitHub! It helps others discover the project.
+If you find CoFounder useful, please star us on GitHub! It helps others discover the project.
 
-https://github.com/waymaker/rana
+https://github.com/waymaker/cofounder
 
 ---
 
-**RANA v2.0.0 - Build AI apps like you build with React** 🚀
+**CoFounder v2.0.0 - Build AI apps like you build with React** 🚀
 
 Made with ❤️ by Waymaker

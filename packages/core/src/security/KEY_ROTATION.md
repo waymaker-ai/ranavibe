@@ -1,4 +1,4 @@
-# API Key Rotation for RANA
+# API Key Rotation for CoFounder
 
 Secure API key management with automatic rotation, health monitoring, and graceful transitions.
 
@@ -9,14 +9,14 @@ Secure API key management with automatic rotation, health monitoring, and gracef
 - **Graceful Transitions**: Old keys remain valid during overlap period
 - **Health Monitoring**: Track key usage, errors, and overall health
 - **Secure Storage**: In-memory, encrypted file, or custom storage adapters
-- **ProviderManager Integration**: Seamless integration with existing RANA infrastructure
+- **ProviderManager Integration**: Seamless integration with existing CoFounder infrastructure
 
 ## Quick Start
 
 ### Basic Usage
 
 ```typescript
-import { KeyRotationManager, MemoryStorage } from '@rana/core/security';
+import { KeyRotationManager, MemoryStorage } from '@cofounder/core/security';
 
 // Create a rotation manager
 const rotationManager = new KeyRotationManager({
@@ -39,8 +39,8 @@ await rotationManager.rotateKey('anthropic', 'sk-ant-api-key-67890');
 ### Integration with ProviderManager
 
 ```typescript
-import { KeyRotationManager, createRotatedProviderConfig } from '@rana/core/security';
-import { ProviderManager } from '@rana/core';
+import { KeyRotationManager, createRotatedProviderConfig } from '@cofounder/core/security';
+import { ProviderManager } from '@cofounder/core';
 
 // Create rotation manager
 const rotationManager = new KeyRotationManager({
@@ -211,7 +211,7 @@ A key is considered unhealthy if:
 ### MemoryStorage (Development)
 
 ```typescript
-import { MemoryStorage } from '@rana/core/security';
+import { MemoryStorage } from '@cofounder/core/security';
 
 const storage = new MemoryStorage();
 ```
@@ -221,7 +221,7 @@ Keys are stored in memory and lost on restart. Use for development/testing.
 ### EncryptedFileStorage (Production)
 
 ```typescript
-import { EncryptedFileStorage } from '@rana/core/security';
+import { EncryptedFileStorage } from '@cofounder/core/security';
 
 const storage = new EncryptedFileStorage({
   filePath: '/secure/path/keys.enc',
@@ -419,4 +419,4 @@ Check `getKeyHealth()` to see if keys are being rate-limited or have authenticat
 
 ## License
 
-MIT - See main RANA license
+MIT - See main CoFounder license

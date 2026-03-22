@@ -37,7 +37,7 @@ export async function debugAgentCommand(
     { type: 'llm-request', time: '0ms', detail: 'Sending request to claude-3-5-sonnet' },
     { type: 'llm-response', time: '245ms', detail: 'Received response (342 tokens)' },
     { type: 'thinking', time: '246ms', detail: 'Processing: "I should search for..."' },
-    { type: 'tool-call', time: '248ms', detail: 'Calling tool: web_search("RANA framework")' },
+    { type: 'tool-call', time: '248ms', detail: 'Calling tool: web_search("CoFounder framework")' },
     { type: 'tool-result', time: '1.2s', detail: 'Search returned 5 results' },
     { type: 'state-change', time: '1.21s', detail: 'state.searchResults = [...]' },
     { type: 'llm-request', time: '1.22s', detail: 'Sending follow-up request' },
@@ -181,5 +181,5 @@ export async function debugSessionsCommand(options: { number?: number }): Promis
   console.log('└──────────────┴─────────────────┴──────────┴────────┴───────────┘');
 
   console.log(chalk.gray(`\nShowing ${Math.min(count, sessions.length)} of ${sessions.length} sessions`));
-  console.log(chalk.gray('Use "rana debug:replay <session-id>" to replay a session\n'));
+  console.log(chalk.gray('Use "cofounder debug:replay <session-id>" to replay a session\n'));
 }

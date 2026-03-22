@@ -1,8 +1,8 @@
-# RANA: Before & After Comparison
+# CoFounder: Before & After Comparison
 
 ## 🎯 The Transformation
 
-We've transformed RANA from a CLI-only tool into a full-featured JavaScript framework that rivals React, Vue.js, and modern SDKs.
+We've transformed CoFounder from a CLI-only tool into a full-featured JavaScript framework that rivals React, Vue.js, and modern SDKs.
 
 ---
 
@@ -12,19 +12,19 @@ We've transformed RANA from a CLI-only tool into a full-featured JavaScript fram
 
 ```bash
 # Installation
-npm install -g @rana/cli
+npm install -g @cofounder/cli
 
 # Setup (manual, tedious)
-rana init
-rana llm:setup
-rana db:setup
-rana security:setup
+cofounder init
+cofounder llm:setup
+cofounder db:setup
+cofounder security:setup
 
 # Usage (CLI commands only)
-rana llm:analyze
-rana db:migrate
-rana security:audit
-rana llm:cost-estimate
+cofounder llm:analyze
+cofounder db:migrate
+cofounder security:audit
+cofounder llm:cost-estimate
 
 # No programmatic access!
 # No React integration!
@@ -44,39 +44,39 @@ rana llm:cost-estimate
 
 ```typescript
 // Installation
-npm install @rana/core @rana/react
+npm install @cofounder/core @cofounder/react
 
 // Simple setup
-import { createRana } from '@rana/core';
+import { createCoFounder } from '@cofounder/core';
 
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: {
     anthropic: process.env.ANTHROPIC_API_KEY,
   }
 });
 
 // Use anywhere in your code!
-const response = await rana.chat('Hello!');
+const response = await cofounder.chat('Hello!');
 
 // Or with fluent API
-const response = await rana
+const response = await cofounder
   .anthropic()
   .optimize('cost')
   .cache(true)
   .chat('Hello!');
 
 // React integration
-import { useRanaChat } from '@rana/react';
+import { useCoFounderChat } from '@cofounder/react';
 
 function App() {
-  const { chat, response, loading, cost } = useRanaChat(rana);
+  const { chat, response, loading, cost } = useCoFounderChat(cofounder);
   // ...
 }
 
 // CLI shortcuts (one word!)
-rana analyze
-rana optimize
-rana dashboard
+cofounder analyze
+cofounder optimize
+cofounder dashboard
 ```
 
 **Benefits:**
@@ -96,7 +96,7 @@ rana dashboard
 **BEFORE (Not possible):**
 ```bash
 # Could only use CLI
-rana llm:chat "What is TypeScript?"
+cofounder llm:chat "What is TypeScript?"
 
 # No programmatic access!
 ```
@@ -104,14 +104,14 @@ rana llm:chat "What is TypeScript?"
 **AFTER:**
 ```typescript
 // Core SDK
-import { createRana } from '@rana/core';
+import { createCoFounder } from '@cofounder/core';
 
-const rana = createRana({ ... });
-const response = await rana.chat('What is TypeScript?');
+const cofounder = createCoFounder({ ... });
+const response = await cofounder.chat('What is TypeScript?');
 
 // React hook
 function ChatApp() {
-  const { chat, response, loading } = useRanaChat(rana);
+  const { chat, response, loading } = useCoFounderChat(cofounder);
 
   return (
     <div>
@@ -131,7 +131,7 @@ function ChatApp() {
 **BEFORE:**
 ```bash
 # Only via CLI
-rana llm:analyze
+cofounder llm:analyze
 
 # Output to terminal only
 # Can't integrate into app
@@ -141,7 +141,7 @@ rana llm:analyze
 **AFTER:**
 ```typescript
 // Core SDK - Programmatic access
-const stats = await rana.cost.stats();
+const stats = await cofounder.cost.stats();
 
 console.log(`Spent: $${stats.total_spent}`);
 console.log(`Saved: $${stats.total_saved} (${stats.savings_percentage}%)`);
@@ -152,7 +152,7 @@ stats.breakdown.forEach(b => {
 
 // React hook - Live dashboard
 function CostDashboard() {
-  const { stats, loading, refresh } = useRanaCost(rana);
+  const { stats, loading, refresh } = useCoFounderCost(cofounder);
 
   return (
     <div>
@@ -164,7 +164,7 @@ function CostDashboard() {
 }
 
 // CLI - Enhanced terminal UI
-rana dashboard --live
+cofounder dashboard --live
 ```
 
 ---
@@ -174,8 +174,8 @@ rana dashboard --live
 **BEFORE:**
 ```bash
 # Manual, separate commands
-rana llm:chat "Hello" --provider=anthropic
-rana llm:chat "Hello" --provider=openai
+cofounder llm:chat "Hello" --provider=anthropic
+cofounder llm:chat "Hello" --provider=openai
 
 # No easy way to compare
 ```
@@ -183,17 +183,17 @@ rana llm:chat "Hello" --provider=openai
 **AFTER:**
 ```typescript
 // Programmatic - Easy switching
-const claude = await rana.anthropic().chat('Hello');
-const gpt = await rana.openai().chat('Hello');
-const gemini = await rana.google().chat('Hello');
+const claude = await cofounder.anthropic().chat('Hello');
+const gpt = await cofounder.openai().chat('Hello');
+const gemini = await cofounder.google().chat('Hello');
 
 // Compare costs automatically
 console.log(`Claude: $${claude.cost.total_cost}`);
 console.log(`GPT: $${gpt.cost.total_cost}`);
 console.log(`Gemini: $${gemini.cost.total_cost}`);
 
-// Or let RANA choose based on optimization
-const optimized = await rana.chat({
+// Or let CoFounder choose based on optimization
+const optimized = await cofounder.chat({
   messages: [{ role: 'user', content: 'Hello' }],
   optimize: 'cost', // Automatically selects cheapest
 });
@@ -205,7 +205,7 @@ const optimized = await rana.chat({
 
 **BEFORE:**
 ```yaml
-# .rana.yml (YAML only)
+# .cofounder.yml (YAML only)
 version: 1.0.0
 providers:
   anthropic: sk-...
@@ -218,8 +218,8 @@ providers:
 
 **AFTER:**
 ```typescript
-// rana.config.ts (TypeScript!)
-import { defineConfig } from '@rana/core';
+// cofounder.config.ts (TypeScript!)
+import { defineConfig } from '@cofounder/core';
 
 export default defineConfig({
   providers: {
@@ -240,7 +240,7 @@ export default defineConfig({
 
 // Auto-loads from file
 const config = await loadConfig();
-const rana = createRana(config);
+const cofounder = createCoFounder(config);
 ```
 
 ---
@@ -251,7 +251,7 @@ const rana = createRana(config);
 
 **React-style chainable methods:**
 ```typescript
-await rana
+await cofounder
   .provider('anthropic')
   .model('claude-3-5-sonnet-20241022')
   .temperature(0.7)
@@ -266,24 +266,24 @@ await rana
 **5 custom hooks for every use case:**
 ```tsx
 // Simple chat
-const { chat, response, loading } = useRanaChat(rana);
+const { chat, response, loading } = useCoFounderChat(cofounder);
 
 // Streaming
-const { stream, content, done } = useRanaStream(rana);
+const { stream, content, done } = useCoFounderStream(cofounder);
 
 // Cost tracking
-const { stats, refresh } = useRanaCost(rana);
+const { stats, refresh } = useCoFounderCost(cofounder);
 
 // Full conversation
-const { messages, sendMessage } = useRanaConversation(rana);
+const { messages, sendMessage } = useCoFounderConversation(cofounder);
 
 // Optimization
-const { savings, recommendations } = useRanaOptimize(rana);
+const { savings, recommendations } = useCoFounderOptimize(cofounder);
 ```
 
 ### **3. Plugin System (New!)**
 
-**Extend RANA easily:**
+**Extend CoFounder easily:**
 ```typescript
 const analyticsPlugin = definePlugin({
   name: 'analytics',
@@ -296,16 +296,16 @@ const analyticsPlugin = definePlugin({
   },
 });
 
-await rana.use(analyticsPlugin);
+await cofounder.use(analyticsPlugin);
 ```
 
 ### **4. Real-Time Dashboard (New!)**
 
 **Terminal UI for cost monitoring:**
 ```bash
-$ rana dashboard
+$ cofounder dashboard
 
-┌─── RANA Cost Dashboard ──────────────────────┐
+┌─── CoFounder Cost Dashboard ──────────────────────┐
 │                                               │
 │  💰 Total Spent: $12.50                      │
 │  💵 Saved: $87.50 (70%)                      │
@@ -325,9 +325,9 @@ $ rana dashboard
 
 **AI-powered recommendations:**
 ```bash
-$ rana analyze
+$ cofounder analyze
 
-🔍 Analyzing RANA Project...
+🔍 Analyzing CoFounder Project...
 
 💰 Cost Optimization:
   ⚠ Using GPT-4 for all tasks
@@ -352,16 +352,16 @@ $ rana analyze
 
   💰 Potential savings: ~105% on costs
 
-  Run 'rana optimize' to apply optimizations
+  Run 'cofounder optimize' to apply optimizations
 ```
 
 ### **6. Auto-Optimize (New!)**
 
 **One-command optimization:**
 ```bash
-$ rana optimize --all
+$ cofounder optimize --all
 
-⚡ RANA Optimizer
+⚡ CoFounder Optimizer
 
 Enable Response Caching
 Cache LLM responses to reduce duplicate calls
@@ -422,14 +422,14 @@ Lower max_tokens from 2000 to 500 where appropriate
 **BEFORE:**
 ```bash
 # 1. Setup (30 minutes)
-rana init
-rana llm:setup
+cofounder init
+cofounder llm:setup
 # Manual configuration...
 
 # 2. Can't use in code!
 # Would need to call CLI from Node.js
 const { exec } = require('child_process');
-exec('rana llm:chat "Hello"', (err, stdout) => {
+exec('cofounder llm:chat "Hello"', (err, stdout) => {
   // Parse stdout... messy!
 });
 
@@ -442,20 +442,20 @@ exec('rana llm:chat "Hello"', (err, stdout) => {
 **AFTER:**
 ```typescript
 // 1. Setup (2 minutes)
-npm install @rana/core @rana/react
+npm install @cofounder/core @cofounder/react
 
 // 2. Use in code (5 minutes)
-import { createRana } from '@rana/core';
+import { createCoFounder } from '@cofounder/core';
 
-const rana = createRana({
+const cofounder = createCoFounder({
   providers: { anthropic: process.env.ANTHROPIC_API_KEY }
 });
 
 // 3. React integration (10 minutes)
-import { useRanaChat } from '@rana/react';
+import { useCoFounderChat } from '@cofounder/react';
 
 function ChatApp() {
-  const { chat, response, loading, cost } = useRanaChat(rana);
+  const { chat, response, loading, cost } = useCoFounderChat(cofounder);
 
   return (
     <div>
@@ -475,10 +475,10 @@ function ChatApp() {
 ## 💬 Developer Testimonials (Projected)
 
 ### **Before:**
-> "RANA has good CLI tools, but I wish I could use it programmatically in my code. Having to shell out to CLI commands is clunky."
+> "CoFounder has good CLI tools, but I wish I could use it programmatically in my code. Having to shell out to CLI commands is clunky."
 
 ### **After:**
-> "RANA is incredible! The SDK is so intuitive - it feels just like using React hooks. The fluent API is beautiful, TypeScript support is perfect, and the cost dashboard shows me real-time savings. This is now my go-to framework for AI apps!" ⭐⭐⭐⭐⭐
+> "CoFounder is incredible! The SDK is so intuitive - it feels just like using React hooks. The fluent API is beautiful, TypeScript support is perfect, and the cost dashboard shows me real-time savings. This is now my go-to framework for AI apps!" ⭐⭐⭐⭐⭐
 
 ---
 
@@ -515,14 +515,14 @@ function ChatApp() {
 
 ## 📝 Summary
 
-**RANA has evolved from:**
+**CoFounder has evolved from:**
 - A CLI tool for AI development
 
 **To:**
 - A comprehensive JavaScript framework that competes with React, Vue.js, and Express
 
 **Now you can:**
-- ✅ Use RANA as a library in your code
+- ✅ Use CoFounder as a library in your code
 - ✅ Integrate with React (and soon Vue, Svelte)
 - ✅ Get full TypeScript IntelliSense
 - ✅ Chain methods fluently
@@ -539,15 +539,15 @@ function ChatApp() {
 
 ---
 
-**RANA is now a world-class framework!** 🎉
+**CoFounder is now a world-class framework!** 🎉
 
 Ready to transform how you build AI applications.
 
 **Get started:** [SDK_QUICK_START.md](./SDK_QUICK_START.md)
 
-**Learn more:** [RANA_SDK_GUIDE.md](./RANA_SDK_GUIDE.md)
+**Learn more:** [CoFounder_SDK_GUIDE.md](./CoFounder_SDK_GUIDE.md)
 
 ---
 
 **Made with ❤️ by Waymaker**
-https://rana.dev
+https://cofounder.dev

@@ -1,4 +1,4 @@
-# RANA 2025 Implementation Gap Analysis
+# CoFounder 2025 Implementation Gap Analysis
 
 **Analysis Date**: December 10, 2025
 **Comparing**: Roadmap + Session Summary vs Actual Codebase
@@ -30,7 +30,7 @@
 
 | Document | Size | Status |
 |----------|------|--------|
-| `RANA_2025_ROADMAP.md` | 40KB | **MISSING** |
+| `CoFounder_2025_ROADMAP.md` | 40KB | **MISSING** |
 | `DEPLOYMENT_COMPLETE.md` | 40KB | **MISSING** |
 | `START_HERE_2025.md` | 36KB | **MISSING** |
 | `docs/NATURAL_LANGUAGE_CODE_GENERATION_SPEC.md` | 52KB | **EXISTS** |
@@ -41,7 +41,7 @@
 ### Action Required
 
 ```
-[ ] Create RANA_2025_ROADMAP.md (from the content user provided)
+[ ] Create CoFounder_2025_ROADMAP.md (from the content user provided)
 [ ] Create START_HERE_2025.md (quick start guide for 2025 execution)
 [ ] Create DEPLOYMENT_COMPLETE.md (deployment status tracker)
 ```
@@ -50,7 +50,7 @@
 
 ## Part 2: Feature Implementation Gap Analysis
 
-### 2.1 Quick LLM Helpers (`@rana/helpers`)
+### 2.1 Quick LLM Helpers (`@cofounder/helpers`)
 
 **Status**: ✅ **100% COMPLETE**
 
@@ -73,7 +73,7 @@
 
 ---
 
-### 2.2 Prompt Management System (`@rana/prompts`)
+### 2.2 Prompt Management System (`@cofounder/prompts`)
 
 **Status**: ✅ **100% COMPLETE**
 
@@ -91,7 +91,7 @@
 
 ---
 
-### 2.3 Advanced RAG Package (`@rana/rag`)
+### 2.3 Advanced RAG Package (`@cofounder/rag`)
 
 **Status**: ✅ **100% COMPLETE**
 
@@ -113,23 +113,23 @@
 
 ---
 
-### 2.4 Natural Language Code Generation (`@rana/generate`)
+### 2.4 Natural Language Code Generation (`@cofounder/generate`)
 
 **Status**: ⚠️ **~40% COMPLETE**
 
 | Spec Requirement | Status | Notes |
 |------------------|--------|-------|
-| Dedicated `@rana/generate` package | ❌ | Not created |
+| Dedicated `@cofounder/generate` package | ❌ | Not created |
 | Intent parser | ❌ | Not implemented |
 | Implementation planner | ❌ | Not implemented |
 | Context analyzer | ❌ | Not implemented |
-| Basic code generator | ✅ | Via `@rana/helpers` generate() |
+| Basic code generator | ✅ | Via `@cofounder/helpers` generate() |
 | Interactive wizard | ❌ | Not implemented |
 | 20+ code templates | ❌ | Not implemented |
 | Quality gates integration | ⚠️ | Partial (exists separately) |
 | Smart file placement | ❌ | Not implemented |
-| CLI: `rana generate "..."` | ❌ | Not implemented |
-| Feature workflow CLI | ✅ | `rana feature:new/implement` exists |
+| CLI: `cofounder generate "..."` | ❌ | Not implemented |
+| Feature workflow CLI | ✅ | `cofounder feature:new/implement` exists |
 
 **Gap Analysis**:
 
@@ -148,7 +148,7 @@ MISSING (Must Build):
 ❌ Context analyzer - Understand existing codebase
 ❌ Interactive wizard mode
 ❌ Auto-fix capabilities
-❌ CLI command: rana generate "description"
+❌ CLI command: cofounder generate "description"
 ```
 
 **Effort**: 8-10 weeks (2 developers)
@@ -162,11 +162,11 @@ MISSING (Must Build):
 | Spec Requirement | Status | Notes |
 |------------------|--------|-------|
 | MCP server implementation | ✅ | `packages/mcp-server/` exists |
-| RANA tools via MCP | ✅ | validate_config, quality_gates, etc. |
+| CoFounder tools via MCP | ✅ | validate_config, quality_gates, etc. |
 | MCP resources | ✅ | Documentation, templates |
 | MCP prompts | ✅ | Workflow prompts |
 | Scaffolding for NEW servers | ❌ | **NOT IMPLEMENTED** |
-| `rana mcp create` command | ❌ | Not implemented |
+| `cofounder mcp create` command | ❌ | Not implemented |
 | Resource definition generator | ❌ | Not implemented |
 | Tool definition generator | ❌ | Not implemented |
 | Example servers (5+) | ❌ | Not implemented |
@@ -176,13 +176,13 @@ MISSING (Must Build):
 
 ```
 EXISTING:
-✅ packages/mcp-server/ - MCP server FOR RANA
-✅ 6 RANA-specific tools
+✅ packages/mcp-server/ - MCP server FOR CoFounder
+✅ 6 CoFounder-specific tools
 ✅ Documentation resources
 ✅ Workflow prompts
 
 MISSING (Must Build):
-❌ CLI: rana mcp create <name>
+❌ CLI: cofounder mcp create <name>
 ❌ MCP server scaffolding templates
 ❌ Resource definition wizard
 ❌ Tool definition wizard
@@ -207,8 +207,8 @@ MISSING (Must Build):
 | Security features | ✅ | PII, injection, rate limiting |
 | Observability | ✅ | Tracing, metrics, audit |
 | Vibe enforcer | ✅ | Constraint enforcement |
-| LangChain adapter | ✅ | `@rana/langchain` |
-| CrewAI adapter | ✅ | `@rana/crewai` |
+| LangChain adapter | ✅ | `@cofounder/langchain` |
+| CrewAI adapter | ✅ | `@cofounder/crewai` |
 | Preset agents | ✅ | RAG QA, Chat, Task |
 | Agent communication protocols | ❌ | **NOT IMPLEMENTED** |
 | Agent-to-agent messaging | ❌ | Not implemented |
@@ -305,7 +305,7 @@ MISSING (Must Build):
 ### Immediate Actions (This Week)
 
 ```
-1. [ ] Create RANA_2025_ROADMAP.md from user-provided content
+1. [ ] Create CoFounder_2025_ROADMAP.md from user-provided content
 2. [ ] Create START_HERE_2025.md quick start guide
 3. [ ] Verify website has all planned updates
 4. [ ] Review and update IMPLEMENTATION_STATUS.md
@@ -329,7 +329,7 @@ Week 3-4:
 Week 5-6:
 [ ] Integrate with quality gates
 [ ] Add auto-fix capabilities
-[ ] CLI: rana generate command
+[ ] CLI: cofounder generate command
 
 Week 7-8:
 [ ] Smart file placement
@@ -344,7 +344,7 @@ Week 9-10:
 **Priority 2: MCP Server Creation Tools (4 weeks)**
 ```
 Week 1-2:
-[ ] CLI: rana mcp create command
+[ ] CLI: cofounder mcp create command
 [ ] Server scaffolding templates
 [ ] Resource definition generator
 [ ] Tool definition generator
@@ -405,11 +405,11 @@ NOW (Dec 2025):
 Q1 2025 (Jan-Mar):
 ├── Natural Language Code Gen: 10 weeks
 ├── MCP Server Creation: 4 weeks (parallel)
-└── Ship @rana/generate v1.0, MCP tools v1.0
+└── Ship @cofounder/generate v1.0, MCP tools v1.0
 
 Q2 2025 (Apr-Jun):
 ├── Multi-Agent Orchestration: 8 weeks
-└── Ship RANA 2.0 with full orchestration
+└── Ship CoFounder 2.0 with full orchestration
 
 H2 2025 (Jul-Dec):
 ├── SOC 2 Type 1 certification

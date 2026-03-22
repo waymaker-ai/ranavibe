@@ -1,7 +1,7 @@
 /**
  * Config Command
- * Manage API keys and RANA configuration
- * Securely stores keys in ~/.rana/credentials
+ * Manage API keys and CoFounder configuration
+ * Securely stores keys in ~/.cofounder/credentials
  */
 
 import chalk from 'chalk';
@@ -21,7 +21,7 @@ interface RanaCredentials {
   lastUpdated: string;
 }
 
-const CREDENTIALS_DIR = path.join(os.homedir(), '.rana');
+const CREDENTIALS_DIR = path.join(os.homedir(), '.cofounder');
 const CREDENTIALS_FILE = path.join(CREDENTIALS_DIR, 'credentials.json');
 
 const PROVIDERS = [
@@ -37,16 +37,16 @@ const PROVIDERS = [
 ];
 
 /**
- * Show current RANA configuration
+ * Show current CoFounder configuration
  */
 export async function showConfig() {
-  console.log(chalk.bold.cyan('\n⚙️ RANA Configuration\n'));
+  console.log(chalk.bold.cyan('\n⚙️ CoFounder Configuration\n'));
 
-  const configPath = path.join(process.cwd(), '.rana.yml');
+  const configPath = path.join(process.cwd(), '.cofounder.yml');
 
   if (!fs.existsSync(configPath)) {
-    console.log(chalk.yellow('No .rana.yml found in current directory.'));
-    console.log(chalk.gray('Run `rana init` to create one.\n'));
+    console.log(chalk.yellow('No .cofounder.yml found in current directory.'));
+    console.log(chalk.gray('Run `cofounder init` to create one.\n'));
     return;
   }
 
@@ -54,7 +54,7 @@ export async function showConfig() {
     const content = fs.readFileSync(configPath, 'utf-8');
     const config = yaml.load(content) as Record<string, unknown>;
 
-    console.log(chalk.bold('📁 File: ') + chalk.cyan('.rana.yml'));
+    console.log(chalk.bold('📁 File: ') + chalk.cyan('.cofounder.yml'));
     console.log(chalk.gray('─'.repeat(60)));
 
     // Display formatted config
@@ -62,7 +62,7 @@ export async function showConfig() {
 
     console.log();
   } catch (error) {
-    console.log(chalk.red('Failed to read .rana.yml:'));
+    console.log(chalk.red('Failed to read .cofounder.yml:'));
     console.log(chalk.gray(`${error}\n`));
   }
 }
@@ -98,7 +98,7 @@ function displayConfig(obj: unknown, indent: number) {
  * Set API Key Command
  */
 export async function configSet(options: { provider?: string; key?: string } = {}) {
-  console.log(chalk.bold.cyan('\n🔑 RANA API Key Configuration\n'));
+  console.log(chalk.bold.cyan('\n🔑 CoFounder API Key Configuration\n'));
 
   let provider = options.provider;
   let apiKey = options.key;
@@ -200,8 +200,8 @@ export async function configSet(options: { provider?: string; key?: string } = {
   // Show usage
   console.log(chalk.bold('Usage:\n'));
   console.log(chalk.gray('  In your code:'));
-  console.log(chalk.cyan(`    import { rana } from '@rana/core';`));
-  console.log(chalk.cyan(`    const response = await rana.chat('Hello!');`));
+  console.log(chalk.cyan(`    import { cofounder } from '@cofounder/core';`));
+  console.log(chalk.cyan(`    const response = await cofounder.chat('Hello!');`));
   console.log();
   console.log(chalk.gray('  Or set environment variable:'));
   console.log(chalk.cyan(`    export ${providerInfo.envVar}="${maskKey(apiKey)}"`));
@@ -229,7 +229,7 @@ export async function configList() {
 
     if (savedKey) {
       status = chalk.green('✓ Configured');
-      source = chalk.gray('(~/.rana/credentials)');
+      source = chalk.gray('(~/.cofounder/credentials)');
       hasAnyKey = true;
     } else if (envKey) {
       status = chalk.green('✓ Configured');
@@ -250,7 +250,7 @@ export async function configList() {
 
   if (!hasAnyKey) {
     console.log(chalk.yellow('No API keys configured yet.\n'));
-    console.log(chalk.gray('Run `rana config:set` to add your first API key.\n'));
+    console.log(chalk.gray('Run `cofounder config:set` to add your first API key.\n'));
   } else {
     console.log(chalk.gray(`Credentials stored in: ${CREDENTIALS_FILE}\n`));
   }
@@ -300,7 +300,7 @@ export async function configValidate(options: { provider?: string } = {}) {
   if (allValid) {
     console.log(chalk.green('✓ All configured keys are valid!\n'));
   } else {
-    console.log(chalk.yellow('⚠ Some keys are invalid. Run `rana config:set` to update them.\n'));
+    console.log(chalk.yellow('⚠ Some keys are invalid. Run `cofounder config:set` to update them.\n'));
   }
 }
 
@@ -374,7 +374,7 @@ export async function configExport(options: { file?: string } = {}) {
   const credentials = loadCredentials();
   const envKeys = loadEnvKeys();
 
-  const lines: string[] = ['# RANA API Keys', `# Generated on ${new Date().toISOString()}`, ''];
+  const lines: string[] = ['# CoFounder API Keys', `# Generated on ${new Date().toISOString()}`, ''];
 
   for (const provider of PROVIDERS) {
     const key = credentials.providers[provider.name] || envKeys[provider.name];
@@ -388,7 +388,7 @@ export async function configExport(options: { file?: string } = {}) {
     return;
   }
 
-  const outputFile = options.file || '.env.rana';
+  const outputFile = options.file || '.env.cofounder';
   const content = lines.join('\n') + '\n';
 
   // Check if file exists
@@ -419,7 +419,7 @@ export async function configExport(options: { file?: string } = {}) {
     });
 
     if (addGitignore) {
-      fs.appendFileSync('.gitignore', `\n# RANA API Keys\n${outputFile}\n`);
+      fs.appendFileSync('.gitignore', `\n# CoFounder API Keys\n${outputFile}\n`);
       console.log(chalk.green(`✓ Added ${outputFile} to .gitignore\n`));
     }
   }

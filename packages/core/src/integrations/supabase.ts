@@ -1,5 +1,5 @@
 /**
- * @rana/integrations/supabase
+ * @cofounder/integrations/supabase
  * Supabase vector store integration
  *
  * Features:
@@ -11,7 +11,7 @@
  *
  * @example
  * ```typescript
- * import { createSupabaseVectorStore } from '@rana/core';
+ * import { createSupabaseVectorStore } from '@cofounder/core';
  *
  * const vectorStore = await createSupabaseVectorStore({
  *   supabaseUrl: process.env.SUPABASE_URL,

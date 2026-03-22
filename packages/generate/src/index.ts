@@ -1,11 +1,11 @@
 /**
- * @rana/generate - Natural Language Code Generation
+ * @cofounder/generate - Natural Language Code Generation
  *
  * Generate production-ready code from natural language descriptions.
  *
  * @example
  * ```typescript
- * import { generate, parseIntent, createPlan } from '@rana/generate';
+ * import { generate, parseIntent, createPlan } from '@cofounder/generate';
  *
  * // Quick generation
  * const files = await generate('User authentication with OAuth');
@@ -463,7 +463,7 @@ export async function analyzeCodebase(cwd: string): Promise<CodebaseContext> {
  *
  * @example
  * ```typescript
- * import { FileIntegrator } from '@rana/generate';
+ * import { FileIntegrator } from '@cofounder/generate';
  *
  * const integrator = new FileIntegrator();
  * const result = await integrator.integrate(files, context);

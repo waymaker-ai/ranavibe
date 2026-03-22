@@ -1,14 +1,14 @@
 /**
- * User Service - RANA Compliant
+ * User Service - CoFounder Compliant
  *
- * This service demonstrates RANA best practices:
+ * This service demonstrates CoFounder best practices:
  * - Real API calls (no mocks)
  * - Proper error handling
  * - TypeScript types
  * - Clean service layer pattern
  */
 
-// ✅ RANA: Proper TypeScript types
+// ✅ CoFounder: Proper TypeScript types
 export interface User {
   id: number;
   name: string;
@@ -35,7 +35,7 @@ const API_BASE_URL = 'https://jsonplaceholder.typicode.com';
 /**
  * User service for managing user data
  *
- * RANA Pattern: Service layer
+ * CoFounder Pattern: Service layer
  * - Encapsulates API logic
  * - Provides typed responses
  * - Handles errors consistently
@@ -44,9 +44,9 @@ class UserService {
   /**
    * Get all users from API
    *
-   * ✅ RANA: Real API call, not mocks
-   * ✅ RANA: Proper error handling
-   * ✅ RANA: TypeScript return type
+   * ✅ CoFounder: Real API call, not mocks
+   * ✅ CoFounder: Proper error handling
+   * ✅ CoFounder: TypeScript return type
    */
   async getUsers(): Promise<User[]> {
     try {
@@ -59,7 +59,7 @@ class UserService {
       const data = await response.json();
       return data as User[];
     } catch (error) {
-      // ✅ RANA: Proper error handling
+      // ✅ CoFounder: Proper error handling
       console.error('Error fetching users:', error);
       throw error;
     }
@@ -68,9 +68,9 @@ class UserService {
   /**
    * Get a single user by ID
    *
-   * ✅ RANA: Real API call
-   * ✅ RANA: Error handling
-   * ✅ RANA: TypeScript types
+   * ✅ CoFounder: Real API call
+   * ✅ CoFounder: Error handling
+   * ✅ CoFounder: TypeScript types
    */
   async getUser(id: number): Promise<User> {
     try {
@@ -160,7 +160,7 @@ class UserService {
   }
 }
 
-// ✅ RANA Pattern: Export singleton instance
+// ✅ CoFounder Pattern: Export singleton instance
 export const userService = new UserService();
 
 // Also export the class for testing

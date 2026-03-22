@@ -1,5 +1,5 @@
 /**
- * @rana/guidelines - Storage implementations
+ * @cofounder/guidelines - Storage implementations
  */
 
 import type { Guideline, GuidelineStorage } from './types';

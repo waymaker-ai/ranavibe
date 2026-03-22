@@ -2,10 +2,10 @@
 
 ## Installation
 
-SharedMemory is part of `@rana-ai/core`. No additional installation needed.
+SharedMemory is part of `@cofounder-ai/core`. No additional installation needed.
 
 ```typescript
-import { createSharedMemory } from '@rana-ai/core';
+import { createSharedMemory } from '@cofounder-ai/core';
 ```
 
 ## 30-Second Start

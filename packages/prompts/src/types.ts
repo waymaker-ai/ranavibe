@@ -1,5 +1,5 @@
 /**
- * Type definitions for @rana/prompts
+ * Type definitions for @cofounder/prompts
  */
 
 import { z } from 'zod';

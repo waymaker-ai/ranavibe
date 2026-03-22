@@ -1,5 +1,5 @@
 /**
- * Example usage of the RANA Tracer
+ * Example usage of the CoFounder Tracer
  * This file demonstrates how to use the tracing system for observability
  */
 
@@ -195,7 +195,7 @@ function wrappedFunctionExample() {
   const tracedOperation = traced('complex_operation', complexOperation, tracer);
 
   // Call the wrapped function
-  tracedOperation('Hello, RANA!').then((result) => {
+  tracedOperation('Hello, CoFounder!').then((result) => {
     console.log('Result:', result);
     console.log('\nStats:', tracer.getStats());
   });
@@ -209,7 +209,7 @@ async function simulateChatRequest(tracer: Tracer): Promise<void> {
   console.log('\n=== Example 6: Real-World Chat Request ===\n');
 
   // Start main request trace
-  const requestSpan = tracer.startTrace('rana.chat', {
+  const requestSpan = tracer.startTrace('cofounder.chat', {
     provider: 'anthropic',
     model: 'claude-3-5-sonnet-20241022',
     optimize: 'balanced',

@@ -21,7 +21,7 @@ interface DoctorOptions {
 }
 
 export async function doctorCommand(options: DoctorOptions = {}) {
-  console.log(chalk.bold.cyan('\n🩺 RANA Doctor\n'));
+  console.log(chalk.bold.cyan('\n🩺 CoFounder Doctor\n'));
   console.log(chalk.gray('Diagnosing your project setup...\n'));
 
   const checks: DiagnosticCheck[] = [];
@@ -59,21 +59,21 @@ export async function doctorCommand(options: DoctorOptions = {}) {
     });
   }
 
-  // 3. Check for .rana.yml
-  const hasRanaConfig = fs.existsSync('.rana.yml');
-  if (hasRanaConfig) {
+  // 3. Check for .cofounder.yml
+  const hasCoFounderConfig = fs.existsSync('.cofounder.yml');
+  if (hasCoFounderConfig) {
     checks.push({
-      name: 'RANA Configuration',
+      name: 'CoFounder Configuration',
       status: 'pass',
-      message: '.rana.yml found',
+      message: '.cofounder.yml found',
     });
   } else {
     checks.push({
-      name: 'RANA Configuration',
+      name: 'CoFounder Configuration',
       status: 'warn',
-      message: 'No .rana.yml found. Run `rana init` to create one.',
+      message: 'No .cofounder.yml found. Run `cofounder init` to create one.',
       fix: async () => {
-        console.log(chalk.yellow('  → Run `rana init` to create configuration'));
+        console.log(chalk.yellow('  → Run `cofounder init` to create configuration'));
       },
     });
   }
@@ -148,7 +148,7 @@ export async function doctorCommand(options: DoctorOptions = {}) {
         checks.push({
           name: 'TypeScript Strict Mode',
           status: 'warn',
-          message: 'Strict mode not enabled. Recommended for RANA projects.',
+          message: 'Strict mode not enabled. Recommended for CoFounder projects.',
         });
       }
     } catch {
@@ -344,7 +344,7 @@ export async function doctorCommand(options: DoctorOptions = {}) {
   } else if (fixableChecks.length > 0) {
     console.log(chalk.bold('\n💡 Auto-fixable Issues'));
     console.log(chalk.gray('─'.repeat(60)));
-    console.log(chalk.gray('  Run `rana doctor --fix` to automatically fix:'));
+    console.log(chalk.gray('  Run `cofounder doctor --fix` to automatically fix:'));
     fixableChecks.forEach((check) => {
       console.log(chalk.yellow(`  • ${check.name}`));
     });
@@ -364,14 +364,14 @@ export async function doctorCommand(options: DoctorOptions = {}) {
   console.log(chalk.bold('\n📚 Next Steps'));
   console.log(chalk.gray('─'.repeat(60)));
 
-  if (!hasRanaConfig) {
-    console.log(chalk.cyan('  1. Run `rana init` to create configuration'));
+  if (!hasCoFounderConfig) {
+    console.log(chalk.cyan('  1. Run `cofounder init` to create configuration'));
   }
   if (healthScore < 80) {
     console.log(chalk.cyan('  2. Fix warnings to improve project health'));
   }
-  console.log(chalk.cyan('  3. Run `rana check` to validate RANA compliance'));
-  console.log(chalk.cyan('  4. Run `rana llm:analyze` to analyze LLM usage'));
+  console.log(chalk.cyan('  3. Run `cofounder check` to validate CoFounder compliance'));
+  console.log(chalk.cyan('  4. Run `cofounder llm:analyze` to analyze LLM usage'));
 
   console.log();
 }
