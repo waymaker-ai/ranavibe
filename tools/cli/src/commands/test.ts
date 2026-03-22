@@ -249,7 +249,7 @@ export async function watchTests(pattern?: string): Promise<void> {
   const watcher = chokidar.watch(
     pattern || ['**/*.test.ts', '**/*.spec.ts', 'src/**/*.ts'],
     {
-      ignored: ['node_modules', 'dist', '.cofounder'],
+      ignored: ['node_modules', 'dist', '.aicofounder'],
       persistent: true,
     }
   );
@@ -349,7 +349,7 @@ describe('${path.basename(targetFile, path.extname(targetFile))}', () => {
  * Show test coverage report
  */
 export async function showCoverage(): Promise<void> {
-  const coverageDir = path.join(process.cwd(), '.cofounder', 'coverage');
+  const coverageDir = path.join(process.cwd(), '.aicofounder', 'coverage');
 
   if (!fs.existsSync(coverageDir)) {
     console.log(chalk.yellow('No coverage data found. Run tests with --coverage first.'));
@@ -365,7 +365,7 @@ export async function showCoverage(): Promise<void> {
  * List all baselines
  */
 export async function listBaselines(): Promise<void> {
-  const baselineDir = path.join(process.cwd(), '.cofounder', 'baselines');
+  const baselineDir = path.join(process.cwd(), '.aicofounder', 'baselines');
 
   if (!fs.existsSync(baselineDir)) {
     console.log(chalk.yellow('No baselines found.'));

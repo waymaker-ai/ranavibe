@@ -21,7 +21,7 @@ interface RanaCredentials {
   lastUpdated: string;
 }
 
-const CREDENTIALS_DIR = path.join(os.homedir(), '.cofounder');
+const CREDENTIALS_DIR = path.join(os.homedir(), '.aicofounder');
 const CREDENTIALS_FILE = path.join(CREDENTIALS_DIR, 'credentials.json');
 
 const PROVIDERS = [

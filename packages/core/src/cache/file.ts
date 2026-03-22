@@ -18,7 +18,7 @@ export class FileCache implements CacheProvider {
       prefix: 'cofounder_',
       cacheDir: config.cacheDir || path.join(
         process.env.HOME || process.env.USERPROFILE || '.',
-        '.cofounder',
+        '.aicofounder',
         'cache'
       ),
       ...config,

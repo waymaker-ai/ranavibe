@@ -55,7 +55,7 @@ interface PromptAnalysis {
 }
 
 // Constants
-const STORE_DIR = path.join(os.homedir(), '.cofounder');
+const STORE_DIR = path.join(os.homedir(), '.aicofounder');
 const STORE_FILE = path.join(STORE_DIR, 'prompts.json');
 
 const DEFAULT_CATEGORIES: Record<PromptCategory, { color: string; description: string }> = {

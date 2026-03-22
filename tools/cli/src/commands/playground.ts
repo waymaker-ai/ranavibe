@@ -17,7 +17,7 @@ interface PlaygroundSession {
   totalTokens: number;
 }
 
-const CREDENTIALS_FILE = path.join(os.homedir(), '.cofounder', 'credentials.json');
+const CREDENTIALS_FILE = path.join(os.homedir(), '.aicofounder', 'credentials.json');
 
 const MODELS: Record<string, { display: string; models: { value: string; title: string }[] }> = {
   anthropic: {

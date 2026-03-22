@@ -576,7 +576,7 @@ export async function dashboardLiveCommand() {
  * Track a usage record (for SDK integration)
  */
 export function trackUsage(record: Omit<UsageRecord, 'timestamp'>) {
-  const dir = '.cofounder';
+  const dir = '.aicofounder';
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
   }

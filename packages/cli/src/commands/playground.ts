@@ -34,7 +34,7 @@ type PlaygroundCommand = {
 };
 
 // Constants
-const PLAYGROUND_DIR = path.join(os.homedir(), '.cofounder', 'playground');
+const PLAYGROUND_DIR = path.join(os.homedir(), '.aicofounder', 'playground');
 const HISTORY_FILE = path.join(PLAYGROUND_DIR, 'history.json');
 
 // Ensure directories exist

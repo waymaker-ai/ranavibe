@@ -166,8 +166,8 @@ export async function dockerPush(options: {
     }
 
     // Save config
-    if (!fs.existsSync('.cofounder')) {
-      fs.mkdirSync('.cofounder', { recursive: true });
+    if (!fs.existsSync('.aicofounder')) {
+      fs.mkdirSync('.aicofounder', { recursive: true });
     }
     fs.writeFileSync('.cofounder/docker.json', JSON.stringify({
       imageName,

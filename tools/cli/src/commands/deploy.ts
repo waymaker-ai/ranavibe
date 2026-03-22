@@ -399,7 +399,7 @@ async function getDeployConfig(): Promise<DeployConfig> {
  * Save deploy config
  */
 function saveDeployConfig(config: DeployConfig) {
-  const dir = '.cofounder';
+  const dir = '.aicofounder';
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
   }
@@ -415,7 +415,7 @@ function saveDeploymentInfo(info: {
   timestamp: string;
   production: boolean;
 }) {
-  const dir = '.cofounder';
+  const dir = '.aicofounder';
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
   }

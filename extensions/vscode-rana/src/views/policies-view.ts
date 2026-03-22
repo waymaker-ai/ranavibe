@@ -160,7 +160,7 @@ export class PoliciesViewProvider implements vscode.TreeDataProvider<PolicyNode>
     }
 
     const root = workspaceFolders[0].uri;
-    const policiesDir = vscode.Uri.joinPath(root, '.cofounder', 'policies');
+    const policiesDir = vscode.Uri.joinPath(root, '.aicofounder', 'policies');
 
     // Ensure the directory exists
     try {

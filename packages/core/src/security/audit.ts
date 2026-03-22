@@ -638,7 +638,7 @@ export class AuditLogger {
   private getDefaultFilePath(): string {
     return path.join(
       process.env.HOME || process.env.USERPROFILE || '.',
-      '.cofounder',
+      '.aicofounder',
       'audit.log'
     );
   }
