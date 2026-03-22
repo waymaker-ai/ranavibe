@@ -6,16 +6,16 @@
  * @example
  * ```bash
  * # Set a daily budget
- * cofounder budget:set --limit 10 --period daily
+ * aicofounder budget:set --limit 10 --period daily
  *
  * # Set a hard limit that blocks API calls
- * cofounder budget:set --limit 5 --period daily --action block
+ * aicofounder budget:set --limit 5 --period daily --action block
  *
  * # View current budget status
- * cofounder budget
+ * aicofounder budget
  *
  * # Clear budget enforcement
- * cofounder budget:clear
+ * aicofounder budget:clear
  * ```
  */
 
@@ -81,11 +81,11 @@ export async function budgetCommand(): Promise<void> {
 
   if (!budget) {
     console.log(chalk.yellow('No budget configured.'));
-    console.log(chalk.gray('\nSet a budget with: cofounder budget:set --limit <amount>\n'));
+    console.log(chalk.gray('\nSet a budget with: aicofounder budget:set --limit <amount>\n'));
     console.log(chalk.gray('Examples:'));
-    console.log(chalk.gray('  cofounder budget:set --limit 10 --period daily'));
-    console.log(chalk.gray('  cofounder budget:set --limit 50 --period weekly --action block'));
-    console.log(chalk.gray('  cofounder budget:set --limit 100 --period monthly --warning 80\n'));
+    console.log(chalk.gray('  aicofounder budget:set --limit 10 --period daily'));
+    console.log(chalk.gray('  aicofounder budget:set --limit 50 --period weekly --action block'));
+    console.log(chalk.gray('  aicofounder budget:set --limit 100 --period monthly --warning 80\n'));
     return;
   }
 
@@ -256,8 +256,8 @@ export async function setBudgetCommand(options: {
     console.log(chalk.gray('   Use --critical flag on individual calls to bypass if needed.'));
   }
 
-  console.log(chalk.gray('\nView status: cofounder budget'));
-  console.log(chalk.gray('Clear budget: cofounder budget:clear\n'));
+  console.log(chalk.gray('\nView status: aicofounder budget'));
+  console.log(chalk.gray('Clear budget: aicofounder budget:clear\n'));
 }
 
 /**
@@ -299,7 +299,7 @@ export async function addSpentCommand(amount: number): Promise<void> {
   const budget = loadBudget();
 
   if (!budget) {
-    console.log(chalk.yellow('No budget configured. Set one first with: cofounder budget:set\n'));
+    console.log(chalk.yellow('No budget configured. Set one first with: aicofounder budget:set\n'));
     return;
   }
 
@@ -354,7 +354,7 @@ export async function budgetPresetCommand(preset: string): Promise<void> {
     console.log(chalk.gray('  • development - $10/day, warnings only'));
     console.log(chalk.gray('  • staging     - $50/week, blocking'));
     console.log(chalk.gray('  • production  - $100/month, blocking'));
-    console.log(chalk.gray('\nUsage: cofounder budget:preset <name>\n'));
+    console.log(chalk.gray('\nUsage: aicofounder budget:preset <name>\n'));
     return;
   }
 
@@ -372,5 +372,5 @@ export async function budgetPresetCommand(preset: string): Promise<void> {
   console.log(`  Limit:    $${config.limit.toFixed(2)} per ${config.period}`);
   console.log(`  Action:   ${config.action}`);
   console.log(`  Warning:  ${config.warningThreshold}%`);
-  console.log(chalk.gray('\nView status: cofounder budget\n'));
+  console.log(chalk.gray('\nView status: aicofounder budget\n'));
 }

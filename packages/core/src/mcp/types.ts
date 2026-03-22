@@ -1,5 +1,5 @@
 /**
- * @aicofounder/mcp/types
+ * @waymakerai/aicofounder-mcp/types
  * Model Context Protocol types and interfaces
  */
 

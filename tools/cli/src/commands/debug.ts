@@ -181,5 +181,5 @@ export async function debugSessionsCommand(options: { number?: number }): Promis
   console.log('└──────────────┴─────────────────┴──────────┴────────┴───────────┘');
 
   console.log(chalk.gray(`\nShowing ${Math.min(count, sessions.length)} of ${sessions.length} sessions`));
-  console.log(chalk.gray('Use "cofounder debug:replay <session-id>" to replay a session\n'));
+  console.log(chalk.gray('Use "aicofounder debug:replay <session-id>" to replay a session\n'));
 }

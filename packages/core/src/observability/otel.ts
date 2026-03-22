@@ -8,7 +8,7 @@
  *
  * @example
  * ```typescript
- * import { createOTelExporter } from '@aicofounder/core';
+ * import { createOTelExporter } from '@waymakerai/aicofounder-core';
  *
  * const exporter = createOTelExporter({
  *   serviceName: 'my-aicofounder-service',
@@ -389,7 +389,7 @@ export class OTelExporter {
           scopeSpans: [
             {
               scope: {
-                name: '@aicofounder/core',
+                name: '@waymakerai/aicofounder-core',
                 version: '2.0.0',
               },
               spans: this.spanBatch,

@@ -7,19 +7,19 @@
  * @example
  * ```bash
  * # Run all tests
- * cofounder test
+ * aicofounder test
  *
  * # Run specific file
- * cofounder test src/chat.test.ts
+ * aicofounder test src/chat.test.ts
  *
  * # Run with coverage
- * cofounder test --coverage
+ * aicofounder test --coverage
  *
  * # Update baselines
- * cofounder test --update-baselines
+ * aicofounder test --update-baselines
  *
  * # Watch mode
- * cofounder test --watch
+ * aicofounder test --watch
  * ```
  */
 
@@ -65,7 +65,7 @@ export async function testCommand(
     console.log(chalk.gray('\nExample test file:\n'));
     console.log(
       chalk.white(`
-import { describe, aiTest, runTimes } from '@aicofounder/testing';
+import { describe, aiTest, runTimes } from '@waymakerai/aicofounder-testing';
 
 describe('My AI Feature', () => {
   aiTest('should work correctly', async ({ expect }) => {
@@ -90,15 +90,15 @@ describe('My AI Feature', () => {
     console.log(chalk.gray(`Cost budget: $${options.maxCost.toFixed(2)}\n`));
   }
 
-  // Dynamic import of @aicofounder/testing
+  // Dynamic import of @waymakerai/aicofounder-testing
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let testing: any = null;
 
   try {
-    testing = await (Function('return import("@aicofounder/testing")')() as Promise<unknown>);
+    testing = await (Function('return import("@waymakerai/aicofounder-testing")')() as Promise<unknown>);
   } catch {
-    // @aicofounder/testing not installed, use built-in runner
-    console.log(chalk.yellow('Note: @aicofounder/testing not installed, using built-in runner'));
+    // @waymakerai/aicofounder-testing not installed, use built-in runner
+    console.log(chalk.yellow('Note: @waymakerai/aicofounder-testing not installed, using built-in runner'));
   }
 
   const startTime = Date.now();
@@ -294,7 +294,7 @@ export async function generateTest(
  * Tests for ${path.basename(targetFile)}
  */
 
-import { describe, aiTest, runTimes } from '@aicofounder/testing';
+import { describe, aiTest, runTimes } from '@waymakerai/aicofounder-testing';
 
 describe('${path.basename(targetFile, path.extname(targetFile))}', () => {
   aiTest('should work correctly', async ({ expect }) => {

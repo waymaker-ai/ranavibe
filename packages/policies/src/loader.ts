@@ -121,7 +121,7 @@ function resolvePreset(name: string): Policy {
   if (!presetRegistry) {
     throw new Error(
       `parsePolicy: cannot resolve extends "${name}" - preset registry not initialised. ` +
-      'Import from @aicofounder/policies/presets first.',
+      'Import from @waymakerai/aicofounder-policies/presets first.',
     );
   }
   const preset = presetRegistry.get(name);

@@ -1,6 +1,6 @@
 /**
  * Lightweight inline detectors for PII, API keys, and prompt injection patterns.
- * These mirror the detection logic in @aicofounder/guard but are self-contained
+ * These mirror the detection logic in @waymakerai/aicofounder-guard but are self-contained
  * for use in the VS Code extension without requiring external dependencies.
  */
 

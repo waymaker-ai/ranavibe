@@ -3,7 +3,7 @@
  *
  * @example
  * ```typescript
- * import { generate } from '@aicofounder/helpers';
+ * import { generate } from '@waymakerai/aicofounder-helpers';
  *
  * // Generate a tweet
  * const tweet = await generate('new product launch', { type: 'tweet' });

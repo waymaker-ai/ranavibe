@@ -1,5 +1,5 @@
 /**
- * @aicofounder/dashboard
+ * @waymakerai/aicofounder-dashboard
  * AI observability dashboard - cost tracking, security monitoring, compliance reporting
  *
  * Zero runtime dependencies. Built on Node.js built-ins only.

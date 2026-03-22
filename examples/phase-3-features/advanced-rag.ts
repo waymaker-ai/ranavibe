@@ -3,7 +3,7 @@
  * Demonstrates multi-modal RAG with self-correction and evaluation
  */
 
-import { AdvancedRAG, RAGEvaluator, VectorStore } from '@aicofounder/core';
+import { AdvancedRAG, RAGEvaluator, VectorStore } from '@waymakerai/aicofounder-core';
 
 async function main() {
   // Example 1: Basic RAG setup
@@ -216,7 +216,7 @@ async function main() {
     },
     {
       question: 'How do I install CoFounder?',
-      expectedAnswer: 'Run npm install @aicofounder/core...',
+      expectedAnswer: 'Run npm install @waymakerai/aicofounder-core...',
       relevantDocIds: ['doc3'],
     },
     // ... more test cases

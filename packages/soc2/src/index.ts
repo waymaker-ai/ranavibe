@@ -1,5 +1,5 @@
 /**
- * @aicofounder/soc2
+ * @waymakerai/aicofounder-soc2
  *
  * Auto-generate SOC 2 audit evidence from CoFounder guardrail data.
  * Zero runtime dependencies.

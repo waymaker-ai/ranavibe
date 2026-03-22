@@ -1,5 +1,5 @@
 /**
- * @aicofounder/guidelines - Basic Usage Example
+ * @waymakerai/aicofounder-guidelines - Basic Usage Example
  *
  * This example demonstrates how to use the guideline system
  * to control AI agent behavior based on context.
@@ -10,7 +10,7 @@ import {
   createGuideline,
   Conditions,
   PresetGuidelines,
-} from '@aicofounder/guidelines';
+} from '@waymakerai/aicofounder-guidelines';
 
 async function main() {
   console.log('🎯 CoFounder Guidelines - Basic Usage\n');

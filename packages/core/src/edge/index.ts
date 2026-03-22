@@ -4,7 +4,7 @@
  *
  * @example
  * ```typescript
- * import { createEdgeRuntime, EdgeModel } from '@aicofounder/core';
+ * import { createEdgeRuntime, EdgeModel } from '@waymakerai/aicofounder-core';
  *
  * // Create edge runtime
  * const edge = createEdgeRuntime({

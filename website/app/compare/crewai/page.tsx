@@ -48,7 +48,7 @@ crew = Crew(
 )
 
 result = crew.kickoff()`,
-    cofounder: `import { createPipeline } from '@aicofounder/agents';
+    aicofounder: `import { createPipeline } from '@waymakerai/aicofounder-agents';
 
 const { orchestrator, execute } = createPipeline([
   {
@@ -91,7 +91,7 @@ crew = Crew(
 )
 
 result = crew.kickoff()`,
-    cofounder: `import { createWorkerPool } from '@aicofounder/agents';
+    aicofounder: `import { createWorkerPool } from '@waymakerai/aicofounder-agents';
 
 const { execute } = createWorkerPool([
   { id: 'analyst-1', name: 'Analyst 1', capabilities: ['analyze'] },
@@ -127,7 +127,7 @@ agent = Agent(
 
 # Tool execution is handled by the agent
 # Custom tools require specific interface implementation`,
-    cofounder: `import { createTool, createAgent } from '@aicofounder/agents';
+    aicofounder: `import { createTool, createAgent } from '@waymakerai/aicofounder-agents';
 
 // Simple tool creation
 const searchTool = createTool({
@@ -172,7 +172,7 @@ agent = Agent(
 
 # Memory is implicit and managed internally
 # Limited control over memory operations`,
-    cofounder: `import { SharedStateManager, createOrchestrator } from '@aicofounder/agents';
+    aicofounder: `import { SharedStateManager, createOrchestrator } from '@waymakerai/aicofounder-agents';
 
 const orchestrator = createOrchestrator({
   conversationHistory: [],
@@ -265,11 +265,11 @@ export default function CrewAIComparisonPage() {
                       CoFounder
                     </span>
                     <span className="text-gray-500 text-sm">
-                      {example.cofounder.split('\n').length} lines
+                      {example.aicofounder.split('\n').length} lines
                     </span>
                   </div>
                   <pre className="p-4 rounded-xl bg-gray-900 border border-gray-800 overflow-x-auto text-sm">
-                    <code className="text-gray-300">{example.cofounder}</code>
+                    <code className="text-gray-300">{example.aicofounder}</code>
                   </pre>
                 </div>
               </div>

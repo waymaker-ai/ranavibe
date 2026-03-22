@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// @aicofounder/openclaw - Type definitions
+// @waymakerai/aicofounder-openclaw - Type definitions
 // ---------------------------------------------------------------------------
 
 // ---- PII Types ----

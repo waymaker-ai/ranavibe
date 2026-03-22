@@ -22,7 +22,7 @@ export async function analyticsCommand(options: AnalyticsOptions) {
     // Check if user is authenticated
     const authToken = await getAuthToken();
     if (!authToken) {
-      spinner.fail('Not authenticated. Run: waymaker-cofounder login');
+      spinner.fail('Not authenticated. Run: waymaker-aicofounder login');
       return;
     }
 

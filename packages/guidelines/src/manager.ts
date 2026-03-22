@@ -1,5 +1,5 @@
 /**
- * @aicofounder/guidelines - Guideline Manager
+ * @waymakerai/aicofounder-guidelines - Guideline Manager
  */
 
 import type {

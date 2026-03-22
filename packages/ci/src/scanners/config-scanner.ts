@@ -16,7 +16,7 @@ const KNOWN_RULES = [
 ];
 
 /**
- * Minimal YAML parser for .cofounder.yml files.
+ * Minimal YAML parser for .aicofounder.yml files.
  * Handles simple key: value, nested objects, and arrays.
  * Zero dependencies -- intentionally limited to the structures we expect.
  */
@@ -108,7 +108,7 @@ function parseValue(value: string): unknown {
 }
 
 /**
- * Validate a .cofounder.yml config file and return findings for any issues.
+ * Validate a .aicofounder.yml config file and return findings for any issues.
  */
 export function validateConfig(configPath: string): Finding[] {
   const findings: Finding[] = [];
@@ -245,7 +245,7 @@ function findKeyLine(content: string, key: string): number {
 }
 
 /**
- * Load and parse .cofounder.yml configuration
+ * Load and parse .aicofounder.yml configuration
  */
 export function loadConfig(configPath: string): CoFounderConfig | null {
   try {

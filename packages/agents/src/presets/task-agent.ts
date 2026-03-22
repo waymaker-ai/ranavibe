@@ -1,5 +1,5 @@
 /**
- * @aicofounder/agents - Task Agent
+ * @waymakerai/aicofounder-agents - Task Agent
  * Agent for executing structured tasks with tools
  */
 

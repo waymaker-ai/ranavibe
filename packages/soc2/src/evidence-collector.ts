@@ -435,7 +435,7 @@ function collectGuardReportEvidence(
     title: 'Guard Effectiveness Overview',
     description: `Aggregate guard effectiveness metrics for audit period`,
     collectedAt: now,
-    source: 'aicofounder-guard'',
+    source: 'aicofounder-guard',
     data: {
       totalChecks,
       totalViolations,
@@ -458,7 +458,7 @@ function collectGuardReportEvidence(
       title: `Guard Report: ${report.guardType}`,
       description: `Detailed report for ${report.guardType} guard`,
       collectedAt: now,
-      source: 'aicofounder-guard'',
+      source: 'aicofounder-guard',
       data: {
         guardType: report.guardType,
         totalChecks: report.totalChecks,

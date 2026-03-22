@@ -13,9 +13,9 @@ export {
   type CoFounderConfig,
   type QualityGate,
   type REPMPhase,
-} from '@aicofounder/core';
+} from '@waymakerai/aicofounder-core';
 
-import { ConfigParser, QualityGateChecker, REPMValidator, TemplateManager } from '@aicofounder/core';
+import { ConfigParser, QualityGateChecker, REPMValidator, TemplateManager } from '@waymakerai/aicofounder-core';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -49,7 +49,7 @@ export class CoFounder {
       .replace('type: "fullstack"', `type: "${options.projectType || 'fullstack'}"`);
 
     const outputPath = options.outputPath || process.cwd();
-    const configFile = path.join(outputPath, '.cofounder.yml');
+    const configFile = path.join(outputPath, '.aicofounder.yml');
 
     fs.writeFileSync(configFile, customConfig, 'utf8');
   }
@@ -59,7 +59,7 @@ export class CoFounder {
    */
   validate(): boolean {
     if (!this.configPath) {
-      throw new Error('No .cofounder.yml file found');
+      throw new Error('No .aicofounder.yml file found');
     }
 
     try {
@@ -75,7 +75,7 @@ export class CoFounder {
    */
   checkPhase(phase: 'pre_implementation' | 'implementation' | 'testing' | 'deployment') {
     if (!this.configPath) {
-      throw new Error('No .cofounder.yml file found');
+      throw new Error('No .aicofounder.yml file found');
     }
 
     const config = ConfigParser.parse(this.configPath);
@@ -88,7 +88,7 @@ export class CoFounder {
    */
   isMajorFeature(description: string): boolean {
     if (!this.configPath) {
-      throw new Error('No .cofounder.yml file found');
+      throw new Error('No .aicofounder.yml file found');
     }
 
     const config = ConfigParser.parse(this.configPath);
@@ -124,7 +124,7 @@ export class CoFounder {
    */
   getConfig() {
     if (!this.configPath) {
-      throw new Error('No .cofounder.yml file found');
+      throw new Error('No .aicofounder.yml file found');
     }
 
     return ConfigParser.parse(this.configPath);

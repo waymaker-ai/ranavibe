@@ -2,6 +2,16 @@ export * from './types';
 export * from './datasets';
 export * from './runners';
 export { formatReport, formatConsoleTable, formatJSON, formatMarkdownTable } from './reporter';
+export {
+  calculateMetrics,
+  classifyResult,
+  confusionCounts,
+  runDetector,
+  compareDetectors,
+  runBenchmarkSuite,
+  runBenchmarkSuiteJSON,
+} from './runner';
+export type { RunOptions, ComparisonEntry, ComparisonReport, SuiteConfig } from './runner';
 
 import {
   BenchmarkConfig,
@@ -27,7 +37,7 @@ const defaultConfig: BenchmarkConfig = {
  *
  * @example
  * ```typescript
- * import { runBenchmarks } from '@aicofounder/benchmark';
+ * import { runBenchmarks } from '@waymakerai/aicofounder-benchmark';
  *
  * const report = await runBenchmarks({
  *   detectors: [

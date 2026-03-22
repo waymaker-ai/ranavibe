@@ -3,7 +3,7 @@
  * Demonstrates how to export CoFounder traces to OpenTelemetry collectors
  */
 
-import { createCoFounder, createOTelExporter, createOTelPlugin } from '@aicofounder/core';
+import { createCoFounder, createOTelExporter, createOTelPlugin } from '@waymakerai/aicofounder-core';
 
 // ============================================================================
 // Basic Setup

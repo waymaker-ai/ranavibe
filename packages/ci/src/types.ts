@@ -1,5 +1,5 @@
 /**
- * @aicofounder/ci - Type definitions
+ * @waymakerai/aicofounder-ci - Type definitions
  * Zero-dependency CI guardrails for AI applications
  */
 
@@ -77,7 +77,7 @@ export interface ScanConfig {
   failOn: Severity;
   /** Output format */
   format: ReportFormat;
-  /** Path to .cofounder.yml config file */
+  /** Path to .aicofounder.yml config file */
   configPath?: string;
   /** Whether to comment on PRs */
   commentOnPr: boolean;
@@ -106,7 +106,7 @@ export interface GitHubContext {
   apiUrl: string;
 }
 
-/** Structure of .cofounder.yml configuration */
+/** Structure of .aicofounder.yml configuration */
 export interface CoFounderConfig {
   rules?: {
     [ruleId: string]: {

@@ -1,5 +1,5 @@
 /**
- * @aicofounder/agents - Chat Agent
+ * @waymakerai/aicofounder-agents - Chat Agent
  * Simple conversational agent
  */
 

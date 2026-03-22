@@ -20,7 +20,7 @@ const messages = [
 
 const response = await model.invoke(messages);
 console.log(response.content);`,
-    cofounder: `import { createCoFounder } from '@aicofounder/core';
+    aicofounder: `import { createCoFounder } from '@waymakerai/aicofounder-core';
 
 const cofounder = createCoFounder();
 
@@ -52,7 +52,7 @@ const model = new ChatOpenAI({
 
 const response = await model.invoke("What's the weather in SF?");
 // Handle tool calls manually...`,
-    cofounder: `import { createCoFounder, createTool } from '@aicofounder/core';
+    aicofounder: `import { createCoFounder, createTool } from '@waymakerai/aicofounder-core';
 
 const cofounder = createCoFounder();
 
@@ -102,8 +102,8 @@ const retrievalChain = await createRetrievalChain({
 });
 
 const response = await retrievalChain.invoke({ input: "question" });`,
-    cofounder: `import { createCoFounder } from '@aicofounder/core';
-import { createRAG } from '@aicofounder/rag';
+    aicofounder: `import { createCoFounder } from '@waymakerai/aicofounder-core';
+import { createRAG } from '@waymakerai/aicofounder-rag';
 
 const cofounder = createCoFounder();
 const rag = createRAG({ cofounder });
@@ -174,11 +174,11 @@ export default function LangChainComparisonPage() {
                       CoFounder
                     </span>
                     <span className="text-gray-500 text-sm">
-                      {example.cofounder.split('\n').length} lines
+                      {example.aicofounder.split('\n').length} lines
                     </span>
                   </div>
                   <pre className="p-4 rounded-xl bg-gray-900 border border-gray-800 overflow-x-auto text-sm">
-                    <code className="text-gray-300">{example.cofounder}</code>
+                    <code className="text-gray-300">{example.aicofounder}</code>
                   </pre>
                 </div>
               </div>

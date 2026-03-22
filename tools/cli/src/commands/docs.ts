@@ -7,19 +7,19 @@
  * @example
  * ```bash
  * # Check document health
- * cofounder docs:check
+ * aicofounder docs:check
  *
  * # List all documents with status
- * cofounder docs:list
+ * aicofounder docs:list
  *
  * # Show project status summary
- * cofounder docs:status
+ * aicofounder docs:status
  *
  * # Archive deprecated documents
- * cofounder docs:archive
+ * aicofounder docs:archive
  *
  * # Validate document frontmatter
- * cofounder docs:validate
+ * aicofounder docs:validate
  * ```
  */
 
@@ -115,7 +115,7 @@ export async function docsCheckCommand(): Promise<void> {
     const deprecated = docs.filter(d => d.status === 'Deprecated');
     if (deprecated.length > 0) {
       console.log(chalk.white('2. Archive deprecated documents:'));
-      console.log(chalk.cyan('   cofounder docs:archive\n'));
+      console.log(chalk.cyan('   aicofounder docs:archive\n'));
     }
 
     const stale = docs.filter(d => isStale(d.lastUpdated));
@@ -375,7 +375,7 @@ export async function docsValidateCommand(): Promise<void> {
 // ============================================================================
 
 /**
- * Find project root by looking for package.json or .cofounder.yml
+ * Find project root by looking for package.json or .aicofounder.yml
  */
 function findProjectRoot(): string | null {
   let dir = process.cwd();
@@ -383,7 +383,7 @@ function findProjectRoot(): string | null {
   while (dir !== path.dirname(dir)) {
     if (
       fs.existsSync(path.join(dir, 'package.json')) ||
-      fs.existsSync(path.join(dir, '.cofounder.yml')) ||
+      fs.existsSync(path.join(dir, '.aicofounder.yml')) ||
       fs.existsSync(path.join(dir, 'ROADMAP.md'))
     ) {
       return dir;

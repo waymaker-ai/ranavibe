@@ -6,7 +6,7 @@
  *
  * @example
  * ```typescript
- * import { MakeIntegration } from '@aicofounder/core';
+ * import { MakeIntegration } from '@waymakerai/aicofounder-core';
  *
  * const make = new MakeIntegration({
  *   apiKey: process.env.MAKE_API_KEY,
@@ -447,7 +447,7 @@ export class MakeIntegration extends EventEmitter {
       // Chat Module
       {
         id: 1,
-        module: 'cofounder:chat',
+        module: 'aicofounder:chat',
         version: 1,
         parameters: {},
         metadata: {
@@ -475,7 +475,7 @@ export class MakeIntegration extends EventEmitter {
       // Summarize Module
       {
         id: 2,
-        module: 'cofounder:summarize',
+        module: 'aicofounder:summarize',
         version: 1,
         parameters: {},
         metadata: {
@@ -499,7 +499,7 @@ export class MakeIntegration extends EventEmitter {
       // Classify Module
       {
         id: 3,
-        module: 'cofounder:classify',
+        module: 'aicofounder:classify',
         version: 1,
         parameters: {},
         metadata: {
@@ -513,7 +513,7 @@ export class MakeIntegration extends EventEmitter {
       // RAG Query Module
       {
         id: 4,
-        module: 'cofounder:ragQuery',
+        module: 'aicofounder:ragQuery',
         version: 1,
         parameters: {},
         metadata: {
@@ -528,7 +528,7 @@ export class MakeIntegration extends EventEmitter {
       // Agent Module
       {
         id: 5,
-        module: 'cofounder:agent',
+        module: 'aicofounder:agent',
         version: 1,
         parameters: {},
         metadata: {
@@ -543,7 +543,7 @@ export class MakeIntegration extends EventEmitter {
       // Extract Module
       {
         id: 6,
-        module: 'cofounder:extract',
+        module: 'aicofounder:extract',
         version: 1,
         parameters: {},
         metadata: {
@@ -557,7 +557,7 @@ export class MakeIntegration extends EventEmitter {
       // Translate Module
       {
         id: 7,
-        module: 'cofounder:translate',
+        module: 'aicofounder:translate',
         version: 1,
         parameters: {},
         metadata: {
@@ -614,7 +614,7 @@ export class MakeIntegration extends EventEmitter {
     // Add CoFounder modules
     for (const mod of options.modules) {
       const moduleDefinitions = this.getRanaModuleDefinitions();
-      const definition = moduleDefinitions.find(m => m.module === `cofounder:${mod}`);
+      const definition = moduleDefinitions.find(m => m.module === `aicofounder:${mod}`);
       if (definition) {
         flow.push({
           ...definition,

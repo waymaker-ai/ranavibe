@@ -1,5 +1,5 @@
 {
-  "name": "@aicofounder/testing",
+  "name": "@waymakerai/aicofounder-testing",
   "version": "1.0.0",
   "description": "AI-native testing framework - Test AI code like regular code",
   "main": "dist/index.js",
@@ -46,10 +46,10 @@
     "vitest": "^1.6.0"
   },
   "peerDependencies": {
-    "@aicofounder/core": "workspace:*"
+    "@waymakerai/aicofounder-core": "workspace:*"
   },
   "peerDependenciesMeta": {
-    "@aicofounder/core": {
+    "@waymakerai/aicofounder-core": {
       "optional": true
     }
   },

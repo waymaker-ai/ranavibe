@@ -910,7 +910,7 @@ Provide a JSON response with the following structure:
  *
  * @example
  * ```typescript
- * import { createEmailPlugin } from '@aicofounder/core';
+ * import { createEmailPlugin } from '@waymakerai/aicofounder-core';
  *
  * const emailPlugin = createEmailPlugin({
  *   provider: 'gmail',
@@ -954,8 +954,8 @@ export function createEmailPlugin(config: EmailPluginConfig): EmailPlugin {
  *
  * @example
  * ```typescript
- * import { CoFounderClient } from '@aicofounder/core';
- * import { emailPlugin } from '@aicofounder/core/plugins/email';
+ * import { CoFounderClient } from '@waymakerai/aicofounder-core';
+ * import { emailPlugin } from '@waymakerai/aicofounder-core/plugins/email';
  *
  * const cofounder = new CoFounderClient({
  *   providers: { anthropic: 'sk-...' },

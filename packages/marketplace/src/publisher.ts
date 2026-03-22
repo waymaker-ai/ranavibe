@@ -133,7 +133,7 @@ function generatePackageJson(
       ? { type: 'git', url: config.repository }
       : undefined,
     publishConfig: { access: 'public' },
-    cofounder: {
+    aicofounder: {
       categories: pkg.categories,
       ruleCount: pkg.policies.length,
     },

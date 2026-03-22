@@ -9,7 +9,7 @@ import {
   ListPromptsRequestSchema,
   GetPromptRequestSchema,
 } from '@modelcontextprotocol/sdk/types.js';
-import { ConfigParser, QualityGateChecker, REPMValidator, TemplateManager } from '@aicofounder/core';
+import { ConfigParser, QualityGateChecker, REPMValidator, TemplateManager } from '@waymakerai/aicofounder-core';
 import * as path from 'path';
 import * as fs from 'fs';
 
@@ -714,11 +714,11 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
     // ---- Existing Tools ----
     {
       name: 'validate_cofounder_config',
-      description: 'Validate .cofounder.yml configuration file and check for syntax/schema errors',
+      description: 'Validate .aicofounder.yml configuration file and check for syntax/schema errors',
       inputSchema: {
         type: 'object',
         properties: {
-          config_path: { type: 'string', description: 'Path to .cofounder.yml file (optional)' },
+          config_path: { type: 'string', description: 'Path to .aicofounder.yml file (optional)' },
         },
       },
     },
@@ -729,7 +729,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
         type: 'object',
         properties: {
           phase: { type: 'string', enum: ['pre_implementation', 'implementation', 'testing', 'deployment'], description: 'Quality gate phase to check' },
-          config_path: { type: 'string', description: 'Path to .cofounder.yml file (optional)' },
+          config_path: { type: 'string', description: 'Path to .aicofounder.yml file (optional)' },
         },
         required: ['phase'],
       },
@@ -751,7 +751,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
         type: 'object',
         properties: {
           description: { type: 'string', description: 'Description of the feature being built' },
-          config_path: { type: 'string', description: 'Path to .cofounder.yml file (optional)' },
+          config_path: { type: 'string', description: 'Path to .aicofounder.yml file (optional)' },
         },
         required: ['description'],
       },
@@ -762,7 +762,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
       inputSchema: {
         type: 'object',
         properties: {
-          config_path: { type: 'string', description: 'Path to .cofounder.yml file (optional)' },
+          config_path: { type: 'string', description: 'Path to .aicofounder.yml file (optional)' },
         },
       },
     },
@@ -773,7 +773,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
         type: 'object',
         properties: {
           project_type: { type: 'string', enum: ['nextjs', 'react', 'python', 'default'], description: 'Type of project to initialize' },
-          output_path: { type: 'string', description: 'Path where .cofounder.yml should be created' },
+          output_path: { type: 'string', description: 'Path where .aicofounder.yml should be created' },
         },
       },
     },
@@ -1008,7 +1008,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       case 'validate_cofounder_config': {
         const configPath = (args as any)?.config_path || ConfigParser.findConfig();
         if (!configPath) {
-          return { content: [{ type: 'text', text: 'Error: No .cofounder.yml file found. Use init_cofounder_project tool to create one.' }] };
+          return { content: [{ type: 'text', text: 'Error: No .aicofounder.yml file found. Use init_cofounder_project tool to create one.' }] };
         }
         try {
           const config = ConfigParser.parse(configPath);
@@ -1027,7 +1027,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         const toolArgs = args as any;
         const configPath = toolArgs?.config_path || ConfigParser.findConfig();
         if (!configPath) {
-          return { content: [{ type: 'text', text: 'Error: No .cofounder.yml file found.' }] };
+          return { content: [{ type: 'text', text: 'Error: No .aicofounder.yml file found.' }] };
         }
         const config = ConfigParser.parse(configPath);
         const checker = new QualityGateChecker(config);
@@ -1065,7 +1065,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         const toolArgs = args as any;
         const configPath = toolArgs?.config_path || ConfigParser.findConfig();
         if (!configPath) {
-          return { content: [{ type: 'text', text: 'Error: No .cofounder.yml file found.' }] };
+          return { content: [{ type: 'text', text: 'Error: No .aicofounder.yml file found.' }] };
         }
         const config = ConfigParser.parse(configPath);
         const isMajor = ConfigParser.isMajorFeature(config, toolArgs.description);
@@ -1074,7 +1074,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
             type: 'text',
             text: isMajor
               ? 'This is a MAJOR FEATURE - REPM validation required.\n\nReason: Feature involves revenue streams, new products, pricing changes, or market segments.\n\nNext step: Run repm_validate tool to start strategic validation.'
-              : 'This is a standard feature - proceed with regular quality gates.\n\nNo REPM validation needed. Follow quality_gates from .cofounder.yml.',
+              : 'This is a standard feature - proceed with regular quality gates.\n\nNo REPM validation needed. Follow quality_gates from .aicofounder.yml.',
           }],
         };
       }
@@ -1083,7 +1083,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         const toolArgs = args as any;
         const configPath = toolArgs?.config_path || ConfigParser.findConfig();
         if (!configPath) {
-          return { content: [{ type: 'text', text: 'Error: No .cofounder.yml file found.' }] };
+          return { content: [{ type: 'text', text: 'Error: No .aicofounder.yml file found.' }] };
         }
         const config = ConfigParser.parse(configPath);
         const checker = new QualityGateChecker(config);
@@ -1111,12 +1111,12 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         } else {
           config = templateManager.generateConfig(projectType as 'nextjs' | 'react' | 'python');
         }
-        const configFile = path.join(outputPath, '.cofounder.yml');
+        const configFile = path.join(outputPath, '.aicofounder.yml');
         try {
           fs.writeFileSync(configFile, config, 'utf8');
-          return { content: [{ type: 'text', text: `Created .cofounder.yml at ${configFile}\n\nProject type: ${projectType}\n\nNext steps:\n1. Customize .cofounder.yml for your project\n2. Run validate_cofounder_config to verify\n3. Start building with CoFounder quality gates!` }] };
+          return { content: [{ type: 'text', text: `Created .aicofounder.yml at ${configFile}\n\nProject type: ${projectType}\n\nNext steps:\n1. Customize .aicofounder.yml for your project\n2. Run validate_cofounder_config to verify\n3. Start building with CoFounder quality gates!` }] };
         } catch (error) {
-          return { content: [{ type: 'text', text: `Failed to create .cofounder.yml:\n\n${error instanceof Error ? error.message : String(error)}` }] };
+          return { content: [{ type: 'text', text: `Failed to create .aicofounder.yml:\n\n${error instanceof Error ? error.message : String(error)}` }] };
         }
       }
 
@@ -2340,44 +2340,44 @@ server.setRequestHandler(ListResourcesRequestSchema, async () => ({
   resources: [
     // Existing resources
     {
-      uri: 'cofounder://docs/quality-gates',
+      uri: 'aicofounder://docs/quality-gates',
       name: 'Quality Gates Documentation',
       description: 'Complete guide to CoFounder quality gates',
       mimeType: 'text/markdown',
     },
     {
-      uri: 'cofounder://docs/repm',
+      uri: 'aicofounder://docs/repm',
       name: 'REPM Methodology',
       description: 'Reverse Engineering Product Methodology guide',
       mimeType: 'text/markdown',
     },
     {
-      uri: 'cofounder://templates/default',
+      uri: 'aicofounder://templates/default',
       name: 'Default Configuration Template',
-      description: 'Default .cofounder.yml template',
+      description: 'Default .aicofounder.yml template',
       mimeType: 'text/yaml',
     },
     // New resources
     {
-      uri: 'cofounder://models/pricing',
+      uri: 'aicofounder://models/pricing',
       name: 'Model Pricing Table',
       description: 'Current pricing for all supported AI models (OpenAI, Anthropic, Google, Meta, Mistral, DeepSeek, Cohere)',
       mimeType: 'text/markdown',
     },
     {
-      uri: 'cofounder://compliance/frameworks',
+      uri: 'aicofounder://compliance/frameworks',
       name: 'Compliance Frameworks',
       description: 'All supported compliance frameworks and their checks (HIPAA, GDPR, SOC2, PCI-DSS, FERPA, COPPA)',
       mimeType: 'text/markdown',
     },
     {
-      uri: 'cofounder://security/patterns',
+      uri: 'aicofounder://security/patterns',
       name: 'Security Patterns Database',
       description: 'Known injection attack patterns, PII detection patterns, and content filtering categories',
       mimeType: 'text/markdown',
     },
     {
-      uri: 'cofounder://policies/presets',
+      uri: 'aicofounder://policies/presets',
       name: 'Policy Presets',
       description: 'Pre-configured policy presets for common use cases (healthcare, finance, education, general)',
       mimeType: 'text/markdown',
@@ -2389,7 +2389,7 @@ server.setRequestHandler(ReadResourceRequestSchema, async (request) => {
   const { uri } = request.params;
 
   switch (uri) {
-    case 'cofounder://docs/quality-gates': {
+    case 'aicofounder://docs/quality-gates': {
       return {
         contents: [{
           uri,
@@ -2424,7 +2424,7 @@ Run \`check_quality_gates\` tool for your project-specific gates.`,
       };
     }
 
-    case 'cofounder://docs/repm': {
+    case 'aicofounder://docs/repm': {
       const validator = new REPMValidator();
       return {
         contents: [{
@@ -2441,7 +2441,7 @@ Run \`repm_validate\` tool for phase-specific guidance.`,
       };
     }
 
-    case 'cofounder://templates/default': {
+    case 'aicofounder://templates/default': {
       const templateManager = new TemplateManager();
       return {
         contents: [{
@@ -2452,7 +2452,7 @@ Run \`repm_validate\` tool for phase-specific guidance.`,
       };
     }
 
-    case 'cofounder://models/pricing': {
+    case 'aicofounder://models/pricing': {
       let text = `# AI Model Pricing Table\n\nPrices in USD. Updated for early 2026.\n\n`;
       text += `| Provider | Model | Input $/1M | Output $/1M | Context | Vision | Tools |\n`;
       text += `|----------|-------|-----------|------------|---------|--------|-------|\n`;
@@ -2463,7 +2463,7 @@ Run \`repm_validate\` tool for phase-specific guidance.`,
       return { contents: [{ uri, mimeType: 'text/markdown', text }] };
     }
 
-    case 'cofounder://compliance/frameworks': {
+    case 'aicofounder://compliance/frameworks': {
       let text = `# Supported Compliance Frameworks\n\n`;
 
       text += `## HIPAA (Health Insurance Portability and Accountability Act)\n`;
@@ -2494,7 +2494,7 @@ Run \`repm_validate\` tool for phase-specific guidance.`,
       return { contents: [{ uri, mimeType: 'text/markdown', text }] };
     }
 
-    case 'cofounder://security/patterns': {
+    case 'aicofounder://security/patterns': {
       let text = `# Security Patterns Database\n\n`;
 
       text += `## Injection Attack Patterns (${INJECTION_PATTERNS.length})\n\n`;
@@ -2529,7 +2529,7 @@ Run \`repm_validate\` tool for phase-specific guidance.`,
       return { contents: [{ uri, mimeType: 'text/markdown', text }] };
     }
 
-    case 'cofounder://policies/presets': {
+    case 'aicofounder://policies/presets': {
       const text = `# Policy Presets
 
 ## Healthcare
@@ -2649,7 +2649,7 @@ server.setRequestHandler(GetPromptRequestSchema, async (request) => {
           role: 'user',
           content: {
             type: 'text',
-            text: `Initialize a new CoFounder project named "${promptArgs?.project_name}" (type: ${promptArgs?.project_type || 'default'}).\n\nSteps:\n1. Create .cofounder.yml configuration\n2. Set up quality gates\n3. Configure project metadata\n4. Validate configuration\n\nPlease use the init_cofounder_project tool.`,
+            text: `Initialize a new CoFounder project named "${promptArgs?.project_name}" (type: ${promptArgs?.project_type || 'default'}).\n\nSteps:\n1. Create .aicofounder.yml configuration\n2. Set up quality gates\n3. Configure project metadata\n4. Validate configuration\n\nPlease use the init_cofounder_project tool.`,
           },
         }],
       };

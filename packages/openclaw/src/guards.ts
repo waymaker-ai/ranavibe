@@ -1,8 +1,8 @@
 // ---------------------------------------------------------------------------
-// @aicofounder/openclaw - Core guard logic (zero dependencies)
+// @waymakerai/aicofounder-openclaw - Core guard logic (zero dependencies)
 // ---------------------------------------------------------------------------
 // Inline implementations of PII, injection, toxicity detection and budget
-// tracking. These mirror @aicofounder/guard patterns but are fully self-contained
+// tracking. These mirror @waymakerai/aicofounder-guard patterns but are fully self-contained
 // so this package has zero runtime dependencies.
 // ---------------------------------------------------------------------------
 

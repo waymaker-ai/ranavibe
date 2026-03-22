@@ -51,7 +51,7 @@ export default function Lesson8Page() {
           <div className="code-block">
             <pre>
               <code>{`// lib/tools.ts
-import { Tool, z } from '@aicofounder/core';
+import { Tool, z } from '@waymakerai/aicofounder-core';
 
 export const searchTool = new Tool({
   name: 'web_search',
@@ -120,7 +120,7 @@ export const recallTool = new Tool({
           <div className="code-block">
             <pre>
               <code>{`// lib/research-agent.ts
-import { Agent } from '@aicofounder/core';
+import { Agent } from '@waymakerai/aicofounder-core';
 import { searchTool, calculatorTool, memoryTool, recallTool } from './tools';
 
 export const researchAgent = new Agent({
@@ -169,7 +169,7 @@ Guidelines:
             <pre>
               <code>{`// app/api/agent/route.ts
 import { researchAgent } from '@/lib/research-agent';
-import { streamResponse } from '@aicofounder/helpers';
+import { streamResponse } from '@waymakerai/aicofounder-helpers';
 
 export async function POST(request: Request) {
   try {
@@ -216,7 +216,7 @@ export async function POST(request: Request) {
               <code>{`// components/ResearchAgent.tsx
 'use client';
 
-import { useAgent } from '@aicofounder/react';
+import { useAgent } from '@waymakerai/aicofounder-react';
 import { useState } from 'react';
 
 export function ResearchAgent() {

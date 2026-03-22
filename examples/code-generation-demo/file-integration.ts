@@ -1,7 +1,7 @@
 /**
  * File Integration Examples
  *
- * This example demonstrates how to use @aicofounder/generate to intelligently
+ * This example demonstrates how to use @waymakerai/aicofounder-generate to intelligently
  * integrate generated files into an existing codebase.
  */
 
@@ -11,7 +11,7 @@ import {
   integrateFiles,
   FileIntegrator,
   type GeneratedFile,
-} from '@aicofounder/generate';
+} from '@waymakerai/aicofounder-generate';
 
 // ============================================================================
 // Example 1: Analyze Existing Codebase

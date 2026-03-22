@@ -1,5 +1,5 @@
 /**
- * @aicofounder/soc2 - Type definitions for SOC 2 audit evidence generation
+ * @waymakerai/aicofounder-soc2 - Type definitions for SOC 2 audit evidence generation
  */
 
 /** Trust Service Categories as defined by AICPA */

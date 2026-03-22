@@ -6,13 +6,13 @@
  * @example
  * ```bash
  * # Get optimization suggestions
- * cofounder cost:optimize
+ * aicofounder cost:optimize
  *
  * # Apply suggestions automatically
- * cofounder cost:optimize --apply
+ * aicofounder cost:optimize --apply
  *
  * # Show detailed analysis
- * cofounder cost:optimize --detailed
+ * aicofounder cost:optimize --detailed
  * ```
  */
 
@@ -222,7 +222,7 @@ function generateOptimizations(usage: UsagePattern[]): Optimization[] {
         savingsPercent: 100,
         effort: 'low',
         impact: 'high',
-        command: 'cofounder ollama:pull llama3.2',
+        command: 'aicofounder ollama:pull llama3.2',
       });
     }
 
@@ -328,7 +328,7 @@ function displayOptimizations(optimizations: Optimization[], detailed: boolean):
   }
 
   console.log(chalk.gray('─'.repeat(60)));
-  console.log(chalk.gray('\nApply all suggestions: ') + chalk.cyan('cofounder cost:optimize --apply'));
+  console.log(chalk.gray('\nApply all suggestions: ') + chalk.cyan('aicofounder cost:optimize --apply'));
   console.log('');
 }
 
@@ -365,7 +365,7 @@ async function applyOptimizations(optimizations: Optimization[]): Promise<void> 
 
       case 'batching':
         console.log(chalk.green('  ✓ Use batchProcess() for multiple requests:'));
-        console.log(chalk.gray('    import { batchProcess } from "@aicofounder/core";'));
+        console.log(chalk.gray('    import { batchProcess } from "@waymakerai/aicofounder-core";'));
         break;
 
       default:
@@ -385,7 +385,7 @@ function showQuickTips(): void {
   console.log(chalk.bold('💡 Quick Cost-Saving Tips:\n'));
 
   console.log(chalk.white('1. Use local models for development'));
-  console.log(chalk.gray('   cofounder ollama:pull llama3.2\n'));
+  console.log(chalk.gray('   aicofounder ollama:pull llama3.2\n'));
 
   console.log(chalk.white('2. Enable caching for repeated queries'));
   console.log(chalk.gray('   const cofounder = createCoFounder({ cache: true });\n'));
@@ -394,10 +394,10 @@ function showQuickTips(): void {
   console.log(chalk.gray('   gpt-4o-mini is 16x cheaper than gpt-4o\n'));
 
   console.log(chalk.white('4. Set budget limits'));
-  console.log(chalk.gray('   cofounder budget:set --limit 10 --period daily\n'));
+  console.log(chalk.gray('   aicofounder budget:set --limit 10 --period daily\n'));
 
   console.log(chalk.white('5. Monitor costs in real-time'));
-  console.log(chalk.gray('   cofounder dashboard --live\n'));
+  console.log(chalk.gray('   aicofounder dashboard --live\n'));
 }
 
 /**

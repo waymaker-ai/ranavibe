@@ -219,7 +219,7 @@ class UnifiedAdapter {
  * @example
  * ```typescript
  * const unified = createUnifiedAdapter({
- *   cofounder: { pii: 'redact', injection: 'block' },
+ *   aicofounder: { pii: 'redact', injection: 'block' },
  *   lakera: { apiKey: '...', endpoint: '...' },
  *   bedrock: { region: 'us-east-1', guardrailId: '...' },
  * });

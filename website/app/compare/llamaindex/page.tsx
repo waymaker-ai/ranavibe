@@ -31,8 +31,8 @@ const queryEngine = index.asQueryEngine();
 // Query
 const response = await queryEngine.query("Your question here");
 console.log(response.toString());`,
-    cofounder: `import { createCoFounder } from '@aicofounder/core';
-import { createRAG } from '@aicofounder/rag';
+    aicofounder: `import { createCoFounder } from '@waymakerai/aicofounder-core';
+import { createRAG } from '@waymakerai/aicofounder-rag';
 
 const cofounder = createCoFounder();
 const rag = createRAG({ cofounder });
@@ -69,8 +69,8 @@ const index = await VectorStoreIndex.fromDocuments(
   documents,
   { serviceContext }
 );`,
-    cofounder: `import { createCoFounder } from '@aicofounder/core';
-import { createRAG } from '@aicofounder/rag';
+    aicofounder: `import { createCoFounder } from '@waymakerai/aicofounder-core';
+import { createRAG } from '@waymakerai/aicofounder-rag';
 
 const cofounder = createCoFounder();
 const rag = createRAG({
@@ -110,8 +110,8 @@ const stream = await queryEngine.query(
 for await (const chunk of stream) {
   process.stdout.write(chunk.response);
 }`,
-    cofounder: `import { createCoFounder } from '@aicofounder/core';
-import { createRAG } from '@aicofounder/rag';
+    aicofounder: `import { createCoFounder } from '@waymakerai/aicofounder-core';
+import { createRAG } from '@waymakerai/aicofounder-rag';
 
 const cofounder = createCoFounder({ model: 'gpt-4' });
 const rag = createRAG({ cofounder });
@@ -128,61 +128,61 @@ const features = [
   {
     feature: 'RAG Pipeline',
     llamaindex: true,
-    cofounder: true,
+    aicofounder: true,
     note: 'Both provide RAG capabilities',
   },
   {
     feature: 'Vector Storage',
     llamaindex: true,
-    cofounder: true,
+    aicofounder: true,
     note: 'Both support vector stores',
   },
   {
     feature: 'Document Loaders',
     llamaindex: true,
-    cofounder: true,
+    aicofounder: true,
     note: 'Both support multiple document types',
   },
   {
     feature: 'TypeScript Native',
     llamaindex: false,
-    cofounder: true,
+    aicofounder: true,
     note: 'CoFounder is TypeScript-first',
   },
   {
     feature: 'Cost Tracking',
     llamaindex: false,
-    cofounder: true,
+    aicofounder: true,
     note: 'CoFounder tracks costs automatically',
   },
   {
     feature: 'Built-in Testing',
     llamaindex: false,
-    cofounder: true,
-    note: 'CoFounder has @aicofounder/testing',
+    aicofounder: true,
+    note: 'CoFounder has @waymakerai/aicofounder-testing',
   },
   {
     feature: 'Security Features',
     llamaindex: false,
-    cofounder: true,
+    aicofounder: true,
     note: 'CoFounder includes PII detection, injection prevention',
   },
   {
     feature: 'Multi-Provider',
     llamaindex: true,
-    cofounder: true,
+    aicofounder: true,
     note: 'Both support multiple providers',
   },
   {
     feature: 'Observability',
     llamaindex: false,
-    cofounder: true,
+    aicofounder: true,
     note: 'CoFounder has built-in tracing',
   },
   {
     feature: 'Agent Framework',
     llamaindex: true,
-    cofounder: true,
+    aicofounder: true,
     note: 'Both support agent patterns',
   },
 ];
@@ -254,7 +254,7 @@ export default function LlamaIndexComparisonPage() {
                     )}
                   </td>
                   <td className="py-4 px-6 text-center">
-                    {item.cofounder ? (
+                    {item.aicofounder ? (
                       <span className="text-green-400">✓</span>
                     ) : (
                       <span className="text-red-400">✗</span>
@@ -290,11 +290,11 @@ export default function LlamaIndexComparisonPage() {
                       CoFounder
                     </span>
                     <span className="text-gray-500 text-sm">
-                      {example.cofounder.split('\n').length} lines
+                      {example.aicofounder.split('\n').length} lines
                     </span>
                   </div>
                   <pre className="p-4 rounded-xl bg-gray-900 border border-gray-800 overflow-x-auto text-sm">
-                    <code className="text-gray-300">{example.cofounder}</code>
+                    <code className="text-gray-300">{example.aicofounder}</code>
                   </pre>
                 </div>
               </div>

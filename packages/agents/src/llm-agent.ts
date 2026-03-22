@@ -1,5 +1,5 @@
 /**
- * @aicofounder/agents - LLMAgent
+ * @waymakerai/aicofounder-agents - LLMAgent
  * Agent that uses LLM for reasoning with tool calling
  */
 

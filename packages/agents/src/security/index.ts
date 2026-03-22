@@ -1,5 +1,5 @@
 /**
- * @aicofounder/agents/security
+ * @waymakerai/aicofounder-agents/security
  * Comprehensive security utilities for agents and tools
  */
 

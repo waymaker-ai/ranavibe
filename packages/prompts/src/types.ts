@@ -1,5 +1,5 @@
 /**
- * Type definitions for @aicofounder/prompts
+ * Type definitions for @waymakerai/aicofounder-prompts
  */
 
 import { z } from 'zod';

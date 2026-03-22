@@ -1,6 +1,6 @@
 /**
  * Validate Command
- * Validate .cofounder.yml configuration
+ * Validate .aicofounder.yml configuration
  */
 
 import chalk from 'chalk';
@@ -28,12 +28,12 @@ const VALID_PRINCIPLES = [
 export async function validateConfig() {
   console.log(chalk.bold.cyan('\n📋 Validating CoFounder Configuration\n'));
 
-  const configPath = path.join(process.cwd(), '.cofounder.yml');
+  const configPath = path.join(process.cwd(), '.aicofounder.yml');
 
   // Check if file exists
   if (!fs.existsSync(configPath)) {
-    console.log(chalk.red('✗ No .cofounder.yml found in current directory'));
-    console.log(chalk.gray('  Run `cofounder init` to create one.\n'));
+    console.log(chalk.red('✗ No .aicofounder.yml found in current directory'));
+    console.log(chalk.gray('  Run `aicofounder init` to create one.\n'));
     return;
   }
 
@@ -90,7 +90,7 @@ export async function validateConfig() {
       console.log();
     }
   } catch (error) {
-    console.log(chalk.red('✗ Failed to parse .cofounder.yml'));
+    console.log(chalk.red('✗ Failed to parse .aicofounder.yml'));
     console.log(chalk.gray(`  ${error}\n`));
   }
 }

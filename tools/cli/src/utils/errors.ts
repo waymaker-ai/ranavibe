@@ -63,7 +63,7 @@ const ERROR_PATTERNS: Array<{
       title: 'API Key Not Configured',
       message: 'No API key found for the requested provider.',
       suggestion: 'Configure your API key using the CoFounder CLI:',
-      command: 'cofounder config:set -p <provider> -k <your-api-key>',
+      command: 'aicofounder config:set -p <provider> -k <your-api-key>',
       docs: 'https://cofounder.dev/docs/configuration#api-keys',
     },
   },
@@ -75,7 +75,7 @@ const ERROR_PATTERNS: Array<{
       title: 'Invalid API Key',
       message: 'The provided API key is invalid or expired.',
       suggestion: 'Verify your API key and update it:',
-      command: 'cofounder config:validate -p <provider>',
+      command: 'aicofounder config:validate -p <provider>',
       docs: 'https://cofounder.dev/docs/configuration#validating-keys',
     },
   },
@@ -87,7 +87,7 @@ const ERROR_PATTERNS: Array<{
       title: 'Rate Limited or Quota Exceeded',
       message: 'You have exceeded your API quota or hit rate limits.',
       suggestion: 'Wait a moment and try again, or check your usage:',
-      command: 'cofounder llm:analyze',
+      command: 'aicofounder llm:analyze',
       docs: 'https://cofounder.dev/docs/cost-management',
     },
   },
@@ -101,7 +101,7 @@ const ERROR_PATTERNS: Array<{
       title: 'Configuration Not Found',
       message: 'No CoFounder configuration file found in this directory.',
       suggestion: 'Initialize CoFounder in your project:',
-      command: 'cofounder init',
+      command: 'aicofounder init',
       docs: 'https://cofounder.dev/docs/quick-start',
     },
   },
@@ -111,9 +111,9 @@ const ERROR_PATTERNS: Array<{
       code: 'CONFIG_002',
       category: 'config',
       title: 'Invalid Configuration File',
-      message: 'The .cofounder.yml file contains invalid YAML syntax.',
+      message: 'The .aicofounder.yml file contains invalid YAML syntax.',
       suggestion: 'Validate your configuration file:',
-      command: 'cofounder validate',
+      command: 'aicofounder validate',
       docs: 'https://cofounder.dev/docs/configuration',
     },
   },
@@ -125,7 +125,7 @@ const ERROR_PATTERNS: Array<{
       title: 'Unknown Provider',
       message: 'The specified LLM provider is not recognized.',
       suggestion: 'View supported providers:',
-      command: 'cofounder llm:compare',
+      command: 'aicofounder llm:compare',
       docs: 'https://cofounder.dev/docs/providers',
     },
   },
@@ -139,7 +139,7 @@ const ERROR_PATTERNS: Array<{
       title: 'Connection Failed',
       message: 'Could not connect to the API endpoint.',
       suggestion: 'Check your internet connection and try again. For local models:',
-      command: 'cofounder ollama',
+      command: 'aicofounder ollama',
       docs: 'https://cofounder.dev/docs/troubleshooting#network',
     },
   },
@@ -151,7 +151,7 @@ const ERROR_PATTERNS: Array<{
       title: 'Request Timeout',
       message: 'The API request took too long and timed out.',
       suggestion: 'Try again or use a faster model:',
-      command: 'cofounder llm:compare',
+      command: 'aicofounder llm:compare',
       docs: 'https://cofounder.dev/docs/performance',
     },
   },
@@ -207,7 +207,7 @@ const ERROR_PATTERNS: Array<{
       title: 'Model Not Found',
       message: 'The specified model does not exist or is not accessible.',
       suggestion: 'Check available models:',
-      command: 'cofounder llm:compare',
+      command: 'aicofounder llm:compare',
       docs: 'https://cofounder.dev/docs/models',
     },
   },
@@ -219,7 +219,7 @@ const ERROR_PATTERNS: Array<{
       title: 'Context Length Exceeded',
       message: 'Your prompt exceeds the model\'s maximum context length.',
       suggestion: 'Reduce your prompt size or use a model with larger context:',
-      command: 'cofounder llm:compare',
+      command: 'aicofounder llm:compare',
       docs: 'https://cofounder.dev/docs/context-management',
     },
   },
@@ -244,7 +244,7 @@ const ERROR_PATTERNS: Array<{
       title: 'Ollama Not Running',
       message: 'The Ollama server is not running or not accessible.',
       suggestion: 'Start Ollama and check its status:',
-      command: 'ollama serve && cofounder ollama',
+      command: 'ollama serve && aicofounder ollama',
       docs: 'https://cofounder.dev/docs/local-development',
     },
   },
@@ -256,7 +256,7 @@ const ERROR_PATTERNS: Array<{
       title: 'Ollama Model Not Installed',
       message: 'The requested model is not installed locally.',
       suggestion: 'Pull the model first:',
-      command: 'cofounder ollama:pull <model-name>',
+      command: 'aicofounder ollama:pull <model-name>',
       docs: 'https://cofounder.dev/docs/ollama',
     },
   },
@@ -270,7 +270,7 @@ const ERROR_PATTERNS: Array<{
       title: 'Budget Exceeded',
       message: 'You have exceeded your configured spending budget.',
       suggestion: 'Check your budget status and adjust if needed:',
-      command: 'cofounder budget',
+      command: 'aicofounder budget',
       docs: 'https://cofounder.dev/docs/budget-enforcement',
     },
   },
@@ -282,7 +282,7 @@ const ERROR_PATTERNS: Array<{
       title: 'Approaching Budget Limit',
       message: 'You are approaching your configured spending limit.',
       suggestion: 'Review your usage and consider adjusting your budget:',
-      command: 'cofounder budget',
+      command: 'aicofounder budget',
     },
   },
 
@@ -365,7 +365,7 @@ export function formatError(error: RanaError): string {
   }
 
   // Help hint
-  lines.push(chalk.gray('  Need help? Run: cofounder doctor'));
+  lines.push(chalk.gray('  Need help? Run: aicofounder doctor'));
   lines.push('');
 
   return lines.join('\n');
@@ -417,7 +417,7 @@ function createUnknownError(error: any): RanaError {
     title: 'Unexpected Error',
     message: message.slice(0, 200) + (message.length > 200 ? '...' : ''),
     suggestion: 'Try running the doctor command to diagnose issues:',
-    command: 'cofounder doctor',
+    command: 'aicofounder doctor',
     docs: 'https://cofounder.dev/docs/troubleshooting',
     context: error?.stack ? { stack: error.stack.split('\n')[1]?.trim() } : undefined,
   };
@@ -486,16 +486,16 @@ export const errors = {
       code: 'AUTH_001',
       category: 'auth',
       suggestion: 'Configure your API key:',
-      command: `cofounder config:set -p ${provider} -k <your-api-key>`,
+      command: `aicofounder config:set -p ${provider} -k <your-api-key>`,
       docs: 'https://cofounder.dev/docs/configuration#api-keys',
     }),
 
   configNotFound: () =>
-    new RanaCliError('No .cofounder.yml configuration file found', {
+    new RanaCliError('No .aicofounder.yml configuration file found', {
       code: 'CONFIG_001',
       category: 'config',
       suggestion: 'Initialize CoFounder in your project:',
-      command: 'cofounder init',
+      command: 'aicofounder init',
       docs: 'https://cofounder.dev/docs/quick-start',
     }),
 
@@ -504,7 +504,7 @@ export const errors = {
       code: 'BUDGET_001',
       category: 'budget',
       suggestion: 'Check your budget status:',
-      command: 'cofounder budget',
+      command: 'aicofounder budget',
       docs: 'https://cofounder.dev/docs/budget-enforcement',
     }),
 
@@ -513,7 +513,7 @@ export const errors = {
       code: 'PROVIDER_001',
       category: 'provider',
       suggestion: 'Check available models:',
-      command: 'cofounder llm:compare',
+      command: 'aicofounder llm:compare',
       docs: 'https://cofounder.dev/docs/models',
     }),
 
@@ -522,7 +522,7 @@ export const errors = {
       code: 'OLLAMA_001',
       category: 'provider',
       suggestion: 'Start Ollama:',
-      command: 'ollama serve && cofounder ollama',
+      command: 'ollama serve && aicofounder ollama',
       docs: 'https://cofounder.dev/docs/local-development',
     }),
 };

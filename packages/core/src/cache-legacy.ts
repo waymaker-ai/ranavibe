@@ -81,7 +81,7 @@ export class CacheManager {
 
     if (this.redis) {
       try {
-        const keys = await this.redis.keys('cofounder:*');
+        const keys = await this.redis.keys('aicofounder:*');
         if (keys.length > 0) {
           await this.redis.del(...keys);
         }
@@ -108,7 +108,7 @@ export class CacheManager {
       .update(JSON.stringify(normalized))
       .digest('hex');
 
-    return `cofounder:cache:${hash}`;
+    return `aicofounder:cache:${hash}`;
   }
 
   /**

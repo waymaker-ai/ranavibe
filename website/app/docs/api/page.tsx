@@ -6,7 +6,7 @@ import { ArrowLeft, ExternalLink } from 'lucide-react';
 
 const apiSections = [
   {
-    package: '@aicofounder/helpers',
+    package: '@waymakerai/aicofounder-helpers',
     exports: [
       {
         name: 'summarize',
@@ -49,7 +49,7 @@ const apiSections = [
     ],
   },
   {
-    package: '@aicofounder/prompts',
+    package: '@waymakerai/aicofounder-prompts',
     exports: [
       {
         name: 'PromptManager',
@@ -83,7 +83,7 @@ const apiSections = [
     ],
   },
   {
-    package: '@aicofounder/rag',
+    package: '@waymakerai/aicofounder-rag',
     exports: [
       {
         name: 'RAGPresets',

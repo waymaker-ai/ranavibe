@@ -1,5 +1,5 @@
 /**
- * @aicofounder/multi-tenant - Types for multi-tenant policy management
+ * @waymakerai/aicofounder-multi-tenant - Types for multi-tenant policy management
  */
 
 export interface Tenant {

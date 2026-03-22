@@ -1,5 +1,5 @@
 /**
- * @aicofounder/llm-detect
+ * @waymakerai/aicofounder-llm-detect
  *
  * LLM-augmented detection using a small model (Haiku/mini) for edge cases
  * that regex patterns cannot catch. Zero runtime dependencies.

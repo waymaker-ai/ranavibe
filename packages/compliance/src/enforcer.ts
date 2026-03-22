@@ -1,5 +1,5 @@
 /**
- * @aicofounder/compliance - Compliance Enforcer
+ * @waymakerai/aicofounder-compliance - Compliance Enforcer
  */
 
 import type {

@@ -9,8 +9,8 @@ import type { CoFounderConfig } from './types';
  *
  * @example
  * ```typescript
- * // cofounder.config.ts
- * import { defineConfig } from '@aicofounder/core';
+ * // aicofounder.config.ts
+ * import { defineConfig } from '@waymakerai/aicofounder-core';
  *
  * export default defineConfig({
  *   providers: {
@@ -36,9 +36,9 @@ export function defineConfig(config: CoFounderConfig): CoFounderConfig {
  * Load configuration from file or environment
  */
 export async function loadConfig(): Promise<CoFounderConfig> {
-  // Try to load from cofounder.config.ts
+  // Try to load from aicofounder.config.ts
   try {
-    const config = await import(process.cwd() + '/cofounder.config');
+    const config = await import(process.cwd() + '/aicofounder.config');
     return config.default || config;
   } catch {
     // Fall back to environment variables

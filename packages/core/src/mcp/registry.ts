@@ -1,10 +1,10 @@
 /**
- * @aicofounder/mcp/registry
+ * @waymakerai/aicofounder-mcp/registry
  * MCP Registry for discovering and managing MCP servers
  *
  * @example
  * ```typescript
- * import { MCPRegistry, officialServers } from '@aicofounder/core';
+ * import { MCPRegistry, officialServers } from '@waymakerai/aicofounder-core';
  *
  * const registry = new MCPRegistry();
  *

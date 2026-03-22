@@ -9,7 +9,7 @@
     "dev": "npx tsx watch index.ts"
   },
   "dependencies": {
-    "@aicofounder/core": "^2.0.0"
+    "@waymakerai/aicofounder-core": "^2.0.0"
   },
   "devDependencies": {
     "tsx": "^4.7.0",

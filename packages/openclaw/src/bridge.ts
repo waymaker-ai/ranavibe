@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// @aicofounder/openclaw - Guard Bridge
+// @waymakerai/aicofounder-openclaw - Guard Bridge
 // ---------------------------------------------------------------------------
 // Standalone bridge that guards any OpenClaw agent's I/O without requiring
 // the OpenClaw skill system. Can be used as middleware for webhook servers
@@ -56,7 +56,7 @@ const DEFAULT_BRIDGE_CONFIG: Required<BridgeConfig> = {
  *
  * @example
  * ```typescript
- * import { OpenClawBridge } from '@aicofounder/openclaw';
+ * import { OpenClawBridge } from '@waymakerai/aicofounder-openclaw';
  *
  * const bridge = new OpenClawBridge({
  *   guardOptions: { pii: 'redact', compliance: ['hipaa'] },

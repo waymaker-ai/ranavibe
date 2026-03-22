@@ -1,5 +1,5 @@
 /**
- * @aicofounder/marketplace — Community policy sharing infrastructure.
+ * @waymakerai/aicofounder-marketplace — Community policy sharing infrastructure.
  *
  * Search, browse, import, and publish CoFounder policy packages.
  */

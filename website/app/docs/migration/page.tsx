@@ -23,7 +23,7 @@ const response = await chat.invoke([
 ]);
 
 console.log(response.content);`,
-        after: `import { Agent } from '@aicofounder/core';
+        after: `import { Agent } from '@waymakerai/aicofounder-core';
 
 const agent = new Agent({
   model: 'gpt-4',
@@ -50,14 +50,14 @@ const result = await chain.call({
   language: 'Spanish',
   text: 'Hello world'
 });`,
-        after: `import { translate } from '@aicofounder/helpers';
+        after: `import { translate } from '@waymakerai/aicofounder-helpers';
 
 const result = await translate('Hello world', {
   to: 'Spanish'
 });
 
 // Or with PromptManager for complex prompts
-import { PromptManager } from '@aicofounder/prompts';
+import { PromptManager } from '@waymakerai/aicofounder-prompts';
 
 const pm = new PromptManager({ workspace: 'app' });
 await pm.register('translate', {
@@ -85,7 +85,7 @@ const chain = RetrievalQAChain.fromLLM(chat, vectorStore.asRetriever());
 const response = await chain.call({
   query: 'What is the refund policy?'
 });`,
-        after: `import { RAGPresets } from '@aicofounder/rag';
+        after: `import { RAGPresets } from '@waymakerai/aicofounder-rag';
 
 const pipeline = RAGPresets.balanced();
 
@@ -120,7 +120,7 @@ const result = await streamText({
 for await (const chunk of result.textStream) {
   process.stdout.write(chunk);
 }`,
-        after: `import { Agent } from '@aicofounder/core';
+        after: `import { Agent } from '@waymakerai/aicofounder-core';
 
 const agent = new Agent({ model: 'gpt-4' });
 
@@ -129,7 +129,7 @@ for await (const chunk of agent.stream('Hello!')) {
 }
 
 // Or with React hook
-import { useChat } from '@aicofounder/react';
+import { useChat } from '@waymakerai/aicofounder-react';
 
 function Chat() {
   const { messages, input, send } = useChat();
@@ -156,7 +156,7 @@ const result = await streamText({
   },
   messages: [{ role: 'user', content: 'Weather in NYC?' }]
 });`,
-        after: `import { Agent, Tool } from '@aicofounder/core';
+        after: `import { Agent, Tool } from '@waymakerai/aicofounder-core';
 
 const weatherTool = new Tool({
   name: 'weather',
@@ -196,7 +196,7 @@ const completion = await openai.chat.completions.create({
 });
 
 console.log(completion.choices[0].message.content);`,
-        after: `import { Agent } from '@aicofounder/core';
+        after: `import { Agent } from '@waymakerai/aicofounder-core';
 
 const agent = new Agent({
   model: 'gpt-4',
@@ -223,7 +223,7 @@ console.log(result);
 for await (const chunk of stream) {
   process.stdout.write(chunk.choices[0]?.delta?.content || '');
 }`,
-        after: `import { Agent } from '@aicofounder/core';
+        after: `import { Agent } from '@waymakerai/aicofounder-core';
 
 const agent = new Agent({ model: 'gpt-4' });
 
@@ -258,7 +258,7 @@ if (completion.choices[0].message.function_call) {
   const weather = await getWeather(args.city);
   // Need to send another request with the result...
 }`,
-        after: `import { Agent, Tool } from '@aicofounder/core';
+        after: `import { Agent, Tool } from '@waymakerai/aicofounder-core';
 
 const agent = new Agent({
   model: 'gpt-4',
@@ -285,14 +285,14 @@ const result = await agent.run('Weather in NYC?');
 ];
 
 const benefits = [
-  { feature: 'Automatic retries & fallbacks', cofounder: true, others: false },
-  { feature: 'Built-in cost tracking', cofounder: true, others: false },
-  { feature: 'Provider-agnostic API', cofounder: true, others: false },
-  { feature: 'Semantic testing', cofounder: true, others: false },
-  { feature: 'Memory management', cofounder: true, others: false },
-  { feature: 'Prompt versioning', cofounder: true, others: false },
-  { feature: 'RAG with citations', cofounder: true, others: false },
-  { feature: 'OpenTelemetry support', cofounder: true, others: false },
+  { feature: 'Automatic retries & fallbacks', aicofounder: true, others: false },
+  { feature: 'Built-in cost tracking', aicofounder: true, others: false },
+  { feature: 'Provider-agnostic API', aicofounder: true, others: false },
+  { feature: 'Semantic testing', aicofounder: true, others: false },
+  { feature: 'Memory management', aicofounder: true, others: false },
+  { feature: 'Prompt versioning', aicofounder: true, others: false },
+  { feature: 'RAG with citations', aicofounder: true, others: false },
+  { feature: 'OpenTelemetry support', aicofounder: true, others: false },
 ];
 
 export default function MigrationPage() {
@@ -346,7 +346,7 @@ export default function MigrationPage() {
                   <tr key={b.feature} className="border-b border-border">
                     <td className="py-3 px-4">{b.feature}</td>
                     <td className="text-center py-3 px-4">
-                      {b.cofounder ? (
+                      {b.aicofounder ? (
                         <Check className="inline h-5 w-5 text-green-500" />
                       ) : (
                         <X className="inline h-5 w-5 text-red-500" />
@@ -424,7 +424,7 @@ export default function MigrationPage() {
               <div>
                 <strong>Install CoFounder packages</strong>
                 <div className="code-block font-mono text-sm mt-2">
-                  npm install @aicofounder/core @aicofounder/helpers @aicofounder/prompts @aicofounder/rag
+                  npm install @waymakerai/aicofounder-core @waymakerai/aicofounder-helpers @waymakerai/aicofounder-prompts @waymakerai/aicofounder-rag
                 </div>
               </div>
             </li>

@@ -97,7 +97,7 @@ export interface DocsAnswer {
  */
 export interface DocsPluginConfig {
   /** CoFounder client instance */
-  cofounder: CoFounderClient;
+  aicofounder: CoFounderClient;
 
   /** Documentation sources to ingest */
   sources?: DocumentSource[];
@@ -262,7 +262,7 @@ function extractSection(content: string, offset: number): string | undefined {
 class SimpleEmbeddingProvider implements EmbeddingProvider {
   readonly dimensions: number = 384; // Small fixed size for demo
 
-  constructor(private cofounder: CoFounderClient, private model?: string) {}
+  constructor(private aicofounder: CoFounderClient, private model?: string) {}
 
   async embed(text: string): Promise<number[]> {
     // This is a simple hash-based embedding for demo purposes
@@ -312,8 +312,8 @@ class SimpleEmbeddingProvider implements EmbeddingProvider {
  *
  * @example
  * ```typescript
- * import { createCoFounder } from '@aicofounder/core';
- * import { DocsPlugin } from '@aicofounder/core/plugins/docs';
+ * import { createCoFounder } from '@waymakerai/aicofounder-core';
+ * import { DocsPlugin } from '@waymakerai/aicofounder-core/plugins/docs';
  *
  * const cofounder = createCoFounder({ ... });
  * const docs = new DocsPlugin({
@@ -356,7 +356,7 @@ export class DocsPlugin {
       enableContext: true,
       maxHistory: 5,
       ...config,
-      cofounder: config.cofounder,
+      aicofounder: config.cofounder,
       persistencePath: config.persistencePath,
       embeddingProvider: config.embeddingProvider,
     } as Required<DocsPluginConfig>;

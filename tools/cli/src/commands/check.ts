@@ -22,14 +22,14 @@ export async function checkCommand(options: CheckOptions) {
 
   const results: CheckResult[] = [];
 
-  // 1. Check if .cofounder.yml exists
-  const spinner = ora('Checking for .cofounder.yml...').start();
-  const configPath = path.join(process.cwd(), '.cofounder.yml');
+  // 1. Check if .aicofounder.yml exists
+  const spinner = ora('Checking for .aicofounder.yml...').start();
+  const configPath = path.join(process.cwd(), '.aicofounder.yml');
 
   try {
     const configContent = await fs.readFile(configPath, 'utf-8');
     const config = yaml.load(configContent) as any;
-    spinner.succeed('Found .cofounder.yml');
+    spinner.succeed('Found .aicofounder.yml');
 
     // 2. Validate configuration
     spinner.start('Validating configuration...');
@@ -102,8 +102,8 @@ export async function checkCommand(options: CheckOptions) {
 
   } catch (error: any) {
     if (error.code === 'ENOENT') {
-      spinner.fail('.cofounder.yml not found');
-      console.log(chalk.yellow('\n�  No .cofounder.yml configuration found'));
+      spinner.fail('.aicofounder.yml not found');
+      console.log(chalk.yellow('\n�  No .aicofounder.yml configuration found'));
       console.log(chalk.gray('   Run ') + chalk.cyan('aads init') + chalk.gray(' to initialize CoFounder\n'));
       process.exit(1);
     } else {

@@ -1,5 +1,5 @@
 {
-  "name": "@aicofounder/cli",
+  "name": "@waymakerai/aicofounder-cli",
   "version": "0.1.0",
   "description": "CLI tool for Rapid AI Native Architecture (CoFounder)",
   "main": "dist/index.js",

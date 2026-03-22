@@ -439,7 +439,7 @@ export class RanaBudgetExceededError extends RanaError {
   ) {
     super(
       `Budget exceeded: $${currentSpent.toFixed(4)} spent (limit: $${budgetLimit.toFixed(2)} per ${budgetPeriod}). ` +
-        `API calls are blocked. Reset budget or increase limit with cofounder config:set --budget`,
+        `API calls are blocked. Reset budget or increase limit with aicofounder config:set --budget`,
       'BUDGET_EXCEEDED',
       undefined,
       402,

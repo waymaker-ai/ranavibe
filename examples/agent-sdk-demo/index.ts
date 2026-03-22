@@ -1,5 +1,5 @@
 /**
- * @aicofounder/agent-sdk Demo
+ * @waymakerai/aicofounder-agent-sdk Demo
  *
  * Run with: npx tsx index.ts
  *
@@ -20,7 +20,7 @@ import {
   PIIInterceptor,
   InjectionInterceptor,
   AuditInterceptor,
-} from '@aicofounder/agent-sdk';
+} from '@waymakerai/aicofounder-agent-sdk';
 
 // ─── 1. Basic guarded agent ────────────────────────────────────────────────────
 
@@ -171,7 +171,7 @@ async function customPipeline() {
 
 async function main() {
   console.log('╔══════════════════════════════════════════════╗');
-  console.log('║       @aicofounder/agent-sdk Demo              ║');
+  console.log('║       @waymakerai/aicofounder-agent-sdk Demo              ║');
   console.log('╚══════════════════════════════════════════════╝\n');
 
   await basicAgent();

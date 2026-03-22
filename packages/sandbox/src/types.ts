@@ -1,5 +1,5 @@
 /**
- * @aicofounder/sandbox - Type definitions
+ * @waymakerai/aicofounder-sandbox - Type definitions
  * Lightweight Node.js agent execution sandbox
  */
 

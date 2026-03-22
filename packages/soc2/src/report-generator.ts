@@ -88,7 +88,7 @@ export function generateSOC2Report(
     overallStatus,
     exceptions,
     metadata: {
-      generator: '@aicofounder/soc2',
+      generator: '@waymakerai/aicofounder-soc2',
       format: config.exportFormat,
       auditorName: config.auditorName,
       auditorFirm: config.auditorFirm,

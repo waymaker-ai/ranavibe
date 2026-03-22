@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 const packages = [
   {
-    name: '@aicofounder/agent-sdk',
+    name: '@waymakerai/aicofounder-agent-sdk',
     icon: Cpu,
     description: 'Wrap Anthropic Agent SDK with guardrails — PII, injection, compliance, cost',
     features: ['7 Interceptors', 'HIPAA Agent', 'GDPR Agent', 'Financial Agent'],
@@ -22,19 +22,19 @@ const packages = [
     isNew: true,
   },
   {
-    name: '@aicofounder/guard',
+    name: '@waymakerai/aicofounder-guard',
     icon: Lock,
     description: 'Zero-dependency runtime guard — one import, any framework',
     features: ['Zero Deps', 'Client Proxy', 'PII/Injection', '25+ Models'],
     color: 'from-red-500 to-pink-500',
-    example: `import { createGuard } from '@aicofounder/guard';
+    example: `import { createGuard } from '@waymakerai/aicofounder-guard';
 const g = createGuard({ pii: 'redact', injection: 'block' });
 const client = g.wrap(new Anthropic());
 // All calls now guarded automatically`,
     isNew: true,
   },
   {
-    name: '@aicofounder/policies',
+    name: '@waymakerai/aicofounder-policies',
     icon: FileCheck,
     description: 'Declarative YAML policies with 9 compliance presets',
     features: ['HIPAA', 'GDPR', 'SEC', 'PCI', 'SOX', 'FERPA', 'CCPA'],
@@ -47,12 +47,12 @@ const result = engine.evaluate(text, {
     isNew: true,
   },
   {
-    name: '@aicofounder/ci',
+    name: '@waymakerai/aicofounder-ci',
     icon: GitBranch,
     description: 'GitHub Action & CLI for AI security scanning in CI/CD',
     features: ['PR Scanning', 'SARIF Output', 'Key Detection', 'Cost Estimation'],
     color: 'from-green-500 to-emerald-500',
-    example: `# .github/workflows/cofounder.yml
+    example: `# .github/workflows/aicofounder.yml
 - uses: waymaker-ai/aicofounder-ci@v1
   with:
     fail-on: 'high'
@@ -61,7 +61,7 @@ const result = engine.evaluate(text, {
     isNew: true,
   },
   {
-    name: '@aicofounder/dashboard',
+    name: '@waymakerai/aicofounder-dashboard',
     icon: Activity,
     description: 'AI observability — cost tracking, security alerts, compliance metrics',
     features: ['Real-time Metrics', 'Anomaly Detection', 'Prometheus Export', 'HTTP API'],
@@ -74,7 +74,7 @@ await dashboard.serve({ port: 3456 });`,
     isNew: true,
   },
   {
-    name: '@aicofounder/mcp-server',
+    name: '@waymakerai/aicofounder-mcp-server',
     icon: Eye,
     description: '15+ MCP tools for Claude Desktop, Code, and Cursor',
     features: ['PII Scan', 'Injection Detect', 'Cost Estimate', 'Code Safety'],
@@ -82,13 +82,13 @@ await dashboard.serve({ port: 3456 });`,
     example: `// In Claude Desktop settings:
 { "mcpServers": { "cofounder": {
   "command": "npx",
-  "args": ["@aicofounder/mcp-server"]
+  "args": ["@waymakerai/aicofounder-mcp-server"]
 }}}
 // Now use cofounder_scan_pii, cofounder_detect_injection...`,
     isNew: true,
   },
   {
-    name: '@aicofounder/compliance',
+    name: '@waymakerai/aicofounder-compliance',
     icon: Shield,
     description: 'Automatic HIPAA, SEC, GDPR, CCPA compliance enforcement',
     features: ['PII Detection', 'Auto Redaction', 'Audit Trail', 'Disclaimers'],
@@ -100,7 +100,7 @@ await dashboard.serve({ port: 3456 });`,
 const result = await enforcer.enforce(request);`,
   },
   {
-    name: '@aicofounder/guidelines',
+    name: '@waymakerai/aicofounder-guidelines',
     icon: Scale,
     description: 'Dynamic behavioral control with context-aware rules',
     features: ['Priority Rules', 'Analytics', 'Violations', '8+ Presets'],
@@ -112,7 +112,7 @@ await manager.addGuideline(
 const matched = await manager.match(context);`,
   },
   {
-    name: '@aicofounder/context-optimizer',
+    name: '@waymakerai/aicofounder-context-optimizer',
     icon: Layers,
     description: 'Handle 400K+ token contexts with 70% cost savings',
     features: ['400K Tokens', '70% Savings', 'Smart Chunking', 'Caching'],

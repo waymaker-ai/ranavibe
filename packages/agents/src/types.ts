@@ -1,10 +1,10 @@
 /**
- * @aicofounder/agents - Core Types
+ * @waymakerai/aicofounder-agents - Core Types
  * Agent Development Kit (ADK) for CoFounder Framework
  */
 
 // Re-export CoFounderClient type for convenience
-export type { CoFounderClient, RanaChatRequest, RanaChatResponse } from '@aicofounder/core';
+export type { CoFounderClient, RanaChatRequest, RanaChatResponse } from '@waymakerai/aicofounder-core';
 
 /**
  * User identity for authentication and authorization
@@ -186,7 +186,7 @@ export interface AgentUsage {
  */
 export interface AgentContext {
   /** CoFounder client for LLM calls */
-  cofounder: any; // CoFounderClient - using any to avoid circular deps
+  aicofounder: any; // CoFounderClient - using any to avoid circular deps
   /** Optional RAG client */
   rag?: any; // RAGClient
   /** Available tools */

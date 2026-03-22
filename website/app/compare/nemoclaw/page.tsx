@@ -56,19 +56,19 @@ export default function NemoClawComparePage() {
               </div>
               <div className="text-center text-gray-500">&darr;</div>
               <div className="p-3 rounded bg-blue-800/20 border border-blue-700/50">
-                <strong>@aicofounder/agent-sdk</strong> — 7 interceptors, compliance factories
+                <strong>@waymakerai/aicofounder-agent-sdk</strong> — 7 interceptors, compliance factories
               </div>
               <div className="text-center text-gray-500">&darr;</div>
               <div className="p-3 rounded bg-blue-800/20 border border-blue-700/50">
-                <strong>@aicofounder/guard</strong> — zero-dep PII, injection, cost, rate-limit
+                <strong>@waymakerai/aicofounder-guard</strong> — zero-dep PII, injection, cost, rate-limit
               </div>
               <div className="text-center text-gray-500">&darr;</div>
               <div className="p-3 rounded bg-blue-800/20 border border-blue-700/50">
-                <strong>@aicofounder/policies</strong> — 9 compliance presets (HIPAA, GDPR, SEC...)
+                <strong>@waymakerai/aicofounder-policies</strong> — 9 compliance presets (HIPAA, GDPR, SEC...)
               </div>
               <div className="text-center text-gray-500">&darr;</div>
               <div className="p-3 rounded bg-blue-800/20 border border-blue-700/50">
-                <strong>@aicofounder/dashboard</strong> — observability, alerts, Prometheus
+                <strong>@waymakerai/aicofounder-dashboard</strong> — observability, alerts, Prometheus
               </div>
               <p className="text-xs text-blue-400 mt-2">TypeScript. Any agent. Any provider. Zero deps available.</p>
             </div>
@@ -100,9 +100,9 @@ export default function NemoClawComparePage() {
           but with more features and TypeScript support:
         </p>
         <div className="rounded-xl border border-gray-800 bg-gray-900/50 p-6 mb-16">
-          <pre className="text-sm text-gray-300 overflow-x-auto"><code>{`import { createGuard } from '@aicofounder/guard';
-import { PolicyEngine } from '@aicofounder/policies';
-import { CoFounderDashboard } from '@aicofounder/dashboard';
+          <pre className="text-sm text-gray-300 overflow-x-auto"><code>{`import { createGuard } from '@waymakerai/aicofounder-guard';
+import { PolicyEngine } from '@waymakerai/aicofounder-policies';
+import { CoFounderDashboard } from '@waymakerai/aicofounder-dashboard';
 
 // 1. Create guard with compliance policies
 const policies = PolicyEngine.fromPresets(['hipaa', 'gdpr', 'safety']);

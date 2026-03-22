@@ -1,11 +1,11 @@
 /**
- * @aicofounder/generate - Natural Language Code Generation
+ * @waymakerai/aicofounder-generate - Natural Language Code Generation
  *
  * Generate production-ready code from natural language descriptions.
  *
  * @example
  * ```typescript
- * import { generate, parseIntent, createPlan } from '@aicofounder/generate';
+ * import { generate, parseIntent, createPlan } from '@waymakerai/aicofounder-generate';
  *
  * // Quick generation
  * const files = await generate('User authentication with OAuth');
@@ -463,7 +463,7 @@ export async function analyzeCodebase(cwd: string): Promise<CodebaseContext> {
  *
  * @example
  * ```typescript
- * import { FileIntegrator } from '@aicofounder/generate';
+ * import { FileIntegrator } from '@waymakerai/aicofounder-generate';
  *
  * const integrator = new FileIntegrator();
  * const result = await integrator.integrate(files, context);

@@ -16,7 +16,7 @@ import { getAllTemplates } from '../templates';
 import type { GeneratedFile, ParsedIntent, ImplementationPlan } from '../types';
 
 // ============================================================================
-// CLI - cofounder generate command
+// CLI - aicofounder generate command
 // ============================================================================
 
 const program = new Command();

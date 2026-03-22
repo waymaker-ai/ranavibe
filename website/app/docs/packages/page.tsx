@@ -6,10 +6,10 @@ import { ArrowLeft, Sparkles, Brain, Search, Shield, Scale, Layers } from 'lucid
 
 const packages = [
   {
-    name: '@aicofounder/compliance',
+    name: '@waymakerai/aicofounder-compliance',
     icon: Shield,
     description: 'Automatic HIPAA, SEC, GDPR, CCPA compliance enforcement',
-    npm: 'npm install @aicofounder/compliance',
+    npm: 'npm install @waymakerai/aicofounder-compliance',
     isNew: true,
     functions: [
       { name: 'ComplianceEnforcer', desc: 'Main enforcement engine' },
@@ -21,7 +21,7 @@ const packages = [
       { name: 'getViolations()', desc: 'Get violation history' },
       { name: 'detectPII()', desc: 'Detect PII in content' },
     ],
-    example: `import { ComplianceEnforcer, PresetRules } from '@aicofounder/compliance';
+    example: `import { ComplianceEnforcer, PresetRules } from '@waymakerai/aicofounder-compliance';
 
 const enforcer = new ComplianceEnforcer([
   PresetRules.hipaa(),
@@ -38,10 +38,10 @@ if (result.action === 'block') {
 }`,
   },
   {
-    name: '@aicofounder/guidelines',
+    name: '@waymakerai/aicofounder-guidelines',
     icon: Scale,
     description: 'Dynamic behavioral control with context-aware rules',
-    npm: 'npm install @aicofounder/guidelines',
+    npm: 'npm install @waymakerai/aicofounder-guidelines',
     isNew: true,
     functions: [
       { name: 'GuidelineManager', desc: 'Main manager class' },
@@ -52,7 +52,7 @@ if (result.action === 'block') {
       { name: 'validate()', desc: 'Validate responses' },
       { name: 'getAnalytics()', desc: 'View guideline analytics' },
     ],
-    example: `import { GuidelineManager, PresetGuidelines, Conditions } from '@aicofounder/guidelines';
+    example: `import { GuidelineManager, PresetGuidelines, Conditions } from '@waymakerai/aicofounder-guidelines';
 
 const manager = new GuidelineManager();
 
@@ -68,10 +68,10 @@ const matched = await manager.match({
 console.log(matched); // Returns matching guidelines`,
   },
   {
-    name: '@aicofounder/context-optimizer',
+    name: '@waymakerai/aicofounder-context-optimizer',
     icon: Layers,
     description: 'Handle 400K+ token contexts with 70% cost savings',
-    npm: 'npm install @aicofounder/context-optimizer',
+    npm: 'npm install @waymakerai/aicofounder-context-optimizer',
     isNew: true,
     functions: [
       { name: 'ContextOptimizer', desc: 'Main optimizer class' },
@@ -81,7 +81,7 @@ console.log(matched); // Returns matching guidelines`,
       { name: 'scoreQuality()', desc: 'Content quality scoring' },
       { name: 'getCacheStats()', desc: 'Cache statistics' },
     ],
-    example: `import { ContextOptimizer } from '@aicofounder/context-optimizer';
+    example: `import { ContextOptimizer } from '@waymakerai/aicofounder-context-optimizer';
 
 const optimizer = new ContextOptimizer({
   strategy: 'hybrid',
@@ -97,10 +97,10 @@ console.log(result.tokens); // ~400K tokens (from 2.5M)
 console.log(result.costSavings); // ~70%`,
   },
   {
-    name: '@aicofounder/helpers',
+    name: '@waymakerai/aicofounder-helpers',
     icon: Sparkles,
     description: '10 one-line AI functions for common tasks',
-    npm: 'npm install @aicofounder/helpers',
+    npm: 'npm install @waymakerai/aicofounder-helpers',
     functions: [
       { name: 'summarize()', desc: 'Summarize text with customizable style' },
       { name: 'translate()', desc: 'Translate to any language' },
@@ -113,17 +113,17 @@ console.log(result.costSavings); // ~70%`,
       { name: 'compare()', desc: 'Compare texts' },
       { name: 'moderate()', desc: 'Content moderation' },
     ],
-    example: `import { summarize, translate, classify } from '@aicofounder/helpers';
+    example: `import { summarize, translate, classify } from '@waymakerai/aicofounder-helpers';
 
 const summary = await summarize(document, { style: 'brief' });
 const spanish = await translate(text, { to: 'es' });
 const category = await classify(email, ['spam', 'ham']);`,
   },
   {
-    name: '@aicofounder/prompts',
+    name: '@waymakerai/aicofounder-prompts',
     icon: Brain,
     description: 'Enterprise prompt management with versioning and A/B testing',
-    npm: 'npm install @aicofounder/prompts',
+    npm: 'npm install @waymakerai/aicofounder-prompts',
     functions: [
       { name: 'PromptManager', desc: 'Main manager class' },
       { name: 'register()', desc: 'Register prompts with versioning' },
@@ -132,7 +132,7 @@ const category = await classify(email, ['spam', 'ham']);`,
       { name: 'getAnalytics()', desc: 'View prompt analytics' },
       { name: 'usePrompt()', desc: 'React hook for prompts' },
     ],
-    example: `import { PromptManager } from '@aicofounder/prompts';
+    example: `import { PromptManager } from '@waymakerai/aicofounder-prompts';
 
 const pm = new PromptManager({ workspace: 'app' });
 
@@ -146,10 +146,10 @@ const result = await pm.execute('greeting', {
 });`,
   },
   {
-    name: '@aicofounder/rag',
+    name: '@waymakerai/aicofounder-rag',
     icon: Search,
     description: 'Advanced RAG with hybrid retrieval and re-ranking',
-    npm: 'npm install @aicofounder/rag',
+    npm: 'npm install @waymakerai/aicofounder-rag',
     functions: [
       { name: 'RAGPresets', desc: 'Pre-configured pipelines' },
       { name: 'createRAGPipeline()', desc: 'Custom pipeline builder' },
@@ -158,7 +158,7 @@ const result = await pm.execute('greeting', {
       { name: 'CrossEncoderReranker', desc: 'Re-ranking results' },
       { name: 'useRAG()', desc: 'React hook for RAG' },
     ],
-    example: `import { RAGPresets } from '@aicofounder/rag';
+    example: `import { RAGPresets } from '@waymakerai/aicofounder-rag';
 
 const pipeline = RAGPresets.balanced();
 

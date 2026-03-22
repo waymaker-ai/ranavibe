@@ -6,7 +6,7 @@
  *
  * @example
  * ```typescript
- * import { getModelForEnv, createEnvAwareCoFounder } from '@aicofounder/core';
+ * import { getModelForEnv, createEnvAwareCoFounder } from '@waymakerai/aicofounder-core';
  *
  * // Get model based on environment
  * const model = getModelForEnv('chat');

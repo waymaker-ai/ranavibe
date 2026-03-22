@@ -1,5 +1,5 @@
 /**
- * @aicofounder/agents - RAG QA Agent
+ * @waymakerai/aicofounder-agents - RAG QA Agent
  * Answers questions using knowledge base retrieval
  */
 

@@ -332,7 +332,7 @@ async function deployWithDocker(options: DeployOptions) {
 
   if (!config.projectId) {
     console.log(chalk.gray('\nTo push to a registry, configure with:'));
-    console.log(chalk.cyan('  cofounder docker:push\n'));
+    console.log(chalk.cyan('  aicofounder docker:push\n'));
     return;
   }
 
@@ -450,7 +450,7 @@ export async function deployStatus() {
 
   if (!fs.existsSync(historyPath)) {
     console.log(chalk.gray('No deployment history found.'));
-    console.log(chalk.gray('Run `cofounder deploy` to deploy your app.\n'));
+    console.log(chalk.gray('Run `aicofounder deploy` to deploy your app.\n'));
     return;
   }
 

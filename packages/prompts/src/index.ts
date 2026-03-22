@@ -1,10 +1,10 @@
 /**
- * @aicofounder/prompts - Enterprise Prompt Management
+ * @waymakerai/aicofounder-prompts - Enterprise Prompt Management
  * Versioning, A/B testing, and analytics for LLM prompts
  *
  * @example
  * ```typescript
- * import { PromptManager, usePrompt } from '@aicofounder/prompts';
+ * import { PromptManager, usePrompt } from '@waymakerai/aicofounder-prompts';
  *
  * const pm = new PromptManager({ workspace: 'my-app' });
  *

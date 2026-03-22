@@ -1,5 +1,5 @@
 /**
- * @aicofounder/compliance - Compliance rule factory and presets
+ * @waymakerai/aicofounder-compliance - Compliance rule factory and presets
  */
 
 import type {

@@ -1,5 +1,5 @@
 {
-  "name": "@aicofounder/ui-cli",
+  "name": "@waymakerai/aicofounder-ui-cli",
   "version": "0.1.0",
   "description": "CLI tool for installing CoFounder UI components",
   "bin": {

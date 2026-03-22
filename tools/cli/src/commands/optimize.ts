@@ -115,7 +115,7 @@ export async function optimizeCommand(options: { all?: boolean; dry?: boolean } 
 }
 
 async function enableCaching(): Promise<boolean> {
-  const configPath = 'cofounder.config.ts';
+  const configPath = 'aicofounder.config.ts';
 
   if (!fs.existsSync(configPath)) {
     return false;

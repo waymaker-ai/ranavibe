@@ -1,4 +1,4 @@
-import { defineConfig } from '@aicofounder/core';
+import { defineConfig } from '@waymakerai/aicofounder-core';
 
 export default defineConfig({
   // Provider API keys

@@ -4,7 +4,7 @@
  *
  * @example
  * ```typescript
- * import { createModelRouter, route } from '@aicofounder/core';
+ * import { createModelRouter, route } from '@waymakerai/aicofounder-core';
  *
  * // Create router with custom config
  * const router = createModelRouter({

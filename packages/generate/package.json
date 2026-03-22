@@ -1,5 +1,5 @@
 {
-  "name": "@aicofounder/generate",
+  "name": "@waymakerai/aicofounder-generate",
   "version": "1.0.0",
   "description": "Natural language code generation for CoFounder Framework",
   "main": "dist/index.js",
@@ -39,8 +39,8 @@
   "author": "Waymaker",
   "license": "MIT",
   "dependencies": {
-    "@aicofounder/core": "workspace:*",
-    "@aicofounder/helpers": "workspace:*",
+    "@waymakerai/aicofounder-core": "workspace:*",
+    "@waymakerai/aicofounder-helpers": "workspace:*",
     "chalk": "^5.3.0",
     "commander": "^12.0.0",
     "glob": "^10.3.10",

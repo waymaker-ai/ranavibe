@@ -17,8 +17,8 @@ export interface RanaProviderProps {
  *
  * @example
  * ```tsx
- * import { createCoFounder } from '@aicofounder/core';
- * import { RanaProvider } from '@aicofounder/react';
+ * import { createCoFounder } from '@waymakerai/aicofounder-core';
+ * import { RanaProvider } from '@waymakerai/aicofounder-react';
  *
  * const cofounder = createCoFounder({
  *   providers: {
@@ -46,7 +46,7 @@ export function RanaProvider({ client, children }: RanaProviderProps) {
  * ```tsx
  * function MyComponent() {
  *   const cofounder = useCoFounder();
- *   // Use cofounder client
+ *   // Use aicofounder client
  * }
  * ```
  */

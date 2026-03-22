@@ -1,5 +1,5 @@
 {
-  "name": "@aicofounder/agents",
+  "name": "@waymakerai/aicofounder-agents",
   "version": "1.0.0",
   "description": "Agent Development Kit (ADK) for CoFounder Framework",
   "main": "dist/index.js",
@@ -39,8 +39,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@aicofounder/core": "workspace:*",
-    "@aicofounder/rag": "workspace:*",
+    "@waymakerai/aicofounder-core": "workspace:*",
+    "@waymakerai/aicofounder-rag": "workspace:*",
     "zod": "^3.22.4",
     "js-yaml": "^4.1.0"
   },

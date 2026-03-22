@@ -1,5 +1,5 @@
 {
-  "name": "@aicofounder/adapters",
+  "name": "@waymakerai/aicofounder-adapters",
   "version": "1.0.0",
   "description": "CoFounder adapters package",
   "main": "dist/index.js",

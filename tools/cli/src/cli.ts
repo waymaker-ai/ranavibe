@@ -29,7 +29,7 @@ program
   .command('init')
   .description('Initialize CoFounder in your project')
   .option('-t, --template <type>', 'Template to use (default, react, nextjs, vue)', 'default')
-  .option('-f, --force', 'Overwrite existing .cofounder.yml')
+  .option('-f, --force', 'Overwrite existing .aicofounder.yml')
   .action(initCommand);
 
 // ============================================================================
@@ -197,7 +197,7 @@ program
 // Validate command
 program
   .command('validate')
-  .description('Validate .cofounder.yml configuration')
+  .description('Validate .aicofounder.yml configuration')
   .action(async () => {
     const { validateConfig } = await import('./commands/validate.js');
     await validateConfig();
@@ -1547,12 +1547,12 @@ program
 program.on('--help', () => {
   console.log(banner);
   console.log(chalk.gray('\nExamples:'));
-  console.log(chalk.gray('  $ cofounder init                  # Initialize CoFounder in current project'));
-  console.log(chalk.gray('  $ cofounder check                 # Check compliance'));
-  console.log(chalk.gray('  $ cofounder llm:compare           # Compare 9 LLM providers'));
-  console.log(chalk.gray('  $ cofounder analyze:velocity      # View development velocity metrics'));
-  console.log(chalk.gray('  $ cofounder analyze:legacy        # Analyze legacy code for modernization'));
-  console.log(chalk.gray('  $ cofounder deploy --verify       # Deploy with verification'));
+  console.log(chalk.gray('  $ aicofounder init                  # Initialize CoFounder in current project'));
+  console.log(chalk.gray('  $ aicofounder check                 # Check compliance'));
+  console.log(chalk.gray('  $ aicofounder llm:compare           # Compare 9 LLM providers'));
+  console.log(chalk.gray('  $ aicofounder analyze:velocity      # View development velocity metrics'));
+  console.log(chalk.gray('  $ aicofounder analyze:legacy        # Analyze legacy code for modernization'));
+  console.log(chalk.gray('  $ aicofounder deploy --verify       # Deploy with verification'));
   console.log(chalk.gray('\nDocumentation: https://cofounder.dev'));
   console.log(chalk.gray('GitHub: https://github.com/waymaker/cofounder\n'));
 });

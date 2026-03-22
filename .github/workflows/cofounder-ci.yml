@@ -1,0 +1,138 @@
+# CoFounder CI - Reusable Workflow
+#
+# Use this workflow in other repos:
+#
+#   jobs:
+#     cofounder:
+#       uses: waymaker-ai/cofounder/.github/workflows/cofounder-ci.yml@main
+#       with:
+#         scan: 'pii,injection,secrets'
+#         fail-on: 'high'
+#       secrets:
+#         github-token: ${{ secrets.GITHUB_TOKEN }}
+#
+
+name: CoFounder CI
+
+on:
+  workflow_call:
+    inputs:
+      scan:
+        description: 'Comma-separated scan types: pii,injection,secrets,models,cost,safety,all'
+        type: string
+        required: false
+        default: 'all'
+      fail-on:
+        description: 'Minimum severity to fail: low, medium, high, critical'
+        type: string
+        required: false
+        default: 'high'
+      format:
+        description: 'Report format: text, sarif, json'
+        type: string
+        required: false
+        default: 'text'
+      config:
+        description: 'Path to .cofounder.yml'
+        type: string
+        required: false
+        default: '.cofounder.yml'
+      scan-path:
+        description: 'Path to scan'
+        type: string
+        required: false
+        default: '.'
+      comment-on-pr:
+        description: 'Post results as PR comment'
+        type: boolean
+        required: false
+        default: true
+      upload-sarif:
+        description: 'Upload SARIF to GitHub Security tab'
+        type: boolean
+        required: false
+        default: true
+      node-version:
+        description: 'Node.js version to use'
+        type: string
+        required: false
+        default: '20'
+      approved-models:
+        description: 'Comma-separated approved model identifiers'
+        type: string
+        required: false
+        default: ''
+      budget-limit:
+        description: 'Monthly budget limit in USD'
+        type: string
+        required: false
+        default: ''
+    secrets:
+      github-token:
+        description: 'GitHub token for PR comments and SARIF upload'
+        required: false
+    outputs:
+      findings:
+        description: 'Total number of findings'
+        value: ${{ jobs.scan.outputs.findings }}
+      passed:
+        description: 'Whether the scan passed'
+        value: ${{ jobs.scan.outputs.passed }}
+      critical:
+        description: 'Number of critical findings'
+        value: ${{ jobs.scan.outputs.critical }}
+      high:
+        description: 'Number of high findings'
+        value: ${{ jobs.scan.outputs.high }}
+      sarif-file:
+        description: 'Path to SARIF file'
+        value: ${{ jobs.scan.outputs.sarif-file }}
+
+permissions:
+  contents: read
+  pull-requests: write
+  security-events: write
+  checks: write
+
+jobs:
+  scan:
+    name: CoFounder AI Guardrails
+    runs-on: ubuntu-latest
+    outputs:
+      findings: ${{ steps.action.outputs.findings }}
+      passed: ${{ steps.action.outputs.passed }}
+      critical: ${{ steps.action.outputs.critical }}
+      high: ${{ steps.action.outputs.high }}
+      sarif-file: ${{ steps.action.outputs.sarif-file }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run CoFounder CI
+        id: action
+        uses: waymaker-ai/cofounder@main
+        with:
+          scan: ${{ inputs.scan }}
+          fail-on: ${{ inputs.fail-on }}
+          format: ${{ inputs.format }}
+          config: ${{ inputs.config }}
+          scan-path: ${{ inputs.scan-path }}
+          github-token: ${{ secrets.github-token || github.token }}
+          comment-on-pr: ${{ inputs.comment-on-pr }}
+          upload-sarif: ${{ inputs.upload-sarif }}
+          approved-models: ${{ inputs.approved-models }}
+          budget-limit: ${{ inputs.budget-limit }}
+
+      - name: Upload scan report artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cofounder-scan-report
+          path: |
+            ${{ steps.action.outputs.report }}
+            ${{ steps.action.outputs.sarif-file }}
+          retention-days: 30
+          if-no-files-found: ignore

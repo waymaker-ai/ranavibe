@@ -14,13 +14,13 @@ const faqs = [
         answer: `Install all packages at once:
 
 \`\`\`bash
-npm install @aicofounder/core @aicofounder/helpers @aicofounder/prompts @aicofounder/rag
+npm install @waymakerai/aicofounder-core @waymakerai/aicofounder-helpers @waymakerai/aicofounder-prompts @waymakerai/aicofounder-rag
 \`\`\`
 
 Or install the CLI globally:
 
 \`\`\`bash
-npm install -g @aicofounder/cli
+npm install -g @waymakerai/aicofounder-cli
 \`\`\``,
       },
       {
@@ -93,7 +93,7 @@ For production, use your platform's environment variable system (Vercel, Railway
 
 \`\`\`bash
 # Validate your setup
-npx cofounder doctor
+npx aicofounder doctor
 \`\`\``,
       },
       {
@@ -109,7 +109,7 @@ npx cofounder doctor
 Or use environment-specific configuration:
 
 \`\`\`typescript
-import { configure } from '@aicofounder/core';
+import { configure } from '@waymakerai/aicofounder-core';
 
 configure({
   providers: {
@@ -162,7 +162,7 @@ const agent = new Agent({
 For additional control:
 
 \`\`\`typescript
-import { RateLimiter } from '@aicofounder/core';
+import { RateLimiter } from '@waymakerai/aicofounder-core';
 
 const limiter = new RateLimiter({
   requests: { max: 100, window: '1m' }
@@ -211,7 +211,7 @@ const compressor = new MemoryCompressor({
         answer: `CoFounder tracks costs automatically:
 
 \`\`\`typescript
-import { CostTracker } from '@aicofounder/core';
+import { CostTracker } from '@waymakerai/aicofounder-core';
 
 const tracker = new CostTracker();
 
@@ -225,7 +225,7 @@ console.log(result.cost);  // $0.0023
 Or use the dashboard:
 
 \`\`\`bash
-npx cofounder dashboard
+npx aicofounder dashboard
 \`\`\``,
       },
       {
@@ -233,7 +233,7 @@ npx cofounder dashboard
         answer: `Set hard budget limits to prevent overspending:
 
 \`\`\`typescript
-import { BudgetManager } from '@aicofounder/core';
+import { BudgetManager } from '@waymakerai/aicofounder-core';
 
 const budget = new BudgetManager();
 
@@ -256,7 +256,7 @@ await budget.setUserBudget(userId, {
 4. **Use model routing** - automatically pick cheapest suitable model
 
 \`\`\`typescript
-import { CostOptimizer } from '@aicofounder/core';
+import { CostOptimizer } from '@waymakerai/aicofounder-core';
 
 const optimizer = new CostOptimizer({
   strategies: ['caching', 'model-routing', 'prompt-compression']
@@ -299,13 +299,13 @@ Solutions:
 1. **Use a model with larger context** (e.g., claude-3 has 200k tokens)
 2. **Compress your prompt**:
 \`\`\`typescript
-import { compressPrompt } from '@aicofounder/helpers';
+import { compressPrompt } from '@waymakerai/aicofounder-helpers';
 const compressed = await compressPrompt(longPrompt);
 \`\`\`
 
 3. **Chunk your input**:
 \`\`\`typescript
-import { SemanticChunker } from '@aicofounder/rag';
+import { SemanticChunker } from '@waymakerai/aicofounder-rag';
 const chunks = await chunker.chunk(longDocument);
 \`\`\``,
       },
@@ -314,7 +314,7 @@ const chunks = await chunker.chunk(longDocument);
         answer: `The AI provider is temporarily down. CoFounder can auto-fallback:
 
 \`\`\`typescript
-import { FallbackChain } from '@aicofounder/core';
+import { FallbackChain } from '@waymakerai/aicofounder-core';
 
 const chain = new FallbackChain({
   providers: [
@@ -334,7 +334,7 @@ const result = await chain.chat({ messages });
 Use structured output to ensure correct format:
 
 \`\`\`typescript
-import { extract } from '@aicofounder/helpers';
+import { extract } from '@waymakerai/aicofounder-helpers';
 
 const data = await extract(text, {
   name: 'string',
@@ -387,7 +387,7 @@ export default function TroubleshootingPage() {
             Check the CLI doctor command or join our Discord.
           </p>
           <div className="mt-4 code-block font-mono text-sm">
-            npx cofounder doctor
+            npx aicofounder doctor
           </div>
         </motion.div>
 
@@ -406,7 +406,7 @@ export default function TroubleshootingPage() {
                 Run the doctor command to diagnose common issues:
               </p>
               <div className="code-block font-mono text-sm">
-                npx cofounder doctor
+                npx aicofounder doctor
               </div>
               <p className="text-foreground-secondary mt-3 text-sm">
                 This checks: API keys, dependencies, configuration, and connectivity.

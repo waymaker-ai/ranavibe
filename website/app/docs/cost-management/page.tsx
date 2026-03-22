@@ -9,7 +9,7 @@ const features = [
     icon: DollarSign,
     title: 'Cost Tracking',
     description: 'Real-time tracking of all AI API costs',
-    code: `import { CostTracker } from '@aicofounder/core';
+    code: `import { CostTracker } from '@waymakerai/aicofounder-core';
 
 const tracker = new CostTracker({
   storage: 'postgresql',
@@ -41,7 +41,7 @@ const invoice = await tracker.generateInvoice({
     icon: Wallet,
     title: 'Budget Management',
     description: 'Set and enforce spending limits',
-    code: `import { BudgetManager } from '@aicofounder/core';
+    code: `import { BudgetManager } from '@waymakerai/aicofounder-core';
 
 const budget = new BudgetManager({
   storage: 'redis',
@@ -80,7 +80,7 @@ budget.on('threshold', (userId, percentage, budget) => {
     icon: TrendingDown,
     title: 'Cost Optimization',
     description: 'Automatic cost reduction strategies',
-    code: `import { CostOptimizer } from '@aicofounder/core';
+    code: `import { CostOptimizer } from '@waymakerai/aicofounder-core';
 
 const optimizer = new CostOptimizer({
   strategies: ['caching', 'model-routing', 'prompt-compression'],
@@ -109,7 +109,7 @@ const recommendations = await optimizer.analyze();
     icon: Calculator,
     title: 'Cost Estimation',
     description: 'Predict costs before making requests',
-    code: `import { CostEstimator } from '@aicofounder/core';
+    code: `import { CostEstimator } from '@waymakerai/aicofounder-core';
 
 const estimator = new CostEstimator();
 
@@ -146,7 +146,7 @@ const comparison = estimator.compareModels(userPrompt, [
     icon: BarChart3,
     title: 'Usage Analytics',
     description: 'Detailed analytics and reporting',
-    code: `import { UsageAnalytics } from '@aicofounder/core';
+    code: `import { UsageAnalytics } from '@waymakerai/aicofounder-core';
 
 const analytics = new UsageAnalytics({
   storage: 'postgresql',
@@ -189,7 +189,7 @@ console.log(dashboard.topModels);       // [{ model: 'gpt-4', cost: $800 }]`,
     icon: Bell,
     title: 'Cost Alerts',
     description: 'Proactive alerting for cost anomalies',
-    code: `import { CostAlerts } from '@aicofounder/core';
+    code: `import { CostAlerts } from '@waymakerai/aicofounder-core';
 
 const alerts = new CostAlerts({
   channels: [
@@ -259,7 +259,7 @@ export default function CostManagementPage() {
             cost estimation, analytics, and automated optimization.
           </p>
           <div className="mt-4 code-block font-mono text-sm">
-            npm install @aicofounder/core
+            npm install @waymakerai/aicofounder-core
           </div>
         </motion.div>
 

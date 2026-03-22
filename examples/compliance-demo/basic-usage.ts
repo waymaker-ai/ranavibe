@@ -1,5 +1,5 @@
 /**
- * @aicofounder/compliance - Basic Usage Example
+ * @waymakerai/aicofounder-compliance - Basic Usage Example
  *
  * This example demonstrates how to use the compliance enforcer
  * to ensure AI outputs meet regulatory requirements.
@@ -10,7 +10,7 @@ import {
   PresetRules,
   detectPII,
   redactPII,
-} from '@aicofounder/compliance';
+} from '@waymakerai/aicofounder-compliance';
 
 async function main() {
   console.log('🛡️ CoFounder Compliance - Basic Usage\n');

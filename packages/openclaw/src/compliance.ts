@@ -1,7 +1,7 @@
 // ---------------------------------------------------------------------------
-// @aicofounder/openclaw - Lightweight compliance checks (zero dependencies)
+// @waymakerai/aicofounder-openclaw - Lightweight compliance checks (zero dependencies)
 // ---------------------------------------------------------------------------
-// Subset of @aicofounder/policies compliance rules, inline for zero-dep usage.
+// Subset of @waymakerai/aicofounder-policies compliance rules, inline for zero-dep usage.
 // Covers HIPAA, GDPR, CCPA, SEC, PCI, FERPA, SOX frameworks.
 // ---------------------------------------------------------------------------
 

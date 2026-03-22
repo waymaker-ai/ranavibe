@@ -9,8 +9,8 @@
     "dev": "npx tsx watch index.ts"
   },
   "dependencies": {
-    "@aicofounder/core": "file:../../packages/core",
-    "@aicofounder/rag": "file:../../packages/rag"
+    "@waymakerai/aicofounder-core": "file:../../packages/core",
+    "@waymakerai/aicofounder-rag": "file:../../packages/rag"
   },
   "devDependencies": {
     "tsx": "^4.7.0",

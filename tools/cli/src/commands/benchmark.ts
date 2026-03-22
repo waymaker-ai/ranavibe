@@ -144,7 +144,7 @@ export async function benchmarkRun(options: {
   console.log('  • ' + chalk.cyan('High volume') + ' → Groq or Together (throughput)');
   console.log('  • ' + chalk.cyan('Cached responses') + ' → Redis (instant, $0)');
 
-  console.log(chalk.green('\n  Run `cofounder llm:optimize` to enable smart routing.\n'));
+  console.log(chalk.green('\n  Run `aicofounder llm:optimize` to enable smart routing.\n'));
 }
 
 export async function benchmarkQuick() {

@@ -56,7 +56,7 @@ response = rails.generate(
 
           <div className="rounded-xl border border-blue-800/50 bg-blue-900/10 p-6">
             <h3 className="text-lg font-semibold text-blue-400 mb-4">CoFounder (TypeScript, zero deps)</h3>
-            <pre className="text-sm text-gray-300 overflow-x-auto"><code>{`import { createGuard } from '@aicofounder/guard';
+            <pre className="text-sm text-gray-300 overflow-x-auto"><code>{`import { createGuard } from '@waymakerai/aicofounder-guard';
 
 // One line — everything enabled
 const g = createGuard({
@@ -71,7 +71,7 @@ const g = createGuard({
 const client = g.wrap(new Anthropic());
 
 // Or use pre-built compliant agents
-import { createHIPAAAgent } from '@aicofounder/agent-sdk';
+import { createHIPAAAgent } from '@waymakerai/aicofounder-agent-sdk';
 const agent = createHIPAAAgent({
   model: 'claude-sonnet-4-6',
   auditPath: './hipaa-audit.log',
@@ -105,14 +105,14 @@ const agent = createHIPAAAgent({
                 ['CI/CD Integration', '✓ GitHub Action + SARIF', '✗'],
                 ['Observability Dashboard', '✓ metrics, alerts, API', '✗'],
                 ['Declarative Policies', '✓ YAML with 9 presets', '✓ Colang DSL'],
-                ['Zero Dependencies', '✓ @aicofounder/guard', '✗ heavy Python deps'],
+                ['Zero Dependencies', '✓ @waymakerai/aicofounder-guard', '✗ heavy Python deps'],
                 ['GPU Acceleration', '✗ not needed (regex-based)', '✓ NIM microservices'],
                 ['Hallucination Detection', '✓ via fact-check rails', '✓ built-in'],
                 ['Multi-provider', '✓ 9+ LLM providers', '✓ OpenAI, NVIDIA'],
-              ].map(([feature, cofounder, nemo], i) => (
+              ].map(([feature, aicofounder, nemo], i) => (
                 <tr key={i} className="border-b border-gray-800/50">
                   <td className="py-3 px-4">{feature}</td>
-                  <td className={`py-3 px-4 text-center ${(cofounder as string).startsWith('✓') ? 'text-green-400' : (cofounder as string).startsWith('✗') ? 'text-red-400' : ''}`}>{cofounder}</td>
+                  <td className={`py-3 px-4 text-center ${(aicofounder as string).startsWith('✓') ? 'text-green-400' : (aicofounder as string).startsWith('✗') ? 'text-red-400' : ''}`}>{aicofounder}</td>
                   <td className={`py-3 px-4 text-center ${(nemo as string).startsWith('✓') ? 'text-green-400' : (nemo as string).startsWith('✗') ? 'text-red-400' : ''}`}>{nemo}</td>
                 </tr>
               ))}

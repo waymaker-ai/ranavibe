@@ -3,7 +3,7 @@
  * Demonstrates intelligent routing across multiple LLM providers
  */
 
-import { ModelRouter, RoutingStrategy } from '@aicofounder/core';
+import { ModelRouter, RoutingStrategy } from '@waymakerai/aicofounder-core';
 
 async function main() {
   // Initialize router with multiple providers

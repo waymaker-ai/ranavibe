@@ -1,5 +1,5 @@
 /**
- * @aicofounder/streaming - OpenAI Adapter
+ * @waymakerai/aicofounder-streaming - OpenAI Adapter
  *
  * Parses OpenAI streaming chat completion responses and extracts text deltas.
  * Handles the choices[0].delta.content format.

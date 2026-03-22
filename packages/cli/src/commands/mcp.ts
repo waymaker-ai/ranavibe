@@ -1,6 +1,6 @@
 /**
  * MCP Server Creation commands
- * cofounder mcp create, cofounder mcp list, cofounder mcp add-tool
+ * aicofounder mcp create, aicofounder mcp list, aicofounder mcp add-tool
  */
 
 import { Command } from 'commander';

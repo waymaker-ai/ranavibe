@@ -42,11 +42,11 @@ const PROVIDERS = [
 export async function showConfig() {
   console.log(chalk.bold.cyan('\n⚙️ CoFounder Configuration\n'));
 
-  const configPath = path.join(process.cwd(), '.cofounder.yml');
+  const configPath = path.join(process.cwd(), '.aicofounder.yml');
 
   if (!fs.existsSync(configPath)) {
-    console.log(chalk.yellow('No .cofounder.yml found in current directory.'));
-    console.log(chalk.gray('Run `cofounder init` to create one.\n'));
+    console.log(chalk.yellow('No .aicofounder.yml found in current directory.'));
+    console.log(chalk.gray('Run `aicofounder init` to create one.\n'));
     return;
   }
 
@@ -54,7 +54,7 @@ export async function showConfig() {
     const content = fs.readFileSync(configPath, 'utf-8');
     const config = yaml.load(content) as Record<string, unknown>;
 
-    console.log(chalk.bold('📁 File: ') + chalk.cyan('.cofounder.yml'));
+    console.log(chalk.bold('📁 File: ') + chalk.cyan('.aicofounder.yml'));
     console.log(chalk.gray('─'.repeat(60)));
 
     // Display formatted config
@@ -62,7 +62,7 @@ export async function showConfig() {
 
     console.log();
   } catch (error) {
-    console.log(chalk.red('Failed to read .cofounder.yml:'));
+    console.log(chalk.red('Failed to read .aicofounder.yml:'));
     console.log(chalk.gray(`${error}\n`));
   }
 }
@@ -200,7 +200,7 @@ export async function configSet(options: { provider?: string; key?: string } = {
   // Show usage
   console.log(chalk.bold('Usage:\n'));
   console.log(chalk.gray('  In your code:'));
-  console.log(chalk.cyan(`    import { cofounder } from '@aicofounder/core';`));
+  console.log(chalk.cyan(`    import { cofounder } from '@waymakerai/aicofounder-core';`));
   console.log(chalk.cyan(`    const response = await cofounder.chat('Hello!');`));
   console.log();
   console.log(chalk.gray('  Or set environment variable:'));
@@ -250,7 +250,7 @@ export async function configList() {
 
   if (!hasAnyKey) {
     console.log(chalk.yellow('No API keys configured yet.\n'));
-    console.log(chalk.gray('Run `cofounder config:set` to add your first API key.\n'));
+    console.log(chalk.gray('Run `aicofounder config:set` to add your first API key.\n'));
   } else {
     console.log(chalk.gray(`Credentials stored in: ${CREDENTIALS_FILE}\n`));
   }
@@ -300,7 +300,7 @@ export async function configValidate(options: { provider?: string } = {}) {
   if (allValid) {
     console.log(chalk.green('✓ All configured keys are valid!\n'));
   } else {
-    console.log(chalk.yellow('⚠ Some keys are invalid. Run `cofounder config:set` to update them.\n'));
+    console.log(chalk.yellow('⚠ Some keys are invalid. Run `aicofounder config:set` to update them.\n'));
   }
 }
 

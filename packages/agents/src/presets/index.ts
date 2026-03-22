@@ -1,5 +1,5 @@
 /**
- * @aicofounder/agents/presets
+ * @waymakerai/aicofounder-agents/presets
  * Pre-built agent configurations for common use cases
  */
 

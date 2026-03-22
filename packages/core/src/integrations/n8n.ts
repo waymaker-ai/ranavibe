@@ -12,7 +12,7 @@
  *
  * @example
  * ```typescript
- * import { N8nIntegration } from '@aicofounder/core';
+ * import { N8nIntegration } from '@waymakerai/aicofounder-core';
  *
  * const n8n = new N8nIntegration({
  *   baseUrl: 'https://your-n8n-instance.com',

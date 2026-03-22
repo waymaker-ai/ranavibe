@@ -495,7 +495,7 @@ export function registerPromptCommands(program: Command): void {
           console.log(`   ${color(`[${p.category}]`)} ${chalk.gray(p.tags.join(', '))}`);
           console.log();
         });
-        console.log(chalk.gray('Use `cofounder prompts import-builtins` to import these templates.\n'));
+        console.log(chalk.gray('Use `aicofounder prompts import-builtins` to import these templates.\n'));
         return;
       }
 
@@ -563,7 +563,7 @@ export function registerPromptCommands(program: Command): void {
 
       if (!prompt) {
         console.error(chalk.red(`Prompt not found: ${nameOrId}`));
-        console.log(chalk.gray('\nUse `cofounder prompts list` to see available prompts.\n'));
+        console.log(chalk.gray('\nUse `aicofounder prompts list` to see available prompts.\n'));
         process.exit(1);
       }
 
@@ -947,7 +947,7 @@ Respond with [format type] containing:
 
       if (imported > 0) {
         console.log(chalk.green(`\n✅ Imported ${imported} built-in prompts\n`));
-        console.log(chalk.gray('Use `cofounder prompts list` to see them.\n'));
+        console.log(chalk.gray('Use `aicofounder prompts list` to see them.\n'));
       } else {
         console.log(chalk.yellow('\nAll built-in prompts already imported.\n'));
       }

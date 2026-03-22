@@ -15,7 +15,7 @@ Everything else (RAG, specs, flows, integrations) exists to support that.
 
 [![GitHub Stars](https://img.shields.io/github/stars/waymaker-ai/cofounder?style=social)](https://github.com/waymaker-ai/cofounder)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![npm version](https://badge.fury.io/js/%40cofounder%2Fcore.svg)](https://www.npmjs.com/package/@cofounder/core)
+[![npm version](https://badge.fury.io/js/%40waymakerai%2Faicofounder-core.svg)](https://www.npmjs.com/package/@waymakerai/aicofounder-core)
 
 ---
 
@@ -157,15 +157,15 @@ CoFounder is designed to sit *under* the tools you already use.
 
 ```bash
 # Core library + CLI
-npm install @cofounder/core
-npm install --save-dev @cofounder/cli
+npm install @waymakerai/aicofounder-core
+npm install --save-dev @waymakerai/aicofounder-cli
 ```
 
 Or with pnpm:
 
 ```bash
-pnpm add @cofounder/core
-pnpm add -D @cofounder/cli
+pnpm add @waymakerai/aicofounder-core
+pnpm add -D @waymakerai/aicofounder-cli
 ```
 
 ### 2. Initialize CoFounder in your app
@@ -173,20 +173,20 @@ pnpm add -D @cofounder/cli
 From your app root (for example, a Vercel AI SDK + Supabase app):
 
 ```bash
-npx cofounder init
+npx aicofounder init
 ```
 
 This will:
-- create a basic `.cofounder.yml` config
+- create a basic `.aicofounder.yml` config
 - add example VibeSpecs (behavior/constraints)
-- optionally add package.json scripts for `cofounder check`, `cofounder feature:new`, etc.
+- optionally add package.json scripts for `aicofounder check`, `aicofounder feature:new`, etc.
 
 ### 3. Configure providers and basic rules
 
-Example `cofounder.config.ts`:
+Example `aicofounder.config.ts`:
 
 ```typescript
-import { defineConfig } from '@cofounder/core';
+import { defineConfig } from '@waymakerai/aicofounder-core';
 
 export default defineConfig({
   providers: {
@@ -223,8 +223,8 @@ Example with a Vercel AI SDK–style handler:
 ```typescript
 // app/api/cofounder-chat/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { createCoFounder } from '@cofounder/core';
-import config from '../../../cofounder.config';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
+import config from '../../../aicofounder.config';
 
 const cofounder = createCoFounder(config);
 
@@ -258,13 +258,13 @@ Instead of "ship a startup in 30 minutes," CoFounder focuses on:
 ### CLI Overview
 
 ```bash
-npx cofounder init            # one-time setup in your app
-cofounder feature:new         # turn a feature idea into a clear spec
-cofounder feature:implement   # create a branch + safe draft changes
-cofounder check               # run safety gates (tests, lint, design, mock-data checks)
+npx aicofounder init            # one-time setup in your app
+aicofounder feature:new         # turn a feature idea into a clear spec
+aicofounder feature:implement   # create a branch + safe draft changes
+aicofounder check               # run safety gates (tests, lint, design, mock-data checks)
 ```
 
-### Step 1: `cofounder feature:new` — Guided Spec, Not Guesswork
+### Step 1: `aicofounder feature:new` — Guided Spec, Not Guesswork
 
 You start with a human-sized idea, e.g.:
 > "Add a 'team billing' settings page so admins can upgrade from monthly to annual."
@@ -272,7 +272,7 @@ You start with a human-sized idea, e.g.:
 Then run:
 
 ```bash
-cofounder feature:new
+aicofounder feature:new
 ```
 
 CoFounder will:
@@ -297,12 +297,12 @@ CoFounder will:
 
 This spec becomes the **source of truth** for any later agent work.
 
-### Step 2: `cofounder feature:implement` — Branch + Scoped Changes
+### Step 2: `aicofounder feature:implement` — Branch + Scoped Changes
 
 Once the spec looks good, you run:
 
 ```bash
-cofounder feature:implement specs/feature-team-billing.yml
+aicofounder feature:implement specs/feature-team-billing.yml
 ```
 
 CoFounder will:
@@ -324,15 +324,15 @@ CoFounder will:
 **CoFounder does not merge or deploy.**
 It prepares a draft commit/PR that you can review, edit, and ship.
 
-### Step 3: `cofounder check` — Don't Let Agents Cowboy-Code
+### Step 3: `aicofounder check` — Don't Let Agents Cowboy-Code
 
 Before you open a PR, or as part of CI, run:
 
 ```bash
-cofounder check
+aicofounder check
 ```
 
-By default, `cofounder check` can be wired to:
+By default, `aicofounder check` can be wired to:
 
 - compile / typecheck (e.g. `tsc`, Next.js build)
 - run tests (`npm test`, vitest, etc.)
@@ -411,8 +411,8 @@ Instead, it acts as a **guardrail + provider layer** underneath it.
 ### Wrap CoFounder as a LangChain ChatModel
 
 ```typescript
-import { RanaChatModel } from '@cofounder/langchain';
-import { createCoFounder } from '@cofounder/core';
+import { RanaChatModel } from '@waymakerai/aicofounder-langchain';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
 
 const cofounder = createCoFounder(config);
 
@@ -443,8 +443,8 @@ CoFounder plays nicely with CrewAI: **CrewAI owns the crew/graph orchestration; 
 ### Wrap CoFounder as a CrewAI-compatible LLM
 
 ```typescript
-import { createCoFounderCrewModel } from '@cofounder/crewai';
-import { createCoFounder } from '@cofounder/core';
+import { createCoFounderCrewModel } from '@waymakerai/aicofounder-crewai';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
 
 const cofounder = createCoFounder(config);
 
@@ -475,14 +475,14 @@ const featureAgent = new Agent({
 
 | Package | Description |
 |---------|-------------|
-| `@cofounder/core` | Unified LLM client, cost tracking, plugins, security |
-| `@cofounder/cli` | CLI for init, check, feature flows, deploy |
-| `@cofounder/rag` | RAG pipeline: chunking, retrieval, reranking, synthesis |
-| `@cofounder/agents` | Agent Development Kit (ADK): BaseAgent, tools, vibes |
-| `@cofounder/langchain` | LangChain adapter |
-| `@cofounder/crewai` | CrewAI adapter |
-| `@cofounder/mcp` | Model Context Protocol server & client |
-| `@cofounder/react` | React hooks for chat, RAG, streaming |
+| `@waymakerai/aicofounder-core` | Unified LLM client, cost tracking, plugins, security |
+| `@waymakerai/aicofounder-cli` | CLI for init, check, feature flows, deploy |
+| `@waymakerai/aicofounder-rag` | RAG pipeline: chunking, retrieval, reranking, synthesis |
+| `@waymakerai/aicofounder-agents` | Agent Development Kit (ADK): BaseAgent, tools, vibes |
+| `@waymakerai/aicofounder-langchain` | LangChain adapter |
+| `@waymakerai/aicofounder-crewai` | CrewAI adapter |
+| `@waymakerai/aicofounder-mcp` | Model Context Protocol server & client |
+| `@waymakerai/aicofounder-react` | React hooks for chat, RAG, streaming |
 
 ---
 
@@ -556,9 +556,9 @@ These features are implemented but not production-hardened:
 
 For a new project today, we recommend using:
 
-- `@cofounder/core` for LLM client, cost tracking, security features
-- `@cofounder/helpers` for quick LLM tasks
-- `@cofounder/prompts` for prompt versioning
+- `@waymakerai/aicofounder-core` for LLM client, cost tracking, security features
+- `@waymakerai/aicofounder-helpers` for quick LLM tasks
+- `@waymakerai/aicofounder-prompts` for prompt versioning
 
 Other packages are suitable for experimentation and early adoption but should be validated for your specific use case.
 
@@ -568,15 +568,15 @@ Other packages are suitable for experimentation and early adoption but should be
 
 ### Core Commands
 ```bash
-cofounder init                # Initialize CoFounder in your project
-cofounder check               # Run safety gates (tests, lint, guardrails)
-cofounder check --fix         # Auto-fix issues where possible
+aicofounder init                # Initialize CoFounder in your project
+aicofounder check               # Run safety gates (tests, lint, guardrails)
+aicofounder check --fix         # Auto-fix issues where possible
 ```
 
 ### Feature Commands
 ```bash
-cofounder feature:new         # Guided spec creation from an idea
-cofounder feature:implement   # Branch + scoped implementation
+aicofounder feature:new         # Guided spec creation from an idea
+aicofounder feature:implement   # Branch + scoped implementation
 ```
 
 ### LLM Commands
@@ -689,16 +689,16 @@ We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for:
 
 ```bash
 # Install
-npm install @cofounder/core @cofounder/cli
+npm install @waymakerai/aicofounder-core @waymakerai/aicofounder-cli
 
 # Initialize in your project
-npx cofounder init
+npx aicofounder init
 
 # Create your first feature spec
-cofounder feature:new
+aicofounder feature:new
 
 # Run safety checks
-cofounder check
+aicofounder check
 ```
 
 **Questions?**

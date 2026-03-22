@@ -255,7 +255,7 @@ function generateRecommendations(metrics: VelocityMetrics, costs: CostMetrics): 
 
   // Cost optimization recommendations
   if (costs.estimatedCostWithoutCoFounder > costs.estimatedCostWithCoFounder * 1.5) {
-    recommendations.push('Run `cofounder llm:optimize` to apply cost optimizations');
+    recommendations.push('Run `aicofounder llm:optimize` to apply cost optimizations');
   }
 
   // Velocity recommendations
@@ -418,5 +418,5 @@ export async function velocitySetup() {
   };
 
   console.log(chalk.green('✓ Velocity tracking enabled'));
-  console.log(chalk.gray('\nRun `cofounder analyze:velocity` to see your development metrics.\n'));
+  console.log(chalk.gray('\nRun `aicofounder analyze:velocity` to see your development metrics.\n'));
 }

@@ -318,7 +318,7 @@ export function createRanaMCPServer(): MCPServer {
   // Register CoFounder resources
   server.registerResource(
     {
-      uri: 'cofounder://config',
+      uri: 'aicofounder://config',
       name: 'CoFounder Configuration',
       description: 'Current CoFounder configuration',
       mimeType: 'application/json',
@@ -340,7 +340,7 @@ export function createRanaMCPServer(): MCPServer {
 
   server.registerResource(
     {
-      uri: 'cofounder://providers',
+      uri: 'aicofounder://providers',
       name: 'Provider Status',
       description: 'Status of all LLM providers',
       mimeType: 'application/json',
