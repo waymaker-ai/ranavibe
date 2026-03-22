@@ -80,6 +80,68 @@ npm install @ranavibe/core @ranavibe/agents @ranavibe/rag @ranavibe/react
 
 ### Added
 
+#### 🛡️ Security Enhancements (NEW)
+
+**Automated Security Testing Suite** - `packages/core/src/security/security-tester.ts`
+- 20+ comprehensive automated security tests
+- Prompt injection detection (5 attack patterns: ignore instructions, jailbreak, role manipulation, nested, encoded)
+- PII leakage testing (SSN, credit cards, emails, phone numbers, medical records)
+- Rate limiting validation (rapid request handling)
+- Compliance testing (HIPAA, SEC/FINRA, Legal, COPPA disclaimers)
+- Input validation tests (SQL injection, XSS, oversized input, null byte injection)
+- Authentication testing (API key validation)
+- Security scoring system (0-100 with severity weighting)
+- Detailed remediation recommendations
+- Usage: `import { runSecurityTests } from '@ranavibe/core/security/security-tester'`
+
+**Security Presets** - `packages/core/src/security/presets.ts`
+- **HIPAA** (Healthcare): 10+ PII types, medical advice blocking, 7-year audit logs
+- **SEC/FINRA** (Finance): Investment advice disclaimers, financial PII protection
+- **GDPR** (EU Privacy): Pseudonymization, right to erasure, consent management
+- **CCPA** (California Privacy): Do-not-sell mechanisms, disclosure rights
+- **Legal** (Legal Services): Attorney-client privilege, confidentiality protection
+- **COPPA** (Children): Age verification, parental consent, no behavioral ads
+- **Enterprise** (General Business): Balanced security for production
+- **Development** (Dev/Test): Minimal security (NOT FOR PRODUCTION)
+- One-command security: `security: securityPresets.hipaa()`
+- Fully customizable presets with industry-specific defaults
+
+**Security Scorecard CLI** - `packages/cli/src/commands/security-score.ts`
+- New CLI command: `npx rana security:score`
+- Console, JSON, and HTML report formats
+- Verbose mode with detailed test results
+- Severity-based filtering (critical, high, medium, low)
+- CI/CD integration support with `--fail-on-critical`
+- Selective test execution (`--only`, `--skip`)
+- Security recommendations based on test results
+- Available presets listing in reports
+- HTML reports with charts and visualizations
+
+**Documentation**
+- `docs/PENETRATION_TESTING_GUIDE.md` (500+ lines): Complete pen testing guide with methodologies, security certification prep (SOC 2, ISO 27001, HIPAA), OWASP Top 10 for LLMs, CI/CD examples
+- `docs/SECURITY_ENHANCEMENTS.md`: User guide with quick start, examples, best practices, troubleshooting
+- `docs/SECURITY_ENHANCEMENTS_MIGRATION.md`: Step-by-step migration guide (no breaking changes, opt-in features)
+- `docs/SECURITY_ENHANCEMENTS_ADDED.md`: Implementation summary with test coverage details
+
+**Exports Updated**
+- `packages/core/src/security/index.ts`: Added exports for SecurityTester, runSecurityTests, securityPresets, and all types
+- `packages/cli/src/commands/security.ts`: Integrated security:score command
+
+#### Migration Notes
+- **No database migrations required**
+- **No breaking changes** - All features are opt-in
+- **Rebuild required**: `pnpm build` or `pnpm --filter @ranavibe/core build && pnpm --filter @ranavibe/cli build`
+- See `docs/SECURITY_ENHANCEMENTS_MIGRATION.md` for full migration guide
+
+#### Why This Matters
+- **Only AI framework with built-in compliance** (HIPAA, SEC, GDPR, CCPA)
+- **Automated security testing** - No manual security reviews needed
+- **One-command security** - `securityPresets.hipaa()` vs. manual setup
+- **Enterprise-ready** - SOC 2, ISO 27001 support out of the box
+- **Competitive advantage** - Lowers barrier to entry for regulated industries
+
+---
+
 #### 🎉 New Packages - Framework Expansion
 
 **@rana/guidelines** - Dynamic Behavioral Control

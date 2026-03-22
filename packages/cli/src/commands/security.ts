@@ -1,6 +1,6 @@
 /**
  * Security commands
- * rana security:check, rana security:scan
+ * rana security:check, rana security:scan, rana security:score
  */
 
 import { Command } from 'commander';
@@ -9,6 +9,7 @@ import ora from 'ora';
 import * as fs from 'fs';
 import * as path from 'path';
 import { glob } from 'glob';
+import { securityScoreCommand } from './security-score.js';
 
 interface SecurityIssue {
   file: string;
@@ -192,6 +193,9 @@ export function registerSecurityCommands(program: Command): void {
     .command('security')
     .alias('sec')
     .description('Security scanning and checks');
+
+  // Register security:score command
+  security.addCommand(securityScoreCommand);
 
   // security:scan - Scan for secrets and PII
   security

@@ -91,3 +91,31 @@ export {
   type CustomPattern,
   type PIIDetectorConfig,
 } from './pii.js';
+
+export {
+  // Security Testing
+  SecurityTester,
+  createSecurityTester,
+  runSecurityTests,
+  // Types
+  type SecurityTestResult,
+  type SecurityTestReport,
+  type SecurityTestConfig,
+} from './security-tester.js';
+
+export {
+  // Security Presets
+  securityPresets,
+  getPreset,
+  listPresets,
+  hipaaPreset,
+  financePreset,
+  gdprPreset,
+  ccpaPreset,
+  legalPreset,
+  coppaPreset,
+  enterprisePreset,
+  developmentPreset,
+  // Types
+  type SecurityPresetConfig,
+} from './presets.js';
