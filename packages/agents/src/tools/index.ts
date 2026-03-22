@@ -1,5 +1,5 @@
 /**
- * @aicofounder/agents/tools
+ * @waymakerai/aicofounder-agents/tools
  * Common tools and tool utilities
  */
 

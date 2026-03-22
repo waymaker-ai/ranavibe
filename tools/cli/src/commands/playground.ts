@@ -72,8 +72,8 @@ export async function playgroundCommand() {
 
   if (availableProviders.length === 0) {
     console.log(chalk.yellow('No API keys configured yet.\n'));
-    console.log(chalk.gray('Run `cofounder config:set` to add your first API key.'));
-    console.log(chalk.gray('Or run `cofounder playground --demo` to see a demo.\n'));
+    console.log(chalk.gray('Run `aicofounder config:set` to add your first API key.'));
+    console.log(chalk.gray('Or run `aicofounder playground --demo` to see a demo.\n'));
     return;
   }
 
@@ -214,7 +214,7 @@ async function runCompareMode(providers: string[]) {
 
   if (providers.length < 2) {
     console.log(chalk.yellow('Need at least 2 configured providers to compare.'));
-    console.log(chalk.gray('Run `cofounder config:set` to add more providers.\n'));
+    console.log(chalk.gray('Run `aicofounder config:set` to add more providers.\n'));
     return;
   }
 
@@ -458,7 +458,7 @@ async function runCostMode(providers: string[]) {
   const savings = ((expensive - cheap) / expensive * 100).toFixed(0);
 
   console.log(chalk.bold.green(`💡 CoFounder auto-routing can save up to ${savings}% by choosing the right model!`));
-  console.log(chalk.gray('\nRun `cofounder optimize` to apply these optimizations to your project.\n'));
+  console.log(chalk.gray('\nRun `aicofounder optimize` to apply these optimizations to your project.\n'));
 }
 
 /**

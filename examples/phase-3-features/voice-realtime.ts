@@ -3,7 +3,7 @@
  * Demonstrates voice conversations with AI using WebRTC
  */
 
-import { VoiceSession, AudioRecorder, AudioPlayer, Transcriber, TextToSpeech } from '@aicofounder/core';
+import { VoiceSession, AudioRecorder, AudioPlayer, Transcriber, TextToSpeech } from '@waymakerai/aicofounder-core';
 
 async function main() {
   // Example 1: Basic voice session

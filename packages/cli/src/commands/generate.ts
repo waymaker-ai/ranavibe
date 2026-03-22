@@ -1,6 +1,6 @@
 /**
  * Code generation commands
- * cofounder generate, cofounder templates, cofounder explain
+ * aicofounder generate, aicofounder templates, aicofounder explain
  */
 
 import { Command } from 'commander';
@@ -10,7 +10,7 @@ import ora from 'ora';
 import * as fs from 'fs';
 import * as path from 'path';
 
-// Import from @aicofounder/generate
+// Import from @waymakerai/aicofounder-generate
 import {
   generate,
   parseIntent,
@@ -22,14 +22,14 @@ import {
   getAllTemplates,
   getTemplatesByCategory,
   searchTemplates,
-} from '@aicofounder/generate';
+} from '@waymakerai/aicofounder-generate';
 
 import type {
   GeneratedFile,
   ParsedIntent,
   ImplementationPlan,
   ValidationResult,
-} from '@aicofounder/generate';
+} from '@waymakerai/aicofounder-generate';
 
 /**
  * Register generate commands

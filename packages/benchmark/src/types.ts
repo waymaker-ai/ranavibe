@@ -1,5 +1,5 @@
 /**
- * @aicofounder/benchmark - Types for detection accuracy benchmarking
+ * @waymakerai/aicofounder-benchmark - Types for detection accuracy benchmarking
  */
 
 export interface BenchmarkConfig {

@@ -6,7 +6,7 @@
  *
  * @example
  * ```typescript
- * import { ZapierIntegration } from '@aicofounder/core';
+ * import { ZapierIntegration } from '@waymakerai/aicofounder-core';
  *
  * const zapier = new ZapierIntegration({
  *   clientId: process.env.ZAPIER_CLIENT_ID,

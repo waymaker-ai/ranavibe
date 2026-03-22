@@ -21,7 +21,7 @@ interface TeamMember {
 export async function teamCommand(options: TeamOptions) {
   const authToken = await getAuthToken();
   if (!authToken) {
-    console.log(chalk.red('❌ Not authenticated. Run: waymaker-cofounder login'));
+    console.log(chalk.red('❌ Not authenticated. Run: waymaker-aicofounder login'));
     return;
   }
 

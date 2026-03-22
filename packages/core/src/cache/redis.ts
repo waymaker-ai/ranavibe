@@ -45,7 +45,7 @@ export class RedisCache implements CacheProvider {
       port: 6379,
       db: 0,
       ttl: 3600,
-      prefix: 'cofounder:cache:',
+      prefix: 'aicofounder:cache:',
       connectTimeout: 5000,
       retryDelayMs: 100,
       maxRetries: 3,

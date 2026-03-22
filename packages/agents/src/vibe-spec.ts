@@ -1,5 +1,5 @@
 /**
- * @aicofounder/agents - VibeSpec
+ * @waymakerai/aicofounder-agents - VibeSpec
  * Declarative agent configuration through "vibes"
  */
 

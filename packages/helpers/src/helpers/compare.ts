@@ -3,7 +3,7 @@
  *
  * @example
  * ```typescript
- * import { compare } from '@aicofounder/helpers';
+ * import { compare } from '@waymakerai/aicofounder-helpers';
  *
  * // Compare two texts
  * const result = await compare(text1, text2);

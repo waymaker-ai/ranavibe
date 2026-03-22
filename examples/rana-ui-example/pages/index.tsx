@@ -11,7 +11,7 @@ import {
   CleanModeCardHeader,
   CleanModeCardTitle,
   CleanModeCardContent,
-} from '@aicofounder/ui';
+} from '@waymakerai/aicofounder-ui';
 
 export default function Home() {
   return (

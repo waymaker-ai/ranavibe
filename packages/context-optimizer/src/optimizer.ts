@@ -1,5 +1,5 @@
 /**
- * @aicofounder/context-optimizer - Context Optimizer
+ * @waymakerai/aicofounder-context-optimizer - Context Optimizer
  */
 
 import type {

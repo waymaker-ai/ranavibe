@@ -1,5 +1,5 @@
 /**
- * @aicofounder/streaming - Anthropic Adapter
+ * @waymakerai/aicofounder-streaming - Anthropic Adapter
  *
  * Parses Anthropic SSE streaming responses and extracts text deltas.
  * Handles the Anthropic Messages API streaming format with

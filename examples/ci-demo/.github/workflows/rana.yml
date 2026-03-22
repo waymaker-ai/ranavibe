@@ -4,7 +4,7 @@
 # Runs on every PR and push to main. Posts findings as a PR comment and
 # creates a GitHub Check Run with SARIF results.
 #
-# Configuration: Place a .cofounder.yml in your repo root (optional).
+# Configuration: Place a .aicofounder.yml in your repo root (optional).
 
 name: CoFounder Guard
 
@@ -47,12 +47,12 @@ jobs:
       - name: Run CoFounder scan
         id: cofounder
         run: |
-          npx @aicofounder/cli scan \
+          npx @waymakerai/aicofounder-cli scan \
             --path . \
             --format sarif \
             --output aicofounder-results.sarif \
             --fail-on high \
-            --config .cofounder.yml
+            --config .aicofounder.yml
         continue-on-error: true
 
       # ── Upload SARIF to GitHub Code Scanning ──────────────────────
@@ -69,20 +69,20 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          npx @aicofounder/cli scan \
+          npx @waymakerai/aicofounder-cli scan \
             --path . \
             --format github-pr \
-            --config .cofounder.yml \
+            --config .aicofounder.yml \
             --github-pr ${{ github.event.pull_request.number }}
 
       # ── Summary ───────────────────────────────────────────────────
       - name: Console summary
         if: always()
         run: |
-          npx @aicofounder/cli scan \
+          npx @waymakerai/aicofounder-cli scan \
             --path . \
             --format console \
-            --config .cofounder.yml
+            --config .aicofounder.yml
 
       # ── Fail if CoFounder scan found high/critical issues ──────────────
       - name: Check scan result

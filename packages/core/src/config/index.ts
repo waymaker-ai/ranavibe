@@ -6,7 +6,7 @@ import * as path from 'path';
 /**
  * CoFounder Configuration Schema
  *
- * Defines the structure of .cofounder.yml configuration files
+ * Defines the structure of .aicofounder.yml configuration files
  */
 
 const QualityGateSchema = z.object({
@@ -59,7 +59,7 @@ export type QualityGate = z.infer<typeof QualityGateSchema>;
  */
 export class ConfigParser {
   /**
-   * Parse a .cofounder.yml file
+   * Parse a .aicofounder.yml file
    */
   static parse(filePath: string): CoFounderConfig {
     if (!fs.existsSync(filePath)) {
@@ -110,13 +110,13 @@ export class ConfigParser {
   }
 
   /**
-   * Find .cofounder.yml in current directory or parent directories
+   * Find .aicofounder.yml in current directory or parent directories
    */
   static findConfig(startDir: string = process.cwd()): string | null {
     let currentDir = startDir;
 
     while (currentDir !== path.parse(currentDir).root) {
-      const configPath = path.join(currentDir, '.cofounder.yml');
+      const configPath = path.join(currentDir, '.aicofounder.yml');
       if (fs.existsSync(configPath)) {
         return configPath;
       }

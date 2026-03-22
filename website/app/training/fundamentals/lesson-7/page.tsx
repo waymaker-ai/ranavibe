@@ -42,7 +42,7 @@ export default function Lesson7Page() {
 
           <div className="code-block">
             <pre>
-              <code>{`import { useChat } from '@aicofounder/react';
+              <code>{`import { useChat } from '@waymakerai/aicofounder-react';
 import { create } from 'zustand';
 
 // Global conversation store
@@ -99,7 +99,7 @@ function ChatWithHistory() {
           <div className="code-block">
             <pre>
               <code>{`import { useState, useCallback } from 'react';
-import { useChat } from '@aicofounder/react';
+import { useChat } from '@waymakerai/aicofounder-react';
 
 function StreamingChat() {
   // Track streaming state
@@ -270,7 +270,7 @@ const useAgentOrchestrator = create<AgentState>((set, get) => ({
 
           <div className="code-block">
             <pre>
-              <code>{`import { useChat } from '@aicofounder/react';
+              <code>{`import { useChat } from '@waymakerai/aicofounder-react';
 import { useEffect } from 'react';
 
 function PersistentChat({ conversationId }) {
@@ -382,7 +382,7 @@ function Chat() {
           <div className="code-block">
             <pre>
               <code>{`import { useMemo } from 'react';
-import { useChat } from '@aicofounder/react';
+import { useChat } from '@waymakerai/aicofounder-react';
 
 function ChatAnalytics() {
   const chat = useChat({ api: '/api/chat' });

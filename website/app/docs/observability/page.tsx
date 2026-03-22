@@ -9,7 +9,7 @@ const features = [
     icon: Eye,
     title: 'Request Tracing',
     description: 'Distributed tracing for all AI requests with full context',
-    code: `import { createTracer, withTracing } from '@aicofounder/observability';
+    code: `import { createTracer, withTracing } from '@waymakerai/aicofounder-observability';
 
 const tracer = createTracer({
   serviceName: 'my-ai-app',
@@ -38,7 +38,7 @@ class MyService {
     icon: BarChart3,
     title: 'Token Analytics',
     description: 'Track token usage, costs, and efficiency across all requests',
-    code: `import { TokenAnalytics } from '@aicofounder/observability';
+    code: `import { TokenAnalytics } from '@waymakerai/aicofounder-observability';
 
 const analytics = new TokenAnalytics();
 
@@ -67,7 +67,7 @@ const costs = await analytics.getCostBreakdown({
     icon: Gauge,
     title: 'Performance Monitoring',
     description: 'Track latency percentiles, throughput, and error rates',
-    code: `import { PerformanceMonitor } from '@aicofounder/observability';
+    code: `import { PerformanceMonitor } from '@waymakerai/aicofounder-observability';
 
 const monitor = new PerformanceMonitor({
   sloLatencyP99: 3000,  // 3s P99 target
@@ -93,7 +93,7 @@ console.log(stats.errorRate);       // 0.005`,
     icon: FileSearch,
     title: 'Request/Response Logging',
     description: 'Structured logging with PII redaction and search',
-    code: `import { AILogger } from '@aicofounder/observability';
+    code: `import { AILogger } from '@waymakerai/aicofounder-observability';
 
 const logger = new AILogger({
   redactPII: true,        // Auto-redact emails, phones, etc.
@@ -118,7 +118,7 @@ const logs = await logger.search({
     icon: AlertTriangle,
     title: 'Error Tracking',
     description: 'AI-specific error tracking with context and grouping',
-    code: `import { ErrorTracker } from '@aicofounder/observability';
+    code: `import { ErrorTracker } from '@waymakerai/aicofounder-observability';
 
 const errorTracker = new ErrorTracker({
   sentry: { dsn: process.env.SENTRY_DSN },
@@ -147,7 +147,7 @@ console.log(insights.errorTrend);`,
     icon: Activity,
     title: 'OpenTelemetry Export',
     description: 'Export to any OTel-compatible backend',
-    code: `import { setupOTel } from '@aicofounder/observability';
+    code: `import { setupOTel } from '@waymakerai/aicofounder-observability';
 
 setupOTel({
   serviceName: 'my-ai-app',
@@ -201,7 +201,7 @@ export default function ObservabilityPage() {
             and error tracking with OpenTelemetry support.
           </p>
           <div className="mt-4 code-block font-mono text-sm">
-            npm install @aicofounder/observability
+            npm install @waymakerai/aicofounder-observability
           </div>
         </motion.div>
 

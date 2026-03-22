@@ -1,5 +1,5 @@
 /**
- * @aicofounder/marketplace - Type definitions for policy marketplace
+ * @waymakerai/aicofounder-marketplace - Type definitions for policy marketplace
  */
 
 // ---------------------------------------------------------------------------

@@ -1,5 +1,5 @@
 {
-  "name": "@aicofounder/multi-tenant",
+  "name": "@waymakerai/aicofounder-multi-tenant",
   "version": "1.0.0",
   "description": "CoFounder multi-tenant package",
   "main": "dist/index.js",

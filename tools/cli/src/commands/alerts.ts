@@ -6,25 +6,25 @@
  * @example
  * ```bash
  * # Setup alerts interactively
- * cofounder alerts:setup
+ * aicofounder alerts:setup
  *
  * # Add a Slack webhook
- * cofounder alerts:add slack https://hooks.slack.com/...
+ * aicofounder alerts:add slack https://hooks.slack.com/...
  *
  * # Add an email alert
- * cofounder alerts:add email team@company.com
+ * aicofounder alerts:add email team@company.com
  *
  * # Add a custom webhook
- * cofounder alerts:add webhook https://api.company.com/alerts
+ * aicofounder alerts:add webhook https://api.company.com/alerts
  *
  * # List configured alerts
- * cofounder alerts:list
+ * aicofounder alerts:list
  *
  * # Test alerts
- * cofounder alerts:test
+ * aicofounder alerts:test
  *
  * # Remove an alert
- * cofounder alerts:remove <id>
+ * aicofounder alerts:remove <id>
  * ```
  */
 
@@ -108,16 +108,16 @@ export async function alertsSetupCommand(): Promise<void> {
   console.log(chalk.bold('Quick Setup Commands:\n'));
 
   console.log(chalk.white('1. Add Slack webhook:'));
-  console.log(chalk.cyan('   cofounder alerts:add slack <webhook-url>\n'));
+  console.log(chalk.cyan('   aicofounder alerts:add slack <webhook-url>\n'));
 
   console.log(chalk.white('2. Add Discord webhook:'));
-  console.log(chalk.cyan('   cofounder alerts:add discord <webhook-url>\n'));
+  console.log(chalk.cyan('   aicofounder alerts:add discord <webhook-url>\n'));
 
   console.log(chalk.white('3. Add email notification:'));
-  console.log(chalk.cyan('   cofounder alerts:add email <email@example.com>\n'));
+  console.log(chalk.cyan('   aicofounder alerts:add email <email@example.com>\n'));
 
   console.log(chalk.white('4. Add custom webhook:'));
-  console.log(chalk.cyan('   cofounder alerts:add webhook <url>\n'));
+  console.log(chalk.cyan('   aicofounder alerts:add webhook <url>\n'));
 
   console.log(chalk.gray('─'.repeat(50)));
   console.log(chalk.bold('\nThreshold Configuration:\n'));
@@ -129,7 +129,7 @@ export async function alertsSetupCommand(): Promise<void> {
   console.log(chalk.gray(`  Cooldown: ${config.cooldownMinutes} minutes between alerts\n`));
 
   console.log(chalk.white('To change thresholds:'));
-  console.log(chalk.cyan('  cofounder alerts:threshold --warning 75 --critical 90\n'));
+  console.log(chalk.cyan('  aicofounder alerts:threshold --warning 75 --critical 90\n'));
 }
 
 /**
@@ -137,15 +137,15 @@ export async function alertsSetupCommand(): Promise<void> {
  */
 export async function alertsAddCommand(type: string, target: string): Promise<void> {
   if (!type || !target) {
-    console.log(chalk.yellow('\nUsage: cofounder alerts:add <type> <target>\n'));
+    console.log(chalk.yellow('\nUsage: aicofounder alerts:add <type> <target>\n'));
     console.log('Types:');
     console.log(chalk.gray('  slack    - Slack webhook URL'));
     console.log(chalk.gray('  discord  - Discord webhook URL'));
     console.log(chalk.gray('  email    - Email address'));
     console.log(chalk.gray('  webhook  - Custom webhook URL\n'));
     console.log('Examples:');
-    console.log(chalk.cyan('  cofounder alerts:add slack https://hooks.slack.com/services/...'));
-    console.log(chalk.cyan('  cofounder alerts:add email alerts@company.com'));
+    console.log(chalk.cyan('  aicofounder alerts:add slack https://hooks.slack.com/services/...'));
+    console.log(chalk.cyan('  aicofounder alerts:add email alerts@company.com'));
     console.log('');
     return;
   }
@@ -189,7 +189,7 @@ export async function alertsAddCommand(type: string, target: string): Promise<vo
   console.log(chalk.gray(`  Type:   ${alertType}`));
   console.log(chalk.gray(`  Target: ${maskTarget(alertType, target)}`));
   console.log(chalk.gray(`\nTest your alert:`));
-  console.log(chalk.cyan(`  cofounder alerts:test ${newAlert.id}\n`));
+  console.log(chalk.cyan(`  aicofounder alerts:test ${newAlert.id}\n`));
 }
 
 /**
@@ -203,7 +203,7 @@ export async function alertsListCommand(): Promise<void> {
   if (config.alerts.length === 0) {
     console.log(chalk.yellow('No alerts configured.\n'));
     console.log(chalk.gray('Add an alert:'));
-    console.log(chalk.cyan('  cofounder alerts:add slack <webhook-url>\n'));
+    console.log(chalk.cyan('  aicofounder alerts:add slack <webhook-url>\n'));
     return;
   }
 
@@ -242,7 +242,7 @@ export async function alertsTestCommand(alertId?: string): Promise<void> {
 
   if (config.alerts.length === 0) {
     console.log(chalk.yellow('\nNo alerts configured.'));
-    console.log(chalk.gray('Add an alert first: cofounder alerts:add slack <url>\n'));
+    console.log(chalk.gray('Add an alert first: aicofounder alerts:add slack <url>\n'));
     return;
   }
 
@@ -282,8 +282,8 @@ export async function alertsTestCommand(alertId?: string): Promise<void> {
  */
 export async function alertsRemoveCommand(alertId: string): Promise<void> {
   if (!alertId) {
-    console.log(chalk.yellow('\nUsage: cofounder alerts:remove <id>\n'));
-    console.log(chalk.gray('List alerts to find IDs: cofounder alerts:list\n'));
+    console.log(chalk.yellow('\nUsage: aicofounder alerts:remove <id>\n'));
+    console.log(chalk.gray('List alerts to find IDs: aicofounder alerts:list\n'));
     return;
   }
 

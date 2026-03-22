@@ -1,5 +1,5 @@
 /**
- * @aicofounder/crewai
+ * @waymakerai/aicofounder-crewai
  * CrewAI adapter for CoFounder Framework
  *
  * Provides a CrewAI-compatible model wrapper that uses CoFounder
@@ -7,8 +7,8 @@
  *
  * @example
  * ```typescript
- * import { RanaCrewModel } from '@aicofounder/crewai';
- * import { createCoFounder } from '@aicofounder/core';
+ * import { RanaCrewModel } from '@waymakerai/aicofounder-crewai';
+ * import { createCoFounder } from '@waymakerai/aicofounder-core';
  *
  * const cofounder = createCoFounder({
  *   providers: { anthropic: process.env.ANTHROPIC_API_KEY }
@@ -31,7 +31,7 @@
 
 export interface RanaCrewModelConfig {
   /** CoFounder client instance */
-  cofounder: any; // CoFounderClient
+  aicofounder: any; // CoFounderClient
   /** Provider to use */
   provider?: string;
   /** Model to use */
@@ -49,7 +49,7 @@ export interface RanaCrewModelConfig {
  * and cost optimization with CrewAI crews.
  */
 export class RanaCrewModel {
-  private cofounder: any;
+  private aicofounder: any;
   private provider?: string;
   private model?: string;
   private temperature: number;
@@ -214,7 +214,7 @@ export function cofounderToolToCrewAI(tool: any): any {
  * Wrapper to create a crew with CoFounder-powered agents
  */
 export interface RanaCrewConfig {
-  cofounder: any;
+  aicofounder: any;
   defaultProvider?: string;
   defaultModel?: string;
   temperature?: number;
@@ -222,7 +222,7 @@ export interface RanaCrewConfig {
 
 export function createCoFounderCrewLLM(config: RanaCrewConfig): RanaCrewModel {
   return new RanaCrewModel({
-    cofounder: config.cofounder,
+    aicofounder: config.cofounder,
     provider: config.defaultProvider,
     model: config.defaultModel,
     temperature: config.temperature,

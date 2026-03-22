@@ -4,7 +4,7 @@
  *
  * @example
  * ```typescript
- * import { createFineTuner, FineTuneJob } from '@aicofounder/core';
+ * import { createFineTuner, FineTuneJob } from '@waymakerai/aicofounder-core';
  *
  * const finetuner = createFineTuner({
  *   provider: 'openai',

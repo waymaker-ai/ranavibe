@@ -1,5 +1,5 @@
 /**
- * @aicofounder/ci - CI/CD guardrails for AI applications
+ * @waymakerai/aicofounder-ci - CI/CD guardrails for AI applications
  *
  * Zero runtime dependencies. Scans your codebase for AI security,
  * compliance, cost, and safety issues.
@@ -79,10 +79,10 @@ import { formatReport } from './reporters/index.js';
 export function scan(config: ScanConfig): ScanResult {
   const startTime = Date.now();
 
-  // Load .cofounder.yml if it exists
+  // Load .aicofounder.yml if it exists
   const cofounderConfig = config.configPath ? loadConfig(config.configPath) : null;
 
-  // Merge config from .cofounder.yml
+  // Merge config from .aicofounder.yml
   if (cofounderConfig) {
     if (cofounderConfig.models?.approved && !config.approvedModels) {
       config.approvedModels = cofounderConfig.models.approved;

@@ -4,7 +4,7 @@
  *
  * @example
  * ```typescript
- * import { createStructuredOutput, generateStructured } from '@aicofounder/core';
+ * import { createStructuredOutput, generateStructured } from '@waymakerai/aicofounder-core';
  * import { z } from 'zod';
  *
  * // Define schema with Zod

@@ -43,8 +43,8 @@ export async function finetuneStartCommand(
   console.log(`  ${chalk.green('✓')} Training queued`);
 
   console.log(chalk.bold('\nJob Status: ') + chalk.yellow('queued'));
-  console.log(chalk.gray(`\nMonitor progress with: cofounder finetune:status ${jobId}`));
-  console.log(chalk.gray(`Or use: cofounder finetune:status ${jobId} --watch\n`));
+  console.log(chalk.gray(`\nMonitor progress with: aicofounder finetune:status ${jobId}`));
+  console.log(chalk.gray(`Or use: aicofounder finetune:status ${jobId} --watch\n`));
 }
 
 export async function finetuneStatusCommand(
@@ -78,7 +78,7 @@ export async function finetuneStatusCommand(
     });
 
     console.log('└──────────────┴───────────────┴────────────┴──────────┘');
-    console.log(chalk.gray('\nUse "cofounder finetune:status <job-id>" for details\n'));
+    console.log(chalk.gray('\nUse "aicofounder finetune:status <job-id>" for details\n'));
     return;
   }
 
@@ -146,7 +146,7 @@ export async function fineTuneListCommand(options: { validate?: boolean }): Prom
     console.log(`  ${chalk.yellow('⚠')} ds-sales-emails: 3 examples have missing fields`);
   }
 
-  console.log(chalk.gray('\nUse "cofounder finetune:prepare <source>" to create a new dataset\n'));
+  console.log(chalk.gray('\nUse "aicofounder finetune:prepare <source>" to create a new dataset\n'));
 }
 
 export async function fineTunePrepareCommand(
@@ -185,7 +185,7 @@ export async function fineTunePrepareCommand(
 
   const outputFile = options.output || `${source.replace(/\.[^.]+$/, '')}-prepared.jsonl`;
   console.log(chalk.green(`\n✓ Dataset saved to: ${outputFile}`));
-  console.log(chalk.gray(`\nStart training with: cofounder finetune ${outputFile}\n`));
+  console.log(chalk.gray(`\nStart training with: aicofounder finetune ${outputFile}\n`));
 }
 
 export async function finetuneCompareCommand(

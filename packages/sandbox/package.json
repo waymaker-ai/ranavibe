@@ -1,5 +1,5 @@
 {
-  "name": "@aicofounder/sandbox",
+  "name": "@waymakerai/aicofounder-sandbox",
   "version": "1.0.0",
   "description": "CoFounder sandbox package",
   "main": "dist/index.js",

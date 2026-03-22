@@ -1,5 +1,5 @@
 /**
- * Type definitions for @aicofounder/helpers
+ * Type definitions for @waymakerai/aicofounder-helpers
  */
 
 import { z } from 'zod';

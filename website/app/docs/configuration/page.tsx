@@ -9,7 +9,7 @@ const features = [
     icon: Settings,
     title: 'Global Configuration',
     description: 'Configure CoFounder settings for your entire application',
-    code: `import { configure, getConfig } from '@aicofounder/core';
+    code: `import { configure, getConfig } from '@waymakerai/aicofounder-core';
 
 // Configure CoFounder globally
 configure({
@@ -50,7 +50,7 @@ console.log(config.defaultModel);  // 'claude-sonnet-4-20250514'`,
     icon: Key,
     title: 'Provider Configuration',
     description: 'Set up API keys and provider settings',
-    code: `import { configureProviders } from '@aicofounder/core';
+    code: `import { configureProviders } from '@waymakerai/aicofounder-core';
 
 configureProviders({
   anthropic: {
@@ -121,7 +121,7 @@ CoFounder_OTLP_ENDPOINT=http://localhost:4318`,
     icon: Database,
     title: 'Storage Configuration',
     description: 'Configure storage backends for various features',
-    code: `import { configureStorage } from '@aicofounder/core';
+    code: `import { configureStorage } from '@waymakerai/aicofounder-core';
 
 configureStorage({
   // Prompt storage
@@ -134,7 +134,7 @@ configureStorage({
   memory: {
     type: 'redis',
     url: process.env.REDIS_URL,
-    prefix: 'cofounder:memory:'
+    prefix: 'aicofounder:memory:'
   },
 
   // Vector store for RAG
@@ -149,7 +149,7 @@ configureStorage({
   cache: {
     type: 'redis',
     url: process.env.REDIS_URL,
-    prefix: 'cofounder:cache:'
+    prefix: 'aicofounder:cache:'
   },
 
   // Audit logs
@@ -164,7 +164,7 @@ configureStorage({
     icon: Shield,
     title: 'Security Configuration',
     description: 'Configure security settings and policies',
-    code: `import { configureSecurity } from '@aicofounder/core';
+    code: `import { configureSecurity } from '@waymakerai/aicofounder-core';
 
 configureSecurity({
   // PII detection and redaction
@@ -213,7 +213,7 @@ configureSecurity({
     icon: Zap,
     title: 'Performance Configuration',
     description: 'Tune performance and optimization settings',
-    code: `import { configurePerformance } from '@aicofounder/core';
+    code: `import { configurePerformance } from '@waymakerai/aicofounder-core';
 
 configurePerformance({
   // Concurrency limits
@@ -283,7 +283,7 @@ export default function ConfigurationPage() {
             security, and performance settings.
           </p>
           <div className="mt-4 code-block font-mono text-sm">
-            npm install @aicofounder/core
+            npm install @waymakerai/aicofounder-core
           </div>
         </motion.div>
 
@@ -322,11 +322,11 @@ export default function ConfigurationPage() {
         >
           <h2 className="text-2xl font-bold mb-4">Configuration File</h2>
           <p className="text-foreground-secondary mb-4">
-            You can also use a <code className="px-2 py-1 rounded bg-background-secondary font-mono">cofounder.config.ts</code> file in your project root:
+            You can also use a <code className="px-2 py-1 rounded bg-background-secondary font-mono">aicofounder.config.ts</code> file in your project root:
           </p>
           <div className="code-block font-mono text-sm overflow-x-auto">
-            <pre>{`// cofounder.config.ts
-import { defineConfig } from '@aicofounder/core';
+            <pre>{`// aicofounder.config.ts
+import { defineConfig } from '@waymakerai/aicofounder-core';
 
 export default defineConfig({
   defaultModel: 'claude-sonnet-4-20250514',
@@ -373,7 +373,7 @@ export default defineConfig({
             Validate your configuration at startup:
           </p>
           <div className="code-block font-mono text-sm overflow-x-auto">
-            <pre>{`import { validateConfig } from '@aicofounder/core';
+            <pre>{`import { validateConfig } from '@waymakerai/aicofounder-core';
 
 const { valid, errors, warnings } = validateConfig();
 
@@ -387,7 +387,7 @@ if (warnings.length > 0) {
 }
 
 // Or use the CLI
-// npx cofounder config:validate`}</pre>
+// npx aicofounder config:validate`}</pre>
           </div>
         </motion.div>
       </div>

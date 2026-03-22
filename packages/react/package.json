@@ -1,5 +1,5 @@
 {
-  "name": "@aicofounder/react",
+  "name": "@waymakerai/aicofounder-react",
   "version": "2.0.0",
   "description": "React hooks and components for CoFounder - Rapid AI Native Architecture",
   "main": "dist/index.js",

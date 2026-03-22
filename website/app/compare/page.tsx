@@ -185,7 +185,7 @@ export default function ComparePage() {
                 </tr>
                 <tr className="border-b border-gray-800/50">
                   <td className="py-3 px-3">Zero dependencies</td>
-                  <td className="py-3 px-3 text-center text-green-400">✓ @aicofounder/guard</td>
+                  <td className="py-3 px-3 text-center text-green-400">✓ @waymakerai/aicofounder-guard</td>
                   <td className="py-3 px-3 text-center text-red-400">Heavy deps</td>
                   <td className="py-3 px-3 text-center text-red-400">Heavy deps</td>
                   <td className="py-3 px-3 text-center text-yellow-400">Moderate</td>

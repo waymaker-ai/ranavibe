@@ -1,10 +1,10 @@
 /**
- * @aicofounder/rag - Advanced RAG (Retrieval Augmented Generation)
+ * @waymakerai/aicofounder-rag - Advanced RAG (Retrieval Augmented Generation)
  * Intelligent chunking, hybrid retrieval, re-ranking, and synthesis
  *
  * @example
  * ```typescript
- * import { createRAGPipeline, RAGPresets, chunkers, retrievers, rerankers } from '@aicofounder/rag';
+ * import { createRAGPipeline, RAGPresets, chunkers, retrievers, rerankers } from '@waymakerai/aicofounder-rag';
  *
  * // Use a preset
  * const pipeline = RAGPresets.balanced();

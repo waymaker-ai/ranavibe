@@ -14,7 +14,7 @@ importers:
 
   apps/aicofounder-ui-docs:
     dependencies:
-      '@aicofounder/ui':
+      '@waymakerai/aicofounder-ui':
         specifier: workspace:*
         version: link:../../packages/aicofounder-ui
       next:
@@ -91,7 +91,7 @@ importers:
 
   examples/aicofounder-ui-example:
     dependencies:
-      '@aicofounder/ui':
+      '@waymakerai/aicofounder-ui':
         specifier: workspace:*
         version: link:../../packages/aicofounder-ui
       next:
@@ -125,10 +125,10 @@ importers:
 
   packages/agents:
     dependencies:
-      '@aicofounder/core':
+      '@waymakerai/aicofounder-core':
         specifier: workspace:*
         version: link:../core
-      '@aicofounder/rag':
+      '@waymakerai/aicofounder-rag':
         specifier: workspace:*
         version: link:../rag
       js-yaml:
@@ -156,10 +156,10 @@ importers:
 
   packages/cli:
     dependencies:
-      '@aicofounder/agents':
+      '@waymakerai/aicofounder-agents':
         specifier: workspace:*
         version: link:../agents
-      '@aicofounder/core':
+      '@waymakerai/aicofounder-core':
         specifier: workspace:*
         version: link:../core
       chalk:
@@ -282,7 +282,7 @@ importers:
 
   packages/crewai:
     dependencies:
-      '@aicofounder/core':
+      '@waymakerai/aicofounder-core':
         specifier: workspace:*
         version: link:../core
     devDependencies:
@@ -301,7 +301,7 @@ importers:
 
   packages/helpers:
     dependencies:
-      '@aicofounder/core':
+      '@waymakerai/aicofounder-core':
         specifier: ^2.0.0
         version: link:../core
       zod:
@@ -326,7 +326,7 @@ importers:
       '@langchain/core':
         specifier: '>=0.1.0'
         version: 1.1.4
-      '@aicofounder/core':
+      '@waymakerai/aicofounder-core':
         specifier: workspace:*
         version: link:../core
       langchain:
@@ -351,7 +351,7 @@ importers:
       '@modelcontextprotocol/sdk':
         specifier: ^1.0.0
         version: 1.24.3(zod@3.25.76)
-      '@aicofounder/core':
+      '@waymakerai/aicofounder-core':
         specifier: ^2.0.0
         version: link:../core
       zod:
@@ -376,7 +376,7 @@ importers:
       '@modelcontextprotocol/sdk':
         specifier: ^0.4.0
         version: 0.4.0
-      '@aicofounder/core':
+      '@waymakerai/aicofounder-core':
         specifier: workspace:*
         version: link:../core
     devDependencies:
@@ -389,7 +389,7 @@ importers:
 
   packages/prompts:
     dependencies:
-      '@aicofounder/core':
+      '@waymakerai/aicofounder-core':
         specifier: ^2.0.0
         version: link:../core
       react:
@@ -417,7 +417,7 @@ importers:
 
   packages/rag:
     dependencies:
-      '@aicofounder/core':
+      '@waymakerai/aicofounder-core':
         specifier: ^2.0.0
         version: link:../core
       '@supabase/supabase-js':
@@ -534,7 +534,7 @@ importers:
 
   packages/sdk:
     dependencies:
-      '@aicofounder/core':
+      '@waymakerai/aicofounder-core':
         specifier: workspace:*
         version: link:../core
     devDependencies:
@@ -547,7 +547,7 @@ importers:
 
   packages/testing:
     dependencies:
-      '@aicofounder/core':
+      '@waymakerai/aicofounder-core':
         specifier: ^2.0.0
         version: link:../core
       chalk:

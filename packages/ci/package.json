@@ -1,5 +1,5 @@
 {
-  "name": "@aicofounder/ci",
+  "name": "@waymakerai/aicofounder-ci",
   "version": "1.0.0",
   "description": "CI/CD guardrails for AI - GitHub Action, pre-commit hooks, PR scanning",
   "main": "dist/index.js",

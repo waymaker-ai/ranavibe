@@ -9,7 +9,7 @@ const features = [
     icon: Bot,
     title: 'Creating Agents',
     description: 'Build autonomous AI agents with tools and memory',
-    code: `import { Agent } from '@aicofounder/core';
+    code: `import { Agent } from '@waymakerai/aicofounder-core';
 
 const agent = new Agent({
   name: 'ResearchAssistant',
@@ -34,7 +34,7 @@ for await (const chunk of agent.stream('Summarize this article...')) {
     icon: Wrench,
     title: 'Tools & Functions',
     description: 'Give agents access to custom tools and APIs',
-    code: `import { Agent, Tool } from '@aicofounder/core';
+    code: `import { Agent, Tool } from '@waymakerai/aicofounder-core';
 
 // Define custom tools
 const searchTool = new Tool({
@@ -75,7 +75,7 @@ const result = await agent.run('What is 25% of $1,234?');`,
     icon: MessageSquare,
     title: 'Conversation Management',
     description: 'Multi-turn conversations with context management',
-    code: `import { Agent, Conversation } from '@aicofounder/core';
+    code: `import { Agent, Conversation } from '@waymakerai/aicofounder-core';
 
 const agent = new Agent({
   name: 'ChatBot',
@@ -109,7 +109,7 @@ conversation.clear();`,
     icon: GitBranch,
     title: 'Multi-Agent Systems',
     description: 'Orchestrate multiple agents working together',
-    code: `import { Agent, AgentOrchestrator } from '@aicofounder/core';
+    code: `import { Agent, AgentOrchestrator } from '@waymakerai/aicofounder-core';
 
 // Define specialized agents
 const researcher = new Agent({
@@ -151,7 +151,7 @@ console.log(result.final);  // The reviewed blog post`,
     icon: Repeat,
     title: 'Agent Loops',
     description: 'Iterative agents that refine their output',
-    code: `import { Agent, AgentLoop } from '@aicofounder/core';
+    code: `import { Agent, AgentLoop } from '@waymakerai/aicofounder-core';
 
 const agent = new Agent({
   name: 'CodeWriter',
@@ -185,7 +185,7 @@ console.log(result.code);        // Final code`,
     icon: Zap,
     title: 'Streaming & Events',
     description: 'Real-time streaming and event handling',
-    code: `import { Agent } from '@aicofounder/core';
+    code: `import { Agent } from '@waymakerai/aicofounder-core';
 
 const agent = new Agent({
   name: 'Assistant',
@@ -219,7 +219,7 @@ for await (const chunk of stream) {
     icon: Radio,
     title: 'Agent Messaging Protocol',
     description: 'Type-safe pub/sub and request/response communication between agents',
-    code: `import { createMessageBroker, createChannel } from '@aicofounder/agents';
+    code: `import { createMessageBroker, createChannel } from '@waymakerai/aicofounder-agents';
 
 // Create a message broker
 const broker = createMessageBroker({
@@ -251,7 +251,7 @@ await broker.publish(taskChannel, {
     icon: Send,
     title: 'Request/Response Channels',
     description: 'Synchronous request-response patterns for agent coordination',
-    code: `import { createRequestChannel, createMessageBroker } from '@aicofounder/agents';
+    code: `import { createRequestChannel, createMessageBroker } from '@waymakerai/aicofounder-agents';
 
 // Create request/response channel
 const queryChannel = createRequestChannel<
@@ -308,7 +308,7 @@ export default function AgentsPage() {
             Create agents that can reason, use tools, and collaborate.
           </p>
           <div className="mt-4 code-block font-mono text-sm">
-            npm install @aicofounder/core
+            npm install @waymakerai/aicofounder-core
           </div>
         </motion.div>
 

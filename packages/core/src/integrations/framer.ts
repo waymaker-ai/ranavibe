@@ -873,7 +873,7 @@ import { motion } from "framer-motion"
 
     switch (type) {
       case 'chat':
-        return `import { createCoFounder } from '@aicofounder/core';
+        return `import { createCoFounder } from '@waymakerai/aicofounder-core';
 
 const cofounder = createCoFounder(${JSON.stringify(cofounderConfig || {}, null, 2)});
 
@@ -895,7 +895,7 @@ export async function POST(request: Request) {
 }`;
 
       case 'search':
-        return `import { createCoFounder } from '@aicofounder/core';
+        return `import { createCoFounder } from '@waymakerai/aicofounder-core';
 
 const cofounder = createCoFounder(${JSON.stringify(cofounderConfig || {}, null, 2)});
 
@@ -914,7 +914,7 @@ export async function GET(request: Request) {
 }`;
 
       case 'cms':
-        return `import { createCoFounder } from '@aicofounder/core';
+        return `import { createCoFounder } from '@waymakerai/aicofounder-core';
 
 const cofounder = createCoFounder(${JSON.stringify(cofounderConfig || {}, null, 2)});
 
@@ -961,7 +961,7 @@ export async function POST(request: Request) {
 In your Framer project, add the following to your code components:
 
 \`\`\`bash
-npm install @aicofounder/core framer-motion
+npm install @waymakerai/aicofounder-core framer-motion
 \`\`\`
 
 ## 2. Create API Route

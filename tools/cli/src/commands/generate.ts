@@ -428,14 +428,14 @@ export async function generateCommand(prompt: string, options: GenerateOptions =
   console.log(chalk.cyan('\n🧠 CoFounder Code Generator\n'));
 
   if (!prompt) {
-    console.log(chalk.yellow('Usage: cofounder generate "create a React component called UserProfile"'));
+    console.log(chalk.yellow('Usage: aicofounder generate "create a React component called UserProfile"'));
     console.log(chalk.gray('\nExamples:'));
-    console.log(chalk.gray('  cofounder generate "create a React component for user dashboard"'));
-    console.log(chalk.gray('  cofounder generate "make an API endpoint for authentication"'));
-    console.log(chalk.gray('  cofounder generate "build a custom hook for fetching data"'));
-    console.log(chalk.gray('  cofounder generate "create a Prisma model for blog posts"'));
-    console.log(chalk.gray('  cofounder generate "make a service for user management"'));
-    console.log(chalk.gray('  cofounder generate "write tests for the UserProfile component"'));
+    console.log(chalk.gray('  aicofounder generate "create a React component for user dashboard"'));
+    console.log(chalk.gray('  aicofounder generate "make an API endpoint for authentication"'));
+    console.log(chalk.gray('  aicofounder generate "build a custom hook for fetching data"'));
+    console.log(chalk.gray('  aicofounder generate "create a Prisma model for blog posts"'));
+    console.log(chalk.gray('  aicofounder generate "make a service for user management"'));
+    console.log(chalk.gray('  aicofounder generate "write tests for the UserProfile component"'));
     return;
   }
 
@@ -470,7 +470,7 @@ export async function generateCommand(prompt: string, options: GenerateOptions =
     console.log(chalk.green('\n✓ Code generated successfully'));
     console.log(chalk.gray(`Suggested filename: ${filename}`));
     console.log(chalk.gray('\nTo save, run with -o flag:'));
-    console.log(chalk.cyan(`  cofounder generate "${prompt}" -o ${filename}`));
+    console.log(chalk.cyan(`  aicofounder generate "${prompt}" -o ${filename}`));
   }
 
   // Generate tests if requested
@@ -502,7 +502,7 @@ export async function generateInteractive(): Promise<void> {
   console.log(chalk.gray('  • Models (Prisma, Mongoose)'));
   console.log(chalk.gray('  • Tests (Jest, Vitest)'));
   console.log();
-  console.log(chalk.yellow('Use: cofounder generate "<your description>"'));
+  console.log(chalk.yellow('Use: aicofounder generate "<your description>"'));
 }
 
 /**
@@ -529,6 +529,6 @@ export async function generateTemplates(): Promise<void> {
   }
 
   console.log(chalk.gray('Example usage:'));
-  console.log(chalk.cyan('  cofounder generate "create a React component called Header"'));
-  console.log(chalk.cyan('  cofounder generate "make a Prisma model for User with email and name"'));
+  console.log(chalk.cyan('  aicofounder generate "create a React component called Header"'));
+  console.log(chalk.cyan('  aicofounder generate "make a Prisma model for User with email and name"'));
 }

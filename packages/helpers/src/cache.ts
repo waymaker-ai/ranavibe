@@ -1,5 +1,5 @@
 /**
- * Caching layer for @aicofounder/helpers
+ * Caching layer for @waymakerai/aicofounder-helpers
  * Provides in-memory and Redis caching for LLM responses
  */
 
@@ -66,7 +66,7 @@ export async function getFromCache<T>(key: string): Promise<T | null> {
     memoryCache.delete(key);
   }
 
-  // TODO: Add Redis support when @aicofounder/core is available
+  // TODO: Add Redis support when @waymakerai/aicofounder-core is available
   // const redis = getRedisClient();
   // if (redis) {
   //   const cached = await redis.get(key);
@@ -87,7 +87,7 @@ export async function setInCache<T>(key: string, value: T, ttl: number): Promise
     ttl,
   });
 
-  // TODO: Add Redis support when @aicofounder/core is available
+  // TODO: Add Redis support when @waymakerai/aicofounder-core is available
   // const redis = getRedisClient();
   // if (redis) {
   //   await redis.setex(key, ttl, JSON.stringify(value));

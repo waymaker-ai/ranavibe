@@ -48,7 +48,7 @@ crew = Crew(
 )
 
 result = crew.kickoff()`,
-    cofounder: `import { createPipeline } from '@aicofounder/agents';
+    aicofounder: `import { createPipeline } from '@waymakerai/aicofounder-agents';
 
 const { orchestrator, execute } = createPipeline([
   {
@@ -91,7 +91,7 @@ crew = Crew(
 )
 
 result = crew.kickoff()`,
-    cofounder: `import { createWorkerPool } from '@aicofounder/agents';
+    aicofounder: `import { createWorkerPool } from '@waymakerai/aicofounder-agents';
 
 const { execute } = createWorkerPool([
   { id: 'analyst-1', name: 'Analyst 1', capabilities: ['analyze'] },
@@ -127,7 +127,7 @@ agent = Agent(
 
 # Tool execution is handled by the agent
 # Custom tools require specific interface implementation`,
-    cofounder: `import { createTool, createAgent } from '@aicofounder/agents';
+    aicofounder: `import { createTool, createAgent } from '@waymakerai/aicofounder-agents';
 
 // Simple tool creation
 const searchTool = createTool({
@@ -172,7 +172,7 @@ agent = Agent(
 
 # Memory is implicit and managed internally
 # Limited control over memory operations`,
-    cofounder: `import { SharedStateManager, createOrchestrator } from '@aicofounder/agents';
+    aicofounder: `import { SharedStateManager, createOrchestrator } from '@waymakerai/aicofounder-agents';
 
 const orchestrator = createOrchestrator({
   conversationHistory: [],

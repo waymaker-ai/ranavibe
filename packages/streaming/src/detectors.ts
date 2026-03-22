@@ -1,5 +1,5 @@
 /**
- * @aicofounder/streaming - Streaming-Optimized Detectors
+ * @waymakerai/aicofounder-streaming - Streaming-Optimized Detectors
  *
  * Lightweight detectors designed for incremental checking of streaming content.
  * These are optimized for the token-by-token use case rather than full-text analysis.

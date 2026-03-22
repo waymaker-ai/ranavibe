@@ -1,5 +1,5 @@
 /**
- * @aicofounder/testing - Type Definitions
+ * @waymakerai/aicofounder-testing - Type Definitions
  * AI-native testing framework types
  */
 

@@ -33,8 +33,8 @@ export async function edgeStatusCommand(): Promise<void> {
   console.log(`  Tokens/sec: ${chalk.yellow('32.4')}`);
   console.log(`  Cache Hit Rate: ${chalk.yellow('78%')}`);
 
-  console.log(chalk.gray('\nList available models: cofounder edge:models'));
-  console.log(chalk.gray('Download a model: cofounder edge:download <model>\n'));
+  console.log(chalk.gray('\nList available models: aicofounder edge:models'));
+  console.log(chalk.gray('Download a model: aicofounder edge:download <model>\n'));
 }
 
 export async function edgeModelsCommand(options: { installed?: boolean }): Promise<void> {
@@ -75,7 +75,7 @@ export async function edgeModelsCommand(options: { installed?: boolean }): Promi
     console.log(chalk.gray('Use --installed to show only installed models'));
   }
 
-  console.log(chalk.gray('Download with: cofounder edge:download <model>\n'));
+  console.log(chalk.gray('Download with: aicofounder edge:download <model>\n'));
 }
 
 export async function edgeDownloadCommand(
@@ -114,7 +114,7 @@ export async function edgeDownloadCommand(
   console.log(`  ${chalk.green('✓')} Quick test passed`);
 
   console.log(chalk.green(`\n✓ Model installed successfully`));
-  console.log(chalk.gray(`\nRun inference: cofounder edge:run ${model} -p "Hello"\n`));
+  console.log(chalk.gray(`\nRun inference: aicofounder edge:run ${model} -p "Hello"\n`));
 }
 
 export async function edgeRunCommand(

@@ -112,7 +112,7 @@ CoFounder_DEFAULT_MODEL=claude-sonnet-4-20250514`}</code>
 
           <div className="code-block">
             <pre>
-              <code>{`npx cofounder doctor`}</code>
+              <code>{`npx aicofounder doctor`}</code>
             </pre>
           </div>
 
@@ -124,9 +124,9 @@ CoFounder_DEFAULT_MODEL=claude-sonnet-4-20250514`}</code>
             <pre>
               <code>{`✓ Node.js version: 20.10.0
 ✓ npm version: 10.2.3
-✓ @aicofounder/core: 1.0.0
-✓ @aicofounder/react: 1.0.0
-✓ @aicofounder/prompts: 1.0.0
+✓ @waymakerai/aicofounder-core: 1.0.0
+✓ @waymakerai/aicofounder-react: 1.0.0
+✓ @waymakerai/aicofounder-prompts: 1.0.0
 ✓ ANTHROPIC_API_KEY: configured
 ✓ TypeScript: configured
 ✓ Next.js: configured
@@ -238,7 +238,7 @@ npm install`}</code>
               </li>
               <li className="flex items-center gap-2">
                 <CheckCircle2 className="h-5 w-5 text-green-500" />
-                <span>Verified with cofounder doctor</span>
+                <span>Verified with aicofounder doctor</span>
               </li>
               <li className="flex items-center gap-2">
                 <CheckCircle2 className="h-5 w-5 text-green-500" />

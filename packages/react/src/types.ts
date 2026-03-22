@@ -1,6 +1,6 @@
 /**
  * Type definitions for CoFounder React
- * These mirror @aicofounder/core types for standalone use
+ * These mirror @waymakerai/aicofounder-core types for standalone use
  */
 
 export type LLMProvider = 'anthropic' | 'openai' | 'google' | 'xai' | 'mistral' | 'cohere' | 'together' | 'groq' | 'ollama';

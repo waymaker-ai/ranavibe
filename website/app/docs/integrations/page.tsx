@@ -9,7 +9,7 @@ const integrations = [
     icon: Box,
     title: 'Hugging Face',
     description: 'Use any Hugging Face model with CoFounder',
-    code: `import { HuggingFaceProvider } from '@aicofounder/integrations/huggingface';
+    code: `import { HuggingFaceProvider } from '@waymakerai/aicofounder-integrations/huggingface';
 
 const hf = new HuggingFaceProvider({
   apiKey: process.env.HF_API_KEY,
@@ -37,7 +37,7 @@ const agent = new Agent({
     icon: Database,
     title: 'Supabase',
     description: 'Vector storage and RAG with Supabase',
-    code: `import { SupabaseVectorStore } from '@aicofounder/integrations/supabase';
+    code: `import { SupabaseVectorStore } from '@waymakerai/aicofounder-integrations/supabase';
 
 const vectorStore = new SupabaseVectorStore({
   supabaseUrl: process.env.SUPABASE_URL,
@@ -71,7 +71,7 @@ const rag = new RAGPipeline({
     icon: BarChart3,
     title: 'Weights & Biases',
     description: 'Experiment tracking and model monitoring',
-    code: `import { WandBIntegration } from '@aicofounder/integrations/wandb';
+    code: `import { WandBIntegration } from '@waymakerai/aicofounder-integrations/wandb';
 
 const wandb = new WandBIntegration({
   apiKey: process.env.WANDB_API_KEY,
@@ -110,7 +110,7 @@ const comparison = await wandb.compareRuns(['run-1', 'run-2']);`,
     icon: AlertCircle,
     title: 'Sentry',
     description: 'Error tracking and performance monitoring',
-    code: `import { SentryIntegration } from '@aicofounder/integrations/sentry';
+    code: `import { SentryIntegration } from '@waymakerai/aicofounder-integrations/sentry';
 
 const sentry = new SentryIntegration({
   dsn: process.env.SENTRY_DSN,
@@ -147,7 +147,7 @@ agent.use(sentry.middleware());`,
     icon: Cloud,
     title: 'AWS Bedrock',
     description: 'Use AWS Bedrock models with CoFounder',
-    code: `import { BedrockProvider } from '@aicofounder/integrations/aws-bedrock';
+    code: `import { BedrockProvider } from '@waymakerai/aicofounder-integrations/aws-bedrock';
 
 const bedrock = new BedrockProvider({
   region: 'us-east-1',
@@ -183,7 +183,7 @@ for await (const chunk of stream) {
     icon: Link2,
     title: 'MCP (Model Context Protocol)',
     description: 'Connect to any MCP-compatible tool server',
-    code: `import { MCPClient, MCPServer } from '@aicofounder/integrations/mcp';
+    code: `import { MCPClient, MCPServer } from '@waymakerai/aicofounder-integrations/mcp';
 
 // Connect to MCP server
 const client = new MCPClient({
@@ -254,7 +254,7 @@ export default function IntegrationsPage() {
             Weights & Biases, Sentry, AWS Bedrock, and MCP support.
           </p>
           <div className="mt-4 code-block font-mono text-sm">
-            npm install @aicofounder/integrations
+            npm install @waymakerai/aicofounder-integrations
           </div>
         </motion.div>
 

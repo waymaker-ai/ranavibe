@@ -1,5 +1,5 @@
 /**
- * Configuration for @aicofounder/helpers
+ * Configuration for @waymakerai/aicofounder-helpers
  */
 
 import type { Provider, HelperConfig } from './types';
@@ -23,7 +23,7 @@ let globalConfig: HelperConfig = { ...defaultConfig };
  *
  * @example
  * ```typescript
- * import { configure } from '@aicofounder/helpers';
+ * import { configure } from '@waymakerai/aicofounder-helpers';
  *
  * configure({
  *   provider: 'anthropic',

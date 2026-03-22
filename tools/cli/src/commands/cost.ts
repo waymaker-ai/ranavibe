@@ -173,7 +173,7 @@ export async function costEstimate(options: {
   console.log('  2. Use ' + chalk.cyan('Claude Sonnet') + ' for complex reasoning');
   console.log('  3. Use ' + chalk.cyan('GPT-4') + ' only for specialized tasks');
   console.log('  4. Enable ' + chalk.cyan('response caching') + ' for 40% additional savings');
-  console.log('  5. Run ' + chalk.cyan('cofounder llm:optimize') + ' to apply all optimizations');
+  console.log('  5. Run ' + chalk.cyan('aicofounder llm:optimize') + ' to apply all optimizations');
 
   console.log();
 }
@@ -213,5 +213,5 @@ export async function costCompare() {
   });
 
   console.log(chalk.gray('\n* CoFounder automatically routes to optimal models and caches responses'));
-  console.log(chalk.gray('* Run `cofounder cost:estimate` for usage-based estimates\n'));
+  console.log(chalk.gray('* Run `aicofounder cost:estimate` for usage-based estimates\n'));
 }

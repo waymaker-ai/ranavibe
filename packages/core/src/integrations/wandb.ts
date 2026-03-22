@@ -1,5 +1,5 @@
 /**
- * @aicofounder/integrations/wandb
+ * @waymakerai/aicofounder-integrations/wandb
  * Weights & Biases tracking integration
  *
  * Features:
@@ -11,7 +11,7 @@
  *
  * @example
  * ```typescript
- * import { createWandbTracker } from '@aicofounder/core';
+ * import { createWandbTracker } from '@waymakerai/aicofounder-core';
  *
  * const tracker = createWandbTracker({
  *   apiKey: process.env.WANDB_API_KEY,

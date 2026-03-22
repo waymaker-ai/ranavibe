@@ -1,5 +1,5 @@
 {
-  "name": "@aicofounder/prompts",
+  "name": "@waymakerai/aicofounder-prompts",
   "version": "1.0.0",
   "description": "Enterprise prompt management with versioning, A/B testing, and analytics",
   "main": "dist/index.js",
@@ -31,7 +31,7 @@
   "author": "Waymaker",
   "license": "MIT",
   "dependencies": {
-    "@aicofounder/core": "workspace:*",
+    "@waymakerai/aicofounder-core": "workspace:*",
     "zod": "^3.22.4"
   },
   "devDependencies": {

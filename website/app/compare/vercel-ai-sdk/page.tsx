@@ -6,73 +6,73 @@ const features = [
   {
     feature: 'Core Streaming',
     vercel: true,
-    cofounder: true,
+    aicofounder: true,
     note: 'Both support streaming responses',
   },
   {
     feature: 'Multi-Provider',
     vercel: true,
-    cofounder: true,
+    aicofounder: true,
     note: 'Both support multiple AI providers',
   },
   {
     feature: 'Tool Calling',
     vercel: true,
-    cofounder: true,
+    aicofounder: true,
     note: 'Both support function/tool calling',
   },
   {
     feature: 'React Hooks',
     vercel: true,
-    cofounder: true,
+    aicofounder: true,
     note: 'Both provide React integration',
   },
   {
     feature: 'Cost Tracking',
     vercel: false,
-    cofounder: true,
+    aicofounder: true,
     note: 'CoFounder tracks costs and provides budgets',
   },
   {
     feature: 'Built-in Testing',
     vercel: false,
-    cofounder: true,
-    note: 'CoFounder has @aicofounder/testing for AI testing',
+    aicofounder: true,
+    note: 'CoFounder has @waymakerai/aicofounder-testing for AI testing',
   },
   {
     feature: 'Prompt Injection Detection',
     vercel: false,
-    cofounder: true,
+    aicofounder: true,
     note: 'CoFounder includes security features',
   },
   {
     feature: 'PII Redaction',
     vercel: false,
-    cofounder: true,
+    aicofounder: true,
     note: 'CoFounder can detect and redact PII',
   },
   {
     feature: 'RAG Pipeline',
     vercel: false,
-    cofounder: true,
-    note: 'CoFounder includes @aicofounder/rag for RAG',
+    aicofounder: true,
+    note: 'CoFounder includes @waymakerai/aicofounder-rag for RAG',
   },
   {
     feature: 'MCP Support',
     vercel: false,
-    cofounder: true,
+    aicofounder: true,
     note: 'CoFounder supports Model Context Protocol',
   },
   {
     feature: 'Agent Framework',
     vercel: false,
-    cofounder: true,
+    aicofounder: true,
     note: 'CoFounder includes agent orchestration',
   },
   {
     feature: 'Observability',
     vercel: false,
-    cofounder: true,
+    aicofounder: true,
     note: 'CoFounder has built-in tracing and logging',
   },
 ];
@@ -183,7 +183,7 @@ const { text } = await generateText({
                   </span>
                 </div>
                 <pre className="p-4 rounded-xl bg-gray-900 border border-gray-800 overflow-x-auto text-sm">
-                  <code className="text-gray-300">{`import { createCoFounder } from '@aicofounder/core';
+                  <code className="text-gray-300">{`import { createCoFounder } from '@waymakerai/aicofounder-core';
 
 const cofounder = createCoFounder();
 
@@ -212,7 +212,7 @@ const stats = cofounder.getCostStats();
               <div className="p-6 rounded-xl border border-gray-800 bg-gray-900/50">
                 <h3 className="text-lg font-medium mb-3">Security</h3>
                 <pre className="p-3 rounded-lg bg-black/50 text-sm overflow-x-auto">
-                  <code className="text-gray-300">{`import { detectInjection } from '@aicofounder/core';
+                  <code className="text-gray-300">{`import { detectInjection } from '@waymakerai/aicofounder-core';
 
 const result = detectInjection(userInput);
 if (result.isInjection) {
@@ -223,7 +223,7 @@ if (result.isInjection) {
               <div className="p-6 rounded-xl border border-gray-800 bg-gray-900/50">
                 <h3 className="text-lg font-medium mb-3">Testing</h3>
                 <pre className="p-3 rounded-lg bg-black/50 text-sm overflow-x-auto">
-                  <code className="text-gray-300">{`import { aiTest } from '@aicofounder/testing';
+                  <code className="text-gray-300">{`import { aiTest } from '@waymakerai/aicofounder-testing';
 
 aiTest('responds helpfully', async () => {
   const response = await cofounder.chat('Help');
@@ -234,7 +234,7 @@ aiTest('responds helpfully', async () => {
               <div className="p-6 rounded-xl border border-gray-800 bg-gray-900/50">
                 <h3 className="text-lg font-medium mb-3">Observability</h3>
                 <pre className="p-3 rounded-lg bg-black/50 text-sm overflow-x-auto">
-                  <code className="text-gray-300">{`import { createTracer } from '@aicofounder/core';
+                  <code className="text-gray-300">{`import { createTracer } from '@waymakerai/aicofounder-core';
 
 const tracer = createTracer();
 // All requests automatically traced

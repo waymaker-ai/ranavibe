@@ -1,5 +1,5 @@
 /**
- * @aicofounder/agents - BaseAgent
+ * @waymakerai/aicofounder-agents - BaseAgent
  * Abstract base class for all CoFounder agents
  */
 

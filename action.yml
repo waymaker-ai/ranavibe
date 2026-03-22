@@ -1,0 +1,256 @@
+name: 'CoFounder AI Guardrails'
+description: 'Scan your AI codebase for security, compliance, cost, and safety issues'
+author: 'Waymaker AI'
+
+branding:
+  icon: 'shield'
+  color: 'blue'
+
+inputs:
+  scan:
+    description: 'Comma-separated scan types: pii,injection,secrets,models,cost,safety,all'
+    required: false
+    default: 'all'
+  fail-on:
+    description: 'Minimum severity to fail the check: low, medium, high, critical'
+    required: false
+    default: 'high'
+  format:
+    description: 'Output format: text, sarif, json'
+    required: false
+    default: 'text'
+  config:
+    description: 'Path to .cofounder.yml configuration file'
+    required: false
+    default: '.cofounder.yml'
+  scan-path:
+    description: 'Path to scan (defaults to repo root)'
+    required: false
+    default: '.'
+  github-token:
+    description: 'GitHub token for PR comments and check runs'
+    required: false
+    default: ${{ github.token }}
+  comment-on-pr:
+    description: 'Whether to post results as a PR comment'
+    required: false
+    default: 'true'
+  upload-sarif:
+    description: 'Whether to upload SARIF to GitHub Security tab'
+    required: false
+    default: 'true'
+  approved-models:
+    description: 'Comma-separated list of approved model identifiers'
+    required: false
+    default: ''
+  budget-limit:
+    description: 'Monthly budget limit in USD'
+    required: false
+    default: ''
+
+outputs:
+  findings:
+    description: 'Total number of findings'
+    value: ${{ steps.scan.outputs.findings }}
+  critical:
+    description: 'Number of critical findings'
+    value: ${{ steps.scan.outputs.critical }}
+  high:
+    description: 'Number of high findings'
+    value: ${{ steps.scan.outputs.high }}
+  medium:
+    description: 'Number of medium findings'
+    value: ${{ steps.scan.outputs.medium }}
+  low:
+    description: 'Number of low findings'
+    value: ${{ steps.scan.outputs.low }}
+  passed:
+    description: 'Whether the scan passed (true/false)'
+    value: ${{ steps.scan.outputs.passed }}
+  sarif-file:
+    description: 'Path to the generated SARIF file'
+    value: ${{ steps.sarif.outputs.sarif-file }}
+  report:
+    description: 'Path to the scan report file'
+    value: ${{ steps.scan.outputs.report-file }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Install CoFounder CI
+      shell: bash
+      run: npm install -g @aicofounder/ci@latest
+
+    - name: Get changed files
+      id: changed
+      shell: bash
+      run: |
+        if [ "${{ github.event_name }}" = "pull_request" ]; then
+          # Get files changed in PR
+          CHANGED=$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | tr '\n' ',' | sed 's/,$//')
+          echo "files=${CHANGED}" >> "$GITHUB_OUTPUT"
+          echo "has_changes=true" >> "$GITHUB_OUTPUT"
+        elif [ "${{ github.event_name }}" = "push" ]; then
+          # Get files changed in push
+          CHANGED=$(git diff --name-only --diff-filter=ACMRT ${{ github.event.before }} ${{ github.sha }} | tr '\n' ',' | sed 's/,$//')
+          echo "files=${CHANGED}" >> "$GITHUB_OUTPUT"
+          echo "has_changes=true" >> "$GITHUB_OUTPUT"
+        else
+          echo "files=" >> "$GITHUB_OUTPUT"
+          echo "has_changes=false" >> "$GITHUB_OUTPUT"
+        fi
+
+    - name: Map scan types to rules
+      id: rules
+      shell: bash
+      run: |
+        SCAN_INPUT="${{ inputs.scan }}"
+        RULES=""
+
+        if [ "$SCAN_INPUT" = "all" ]; then
+          RULES="all"
+        else
+          IFS=',' read -ra SCAN_TYPES <<< "$SCAN_INPUT"
+          for type in "${SCAN_TYPES[@]}"; do
+            type=$(echo "$type" | xargs)  # trim whitespace
+            case "$type" in
+              pii)       RULES="${RULES:+$RULES,}no-pii-in-prompts" ;;
+              injection) RULES="${RULES:+$RULES,}no-injection-vuln" ;;
+              secrets)   RULES="${RULES:+$RULES,}no-hardcoded-keys" ;;
+              models)    RULES="${RULES:+$RULES,}approved-models" ;;
+              cost)      RULES="${RULES:+$RULES,}cost-estimation" ;;
+              safety)    RULES="${RULES:+$RULES,}safe-defaults" ;;
+              *)         echo "::warning::Unknown scan type: $type" ;;
+            esac
+          done
+        fi
+
+        echo "rules=${RULES}" >> "$GITHUB_OUTPUT"
+
+    - name: Run CoFounder CI scan
+      id: scan
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+        INPUT_GITHUB_TOKEN: ${{ inputs.github-token }}
+      run: |
+        REPORT_FILE="${{ runner.temp }}/cofounder-report.txt"
+        JSON_FILE="${{ runner.temp }}/cofounder-results.json"
+
+        # Build command arguments
+        ARGS="scan ${{ inputs.scan-path }}"
+        ARGS="$ARGS --rules ${{ steps.rules.outputs.rules }}"
+        ARGS="$ARGS --fail-on ${{ inputs.fail-on }}"
+        ARGS="$ARGS --format json"
+
+        if [ -f "${{ inputs.config }}" ]; then
+          ARGS="$ARGS --config ${{ inputs.config }}"
+        fi
+
+        if [ -n "${{ inputs.approved-models }}" ]; then
+          ARGS="$ARGS --approved-models ${{ inputs.approved-models }}"
+        fi
+
+        if [ -n "${{ inputs.budget-limit }}" ]; then
+          ARGS="$ARGS --budget-limit ${{ inputs.budget-limit }}"
+        fi
+
+        # Run the scan and capture output
+        set +e
+        aicofounder-ci $ARGS > "$JSON_FILE" 2>&1
+        EXIT_CODE=$?
+        set -e
+
+        # Parse JSON results for outputs
+        if [ -f "$JSON_FILE" ] && python3 -c "import json; json.load(open('$JSON_FILE'))" 2>/dev/null; then
+          FINDINGS=$(python3 -c "import json; d=json.load(open('$JSON_FILE')); print(len(d.get('findings',[])))")
+          CRITICAL=$(python3 -c "import json; d=json.load(open('$JSON_FILE')); print(d.get('summary',{}).get('critical',0))")
+          HIGH=$(python3 -c "import json; d=json.load(open('$JSON_FILE')); print(d.get('summary',{}).get('high',0))")
+          MEDIUM=$(python3 -c "import json; d=json.load(open('$JSON_FILE')); print(d.get('summary',{}).get('medium',0))")
+          LOW=$(python3 -c "import json; d=json.load(open('$JSON_FILE')); print(d.get('summary',{}).get('low',0))")
+          PASSED=$(python3 -c "import json; d=json.load(open('$JSON_FILE')); print(str(d.get('passed',True)).lower())")
+        else
+          FINDINGS=0
+          CRITICAL=0
+          HIGH=0
+          MEDIUM=0
+          LOW=0
+          PASSED=true
+        fi
+
+        echo "findings=${FINDINGS}" >> "$GITHUB_OUTPUT"
+        echo "critical=${CRITICAL}" >> "$GITHUB_OUTPUT"
+        echo "high=${HIGH}" >> "$GITHUB_OUTPUT"
+        echo "medium=${MEDIUM}" >> "$GITHUB_OUTPUT"
+        echo "low=${LOW}" >> "$GITHUB_OUTPUT"
+        echo "passed=${PASSED}" >> "$GITHUB_OUTPUT"
+        echo "report-file=${JSON_FILE}" >> "$GITHUB_OUTPUT"
+
+        # Also run console format for logs
+        aicofounder-ci scan ${{ inputs.scan-path }} \
+          --rules ${{ steps.rules.outputs.rules }} \
+          --fail-on ${{ inputs.fail-on }} \
+          --format console \
+          ${CONFIG_ARG} 2>&1 | tee "$REPORT_FILE" || true
+
+        echo "::group::CoFounder CI Scan Results"
+        cat "$REPORT_FILE"
+        echo "::endgroup::"
+
+    - name: Generate SARIF report
+      id: sarif
+      if: inputs.upload-sarif == 'true'
+      shell: bash
+      run: |
+        SARIF_FILE="${{ runner.temp }}/cofounder-results.sarif"
+
+        ARGS="scan ${{ inputs.scan-path }}"
+        ARGS="$ARGS --rules ${{ steps.rules.outputs.rules }}"
+        ARGS="$ARGS --fail-on ${{ inputs.fail-on }}"
+        ARGS="$ARGS --format sarif"
+
+        if [ -f "${{ inputs.config }}" ]; then
+          ARGS="$ARGS --config ${{ inputs.config }}"
+        fi
+
+        aicofounder-ci $ARGS > "$SARIF_FILE" 2>/dev/null || true
+        echo "sarif-file=${SARIF_FILE}" >> "$GITHUB_OUTPUT"
+
+    - name: Upload SARIF to GitHub Security
+      if: inputs.upload-sarif == 'true' && steps.sarif.outputs.sarif-file != ''
+      uses: github/codeql-action/upload-sarif@v3
+      with:
+        sarif_file: ${{ steps.sarif.outputs.sarif-file }}
+        category: cofounder-ai-guardrails
+      continue-on-error: true
+
+    - name: Post PR comment
+      if: inputs.comment-on-pr == 'true' && github.event_name == 'pull_request'
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+      run: |
+        aicofounder-ci check ${{ inputs.scan-path }} \
+          --rules ${{ steps.rules.outputs.rules }} \
+          --fail-on ${{ inputs.fail-on }} \
+          --format github-pr \
+          ${CONFIG_ARG} 2>&1 || true
+
+    - name: Enforce threshold
+      if: steps.scan.outputs.passed == 'false'
+      shell: bash
+      run: |
+        echo "::error::CoFounder CI scan failed. Found issues at or above '${{ inputs.fail-on }}' severity."
+        echo ""
+        echo "  Critical: ${{ steps.scan.outputs.critical }}"
+        echo "  High:     ${{ steps.scan.outputs.high }}"
+        echo "  Medium:   ${{ steps.scan.outputs.medium }}"
+        echo "  Low:      ${{ steps.scan.outputs.low }}"
+        echo ""
+        echo "Total findings: ${{ steps.scan.outputs.findings }}"
+        exit 1

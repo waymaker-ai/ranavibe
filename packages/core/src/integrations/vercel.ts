@@ -1,5 +1,5 @@
 /**
- * @aicofounder/integrations/vercel
+ * @waymakerai/aicofounder-integrations/vercel
  * Vercel one-click deploy integration
  *
  * Features:
@@ -11,7 +11,7 @@
  *
  * @example
  * ```typescript
- * import { createVercelConfig, deployToVercel } from '@aicofounder/core';
+ * import { createVercelConfig, deployToVercel } from '@waymakerai/aicofounder-core';
  *
  * // Generate vercel.json
  * const config = createVercelConfig({

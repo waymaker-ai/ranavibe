@@ -11,7 +11,7 @@
  *
  * @example
  * ```typescript
- * import { MessageBroker, createChannel } from '@aicofounder/agents';
+ * import { MessageBroker, createChannel } from '@waymakerai/aicofounder-agents';
  *
  * const broker = new MessageBroker();
  *

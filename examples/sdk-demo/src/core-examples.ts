@@ -3,8 +3,8 @@
  * Complete demonstrations of all SDK features
  */
 
-import { createCoFounder } from '@aicofounder/core';
-import type { Message } from '@aicofounder/core';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
+import type { Message } from '@waymakerai/aicofounder-core';
 
 // ============================================================================
 // 1. Simple Setup

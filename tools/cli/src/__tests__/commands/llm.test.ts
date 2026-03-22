@@ -152,7 +152,7 @@ describe('error handling', () => {
   it('should suggest fixes for common errors', () => {
     const suggestFix = (errorType: string): string => {
       const fixes: Record<string, string> = {
-        authentication: 'Check your API key with `cofounder config:list`',
+        authentication: 'Check your API key with `aicofounder config:list`',
         rate_limit: 'Wait a moment and try again, or upgrade your plan',
         server: 'The API is experiencing issues. Try again later.',
         unavailable: 'The service is temporarily unavailable.',

@@ -2,12 +2,12 @@
   "name": "ci-demo",
   "version": "0.0.0",
   "private": true,
-  "description": "Demo of @aicofounder/ci - CI/CD guardrails, scanning, and GitHub Actions workflow",
+  "description": "Demo of @waymakerai/aicofounder-ci - CI/CD guardrails, scanning, and GitHub Actions workflow",
   "scripts": {
     "start": "npx tsx index.ts"
   },
   "dependencies": {
-    "@aicofounder/ci": "workspace:*"
+    "@waymakerai/aicofounder-ci": "workspace:*"
   },
   "devDependencies": {
     "tsx": "^4.7.0"

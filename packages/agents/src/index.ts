@@ -1,10 +1,10 @@
 /**
- * @aicofounder/agents
+ * @waymakerai/aicofounder-agents
  * Agent Development Kit (ADK) for CoFounder Framework
  *
  * @example
  * ```typescript
- * import { createAgent, createCoFounder } from '@aicofounder/agents';
+ * import { createAgent, createCoFounder } from '@waymakerai/aicofounder-agents';
  *
  * const cofounder = createCoFounder({
  *   providers: { anthropic: process.env.ANTHROPIC_API_KEY }

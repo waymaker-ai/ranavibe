@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @aicofounder/ci CLI
+ * @waymakerai/aicofounder-ci CLI
  *
  * Usage:
  *   aicofounder-ci scan [path] [--rules all] [--format console] [--fail-on high]
@@ -79,7 +79,7 @@ CoFounder CI - AI Guardrails Scanner
 
 Usage:
   aicofounder-ci scan [path]       Scan codebase for AI security issues
-  aicofounder-ci validate [config] Validate .cofounder.yml configuration
+  aicofounder-ci validate [config] Validate .aicofounder.yml configuration
   aicofounder-ci check [path]      Scan and post results to GitHub PR
   aicofounder-ci help              Show this help message
 
@@ -87,7 +87,7 @@ Options:
   --rules <rules>     Comma-separated rules or "all" (default: all)
   --format <format>   Output format: console, json, sarif, markdown, github-pr (default: console)
   --fail-on <level>   Minimum severity to fail: critical, high, medium, low, none (default: high)
-  --config <path>     Path to .cofounder.yml config (default: .cofounder.yml)
+  --config <path>     Path to .aicofounder.yml config (default: .aicofounder.yml)
   --approved-models   Comma-separated approved model list
   --budget-limit      Monthly budget limit in USD
 
@@ -98,7 +98,7 @@ Environment:
 Examples:
   aicofounder-ci scan ./src --rules no-hardcoded-keys,no-pii-in-prompts --format json
   aicofounder-ci scan . --fail-on critical --format sarif > results.sarif
-  aicofounder-ci validate .cofounder.yml
+  aicofounder-ci validate .aicofounder.yml
   aicofounder-ci check . --format github-pr
 `;
   process.stdout.write(usage + '\n');
@@ -110,7 +110,7 @@ function buildConfig(parsed: ParsedArgs): ScanConfig {
   const rules: string[] | 'all' = rulesStr === 'all' ? 'all' : rulesStr.split(',').map(s => s.trim());
   const format = (parsed.flags.format || 'console') as ReportFormat;
   const failOn = (parsed.flags['fail-on'] || 'high') as Severity;
-  const configPath = parsed.flags.config || '.cofounder.yml';
+  const configPath = parsed.flags.config || '.aicofounder.yml';
   const commentOnPr = parsed.flags['comment-on-pr'] !== 'false';
 
   const approvedModels = parsed.flags['approved-models']
@@ -165,7 +165,7 @@ async function cmdScan(parsed: ParsedArgs): Promise<number> {
 }
 
 async function cmdValidate(parsed: ParsedArgs): Promise<number> {
-  const configPath = parsed.positional[0] || parsed.flags.config || '.cofounder.yml';
+  const configPath = parsed.positional[0] || parsed.flags.config || '.aicofounder.yml';
   const findings = validateConfig(configPath);
 
   if (findings.length === 0) {

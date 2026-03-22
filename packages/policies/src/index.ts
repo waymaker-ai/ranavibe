@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// @aicofounder/policies - Main entry point
+// @waymakerai/aicofounder-policies - Main entry point
 // ---------------------------------------------------------------------------
 
 // Core types

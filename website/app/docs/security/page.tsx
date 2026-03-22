@@ -9,7 +9,7 @@ const features = [
     icon: AlertTriangle,
     title: 'Prompt Injection Detection',
     description: 'Detect and block prompt injection attacks in real-time',
-    code: `import { PromptGuard } from '@aicofounder/security';
+    code: `import { PromptGuard } from '@waymakerai/aicofounder-security';
 
 const guard = new PromptGuard({
   sensitivity: 'high',
@@ -34,7 +34,7 @@ app.use(guard.middleware());`,
     icon: Eye,
     title: 'PII Detection & Redaction',
     description: 'Automatically detect and redact sensitive data',
-    code: `import { PIIDetector } from '@aicofounder/security';
+    code: `import { PIIDetector } from '@waymakerai/aicofounder-security';
 
 const detector = new PIIDetector({
   types: ['email', 'phone', 'ssn', 'credit_card', 'address'],
@@ -61,7 +61,7 @@ const masked = detector.redact(text, {
     icon: Filter,
     title: 'Content Filtering',
     description: 'Filter harmful, inappropriate, or off-topic content',
-    code: `import { ContentFilter } from '@aicofounder/security';
+    code: `import { ContentFilter } from '@waymakerai/aicofounder-security';
 
 const filter = new ContentFilter({
   categories: ['hate', 'violence', 'sexual', 'self_harm'],
@@ -91,7 +91,7 @@ const safe = await filter.filter(content, {
     icon: ClipboardList,
     title: 'Audit Logging',
     description: 'Comprehensive audit trail for all AI operations',
-    code: `import { AuditLogger } from '@aicofounder/security';
+    code: `import { AuditLogger } from '@waymakerai/aicofounder-security';
 
 const audit = new AuditLogger({
   storage: 'postgresql',
@@ -126,7 +126,7 @@ await audit.export({
     icon: Shield,
     title: 'Rate Limiting',
     description: 'Per-user and per-endpoint rate limiting',
-    code: `import { RateLimiter } from '@aicofounder/security';
+    code: `import { RateLimiter } from '@waymakerai/aicofounder-security';
 
 const limiter = new RateLimiter({
   storage: 'redis',
@@ -160,7 +160,7 @@ app.use('/api/chat', limiter.middleware('requests'));`,
     icon: Key,
     title: 'API Key Management',
     description: 'Secure API key rotation and access control',
-    code: `import { KeyManager } from '@aicofounder/security';
+    code: `import { KeyManager } from '@waymakerai/aicofounder-security';
 
 const keys = new KeyManager({
   storage: 'vault',  // or 'aws-secrets', 'env'
@@ -219,7 +219,7 @@ export default function SecurityPage() {
             and abuse. Built-in security features for production deployments.
           </p>
           <div className="mt-4 code-block font-mono text-sm">
-            npm install @aicofounder/security
+            npm install @waymakerai/aicofounder-security
           </div>
         </motion.div>
 

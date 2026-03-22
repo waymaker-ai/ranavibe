@@ -1,5 +1,5 @@
 {
-  "name": "@aicofounder/marketplace",
+  "name": "@waymakerai/aicofounder-marketplace",
   "version": "1.0.0",
   "description": "CoFounder marketplace package",
   "main": "dist/index.js",

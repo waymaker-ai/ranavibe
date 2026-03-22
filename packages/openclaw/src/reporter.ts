@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// @aicofounder/openclaw - Report formatting for OpenClaw chat platforms
+// @waymakerai/aicofounder-openclaw - Report formatting for OpenClaw chat platforms
 // ---------------------------------------------------------------------------
 // Formats guard reports as chat-friendly markdown messages suitable for
 // Slack, Telegram, WhatsApp, Discord, and web interfaces.

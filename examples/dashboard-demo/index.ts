@@ -1,5 +1,5 @@
 /**
- * @aicofounder/dashboard Demo
+ * @waymakerai/aicofounder-dashboard Demo
  *
  * Run with: npx tsx index.ts
  *
@@ -7,11 +7,11 @@
  * metrics, exporting data, and optionally serving the HTTP API.
  */
 
-import { CoFounderDashboard } from '@aicofounder/dashboard';
+import { CoFounderDashboard } from '@waymakerai/aicofounder-dashboard';
 
 async function main() {
   console.log('╔══════════════════════════════════════════════╗');
-  console.log('║       @aicofounder/dashboard Demo              ║');
+  console.log('║       @waymakerai/aicofounder-dashboard Demo              ║');
   console.log('╚══════════════════════════════════════════════╝\n');
 
   // ─── 1. Create dashboard ──────────────────────────────────────────────────

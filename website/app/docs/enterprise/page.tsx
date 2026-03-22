@@ -19,7 +19,7 @@ const features = [
     icon: Key,
     title: 'SSO/SAML Authentication',
     description: 'Enterprise single sign-on with SAML 2.0 and OIDC support',
-    code: `import { createSSOManager } from '@aicofounder/core';
+    code: `import { createSSOManager } from '@waymakerai/aicofounder-core';
 
 const sso = createSSOManager({
   providers: [{
@@ -50,7 +50,7 @@ if (result.success) {
     icon: Users,
     title: 'Role-Based Access Control',
     description: 'Fine-grained permissions with roles, policies, and audit logging',
-    code: `import { createRBACManager, SYSTEM_ROLES } from '@aicofounder/core';
+    code: `import { createRBACManager, SYSTEM_ROLES } from '@waymakerai/aicofounder-core';
 
 const rbac = createRBACManager({
   defaultDenyAll: true,
@@ -87,7 +87,7 @@ if (!result.allowed) {
     icon: FileCheck,
     title: 'Compliance Reporting',
     description: 'SOC 2, GDPR, HIPAA compliance with audit trails and data management',
-    code: `import { createComplianceManager } from '@aicofounder/core';
+    code: `import { createComplianceManager } from '@waymakerai/aicofounder-core';
 
 const compliance = createComplianceManager({
   standards: ['soc2', 'gdpr', 'hipaa'],
@@ -128,7 +128,7 @@ const report = await compliance.generateReport('soc2', {
     code: `import {
   createSelfHostedManager,
   createAirGappedConfig
-} from '@aicofounder/core';
+} from '@waymakerai/aicofounder-core';
 
 // Air-gapped configuration
 const config = createAirGappedConfig({
@@ -168,7 +168,7 @@ console.log(health.components);  // Individual component status`,
     icon: Activity,
     title: 'SLA Support',
     description: 'SLO monitoring, error budgets, alerting, and SLA reporting',
-    code: `import { createSLAManager, SLA_TEMPLATES } from '@aicofounder/core';
+    code: `import { createSLAManager, SLA_TEMPLATES } from '@waymakerai/aicofounder-core';
 
 const sla = createSLAManager({
   slas: [{

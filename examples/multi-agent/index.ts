@@ -12,7 +12,7 @@
  */
 
 // Simple Agent implementation for the example
-// In a real app, you'd import from @aicofounder/core
+// In a real app, you'd import from @waymakerai/aicofounder-core
 
 interface Tool {
   name: string;

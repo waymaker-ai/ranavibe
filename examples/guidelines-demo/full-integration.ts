@@ -5,9 +5,9 @@
  * with comprehensive guidelines and compliance enforcement.
  */
 
-import { createCoFounder } from '@aicofounder/core';
-import { createGuidelineManager, Conditions, PresetGuidelines } from '@aicofounder/guidelines';
-import { createComplianceEnforcer, PresetRules } from '@aicofounder/compliance';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
+import { createGuidelineManager, Conditions, PresetGuidelines } from '@waymakerai/aicofounder-guidelines';
+import { createComplianceEnforcer, PresetRules } from '@waymakerai/aicofounder-compliance';
 
 interface ConversationContext {
   userId: string;
@@ -17,7 +17,7 @@ interface ConversationContext {
 }
 
 class CompliantAIAgent {
-  private cofounder: any;
+  private aicofounder: any;
   private guidelines: any;
   private compliance: any;
 

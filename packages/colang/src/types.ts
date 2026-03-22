@@ -1,5 +1,5 @@
 /**
- * @aicofounder/colang - Types for Colang parsing and CoFounder policy conversion
+ * @waymakerai/aicofounder-colang - Types for Colang parsing and CoFounder policy conversion
  */
 
 /** A user or bot message pattern in Colang */

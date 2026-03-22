@@ -1,5 +1,5 @@
 /**
- * @aicofounder/guidelines - Type definitions
+ * @waymakerai/aicofounder-guidelines - Type definitions
  */
 
 /**

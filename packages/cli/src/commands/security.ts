@@ -1,6 +1,6 @@
 /**
  * Security commands
- * cofounder security:check, cofounder security:scan, cofounder security:score
+ * aicofounder security:check, aicofounder security:scan, aicofounder security:score
  */
 
 import { Command } from 'commander';
@@ -364,7 +364,7 @@ export function registerSecurityCommands(program: Command): void {
           console.log(chalk.green('   ✅ No critical security issues\n'));
         } else {
           console.log(chalk.red(`   ❌ ${issueCount} critical/high issues found`));
-          console.log(chalk.gray('   Run: cofounder security scan for details\n'));
+          console.log(chalk.gray('   Run: aicofounder security scan for details\n'));
         }
       } catch {
         spinner.stop();
@@ -376,7 +376,7 @@ export function registerSecurityCommands(program: Command): void {
       console.log(chalk.gray('   Run: npm audit\n'));
 
       console.log(chalk.gray('---\n'));
-      console.log(chalk.gray('For full security scan: cofounder security scan'));
-      console.log(chalk.gray('For feature checks: cofounder feature check <name>\n'));
+      console.log(chalk.gray('For full security scan: aicofounder security scan'));
+      console.log(chalk.gray('For feature checks: aicofounder feature check <name>\n'));
     });
 }

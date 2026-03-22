@@ -208,6 +208,6 @@ export async function voiceVoicesCommand(options: { provider?: string }): Promis
   console.log('└───────────────────┴──────────┴─────────┴────────────┴───────────┘');
 
   console.log(chalk.gray(`\nShowing ${filteredVoices.length} voices`));
-  console.log(chalk.gray('Preview a voice: cofounder voice:speak "Hello" --voice <name>'));
-  console.log(chalk.gray('Filter by provider: cofounder voice:voices --provider openai\n'));
+  console.log(chalk.gray('Preview a voice: aicofounder voice:speak "Hello" --voice <name>'));
+  console.log(chalk.gray('Filter by provider: aicofounder voice:voices --provider openai\n'));
 }

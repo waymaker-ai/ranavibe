@@ -13,8 +13,8 @@
  *
  * @example
  * ```typescript
- * import { createCoFounder } from '@aicofounder/core';
- * import { DiscordPlugin } from '@aicofounder/core/plugins/discord';
+ * import { createCoFounder } from '@waymakerai/aicofounder-core';
+ * import { DiscordPlugin } from '@waymakerai/aicofounder-core/plugins/discord';
  *
  * const discord = new DiscordPlugin({
  *   token: process.env.DISCORD_TOKEN!,

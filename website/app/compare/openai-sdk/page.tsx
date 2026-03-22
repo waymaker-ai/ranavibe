@@ -20,7 +20,7 @@ const completion = await openai.chat.completions.create({
 });
 
 console.log(completion.choices[0].message.content);`,
-    cofounder: `import { createCoFounder } from '@aicofounder/core';
+    aicofounder: `import { createCoFounder } from '@waymakerai/aicofounder-core';
 
 const cofounder = createCoFounder();
 
@@ -51,7 +51,7 @@ const anthropicResponse = await anthropic.messages.create({
   max_tokens: 1024,
   messages: [{ role: 'user', content: 'Hello' }],
 });`,
-    cofounder: `import { createCoFounder } from '@aicofounder/core';
+    aicofounder: `import { createCoFounder } from '@waymakerai/aicofounder-core';
 
 const cofounder = createCoFounder();
 
@@ -105,7 +105,7 @@ if (toolCall) {
   const args = JSON.parse(toolCall.function.arguments);
   // Execute function, make another API call...
 }`,
-    cofounder: `import { createCoFounder, createTool } from '@aicofounder/core';
+    aicofounder: `import { createCoFounder, createTool } from '@waymakerai/aicofounder-core';
 
 const cofounder = createCoFounder();
 
@@ -144,7 +144,7 @@ for await (const chunk of stream) {
     process.stdout.write(content);
   }
 }`,
-    cofounder: `import { createCoFounder } from '@aicofounder/core';
+    aicofounder: `import { createCoFounder } from '@waymakerai/aicofounder-core';
 
 const cofounder = createCoFounder();
 
@@ -158,61 +158,61 @@ const features = [
   {
     feature: 'OpenAI Models',
     openai: true,
-    cofounder: true,
+    aicofounder: true,
     note: 'Both support all OpenAI models',
   },
   {
     feature: 'Anthropic Models',
     openai: false,
-    cofounder: true,
+    aicofounder: true,
     note: 'CoFounder supports Claude models natively',
   },
   {
     feature: 'Google Models',
     openai: false,
-    cofounder: true,
+    aicofounder: true,
     note: 'CoFounder supports Gemini models',
   },
   {
     feature: 'Local Models (Ollama)',
     openai: false,
-    cofounder: true,
+    aicofounder: true,
     note: 'CoFounder supports local models out of the box',
   },
   {
     feature: 'Unified API',
     openai: false,
-    cofounder: true,
+    aicofounder: true,
     note: 'One API for all providers',
   },
   {
     feature: 'Automatic Tool Execution',
     openai: false,
-    cofounder: true,
+    aicofounder: true,
     note: 'CoFounder runs tools automatically',
   },
   {
     feature: 'Cost Tracking',
     openai: false,
-    cofounder: true,
+    aicofounder: true,
     note: 'CoFounder tracks costs across providers',
   },
   {
     feature: 'Built-in Testing',
     openai: false,
-    cofounder: true,
+    aicofounder: true,
     note: 'CoFounder includes testing utilities',
   },
   {
     feature: 'Automatic Fallbacks',
     openai: false,
-    cofounder: true,
+    aicofounder: true,
     note: 'CoFounder falls back between providers',
   },
   {
     feature: 'Security Features',
     openai: false,
-    cofounder: true,
+    aicofounder: true,
     note: 'CoFounder includes injection detection, PII filtering',
   },
 ];

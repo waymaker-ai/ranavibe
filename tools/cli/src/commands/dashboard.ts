@@ -239,7 +239,7 @@ function estimateUsage(): UsageData {
             const content = fs.readFileSync(file, 'utf-8');
             if (content.includes('openai') || content.includes('anthropic') ||
                 content.includes('gemini') || content.includes('groq') ||
-                content.includes('@aicofounder/core')) {
+                content.includes('@waymakerai/aicofounder-core')) {
               llmEndpoints++;
             }
           } catch {
@@ -394,9 +394,9 @@ function generateRecommendations(stats: DashboardStats, usage: UsageData): strin
 
   // Default recommendations if none generated
   if (recommendations.length === 0) {
-    recommendations.push('Run `cofounder llm:analyze` for detailed cost analysis');
-    recommendations.push('Run `cofounder prompt:create` to manage prompts');
-    recommendations.push('Run `cofounder security:audit` to check for vulnerabilities');
+    recommendations.push('Run `aicofounder llm:analyze` for detailed cost analysis');
+    recommendations.push('Run `aicofounder prompt:create` to manage prompts');
+    recommendations.push('Run `aicofounder security:audit` to check for vulnerabilities');
   }
 
   return recommendations.slice(0, 4);
@@ -476,7 +476,7 @@ function displayDashboard(stats: DashboardStats) {
     });
   } else {
     console.log(chalk.bold.cyan('╠' + '═'.repeat(width - 2) + '╣'));
-    console.log(chalk.bold.cyan('║') + chalk.gray('  No usage data yet. Run `cofounder llm:setup` to configure.'.padEnd(width - 2)) + chalk.bold.cyan('║'));
+    console.log(chalk.bold.cyan('║') + chalk.gray('  No usage data yet. Run `aicofounder llm:setup` to configure.'.padEnd(width - 2)) + chalk.bold.cyan('║'));
   }
 
   // Project Health

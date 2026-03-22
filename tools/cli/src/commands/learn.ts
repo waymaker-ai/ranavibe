@@ -7,14 +7,14 @@
  * @example
  * ```bash
  * # Start interactive learning
- * cofounder learn
+ * aicofounder learn
  *
  * # Learn specific topic
- * cofounder learn prompts
- * cofounder learn rag
- * cofounder learn agents
- * cofounder learn testing
- * cofounder learn cost
+ * aicofounder learn prompts
+ * aicofounder learn rag
+ * aicofounder learn agents
+ * aicofounder learn testing
+ * aicofounder learn cost
  * ```
  */
 
@@ -72,7 +72,7 @@ Let's build your first AI-powered feature!
       {
         title: 'Install CoFounder',
         content: 'First, install the CoFounder core package:',
-        code: 'npm install @aicofounder/core',
+        code: 'npm install @waymakerai/aicofounder-core',
         action: 'show-example',
       },
       {
@@ -83,14 +83,14 @@ OpenAI is the most common starting point.
 
 Run this command to securely store your key:
         `.trim(),
-        code: 'cofounder config:set --provider openai --key YOUR_API_KEY',
+        code: 'aicofounder config:set --provider openai --key YOUR_API_KEY',
         action: 'show-example',
       },
       {
         title: 'Your First AI Call',
         content: 'Create a simple chat completion:',
         code: `
-import { CoFounderClient } from '@aicofounder/core';
+import { CoFounderClient } from '@waymakerai/aicofounder-core';
 
 const cofounder = new CoFounderClient();
 
@@ -138,20 +138,20 @@ Prompts are the "code" of AI applications. Just like code, they need:
   • A/B testing - optimize for quality and cost
   • Organization - find and reuse prompts
 
-CoFounder's @aicofounder/prompts package solves all of this.
+CoFounder's @waymakerai/aicofounder-prompts package solves all of this.
         `.trim(),
       },
       {
         title: 'Install Prompts Package',
         content: 'Add the prompts package to your project:',
-        code: 'npm install @aicofounder/prompts',
+        code: 'npm install @waymakerai/aicofounder-prompts',
         action: 'show-example',
       },
       {
         title: 'Register a Prompt',
         content: 'Create and register your first managed prompt:',
         code: `
-import { PromptManager } from '@aicofounder/prompts';
+import { PromptManager } from '@waymakerai/aicofounder-prompts';
 
 const pm = new PromptManager({ workspace: 'my-app' });
 
@@ -214,14 +214,14 @@ Perfect for:
       {
         title: 'Install RAG Package',
         content: 'Add the RAG package:',
-        code: 'npm install @aicofounder/rag',
+        code: 'npm install @waymakerai/aicofounder-rag',
         action: 'show-example',
       },
       {
         title: 'Create a RAG Pipeline',
         content: 'Build your first RAG system in 10 lines:',
         code: `
-import { RAGPresets } from '@aicofounder/rag';
+import { RAGPresets } from '@waymakerai/aicofounder-rag';
 
 // Use the balanced preset (good quality + speed)
 const pipeline = RAGPresets.balanced();
@@ -267,7 +267,7 @@ Think of them as AI assistants that can actually DO things.
         title: 'Create Your First Agent',
         content: 'Build an agent with tools:',
         code: `
-import { LLMAgent, calculatorTool, webSearchTool } from '@aicofounder/core';
+import { LLMAgent, calculatorTool, webSearchTool } from '@waymakerai/aicofounder-core';
 
 const agent = new LLMAgent({
   name: 'Assistant',
@@ -286,7 +286,7 @@ const result = await agent.run('What is 15% of 847?');
         title: 'Multi-Agent Systems',
         content: 'Have agents work together:',
         code: `
-import { Orchestrator, LLMAgent } from '@aicofounder/core';
+import { Orchestrator, LLMAgent } from '@waymakerai/aicofounder-core';
 
 const researcher = new LLMAgent({
   name: 'Researcher',
@@ -326,7 +326,7 @@ Testing AI is different because:
   • "Correct" is subjective
   • You can't do exact string matching
 
-CoFounder's @aicofounder/testing solves this with:
+CoFounder's @waymakerai/aicofounder-testing solves this with:
 
   • Semantic matching (compare meaning, not strings)
   • Statistical assertions (80% should be X)
@@ -338,7 +338,7 @@ CoFounder's @aicofounder/testing solves this with:
         title: 'Write Your First AI Test',
         content: 'Test AI outputs by meaning:',
         code: `
-import { describe, aiTest, runTimes } from '@aicofounder/testing';
+import { describe, aiTest, runTimes } from '@waymakerai/aicofounder-testing';
 
 describe('Summarization', () => {
   aiTest('should summarize correctly', async ({ expect }) => {
@@ -369,13 +369,13 @@ describe('Summarization', () => {
         content: 'Use the CoFounder test runner:',
         code: `
 # Run all tests
-cofounder test
+aicofounder test
 
 # Watch mode
-cofounder test --watch
+aicofounder test --watch
 
 # With cost budget
-cofounder test --max-cost 1.00
+aicofounder test --max-cost 1.00
         `.trim(),
         action: 'show-example',
       },
@@ -408,7 +408,7 @@ CoFounder helps you:
         title: 'Enable Caching',
         content: 'Cache identical requests:',
         code: `
-import { CoFounderClient } from '@aicofounder/core';
+import { CoFounderClient } from '@waymakerai/aicofounder-core';
 
 const cofounder = new CoFounderClient({
   cache: {
@@ -441,14 +441,14 @@ console.log(tracker.getReport());
 // }
 
 // Or use the CLI
-// $ cofounder dashboard
+// $ aicofounder dashboard
         `.trim(),
         action: 'show-example',
       },
       {
         title: 'Use the Dashboard',
         content: 'See costs in real-time:',
-        code: 'cofounder dashboard --live',
+        code: 'aicofounder dashboard --live',
         action: 'show-example',
       },
     ],
@@ -494,7 +494,7 @@ export async function learnCommand(topic?: string): Promise<void> {
   });
 
   if (!response.lesson) {
-    console.log(chalk.gray('\nNo lesson selected. Run `cofounder learn` anytime!\n'));
+    console.log(chalk.gray('\nNo lesson selected. Run `aicofounder learn` anytime!\n'));
     return;
   }
 
@@ -561,7 +561,7 @@ async function runLesson(lesson: Lesson): Promise<void> {
       });
 
       if (!cont.continue) {
-        console.log(chalk.gray('\nLesson paused. Run `cofounder learn` to continue!\n'));
+        console.log(chalk.gray('\nLesson paused. Run `aicofounder learn` to continue!\n'));
         return;
       }
 
@@ -578,10 +578,10 @@ async function runLesson(lesson: Lesson): Promise<void> {
   if (currentIndex < LESSONS.length - 1) {
     const next = LESSONS[currentIndex + 1];
     console.log(chalk.gray(`  • Next: ${next.title}`));
-    console.log(chalk.gray(`    Run: cofounder learn ${next.id}\n`));
+    console.log(chalk.gray(`    Run: aicofounder learn ${next.id}\n`));
   }
 
-  console.log(chalk.gray('  • See all lessons: cofounder learn'));
+  console.log(chalk.gray('  • See all lessons: aicofounder learn'));
   console.log(chalk.gray('  • Get help: cofounder --help\n'));
 }
 
@@ -595,6 +595,6 @@ export function listLessons(): void {
     console.log(chalk.bold(`${lesson.title}`));
     console.log(chalk.gray(`  ${lesson.description}`));
     console.log(chalk.gray(`  Duration: ${lesson.duration}`));
-    console.log(chalk.gray(`  Run: cofounder learn ${lesson.id}\n`));
+    console.log(chalk.gray(`  Run: aicofounder learn ${lesson.id}\n`));
   }
 }

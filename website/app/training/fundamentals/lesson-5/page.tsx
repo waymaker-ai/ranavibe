@@ -41,7 +41,7 @@ export default function Lesson5Page() {
 
           <div className="code-block">
             <pre>
-              <code>{`import { LLMClient } from '@aicofounder/core';
+              <code>{`import { LLMClient } from '@waymakerai/aicofounder-core';
 
 // Create a client with default settings
 const client = new LLMClient({
@@ -212,7 +212,7 @@ const response = await client.chat({
 
           <div className="code-block">
             <pre>
-              <code>{`import { LLMError, RateLimitError, AuthError } from '@aicofounder/core';
+              <code>{`import { LLMError, RateLimitError, AuthError } from '@waymakerai/aicofounder-core';
 
 try {
   const response = await client.chat({ messages });

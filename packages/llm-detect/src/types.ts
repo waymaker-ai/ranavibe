@@ -1,5 +1,5 @@
 /**
- * @aicofounder/llm-detect - Type definitions for LLM-augmented detection
+ * @waymakerai/aicofounder-llm-detect - Type definitions for LLM-augmented detection
  */
 
 /** Supported LLM providers */

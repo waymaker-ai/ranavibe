@@ -293,7 +293,7 @@ class RedisStorageBackend implements StorageBackend {
   private redisClient: RedisClientLike;
   private keyPrefix: string;
 
-  constructor(redisClient: RedisClientLike, keyPrefix: string = 'cofounder:ratelimit:') {
+  constructor(redisClient: RedisClientLike, keyPrefix: string = 'aicofounder:ratelimit:') {
     this.redisClient = redisClient;
     this.keyPrefix = keyPrefix;
   }

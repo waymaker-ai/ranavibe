@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     default: 'CoFounder - Build Production AI Apps in Minutes',
     template: '%s | CoFounder Framework',
   },
-  description: 'Production-ready AI development framework with 70% cost reduction. Includes @aicofounder/helpers, @aicofounder/prompts, @aicofounder/rag packages. 9 LLM providers, enterprise security, and 25+ CLI commands.',
+  description: 'Production-ready AI development framework with 70% cost reduction. Includes @waymakerai/aicofounder-helpers, @waymakerai/aicofounder-prompts, @waymakerai/aicofounder-rag packages. 9 LLM providers, enterprise security, and 25+ CLI commands.',
   keywords: ['AI', 'LLM', 'RAG', 'OpenAI', 'Anthropic', 'Claude', 'GPT', 'React', 'TypeScript', 'Cost Optimization', 'Prompt Management', 'Enterprise AI', 'Waymaker'],
   authors: [{ name: 'Waymaker AI' }],
   creator: 'Waymaker AI',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'CoFounder - Build Production AI Apps in Minutes',
-    description: 'Production-ready AI framework with 70% cost reduction. @aicofounder/helpers, @aicofounder/prompts, @aicofounder/rag packages for AI development.',
+    description: 'Production-ready AI framework with 70% cost reduction. @waymakerai/aicofounder-helpers, @waymakerai/aicofounder-prompts, @waymakerai/aicofounder-rag packages for AI development.',
     creator: '@waylokai',
   },
   robots: {

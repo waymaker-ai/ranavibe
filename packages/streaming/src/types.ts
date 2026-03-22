@@ -1,5 +1,5 @@
 /**
- * @aicofounder/streaming - Types
+ * @waymakerai/aicofounder-streaming - Types
  *
  * Core type definitions for streaming guard configuration,
  * events, violations, and reports.

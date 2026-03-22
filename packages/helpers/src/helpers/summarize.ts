@@ -3,7 +3,7 @@
  *
  * @example
  * ```typescript
- * import { summarize } from '@aicofounder/helpers';
+ * import { summarize } from '@waymakerai/aicofounder-helpers';
  *
  * const result = await summarize(longArticle);
  * console.log(result.summary);

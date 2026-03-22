@@ -1,5 +1,5 @@
 /**
- * @aicofounder/dashboard - Type Definitions
+ * @waymakerai/aicofounder-dashboard - Type Definitions
  * AI observability dashboard types
  */
 

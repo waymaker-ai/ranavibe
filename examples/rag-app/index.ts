@@ -442,13 +442,13 @@ const result = await agent.run('Find the GDP of Japan and calculate per capita')
 
 **Installation**:
 \`\`\`bash
-npm install @aicofounder/core @aicofounder/helpers @aicofounder/react
+npm install @waymakerai/aicofounder-core @waymakerai/aicofounder-helpers @waymakerai/aicofounder-react
 \`\`\`
 
 **Quick Setup**:
 \`\`\`bash
-npx cofounder init
-npx cofounder wizard
+npx aicofounder init
+npx aicofounder wizard
 \`\`\`
 
 **Configuration**:
@@ -460,13 +460,13 @@ OPENAI_API_KEY=sk-...
 
 Or use the CLI:
 \`\`\`bash
-cofounder config:set --provider anthropic
-cofounder config:set --provider openai
+aicofounder config:set --provider anthropic
+aicofounder config:set --provider openai
 \`\`\`
 
 **Basic Usage**:
 \`\`\`typescript
-import { cofounder } from '@aicofounder/core';
+import { cofounder } from '@waymakerai/aicofounder-core';
 
 // Simple chat
 const response = await cofounder.chat('Hello!');
@@ -479,11 +479,11 @@ const response = await cofounder
 \`\`\`
 
 The CoFounder CLI provides commands for:
-- Project initialization (cofounder init)
-- Interactive setup wizard (cofounder wizard)
-- Cost dashboard (cofounder dashboard)
-- Security audits (cofounder audit)
-- Deployment (cofounder deploy)`,
+- Project initialization (aicofounder init)
+- Interactive setup wizard (aicofounder wizard)
+- Cost dashboard (aicofounder dashboard)
+- Security audits (aicofounder audit)
+- Deployment (aicofounder deploy)`,
   },
 ];
 

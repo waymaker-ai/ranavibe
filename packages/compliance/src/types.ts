@@ -1,5 +1,5 @@
 /**
- * @aicofounder/compliance - Type definitions
+ * @waymakerai/aicofounder-compliance - Type definitions
  */
 
 /**

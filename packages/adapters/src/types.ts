@@ -1,5 +1,5 @@
 /**
- * @aicofounder/adapters - Type definitions for enterprise guardrail adapters
+ * @waymakerai/aicofounder-adapters - Type definitions for enterprise guardrail adapters
  */
 
 // ---------------------------------------------------------------------------

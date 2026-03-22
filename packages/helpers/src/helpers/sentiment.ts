@@ -3,7 +3,7 @@
  *
  * @example
  * ```typescript
- * import { sentiment } from '@aicofounder/helpers';
+ * import { sentiment } from '@waymakerai/aicofounder-helpers';
  *
  * const result = await sentiment('This product is amazing!');
  * console.log(result.sentiment); // "positive"

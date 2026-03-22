@@ -1,5 +1,5 @@
 /**
- * @aicofounder/policies Demo
+ * @waymakerai/aicofounder-policies Demo
  *
  * Run with: npx tsx index.ts
  *
@@ -15,7 +15,7 @@ import {
   listPresets,
   compose,
   PolicyBuilder,
-} from '@aicofounder/policies';
+} from '@waymakerai/aicofounder-policies';
 
 // ─── 1. Available presets ──────────────────────────────────────────────────────
 

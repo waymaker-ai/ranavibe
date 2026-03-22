@@ -9,7 +9,7 @@ const features = [
     icon: Sparkles,
     title: 'Prompt Optimization',
     description: 'Automatically optimize prompts for better results and lower costs',
-    code: `import { optimizePrompt, compressPrompt } from '@aicofounder/core';
+    code: `import { optimizePrompt, compressPrompt } from '@waymakerai/aicofounder-core';
 
 // Compress a verbose prompt
 const compressed = compressPrompt(longPrompt);
@@ -25,7 +25,7 @@ const optimized = await optimizePrompt(prompt, {
     icon: Shield,
     title: 'Hallucination Detection',
     description: 'Detect fabricated facts, fake citations, and logical inconsistencies',
-    code: `import { detectHallucinations } from '@aicofounder/core';
+    code: `import { detectHallucinations } from '@waymakerai/aicofounder-core';
 
 const result = detectHallucinations(response, {
   knownFacts: [...],
@@ -42,7 +42,7 @@ if (result.hasHallucinations) {
     icon: CheckCircle,
     title: 'Confidence Scoring',
     description: 'Measure response confidence through linguistic and consistency analysis',
-    code: `import { scoreConfidence, isConfident } from '@aicofounder/core';
+    code: `import { scoreConfidence, isConfident } from '@waymakerai/aicofounder-core';
 
 const score = scoreConfidence(response, {
   context: originalQuery,
@@ -58,7 +58,7 @@ console.log(score.recommendations);`,
     icon: Search,
     title: 'Fact Verification',
     description: 'Extract claims and verify them against knowledge bases',
-    code: `import { verifyFacts, extractClaims } from '@aicofounder/core';
+    code: `import { verifyFacts, extractClaims } from '@waymakerai/aicofounder-core';
 
 // Extract factual claims from text
 const claims = await extractClaims(response);
@@ -74,7 +74,7 @@ console.log(result.overallReliability); // 0-1 score`,
     icon: Star,
     title: 'Quality Scoring',
     description: 'Multi-dimensional quality evaluation for LLM responses',
-    code: `import { scoreQuality, getQualityLevel } from '@aicofounder/core';
+    code: `import { scoreQuality, getQualityLevel } from '@waymakerai/aicofounder-core';
 
 const quality = scoreQuality(response, query);
 
@@ -87,7 +87,7 @@ console.log(quality.suggestions); // Improvement recommendations`,
     icon: Brain,
     title: 'Comprehensive Analysis',
     description: 'Run all checks at once for complete response validation',
-    code: `import { analyzeResponse, isTrustworthy } from '@aicofounder/core';
+    code: `import { analyzeResponse, isTrustworthy } from '@waymakerai/aicofounder-core';
 
 // Quick check
 if (isTrustworthy(response)) {

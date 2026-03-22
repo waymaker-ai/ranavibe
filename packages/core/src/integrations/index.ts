@@ -1,5 +1,5 @@
 /**
- * @aicofounder/integrations
+ * @waymakerai/aicofounder-integrations
  * Third-party service integrations for CoFounder
  */
 

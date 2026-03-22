@@ -1,5 +1,5 @@
 {
-  "name": "@aicofounder/llm-detect",
+  "name": "@waymakerai/aicofounder-llm-detect",
   "version": "1.0.0",
   "description": "CoFounder llm-detect package",
   "main": "dist/index.js",

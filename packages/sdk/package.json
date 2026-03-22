@@ -1,5 +1,5 @@
 {
-  "name": "@aicofounder/sdk",
+  "name": "@waymakerai/aicofounder-sdk",
   "version": "0.1.0",
   "description": "CoFounder SDK for programmatic access to quality gates and REPM validation",
   "main": "./dist/index.js",
@@ -22,7 +22,7 @@
     "dev": "tsc --watch"
   },
   "dependencies": {
-    "@aicofounder/core": "workspace:*"
+    "@waymakerai/aicofounder-core": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",

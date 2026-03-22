@@ -14,8 +14,8 @@ inputs:
     description: 'Severity to fail on (critical, high, medium, low, none)'
     default: 'high'
   config:
-    description: 'Path to .cofounder.yml config'
-    default: '.cofounder.yml'
+    description: 'Path to .aicofounder.yml config'
+    default: '.aicofounder.yml'
   comment-on-pr:
     description: 'Whether to comment on PRs with results'
     default: 'true'

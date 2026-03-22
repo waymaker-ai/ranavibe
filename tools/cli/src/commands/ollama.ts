@@ -6,16 +6,16 @@
  * @example
  * ```bash
  * # Check Ollama status
- * cofounder ollama
+ * aicofounder ollama
  *
  * # List available models
- * cofounder ollama:models
+ * aicofounder ollama:models
  *
  * # Pull a model
- * cofounder ollama:pull llama3.2
+ * aicofounder ollama:pull llama3.2
  *
  * # Test a model
- * cofounder ollama:test llama3.2
+ * aicofounder ollama:test llama3.2
  * ```
  */
 
@@ -50,7 +50,7 @@ export async function ollamaCommand(): Promise<void> {
 
     if (models.length === 0) {
       console.log(chalk.yellow('  No models installed.'));
-      console.log(chalk.gray('  Run: cofounder ollama:pull llama3.2'));
+      console.log(chalk.gray('  Run: aicofounder ollama:pull llama3.2'));
     } else {
       for (const model of models) {
         const size = formatSize(model.size);
@@ -97,11 +97,11 @@ export async function ollamaModelsCommand(): Promise<void> {
     if (models.length === 0) {
       console.log(chalk.yellow('No models installed.\n'));
       console.log('Popular models to try:');
-      console.log(chalk.gray('  cofounder ollama:pull llama3.2      # Fast, small (2GB)'));
-      console.log(chalk.gray('  cofounder ollama:pull llama3.2:1b   # Tiny (1.3GB)'));
-      console.log(chalk.gray('  cofounder ollama:pull codellama     # Code generation'));
-      console.log(chalk.gray('  cofounder ollama:pull mistral       # Good balance'));
-      console.log(chalk.gray('  cofounder ollama:pull mixtral       # Large, powerful'));
+      console.log(chalk.gray('  aicofounder ollama:pull llama3.2      # Fast, small (2GB)'));
+      console.log(chalk.gray('  aicofounder ollama:pull llama3.2:1b   # Tiny (1.3GB)'));
+      console.log(chalk.gray('  aicofounder ollama:pull codellama     # Code generation'));
+      console.log(chalk.gray('  aicofounder ollama:pull mistral       # Good balance'));
+      console.log(chalk.gray('  aicofounder ollama:pull mixtral       # Large, powerful'));
       console.log('');
       return;
     }
@@ -140,7 +140,7 @@ export async function ollamaModelsCommand(): Promise<void> {
  */
 export async function ollamaPullCommand(model: string): Promise<void> {
   if (!model) {
-    console.log(chalk.yellow('\nUsage: cofounder ollama:pull <model>\n'));
+    console.log(chalk.yellow('\nUsage: aicofounder ollama:pull <model>\n'));
     console.log('Popular models:');
     console.log(chalk.gray('  llama3.2      # Latest Llama, fast'));
     console.log(chalk.gray('  llama3.2:1b   # Tiny version'));
@@ -197,7 +197,7 @@ export async function ollamaTestCommand(model?: string): Promise<void> {
 
   if (!model) {
     console.log(chalk.yellow('\nNo model specified and no models installed.'));
-    console.log(chalk.gray('Run: cofounder ollama:pull llama3.2\n'));
+    console.log(chalk.gray('Run: aicofounder ollama:pull llama3.2\n'));
     return;
   }
 

@@ -9,7 +9,7 @@ import type { RanaPlugin } from '../types';
  *
  * @example
  * ```typescript
- * import { definePlugin } from '@aicofounder/core';
+ * import { definePlugin } from '@waymakerai/aicofounder-core';
  *
  * export default definePlugin({
  *   name: 'my-plugin',

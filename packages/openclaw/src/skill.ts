@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// @aicofounder/openclaw - OpenClaw Skill
+// @waymakerai/aicofounder-openclaw - OpenClaw Skill
 // ---------------------------------------------------------------------------
 // The main CoFounder OpenClaw skill that registers with OpenClaw's skill system.
 // OpenClaw skills export a manifest and handler functions. This skill adds
@@ -230,7 +230,7 @@ function guardText(
  *
  * @example
  * ```typescript
- * import { createCoFounderSkill } from '@aicofounder/openclaw';
+ * import { createCoFounderSkill } from '@waymakerai/aicofounder-openclaw';
  *
  * const cofounderSkill = createCoFounderSkill({
  *   pii: 'redact',

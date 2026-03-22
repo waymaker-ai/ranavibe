@@ -51,7 +51,7 @@ function generateSessionId(): string {
 
 // Sample code templates for quick testing
 const QUICK_TEMPLATES: Record<string, string> = {
-  agent: `import { createAgent, createCoFounder } from '@aicofounder/agents';
+  agent: `import { createAgent, createCoFounder } from '@waymakerai/aicofounder-agents';
 
 const cofounder = createCoFounder({
   providers: { anthropic: process.env.ANTHROPIC_API_KEY }
@@ -74,7 +74,7 @@ const result = await agent.handle({
 
 console.log(result);`,
 
-  tool: `import { createTool } from '@aicofounder/agents';
+  tool: `import { createTool } from '@waymakerai/aicofounder-agents';
 
 const myTool = createTool({
   name: 'greet',
@@ -95,7 +95,7 @@ const myTool = createTool({
 const result = await myTool.handler({ name: 'Developer' });
 console.log(result);`,
 
-  orchestrator: `import { createOrchestrator, createPipeline } from '@aicofounder/agents';
+  orchestrator: `import { createOrchestrator, createPipeline } from '@waymakerai/aicofounder-agents';
 
 const orchestrator = createOrchestrator();
 
@@ -159,7 +159,7 @@ await server.connect(transport);`,
   InjectionDetector,
   PIIDetector,
   wrapToolWithSafety
-} from '@aicofounder/agents';
+} from '@waymakerai/aicofounder-agents';
 
 // Detect prompt injection
 const injectionDetector = new InjectionDetector();
@@ -179,7 +179,7 @@ const safeTool = wrapToolWithSafety(myTool, {
   rateLimit: { maxRequests: 10, windowMs: 60000 },
 });`,
 
-  generate: `import { generate, validateCode } from '@aicofounder/generate';
+  generate: `import { generate, validateCode } from '@waymakerai/aicofounder-generate';
 
 const result = await generate({
   prompt: 'Create a React button component with loading state',
@@ -283,7 +283,7 @@ const commands: PlaygroundCommand[] = [
       if (QUICK_TEMPLATES[target]) {
         return chalk.yellow('Note: Running templates requires a configured environment.\n') +
                chalk.gray('Copy the template code and run it in your project:\n\n') +
-               chalk.green(`cofounder playground template ${target}`);
+               chalk.green(`aicofounder playground template ${target}`);
       }
 
       // Check if it's a file
@@ -365,25 +365,25 @@ const commands: PlaygroundCommand[] = [
 ${chalk.blue.bold('🚀 CoFounder Quickstart Guide')}
 
 ${chalk.white.bold('1. Initialize a project:')}
-${chalk.green('   cofounder init')}
+${chalk.green('   aicofounder init')}
 
 ${chalk.white.bold('2. Generate code from natural language:')}
-${chalk.green('   cofounder generate "Create a login form with email validation"')}
+${chalk.green('   aicofounder generate "Create a login form with email validation"')}
 
 ${chalk.white.bold('3. Create an MCP server:')}
-${chalk.green('   cofounder mcp create my-server')}
+${chalk.green('   aicofounder mcp create my-server')}
 
 ${chalk.white.bold('4. Save and reuse prompts:')}
-${chalk.green('   cofounder prompts save')}
-${chalk.green('   cofounder prompts list')}
-${chalk.green('   cofounder prompts use "My Prompt"')}
+${chalk.green('   aicofounder prompts save')}
+${chalk.green('   aicofounder prompts list')}
+${chalk.green('   aicofounder prompts use "My Prompt"')}
 
 ${chalk.white.bold('5. Analyze prompt quality:')}
-${chalk.green('   cofounder prompts analyze')}
+${chalk.green('   aicofounder prompts analyze')}
 
 ${chalk.white.bold('6. View templates:')}
-${chalk.green('   cofounder templates')}
-${chalk.green('   cofounder mcp templates')}
+${chalk.green('   aicofounder templates')}
+${chalk.green('   aicofounder mcp templates')}
 
 ${chalk.gray('For more help: cofounder --help')}
 `;
@@ -404,10 +404,10 @@ ${chalk.white('Core Concepts:')}
   ${chalk.cyan('• Security')}      - Injection detection, PII filtering
 
 ${chalk.white('Packages:')}
-  ${chalk.green('@aicofounder/agents')}   - Agent Development Kit
-  ${chalk.green('@aicofounder/core')}     - Core utilities and configs
-  ${chalk.green('@aicofounder/generate')} - Natural language code generation
-  ${chalk.green('@aicofounder/cli')}      - Command line interface
+  ${chalk.green('@waymakerai/aicofounder-agents')}   - Agent Development Kit
+  ${chalk.green('@waymakerai/aicofounder-core')}     - Core utilities and configs
+  ${chalk.green('@waymakerai/aicofounder-generate')} - Natural language code generation
+  ${chalk.green('@waymakerai/aicofounder-cli')}      - Command line interface
 
 ${chalk.white('Quick Links:')}
   ${chalk.gray('GitHub:')} https://github.com/waymaker-ai/cofounder
@@ -553,7 +553,7 @@ async function runQuickDemo(): Promise<void> {
   console.log(chalk.gray('...\n'));
 
   console.log(chalk.green.bold('✅ Demo complete!\n'));
-  console.log(chalk.gray('To explore more, run: cofounder playground\n'));
+  console.log(chalk.gray('To explore more, run: aicofounder playground\n'));
 }
 
 // Command Registration

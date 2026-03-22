@@ -59,21 +59,21 @@ export async function doctorCommand(options: DoctorOptions = {}) {
     });
   }
 
-  // 3. Check for .cofounder.yml
-  const hasCoFounderConfig = fs.existsSync('.cofounder.yml');
+  // 3. Check for .aicofounder.yml
+  const hasCoFounderConfig = fs.existsSync('.aicofounder.yml');
   if (hasCoFounderConfig) {
     checks.push({
       name: 'CoFounder Configuration',
       status: 'pass',
-      message: '.cofounder.yml found',
+      message: '.aicofounder.yml found',
     });
   } else {
     checks.push({
       name: 'CoFounder Configuration',
       status: 'warn',
-      message: 'No .cofounder.yml found. Run `cofounder init` to create one.',
+      message: 'No .aicofounder.yml found. Run `aicofounder init` to create one.',
       fix: async () => {
-        console.log(chalk.yellow('  → Run `cofounder init` to create configuration'));
+        console.log(chalk.yellow('  → Run `aicofounder init` to create configuration'));
       },
     });
   }
@@ -344,7 +344,7 @@ export async function doctorCommand(options: DoctorOptions = {}) {
   } else if (fixableChecks.length > 0) {
     console.log(chalk.bold('\n💡 Auto-fixable Issues'));
     console.log(chalk.gray('─'.repeat(60)));
-    console.log(chalk.gray('  Run `cofounder doctor --fix` to automatically fix:'));
+    console.log(chalk.gray('  Run `aicofounder doctor --fix` to automatically fix:'));
     fixableChecks.forEach((check) => {
       console.log(chalk.yellow(`  • ${check.name}`));
     });
@@ -365,13 +365,13 @@ export async function doctorCommand(options: DoctorOptions = {}) {
   console.log(chalk.gray('─'.repeat(60)));
 
   if (!hasCoFounderConfig) {
-    console.log(chalk.cyan('  1. Run `cofounder init` to create configuration'));
+    console.log(chalk.cyan('  1. Run `aicofounder init` to create configuration'));
   }
   if (healthScore < 80) {
     console.log(chalk.cyan('  2. Fix warnings to improve project health'));
   }
-  console.log(chalk.cyan('  3. Run `cofounder check` to validate CoFounder compliance'));
-  console.log(chalk.cyan('  4. Run `cofounder llm:analyze` to analyze LLM usage'));
+  console.log(chalk.cyan('  3. Run `aicofounder check` to validate CoFounder compliance'));
+  console.log(chalk.cyan('  4. Run `aicofounder llm:analyze` to analyze LLM usage'));
 
   console.log();
 }

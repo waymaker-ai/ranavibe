@@ -1,5 +1,5 @@
 /**
- * @aicofounder/context-optimizer - Type definitions
+ * @waymakerai/aicofounder-context-optimizer - Type definitions
  */
 
 /**

@@ -1,11 +1,11 @@
 /**
  * API Generation Examples
  *
- * This example demonstrates how to use @aicofounder/generate to create
+ * This example demonstrates how to use @waymakerai/aicofounder-generate to create
  * complete CRUD APIs with authentication, validation, and rate limiting.
  */
 
-import { APIGenerator, type CRUDSpec } from '@aicofounder/generate';
+import { APIGenerator, type CRUDSpec } from '@waymakerai/aicofounder-generate';
 
 // ============================================================================
 // Example 1: Simple REST API

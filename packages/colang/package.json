@@ -1,5 +1,5 @@
 {
-  "name": "@aicofounder/colang",
+  "name": "@waymakerai/aicofounder-colang",
   "version": "1.0.0",
   "description": "CoFounder colang package",
   "main": "dist/index.js",

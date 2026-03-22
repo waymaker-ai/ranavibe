@@ -14,7 +14,7 @@
  *   AgentOrchestrator,
  *   SharedStateManager,
  *   createOrchestrator,
- * } from '@aicofounder/agents/orchestration';
+ * } from '@waymakerai/aicofounder-agents/orchestration';
  *
  * // Create orchestrator
  * const orchestrator = createOrchestrator({

@@ -58,7 +58,7 @@ jobs:
         run: npm ci
 
       - name: Install CoFounder CLI
-        run: npm install -g @aicofounder/cli || true
+        run: npm install -g @waymakerai/aicofounder-cli || true
 
       # Security Audit
       - name: 🔒 Security Audit

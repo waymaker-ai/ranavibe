@@ -53,7 +53,7 @@ export default function Lesson6Page() {
 
           <div className="code-block">
             <pre>
-              <code>{`import { useChat } from '@aicofounder/react';
+              <code>{`import { useChat } from '@waymakerai/aicofounder-react';
 
 function ChatComponent() {
   const {
@@ -142,7 +142,7 @@ function ChatComponent() {
 
           <div className="code-block">
             <pre>
-              <code>{`import { useCompletion } from '@aicofounder/react';
+              <code>{`import { useCompletion } from '@waymakerai/aicofounder-react';
 
 function CompletionComponent() {
   const {
@@ -184,7 +184,7 @@ function CompletionComponent() {
 
           <div className="code-block">
             <pre>
-              <code>{`import { useAgent } from '@aicofounder/react';
+              <code>{`import { useAgent } from '@waymakerai/aicofounder-react';
 
 function AgentComponent() {
   const {
@@ -249,7 +249,7 @@ function AgentComponent() {
 
           <div className="code-block">
             <pre>
-              <code>{`import { useStream } from '@aicofounder/react';
+              <code>{`import { useStream } from '@waymakerai/aicofounder-react';
 
 function CustomStreamComponent() {
   const {
@@ -291,7 +291,7 @@ function CustomStreamComponent() {
 
           <div className="code-block">
             <pre>
-              <code>{`import { useTokenCount } from '@aicofounder/react';
+              <code>{`import { useTokenCount } from '@waymakerai/aicofounder-react';
 
 function TokenAwareInput() {
   const [text, setText] = useState('');

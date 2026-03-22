@@ -2,9 +2,9 @@
 
 import { Command } from 'commander';
 import chalk from 'chalk';
-import { initCommand } from '@aicofounder/cli/dist/commands/init.js';
-import { checkCommand } from '@aicofounder/cli/dist/commands/check.js';
-import { deployCommand } from '@aicofounder/cli/dist/commands/deploy.js';
+import { initCommand } from '@waymakerai/aicofounder-cli/dist/commands/init.js';
+import { checkCommand } from '@waymakerai/aicofounder-cli/dist/commands/check.js';
+import { deployCommand } from '@waymakerai/aicofounder-cli/dist/commands/deploy.js';
 import { analyticsCommand } from './commands/analytics.js';
 import { teamCommand } from './commands/team.js';
 import { syncCommand } from './commands/sync.js';
@@ -27,12 +27,12 @@ ${chalk.gray('Powered by CoFounder - Rapid AI Native Architecture')}
 
 console.log(banner);
 
-// Core CoFounder commands (inherit from @aicofounder/cli)
+// Core CoFounder commands (inherit from @waymakerai/aicofounder-cli)
 program
   .command('init')
   .description('Initialize CoFounder in your project (with Waymaker integration)')
   .option('-t, --template <type>', 'Template to use', 'default')
-  .option('-f, --force', 'Overwrite existing .cofounder.yml')
+  .option('-f, --force', 'Overwrite existing .aicofounder.yml')
   .option('--team-id <id>', 'Connect to Waymaker team')
   .action(initCommand);
 

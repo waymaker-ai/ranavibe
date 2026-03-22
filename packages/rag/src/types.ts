@@ -1,5 +1,5 @@
 /**
- * Type definitions for @aicofounder/rag
+ * Type definitions for @waymakerai/aicofounder-rag
  * Advanced RAG (Retrieval Augmented Generation)
  */
 

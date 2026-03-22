@@ -1,5 +1,5 @@
 /**
- * @aicofounder/mcp
+ * @waymakerai/aicofounder-mcp
  * Model Context Protocol (MCP) support for CoFounder
  *
  * MCP enables AI models to connect to external tools and data sources
@@ -7,7 +7,7 @@
  *
  * @example
  * ```typescript
- * import { createMCPClient, createRanaMCPServer } from '@aicofounder/mcp';
+ * import { createMCPClient, createRanaMCPServer } from '@waymakerai/aicofounder-mcp';
  *
  * // Client: Connect to MCP servers
  * const client = createMCPClient({

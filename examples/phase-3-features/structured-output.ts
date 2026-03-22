@@ -3,7 +3,7 @@
  * Demonstrates schema-based LLM response generation and validation
  */
 
-import { StructuredOutput, SchemaGenerator } from '@aicofounder/core';
+import { StructuredOutput, SchemaGenerator } from '@waymakerai/aicofounder-core';
 import { z } from 'zod';
 
 async function main() {

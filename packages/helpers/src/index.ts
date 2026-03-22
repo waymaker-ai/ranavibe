@@ -1,10 +1,10 @@
 /**
- * @aicofounder/helpers - Quick LLM Helpers
+ * @waymakerai/aicofounder-helpers - Quick LLM Helpers
  * One-line AI functions for common tasks
  *
  * @example
  * ```typescript
- * import { summarize, translate, classify, extract } from '@aicofounder/helpers';
+ * import { summarize, translate, classify, extract } from '@waymakerai/aicofounder-helpers';
  *
  * const summary = await summarize(longText);
  * const spanish = await translate(text, { to: 'es' });

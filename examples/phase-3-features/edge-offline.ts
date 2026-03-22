@@ -3,7 +3,7 @@
  * Demonstrates local model execution with llama.cpp and ONNX
  */
 
-import { EdgeRuntime, HybridClient, ModelManager } from '@aicofounder/core';
+import { EdgeRuntime, HybridClient, ModelManager } from '@waymakerai/aicofounder-core';
 
 async function main() {
   // Example 1: Basic edge inference with llama.cpp

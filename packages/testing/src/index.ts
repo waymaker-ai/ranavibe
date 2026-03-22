@@ -1,5 +1,5 @@
 /**
- * @aicofounder/testing
+ * @waymakerai/aicofounder-testing
  *
  * AI-Native Testing Framework
  * Test AI code like regular code - with semantic matching,
@@ -7,7 +7,7 @@
  *
  * @example
  * ```typescript
- * import { describe, aiTest, expect, runTimes } from '@aicofounder/testing';
+ * import { describe, aiTest, expect, runTimes } from '@waymakerai/aicofounder-testing';
  *
  * describe('My AI Feature', () => {
  *   aiTest('should summarize correctly', async ({ expect }) => {

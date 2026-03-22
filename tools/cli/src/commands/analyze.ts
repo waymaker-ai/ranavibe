@@ -37,7 +37,7 @@ async function analyzeCostOptimization(): Promise<AnalysisResult[]> {
   const results: AnalysisResult[] = [];
 
   // Check if caching is enabled
-  const hasCache = checkFileContains('cofounder.config.ts', 'cache: {');
+  const hasCache = checkFileContains('aicofounder.config.ts', 'cache: {');
 
   if (!hasCache) {
     results.push({
@@ -142,14 +142,14 @@ async function analyzeConfiguration(): Promise<AnalysisResult[]> {
   const results: AnalysisResult[] = [];
 
   // Check for config file
-  const hasConfig = fs.existsSync('cofounder.config.ts') || fs.existsSync('cofounder.config.js');
+  const hasConfig = fs.existsSync('aicofounder.config.ts') || fs.existsSync('aicofounder.config.js');
 
   if (!hasConfig) {
     results.push({
       type: 'warning',
       category: 'Config',
-      message: 'No cofounder.config.ts found',
-      recommendation: 'Create cofounder.config.ts for better configuration',
+      message: 'No aicofounder.config.ts found',
+      recommendation: 'Create aicofounder.config.ts for better configuration',
     });
   }
 
@@ -210,7 +210,7 @@ function displaySummary(results: AnalysisResult[]) {
 
   if (totalSavings > 0) {
     console.log(chalk.green(`\n  💰 Potential savings: ~${totalSavings}% on costs\n`));
-    console.log(chalk.gray(`  Run ${chalk.white('cofounder optimize')} to apply optimizations\n`));
+    console.log(chalk.gray(`  Run ${chalk.white('aicofounder optimize')} to apply optimizations\n`));
   } else {
     console.log(chalk.green('\n  ✓ All optimizations applied!\n'));
   }

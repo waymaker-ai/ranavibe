@@ -13,7 +13,7 @@ interface SyncOptions {
 export async function syncCommand(options: SyncOptions) {
   const authToken = await getAuthToken();
   if (!authToken) {
-    console.log(chalk.red('❌ Not authenticated. Run: waymaker-cofounder login'));
+    console.log(chalk.red('❌ Not authenticated. Run: waymaker-aicofounder login'));
     return;
   }
 
@@ -27,9 +27,9 @@ export async function syncCommand(options: SyncOptions) {
     console.log(chalk.yellow('Please specify --push, --pull, or --auto'));
     console.log();
     console.log('Examples:');
-    console.log('  waymaker-cofounder sync --push   # Upload local .cofounder.yml to Waymaker');
-    console.log('  waymaker-cofounder sync --pull   # Download team config from Waymaker');
-    console.log('  waymaker-cofounder sync --auto   # Enable automatic sync');
+    console.log('  waymaker-aicofounder sync --push   # Upload local .aicofounder.yml to Waymaker');
+    console.log('  waymaker-aicofounder sync --pull   # Download team config from Waymaker');
+    console.log('  waymaker-aicofounder sync --auto   # Enable automatic sync');
   }
 }
 
@@ -44,10 +44,10 @@ async function getAuthToken(): Promise<string | null> {
 }
 
 async function pushConfig(token: string) {
-  const spinner = ora('Uploading .cofounder.yml to Waymaker...').start();
+  const spinner = ora('Uploading .aicofounder.yml to Waymaker...').start();
 
   try {
-    const configPath = path.join(process.cwd(), '.cofounder.yml');
+    const configPath = path.join(process.cwd(), '.aicofounder.yml');
     const configContent = await fs.readFile(configPath, 'utf-8');
     const config = yaml.load(configContent);
 
@@ -66,7 +66,7 @@ async function pushConfig(token: string) {
     console.log(chalk.gray('View at: https://waymaker.com/cofounder/config'));
   } catch (error: any) {
     if (error.code === 'ENOENT') {
-      spinner.fail('No .cofounder.yml found. Run: waymaker-cofounder init');
+      spinner.fail('No .aicofounder.yml found. Run: waymaker-aicofounder init');
     } else {
       spinner.fail(`Sync failed: ${error.message}`);
     }
@@ -78,7 +78,7 @@ async function pullConfig(token: string) {
 
   try {
     // Check if local config exists
-    const configPath = path.join(process.cwd(), '.cofounder.yml');
+    const configPath = path.join(process.cwd(), '.aicofounder.yml');
     let hasLocal = false;
     try {
       await fs.access(configPath);
@@ -87,10 +87,10 @@ async function pullConfig(token: string) {
 
     if (hasLocal) {
       spinner.stop();
-      console.log(chalk.yellow('\n⚠️  Local .cofounder.yml exists'));
+      console.log(chalk.yellow('\n⚠️  Local .aicofounder.yml exists'));
       console.log('Pulling will overwrite your local configuration.');
       console.log('\nOptions:');
-      console.log('  1. Backup local config first: cp .cofounder.yml .cofounder.yml.backup');
+      console.log('  1. Backup local config first: cp .aicofounder.yml .aicofounder.yml.backup');
       console.log('  2. Use --push to upload local config instead');
       console.log('  3. Continue with pull (overwrites local)');
       return;
@@ -112,7 +112,7 @@ project:
 
     await fs.writeFile(configPath, configYaml, 'utf-8');
     spinner.succeed('Configuration downloaded');
-    console.log(chalk.green('\n✅ .cofounder.yml created from team settings'));
+    console.log(chalk.green('\n✅ .aicofounder.yml created from team settings'));
   } catch (error: any) {
     spinner.fail(`Pull failed: ${error.message}`);
   }
@@ -145,7 +145,7 @@ async function enableAutoSync(token: string) {
     console.log('  • Team updates pulled periodically');
     console.log('  • Conflicts resolved with team preference');
     console.log();
-    console.log(chalk.gray('Disable: waymaker-cofounder sync --auto=false'));
+    console.log(chalk.gray('Disable: waymaker-aicofounder sync --auto=false'));
   } catch (error: any) {
     spinner.fail(`Failed to enable auto-sync: ${error.message}`);
   }

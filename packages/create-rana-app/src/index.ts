@@ -3,417 +3,221 @@
 /**
  * create-aicofounder-app
  *
- * Create a new CoFounder AI application in seconds
+ * Scaffolds a new CoFounder AI application with guardrails.
  *
- * @example
- * ```bash
- * npx create-aicofounder-app my-ai-app
- * npx create-aicofounder-app my-ai-app --template chatbot
- * npx create-aicofounder-app my-ai-app --template rag --provider anthropic
- * ```
+ * Templates:
+ *   chatbot    - Guarded chatbot with PII/injection protection
+ *   agent      - Guarded Anthropic agent with tool use
+ *   api-guard  - Express API with guardrails middleware
+ *   full-stack - Next.js app with guardrails
  */
 
 import { Command } from 'commander';
 import prompts from 'prompts';
-import chalk from 'chalk';
-import ora from 'ora';
-import fs from 'fs-extra';
-import path from 'path';
-import { execSync } from 'child_process';
-import validatePackageName from 'validate-npm-package-name';
+import * as fs from 'node:fs';
+import * as path from 'node:path';
+import { execSync } from 'node:child_process';
 
-// Templates
-type Template = 'default' | 'chatbot' | 'rag' | 'agent' | 'api' | 'minimal';
-type Provider = 'openai' | 'anthropic' | 'google' | 'auto';
-type PackageManager = 'npm' | 'pnpm' | 'yarn' | 'bun';
+// ---- Types ----
 
-interface CreateOptions {
+export type Template = 'chatbot' | 'agent' | 'api-guard' | 'full-stack';
+export type PackageManager = 'npm' | 'pnpm' | 'yarn' | 'bun';
+
+export interface CreateOptions {
+  projectName: string;
   template: Template;
-  provider: Provider;
-  typescript: boolean;
-  git: boolean;
-  install: boolean;
   packageManager: PackageManager;
+  skipInstall: boolean;
+  skipGit: boolean;
 }
 
-const TEMPLATES: Record<Template, { name: string; description: string }> = {
-  default: { name: 'Default', description: 'Full-featured starter with chat, RAG, and agents' },
-  chatbot: { name: 'Chatbot', description: 'Conversational AI chatbot with streaming' },
-  rag: { name: 'RAG', description: 'Document Q&A with retrieval-augmented generation' },
-  agent: { name: 'Agent', description: 'AI agent with tools and multi-step reasoning' },
-  api: { name: 'API', description: 'REST API with AI endpoints' },
-  minimal: { name: 'Minimal', description: 'Bare minimum to get started' },
+export const TEMPLATES: Record<Template, { name: string; description: string }> = {
+  chatbot: { name: 'Chatbot', description: 'Guarded chatbot with PII and injection protection' },
+  agent: { name: 'Agent', description: 'Guarded Anthropic agent with tool use' },
+  'api-guard': { name: 'API Guard', description: 'Express API with guardrails middleware' },
+  'full-stack': { name: 'Full-Stack', description: 'Next.js app with guardrails' },
 };
 
-const PROVIDERS: Record<Provider, { name: string; env: string }> = {
-  openai: { name: 'OpenAI (GPT-4)', env: 'OPENAI_API_KEY' },
-  anthropic: { name: 'Anthropic (Claude)', env: 'ANTHROPIC_API_KEY' },
-  google: { name: 'Google (Gemini)', env: 'GOOGLE_API_KEY' },
-  auto: { name: 'Auto-detect', env: '' },
-};
+// ---- File generators ----
 
-// Banner
-const banner = `
-${chalk.bold.cyan('╔═══════════════════════════════════════════════════════════╗')}
-${chalk.bold.cyan('║')}                                                             ${chalk.bold.cyan('║')}
-${chalk.bold.cyan('║')}   ${chalk.bold.white('create-aicofounder-app')}                                        ${chalk.bold.cyan('║')}
-${chalk.bold.cyan('║')}   ${chalk.gray('Create production-ready AI apps in seconds')}              ${chalk.bold.cyan('║')}
-${chalk.bold.cyan('║')}                                                             ${chalk.bold.cyan('║')}
-${chalk.bold.cyan('╚═══════════════════════════════════════════════════════════╝')}
-`;
-
-async function main() {
-  console.log(banner);
-
-  const program = new Command()
-    .name('create-aicofounder-app')
-    .description('Create a new CoFounder AI application')
-    .version('2.0.0')
-    .argument('[project-name]', 'Name of your project')
-    .option('-t, --template <template>', 'Template to use', 'default')
-    .option('-p, --provider <provider>', 'Default LLM provider', 'auto')
-    .option('--no-typescript', 'Use JavaScript instead of TypeScript')
-    .option('--no-git', 'Skip git initialization')
-    .option('--no-install', 'Skip dependency installation')
-    .option('--npm', 'Use npm')
-    .option('--pnpm', 'Use pnpm')
-    .option('--yarn', 'Use yarn')
-    .option('--bun', 'Use bun')
-    .parse(process.argv);
-
-  const opts = program.opts();
-  let projectName = program.args[0];
-
-  // Interactive mode if no project name provided
-  if (!projectName) {
-    const response = await prompts([
-      {
-        type: 'text',
-        name: 'projectName',
-        message: 'What is your project named?',
-        initial: 'my-ai-app',
-        validate: (value) => {
-          const validation = validatePackageName(value);
-          if (!validation.validForNewPackages) {
-            return validation.errors?.[0] || 'Invalid package name';
-          }
-          return true;
-        },
-      },
-      {
-        type: 'select',
-        name: 'template',
-        message: 'Which template would you like to use?',
-        choices: Object.entries(TEMPLATES).map(([value, { name, description }]) => ({
-          title: `${name} ${chalk.gray(`- ${description}`)}`,
-          value,
-        })),
-      },
-      {
-        type: 'select',
-        name: 'provider',
-        message: 'Which LLM provider do you want to use?',
-        choices: Object.entries(PROVIDERS).map(([value, { name }]) => ({
-          title: name,
-          value,
-        })),
-      },
-      {
-        type: 'confirm',
-        name: 'typescript',
-        message: 'Use TypeScript?',
-        initial: true,
-      },
-    ]);
-
-    if (!response.projectName) {
-      console.log(chalk.yellow('\nProject creation cancelled.'));
-      process.exit(0);
-    }
-
-    projectName = response.projectName;
-    opts.template = response.template;
-    opts.provider = response.provider;
-    opts.typescript = response.typescript;
-  }
-
-  // Validate project name
-  const validation = validatePackageName(projectName);
-  if (!validation.validForNewPackages) {
-    console.log(chalk.red(`\nInvalid project name: ${validation.errors?.[0]}`));
-    process.exit(1);
-  }
-
-  // Determine package manager
-  let packageManager: PackageManager = 'npm';
-  if (opts.pnpm) packageManager = 'pnpm';
-  else if (opts.yarn) packageManager = 'yarn';
-  else if (opts.bun) packageManager = 'bun';
-  else {
-    // Auto-detect from user agent or lockfile
-    const userAgent = process.env.npm_config_user_agent || '';
-    if (userAgent.includes('pnpm')) packageManager = 'pnpm';
-    else if (userAgent.includes('yarn')) packageManager = 'yarn';
-    else if (userAgent.includes('bun')) packageManager = 'bun';
-  }
-
-  const options: CreateOptions = {
-    template: opts.template as Template,
-    provider: opts.provider as Provider,
-    typescript: opts.typescript !== false,
-    git: opts.git !== false,
-    install: opts.install !== false,
-    packageManager,
-  };
-
-  await createApp(projectName, options);
-}
-
-async function createApp(projectName: string, options: CreateOptions) {
-  const projectPath = path.resolve(process.cwd(), projectName);
-
-  // Check if directory exists
-  if (fs.existsSync(projectPath)) {
-    console.log(chalk.red(`\nDirectory ${projectName} already exists.`));
-    process.exit(1);
-  }
-
-  const spinner = ora('Creating your CoFounder app...').start();
-
-  try {
-    // Create directory
-    fs.mkdirSync(projectPath, { recursive: true });
-
-    // Generate files based on template
-    await generateTemplate(projectPath, projectName, options);
-
-    spinner.succeed('Project created!');
-
-    // Initialize git
-    if (options.git) {
-      spinner.start('Initializing git...');
-      try {
-        execSync('git init', { cwd: projectPath, stdio: 'ignore' });
-        execSync('git add -A', { cwd: projectPath, stdio: 'ignore' });
-        execSync('git commit -m "Initial commit from create-aicofounder-app"', { cwd: projectPath, stdio: 'ignore' });
-        spinner.succeed('Git initialized!');
-      } catch {
-        spinner.warn('Git initialization failed (git may not be installed)');
-      }
-    }
-
-    // Install dependencies
-    if (options.install) {
-      spinner.start(`Installing dependencies with ${options.packageManager}...`);
-      try {
-        const installCmd = options.packageManager === 'yarn' ? 'yarn' : `${options.packageManager} install`;
-        execSync(installCmd, { cwd: projectPath, stdio: 'ignore' });
-        spinner.succeed('Dependencies installed!');
-      } catch {
-        spinner.warn('Dependency installation failed. Run install manually.');
-      }
-    }
-
-    // Success message
-    console.log('\n' + chalk.green.bold('Success!') + ` Created ${projectName} at ${projectPath}\n`);
-
-    console.log('Inside that directory, you can run:\n');
-
-    const runCmd = options.packageManager === 'npm' ? 'npm run' : options.packageManager;
-
-    console.log(chalk.cyan(`  ${runCmd} dev`));
-    console.log('    Start the development server\n');
-
-    console.log(chalk.cyan(`  ${runCmd} test`));
-    console.log('    Run AI tests\n');
-
-    console.log(chalk.cyan(`  ${runCmd} build`));
-    console.log('    Build for production\n');
-
-    console.log('We suggest that you begin by typing:\n');
-    console.log(chalk.cyan(`  cd ${projectName}`));
-
-    if (options.provider !== 'auto') {
-      console.log(chalk.cyan(`  cofounder config:set ${options.provider} YOUR_API_KEY`));
-    } else {
-      console.log(chalk.cyan('  cofounder config:set openai YOUR_API_KEY'));
-    }
-
-    console.log(chalk.cyan(`  ${runCmd} dev`));
-
-    console.log('\n' + chalk.gray('Happy hacking!') + '\n');
-
-  } catch (error) {
-    spinner.fail('Failed to create project');
-    console.error(error);
-    process.exit(1);
-  }
-}
-
-async function generateTemplate(
-  projectPath: string,
-  projectName: string,
-  options: CreateOptions
-) {
-  const ext = options.typescript ? 'ts' : 'js';
-  const provider = options.provider === 'auto' ? 'anthropic' : options.provider;
-
-  // Package.json
-  const packageJson = {
-    name: projectName,
+export function generatePackageJson(name: string, template: Template): string {
+  const base: Record<string, unknown> = {
+    name,
     version: '0.1.0',
     private: true,
     type: 'module',
-    scripts: {
-      dev: 'tsx watch src/index.ts',
-      build: options.typescript ? 'tsc' : 'echo "No build needed"',
-      start: 'node dist/index.js',
-      test: 'cofounder test',
-      lint: options.typescript ? 'tsc --noEmit' : 'echo "No lint configured"',
-    },
-    dependencies: {
-      '@aicofounder/core': '^2.0.0',
-      ...(options.template === 'rag' && { '@aicofounder/rag': '^2.0.0' }),
-      ...(options.template === 'api' && { express: '^4.18.0' }),
-    },
-    devDependencies: {
-      '@aicofounder/testing': '^2.0.0',
-      tsx: '^4.7.0',
-      ...(options.typescript && {
-        typescript: '^5.5.0',
-        '@types/node': '^22.0.0',
-        ...(options.template === 'api' && { '@types/express': '^4.17.0' }),
-      }),
-    },
+    scripts: {} as Record<string, string>,
+    dependencies: {} as Record<string, string>,
+    devDependencies: {} as Record<string, string>,
   };
 
-  fs.writeFileSync(
-    path.join(projectPath, 'package.json'),
-    JSON.stringify(packageJson, null, 2)
-  );
+  const deps = base.dependencies as Record<string, string>;
+  const devDeps = base.devDependencies as Record<string, string>;
+  const scripts = base.scripts as Record<string, string>;
 
-  // TypeScript config
-  if (options.typescript) {
-    const tsconfig = {
-      compilerOptions: {
-        target: 'ES2020',
-        module: 'ESNext',
-        moduleResolution: 'bundler',
-        lib: ['ES2020'],
-        declaration: true,
-        strict: true,
-        esModuleInterop: true,
-        skipLibCheck: true,
-        forceConsistentCasingInFileNames: true,
-        outDir: 'dist',
-        rootDir: 'src',
-      },
-      include: ['src/**/*'],
-      exclude: ['node_modules', 'dist'],
-    };
+  // Common dependencies
+  deps['@waymakerai/aicofounder-core'] = '^2.0.0';
+  deps['@waymakerai/aicofounder-guard'] = '^1.0.0';
+  devDeps['typescript'] = '^5.5.0';
+  devDeps['@types/node'] = '^22.0.0';
+  devDeps['tsx'] = '^4.7.0';
 
-    fs.writeFileSync(
-      path.join(projectPath, 'tsconfig.json'),
-      JSON.stringify(tsconfig, null, 2)
-    );
+  switch (template) {
+    case 'chatbot':
+      deps['@waymakerai/aicofounder-streaming'] = '^1.0.0';
+      scripts.dev = 'tsx watch src/index.ts';
+      scripts.build = 'tsc';
+      scripts.start = 'node dist/index.js';
+      break;
+
+    case 'agent':
+      deps['@anthropic-ai/sdk'] = '^0.30.0';
+      deps['@waymakerai/aicofounder-agents'] = '^1.0.0';
+      scripts.dev = 'tsx watch src/index.ts';
+      scripts.build = 'tsc';
+      scripts.start = 'node dist/index.js';
+      break;
+
+    case 'api-guard':
+      deps['express'] = '^4.21.0';
+      deps['@waymakerai/aicofounder-streaming'] = '^1.0.0';
+      devDeps['@types/express'] = '^4.17.21';
+      scripts.dev = 'tsx watch src/index.ts';
+      scripts.build = 'tsc';
+      scripts.start = 'node dist/index.js';
+      break;
+
+    case 'full-stack':
+      deps['next'] = '^14.2.0';
+      deps['react'] = '^18.3.0';
+      deps['react-dom'] = '^18.3.0';
+      deps['@waymakerai/aicofounder-react'] = '^1.0.0';
+      devDeps['@types/react'] = '^18.3.0';
+      devDeps['@types/react-dom'] = '^18.3.0';
+      scripts.dev = 'next dev';
+      scripts.build = 'next build';
+      scripts.start = 'next start';
+      // Remove tsx for next.js template
+      delete devDeps['tsx'];
+      break;
   }
 
-  // CoFounder config
-  const cofounderConfig = `# CoFounder Configuration
-# https://cofounder.dev/docs/config
+  return JSON.stringify(base, null, 2);
+}
 
-defaults:
-  provider: ${provider}
-  optimize: balanced
+export function generateTsconfig(template: Template): string {
+  const base: Record<string, unknown> = {
+    compilerOptions: {
+      target: 'ES2022',
+      module: 'ESNext',
+      moduleResolution: 'bundler',
+      lib: ['ES2022'],
+      declaration: true,
+      strict: true,
+      esModuleInterop: true,
+      skipLibCheck: true,
+      forceConsistentCasingInFileNames: true,
+      outDir: 'dist',
+      rootDir: 'src',
+    },
+    include: ['src/**/*'],
+    exclude: ['node_modules', 'dist'],
+  };
 
-cache:
-  enabled: true
-  ttl: 3600
+  if (template === 'full-stack') {
+    const opts = base.compilerOptions as Record<string, unknown>;
+    opts.jsx = 'preserve';
+    opts.lib = ['ES2022', 'DOM', 'DOM.Iterable'];
+    opts.module = 'ESNext';
+    opts.plugins = [{ name: 'next' }];
+    opts.paths = { '@/*': ['./src/*'] };
+    delete opts.outDir;
+    delete opts.rootDir;
+    delete opts.declaration;
+    base.include = ['src/**/*', 'next-env.d.ts', '.next/types/**/*.ts'];
+  }
 
-cost_tracking:
-  enabled: true
-  budget:
-    limit: 10
-    period: daily
-    action: warn
+  return JSON.stringify(base, null, 2);
+}
+
+export function generateCoFounderConfig(template: Template): string {
+  return `# CoFounder Configuration
+# https://cofounder.cx/docs/configuration
+
+guard:
+  rules:
+    - no-pii-in-prompts
+    - no-injection-vuln
+    - no-hardcoded-keys
+    - approved-models
+  fail-on: high
+
+models:
+  approved:
+    - gpt-4o
+    - gpt-4o-mini
+    - claude-3-5-sonnet-20241022
+    - claude-3-haiku-20240307
+
+budget:
+  monthly: 100
+  per-call: 0.50
+
+scan:
+  include:
+    - "src/**/*.ts"
+    - "src/**/*.tsx"
+  exclude:
+    - "node_modules"
+    - "dist"
+    - ".next"
 `;
+}
 
-  fs.writeFileSync(path.join(projectPath, '.cofounder.yml'), cofounderConfig);
-
-  // Environment file
-  const envFile = `# CoFounder Environment Variables
-# Get your API keys from:
-# - OpenAI: https://platform.openai.com/api-keys
-# - Anthropic: https://console.anthropic.com/
-# - Google: https://aistudio.google.com/app/apikey
-
-${PROVIDERS[provider as keyof typeof PROVIDERS]?.env || 'OPENAI_API_KEY'}=your_api_key_here
-`;
-
-  fs.writeFileSync(path.join(projectPath, '.env.example'), envFile);
-
-  // Gitignore
-  const gitignore = `# Dependencies
-node_modules/
-
-# Build
+export function generateGitignore(): string {
+  return `node_modules/
 dist/
-
-# Environment
+.next/
 .env
 .env.local
 .env.*.local
-
-# CoFounder
-.cofounder/
-
-# IDE
-.idea/
-.vscode/
-*.swp
-*.swo
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Logs
+.cofounder/cache/
 *.log
-npm-debug.log*
+.DS_Store
 `;
+}
 
-  fs.writeFileSync(path.join(projectPath, '.gitignore'), gitignore);
+export function generateEnvExample(template: Template): string {
+  let content = '# CoFounder Environment Variables\n\n';
 
-  // Create src directory
-  fs.mkdirSync(path.join(projectPath, 'src'), { recursive: true });
-
-  // Generate template-specific files
-  switch (options.template) {
-    case 'chatbot':
-      await generateChatbotTemplate(projectPath, ext, provider);
-      break;
-    case 'rag':
-      await generateRagTemplate(projectPath, ext, provider);
-      break;
-    case 'agent':
-      await generateAgentTemplate(projectPath, ext, provider);
-      break;
-    case 'api':
-      await generateApiTemplate(projectPath, ext, provider);
-      break;
-    case 'minimal':
-      await generateMinimalTemplate(projectPath, ext, provider);
-      break;
-    case 'default':
-    default:
-      await generateDefaultTemplate(projectPath, ext, provider);
-      break;
+  if (template === 'agent') {
+    content += '# Anthropic (required for agent template)\nANTHROPIC_API_KEY=your_api_key_here\n';
+  } else {
+    content += '# Choose your provider\nOPENAI_API_KEY=your_api_key_here\n# ANTHROPIC_API_KEY=your_api_key_here\n';
   }
 
-  // README
-  const readme = `# ${projectName}
+  if (template === 'api-guard') {
+    content += '\n# Server\nPORT=3000\n';
+  }
 
-A CoFounder AI application.
+  if (template === 'full-stack') {
+    content += '\n# Next.js requires NEXT_PUBLIC_ prefix for client-side vars\n# Keep API keys server-side only\n';
+  }
+
+  return content;
+}
+
+export function generateReadme(name: string, template: Template): string {
+  const templateNames: Record<Template, string> = {
+    chatbot: 'Guarded Chatbot',
+    agent: 'Guarded Anthropic Agent',
+    'api-guard': 'Express API with Guardrails',
+    'full-stack': 'Next.js with Guardrails',
+  };
+
+  return `# ${name}
+
+${templateNames[template]} - built with [CoFounder](https://cofounder.cx).
 
 ## Getting Started
 
@@ -422,414 +226,858 @@ A CoFounder AI application.
    npm install
    \`\`\`
 
-2. Configure your API key:
+2. Set up your environment:
    \`\`\`bash
    cp .env.example .env
    # Edit .env with your API key
    \`\`\`
 
-   Or use the CoFounder CLI:
-   \`\`\`bash
-   cofounder config:set ${provider} YOUR_API_KEY
-   \`\`\`
-
-3. Start development:
+3. Run the development server:
    \`\`\`bash
    npm run dev
    \`\`\`
 
-## Commands
+## Guardrails
 
-- \`npm run dev\` - Start development server
-- \`npm run test\` - Run AI tests
-- \`npm run build\` - Build for production
+This project includes CoFounder guardrails that protect against:
+- **PII Leakage** - Detects and blocks personal information in prompts
+- **Prompt Injection** - Detects injection attacks in user input
+- **Hardcoded Secrets** - Prevents API keys from being committed
+- **Model Governance** - Ensures only approved models are used
+
+Configure guardrails in \`.cofounder.yml\`.
+
+## CI Integration
+
+Add to your GitHub Actions workflow:
+
+\`\`\`yaml
+- uses: waymaker-ai/cofounder@main
+  with:
+    scan: pii,injection,secrets
+    fail-on: high
+\`\`\`
 
 ## Learn More
 
-- [CoFounder Documentation](https://cofounder.dev/docs)
-- [API Reference](https://cofounder.dev/docs/api)
-- [Examples](https://cofounder.dev/examples)
-
-## License
-
-MIT
+- [CoFounder Docs](https://cofounder.cx/docs)
+- [Guardrails Guide](https://cofounder.cx/docs/security)
+- [API Reference](https://cofounder.cx/docs/api)
 `;
-
-  fs.writeFileSync(path.join(projectPath, 'README.md'), readme);
 }
 
-async function generateDefaultTemplate(projectPath: string, ext: string, provider: string) {
-  const mainFile = `/**
- * CoFounder AI Application
- * Full-featured starter with chat, RAG, and agents
+// ---- Template source files ----
+
+export function generateChatbotSource(): string {
+  return `/**
+ * Guarded Chatbot
+ *
+ * A conversational chatbot with CoFounder guardrails that protect
+ * against PII leakage and prompt injection attacks.
  */
 
-import { createCoFounder } from '@aicofounder/core';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
+import { createGuard, piiDetector, injectionDetector } from '@waymakerai/aicofounder-guard';
+import * as readline from 'node:readline';
 
-// Initialize CoFounder
+// Initialize CoFounder with guardrails
 const cofounder = createCoFounder({
   providers: {
-    ${provider}: process.env.${PROVIDERS[provider as keyof typeof PROVIDERS]?.env || 'OPENAI_API_KEY'},
-  },
-  defaults: {
-    provider: '${provider}',
-    optimize: 'balanced',
-  },
-  cost_tracking: {
-    enabled: true,
-    budget: {
-      limit: 10,
-      period: 'daily',
-      action: 'warn',
-    },
+    openai: process.env.OPENAI_API_KEY,
   },
 });
 
-async function main() {
-  console.log('\\n🚀 CoFounder AI Application\\n');
-
-  // Simple chat
-  console.log('💬 Chat Example:');
-  const response = await cofounder.chat('Hello! What can you help me with today?');
-  console.log('Assistant:', response.content);
-  console.log('Cost: $' + response.cost.total_cost.toFixed(6));
-
-  // Cost tracking
-  console.log('\\n📊 Cost Stats:');
-  const stats = cofounder.cost.stats();
-  console.log('Total Spent: $' + stats.total_spent.toFixed(6));
-  console.log('Total Saved: $' + stats.total_saved.toFixed(6));
-  console.log('Savings: ' + stats.savings_percentage.toFixed(1) + '%');
-}
-
-main().catch(console.error);
-`;
-
-  fs.writeFileSync(path.join(projectPath, 'src', `index.${ext}`), mainFile);
-
-  // Test file
-  const testFile = `/**
- * AI Tests
- */
-
-import { describe, aiTest } from '@aicofounder/testing';
-
-describe('AI Application', () => {
-  aiTest('should respond helpfully', async ({ expect }) => {
-    // Your test here
-    expect(true).toBe(true);
-  });
-});
-`;
-
-  fs.writeFileSync(path.join(projectPath, 'src', `index.test.${ext}`), testFile);
-}
-
-async function generateChatbotTemplate(projectPath: string, ext: string, provider: string) {
-  const mainFile = `/**
- * CoFounder Chatbot
- * Conversational AI with streaming
- */
-
-import { createCoFounder } from '@aicofounder/core';
-import * as readline from 'readline';
-
-const cofounder = createCoFounder({
-  providers: {
-    ${provider}: process.env.${PROVIDERS[provider as keyof typeof PROVIDERS]?.env || 'OPENAI_API_KEY'},
+// Set up guard pipeline
+const guard = createGuard({
+  detectors: [
+    piiDetector({ action: 'redact', types: ['email', 'phone', 'ssn', 'credit-card'] }),
+    injectionDetector({ action: 'block', sensitivity: 'medium' }),
+  ],
+  onBlock: (result) => {
+    console.error('\\n[GUARD] Blocked:', result.reason);
+  },
+  onRedact: (result) => {
+    console.warn('\\n[GUARD] Redacted PII:', result.redactedTypes.join(', '));
   },
 });
 
-const history${ext === 'ts' ? ': Array<{ role: "user" | "assistant"; content: string }>' : ''} = [];
+const history: Array<{ role: 'user' | 'assistant'; content: string }> = [];
 
-async function chat(message${ext === 'ts' ? ': string' : ''}) {
-  history.push({ role: 'user', content: message });
+async function chat(userMessage: string): Promise<string> {
+  // Run input through guardrails
+  const guardResult = await guard.check(userMessage);
 
-  process.stdout.write('\\nAssistant: ');
-
-  let fullResponse = '';
-  for await (const chunk of cofounder.stream({
-    messages: [
-      { role: 'system', content: 'You are a helpful, friendly assistant.' },
-      ...history,
-    ],
-  })) {
-    process.stdout.write(chunk.delta);
-    fullResponse += chunk.delta;
+  if (guardResult.blocked) {
+    return \`I can't process that message. Reason: \${guardResult.reason}\`;
   }
 
-  console.log('\\n');
-  history.push({ role: 'assistant', content: fullResponse });
+  // Use the sanitized message (PII redacted)
+  const sanitizedMessage = guardResult.sanitized || userMessage;
+  history.push({ role: 'user', content: sanitizedMessage });
+
+  const response = await cofounder.chat({
+    messages: [
+      {
+        role: 'system',
+        content: 'You are a helpful assistant. Never ask for or repeat personal information like emails, phone numbers, or SSNs.',
+      },
+      ...history,
+    ],
+  });
+
+  // Also guard the output
+  const outputGuard = await guard.check(response.content);
+  const safeResponse = outputGuard.sanitized || response.content;
+
+  history.push({ role: 'assistant', content: safeResponse });
+  return safeResponse;
 }
 
-async function main() {
-  console.log('\\n🤖 CoFounder Chatbot');
-  console.log('Type your message and press Enter. Type "exit" to quit.\\n');
+async function main(): Promise<void> {
+  console.log('CoFounder Guarded Chatbot');
+  console.log('========================');
+  console.log('Type a message to chat. Type "exit" to quit.');
+  console.log('PII is automatically redacted. Injection attempts are blocked.\\n');
 
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
   });
 
-  const prompt = () => {
+  const ask = (): void => {
     rl.question('You: ', async (input) => {
-      if (input.toLowerCase() === 'exit') {
-        console.log('\\nGoodbye! 👋\\n');
+      const trimmed = input.trim();
+      if (trimmed.toLowerCase() === 'exit') {
+        console.log('\\nGoodbye!');
         rl.close();
         return;
       }
+      if (!trimmed) {
+        ask();
+        return;
+      }
 
-      await chat(input);
-      prompt();
+      const reply = await chat(trimmed);
+      console.log(\`Assistant: \${reply}\\n\`);
+      ask();
     });
   };
 
-  prompt();
+  ask();
 }
 
 main().catch(console.error);
 `;
-
-  fs.writeFileSync(path.join(projectPath, 'src', `index.${ext}`), mainFile);
 }
 
-async function generateRagTemplate(projectPath: string, ext: string, provider: string) {
-  const mainFile = `/**
- * CoFounder RAG Application
- * Document Q&A with retrieval-augmented generation
+export function generateAgentSource(): string {
+  return `/**
+ * Guarded Anthropic Agent
+ *
+ * An AI agent powered by Claude with CoFounder guardrails.
+ * Includes tool use with safety checks on every interaction.
  */
 
-import { createCoFounder } from '@aicofounder/core';
+import Anthropic from '@anthropic-ai/sdk';
+import { createGuard, injectionDetector, piiDetector } from '@waymakerai/aicofounder-guard';
 
-const cofounder = createCoFounder({
-  providers: {
-    ${provider}: process.env.${PROVIDERS[provider as keyof typeof PROVIDERS]?.env || 'OPENAI_API_KEY'},
-  },
+const client = new Anthropic();
+
+// Set up guard pipeline
+const guard = createGuard({
+  detectors: [
+    injectionDetector({ action: 'block', sensitivity: 'high' }),
+    piiDetector({ action: 'redact', types: ['email', 'phone', 'ssn'] }),
+  ],
 });
 
-// Sample documents (in production, load from files/database)
-const documents = [
-  { content: 'CoFounder supports 9 different LLM providers including OpenAI, Anthropic, and Google.', source: 'docs' },
-  { content: 'CoFounder can reduce AI costs by up to 70% through smart caching and model selection.', source: 'docs' },
-  { content: 'The @aicofounder/testing package provides AI-native testing with semantic matching.', source: 'docs' },
+// Define tools the agent can use
+const tools: Anthropic.Tool[] = [
+  {
+    name: 'get_weather',
+    description: 'Get the current weather for a given location.',
+    input_schema: {
+      type: 'object' as const,
+      properties: {
+        location: { type: 'string', description: 'City name, e.g. "San Francisco"' },
+      },
+      required: ['location'],
+    },
+  },
+  {
+    name: 'calculate',
+    description: 'Perform a mathematical calculation.',
+    input_schema: {
+      type: 'object' as const,
+      properties: {
+        expression: { type: 'string', description: 'Math expression, e.g. "15 * 847 / 100"' },
+      },
+      required: ['expression'],
+    },
+  },
 ];
 
-async function askQuestion(question${ext === 'ts' ? ': string' : ''}) {
-  console.log('\\n🔍 Question:', question);
-
-  // Simple retrieval (in production, use vector similarity)
-  const relevant = documents.filter(d =>
-    d.content.toLowerCase().includes(question.toLowerCase().split(' ')[0])
-  );
-
-  const context = relevant.length > 0
-    ? relevant.map(d => d.content).join('\\n')
-    : documents.map(d => d.content).join('\\n');
-
-  const response = await cofounder.chat({
-    messages: [
-      {
-        role: 'system',
-        content: \`Answer questions based on the following context. If you don't know, say so.
-
-Context:
-\${context}\`
-      },
-      { role: 'user', content: question },
-    ],
-  });
-
-  console.log('\\n📝 Answer:', response.content);
-  console.log('\\n📚 Sources:', relevant.map(d => d.source).join(', ') || 'general knowledge');
+// Tool implementations
+function handleToolCall(name: string, input: Record<string, string>): string {
+  switch (name) {
+    case 'get_weather':
+      // Simulated weather data
+      return JSON.stringify({
+        location: input.location,
+        temperature: Math.round(60 + Math.random() * 30),
+        unit: 'fahrenheit',
+        condition: ['sunny', 'cloudy', 'rainy', 'partly cloudy'][Math.floor(Math.random() * 4)],
+      });
+    case 'calculate':
+      try {
+        // Safe math evaluation (no eval)
+        const result = Function(\`"use strict"; return (\${input.expression.replace(/[^0-9+\\-*/.() ]/g, '')})\`)();
+        return String(result);
+      } catch {
+        return 'Error: Invalid expression';
+      }
+    default:
+      return 'Unknown tool';
+  }
 }
 
-async function main() {
-  console.log('\\n📚 CoFounder RAG Application\\n');
+async function runAgent(userMessage: string): Promise<string> {
+  // Guard the input
+  const inputCheck = await guard.check(userMessage);
+  if (inputCheck.blocked) {
+    return \`[BLOCKED] \${inputCheck.reason}\`;
+  }
 
-  await askQuestion('How many providers does CoFounder support?');
-  await askQuestion('How can CoFounder reduce costs?');
-  await askQuestion('What is @aicofounder/testing?');
+  const messages: Anthropic.MessageParam[] = [
+    { role: 'user', content: inputCheck.sanitized || userMessage },
+  ];
+
+  // Agent loop - keep running until no more tool calls
+  let iterations = 0;
+  const maxIterations = 5;
+
+  while (iterations < maxIterations) {
+    iterations++;
+
+    const response = await client.messages.create({
+      model: 'claude-3-5-sonnet-20241022',
+      max_tokens: 1024,
+      system: 'You are a helpful assistant with access to tools. Use them when appropriate.',
+      tools,
+      messages,
+    });
+
+    // Check if the model wants to use tools
+    if (response.stop_reason === 'tool_use') {
+      // Add assistant message
+      messages.push({ role: 'assistant', content: response.content });
+
+      // Process each tool call
+      const toolResults: Anthropic.ToolResultBlockParam[] = [];
+      for (const block of response.content) {
+        if (block.type === 'tool_use') {
+          console.log(\`  [Tool] \${block.name}(\${JSON.stringify(block.input)})\`);
+          const result = handleToolCall(block.name, block.input as Record<string, string>);
+          toolResults.push({
+            type: 'tool_result',
+            tool_use_id: block.id,
+            content: result,
+          });
+        }
+      }
+
+      messages.push({ role: 'user', content: toolResults });
+      continue;
+    }
+
+    // Extract text response
+    const textBlocks = response.content.filter(b => b.type === 'text');
+    const finalText = textBlocks.map(b => b.type === 'text' ? b.text : '').join('\\n');
+
+    // Guard the output
+    const outputCheck = await guard.check(finalText);
+    return outputCheck.sanitized || finalText;
+  }
+
+  return 'Agent reached maximum iterations.';
 }
 
-main().catch(console.error);
-`;
+async function main(): Promise<void> {
+  console.log('CoFounder Guarded Agent');
+  console.log('======================');
+  console.log('An Anthropic Claude agent with guardrails.\\n');
 
-  fs.writeFileSync(path.join(projectPath, 'src', `index.${ext}`), mainFile);
-}
-
-async function generateAgentTemplate(projectPath: string, ext: string, provider: string) {
-  const mainFile = `/**
- * CoFounder AI Agent
- * Autonomous agent with tools and multi-step reasoning
- */
-
-import { createCoFounder, LLMAgent, calculatorTool, dateTimeTool } from '@aicofounder/core';
-
-const cofounder = createCoFounder({
-  providers: {
-    ${provider}: process.env.${PROVIDERS[provider as keyof typeof PROVIDERS]?.env || 'OPENAI_API_KEY'},
-  },
-});
-
-// Create an agent with tools
-const agent = new LLMAgent({
-  name: 'Assistant',
-  model: '${provider === 'openai' ? 'gpt-4o' : provider === 'anthropic' ? 'claude-3-5-sonnet-20241022' : 'gemini-pro'}',
-  systemPrompt: \`You are a helpful assistant with access to tools.
-Use the calculator for math and dateTime for date/time questions.
-Always explain your reasoning.\`,
-  tools: [calculatorTool, dateTimeTool],
-});
-
-async function main() {
-  console.log('\\n🤖 CoFounder AI Agent\\n');
-
-  // Agent will use tools automatically
   const tasks = [
-    'What is 15% of 847?',
-    'What day of the week was January 1, 2024?',
-    'Calculate the compound interest on $1000 at 5% for 3 years',
+    'What is the weather in San Francisco?',
+    'Calculate 15% tip on a $127.50 dinner bill.',
+    'What is the weather in Tokyo and what is 100 * 1.5?',
   ];
 
   for (const task of tasks) {
-    console.log('📋 Task:', task);
-
-    const result = await agent.run(task);
-
-    console.log('🤖 Result:', result.content);
-    console.log('🔧 Tools used:', result.toolsUsed?.join(', ') || 'none');
-    console.log('');
+    console.log(\`Task: \${task}\`);
+    const result = await runAgent(task);
+    console.log(\`Result: \${result}\\n\`);
   }
 }
 
 main().catch(console.error);
 `;
-
-  fs.writeFileSync(path.join(projectPath, 'src', `index.${ext}`), mainFile);
 }
 
-async function generateApiTemplate(projectPath: string, ext: string, provider: string) {
-  const mainFile = `/**
- * CoFounder API Server
- * REST API with AI endpoints
+export function generateApiGuardSource(): string {
+  return `/**
+ * Express API with CoFounder Guardrails
+ *
+ * REST API with middleware that guards all AI interactions
+ * against PII leakage, injection attacks, and cost overruns.
  */
 
 import express from 'express';
-import { createCoFounder } from '@aicofounder/core';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
+import { createGuard, piiDetector, injectionDetector } from '@waymakerai/aicofounder-guard';
 
 const app = express();
 app.use(express.json());
 
+// Initialize CoFounder
 const cofounder = createCoFounder({
   providers: {
-    ${provider}: process.env.${PROVIDERS[provider as keyof typeof PROVIDERS]?.env || 'OPENAI_API_KEY'},
-  },
-  cost_tracking: {
-    enabled: true,
-    budget: {
-      limit: 10,
-      period: 'daily',
-      action: 'block',
-    },
+    openai: process.env.OPENAI_API_KEY,
   },
 });
+
+// Create guard instance
+const guard = createGuard({
+  detectors: [
+    piiDetector({ action: 'redact', types: ['email', 'phone', 'ssn', 'credit-card'] }),
+    injectionDetector({ action: 'block', sensitivity: 'medium' }),
+  ],
+});
+
+// Guardrails middleware
+function guardrailsMiddleware() {
+  return async (
+    req: express.Request,
+    res: express.Response,
+    next: express.NextFunction,
+  ): Promise<void> => {
+    // Only guard requests with a message/prompt body
+    const input = req.body?.message || req.body?.prompt;
+    if (!input || typeof input !== 'string') {
+      next();
+      return;
+    }
+
+    try {
+      const result = await guard.check(input);
+
+      if (result.blocked) {
+        res.status(400).json({
+          error: 'Request blocked by guardrails',
+          reason: result.reason,
+          detectors: result.triggered,
+        });
+        return;
+      }
+
+      // Replace body with sanitized version
+      if (result.sanitized) {
+        if (req.body.message) req.body.message = result.sanitized;
+        if (req.body.prompt) req.body.prompt = result.sanitized;
+        req.body._guardrails = {
+          sanitized: true,
+          redacted: result.redactedTypes || [],
+        };
+      }
+
+      next();
+    } catch (err) {
+      console.error('[Guardrails] Error:', err);
+      next(); // Fail open - let request through if guard errors
+    }
+  };
+}
+
+// Apply guardrails to all /api routes
+app.use('/api', guardrailsMiddleware());
 
 // Chat endpoint
-app.post('/api/chat', async (req, res) => {
+app.post('/api/chat', async (req: express.Request, res: express.Response) => {
   try {
-    const { message } = req.body;
+    const { message, model } = req.body;
 
     if (!message) {
-      return res.status(400).json({ error: 'Message is required' });
+      res.status(400).json({ error: 'message is required' });
+      return;
     }
 
-    const response = await cofounder.chat(message);
+    const response = await cofounder.chat({
+      messages: [
+        { role: 'system', content: 'You are a helpful assistant.' },
+        { role: 'user', content: message },
+      ],
+      model: model || 'gpt-4o-mini',
+    });
+
+    // Guard the output too
+    const outputCheck = await guard.check(response.content);
 
     res.json({
-      content: response.content,
+      content: outputCheck.sanitized || response.content,
       usage: response.usage,
-      cost: response.cost,
+      guardrails: req.body._guardrails || { sanitized: false },
     });
-  } catch (error${ext === 'ts' ? ': any' : ''}) {
-    console.error('Chat error:', error);
-    res.status(500).json({ error: error.message || 'Internal server error' });
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : 'Internal server error';
+    res.status(500).json({ error: message });
   }
 });
 
-// Streaming chat endpoint
-app.post('/api/chat/stream', async (req, res) => {
+// Completions endpoint
+app.post('/api/complete', async (req: express.Request, res: express.Response) => {
   try {
-    const { message } = req.body;
+    const { prompt, maxTokens } = req.body;
 
-    if (!message) {
-      return res.status(400).json({ error: 'Message is required' });
+    if (!prompt) {
+      res.status(400).json({ error: 'prompt is required' });
+      return;
     }
 
-    res.setHeader('Content-Type', 'text/event-stream');
-    res.setHeader('Cache-Control', 'no-cache');
-    res.setHeader('Connection', 'keep-alive');
+    const response = await cofounder.chat({
+      messages: [{ role: 'user', content: prompt }],
+      maxTokens: maxTokens || 256,
+    });
 
-    for await (const chunk of cofounder.stream(message)) {
-      res.write(\`data: \${JSON.stringify({ delta: chunk.delta })}\\n\\n\`);
-    }
-
-    res.write('data: [DONE]\\n\\n');
-    res.end();
-  } catch (error${ext === 'ts' ? ': any' : ''}) {
-    console.error('Stream error:', error);
-    res.status(500).json({ error: error.message || 'Internal server error' });
+    res.json({
+      text: response.content,
+      usage: response.usage,
+    });
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : 'Internal server error';
+    res.status(500).json({ error: message });
   }
-});
-
-// Cost stats endpoint
-app.get('/api/stats', (req, res) => {
-  const stats = cofounder.cost.stats();
-  res.json(stats);
 });
 
 // Health check
-app.get('/health', (req, res) => {
-  res.json({ status: 'ok', timestamp: new Date().toISOString() });
+app.get('/health', (_req: express.Request, res: express.Response) => {
+  res.json({ status: 'ok', guardrails: 'active', timestamp: new Date().toISOString() });
 });
 
-const PORT = process.env.PORT || 3000;
+// Guard status endpoint
+app.get('/api/guard/status', (_req: express.Request, res: express.Response) => {
+  res.json({
+    active: true,
+    detectors: ['pii', 'injection'],
+    config: {
+      pii: { action: 'redact', types: ['email', 'phone', 'ssn', 'credit-card'] },
+      injection: { action: 'block', sensitivity: 'medium' },
+    },
+  });
+});
+
+const PORT = parseInt(process.env.PORT || '3000', 10);
 
 app.listen(PORT, () => {
-  console.log(\`\\n🚀 CoFounder API Server running on http://localhost:\${PORT}\`);
-  console.log('\\nEndpoints:');
-  console.log('  POST /api/chat         - Chat completion');
-  console.log('  POST /api/chat/stream  - Streaming chat');
-  console.log('  GET  /api/stats        - Cost statistics');
-  console.log('  GET  /health           - Health check\\n');
+  console.log(\`CoFounder Guarded API running on http://localhost:\${PORT}\`);
+  console.log('');
+  console.log('Endpoints:');
+  console.log('  POST /api/chat          Chat with guardrails');
+  console.log('  POST /api/complete      Completion with guardrails');
+  console.log('  GET  /api/guard/status   Guardrail status');
+  console.log('  GET  /health            Health check');
+  console.log('');
+  console.log('Guardrails: PII redaction + injection blocking');
 });
 `;
-
-  fs.writeFileSync(path.join(projectPath, 'src', `index.${ext}`), mainFile);
 }
 
-async function generateMinimalTemplate(projectPath: string, ext: string, provider: string) {
-  const mainFile = `/**
- * Minimal CoFounder Application
- */
+export function generateFullStackSource(): string {
+  // Return multiple files as a map
+  return ''; // handled separately
+}
 
-import { createCoFounder } from '@aicofounder/core';
+export function generateFullStackFiles(projectPath: string): void {
+  // src/app/layout.tsx
+  const layout = `import type { Metadata } from 'next';
+import { CoFounderProvider } from '@waymakerai/aicofounder-react';
+
+export const metadata: Metadata = {
+  title: 'CoFounder App',
+  description: 'Next.js app with AI guardrails',
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body>
+        <CoFounderProvider
+          config={{
+            guard: {
+              detectors: ['pii', 'injection'],
+              failOn: 'high',
+            },
+          }}
+        >
+          {children}
+        </CoFounderProvider>
+      </body>
+    </html>
+  );
+}
+`;
+
+  // src/app/page.tsx
+  const page = `'use client';
+
+import { useState } from 'react';
+import { useCoFounder } from '@waymakerai/aicofounder-react';
+
+export default function Home() {
+  const [input, setInput] = useState('');
+  const [messages, setMessages] = useState<Array<{ role: string; content: string }>>([]);
+  const [loading, setLoading] = useState(false);
+  const { guard } = useCoFounder();
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!input.trim() || loading) return;
+
+    const userMessage = input.trim();
+    setInput('');
+    setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
+    setLoading(true);
+
+    try {
+      // Client-side guard check
+      const guardResult = await guard.check(userMessage);
+      if (guardResult.blocked) {
+        setMessages(prev => [
+          ...prev,
+          { role: 'system', content: \`Blocked: \${guardResult.reason}\` },
+        ]);
+        setLoading(false);
+        return;
+      }
+
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: guardResult.sanitized || userMessage }),
+      });
+
+      const data = await res.json();
+      setMessages(prev => [...prev, { role: 'assistant', content: data.content }]);
+    } catch (err) {
+      setMessages(prev => [
+        ...prev,
+        { role: 'system', content: 'Error: Failed to get response' },
+      ]);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return (
+    <main style={{ maxWidth: 600, margin: '2rem auto', fontFamily: 'system-ui' }}>
+      <h1>CoFounder Chat</h1>
+      <p style={{ color: '#666' }}>Protected by AI guardrails</p>
+
+      <div style={{ border: '1px solid #ddd', borderRadius: 8, padding: 16, minHeight: 300 }}>
+        {messages.map((msg, i) => (
+          <div
+            key={i}
+            style={{
+              padding: '8px 12px',
+              margin: '4px 0',
+              borderRadius: 6,
+              background: msg.role === 'user' ? '#e3f2fd' : msg.role === 'system' ? '#fff3e0' : '#f5f5f5',
+            }}
+          >
+            <strong>{msg.role}:</strong> {msg.content}
+          </div>
+        ))}
+        {loading && <div style={{ color: '#999', padding: 8 }}>Thinking...</div>}
+      </div>
+
+      <form onSubmit={handleSubmit} style={{ display: 'flex', gap: 8, marginTop: 12 }}>
+        <input
+          value={input}
+          onChange={e => setInput(e.target.value)}
+          placeholder="Type a message..."
+          style={{ flex: 1, padding: '8px 12px', borderRadius: 6, border: '1px solid #ddd' }}
+        />
+        <button
+          type="submit"
+          disabled={loading}
+          style={{ padding: '8px 16px', borderRadius: 6, background: '#1976d2', color: 'white', border: 'none', cursor: 'pointer' }}
+        >
+          Send
+        </button>
+      </form>
+    </main>
+  );
+}
+`;
+
+  // src/app/api/chat/route.ts
+  const apiRoute = `import { NextResponse } from 'next/server';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
+import { createGuard, piiDetector, injectionDetector } from '@waymakerai/aicofounder-guard';
 
 const cofounder = createCoFounder({
   providers: {
-    ${provider}: process.env.${PROVIDERS[provider as keyof typeof PROVIDERS]?.env || 'OPENAI_API_KEY'},
+    openai: process.env.OPENAI_API_KEY,
   },
 });
 
-async function main() {
-  const response = await cofounder.chat('Hello, CoFounder!');
-  console.log(response.content);
-}
+const guard = createGuard({
+  detectors: [
+    piiDetector({ action: 'redact', types: ['email', 'phone', 'ssn'] }),
+    injectionDetector({ action: 'block', sensitivity: 'medium' }),
+  ],
+});
 
-main().catch(console.error);
+export async function POST(request: Request) {
+  try {
+    const { message } = await request.json();
+
+    if (!message) {
+      return NextResponse.json({ error: 'message is required' }, { status: 400 });
+    }
+
+    // Guard the input
+    const inputCheck = await guard.check(message);
+    if (inputCheck.blocked) {
+      return NextResponse.json(
+        { error: 'blocked', reason: inputCheck.reason },
+        { status: 400 },
+      );
+    }
+
+    const response = await cofounder.chat({
+      messages: [
+        { role: 'system', content: 'You are a helpful assistant. Never reveal personal information.' },
+        { role: 'user', content: inputCheck.sanitized || message },
+      ],
+    });
+
+    // Guard the output
+    const outputCheck = await guard.check(response.content);
+
+    return NextResponse.json({
+      content: outputCheck.sanitized || response.content,
+      usage: response.usage,
+    });
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : 'Internal server error';
+    return NextResponse.json({ error: message }, { status: 500 });
+  }
+}
 `;
 
-  fs.writeFileSync(path.join(projectPath, 'src', `index.${ext}`), mainFile);
+  // next.config.js
+  const nextConfig = `/** @type {import('next').NextConfig} */
+const nextConfig = {};
+export default nextConfig;
+`;
+
+  // Write all files
+  mkdirp(path.join(projectPath, 'src', 'app', 'api', 'chat'));
+
+  fs.writeFileSync(path.join(projectPath, 'src', 'app', 'layout.tsx'), layout);
+  fs.writeFileSync(path.join(projectPath, 'src', 'app', 'page.tsx'), page);
+  fs.writeFileSync(path.join(projectPath, 'src', 'app', 'api', 'chat', 'route.ts'), apiRoute);
+  fs.writeFileSync(path.join(projectPath, 'next.config.js'), nextConfig);
 }
 
-// Run
-main().catch(console.error);
+// ---- Utility ----
+
+export function mkdirp(dirPath: string): void {
+  fs.mkdirSync(dirPath, { recursive: true });
+}
+
+function detectPackageManager(): PackageManager {
+  const ua = process.env.npm_config_user_agent || '';
+  if (ua.includes('pnpm')) return 'pnpm';
+  if (ua.includes('yarn')) return 'yarn';
+  if (ua.includes('bun')) return 'bun';
+  return 'npm';
+}
+
+function isValidProjectName(name: string): boolean {
+  // Simple validation: lowercase, no spaces, valid path characters
+  return /^[a-z0-9@][a-z0-9._\-/]*$/.test(name);
+}
+
+// ---- Main scaffold function (exported for testing) ----
+
+export function scaffoldProject(projectPath: string, options: CreateOptions): void {
+  const { projectName, template } = options;
+
+  // Create root directory
+  mkdirp(projectPath);
+
+  // Write common files
+  fs.writeFileSync(path.join(projectPath, 'package.json'), generatePackageJson(projectName, template));
+  fs.writeFileSync(path.join(projectPath, 'tsconfig.json'), generateTsconfig(template));
+  fs.writeFileSync(path.join(projectPath, '.cofounder.yml'), generateCoFounderConfig(template));
+  fs.writeFileSync(path.join(projectPath, '.gitignore'), generateGitignore());
+  fs.writeFileSync(path.join(projectPath, '.env.example'), generateEnvExample(template));
+  fs.writeFileSync(path.join(projectPath, 'README.md'), generateReadme(projectName, template));
+
+  // Generate template-specific source files
+  if (template === 'full-stack') {
+    generateFullStackFiles(projectPath);
+  } else {
+    mkdirp(path.join(projectPath, 'src'));
+    let sourceContent: string;
+
+    switch (template) {
+      case 'chatbot':
+        sourceContent = generateChatbotSource();
+        break;
+      case 'agent':
+        sourceContent = generateAgentSource();
+        break;
+      case 'api-guard':
+        sourceContent = generateApiGuardSource();
+        break;
+      default:
+        sourceContent = generateChatbotSource();
+    }
+
+    fs.writeFileSync(path.join(projectPath, 'src', 'index.ts'), sourceContent);
+  }
+}
+
+// ---- CLI entry point ----
+
+async function main(): Promise<void> {
+  const program = new Command()
+    .name('create-aicofounder-app')
+    .description('Create a new CoFounder AI application with guardrails')
+    .version('2.0.0')
+    .argument('[project-name]', 'Name of your project')
+    .option('-t, --template <template>', 'Template: chatbot, agent, api-guard, full-stack')
+    .option('--skip-install', 'Skip dependency installation')
+    .option('--skip-git', 'Skip git initialization')
+    .option('--npm', 'Use npm')
+    .option('--pnpm', 'Use pnpm')
+    .option('--yarn', 'Use yarn')
+    .option('--bun', 'Use bun')
+    .parse(process.argv);
+
+  const opts = program.opts();
+  let projectName = program.args[0];
+  let template = opts.template as Template | undefined;
+
+  // Interactive mode if missing args
+  if (!projectName || !template) {
+    const answers = await prompts([
+      ...(!projectName
+        ? [
+            {
+              type: 'text' as const,
+              name: 'projectName',
+              message: 'Project name:',
+              initial: 'my-ai-app',
+              validate: (v: string) => isValidProjectName(v) || 'Invalid name. Use lowercase letters, numbers, and hyphens.',
+            },
+          ]
+        : []),
+      ...(!template
+        ? [
+            {
+              type: 'select' as const,
+              name: 'template',
+              message: 'Choose a template:',
+              choices: Object.entries(TEMPLATES).map(([value, { name, description }]) => ({
+                title: `${name} - ${description}`,
+                value,
+              })),
+            },
+          ]
+        : []),
+    ]);
+
+    if (!projectName) projectName = answers.projectName;
+    if (!template) template = answers.template;
+  }
+
+  if (!projectName) {
+    console.error('Error: Project name is required.');
+    process.exit(1);
+  }
+
+  if (!template || !TEMPLATES[template]) {
+    console.error(`Error: Invalid template. Choose one of: ${Object.keys(TEMPLATES).join(', ')}`);
+    process.exit(1);
+  }
+
+  // Determine package manager
+  let packageManager: PackageManager = detectPackageManager();
+  if (opts.pnpm) packageManager = 'pnpm';
+  else if (opts.yarn) packageManager = 'yarn';
+  else if (opts.bun) packageManager = 'bun';
+  else if (opts.npm) packageManager = 'npm';
+
+  const projectPath = path.resolve(process.cwd(), projectName);
+
+  if (fs.existsSync(projectPath)) {
+    console.error(`Error: Directory "${projectName}" already exists.`);
+    process.exit(1);
+  }
+
+  const options: CreateOptions = {
+    projectName,
+    template,
+    packageManager,
+    skipInstall: !!opts.skipInstall,
+    skipGit: !!opts.skipGit,
+  };
+
+  console.log(`\nCreating ${projectName} with template "${template}"...\n`);
+
+  // Scaffold the project
+  scaffoldProject(projectPath, options);
+
+  // Initialize git
+  if (!options.skipGit) {
+    try {
+      execSync('git init', { cwd: projectPath, stdio: 'ignore' });
+      execSync('git add -A', { cwd: projectPath, stdio: 'ignore' });
+      execSync('git commit -m "Initial commit from create-aicofounder-app"', {
+        cwd: projectPath,
+        stdio: 'ignore',
+      });
+      console.log('Initialized git repository.');
+    } catch {
+      console.warn('Warning: Could not initialize git repository.');
+    }
+  }
+
+  // Install dependencies
+  if (!options.skipInstall) {
+    try {
+      const installCmd = packageManager === 'yarn' ? 'yarn' : `${packageManager} install`;
+      console.log(`Installing dependencies with ${packageManager}...`);
+      execSync(installCmd, { cwd: projectPath, stdio: 'inherit' });
+    } catch {
+      console.warn('Warning: Could not install dependencies. Run install manually.');
+    }
+  }
+
+  // Success output
+  const runCmd = packageManager === 'npm' ? 'npm run' : packageManager;
+  console.log(`\nDone! Created ${projectName} at ${projectPath}\n`);
+  console.log('Next steps:\n');
+  console.log(`  cd ${projectName}`);
+  console.log('  cp .env.example .env');
+  console.log('  # Add your API key to .env');
+  console.log(`  ${runCmd} dev\n`);
+}
+
+main().catch((err) => {
+  console.error('Fatal error:', err instanceof Error ? err.message : String(err));
+  process.exit(1);
+});

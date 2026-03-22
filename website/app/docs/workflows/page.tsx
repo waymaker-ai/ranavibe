@@ -9,7 +9,7 @@ const features = [
     icon: Workflow,
     title: 'Workflow Definition',
     description: 'Define multi-step AI workflows with dependencies',
-    code: `import { Workflow, Step } from '@aicofounder/core';
+    code: `import { Workflow, Step } from '@waymakerai/aicofounder-core';
 
 const contentWorkflow = new Workflow({
   name: 'content-pipeline',
@@ -50,7 +50,7 @@ console.log(result.outputs.review);  // Final reviewed content`,
     icon: GitBranch,
     title: 'Conditional Branching',
     description: 'Branch workflows based on conditions',
-    code: `import { Workflow, Step, Branch } from '@aicofounder/core';
+    code: `import { Workflow, Step, Branch } from '@waymakerai/aicofounder-core';
 
 const supportWorkflow = new Workflow({ name: 'support-ticket' });
 
@@ -99,7 +99,7 @@ supportWorkflow.addStep(new Step({
     icon: Repeat,
     title: 'Parallel Execution',
     description: 'Run steps in parallel for performance',
-    code: `import { Workflow, Step, Parallel } from '@aicofounder/core';
+    code: `import { Workflow, Step, Parallel } from '@waymakerai/aicofounder-core';
 
 const analysisWorkflow = new Workflow({ name: 'document-analysis' });
 
@@ -159,7 +159,7 @@ analysisWorkflow.addStep(new Step({
     icon: Timer,
     title: 'Retry & Timeout',
     description: 'Built-in retry logic and timeouts',
-    code: `import { Workflow, Step, RetryPolicy } from '@aicofounder/core';
+    code: `import { Workflow, Step, RetryPolicy } from '@waymakerai/aicofounder-core';
 
 const workflow = new Workflow({ name: 'reliable-workflow' });
 
@@ -204,7 +204,7 @@ workflow.onError(async (step, error, context) => {
     icon: CheckSquare,
     title: 'Human-in-the-Loop',
     description: 'Pause workflows for human review',
-    code: `import { Workflow, Step, HumanReview } from '@aicofounder/core';
+    code: `import { Workflow, Step, HumanReview } from '@waymakerai/aicofounder-core';
 
 const approvalWorkflow = new Workflow({ name: 'content-approval' });
 
@@ -254,7 +254,7 @@ approvalWorkflow.addStep(new Step({
     icon: Layers,
     title: 'Workflow Composition',
     description: 'Compose workflows from reusable sub-workflows',
-    code: `import { Workflow, SubWorkflow } from '@aicofounder/core';
+    code: `import { Workflow, SubWorkflow } from '@waymakerai/aicofounder-core';
 
 // Define reusable sub-workflows
 const validationWorkflow = new Workflow({ name: 'validation' });
@@ -326,7 +326,7 @@ export default function WorkflowsPage() {
             retry logic, and human-in-the-loop capabilities.
           </p>
           <div className="mt-4 code-block font-mono text-sm">
-            npm install @aicofounder/core
+            npm install @waymakerai/aicofounder-core
           </div>
         </motion.div>
 
@@ -368,7 +368,7 @@ export default function WorkflowsPage() {
             Built-in monitoring and visualization for your workflows:
           </p>
           <div className="code-block font-mono text-sm overflow-x-auto">
-            <pre>{`import { WorkflowMonitor } from '@aicofounder/core';
+            <pre>{`import { WorkflowMonitor } from '@waymakerai/aicofounder-core';
 
 const monitor = new WorkflowMonitor({
   storage: 'postgresql',
