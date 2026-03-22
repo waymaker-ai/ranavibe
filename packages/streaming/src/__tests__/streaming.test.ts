@@ -565,10 +565,8 @@ describe('extractAnthropicDeltas', () => {
 describe('extractAnthropicSSEDeltas', () => {
   it('should parse raw SSE lines for Anthropic format', async () => {
     const sseLines = [
-      'event: content_block_delta\n',
-      'data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":"Hi"}}\n\n',
-      'event: content_block_delta\n',
-      'data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":" there"}}\n\n',
+      'event: content_block_delta\ndata: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":"Hi"}}\n\n',
+      'event: content_block_delta\ndata: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":" there"}}\n\n',
     ];
 
     const deltas = await collect(extractAnthropicSSEDeltas(asyncIter(sseLines)));

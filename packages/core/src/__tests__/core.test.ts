@@ -8,67 +8,70 @@ import type { CoFounderConfig, RanaChatRequest, RanaChatResponse, RanaPlugin } f
 // ---------------------------------------------------------------------------
 
 vi.mock('../providers/manager', () => {
-  const ProviderManager = vi.fn().mockImplementation(() => ({
-    chat: vi.fn().mockResolvedValue({
+  class ProviderManager {
+    chat = vi.fn().mockResolvedValue({
       content: 'Mock response from provider',
       provider: 'anthropic',
       model: 'claude-3-5-haiku-20241022',
       cost: { total_cost: 0.001, input_cost: 0.0005, output_cost: 0.0005, input_tokens: 100, output_tokens: 50 },
       usage: { input_tokens: 100, output_tokens: 50 },
       latency_ms: 150,
-    }),
-    stream: vi.fn().mockImplementation(async function* () {
+    });
+    stream = vi.fn().mockImplementation(async function* () {
       yield { delta: 'Hello ', done: false };
       yield { delta: 'World', done: true };
-    }),
-    getQueueStats: vi.fn().mockReturnValue({ pending: 0, processing: 0, completed: 10 }),
-    isQueueEnabled: vi.fn().mockReturnValue(false),
-    getQueue: vi.fn().mockReturnValue(null),
-    getCircuitBreaker: vi.fn().mockReturnValue({
+    });
+    getQueueStats = vi.fn().mockReturnValue({ pending: 0, processing: 0, completed: 10 });
+    isQueueEnabled = vi.fn().mockReturnValue(false);
+    getQueue = vi.fn().mockReturnValue(null);
+    getCircuitBreaker = vi.fn().mockReturnValue({
       getState: vi.fn().mockReturnValue('closed'),
       getStats: vi.fn().mockReturnValue({ failureRate: 0, failures: 0, successes: 10 }),
       getAllStats: vi.fn().mockReturnValue({}),
       reset: vi.fn(),
       resetAll: vi.fn(),
       configure: vi.fn(),
-    }),
-  }));
+    });
+    constructor(_config?: any) {}
+  }
   return { ProviderManager };
 });
 
 vi.mock('../cost-tracker', () => {
-  const CostTracker = vi.fn().mockImplementation(() => ({
-    track: vi.fn().mockResolvedValue(undefined),
-    getStats: vi.fn().mockReturnValue({
+  class CostTracker {
+    track = vi.fn().mockResolvedValue(undefined);
+    getStats = vi.fn().mockReturnValue({
       total_spent: 0.05,
       total_saved: 0.02,
       total_requests: 10,
       savings_percentage: 28.5,
-    }),
-    getTotalCost: vi.fn().mockReturnValue(0.05),
-    getTotalSaved: vi.fn().mockReturnValue(0.02),
-    getBudgetStatus: vi.fn().mockReturnValue({ remaining: 9.95, limit: 10, used: 0.05, percentage: 0.5 }),
-    setBudget: vi.fn(),
-    clearBudget: vi.fn(),
-    willExceedBudget: vi.fn().mockReturnValue(false),
-    checkBudget: vi.fn(),
-    reset: vi.fn(),
-  }));
+    });
+    getTotalCost = vi.fn().mockReturnValue(0.05);
+    getTotalSaved = vi.fn().mockReturnValue(0.02);
+    getBudgetStatus = vi.fn().mockReturnValue({ remaining: 9.95, limit: 10, used: 0.05, percentage: 0.5 });
+    setBudget = vi.fn();
+    clearBudget = vi.fn();
+    willExceedBudget = vi.fn().mockReturnValue(false);
+    checkBudget = vi.fn();
+    reset = vi.fn();
+    constructor(_config?: any) {}
+  }
   return { CostTracker };
 });
 
 vi.mock('../cache-legacy', () => {
-  const CacheManager = vi.fn().mockImplementation(() => ({
-    get: vi.fn().mockResolvedValue(null),
-    set: vi.fn().mockResolvedValue(undefined),
-    clear: vi.fn().mockResolvedValue(undefined),
-  }));
+  class CacheManager {
+    get = vi.fn().mockResolvedValue(null);
+    set = vi.fn().mockResolvedValue(undefined);
+    clear = vi.fn().mockResolvedValue(undefined);
+    constructor(_config?: any) {}
+  }
   return { CacheManager };
 });
 
 vi.mock('../providers/fallback', () => {
-  const FallbackManager = vi.fn().mockImplementation(() => ({
-    chat: vi.fn().mockResolvedValue({
+  class FallbackManager {
+    chat = vi.fn().mockResolvedValue({
       content: 'Fallback response',
       provider: 'openai',
       model: 'gpt-4o',
@@ -80,8 +83,9 @@ vi.mock('../providers/fallback', () => {
         attemptedProviders: ['anthropic'],
         totalAttempts: 1,
       },
-    }),
-  }));
+    });
+    constructor(_providers?: any, _config?: any) {}
+  }
   return { FallbackManager };
 });
 

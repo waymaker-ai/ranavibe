@@ -505,7 +505,9 @@ describe('compose', () => {
   });
 
   it('should throw for unknown strategy', () => {
-    expect(() => compose([hipaaPolicy], 'unknown' as any)).toThrow('unknown strategy');
+    // compose() returns early with a deep copy when given a single policy,
+    // so we need at least two policies to reach the strategy switch.
+    expect(() => compose([hipaaPolicy, gdprPolicy], 'unknown' as any)).toThrow('unknown strategy');
   });
 
   it('should merge prohibited content lists', () => {
@@ -838,7 +840,8 @@ describe('Content Evaluation', () => {
         },
       },
     };
-    const result = evaluatePolicy(policy, { content: 'No disclaimer here' });
+    // Content that does NOT contain the word "disclaimer" should trigger a violation
+    const result = evaluatePolicy(policy, { content: 'No notice here at all' });
     expect(result.violations.some(v => v.rule === 'disclaimer')).toBe(true);
   });
 

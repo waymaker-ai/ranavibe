@@ -5,10 +5,26 @@
  * tsconfig generation, config files, and edge cases.
  */
 
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import * as os from 'node:os';
+
+vi.mock('commander', () => {
+  class Command {
+    name() { return this; }
+    version() { return this; }
+    description() { return this; }
+    argument() { return this; }
+    option() { return this; }
+    action() { return this; }
+    parse() { return this; }
+  }
+  return { Command };
+});
+
+vi.mock('prompts', () => ({ default: vi.fn() }));
+
 import {
   scaffoldProject,
   generatePackageJson,

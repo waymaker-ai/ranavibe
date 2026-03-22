@@ -115,7 +115,7 @@ export class ContextOptimizer {
     }
 
     // Add additional context if provided
-    if (additional Context) {
+    if (additionalContext) {
       const contextTokens = this.config.countTokens(additionalContext);
       if (result.tokensUsed + contextTokens <= budget) {
         result.messages.unshift({

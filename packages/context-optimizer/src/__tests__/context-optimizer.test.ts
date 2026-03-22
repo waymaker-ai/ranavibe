@@ -382,9 +382,10 @@ describe('Custom token counter and summarizer', () => {
     const optimizer = new ContextOptimizer({
       enableCache: false,
       maxTokens: 50,
+      strategy: 'summarize',
       countTokens: customCounter,
     });
-    const files = [makeFile('a.ts', 'a'.repeat(30), 'important')];
+    const files = [makeFile('a.ts', 'a'.repeat(400), 'important')];
     await optimizer.optimize({ codebase: files });
     expect(customCounter).toHaveBeenCalled();
   });

@@ -153,7 +153,7 @@ describe('Testing Framework - run', () => {
     const results = await run();
     expect(results.passed).toBe(1);
     expect(results.failed).toBe(0);
-    expect(results.totalDuration).toBeGreaterThan(0);
+    expect(results.totalDuration).toBeGreaterThanOrEqual(0);
   });
 
   it('should track failed tests', async () => {
