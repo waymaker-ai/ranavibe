@@ -9,7 +9,7 @@ import { deployCommand } from './commands/deploy.js';
 const program = new Command();
 
 program
-  .name('cofounder')
+  .name('aicofounder')
   .description('CoFounder - Rapid AI Native Architecture - Production-quality AI development framework')
   .version('2.0.0');
 

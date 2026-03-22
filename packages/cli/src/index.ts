@@ -24,7 +24,7 @@ import { registerPlaygroundCommands } from './commands/playground.js';
 const program = new Command();
 
 program
-  .name('cofounder')
+  .name('aicofounder')
   .description('CoFounder CLI - Guardrails, VibeSpecs, code generation, MCP servers, and feature workflows for AI-assisted development')
   .version('1.0.0');
 
