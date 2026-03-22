@@ -34,7 +34,7 @@
   "author": "Waymaker",
   "license": "MIT",
   "dependencies": {
-    "@aicofounder/core": "^2.0.0",
+    "@aicofounder/core": "workspace:*",
     "zod": "^3.22.4"
   },
   "devDependencies": {

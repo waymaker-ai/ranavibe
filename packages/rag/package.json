@@ -45,7 +45,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@aicofounder/core": "^2.0.0",
+    "@aicofounder/core": "workspace:*",
     "@supabase/supabase-js": "^2.39.0",
     "zod": "^3.22.4"
   },

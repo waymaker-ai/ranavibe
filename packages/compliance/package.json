@@ -41,7 +41,7 @@
     "vitest": "^1.6.0"
   },
   "peerDependencies": {
-    "@aicofounder/core": "^2.0.0",
-    "@aicofounder/agents": "^2.0.0"
+    "@aicofounder/core": "workspace:*",
+    "@aicofounder/agents": "workspace:*"
   }
 }
