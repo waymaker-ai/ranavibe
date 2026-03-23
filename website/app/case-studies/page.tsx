@@ -87,13 +87,13 @@ const caseStudies = [
 
 export default function CaseStudiesPage() {
   return (
-    <div className="min-h-screen bg-black text-white">
-      <div className="mx-auto max-w-6xl px-6 py-24">
+    <div className="py-16 md:py-24">
+      <div className="container-wide max-w-6xl">
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             Case Studies
           </h1>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          <p className="text-xl text-foreground-secondary max-w-2xl mx-auto">
             See how teams are using CoFounder to build production AI applications
             faster, cheaper, and more reliably.
           </p>
@@ -103,7 +103,7 @@ export default function CaseStudiesPage() {
           {caseStudies.map((study, index) => (
             <div
               key={index}
-              className="p-8 rounded-2xl border border-gray-800 bg-gray-900/50 hover:bg-gray-900 transition-colors"
+              className="card p-8 hover:border-foreground/10 transition-colors"
             >
               <div className="flex flex-col md:flex-row gap-8">
                 <div className="flex-1">
@@ -111,7 +111,7 @@ export default function CaseStudiesPage() {
                     <span className="text-4xl">{study.logo}</span>
                     <div>
                       <h2 className="text-xl font-semibold">{study.company}</h2>
-                      <p className="text-gray-500">{study.industry}</p>
+                      <p className="text-foreground-secondary">{study.industry}</p>
                     </div>
                   </div>
 
@@ -121,19 +121,19 @@ export default function CaseStudiesPage() {
                     {study.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-3 py-1 rounded-full bg-gray-800 text-gray-300 text-sm"
+                        className="px-3 py-1 rounded-full bg-background-secondary text-foreground-secondary text-sm"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  <blockquote className="border-l-2 border-blue-500 pl-4 italic text-gray-300 mb-4">
+                  <blockquote className="border-l-2 border-gradient-from pl-4 italic text-foreground-secondary mb-4">
                     &ldquo;{study.quote}&rdquo;
                   </blockquote>
 
-                  <div className="text-sm text-gray-500">
-                    <span className="text-white">{study.author}</span> · {study.role}
+                  <div className="text-sm text-foreground-secondary">
+                    <span className="text-foreground">{study.author}</span> · {study.role}
                   </div>
                 </div>
 
@@ -141,12 +141,12 @@ export default function CaseStudiesPage() {
                   {study.metrics.map((metric) => (
                     <div
                       key={metric.label}
-                      className="flex-1 p-4 rounded-xl bg-black/50 text-center"
+                      className="flex-1 p-4 rounded-xl bg-background-secondary text-center"
                     >
                       <div className="text-2xl font-bold text-green-400">
                         {metric.value}
                       </div>
-                      <div className="text-sm text-gray-500">{metric.label}</div>
+                      <div className="text-sm text-foreground-secondary">{metric.label}</div>
                     </div>
                   ))}
                 </div>
@@ -155,16 +155,16 @@ export default function CaseStudiesPage() {
           ))}
         </div>
 
-        <div className="mt-16 p-8 rounded-2xl border border-gray-800 bg-gradient-to-br from-blue-900/20 to-purple-900/20 text-center">
+        <div className="mt-16 card p-8 bg-gradient-subtle text-center">
           <h2 className="text-2xl font-semibold mb-4">
             Want to be featured?
           </h2>
-          <p className="text-gray-400 mb-6">
+          <p className="text-foreground-secondary mb-6">
             We&apos;d love to hear about your CoFounder success story.
           </p>
           <Link
-            href="mailto:casestudies@cofounder.dev"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black font-semibold hover:bg-gray-200 transition-colors"
+            href="mailto:casestudies@waymaker.cx"
+            className="btn-primary inline-flex items-center gap-2 px-6 py-3"
           >
             Share Your Story
           </Link>

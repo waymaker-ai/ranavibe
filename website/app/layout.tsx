@@ -43,8 +43,8 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-icon.png',
+    icon: '/favicon.svg',
+    apple: '/apple-icon.svg',
   },
   manifest: '/manifest.json',
 };

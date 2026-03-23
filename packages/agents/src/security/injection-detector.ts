@@ -63,7 +63,7 @@ const INJECTION_PATTERNS: PatternDef[] = [
     description: 'Direct instruction override attempt',
   },
   {
-    pattern: /disregard\s+(all\s+)?(previous|prior|above|earlier|your)\s+(instructions?|prompts?|rules?|programming)/gi,
+    pattern: /disregard\s+(all\s+)?(your\s+)?(previous|prior|above|earlier)\s+(instructions?|prompts?|rules?|programming|guidelines?)/gi,
     type: 'instruction_override',
     severity: 'critical',
     confidence: 0.95,
@@ -333,8 +333,11 @@ export class InjectionDetector {
   private patterns: PatternDef[];
 
   constructor(config: InjectionDetectorConfig = {}) {
+    const allTypes: InjectionType[] = [
+      ...new Set(INJECTION_PATTERNS.map((p) => p.type)),
+    ];
     this.config = {
-      types: config.types || (Object.keys(INJECTION_PATTERNS) as InjectionType[]),
+      types: config.types || allTypes,
       minConfidence: config.minConfidence ?? 0.7,
       minSeverity: config.minSeverity ?? 'low',
       customPatterns: config.customPatterns || [],
@@ -459,6 +462,7 @@ export class InjectionDetector {
 
     // Decode common HTML entities
     normalized = normalized
+      .replace(/&nbsp;/gi, ' ')
       .replace(/&lt;/gi, '<')
       .replace(/&gt;/gi, '>')
       .replace(/&amp;/gi, '&')

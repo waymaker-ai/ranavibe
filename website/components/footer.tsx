@@ -61,19 +61,24 @@ export function Footer() {
             <p className="text-foreground-secondary mb-4">
               Get the latest CoFounder updates, tutorials, and AI development tips.
             </p>
-            <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="you@example.com"
-                className="flex-grow px-4 py-2 rounded-lg border border-border bg-background-secondary focus:outline-none focus:ring-2 focus:ring-gradient-from"
-              />
-              <button
-                type="submit"
-                className="btn-primary px-6 py-2 whitespace-nowrap"
+            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto justify-center">
+              <a
+                href="https://discord.gg/cofounder"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary px-6 py-2 whitespace-nowrap text-center"
               >
-                Subscribe
-              </button>
-            </form>
+                Join our Discord
+              </a>
+              <a
+                href="https://twitter.com/waylokai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary px-6 py-2 whitespace-nowrap text-center"
+              >
+                Follow on X
+              </a>
+            </div>
           </div>
         </div>
 

@@ -17,24 +17,6 @@ const nextConfig = {
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
   },
 
-  // Redirects for Framer integration
-  async rewrites() {
-    return [
-      {
-        source: '/features',
-        destination: process.env.FRAMER_FEATURES_URL || '/features-fallback',
-      },
-      {
-        source: '/pricing',
-        destination: process.env.FRAMER_PRICING_URL || '/pricing-fallback',
-      },
-      {
-        source: '/about',
-        destination: process.env.FRAMER_ABOUT_URL || '/about-fallback',
-      },
-    ];
-  },
-
   // Headers for PWA and security
   async headers() {
     return [
