@@ -6,7 +6,7 @@ import {
   ArrowLeft, ArrowRight, Shield, Scale, Bot, Database, Terminal,
   Building2, Layers, Sparkles, Brain, Search, Zap, Activity,
   FlaskConical, Puzzle, Code2, GitBranch, RefreshCw, Radio,
-  Package, FileCode, Eye, DollarSign, Lock, Cpu,
+  Package, FileCode, Eye, DollarSign, Lock, Cpu, Gauge,
 } from 'lucide-react';
 
 interface PackageInfo {
