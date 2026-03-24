@@ -449,7 +449,7 @@ console.log(pipeline.getInterceptorNames());`}</pre>
               <h2 className="text-2xl font-bold mb-2">Tool Authorization</h2>
               <p className="text-foreground-secondary">
                 Wrap individual tool definitions with guards using <code className="font-mono text-sm">guardTool()</code>.
-                The tool's handler is intercepted so that tool inputs are checked before execution
+                The tool&apos;s handler is intercepted so that tool inputs are checked before execution
                 and tool outputs are checked after execution.
               </p>
             </div>
