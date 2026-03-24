@@ -40,7 +40,7 @@ CoFounder has basic RAG support:
 ### Target State
 
 ```typescript
-import { createRAGPipeline, chunkers, retrievers, rerankers } from '@cofounder/rag-advanced';
+import { createRAGPipeline, chunkers, retrievers, rerankers } from '@waymakerai/aicofounder-rag-advanced';
 
 // Create production RAG pipeline
 const pipeline = createRAGPipeline({
@@ -120,7 +120,7 @@ console.log(result.metrics);      // { latency, cost, chunks, sources }
 ### 1. Package Structure
 
 ```
-@cofounder/rag-advanced
+@waymakerai/aicofounder-rag-advanced
 ├── chunking/
 │   ├── semantic.ts           # Semantic chunking
 │   ├── recursive.ts          # Recursive character splitting

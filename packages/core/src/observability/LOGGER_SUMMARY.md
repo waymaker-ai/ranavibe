@@ -61,7 +61,7 @@ logger.info('Config', { api_key: 'sk-123' }); // Logs as '[REDACTED]'
 
 #### Global Logger
 ```typescript
-import { logger, getGlobalLogger, setGlobalLogger } from '@cofounder/core';
+import { logger, getGlobalLogger, setGlobalLogger } from '@waymakerai/aicofounder-core';
 
 logger.info('Using global logger instance');
 ```
@@ -261,7 +261,7 @@ interface RequestResponseLog {
 
 ## Public API
 
-### Exports from `@cofounder/core`
+### Exports from `@waymakerai/aicofounder-core`
 
 ```typescript
 // Logger
@@ -272,7 +272,7 @@ import {
   setGlobalLogger,
   logger,
   LOG_LEVELS 
-} from '@cofounder/core';
+} from '@waymakerai/aicofounder-core';
 
 // Transports
 import {
@@ -282,13 +282,13 @@ import {
   createConsoleTransport,
   createFileTransport,
   createCustomTransport
-} from '@cofounder/core';
+} from '@waymakerai/aicofounder-core';
 
 // Middleware
 import {
   RequestResponseLogger,
   createLoggingMiddleware
-} from '@cofounder/core';
+} from '@waymakerai/aicofounder-core';
 
 // Types
 import type {
@@ -307,7 +307,7 @@ import type {
   LoggingMiddlewareConfig,
   LoggingMiddleware,
   LogContext
-} from '@cofounder/core';
+} from '@waymakerai/aicofounder-core';
 ```
 
 ## Usage Examples
@@ -315,7 +315,7 @@ import type {
 ### Basic Logging
 
 ```typescript
-import { createLogger } from '@cofounder/core';
+import { createLogger } from '@waymakerai/aicofounder-core';
 
 const logger = createLogger({ level: 'info' });
 
@@ -350,7 +350,7 @@ const logger = createLogger({
 ### Request/Response Logging
 
 ```typescript
-import { createLoggingMiddleware } from '@cofounder/core';
+import { createLoggingMiddleware } from '@waymakerai/aicofounder-core';
 
 const middleware = createLoggingMiddleware(logger, {
   includeMessages: true,
@@ -374,7 +374,7 @@ try {
 
 The logging system is fully integrated with CoFounder's existing infrastructure:
 
-1. **Exported from main package** - All logging APIs available via `@cofounder/core`
+1. **Exported from main package** - All logging APIs available via `@waymakerai/aicofounder-core`
 2. **Works with existing types** - Uses `RanaChatRequest`, `RanaChatResponse`, `LLMProvider` types
 3. **Part of observability module** - Alongside tracer, performance monitor, error tracker
 4. **Consistent patterns** - Follows same patterns as cache, persistence, and other modules
@@ -421,7 +421,7 @@ Example file provided at `logger.example.ts` with comprehensive examples:
 ✅ All files compile successfully
 ✅ TypeScript types are correct
 ✅ No build errors
-✅ Exports properly available from `@cofounder/core`
+✅ Exports properly available from `@waymakerai/aicofounder-core`
 
 ## Next Steps
 

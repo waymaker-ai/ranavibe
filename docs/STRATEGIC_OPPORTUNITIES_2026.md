@@ -35,12 +35,12 @@ CoFounder is uniquely positioned to capitalize on ALL of these trends.
 - Cost explosion with large contexts ($$$)
 - Performance degradation with naive approaches
 
-### CoFounder's Solution: `@cofounder/context-optimizer`
+### CoFounder's Solution: `@waymakerai/aicofounder-context-optimizer`
 
 **Intelligent context management for extended windows**
 
 ```typescript
-import { createContextOptimizer } from '@cofounder/context-optimizer';
+import { createContextOptimizer } from '@waymakerai/aicofounder-context-optimizer';
 
 const optimizer = createContextOptimizer({
   strategy: 'hybrid', // smart mix of full context + RAG
@@ -100,12 +100,12 @@ console.log(`Quality score: ${optimized.qualityScore}`);
 - No built-in cost optimization
 - Weak compliance/security features
 
-### CoFounder's Solution: `@cofounder/graph` - Stateful Agent Orchestration
+### CoFounder's Solution: `@waymakerai/aicofounder-graph` - Stateful Agent Orchestration
 
 **TypeScript-first, production-ready agent graphs**
 
 ```typescript
-import { createAgentGraph } from '@cofounder/graph';
+import { createAgentGraph } from '@waymakerai/aicofounder-graph';
 
 const workflow = createAgentGraph({
   name: 'customer-support',
@@ -192,7 +192,7 @@ console.log(result.metrics); // Performance metrics
 - **Persistent state** - Memory across all nodes
 - **TypeScript-native** - Full type safety
 - **Multi-LLM** - Use different models per node
-- **Built-in compliance** - Integrate @cofounder/compliance
+- **Built-in compliance** - Integrate @waymakerai/aicofounder-compliance
 - **Cost tracking** - Per-node cost monitoring
 - **Human-in-loop** - Easy escalation patterns
 - **Monitoring** - Full observability
@@ -231,10 +231,10 @@ console.log(result.metrics); // Performance metrics
 
 ### CoFounder's Solution: MCP Marketplace + Testing Framework
 
-#### Part 1: `@cofounder/mcp-marketplace` - Verified MCP Server Registry
+#### Part 1: `@waymakerai/aicofounder-mcp-marketplace` - Verified MCP Server Registry
 
 ```typescript
-import { MCPMarketplace } from '@cofounder/mcp-marketplace';
+import { MCPMarketplace } from '@waymakerai/aicofounder-mcp-marketplace';
 
 const marketplace = new MCPMarketplace();
 
@@ -273,7 +273,7 @@ await marketplace.review('postgres-pro', {
 We already have this in `packages/mcp` - just expand it:
 
 ```typescript
-import { createMockServer, runToolTests, testResourceAccess } from '@cofounder/mcp';
+import { createMockServer, runToolTests, testResourceAccess } from '@waymakerai/aicofounder-mcp';
 
 // Comprehensive test suite for any MCP server
 const results = await runToolTests(myServer, {
@@ -320,7 +320,7 @@ const results = await runToolTests(myServer, {
 **CoFounder already has multi-LLM support - enhance it with smart routing**
 
 ```typescript
-import { createSmartRouter } from '@cofounder/core';
+import { createSmartRouter } from '@waymakerai/aicofounder-core';
 
 const router = createSmartRouter({
   rules: [
@@ -404,10 +404,10 @@ console.log(`Cost: $${response.cost}`);
 - Compliance violations hidden
 - Cost overruns surprise billing
 
-### CoFounder's Solution: `@cofounder/observability` - Complete Agent Monitoring
+### CoFounder's Solution: `@waymakerai/aicofounder-observability` - Complete Agent Monitoring
 
 ```typescript
-import { createAgentMonitor } from '@cofounder/observability';
+import { createAgentMonitor } from '@waymakerai/aicofounder-observability';
 
 const monitor = createAgentMonitor({
   exporters: ['datadog', 'prometheus', 'cloudwatch'],
@@ -498,10 +498,10 @@ console.log(trace.cost);      // Detailed cost breakdown
 - Hard to build voice agents
 - No compliance for voice
 
-### CoFounder's Solution: `@cofounder/multimodal` - Unified Voice & Vision
+### CoFounder's Solution: `@waymakerai/aicofounder-multimodal` - Unified Voice & Vision
 
 ```typescript
-import { createMultimodalAgent } from '@cofounder/multimodal';
+import { createMultimodalAgent } from '@waymakerai/aicofounder-multimodal';
 
 const agent = createMultimodalAgent({
   capabilities: ['voice', 'vision', 'text'],
@@ -577,7 +577,7 @@ const multiResponse = await agent.multimodal({
 **Industry-standard agent communication**
 
 ```typescript
-import { createUAPBridge } from '@cofounder/uap';
+import { createUAPBridge } from '@waymakerai/aicofounder-uap';
 
 // CoFounder agent
 const cofounderAgent = createAgent({ /* ... */ });
@@ -628,7 +628,7 @@ const response = await client.send({
 ### Q1 2026 (Now - March)
 **Focus: Quick Wins with High Impact**
 
-1. **@cofounder/context-optimizer** (3 weeks)
+1. **@waymakerai/aicofounder-context-optimizer** (3 weeks)
    - Priority: P0 - capitalize on 400K contexts NOW
    - Impact: Immediate competitive advantage
    - Revenue: Premium tier feature
@@ -636,7 +636,7 @@ const response = await client.send({
 2. **Smart Model Router Enhancement** (2 weeks)
    - Priority: P0 - leverage new models
    - Impact: Better cost optimization
-   - Build on existing @cofounder/core
+   - Build on existing @waymakerai/aicofounder-core
 
 3. **MCP Marketplace MVP** (4 weeks)
    - Priority: P1 - ride MCP momentum
@@ -648,12 +648,12 @@ const response = await client.send({
 ### Q2 2026 (April - June)
 **Focus: Enterprise Features**
 
-4. **@cofounder/graph - Stateful Agents** (6 weeks)
+4. **@waymakerai/aicofounder-graph - Stateful Agents** (6 weeks)
    - Priority: P0 - LangGraph alternative
    - Impact: Massive market opportunity
    - Target: TypeScript developers
 
-5. **@cofounder/observability** (5 weeks)
+5. **@waymakerai/aicofounder-observability** (5 weeks)
    - Priority: P0 - production requirement
    - Impact: Enterprise sales enabler
    - Potential SaaS revenue
@@ -663,7 +663,7 @@ const response = await client.send({
 ### Q3 2026 (July - September)
 **Focus: Differentiation**
 
-6. **@cofounder/multimodal** (6 weeks)
+6. **@waymakerai/aicofounder-multimodal** (6 weeks)
    - Priority: P1 - emerging market
    - Impact: Voice agent enablement
    - Unique compliance for voice

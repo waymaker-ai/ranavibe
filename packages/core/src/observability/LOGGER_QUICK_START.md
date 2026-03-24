@@ -2,10 +2,10 @@
 
 ## Installation
 
-The logger is already included in `@cofounder/core`:
+The logger is already included in `@waymakerai/aicofounder-core`:
 
 ```bash
-npm install @cofounder/core
+npm install @waymakerai/aicofounder-core
 ```
 
 ## Quick Examples
@@ -13,7 +13,7 @@ npm install @cofounder/core
 ### 1. Basic Usage
 
 ```typescript
-import { createLogger } from '@cofounder/core';
+import { createLogger } from '@waymakerai/aicofounder-core';
 
 const logger = createLogger({ level: 'info' });
 
@@ -25,7 +25,7 @@ logger.error('Error occurred', new Error('Details'));
 ### 2. With Request Context
 
 ```typescript
-import { createLogger } from '@cofounder/core';
+import { createLogger } from '@waymakerai/aicofounder-core';
 
 const logger = createLogger();
 
@@ -43,7 +43,7 @@ logger.info('Another action');
 ### 3. Request/Response Logging
 
 ```typescript
-import { createLoggingMiddleware } from '@cofounder/core';
+import { createLoggingMiddleware } from '@waymakerai/aicofounder-core';
 
 const middleware = createLoggingMiddleware(logger, {
   includeMessages: true,
@@ -69,7 +69,7 @@ import {
   createLogger,
   createConsoleTransport,
   createFileTransport 
-} from '@cofounder/core';
+} from '@waymakerai/aicofounder-core';
 
 const logger = createLogger({
   transports: [
@@ -82,7 +82,7 @@ const logger = createLogger({
 ### 5. Custom Handler
 
 ```typescript
-import { createLogger, createCustomTransport } from '@cofounder/core';
+import { createLogger, createCustomTransport } from '@waymakerai/aicofounder-core';
 
 const logger = createLogger({
   transports: [
@@ -99,7 +99,7 @@ const logger = createLogger({
 ### 6. Privacy-Aware Logging
 
 ```typescript
-import { createLoggingMiddleware } from '@cofounder/core';
+import { createLoggingMiddleware } from '@waymakerai/aicofounder-core';
 
 const middleware = createLoggingMiddleware(logger, {
   redactMessages: true,  // Hide message content
@@ -197,7 +197,7 @@ import type {
   LoggerConfig,
   LogTransport,
   LoggingMiddleware
-} from '@cofounder/core';
+} from '@waymakerai/aicofounder-core';
 ```
 
 ## Examples

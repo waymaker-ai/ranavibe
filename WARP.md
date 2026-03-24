@@ -11,7 +11,7 @@ This file provides guidance to WARP (warp.dev) when working with code in this re
 ```
 cofounder/
 ├── tools/
-│   ├── cli/                      # Core CoFounder CLI tool (@cofounder/cli)
+│   ├── cli/                      # Core CoFounder CLI tool (@waymakerai/aicofounder-cli)
 │   └── waymaker-cofounder-pro/        # Enhanced version with team features
 ├── examples/
 │   └── react-typescript/         # Example React+TS project using CoFounder
@@ -192,7 +192,7 @@ When adding a new CLI command:
 
 ## Package Publishing
 
-**@cofounder/cli** package:
+**@waymakerai/aicofounder-cli** package:
 - Scoped package under `@cofounder` organization
 - Binary name: `cofounder`
 - Entry point: `dist/cli.js` (must be executable)

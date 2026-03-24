@@ -107,7 +107,7 @@ Build cost tracking, budgets, and alerts into the core framework rather than as 
 Developers already know Jest. AI testing has unique needs (semantic matching, statistical assertions).
 
 ### Decision
-Create `@cofounder/testing` that extends Jest with AI-specific matchers while maintaining full compatibility.
+Create `@waymakerai/aicofounder-testing` that extends Jest with AI-specific matchers while maintaining full compatibility.
 
 ### Consequences
 - ✅ Familiar API for developers

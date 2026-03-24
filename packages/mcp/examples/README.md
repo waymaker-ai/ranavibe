@@ -90,7 +90,7 @@ cofounder mcp create my-server
 Or use the scaffolding API:
 
 ```typescript
-import { scaffoldMCPServer, TEMPLATES } from '@cofounder/mcp';
+import { scaffoldMCPServer, TEMPLATES } from '@waymakerai/aicofounder-mcp';
 
 const result = scaffoldMCPServer({
   name: 'my-server',

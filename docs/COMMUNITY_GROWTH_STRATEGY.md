@@ -337,7 +337,7 @@ Perfect for:
 #### Product Hunt
 **Launches:**
 - Major version releases
-- New packages (@cofounder/graph, @cofounder/observability)
+- New packages (@waymakerai/aicofounder-graph, @waymakerai/aicofounder-observability)
 - Community milestones (10K stars, etc.)
 
 #### Hacker News
@@ -382,7 +382,7 @@ Perfect for:
 - Svelte + CoFounder kit
 
 #### 2. **UI Components**
-- `@cofounder/ui` - Pre-built chat interfaces
+- `@waymakerai/aicofounder-ui` - Pre-built chat interfaces
 - Voice UI components
 - Multi-agent visualizations
 - Cost dashboards

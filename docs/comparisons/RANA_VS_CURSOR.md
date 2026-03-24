@@ -27,7 +27,7 @@
 **A TypeScript framework for AI-assisted development**
 
 ```typescript
-import { APIGenerator, createComplianceEnforcer } from '@cofounder/generate';
+import { APIGenerator, createComplianceEnforcer } from '@waymakerai/aicofounder-generate';
 
 // Programmatic code generation
 const api = APIGenerator.generateCRUD({
@@ -75,7 +75,7 @@ const safe = await enforcer.enforce(input, output, context);
 #### CoFounder
 ```typescript
 // Library you import
-import { generate } from '@cofounder/generate';
+import { generate } from '@waymakerai/aicofounder-generate';
 
 // Use programmatically
 const files = await generate('user auth system');
@@ -167,7 +167,7 @@ Cursor: [Generates code based on conversation]
 #### CoFounder
 
 ```typescript
-import { createComplianceEnforcer, PresetRules } from '@cofounder/compliance';
+import { createComplianceEnforcer, PresetRules } from '@waymakerai/aicofounder-compliance';
 
 const enforcer = createComplianceEnforcer({
   enableAllPresets: true,
@@ -210,7 +210,7 @@ const result = await enforcer.enforce(
 #### CoFounder
 
 ```typescript
-import { createContextOptimizer } from '@cofounder/context-optimizer';
+import { createContextOptimizer } from '@waymakerai/aicofounder-context-optimizer';
 
 const optimizer = createContextOptimizer({
   strategy: 'hybrid',
@@ -254,7 +254,7 @@ console.log(`Cost saved: ${result.costSaved}%`);      // 84%
 ```typescript
 // Deploy as a microservice
 import express from 'express';
-import { generate, createComplianceEnforcer } from '@cofounder/generate';
+import { generate, createComplianceEnforcer } from '@waymakerai/aicofounder-generate';
 
 const app = express();
 const enforcer = createComplianceEnforcer({ enableAllPresets: true });
@@ -312,7 +312,7 @@ app.listen(3000);
    ```typescript
    // CLI tool for your team
    #!/usr/bin/env node
-   import { generate } from '@cofounder/generate';
+   import { generate } from '@waymakerai/aicofounder-generate';
 
    const description = process.argv[2];
    const files = await generate(description, { autoFix: true });

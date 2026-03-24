@@ -31,7 +31,7 @@ cofounder generate --template api-route --method POST "create user"
 ### Using SDK
 
 ```typescript
-import { generate, listTemplates, getTemplate } from '@cofounder/generate';
+import { generate, listTemplates, getTemplate } from '@waymakerai/aicofounder-generate';
 
 // Generate from natural language
 const code = await generate('create a login form with email and password');
@@ -409,7 +409,7 @@ Common variables:
 CoFounder analyzes your codebase for consistent output:
 
 ```typescript
-import { generate, analyzeContext } from '@cofounder/generate';
+import { generate, analyzeContext } from '@waymakerai/aicofounder-generate';
 
 // Analyze codebase patterns
 const context = await analyzeContext('./src');
@@ -433,7 +433,7 @@ const code = await generate('user profile component', { context });
 ### Template Structure
 
 ```typescript
-import { Template } from '@cofounder/generate';
+import { Template } from '@waymakerai/aicofounder-generate';
 
 export const myTemplate: Template = {
   id: 'my-custom-template',
@@ -477,7 +477,7 @@ export function {{pascalCase name}}() {
 ### Register Custom Template
 
 ```typescript
-import { registerTemplate } from '@cofounder/generate';
+import { registerTemplate } from '@waymakerai/aicofounder-generate';
 import { myTemplate } from './my-template';
 
 registerTemplate(myTemplate);
@@ -585,7 +585,7 @@ const code = await generate('form with validation');
 
 ```typescript
 // VS Code extension support
-import { generateAtCursor } from '@cofounder/generate/vscode';
+import { generateAtCursor } from '@waymakerai/aicofounder-generate/vscode';
 
 // Generates code at cursor position with context
 await generateAtCursor(editor, 'add error handling');

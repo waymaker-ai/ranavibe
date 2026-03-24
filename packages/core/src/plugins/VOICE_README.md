@@ -14,16 +14,16 @@ The Voice Plugin adds comprehensive voice capabilities to CoFounder, including S
 
 ## Installation
 
-The Voice Plugin is included in `@cofounder/core`:
+The Voice Plugin is included in `@waymakerai/aicofounder-core`:
 
 ```bash
-npm install @cofounder/core
+npm install @waymakerai/aicofounder-core
 ```
 
 ## Quick Start
 
 ```typescript
-import { createCoFounder, createVoicePlugin } from '@cofounder/core';
+import { createCoFounder, createVoicePlugin } from '@waymakerai/aicofounder-core';
 
 // Create CoFounder client
 const cofounder = createCoFounder({
@@ -82,7 +82,7 @@ interface VoiceConfig {
 ### Basic Transcription
 
 ```typescript
-import { VoicePlugin, createAudioBuffer } from '@cofounder/core';
+import { VoicePlugin, createAudioBuffer } from '@waymakerai/aicofounder-core';
 
 const voicePlugin = new VoicePlugin({
   sttProvider: 'openai-whisper',
@@ -347,7 +347,7 @@ const voicePlugin = new VoicePlugin({
 ## Complete Voice Assistant Example
 
 ```typescript
-import { createCoFounder, VoicePlugin } from '@cofounder/core';
+import { createCoFounder, VoicePlugin } from '@waymakerai/aicofounder-core';
 
 // Initialize CoFounder
 const cofounder = createCoFounder({
@@ -418,7 +418,7 @@ console.log('Voice assistant ready!');
 ### Create Audio Buffer
 
 ```typescript
-import { createAudioBuffer } from '@cofounder/core';
+import { createAudioBuffer } from '@waymakerai/aicofounder-core';
 
 const buffer = createAudioBuffer(audioData, {
   format: 'wav',
@@ -431,7 +431,7 @@ const buffer = createAudioBuffer(audioData, {
 ### Validate Provider
 
 ```typescript
-import { validateVoiceProvider } from '@cofounder/core';
+import { validateVoiceProvider } from '@waymakerai/aicofounder-core';
 
 const isValid = validateVoiceProvider('openai-whisper', {
   openai: process.env.OPENAI_API_KEY,
@@ -441,7 +441,7 @@ const isValid = validateVoiceProvider('openai-whisper', {
 ### Get Recommended Sample Rate
 
 ```typescript
-import { getRecommendedSampleRate } from '@cofounder/core';
+import { getRecommendedSampleRate } from '@waymakerai/aicofounder-core';
 
 const sampleRate = getRecommendedSampleRate('openai-whisper');
 // Returns: 16000
@@ -450,7 +450,7 @@ const sampleRate = getRecommendedSampleRate('openai-whisper');
 ### Estimate Audio Duration
 
 ```typescript
-import { estimateAudioDuration } from '@cofounder/core';
+import { estimateAudioDuration } from '@waymakerai/aicofounder-core';
 
 const duration = estimateAudioDuration(audioBuffer, 16); // 16 bits per sample
 console.log('Duration:', duration, 'seconds');
@@ -506,7 +506,7 @@ import type {
   VoiceSessionStats,
   CustomVoiceProvider,
   VADResult,
-} from '@cofounder/core';
+} from '@waymakerai/aicofounder-core';
 ```
 
 ## Troubleshooting

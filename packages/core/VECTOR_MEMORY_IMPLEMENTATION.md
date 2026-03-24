@@ -82,7 +82,7 @@ Updated files:
 - `/packages/core/src/memory/index.ts` - Module exports
 - `/packages/core/src/index.ts` - Main package exports
 
-All classes, types, and utilities are exported from `@cofounder/core`:
+All classes, types, and utilities are exported from `@waymakerai/aicofounder-core`:
 
 ```typescript
 import {
@@ -92,7 +92,7 @@ import {
   VectorMemoryBackend,
   EmbeddingProvider,
   cosineSimilarity,
-} from '@cofounder/core';
+} from '@waymakerai/aicofounder-core';
 ```
 
 ### Compatibility
@@ -286,7 +286,7 @@ const context = await getContextWithMemories(query);
 
 ```bash
 # Build successful
-npm run build --workspace=@cofounder/core
+npm run build --workspace=@waymakerai/aicofounder-core
 # ✅ CJS, ESM, and DTS builds passed
 
 # Exports verified

@@ -2,7 +2,7 @@
 
 ## Overview
 
-I've successfully implemented an automatic fallback system for the @cofounder/core package that allows seamless switching between LLM providers when one fails. The system includes retry logic, detailed tracking, and full integration with existing CoFounder features like cost tracking, caching, and budget enforcement.
+I've successfully implemented an automatic fallback system for the @waymakerai/aicofounder-core package that allows seamless switching between LLM providers when one fails. The system includes retry logic, detailed tracking, and full integration with existing CoFounder features like cost tracking, caching, and budget enforcement.
 
 ## Files Created
 
@@ -83,7 +83,7 @@ Exported new fallback functionality:
 ## Usage Example
 
 ```typescript
-import { createCoFounder } from '@cofounder/core';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
 
 const cofounder = createCoFounder({
   providers: {

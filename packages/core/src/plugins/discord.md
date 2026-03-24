@@ -17,7 +17,7 @@ A comprehensive Discord integration plugin that enables CoFounder-powered AI bot
 ## Installation
 
 ```bash
-npm install @cofounder/core
+npm install @waymakerai/aicofounder-core
 ```
 
 For production use with real Discord bots, also install:
@@ -29,8 +29,8 @@ npm install discord.js
 ## Quick Start
 
 ```typescript
-import { createCoFounder } from '@cofounder/core';
-import { DiscordPlugin } from '@cofounder/core/plugins/discord';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
+import { DiscordPlugin } from '@waymakerai/aicofounder-core/plugins/discord';
 
 // Initialize CoFounder
 const cofounder = createCoFounder({

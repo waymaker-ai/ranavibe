@@ -19,7 +19,7 @@ This directory contains comprehensive examples for all Phase 3.1 advanced featur
 
 1. Install dependencies:
 ```bash
-npm install @cofounder/core
+npm install @waymakerai/aicofounder-core
 ```
 
 2. Set up environment variables:

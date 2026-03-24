@@ -15,13 +15,13 @@ AI-powered documentation Q&A with semantic search and source citations.
 ## Installation
 
 ```bash
-npm install @cofounder/core
+npm install @waymakerai/aicofounder-core
 ```
 
 ## Quick Start
 
 ```typescript
-import { createCoFounder, DocsPlugin } from '@cofounder/core';
+import { createCoFounder, DocsPlugin } from '@waymakerai/aicofounder-core';
 
 // Create CoFounder client
 const cofounder = createCoFounder({

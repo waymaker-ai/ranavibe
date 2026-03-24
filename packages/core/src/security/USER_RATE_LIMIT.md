@@ -15,16 +15,16 @@ Per-user rate limiting for CoFounder security with sliding window algorithm.
 
 ## Installation
 
-The user rate limiter is part of the `@cofounder/core` security module:
+The user rate limiter is part of the `@waymakerai/aicofounder-core` security module:
 
 ```typescript
-import { UserRateLimiter, createUserRateLimiter } from '@cofounder/core/security';
+import { UserRateLimiter, createUserRateLimiter } from '@waymakerai/aicofounder-core/security';
 ```
 
 ## Quick Start
 
 ```typescript
-import { createUserRateLimiter } from '@cofounder/core/security';
+import { createUserRateLimiter } from '@waymakerai/aicofounder-core/security';
 
 // Create a rate limiter
 const limiter = createUserRateLimiter({
@@ -331,8 +331,8 @@ CoFounder has two rate limiting systems:
 **Use both together:**
 
 ```typescript
-import { createUserRateLimiter } from '@cofounder/core/security';
-import { createRateLimiter } from '@cofounder/core/providers';
+import { createUserRateLimiter } from '@waymakerai/aicofounder-core/security';
+import { createRateLimiter } from '@waymakerai/aicofounder-core/providers';
 
 // User-level rate limiting
 const userLimiter = createUserRateLimiter({

@@ -1,4 +1,4 @@
-# @cofounder/prompts
+# @waymakerai/aicofounder-prompts
 
 Enterprise-grade prompt management with versioning, A/B testing, and analytics.
 
@@ -13,13 +13,13 @@ Enterprise-grade prompt management with versioning, A/B testing, and analytics.
 ## Installation
 
 ```bash
-npm install @cofounder/prompts
+npm install @waymakerai/aicofounder-prompts
 ```
 
 ## Quick Start
 
 ```typescript
-import { PromptManager } from '@cofounder/prompts';
+import { PromptManager } from '@waymakerai/aicofounder-prompts';
 
 // Initialize
 const pm = new PromptManager({
@@ -198,7 +198,7 @@ console.log(report);
 Get suggestions to improve your prompts:
 
 ```typescript
-import { PromptOptimizer } from '@cofounder/prompts';
+import { PromptOptimizer } from '@waymakerai/aicofounder-prompts';
 
 const optimizer = new PromptOptimizer({
   costThreshold: 0.01,
@@ -232,7 +232,7 @@ const suggestions = await optimizer.analyze(prompt, analytics);
 ### Setup Provider
 
 ```tsx
-import { PromptProvider } from '@cofounder/prompts';
+import { PromptProvider } from '@waymakerai/aicofounder-prompts';
 
 function App() {
   return (
@@ -252,7 +252,7 @@ function App() {
 ### usePrompt Hook
 
 ```tsx
-import { usePrompt } from '@cofounder/prompts';
+import { usePrompt } from '@waymakerai/aicofounder-prompts';
 
 function ChatInput() {
   const { execute, loading, error, response } = usePrompt('chat');
@@ -275,7 +275,7 @@ function ChatInput() {
 ### usePromptStream Hook
 
 ```tsx
-import { usePromptStream } from '@cofounder/prompts';
+import { usePromptStream } from '@waymakerai/aicofounder-prompts';
 
 function StreamingChat() {
   const { execute, content, isStreaming, stop } = usePromptStream('chat');
@@ -295,7 +295,7 @@ function StreamingChat() {
 ### usePromptABTest Hook
 
 ```tsx
-import { usePromptABTest } from '@cofounder/prompts';
+import { usePromptABTest } from '@waymakerai/aicofounder-prompts';
 
 function ABTestChat() {
   const { execute, recordConversion, results, currentVariant } = usePromptABTest('test-123');

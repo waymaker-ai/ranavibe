@@ -1,4 +1,4 @@
-# @cofounder/context-optimizer
+# @waymakerai/aicofounder-context-optimizer
 
 > Extended context optimization for CoFounder - Efficiently handle 400K+ token contexts
 
@@ -29,13 +29,13 @@ New LLMs support massive context windows (400K+ tokens):
 ## Installation
 
 ```bash
-npm install @cofounder/context-optimizer
+npm install @waymakerai/aicofounder-context-optimizer
 ```
 
 ## Quick Start
 
 ```typescript
-import { createContextOptimizer } from '@cofounder/context-optimizer';
+import { createContextOptimizer } from '@waymakerai/aicofounder-context-optimizer';
 
 const optimizer = createContextOptimizer({
   strategy: 'hybrid',      // Smart mix of strategies
@@ -186,8 +186,8 @@ const optimizer = createContextOptimizer({
 ### With CoFounder Core
 
 ```typescript
-import { createCoFounder } from '@cofounder/core';
-import { createContextOptimizer } from '@cofounder/context-optimizer';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
+import { createContextOptimizer } from '@waymakerai/aicofounder-context-optimizer';
 
 const cofounder = createCoFounder({
   providers: { anthropic: process.env.ANTHROPIC_API_KEY },
@@ -216,7 +216,7 @@ console.log(response.content);
 ### Custom Summarization
 
 ```typescript
-import { createCoFounder } from '@cofounder/core';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
 
 const cofounder = createCoFounder({ /* ... */ });
 
@@ -260,7 +260,7 @@ optimizer.clearCache();
 
 ```typescript
 import fs from 'fs/promises';
-import { createContextOptimizer } from '@cofounder/context-optimizer';
+import { createContextOptimizer } from '@waymakerai/aicofounder-context-optimizer';
 
 // Load entire codebase
 const files = await loadCodebase('./src');

@@ -12,7 +12,7 @@ Hugging Face is the GitHub of ML. Integrating deeply gives CoFounder access to:
 ### Implementation
 
 ```typescript
-import { HuggingFace } from '@cofounder/huggingface';
+import { HuggingFace } from '@waymakerai/aicofounder-huggingface';
 
 // Use any HF model
 const hf = new HuggingFace({ token: process.env.HF_TOKEN });
@@ -66,7 +66,7 @@ MCP is the future of AI tool integration. Be an early adopter.
 ### Create MCP Server
 
 ```typescript
-import { createMCPServer, Tool, Resource } from '@cofounder/mcp';
+import { createMCPServer, Tool, Resource } from '@waymakerai/aicofounder-mcp';
 
 const server = createMCPServer({
   name: 'my-company-tools',
@@ -128,7 +128,7 @@ server.listen({ port: 3100 });
 ### OpenTelemetry (Industry Standard)
 
 ```typescript
-import { enableTracing } from '@cofounder/observability';
+import { enableTracing } from '@waymakerai/aicofounder-observability';
 
 enableTracing({
   serviceName: 'my-ai-app',
@@ -147,19 +147,19 @@ enableTracing({
 
 ```typescript
 // Datadog
-import { DatadogExporter } from '@cofounder/observability/datadog';
+import { DatadogExporter } from '@waymakerai/aicofounder-observability/datadog';
 enableTracing({ exporter: new DatadogExporter() });
 
 // New Relic
-import { NewRelicExporter } from '@cofounder/observability/newrelic';
+import { NewRelicExporter } from '@waymakerai/aicofounder-observability/newrelic';
 enableTracing({ exporter: new NewRelicExporter() });
 
 // Grafana/Tempo
-import { TempoExporter } from '@cofounder/observability/tempo';
+import { TempoExporter } from '@waymakerai/aicofounder-observability/tempo';
 enableTracing({ exporter: new TempoExporter() });
 
 // Honeycomb
-import { HoneycombExporter } from '@cofounder/observability/honeycomb';
+import { HoneycombExporter } from '@waymakerai/aicofounder-observability/honeycomb';
 enableTracing({ exporter: new HoneycombExporter() });
 ```
 
@@ -191,25 +191,25 @@ cofounder observe
 
 ```typescript
 // Weaviate
-import { WeaviateRetriever } from '@cofounder/rag/weaviate';
+import { WeaviateRetriever } from '@waymakerai/aicofounder-rag/weaviate';
 
 // Milvus
-import { MilvusRetriever } from '@cofounder/rag/milvus';
+import { MilvusRetriever } from '@waymakerai/aicofounder-rag/milvus';
 
 // pgvector (PostgreSQL)
-import { PgVectorRetriever } from '@cofounder/rag/pgvector';
+import { PgVectorRetriever } from '@waymakerai/aicofounder-rag/pgvector';
 
 // Supabase Vector
-import { SupabaseRetriever } from '@cofounder/rag/supabase';
+import { SupabaseRetriever } from '@waymakerai/aicofounder-rag/supabase';
 
 // Redis Vector
-import { RedisRetriever } from '@cofounder/rag/redis';
+import { RedisRetriever } from '@waymakerai/aicofounder-rag/redis';
 
 // LanceDB (local, serverless)
-import { LanceRetriever } from '@cofounder/rag/lance';
+import { LanceRetriever } from '@waymakerai/aicofounder-rag/lance';
 
 // Turbopuffer (new, fast)
-import { TurbopufferRetriever } from '@cofounder/rag/turbopuffer';
+import { TurbopufferRetriever } from '@waymakerai/aicofounder-rag/turbopuffer';
 ```
 
 ---
@@ -284,7 +284,7 @@ cofounder k8s:generate
 ### Slack
 
 ```typescript
-import { SlackBot } from '@cofounder/slack';
+import { SlackBot } from '@waymakerai/aicofounder-slack';
 
 const bot = new SlackBot({
   token: process.env.SLACK_BOT_TOKEN,
@@ -309,7 +309,7 @@ bot.start();
 ### Discord
 
 ```typescript
-import { DiscordBot } from '@cofounder/discord';
+import { DiscordBot } from '@waymakerai/aicofounder-discord';
 
 const bot = new DiscordBot({
   token: process.env.DISCORD_TOKEN,
@@ -328,7 +328,7 @@ bot.start();
 ### Microsoft Teams
 
 ```typescript
-import { TeamsBot } from '@cofounder/teams';
+import { TeamsBot } from '@waymakerai/aicofounder-teams';
 // Similar API...
 ```
 
@@ -339,7 +339,7 @@ import { TeamsBot } from '@cofounder/teams';
 ### Notion
 
 ```typescript
-import { NotionLoader } from '@cofounder/loaders/notion';
+import { NotionLoader } from '@waymakerai/aicofounder-loaders/notion';
 
 const loader = new NotionLoader({
   token: process.env.NOTION_TOKEN,
@@ -360,7 +360,7 @@ loader.onUpdate(async (page) => {
 ### Confluence
 
 ```typescript
-import { ConfluenceLoader } from '@cofounder/loaders/confluence';
+import { ConfluenceLoader } from '@waymakerai/aicofounder-loaders/confluence';
 
 const loader = new ConfluenceLoader({
   baseUrl: 'https://company.atlassian.net',
@@ -374,7 +374,7 @@ const docs = await loader.loadSpace('ENGINEERING');
 ### GitHub
 
 ```typescript
-import { GitHubLoader } from '@cofounder/loaders/github';
+import { GitHubLoader } from '@waymakerai/aicofounder-loaders/github';
 
 const loader = new GitHubLoader({
   token: process.env.GITHUB_TOKEN,
@@ -397,7 +397,7 @@ const issues = await loader.loadIssues('owner/repo');
 ### Unstructured.io
 
 ```typescript
-import { UnstructuredLoader } from '@cofounder/loaders/unstructured';
+import { UnstructuredLoader } from '@waymakerai/aicofounder-loaders/unstructured';
 
 // Parse any document type
 const loader = new UnstructuredLoader({
@@ -411,7 +411,7 @@ const docs = await loader.load('./documents/**/*');
 ### LlamaParse
 
 ```typescript
-import { LlamaParseLoader } from '@cofounder/loaders/llamaparse';
+import { LlamaParseLoader } from '@waymakerai/aicofounder-loaders/llamaparse';
 
 // Best-in-class PDF parsing
 const loader = new LlamaParseLoader({
@@ -428,7 +428,7 @@ const docs = await loader.load('./documents/*.pdf');
 ### Sentry
 
 ```typescript
-import { SentryPlugin } from '@cofounder/plugins/sentry';
+import { SentryPlugin } from '@waymakerai/aicofounder-plugins/sentry';
 
 cofounder.use(SentryPlugin({
   dsn: process.env.SENTRY_DSN,
@@ -444,7 +444,7 @@ cofounder.use(SentryPlugin({
 ### PostHog
 
 ```typescript
-import { PostHogPlugin } from '@cofounder/plugins/posthog';
+import { PostHogPlugin } from '@waymakerai/aicofounder-plugins/posthog';
 
 cofounder.use(PostHogPlugin({
   apiKey: process.env.POSTHOG_KEY,
@@ -462,7 +462,7 @@ cofounder.use(PostHogPlugin({
 ### Mixpanel
 
 ```typescript
-import { MixpanelPlugin } from '@cofounder/plugins/mixpanel';
+import { MixpanelPlugin } from '@waymakerai/aicofounder-plugins/mixpanel';
 // Similar API...
 ```
 
@@ -473,7 +473,7 @@ import { MixpanelPlugin } from '@cofounder/plugins/mixpanel';
 ### Stripe
 
 ```typescript
-import { StripeUsageBilling } from '@cofounder/billing/stripe';
+import { StripeUsageBilling } from '@waymakerai/aicofounder-billing/stripe';
 
 const billing = new StripeUsageBilling({
   secretKey: process.env.STRIPE_SECRET_KEY,
@@ -496,7 +496,7 @@ await cofounder.chat('Hello', {
 ### LaunchDarkly
 
 ```typescript
-import { LaunchDarklyPlugin } from '@cofounder/plugins/launchdarkly';
+import { LaunchDarklyPlugin } from '@waymakerai/aicofounder-plugins/launchdarkly';
 
 cofounder.use(LaunchDarklyPlugin({
   sdkKey: process.env.LD_SDK_KEY,
@@ -611,7 +611,7 @@ ai-tests:
 ### Vault (HashiCorp)
 
 ```typescript
-import { VaultSecrets } from '@cofounder/secrets/vault';
+import { VaultSecrets } from '@waymakerai/aicofounder-secrets/vault';
 
 const secrets = new VaultSecrets({
   address: process.env.VAULT_ADDR,
@@ -625,7 +625,7 @@ const openaiKey = await secrets.get('openai/api-key');
 ### AWS Secrets Manager
 
 ```typescript
-import { AWSSecrets } from '@cofounder/secrets/aws';
+import { AWSSecrets } from '@waymakerai/aicofounder-secrets/aws';
 
 const secrets = new AWSSecrets({
   region: 'us-east-1',

@@ -15,10 +15,10 @@ A robust content filtering system for CoFounder that filters profanity, harmful 
 
 ## Installation
 
-The content filter is included in `@cofounder/core`:
+The content filter is included in `@waymakerai/aicofounder-core`:
 
 ```typescript
-import { createContentFilter, isContentSafe } from '@cofounder/core';
+import { createContentFilter, isContentSafe } from '@waymakerai/aicofounder-core';
 ```
 
 ## Quick Start
@@ -26,7 +26,7 @@ import { createContentFilter, isContentSafe } from '@cofounder/core';
 ### Basic Usage
 
 ```typescript
-import { createContentFilter } from '@cofounder/core';
+import { createContentFilter } from '@waymakerai/aicofounder-core';
 
 const filter = createContentFilter({
   defaultAction: 'warn',
@@ -44,7 +44,7 @@ if (!result.passed) {
 ### Simple Safety Check
 
 ```typescript
-import { isContentSafe } from '@cofounder/core';
+import { isContentSafe } from '@waymakerai/aicofounder-core';
 
 if (!isContentSafe(userInput)) {
   console.log('Content is not safe!');
@@ -246,7 +246,7 @@ console.log('Total patterns:', stats.totalPatterns);
 ### 8. Integration with CoFounder Chat
 
 ```typescript
-import { createCoFounder, createContentFilter, ContentBlockedError } from '@cofounder/core';
+import { createCoFounder, createContentFilter, ContentBlockedError } from '@waymakerai/aicofounder-core';
 
 const contentFilter = createContentFilter({
   enableProfanityFilter: true,
@@ -382,7 +382,7 @@ const filter = createContentFilter({
 ## Error Handling
 
 ```typescript
-import { ContentBlockedError, ContentFilterError } from '@cofounder/core';
+import { ContentBlockedError, ContentFilterError } from '@waymakerai/aicofounder-core';
 
 try {
   const result = filter.filter(content);

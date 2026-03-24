@@ -34,7 +34,7 @@ const footerLinks: Record<string, FooterSection> = {
     title: 'Resources',
     links: [
       { label: 'GitHub', href: 'https://github.com/waymaker-ai/cofounder', external: true },
-      { label: 'npm', href: 'https://www.npmjs.com/org/cofounder', external: true },
+      { label: 'npm', href: 'https://www.npmjs.com/org/waymakerai', external: true },
       { label: 'Discord', href: 'https://discord.gg/cofounder', external: true },
       { label: 'Contact', href: 'mailto:hello@waymaker.cx', external: true },
     ],

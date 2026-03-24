@@ -48,19 +48,19 @@ You don't need to be an expert! Here are many ways to help:
 - Industry-specific examples
 
 ### 5. Enhance Compliance
-- Add new compliance rules (@cofounder/compliance)
+- Add new compliance rules (@waymakerai/aicofounder-compliance)
 - Improve PII detection patterns
 - Add industry-specific regulations
 - Test compliance enforcement
 
 ### 6. Improve Guidelines
-- Create preset guidelines (@cofounder/guidelines)
+- Create preset guidelines (@waymakerai/aicofounder-guidelines)
 - Add condition builders
 - Improve matching logic
 - Build analytics features
 
 ### 7. Optimize Context Handling
-- Enhance context optimization strategies (@cofounder/context-optimizer)
+- Enhance context optimization strategies (@waymakerai/aicofounder-context-optimizer)
 - Improve file prioritization
 - Add better summarization
 - Test with large codebases

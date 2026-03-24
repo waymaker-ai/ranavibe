@@ -2,16 +2,16 @@
 
 ## Installation
 
-The tracer is built into `@cofounder/core` - no additional installation needed!
+The tracer is built into `@waymakerai/aicofounder-core` - no additional installation needed!
 
 ```typescript
-import { createTracer } from '@cofounder/core';
+import { createTracer } from '@waymakerai/aicofounder-core';
 ```
 
 ## 30-Second Start
 
 ```typescript
-import { createTracer } from '@cofounder/core';
+import { createTracer } from '@waymakerai/aicofounder-core';
 
 // 1. Create a tracer
 const tracer = createTracer();
@@ -83,13 +83,13 @@ tracer.endSpan(parent, 'success');
 
 ```typescript
 // In your app initialization
-import { createTracer, setGlobalTracer } from '@cofounder/core';
+import { createTracer, setGlobalTracer } from '@waymakerai/aicofounder-core';
 
 const tracer = createTracer({ maxTraces: 1000 });
 setGlobalTracer(tracer);
 
 // Anywhere in your app
-import { getGlobalTracer } from '@cofounder/core';
+import { getGlobalTracer } from '@waymakerai/aicofounder-core';
 
 const tracer = getGlobalTracer();
 const span = tracer.startTrace('operation');
@@ -113,7 +113,7 @@ const tracer = createTracer({
 ### Pattern 5: Function Wrapping
 
 ```typescript
-import { traced } from '@cofounder/core';
+import { traced } from '@waymakerai/aicofounder-core';
 
 // Define your function
 async function processData(data: string) {
@@ -270,7 +270,7 @@ const tracer = createTracer({
 ## Real-World Example
 
 ```typescript
-import { createTracer, setGlobalTracer } from '@cofounder/core';
+import { createTracer, setGlobalTracer } from '@waymakerai/aicofounder-core';
 
 // App setup
 const tracer = createTracer({

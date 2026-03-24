@@ -16,7 +16,7 @@ The CoFounder Request Queue provides intelligent request management with priorit
 Add queue configuration when creating your CoFounder client:
 
 ```typescript
-import { createCoFounder } from '@cofounder/core';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
 
 const cofounder = createCoFounder({
   providers: {
@@ -289,7 +289,7 @@ import type {
   QueueEvent,
   QueuePriority,
   RequestQueue,
-} from '@cofounder/core';
+} from '@waymakerai/aicofounder-core';
 
 // Queue configuration
 const config: QueueConfig = {

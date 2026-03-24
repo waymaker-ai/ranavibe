@@ -1,17 +1,17 @@
-# @cofounder/generate
+# @waymakerai/aicofounder-generate
 
 Natural language code generation with 30+ templates and context-aware output.
 
 ## Installation
 
 ```bash
-npm install @cofounder/generate
+npm install @waymakerai/aicofounder-generate
 ```
 
 ## Quick Start
 
 ```typescript
-import { generate, listTemplates } from '@cofounder/generate';
+import { generate, listTemplates } from '@waymakerai/aicofounder-generate';
 
 // Generate from natural language
 const code = await generate('create a login form with email and password');
@@ -53,7 +53,7 @@ const table = await generate(`
 Generate complete CRUD APIs with authentication, validation, and rate limiting:
 
 ```typescript
-import { APIGenerator, type CRUDSpec } from '@cofounder/generate';
+import { APIGenerator, type CRUDSpec } from '@waymakerai/aicofounder-generate';
 
 const userAPI: CRUDSpec = {
   entity: 'User',
@@ -95,7 +95,7 @@ const { schema, resolvers } = APIGenerator.generateGraphQL(userAPI);
 Generate schemas for Prisma, Drizzle, or raw SQL:
 
 ```typescript
-import { DatabaseGenerator, type Entity } from '@cofounder/generate';
+import { DatabaseGenerator, type Entity } from '@waymakerai/aicofounder-generate';
 
 const userEntity: Entity = {
   name: 'User',
@@ -144,7 +144,7 @@ const sqlMigration = DatabaseGenerator.generateSQLMigration(userEntity, {
 Automatically determine where files should go and manage imports:
 
 ```typescript
-import { FileIntegrator, analyzeCodebase } from '@cofounder/generate';
+import { FileIntegrator, analyzeCodebase } from '@waymakerai/aicofounder-generate';
 
 // Analyze your codebase
 const context = await analyzeCodebase('./my-project');
@@ -221,7 +221,7 @@ const store = await generate({
 ### Context-Aware Generation
 
 ```typescript
-import { generate, analyzeContext } from '@cofounder/generate';
+import { generate, analyzeContext } from '@waymakerai/aicofounder-generate';
 
 // Analyze codebase patterns
 const context = await analyzeContext('./src');
@@ -314,7 +314,7 @@ console.log(result.validation);
 ## Creating Custom Templates
 
 ```typescript
-import { registerTemplate, Template } from '@cofounder/generate';
+import { registerTemplate, Template } from '@waymakerai/aicofounder-generate';
 
 const myTemplate: Template = {
   id: 'my-template',

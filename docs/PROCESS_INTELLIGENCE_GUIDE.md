@@ -300,7 +300,7 @@ jobs:
           fetch-depth: 0  # Full history for git analysis
 
       - name: Install CoFounder CLI
-        run: npm install -g @cofounder/cli
+        run: npm install -g @waymakerai/aicofounder-cli
 
       - name: Generate Velocity Report
         run: cofounder analyze:velocity --period 7d --export json
@@ -318,7 +318,7 @@ jobs:
 velocity-report:
   image: node:20
   script:
-    - npm install -g @cofounder/cli
+    - npm install -g @waymakerai/aicofounder-cli
     - cofounder analyze:velocity --period 7d --export json
   artifacts:
     paths:
@@ -370,7 +370,7 @@ CoFounder v2.1 will include a web-based dashboard for visualizing:
 ### Velocity Analysis
 
 ```typescript
-import { analyzeVelocity } from '@cofounder/core';
+import { analyzeVelocity } from '@waymakerai/aicofounder-core';
 
 const report = await analyzeVelocity({
   period: '30d',
@@ -385,7 +385,7 @@ console.log(report.insights);
 ### Legacy Analysis
 
 ```typescript
-import { analyzeLegacy } from '@cofounder/core';
+import { analyzeLegacy } from '@waymakerai/aicofounder-core';
 
 const report = await analyzeLegacy({
   path: './src',

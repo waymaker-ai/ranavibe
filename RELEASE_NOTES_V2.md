@@ -12,12 +12,12 @@
 
 CoFounder v2.0 represents a complete transformation from a CLI-only tool to a comprehensive JavaScript framework. We've rebuilt CoFounder to be as easy to use as React, with powerful features that save you time and money.
 
-### **New: @cofounder/core SDK**
+### **New: @waymakerai/aicofounder-core SDK**
 
 The heart of CoFounder v2.0 is the new core SDK that provides a unified, type-safe API for AI development.
 
 ```typescript
-import { createCoFounder } from '@cofounder/core';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
 
 const cofounder = createCoFounder({
   providers: {
@@ -37,12 +37,12 @@ const response = await cofounder.chat('Hello!');
 - ✅ **Streaming Support** - AsyncGenerator-based streaming
 - ✅ **Plugin System** - Extend functionality easily
 
-### **New: @cofounder/react Hooks**
+### **New: @waymakerai/aicofounder-react Hooks**
 
 Build AI apps the same way you build React apps.
 
 ```tsx
-import { useCoFounderChat } from '@cofounder/react';
+import { useCoFounderChat } from '@waymakerai/aicofounder-react';
 
 function ChatApp() {
   const { chat, response, loading, cost } = useCoFounderChat(cofounder);
@@ -118,7 +118,7 @@ You can now also use CoFounder programmatically:
 // $ cofounder llm:chat "Hello"
 
 // New: SDK
-import { createCoFounder } from '@cofounder/core';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
 const response = await cofounder.chat('Hello');
 ```
 
@@ -129,17 +129,17 @@ const response = await cofounder.chat('Hello');
 ### **What Changed**
 
 1. **Package Structure**
-   - Old: `@cofounder/cli` only
-   - New: `@cofounder/core`, `@cofounder/react`, `@cofounder/cli`
+   - Old: `@waymakerai/aicofounder-cli` only
+   - New: `@waymakerai/aicofounder-core`, `@waymakerai/aicofounder-react`, `@waymakerai/aicofounder-cli`
 
 2. **Installation**
    ```bash
    # Old
-   npm install -g @cofounder/cli
+   npm install -g @waymakerai/aicofounder-cli
 
    # New (both work)
-   npm install -g @cofounder/cli              # CLI only
-   npm install @cofounder/core @cofounder/react    # SDK + React
+   npm install -g @waymakerai/aicofounder-cli              # CLI only
+   npm install @waymakerai/aicofounder-core @waymakerai/aicofounder-react    # SDK + React
    ```
 
 3. **No Breaking Changes to CLI**
@@ -150,9 +150,9 @@ const response = await cofounder.chat('Hello');
 
 ## 📦 New Packages
 
-### **@cofounder/core**
+### **@waymakerai/aicofounder-core**
 ```bash
-npm install @cofounder/core
+npm install @waymakerai/aicofounder-core
 ```
 
 Core SDK with unified LLM client, cost tracking, caching, and plugin system.
@@ -160,9 +160,9 @@ Core SDK with unified LLM client, cost tracking, caching, and plugin system.
 **Size:** ~30KB minified
 **Dependencies:** Minimal (OpenAI, Anthropic, Google SDKs as needed)
 
-### **@cofounder/react**
+### **@waymakerai/aicofounder-react**
 ```bash
-npm install @cofounder/react
+npm install @waymakerai/aicofounder-react
 ```
 
 React hooks for CoFounder integration.
@@ -256,7 +256,7 @@ Type-safe configuration:
 
 ```typescript
 // cofounder.config.ts
-import { defineConfig } from '@cofounder/core';
+import { defineConfig } from '@waymakerai/aicofounder-core';
 
 export default defineConfig({
   providers: {
@@ -314,16 +314,16 @@ export default defineConfig({
 
 ### **v2.1 (Q1 2025)**
 
-- Vue.js composables (`@cofounder/vue`)
-- Svelte stores (`@cofounder/svelte`)
+- Vue.js composables (`@waymakerai/aicofounder-vue`)
+- Svelte stores (`@waymakerai/aicofounder-svelte`)
 - VSCode extension
 - Web dashboard
 - More examples and templates
 
 ### **v2.2 (Q2 2025)**
 
-- Next.js middleware (`@cofounder/next`)
-- Express middleware (`@cofounder/express`)
+- Next.js middleware (`@waymakerai/aicofounder-next`)
+- Express middleware (`@waymakerai/aicofounder-express`)
 - Plugin marketplace
 - Advanced RAG features
 - Mobile SDKs (React Native, Flutter)
@@ -354,8 +354,8 @@ Special thanks to:
 ## 🔗 Links
 
 - **npm:**
-  - [@cofounder/core](https://npmjs.com/package/@cofounder/core)
-  - [@cofounder/react](https://npmjs.com/package/@cofounder/react)
+  - [@waymakerai/aicofounder-core](https://www.npmjs.com/package/@waymakerai/aicofounder-core)
+  - [@waymakerai/aicofounder-react](https://www.npmjs.com/package/@waymakerai/aicofounder-react)
 - **GitHub:** https://github.com/waymaker/cofounder
 - **Docs:** https://cofounder.dev
 - **Examples:** [examples/](./examples/)

@@ -18,8 +18,8 @@ This guide explains the new **CoFounder SDK** architecture that makes CoFounder 
 ## Table of Contents
 
 1. [Installation](#installation)
-2. [Core SDK (@cofounder/core)](#core-sdk-cofoundercore)
-3. [React Hooks (@cofounder/react)](#react-hooks-cofounderreact)
+2. [Core SDK (@waymakerai/aicofounder-core)](#core-sdk-cofoundercore)
+3. [React Hooks (@waymakerai/aicofounder-react)](#react-hooks-cofounderreact)
 4. [Configuration as Code](#configuration-as-code)
 5. [CLI Improvements](#cli-improvements)
 6. [Plugin System](#plugin-system)
@@ -32,23 +32,23 @@ This guide explains the new **CoFounder SDK** architecture that makes CoFounder 
 
 ```bash
 # Core SDK
-npm install @cofounder/core
+npm install @waymakerai/aicofounder-core
 
 # React hooks
-npm install @cofounder/react
+npm install @waymakerai/aicofounder-react
 
 # CLI (for commands)
-npm install -g @cofounder/cli
+npm install -g @waymakerai/aicofounder-cli
 ```
 
 ---
 
-## Core SDK (@cofounder/core)
+## Core SDK (@waymakerai/aicofounder-core)
 
 ### Simple Usage
 
 ```typescript
-import { createCoFounder } from '@cofounder/core';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
 
 const cofounder = createCoFounder({
   providers: {
@@ -122,13 +122,13 @@ const response = await cofounder('What is 2+2?');
 
 ---
 
-## React Hooks (@cofounder/react)
+## React Hooks (@waymakerai/aicofounder-react)
 
 ### Setup with Provider
 
 ```tsx
-import { createCoFounder } from '@cofounder/core';
-import { RanaProvider } from '@cofounder/react';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
+import { RanaProvider } from '@waymakerai/aicofounder-react';
 
 const cofounder = createCoFounder({
   providers: {
@@ -148,7 +148,7 @@ function App() {
 ### useCoFounderChat Hook
 
 ```tsx
-import { useCoFounderChat } from '@cofounder/react';
+import { useCoFounderChat } from '@waymakerai/aicofounder-react';
 
 function ChatComponent() {
   const { chat, response, loading, error, cost } = useCoFounderChat(cofounder, {
@@ -175,7 +175,7 @@ function ChatComponent() {
 ### useCoFounderStream Hook
 
 ```tsx
-import { useCoFounderStream } from '@cofounder/react';
+import { useCoFounderStream } from '@waymakerai/aicofounder-react';
 
 function StreamingChat() {
   const { stream, content, loading, done } = useCoFounderStream(cofounder);
@@ -197,7 +197,7 @@ function StreamingChat() {
 ### useCoFounderCost Hook
 
 ```tsx
-import { useCoFounderCost } from '@cofounder/react';
+import { useCoFounderCost } from '@waymakerai/aicofounder-react';
 
 function CostDashboard() {
   const { stats, loading, refresh } = useCoFounderCost(cofounder);
@@ -229,7 +229,7 @@ function CostDashboard() {
 ### useCoFounderConversation Hook
 
 ```tsx
-import { useCoFounderConversation } from '@cofounder/react';
+import { useCoFounderConversation } from '@waymakerai/aicofounder-react';
 
 function ChatInterface() {
   const {
@@ -262,7 +262,7 @@ function ChatInterface() {
 ### useCoFounderOptimize Hook
 
 ```tsx
-import { useCoFounderOptimize } from '@cofounder/react';
+import { useCoFounderOptimize } from '@waymakerai/aicofounder-react';
 
 function OptimizationPanel() {
   const { savings, recommendations } = useCoFounderOptimize(cofounder);
@@ -292,7 +292,7 @@ function OptimizationPanel() {
 Create `cofounder.config.ts`:
 
 ```typescript
-import { defineConfig } from '@cofounder/core';
+import { defineConfig } from '@waymakerai/aicofounder-core';
 
 export default defineConfig({
   // Provider API keys
@@ -353,7 +353,7 @@ export default {
 ### Load Config Automatically
 
 ```typescript
-import { loadConfig, createCoFounder } from '@cofounder/core';
+import { loadConfig, createCoFounder } from '@waymakerai/aicofounder-core';
 
 // Auto-loads from cofounder.config.ts or environment
 const config = await loadConfig();
@@ -445,7 +445,7 @@ cofounder test
 ### Create a Custom Plugin
 
 ```typescript
-import { definePlugin } from '@cofounder/core';
+import { definePlugin } from '@waymakerai/aicofounder-core';
 
 const analyticsPlugin = definePlugin({
   name: 'analytics-plugin',
@@ -559,7 +559,7 @@ cofounder deploy
 
 ```typescript
 // 1. Install SDK
-import { createCoFounder } from '@cofounder/core';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
 
 // 2. Initialize in code
 const cofounder = createCoFounder({
@@ -605,7 +605,7 @@ cd my-app
 
 ```typescript
 import express from 'express';
-import { createCoFounder } from '@cofounder/core';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
 
 const app = express();
 const cofounder = createCoFounder({
@@ -635,7 +635,7 @@ app.listen(3000);
 ### 2. React Chat Component
 
 ```tsx
-import { useCoFounderChat } from '@cofounder/react';
+import { useCoFounderChat } from '@waymakerai/aicofounder-react';
 
 function ChatApp() {
   const { chat, response, loading, cost } = useCoFounderChat(cofounder, {
@@ -671,7 +671,7 @@ function ChatApp() {
 ### 3. Cost Dashboard
 
 ```typescript
-import { createCoFounder } from '@cofounder/core';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
 
 const cofounder = createCoFounder({ ... });
 
@@ -731,7 +731,7 @@ await cofounder.use(myPlugin);
 
 ## Next Steps
 
-1. **Install the SDK**: `npm install @cofounder/core`
+1. **Install the SDK**: `npm install @waymakerai/aicofounder-core`
 2. **Try the examples**: See `examples/` directory
 3. **Read the docs**: Visit https://cofounder.dev
 4. **Join Discord**: https://discord.gg/cofounder

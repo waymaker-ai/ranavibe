@@ -33,7 +33,7 @@
 6. Built-in tracing dashboard
 
 ### 🟢 Low Priority (Backlog)
-- Official plugins (@cofounder/slack, etc.)
+- Official plugins (@waymakerai/aicofounder-slack, etc.)
 - Enterprise features (SSO, RBAC)
 - Multi-modal support
 
@@ -50,7 +50,7 @@
 
 ### Previous Sessions
 - ✅ Phase 1 Foundation (100% complete)
-- ✅ Testing framework (@cofounder/testing)
+- ✅ Testing framework (@waymakerai/aicofounder-testing)
 - ✅ Budget enforcement
 - ✅ MCP support (server + client)
 - ✅ Memory compression

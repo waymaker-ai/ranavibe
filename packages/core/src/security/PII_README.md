@@ -21,7 +21,7 @@ import {
   detectPIIAdvanced,
   redactPII,
   maskPII,
-} from '@cofounder/core';
+} from '@waymakerai/aicofounder-core';
 ```
 
 ## Quick Start
@@ -262,7 +262,7 @@ const masked = maskPII(text);
 ### Validate Credit Cards
 
 ```typescript
-import { validateCreditCard, detectCreditCardType } from '@cofounder/core';
+import { validateCreditCard, detectCreditCardType } from '@waymakerai/aicofounder-core';
 
 const isValid = validateCreditCard('4532015112830366');
 console.log(isValid); // true (uses Luhn algorithm)
@@ -504,7 +504,7 @@ return detector.redact(text).processed;
 ### Combine with Audit Logger
 
 ```typescript
-import { createAuditLogger, createPIIDetector } from '@cofounder/core';
+import { createAuditLogger, createPIIDetector } from '@waymakerai/aicofounder-core';
 
 const auditLogger = createAuditLogger({
   hashSensitiveData: true,
@@ -525,7 +525,7 @@ function secureLog(action: string, details: any) {
 ### Combine with Content Filter
 
 ```typescript
-import { createContentFilter, createPIIDetector } from '@cofounder/core';
+import { createContentFilter, createPIIDetector } from '@waymakerai/aicofounder-core';
 
 const contentFilter = createContentFilter();
 const piiDetector = createPIIDetector();

@@ -277,7 +277,7 @@ MIT license, extensible plugin system, community-driven development.
 
 **Example:**
 ```typescript
-import { UnifiedLLMClient } from '@cofounder/core';
+import { UnifiedLLMClient } from '@waymakerai/aicofounder-core';
 
 const client = new UnifiedLLMClient({
   providers: {
@@ -372,7 +372,7 @@ const response = await client.chat({
 
 **Example:**
 ```typescript
-import { SecurityLayer } from '@cofounder/security';
+import { SecurityLayer } from '@waymakerai/aicofounder-security';
 
 const secureClient = new UnifiedLLMClient({
   providers: { /* ... */ },
@@ -671,7 +671,7 @@ const client = new UnifiedLLMClient({
 
 ```typescript
 import { describe, it, expect } from 'vitest';
-import { UnifiedLLMClient } from '@cofounder/core';
+import { UnifiedLLMClient } from '@waymakerai/aicofounder-core';
 
 describe('UnifiedLLMClient', () => {
   it('should work with OpenAI', async () => {
@@ -739,7 +739,7 @@ describe('UnifiedLLMClient', () => {
 **Implementation:**
 
 ```typescript
-import { UnifiedLLMClient } from '@cofounder/core';
+import { UnifiedLLMClient } from '@waymakerai/aicofounder-core';
 import Redis from 'ioredis';
 
 const redis = new Redis(process.env.REDIS_URL);
@@ -866,7 +866,7 @@ const response = await openai.chat({
 
 **CoFounder RAG Approach:**
 ```typescript
-import { RAGClient } from '@cofounder/rag';
+import { RAGClient } from '@waymakerai/aicofounder-rag';
 
 const rag = new RAGClient({
   vectorDB: 'pinecone',
@@ -926,7 +926,7 @@ CoFounder implements defenses against all OWASP Top 10 vulnerabilities:
 
 **Protection:**
 ```typescript
-import { SecurityLayer } from '@cofounder/security';
+import { SecurityLayer } from '@waymakerai/aicofounder-security';
 
 const client = new UnifiedLLMClient({
   providers: { /* ... */ },
@@ -956,7 +956,7 @@ await client.chat({ /* ... */ }, { user: jwtPayload });
 
 **Protection:**
 ```typescript
-import { sanitize } from '@cofounder/security';
+import { sanitize } from '@waymakerai/aicofounder-security';
 
 const userInput = "<script>alert('XSS')</script>";
 const safe = sanitize(userInput);  // Removes script tags
@@ -1051,7 +1051,7 @@ const isValidUrl = (url: string) => {
 
 #### Right to Access
 ```typescript
-import { GDPRClient } from '@cofounder/security';
+import { GDPRClient } from '@waymakerai/aicofounder-security';
 
 const gdpr = new GDPRClient({ storage: 'supabase' });
 
@@ -1689,7 +1689,7 @@ npm run dev
 **Quick Reference:**
 
 ```typescript
-import { UnifiedLLMClient } from '@cofounder/core';
+import { UnifiedLLMClient } from '@waymakerai/aicofounder-core';
 
 // Initialize
 const client = new UnifiedLLMClient({
@@ -1753,7 +1753,7 @@ response = chat([HumanMessage(content="Hello")])
 
 **After (CoFounder):**
 ```typescript
-import { UnifiedLLMClient } from '@cofounder/core';
+import { UnifiedLLMClient } from '@waymakerai/aicofounder-core';
 
 const client = new UnifiedLLMClient({
   providers: { openai: process.env.OPENAI_API_KEY }

@@ -1,11 +1,11 @@
-# @cofounder/mcp
+# @waymakerai/aicofounder-mcp
 
 Model Context Protocol (MCP) client, server, scaffolding, and testing utilities for CoFounder applications.
 
 ## Installation
 
 ```bash
-npm install @cofounder/mcp
+npm install @waymakerai/aicofounder-mcp
 ```
 
 ## Quick Start
@@ -15,7 +15,7 @@ npm install @cofounder/mcp
 Connect to MCP servers and use their tools:
 
 ```typescript
-import { createMCPClient } from '@cofounder/mcp';
+import { createMCPClient } from '@waymakerai/aicofounder-mcp';
 
 const client = await createMCPClient({
   name: 'my-app',
@@ -50,7 +50,7 @@ console.log(result);
 Create your own MCP server:
 
 ```typescript
-import { createCoFounderMCPServer } from '@cofounder/mcp';
+import { createCoFounderMCPServer } from '@waymakerai/aicofounder-mcp';
 
 const server = createCoFounderMCPServer({
   name: 'my-server',
@@ -93,7 +93,7 @@ await server.start();
 Generate production-ready MCP servers from templates:
 
 ```typescript
-import { scaffoldMCPServer, TEMPLATES } from '@cofounder/mcp';
+import { scaffoldMCPServer, TEMPLATES } from '@waymakerai/aicofounder-mcp';
 
 // List available templates
 console.log(TEMPLATES);
@@ -147,7 +147,7 @@ import {
   runToolTests,
   assertToolExists,
   assertToolSuccess
-} from '@cofounder/mcp';
+} from '@waymakerai/aicofounder-mcp';
 
 // Create a mock server for testing
 const mockServer = createMockServer({
@@ -211,7 +211,7 @@ await assertResultContains(server, 'search', { query: 'test' }, 'found');
 ### Snapshot Testing
 
 ```typescript
-import { createSnapshot, compareSnapshot } from '@cofounder/mcp';
+import { createSnapshot, compareSnapshot } from '@waymakerai/aicofounder-mcp';
 
 // Create snapshot of server state
 const snapshot = await createSnapshot(server);

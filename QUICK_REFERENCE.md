@@ -7,7 +7,7 @@ One-page reference for common CoFounder operations.
 ## 📦 Installation
 
 ```bash
-npm install @cofounder/core @cofounder/react
+npm install @waymakerai/aicofounder-core @waymakerai/aicofounder-react
 ```
 
 ---
@@ -15,7 +15,7 @@ npm install @cofounder/core @cofounder/react
 ## ⚡ Quick Start
 
 ```typescript
-import { createCoFounder } from '@cofounder/core';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
 
 const cofounder = createCoFounder({
   providers: {
@@ -66,7 +66,7 @@ for await (const chunk of cofounder.stream('Tell me a story')) {
 ## ⚛️ React Hooks
 
 ```tsx
-import { useCoFounderChat } from '@cofounder/react';
+import { useCoFounderChat } from '@waymakerai/aicofounder-react';
 
 function ChatApp() {
   const { chat, response, loading, cost } = useCoFounderChat(cofounder);

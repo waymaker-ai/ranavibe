@@ -1,17 +1,17 @@
-# @cofounder/marketplace
+# @waymakerai/aicofounder-marketplace
 
 Community policy sharing infrastructure for CoFounder. Search, browse, import, and publish AI safety policy packages.
 
 ## Installation
 
 ```bash
-npm install @cofounder/marketplace
+npm install @waymakerai/aicofounder-marketplace
 ```
 
 ## Quick Start
 
 ```typescript
-import { PolicyMarketplace } from '@cofounder/marketplace';
+import { PolicyMarketplace } from '@waymakerai/aicofounder-marketplace';
 
 const marketplace = new PolicyMarketplace();
 

@@ -224,7 +224,7 @@ Re-exports from `otel.ts` for modular import.
 ### Basic
 
 ```typescript
-import { createCoFounder, createOTelPlugin } from '@cofounder/core';
+import { createCoFounder, createOTelPlugin } from '@waymakerai/aicofounder-core';
 
 const cofounder = createCoFounder({
   providers: { anthropic: process.env.ANTHROPIC_API_KEY },
@@ -242,7 +242,7 @@ await cofounder.chat('Hello!');
 ### Advanced
 
 ```typescript
-import { createOTelExporter } from '@cofounder/core';
+import { createOTelExporter } from '@waymakerai/aicofounder-core';
 
 const exporter = createOTelExporter({
   serviceName: 'production-app',

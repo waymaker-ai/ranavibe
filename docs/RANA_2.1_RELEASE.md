@@ -9,9 +9,9 @@
 CoFounder 2.1 is the most significant release yet, transforming CoFounder from a solid AI framework into the **most comprehensive TypeScript-first AI development ecosystem** with:
 
 ### ⭐ **Three Major New Packages**
-1. **@cofounder/guidelines** - Dynamic behavioral control
-2. **@cofounder/compliance** - Enterprise compliance (HIPAA, SEC, GDPR, CCPA)
-3. **@cofounder/context-optimizer** - 400K token handling with 70% cost savings
+1. **@waymakerai/aicofounder-guidelines** - Dynamic behavioral control
+2. **@waymakerai/aicofounder-compliance** - Enterprise compliance (HIPAA, SEC, GDPR, CCPA)
+3. **@waymakerai/aicofounder-context-optimizer** - 400K token handling with 70% cost savings
 
 ### 🚀 **Complete Code Generation Overhaul**
 1. **Advanced API Generation** - Full CRUD for Next.js, Express, Fastify, GraphQL
@@ -28,14 +28,14 @@ CoFounder 2.1 is the most significant release yet, transforming CoFounder from a
 
 ## 📦 What's New
 
-### 1. @cofounder/guidelines - Dynamic Behavioral Control
+### 1. @waymakerai/aicofounder-guidelines - Dynamic Behavioral Control
 
 **The Problem**: Static prompts can't adapt to changing contexts, priorities, or user roles.
 
 **The Solution**: Context-aware guidelines that dynamically apply based on conversation state.
 
 ```typescript
-import { createGuidelineManager, Conditions, PresetGuidelines } from '@cofounder/guidelines';
+import { createGuidelineManager, Conditions, PresetGuidelines } from '@waymakerai/aicofounder-guidelines';
 
 const manager = createGuidelineManager({
   enableAnalytics: true,
@@ -87,14 +87,14 @@ const guidelines = await manager.match({
 
 ---
 
-### 2. @cofounder/compliance - Enterprise Compliance
+### 2. @waymakerai/aicofounder-compliance - Enterprise Compliance
 
 **The Problem**: Healthcare, finance, and privacy regulations require strict compliance. Manual enforcement is error-prone.
 
 **The Solution**: Automatic compliance enforcement with built-in rules for major regulations.
 
 ```typescript
-import { createComplianceEnforcer, PresetRules } from '@cofounder/compliance';
+import { createComplianceEnforcer, PresetRules } from '@waymakerai/aicofounder-compliance';
 
 const enforcer = createComplianceEnforcer({
   enableAllPresets: true,  // HIPAA, SEC, GDPR, CCPA, etc.
@@ -142,14 +142,14 @@ const result = await enforcer.enforce(
 
 ---
 
-### 3. @cofounder/context-optimizer - Extended Context Optimization
+### 3. @waymakerai/aicofounder-context-optimizer - Extended Context Optimization
 
 **The Problem**: GPT-5.2 (400K), Gemini 3, and Claude 4.5 support massive contexts, but naive usage is expensive.
 
 **The Solution**: Smart hybrid optimization maintains 70% cost savings at 400K scale.
 
 ```typescript
-import { createContextOptimizer } from '@cofounder/context-optimizer';
+import { createContextOptimizer } from '@waymakerai/aicofounder-context-optimizer';
 
 const optimizer = createContextOptimizer({
   strategy: 'hybrid',      // Smart mix of full + summarized
@@ -193,14 +193,14 @@ console.log(`Quality: ${result.qualityScore}`);         // 0.85+
 
 ---
 
-### 4. @cofounder/generate - Complete Overhaul
+### 4. @waymakerai/aicofounder-generate - Complete Overhaul
 
 #### 4.1 Advanced API Generation ⭐ NEW
 
 **Generate production-ready CRUD APIs with authentication, validation, and rate limiting.**
 
 ```typescript
-import { APIGenerator, type CRUDSpec } from '@cofounder/generate';
+import { APIGenerator, type CRUDSpec } from '@waymakerai/aicofounder-generate';
 
 const spec: CRUDSpec = {
   entity: 'User',
@@ -250,7 +250,7 @@ const { schema, resolvers } = APIGenerator.generateGraphQL(spec);
 **Generate schemas for Prisma, Drizzle, or raw SQL.**
 
 ```typescript
-import { DatabaseGenerator, type Entity } from '@cofounder/generate';
+import { DatabaseGenerator, type Entity } from '@waymakerai/aicofounder-generate';
 
 const entity: Entity = {
   name: 'User',
@@ -299,7 +299,7 @@ const sql = DatabaseGenerator.generateSQLMigration(entity, {
 **Automatically determine where files should go and manage imports.**
 
 ```typescript
-import { FileIntegrator, analyzeCodebase } from '@cofounder/generate';
+import { FileIntegrator, analyzeCodebase } from '@waymakerai/aicofounder-generate';
 
 // Analyze your codebase
 const context = await analyzeCodebase('./my-project');
@@ -395,10 +395,10 @@ CoFounder 2.1 establishes CoFounder as:
   - [File Integration](../examples/code-generation-demo/file-integration.ts)
 
 ### Package Documentation
-- [@cofounder/guidelines README](../packages/guidelines/README.md)
-- [@cofounder/compliance README](../packages/compliance/README.md)
-- [@cofounder/context-optimizer README](../packages/context-optimizer/README.md)
-- [@cofounder/generate README](../packages/generate/README.md) - Updated
+- [@waymakerai/aicofounder-guidelines README](../packages/guidelines/README.md)
+- [@waymakerai/aicofounder-compliance README](../packages/compliance/README.md)
+- [@waymakerai/aicofounder-context-optimizer README](../packages/context-optimizer/README.md)
+- [@waymakerai/aicofounder-generate README](../packages/generate/README.md) - Updated
 
 ---
 
@@ -412,17 +412,17 @@ CoFounder 2.1 establishes CoFounder as:
 
 ```typescript
 // Existing code continues to work
-import { createCoFounder } from '@cofounder/core';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
 const cofounder = createCoFounder({ /* ... */ });
 
 // Add new features as needed
-import { createComplianceEnforcer } from '@cofounder/compliance';
+import { createComplianceEnforcer } from '@waymakerai/aicofounder-compliance';
 const enforcer = createComplianceEnforcer({ enableAllPresets: true });
 
-import { createGuidelineManager } from '@cofounder/guidelines';
+import { createGuidelineManager } from '@waymakerai/aicofounder-guidelines';
 const guidelines = createGuidelineManager();
 
-import { createContextOptimizer } from '@cofounder/context-optimizer';
+import { createContextOptimizer } from '@waymakerai/aicofounder-context-optimizer';
 const optimizer = createContextOptimizer({ maxTokens: 400000 });
 ```
 
@@ -434,19 +434,19 @@ const optimizer = createContextOptimizer({ maxTokens: 400000 });
 
 ```bash
 # Core + all new packages
-npm install @cofounder/core @cofounder/guidelines @cofounder/compliance @cofounder/context-optimizer @cofounder/generate
+npm install @waymakerai/aicofounder-core @waymakerai/aicofounder-guidelines @waymakerai/aicofounder-compliance @waymakerai/aicofounder-context-optimizer @waymakerai/aicofounder-generate
 
 # Or install individually
-npm install @cofounder/guidelines
-npm install @cofounder/compliance
-npm install @cofounder/context-optimizer
+npm install @waymakerai/aicofounder-guidelines
+npm install @waymakerai/aicofounder-compliance
+npm install @waymakerai/aicofounder-context-optimizer
 ```
 
 ### Quick Start
 
 ```typescript
 // 1. Generate a complete CRUD API
-import { APIGenerator } from '@cofounder/generate';
+import { APIGenerator } from '@waymakerai/aicofounder-generate';
 
 const api = APIGenerator.generateCRUD({
   entity: 'User',
@@ -455,19 +455,19 @@ const api = APIGenerator.generateCRUD({
 }, { framework: 'next', includeAuth: true });
 
 // 2. Enforce compliance
-import { createComplianceEnforcer } from '@cofounder/compliance';
+import { createComplianceEnforcer } from '@waymakerai/aicofounder-compliance';
 
 const enforcer = createComplianceEnforcer({ enableAllPresets: true });
 const safe = await enforcer.enforce(input, output, context);
 
 // 3. Optimize costs
-import { createContextOptimizer } from '@cofounder/context-optimizer';
+import { createContextOptimizer } from '@waymakerai/aicofounder-context-optimizer';
 
 const optimizer = createContextOptimizer({ maxTokens: 400000 });
 const optimized = await optimizer.optimize({ query, codebase });
 
 // 4. Apply guidelines
-import { createGuidelineManager } from '@cofounder/guidelines';
+import { createGuidelineManager } from '@waymakerai/aicofounder-guidelines';
 
 const guidelines = createGuidelineManager();
 const matched = await guidelines.match(context);

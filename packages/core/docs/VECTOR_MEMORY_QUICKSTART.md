@@ -4,10 +4,10 @@ Get started with CoFounder Vector Memory in 5 minutes.
 
 ## Installation
 
-Vector Memory is included in `@cofounder/core`:
+Vector Memory is included in `@waymakerai/aicofounder-core`:
 
 ```bash
-npm install @cofounder/core
+npm install @waymakerai/aicofounder-core
 ```
 
 ## Basic Usage (3 Steps)
@@ -15,7 +15,7 @@ npm install @cofounder/core
 ### 1. Create Memory Instance
 
 ```typescript
-import { createInMemoryVectorMemory, EmbeddingProvider } from '@cofounder/core';
+import { createInMemoryVectorMemory, EmbeddingProvider } from '@waymakerai/aicofounder-core';
 
 // Define your embedding provider (or use OpenAI, Anthropic, etc.)
 const embeddingProvider: EmbeddingProvider = {
@@ -139,7 +139,7 @@ const results = await memory.search(queryEmbedding, 5);
 
 ```typescript
 import OpenAI from 'openai';
-import { createInMemoryVectorMemory, EmbeddingProvider } from '@cofounder/core';
+import { createInMemoryVectorMemory, EmbeddingProvider } from '@waymakerai/aicofounder-core';
 
 const openai = new OpenAI();
 
@@ -160,7 +160,7 @@ const memory = createInMemoryVectorMemory(1536, { embeddingProvider });
 ## File Persistence
 
 ```typescript
-import { createFileVectorMemory } from '@cofounder/core';
+import { createFileVectorMemory } from '@waymakerai/aicofounder-core';
 
 // Auto-saves to file
 const memory = createFileVectorMemory('./memories.json', 384, {

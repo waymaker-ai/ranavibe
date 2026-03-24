@@ -13,11 +13,11 @@ We've been busy making CoFounder the **most comprehensive, helpful, and accessib
 
 ## 🆕 Brand New Packages
 
-### 1. @cofounder/guidelines - Dynamic Behavioral Control
+### 1. @waymakerai/aicofounder-guidelines - Dynamic Behavioral Control
 **Make your AI agents follow rules automatically**
 
 ```typescript
-import { createGuidelineManager, Conditions } from '@cofounder/guidelines';
+import { createGuidelineManager, Conditions } from '@waymakerai/aicofounder-guidelines';
 
 const manager = createGuidelineManager();
 
@@ -46,11 +46,11 @@ const matched = await manager.match({ topic: 'support' });
 
 ---
 
-### 2. @cofounder/compliance - Enterprise Compliance Enforcement
+### 2. @waymakerai/aicofounder-compliance - Enterprise Compliance Enforcement
 **HIPAA, SEC, GDPR compliance built-in**
 
 ```typescript
-import { createComplianceEnforcer, PresetRules } from '@cofounder/compliance';
+import { createComplianceEnforcer, PresetRules } from '@waymakerai/aicofounder-compliance';
 
 const enforcer = createComplianceEnforcer({
   enableAllPresets: true  // HIPAA, SEC, GDPR, CCPA, Legal, Safety
@@ -74,11 +74,11 @@ const result = await enforcer.enforce(input, output, context);
 
 ---
 
-### 3. @cofounder/context-optimizer - Extended Context Optimization
+### 3. @waymakerai/aicofounder-context-optimizer - Extended Context Optimization
 **Handle 400K+ tokens efficiently**
 
 ```typescript
-import { createContextOptimizer } from '@cofounder/context-optimizer';
+import { createContextOptimizer } from '@waymakerai/aicofounder-context-optimizer';
 
 const optimizer = createContextOptimizer({
   strategy: 'hybrid',      // Smart optimization
@@ -127,7 +127,7 @@ console.log(`Cost saved: ${result.costSaved}%`);
 
 ```bash
 # Install CoFounder
-npm install @cofounder/core
+npm install @waymakerai/aicofounder-core
 
 # Try your first AI agent
 npm create cofounder-app my-first-agent
@@ -140,7 +140,7 @@ npm run dev
 ### For Healthcare Developers
 
 ```bash
-npm install @cofounder/core @cofounder/compliance
+npm install @waymakerai/aicofounder-core @waymakerai/aicofounder-compliance
 
 # Use HIPAA-compliant template
 npx create-cofounder-app --template healthcare
@@ -151,7 +151,7 @@ npx create-cofounder-app --template healthcare
 ### For FinTech Developers
 
 ```bash
-npm install @cofounder/core @cofounder/compliance
+npm install @waymakerai/aicofounder-core @waymakerai/aicofounder-compliance
 
 # Use SEC/FINRA-compliant template
 npx create-cofounder-app --template finance
@@ -160,7 +160,7 @@ npx create-cofounder-app --template finance
 ### For Enterprise Teams
 
 ```bash
-npm install @cofounder/core @cofounder/guidelines @cofounder/compliance @cofounder/context-optimizer
+npm install @waymakerai/aicofounder-core @waymakerai/aicofounder-guidelines @waymakerai/aicofounder-compliance @waymakerai/aicofounder-context-optimizer
 
 # Use enterprise starter
 npx create-cofounder-app --template enterprise
@@ -214,21 +214,21 @@ Help others, get recognized, co-create content
 ## 🚀 What's Coming Next
 
 ### Q1 2026
-- [x] @cofounder/guidelines ✅
-- [x] @cofounder/compliance ✅
-- [x] @cofounder/context-optimizer ✅
+- [x] @waymakerai/aicofounder-guidelines ✅
+- [x] @waymakerai/aicofounder-compliance ✅
+- [x] @waymakerai/aicofounder-context-optimizer ✅
 - [ ] Interactive Playground
 - [ ] Video Tutorial Series
 - [ ] Template Library (20+ templates)
 
 ### Q2 2026
-- [ ] @cofounder/graph (Stateful agent orchestration)
-- [ ] @cofounder/observability (Production monitoring)
+- [ ] @waymakerai/aicofounder-graph (Stateful agent orchestration)
+- [ ] @waymakerai/aicofounder-observability (Production monitoring)
 - [ ] MCP Marketplace
 - [ ] Multi-model smart routing
 
 ### Q3 2026
-- [ ] @cofounder/multimodal (Voice + vision)
+- [ ] @waymakerai/aicofounder-multimodal (Voice + vision)
 - [ ] Universal Agent Protocol
 - [ ] Enterprise certifications (SOC 2)
 

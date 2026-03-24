@@ -26,10 +26,10 @@ This document provides complete API documentation for the CoFounder/CoFounder Fr
 
 ```bash
 # Install globally
-npm install -g @cofounder/cli
+npm install -g @waymakerai/aicofounder-cli
 
 # Or use npx
-npx @cofounder/cli init
+npx @waymakerai/aicofounder-cli init
 ```
 
 ### Core Commands
@@ -863,7 +863,7 @@ deployment:
 ### Unified LLM Client
 
 ```typescript
-import { UnifiedLLMClient } from '@cofounder/core';
+import { UnifiedLLMClient } from '@waymakerai/aicofounder-core';
 
 const cofounder = new UnifiedLLMClient({
   providers: {
@@ -949,7 +949,7 @@ console.log(stats.byProvider); // { openai: { cost: "$1.00", tokens: 40000 }, ..
 ## Security Module
 
 ```typescript
-import { SecurityModule } from '@cofounder/security';
+import { SecurityModule } from '@waymakerai/aicofounder-security';
 
 // Initialize security
 const security = new SecurityModule({

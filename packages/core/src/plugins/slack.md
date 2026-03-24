@@ -16,10 +16,10 @@ A comprehensive Slack integration plugin that enables CoFounder-powered chatbots
 
 ## Installation
 
-The Slack plugin is included in `@cofounder/core`:
+The Slack plugin is included in `@waymakerai/aicofounder-core`:
 
 ```bash
-npm install @cofounder/core
+npm install @waymakerai/aicofounder-core
 ```
 
 ## Basic Setup
@@ -34,8 +34,8 @@ You'll need:
 ### 2. Create a Basic Bot
 
 ```typescript
-import { createCoFounder } from '@cofounder/core';
-import { createSlackPlugin } from '@cofounder/core/plugins/slack';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
+import { createSlackPlugin } from '@waymakerai/aicofounder-core/plugins/slack';
 
 // Initialize CoFounder
 const cofounder = createCoFounder({
@@ -406,8 +406,8 @@ slack.onEvent('reaction_added', async (event) => {
 Use as a CoFounder plugin for automatic integration:
 
 ```typescript
-import { createCoFounder } from '@cofounder/core';
-import { slackPlugin } from '@cofounder/core/plugins/slack';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
+import { slackPlugin } from '@waymakerai/aicofounder-core/plugins/slack';
 
 const cofounder = createCoFounder({
   providers: {
@@ -473,7 +473,7 @@ import type {
   MessageHandler,
   CommandHandler,
   InteractionHandler,
-} from '@cofounder/core/plugins/slack';
+} from '@waymakerai/aicofounder-core/plugins/slack';
 ```
 
 ## Best Practices

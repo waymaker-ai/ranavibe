@@ -23,7 +23,7 @@ If these packages are not installed, CoFounder will still work normally but OTel
 ### Basic Usage
 
 ```typescript
-import { createCoFounder, createOTelPlugin } from '@cofounder/core';
+import { createCoFounder, createOTelPlugin } from '@waymakerai/aicofounder-core';
 
 const cofounder = createCoFounder({
   providers: {
@@ -44,7 +44,7 @@ await cofounder.chat('Hello!');
 ### Advanced Configuration
 
 ```typescript
-import { createOTelExporter } from '@cofounder/core';
+import { createOTelExporter } from '@waymakerai/aicofounder-core';
 
 const exporter = createOTelExporter({
   serviceName: 'production-app',

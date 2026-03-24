@@ -1,9 +1,9 @@
-# @cofounder/agent-sdk
+# @waymakerai/aicofounder-agent-sdk
 
 Guardrail wrapper for the Anthropic Agent SDK. Adds PII detection, prompt injection blocking, compliance enforcement, cost tracking, content filtering, rate limiting, and tamper-proof audit logging to any agent -- with a single function call.
 
 ```typescript
-import { createGuardedAgent } from '@cofounder/agent-sdk';
+import { createGuardedAgent } from '@waymakerai/aicofounder-agent-sdk';
 
 const agent = createGuardedAgent({
   model: 'claude-sonnet-4-6',
@@ -29,7 +29,7 @@ console.log(result.guardsApplied); // ['rateLimit', 'injection', 'pii', 'content
 ## Installation
 
 ```bash
-npm install @cofounder/agent-sdk
+npm install @waymakerai/aicofounder-agent-sdk
 ```
 
 The Anthropic SDK is an **optional** peer dependency. If installed, the agent will use it to make LLM calls. If not, the agent still validates input/output through all guards and returns a fallback message.
@@ -46,7 +46,7 @@ npm install @anthropic-ai/sdk
 Passing `guards: true` enables sensible defaults for all interceptors:
 
 ```typescript
-import { createGuardedAgent } from '@cofounder/agent-sdk';
+import { createGuardedAgent } from '@waymakerai/aicofounder-agent-sdk';
 
 const agent = createGuardedAgent({
   model: 'claude-sonnet-4-6',
@@ -76,7 +76,7 @@ Default configuration when `guards: true`:
 ### Advanced Configuration
 
 ```typescript
-import { createGuardedAgent } from '@cofounder/agent-sdk';
+import { createGuardedAgent } from '@waymakerai/aicofounder-agent-sdk';
 
 const agent = createGuardedAgent({
   model: 'claude-sonnet-4-6',
@@ -132,7 +132,7 @@ const agent = createGuardedAgent({
 HIPAA-compliant medical assistant with strict PII blocking, high injection sensitivity, file-based tamper-proof audit logging, and medical content filtering.
 
 ```typescript
-import { createHIPAAAgent } from '@cofounder/agent-sdk';
+import { createHIPAAAgent } from '@waymakerai/aicofounder-agent-sdk';
 
 const agent = createHIPAAAgent({
   model: 'claude-sonnet-4-6',
@@ -160,7 +160,7 @@ console.log(result.violations);
 SEC and SOX-compliant financial assistant.
 
 ```typescript
-import { createFinancialAgent } from '@cofounder/agent-sdk';
+import { createFinancialAgent } from '@waymakerai/aicofounder-agent-sdk';
 
 const agent = createFinancialAgent({
   model: 'claude-sonnet-4-6',
@@ -173,7 +173,7 @@ const agent = createFinancialAgent({
 GDPR-compliant assistant for EU data handling.
 
 ```typescript
-import { createGDPRAgent } from '@cofounder/agent-sdk';
+import { createGDPRAgent } from '@waymakerai/aicofounder-agent-sdk';
 
 const agent = createGDPRAgent({
   model: 'claude-sonnet-4-6',
@@ -186,7 +186,7 @@ const agent = createGDPRAgent({
 General-purpose safe assistant with balanced defaults.
 
 ```typescript
-import { createSafeAgent } from '@cofounder/agent-sdk';
+import { createSafeAgent } from '@waymakerai/aicofounder-agent-sdk';
 
 const agent = createSafeAgent();
 
@@ -207,7 +207,7 @@ console.log(result.output);
 Wrap any tool definition with guards. Input to the tool is checked before execution; output is checked after.
 
 ```typescript
-import { guardTool } from '@cofounder/agent-sdk';
+import { guardTool } from '@waymakerai/aicofounder-agent-sdk';
 
 const lookupTool = {
   name: 'database_lookup',
@@ -246,7 +246,7 @@ import {
   InjectionInterceptor,
   CostInterceptor,
   AuditInterceptor,
-} from '@cofounder/agent-sdk';
+} from '@waymakerai/aicofounder-agent-sdk';
 
 const pipeline = new GuardPipeline();
 
@@ -270,13 +270,13 @@ console.log(result.violations);  // [{ interceptor: 'pii', rule: 'ssn', ... }]
 
 | Interceptor | Import | Purpose |
 |-------------|--------|---------|
-| `PIIInterceptor` | `@cofounder/agent-sdk` | Detect, redact, or block PII |
-| `InjectionInterceptor` | `@cofounder/agent-sdk` | Block prompt injection attempts |
-| `CostInterceptor` | `@cofounder/agent-sdk` | Track and enforce cost budgets |
-| `ComplianceInterceptor` | `@cofounder/agent-sdk` | Enforce HIPAA, GDPR, CCPA, SEC, SOX, PCI, FERPA |
-| `ContentInterceptor` | `@cofounder/agent-sdk` | Filter profanity, violence, hate, adult, spam, self-harm |
-| `AuditInterceptor` | `@cofounder/agent-sdk` | Log all guard activity (console, file, or custom handler) |
-| `RateLimitInterceptor` | `@cofounder/agent-sdk` | Enforce request rate limits |
+| `PIIInterceptor` | `@waymakerai/aicofounder-agent-sdk` | Detect, redact, or block PII |
+| `InjectionInterceptor` | `@waymakerai/aicofounder-agent-sdk` | Block prompt injection attempts |
+| `CostInterceptor` | `@waymakerai/aicofounder-agent-sdk` | Track and enforce cost budgets |
+| `ComplianceInterceptor` | `@waymakerai/aicofounder-agent-sdk` | Enforce HIPAA, GDPR, CCPA, SEC, SOX, PCI, FERPA |
+| `ContentInterceptor` | `@waymakerai/aicofounder-agent-sdk` | Filter profanity, violence, hate, adult, spam, self-harm |
+| `AuditInterceptor` | `@waymakerai/aicofounder-agent-sdk` | Log all guard activity (console, file, or custom handler) |
+| `RateLimitInterceptor` | `@waymakerai/aicofounder-agent-sdk` | Enforce request rate limits |
 
 ## Reporting
 
@@ -304,13 +304,13 @@ console.log(report);
 ### Cost Report
 
 ```typescript
-import { generateCostReport, formatCostReport } from '@cofounder/agent-sdk';
+import { generateCostReport, formatCostReport } from '@waymakerai/aicofounder-agent-sdk';
 ```
 
 ### Compliance Report
 
 ```typescript
-import { generateComplianceReport, formatComplianceReport } from '@cofounder/agent-sdk';
+import { generateComplianceReport, formatComplianceReport } from '@waymakerai/aicofounder-agent-sdk';
 ```
 
 ## Result Shape
@@ -353,7 +353,7 @@ import type {
   ComplianceRule,
   ComplianceViolation,
   Severity,
-} from '@cofounder/agent-sdk';
+} from '@waymakerai/aicofounder-agent-sdk';
 ```
 
 ## License

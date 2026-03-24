@@ -1,12 +1,12 @@
 # Code Generation Examples
 
-Complete examples demonstrating the new code generation features in `@cofounder/generate`.
+Complete examples demonstrating the new code generation features in `@waymakerai/aicofounder-generate`.
 
 ## 🚀 Quick Start
 
 ```bash
 # Install dependencies
-npm install @cofounder/generate
+npm install @waymakerai/aicofounder-generate
 
 # Run examples
 npx tsx api-generation.ts
@@ -86,7 +86,7 @@ npx tsx file-integration.ts
 ### Build a Complete Blog API
 
 ```typescript
-import { APIGenerator, DatabaseGenerator } from '@cofounder/generate';
+import { APIGenerator, DatabaseGenerator } from '@waymakerai/aicofounder-generate';
 
 // 1. Generate database schema
 const postSchema = DatabaseGenerator.generatePrismaSchema({
@@ -143,7 +143,7 @@ ecommerceEntities.forEach(entity => {
 ### Integrate Generated Code
 
 ```typescript
-import { generate, analyzeCodebase, integrateFiles } from '@cofounder/generate';
+import { generate, analyzeCodebase, integrateFiles } from '@waymakerai/aicofounder-generate';
 
 // 1. Analyze your codebase
 const context = await analyzeCodebase('./my-app');
@@ -171,7 +171,7 @@ integration.conflicts.forEach(c => {
 
 ## 📖 Documentation
 
-See the main [@cofounder/generate README](../../packages/generate/README.md) for full API documentation.
+See the main [@waymakerai/aicofounder-generate README](../../packages/generate/README.md) for full API documentation.
 
 ## 🛠️ Next Steps
 

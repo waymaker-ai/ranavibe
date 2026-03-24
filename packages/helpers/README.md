@@ -1,11 +1,11 @@
-# @cofounder/helpers
+# @waymakerai/aicofounder-helpers
 
 Quick LLM Helpers - One-line AI functions for common tasks.
 
 ## Installation
 
 ```bash
-npm install @cofounder/helpers
+npm install @waymakerai/aicofounder-helpers
 ```
 
 ## Quick Start
@@ -22,7 +22,7 @@ import {
   generate,
   compare,
   moderate
-} from '@cofounder/helpers';
+} from '@waymakerai/aicofounder-helpers';
 
 // Summarize any text
 const summary = await summarize(longArticle);
@@ -296,7 +296,7 @@ const result = await moderate(userContent, {
 ## Configuration
 
 ```typescript
-import { configure } from '@cofounder/helpers';
+import { configure } from '@waymakerai/aicofounder-helpers';
 
 configure({
   provider: 'anthropic',

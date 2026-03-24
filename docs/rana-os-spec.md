@@ -35,7 +35,7 @@ But with a much more integrated "production OS" lens including security, quality
 
 ---
 
-## 1. @cofounder/rag - RAG Module (Enhanced)
+## 1. @waymakerai/aicofounder-rag - RAG Module (Enhanced)
 
 ### 1.1 Knowledge Base Management
 
@@ -101,7 +101,7 @@ export interface Chunk {
 ```typescript
 // packages/rag/src/client.ts
 
-import { RanaClient } from '@cofounder/core';
+import { RanaClient } from '@waymakerai/aicofounder-core';
 
 export interface RAGClientConfig {
   cofounder: RanaClient;
@@ -367,15 +367,15 @@ $$;
 
 ---
 
-## 2. @cofounder/agents - Agent Development Kit (ADK)
+## 2. @waymakerai/aicofounder-agents - Agent Development Kit (ADK)
 
 ### 2.1 Core Types
 
 ```typescript
 // packages/agents/src/types.ts
 
-import { RanaClient } from '@cofounder/core';
-import { RAGClient } from '@cofounder/rag';
+import { RanaClient } from '@waymakerai/aicofounder-core';
+import { RAGClient } from '@waymakerai/aicofounder-rag';
 
 export interface UserIdentity {
   id: string;
@@ -853,7 +853,7 @@ export interface VibeSpec {
 // packages/core/src/vibe-spec/compiler.ts
 
 import { VibeSpec } from './types';
-import { RetrievalConfig } from '@cofounder/rag';
+import { RetrievalConfig } from '@waymakerai/aicofounder-rag';
 
 export interface CompiledVibe {
   systemPrompt: string;
@@ -937,12 +937,12 @@ export async function loadVibeSpec(path: string): Promise<VibeSpec> {
 
 ## 4. Adapters
 
-### 4.1 @cofounder/crewai
+### 4.1 @waymakerai/aicofounder-crewai
 
 ```typescript
 // packages/crewai/src/index.ts
 
-import { RanaClient } from '@cofounder/core';
+import { RanaClient } from '@waymakerai/aicofounder-core';
 
 /**
  * Wraps CoFounder as a CrewAI-compatible model
@@ -1000,12 +1000,12 @@ export function createCoFounderCrewModel(config: {
 }
 ```
 
-### 4.2 @cofounder/langchain
+### 4.2 @waymakerai/aicofounder-langchain
 
 ```typescript
 // packages/langchain/src/index.ts
 
-import { RanaClient } from '@cofounder/core';
+import { RanaClient } from '@waymakerai/aicofounder-core';
 // Note: This would extend LangChain's BaseChatModel
 
 export interface RanaChatModelConfig {
@@ -1021,8 +1021,8 @@ export interface RanaChatModelConfig {
  *
  * @example
  * ```typescript
- * import { RanaChatModel } from '@cofounder/langchain';
- * import { createCoFounder } from '@cofounder/core';
+ * import { RanaChatModel } from '@waymakerai/aicofounder-langchain';
+ * import { createCoFounder } from '@waymakerai/aicofounder-core';
  *
  * const cofounder = createCoFounder({ providers: { openai: '...' } });
  * const model = new RanaChatModel({ cofounder });
@@ -1088,14 +1088,14 @@ export function createCoFounderChatModel(config: RanaChatModelConfig): RanaChatM
 }
 ```
 
-### 4.3 @cofounder/mcp (MCP Integration)
+### 4.3 @waymakerai/aicofounder-mcp (MCP Integration)
 
 ```typescript
 // packages/mcp/src/index.ts
 
-import { RanaClient, MCPServer, MCPClient } from '@cofounder/core';
-import { RAGClient } from '@cofounder/rag';
-import { Tool } from '@cofounder/agents';
+import { RanaClient, MCPServer, MCPClient } from '@waymakerai/aicofounder-core';
+import { RAGClient } from '@waymakerai/aicofounder-rag';
+import { Tool } from '@waymakerai/aicofounder-agents';
 
 /**
  * Expose CoFounder tools and RAG as MCP resources
@@ -1241,10 +1241,10 @@ export function createMCPToolAdapter(config: {
 ### 5.1 PII Detection & Redaction Pipeline
 
 ```typescript
-// Already exists in @cofounder/core as PIIDetector
+// Already exists in @waymakerai/aicofounder-core as PIIDetector
 // Enhanced usage for RAG/Agents:
 
-import { PIIDetector, createPIIDetector } from '@cofounder/core';
+import { PIIDetector, createPIIDetector } from '@waymakerai/aicofounder-core';
 
 export function createRAGSecurityPipeline(config: {
   piiRedaction: boolean;
@@ -1277,7 +1277,7 @@ export function createRAGSecurityPipeline(config: {
         return { safe: true, risk: 'none' };
       }
 
-      const { detectInjection } = await import('@cofounder/core');
+      const { detectInjection } = await import('@waymakerai/aicofounder-core');
       const result = detectInjection(text);
 
       return {
@@ -1402,10 +1402,10 @@ cofounder mcp:tools                     # List available MCP tools
 ### Complete Agent with RAG + Vibe
 
 ```typescript
-import { createCoFounder } from '@cofounder/core';
-import { RAGClient, createSupabaseRAGAdapter } from '@cofounder/rag';
-import { createAgent, LLMAgent } from '@cofounder/agents';
-import { loadVibeSpec, compileVibe } from '@cofounder/core/vibe-spec';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
+import { RAGClient, createSupabaseRAGAdapter } from '@waymakerai/aicofounder-rag';
+import { createAgent, LLMAgent } from '@waymakerai/aicofounder-agents';
+import { loadVibeSpec, compileVibe } from '@waymakerai/aicofounder-core/vibe-spec';
 
 // Initialize CoFounder
 const cofounder = createCoFounder({
@@ -1468,9 +1468,9 @@ console.log('Citations:', result.citations);
 ## Next Steps
 
 1. **Implement** the RAG Client enhancements (knowledge base management, multi-tenant)
-2. **Create** `@cofounder/agents` package with ADK
+2. **Create** `@waymakerai/aicofounder-agents` package with ADK
 3. **Add** VibeSpec loader and compiler to core
-4. **Build** adapter packages (@cofounder/crewai, @cofounder/langchain, @cofounder/mcp)
+4. **Build** adapter packages (@waymakerai/aicofounder-crewai, @waymakerai/aicofounder-langchain, @waymakerai/aicofounder-mcp)
 5. **Add** CLI commands for KB, agents, vibes
 6. **Create** example apps demonstrating full stack
 

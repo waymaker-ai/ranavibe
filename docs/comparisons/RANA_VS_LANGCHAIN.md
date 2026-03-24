@@ -96,7 +96,7 @@
 #### CoFounder
 
 ```typescript
-import { APIGenerator, DatabaseGenerator } from '@cofounder/generate';
+import { APIGenerator, DatabaseGenerator } from '@waymakerai/aicofounder-generate';
 
 // Generate complete CRUD API
 const api = APIGenerator.generateCRUD({
@@ -156,7 +156,7 @@ result = chain.invoke({"entity": "User"})
 #### CoFounder
 
 ```typescript
-import { createComplianceEnforcer, PresetRules } from '@cofounder/compliance';
+import { createComplianceEnforcer, PresetRules } from '@waymakerai/aicofounder-compliance';
 
 const enforcer = createComplianceEnforcer({
   enableAllPresets: true, // HIPAA, SEC, GDPR, CCPA
@@ -209,7 +209,7 @@ class ComplianceCallback(StdOutCallbackHandler):
 #### CoFounder
 
 ```typescript
-import { createRAG } from '@cofounder/rag';
+import { createRAG } from '@waymakerai/aicofounder-rag';
 
 const rag = await createRAG({
   preset: 'accurate',
@@ -265,7 +265,7 @@ result = qa.run("What is our refund policy?")
 #### CoFounder
 
 ```typescript
-import { createContextOptimizer } from '@cofounder/context-optimizer';
+import { createContextOptimizer } from '@waymakerai/aicofounder-context-optimizer';
 
 const optimizer = createContextOptimizer({
   strategy: 'hybrid',     // Smart mix of full + summarized
@@ -320,7 +320,7 @@ chunks = splitter.split_text(codebase)
 #### CoFounder
 
 ```typescript
-import { createCoFounder } from '@cofounder/core';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
 
 const cofounder = createCoFounder({
   providers: {
@@ -378,10 +378,10 @@ def get_llm(task):
 
 ```typescript
 // Single import for everything
-import { createCoFounder } from '@cofounder/core';
-import { createRAG } from '@cofounder/rag';
-import { createComplianceEnforcer } from '@cofounder/compliance';
-import { APIGenerator } from '@cofounder/generate';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
+import { createRAG } from '@waymakerai/aicofounder-rag';
+import { createComplianceEnforcer } from '@waymakerai/aicofounder-compliance';
+import { APIGenerator } from '@waymakerai/aicofounder-generate';
 
 // Type-safe, autocomplete works
 const cofounder = createCoFounder({ /* ... */ });
@@ -488,8 +488,8 @@ Choose LangChain if you:
 
 ```typescript
 // Use CoFounder for TypeScript app with compliance
-import { createCoFounder } from '@cofounder/core';
-import { createComplianceEnforcer } from '@cofounder/compliance';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
+import { createComplianceEnforcer } from '@waymakerai/aicofounder-compliance';
 
 const cofounder = createCoFounder({ /* ... */ });
 const enforcer = createComplianceEnforcer({ enableAllPresets: true });

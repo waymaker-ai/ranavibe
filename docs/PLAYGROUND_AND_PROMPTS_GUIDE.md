@@ -58,7 +58,7 @@ playground> template agent
 
 Loads:
 ```typescript
-import { createAgent, createCoFounder } from '@cofounder/agents';
+import { createAgent, createCoFounder } from '@waymakerai/aicofounder-agents';
 
 const cofounder = createCoFounder({
   providers: { anthropic: process.env.ANTHROPIC_API_KEY }

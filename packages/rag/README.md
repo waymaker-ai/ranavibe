@@ -1,4 +1,4 @@
-# @cofounder/rag
+# @waymakerai/aicofounder-rag
 
 Advanced RAG (Retrieval Augmented Generation) for the CoFounder Framework.
 
@@ -15,13 +15,13 @@ Advanced RAG (Retrieval Augmented Generation) for the CoFounder Framework.
 ## Installation
 
 ```bash
-npm install @cofounder/rag
+npm install @waymakerai/aicofounder-rag
 ```
 
 ## Quick Start
 
 ```typescript
-import { createRAGPipeline, RAGPresets } from '@cofounder/rag';
+import { createRAGPipeline, RAGPresets } from '@waymakerai/aicofounder-rag';
 
 // Use a preset for quick setup
 const pipeline = RAGPresets.balanced();
@@ -49,7 +49,7 @@ console.log(result.citations);
 ### Custom Pipeline
 
 ```typescript
-import { createRAGPipeline } from '@cofounder/rag';
+import { createRAGPipeline } from '@waymakerai/aicofounder-rag';
 
 const pipeline = createRAGPipeline({
   // Chunking strategy
@@ -103,7 +103,7 @@ const pipeline = createRAGPipeline({
 ### Presets
 
 ```typescript
-import { RAGPresets } from '@cofounder/rag';
+import { RAGPresets } from '@waymakerai/aicofounder-rag';
 
 // Fast: Optimized for speed
 const fast = RAGPresets.fast();
@@ -134,7 +134,7 @@ const chat = RAGPresets.chat();
 Splits text based on semantic boundaries using embedding similarity:
 
 ```typescript
-import { SemanticChunker } from '@cofounder/rag';
+import { SemanticChunker } from '@waymakerai/aicofounder-rag';
 
 const chunker = new SemanticChunker();
 const chunks = await chunker.chunk(text, {
@@ -149,7 +149,7 @@ const chunks = await chunker.chunk(text, {
 Preserves markdown structure (headers, code blocks, lists):
 
 ```typescript
-import { MarkdownChunker } from '@cofounder/rag';
+import { MarkdownChunker } from '@waymakerai/aicofounder-rag';
 
 const chunker = new MarkdownChunker();
 const chunks = await chunker.chunk(markdown, {
@@ -164,7 +164,7 @@ const chunks = await chunker.chunk(markdown, {
 Preserves function and class boundaries:
 
 ```typescript
-import { CodeChunker } from '@cofounder/rag';
+import { CodeChunker } from '@waymakerai/aicofounder-rag';
 
 const chunker = new CodeChunker();
 const chunks = await chunker.chunk(code, {
@@ -182,7 +182,7 @@ const chunks = await chunker.chunk(code, {
 Combines vector and keyword search:
 
 ```typescript
-import { HybridRetriever } from '@cofounder/rag';
+import { HybridRetriever } from '@waymakerai/aicofounder-rag';
 
 const retriever = new HybridRetriever();
 await retriever.index(chunks);
@@ -207,7 +207,7 @@ const results = await retriever.retrieve(query, {
 More accurate than bi-encoder but slower:
 
 ```typescript
-import { CrossEncoderReranker } from '@cofounder/rag';
+import { CrossEncoderReranker } from '@waymakerai/aicofounder-rag';
 
 const reranker = new CrossEncoderReranker();
 const reranked = await reranker.rerank(query, results, {
@@ -221,7 +221,7 @@ const reranked = await reranker.rerank(query, results, {
 Maximize relevance while maintaining diversity:
 
 ```typescript
-import { DiversityReranker } from '@cofounder/rag';
+import { DiversityReranker } from '@waymakerai/aicofounder-rag';
 
 const reranker = new DiversityReranker();
 const reranked = await reranker.rerank(query, results, {
@@ -273,7 +273,7 @@ synthesizer: {
 ### Setup
 
 ```tsx
-import { RAGProvider, RAGPresets } from '@cofounder/rag';
+import { RAGProvider, RAGPresets } from '@waymakerai/aicofounder-rag';
 
 const pipeline = RAGPresets.balanced();
 
@@ -289,7 +289,7 @@ function App() {
 ### useRAG Hook
 
 ```tsx
-import { useRAG } from '@cofounder/rag';
+import { useRAG } from '@waymakerai/aicofounder-rag';
 
 function SearchComponent() {
   const { query, answer, citations, isLoading, error } = useRAG();
@@ -317,7 +317,7 @@ function SearchComponent() {
 ### useRAGStream Hook
 
 ```tsx
-import { useRAGStream } from '@cofounder/rag';
+import { useRAGStream } from '@waymakerai/aicofounder-rag';
 
 function StreamingSearch() {
   const { queryStream, answer, citations, isStreaming, stop } = useRAGStream();
@@ -338,7 +338,7 @@ function StreamingSearch() {
 ### useRAGIndex Hook
 
 ```tsx
-import { useRAGIndex } from '@cofounder/rag';
+import { useRAGIndex } from '@waymakerai/aicofounder-rag';
 
 function DocumentManager() {
   const { index, deleteDocuments, isIndexing, progress, documentCount } = useRAGIndex();

@@ -6,7 +6,7 @@ Everything you need to know about what was built and what to do next.
 
 ## ✅ What's Been Built
 
-### **1. Core SDK (@cofounder/core)** ✅
+### **1. Core SDK (@waymakerai/aicofounder-core)** ✅
 
 **Location:** `packages/core/`
 
@@ -40,7 +40,7 @@ Everything you need to know about what was built and what to do next.
 
 ---
 
-### **2. React Hooks Package (@cofounder/react)** ✅
+### **2. React Hooks Package (@waymakerai/aicofounder-react)** ✅
 
 **Location:** `packages/react/`
 
@@ -171,7 +171,7 @@ Everything you need to know about what was built and what to do next.
 
 ```typescript
 // Just like useState or React Query
-import { useCoFounderChat } from '@cofounder/react';
+import { useCoFounderChat } from '@waymakerai/aicofounder-react';
 
 function ChatApp() {
   const { chat, response, loading, cost } = useCoFounderChat(cofounder);
@@ -283,16 +283,16 @@ cd ../react
 npm publish --access public
 
 # 4. Verify
-npm view @cofounder/core
-npm view @cofounder/react
+npm view @waymakerai/aicofounder-core
+npm view @waymakerai/aicofounder-react
 ```
 
 **See:** `PUBLISHING_GUIDE.md` for detailed instructions
 
 **Checklist:**
 - [ ] npm login successful
-- [ ] @cofounder/core published
-- [ ] @cofounder/react published
+- [ ] @waymakerai/aicofounder-core published
+- [ ] @waymakerai/aicofounder-react published
 - [ ] Both visible on npmjs.com
 - [ ] Test install works
 
@@ -355,7 +355,7 @@ git push origin v2.0.0
 ```
 cofounder/
 ├── packages/
-│   ├── core/                      # @cofounder/core SDK
+│   ├── core/                      # @waymakerai/aicofounder-core SDK
 │   │   ├── src/
 │   │   │   ├── types.ts           # All TypeScript types
 │   │   │   ├── client.ts          # Main RanaClient
@@ -369,7 +369,7 @@ cofounder/
 │   │   ├── tsconfig.json
 │   │   └── README.md
 │   │
-│   └── react/                     # @cofounder/react hooks
+│   └── react/                     # @waymakerai/aicofounder-react hooks
 │       ├── src/
 │       │   ├── types.ts           # Type definitions
 │       │   ├── hooks.ts           # 5 custom hooks
@@ -380,7 +380,7 @@ cofounder/
 │       └── README.md
 │
 ├── tools/
-│   └── cli/                       # @cofounder/cli
+│   └── cli/                       # @waymakerai/aicofounder-cli
 │       ├── src/
 │       │   ├── commands/
 │       │   │   ├── dashboard.ts   # Cost dashboard
@@ -596,8 +596,8 @@ Handles:
 
 ### Publishing
 - [ ] npm login
-- [ ] Publish @cofounder/core
-- [ ] Publish @cofounder/react
+- [ ] Publish @waymakerai/aicofounder-core
+- [ ] Publish @waymakerai/aicofounder-react
 - [ ] Create GitHub release
 
 ### Launch

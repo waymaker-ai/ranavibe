@@ -9,7 +9,7 @@ Welcome to CoFounder (Rapid AI Native Architecture) - the complete AI developmen
 ### 1. Install CoFounder CLI
 
 ```bash
-npm install -g @cofounder/cli
+npm install -g @waymakerai/aicofounder-cli
 ```
 
 ### 2. Initialize Your Project
@@ -50,12 +50,12 @@ npm run dev
 
 CoFounder 2025 comes with three powerful packages:
 
-### @cofounder/helpers - Quick LLM Functions
+### @waymakerai/aicofounder-helpers - Quick LLM Functions
 
 One-line AI operations for common tasks:
 
 ```typescript
-import { summarize, translate, classify, extract } from '@cofounder/helpers';
+import { summarize, translate, classify, extract } from '@waymakerai/aicofounder-helpers';
 
 // Summarize text
 const summary = await summarize(longText, { style: 'brief' });
@@ -80,12 +80,12 @@ All helpers include:
 - 📊 Cost tracking
 - 🔁 Retry logic
 
-### @cofounder/prompts - Prompt Management
+### @waymakerai/aicofounder-prompts - Prompt Management
 
 Enterprise-grade prompt versioning and A/B testing:
 
 ```typescript
-import { PromptManager } from '@cofounder/prompts';
+import { PromptManager } from '@waymakerai/aicofounder-prompts';
 
 const pm = new PromptManager({ workspace: 'my-app' });
 
@@ -111,12 +111,12 @@ const testId = await pm.createABTest('greeting', {
 });
 ```
 
-### @cofounder/rag - Advanced RAG
+### @waymakerai/aicofounder-rag - Advanced RAG
 
 Production-ready retrieval augmented generation:
 
 ```typescript
-import { RAGPresets, createRAGPipeline } from '@cofounder/rag';
+import { RAGPresets, createRAGPipeline } from '@waymakerai/aicofounder-rag';
 
 // Use a preset
 const pipeline = RAGPresets.balanced();
@@ -221,8 +221,8 @@ cofounder seo:generate
 ### 1. Build a Chatbot
 
 ```typescript
-import { PromptManager } from '@cofounder/prompts';
-import { RAGPresets } from '@cofounder/rag';
+import { PromptManager } from '@waymakerai/aicofounder-prompts';
+import { RAGPresets } from '@waymakerai/aicofounder-rag';
 
 // Setup RAG for knowledge base
 const rag = RAGPresets.chat();
@@ -260,7 +260,7 @@ async function handleQuery(question: string) {
 ### 2. Content Generation
 
 ```typescript
-import { generate, rewrite, summarize } from '@cofounder/helpers';
+import { generate, rewrite, summarize } from '@waymakerai/aicofounder-helpers';
 
 // Generate blog post
 const blog = await generate('Write a blog post about AI trends', {
@@ -282,7 +282,7 @@ const tweet = await summarize(blog, {
 ### 3. Data Extraction
 
 ```typescript
-import { extract, classify } from '@cofounder/helpers';
+import { extract, classify } from '@waymakerai/aicofounder-helpers';
 
 // Extract structured data from emails
 const emailData = await extract(email, {
@@ -406,9 +406,9 @@ cofounder status
 
 ## 🎉 What's New in 2025
 
-- **@cofounder/helpers** - 10 one-line AI functions
-- **@cofounder/prompts** - Enterprise prompt management with A/B testing
-- **@cofounder/rag** - Advanced RAG with hybrid retrieval and re-ranking
+- **@waymakerai/aicofounder-helpers** - 10 one-line AI functions
+- **@waymakerai/aicofounder-prompts** - Enterprise prompt management with A/B testing
+- **@waymakerai/aicofounder-rag** - Advanced RAG with hybrid retrieval and re-ranking
 - **Natural Language Code Generation** - `cofounder generate` command
 - **Process Intelligence** - Velocity metrics and legacy analysis
 - **Enhanced Cost Tracking** - Per-request cost estimation

@@ -1,4 +1,4 @@
-# @cofounder/streaming
+# @waymakerai/aicofounder-streaming
 
 Guard SSE/streaming LLM responses token-by-token. Catch PII, prompt injection, and toxicity mid-stream in real-time.
 
@@ -7,7 +7,7 @@ Guard SSE/streaming LLM responses token-by-token. Catch PII, prompt injection, a
 ## Installation
 
 ```bash
-npm install @cofounder/streaming
+npm install @waymakerai/aicofounder-streaming
 ```
 
 ## Quick Start
@@ -16,7 +16,7 @@ npm install @cofounder/streaming
 
 ```typescript
 import Anthropic from '@anthropic-ai/sdk';
-import { StreamGuard } from '@cofounder/streaming';
+import { StreamGuard } from '@waymakerai/aicofounder-streaming';
 
 const client = new Anthropic();
 const guard = new StreamGuard({
@@ -62,7 +62,7 @@ for await (const event of guard.guardAnthropic(stream)) {
 
 ```typescript
 import OpenAI from 'openai';
-import { StreamGuard } from '@cofounder/streaming';
+import { StreamGuard } from '@waymakerai/aicofounder-streaming';
 
 const client = new OpenAI();
 const guard = new StreamGuard();
@@ -86,7 +86,7 @@ console.log(`Processed ${report.totalChunks} chunks, ${report.violations.length}
 ### With Any Async Iterable
 
 ```typescript
-import { StreamGuard } from '@cofounder/streaming';
+import { StreamGuard } from '@waymakerai/aicofounder-streaming';
 
 const guard = new StreamGuard({
   bufferSize: 300,       // Sliding window size in chars
@@ -126,7 +126,7 @@ for await (const event of guard.guard(myStream())) {
 ### Generic SSE Parsing
 
 ```typescript
-import { extractSSETextDeltas, StreamGuard } from '@cofounder/streaming';
+import { extractSSETextDeltas, StreamGuard } from '@waymakerai/aicofounder-streaming';
 
 // Parse raw SSE from any provider
 const guard = new StreamGuard();
@@ -157,7 +157,7 @@ async function guardFetchStream(url: string) {
 ### Processing Individual Chunks
 
 ```typescript
-import { StreamGuard } from '@cofounder/streaming';
+import { StreamGuard } from '@waymakerai/aicofounder-streaming';
 
 const guard = new StreamGuard();
 

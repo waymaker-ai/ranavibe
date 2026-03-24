@@ -1,17 +1,17 @@
-# @cofounder/benchmark
+# @waymakerai/aicofounder-benchmark
 
 Detection accuracy benchmark suite for CoFounder guardrails. Measure precision, recall, F1, and false positive/negative rates for your PII, injection, and toxicity detectors.
 
 ## Installation
 
 ```bash
-npm install @cofounder/benchmark
+npm install @waymakerai/aicofounder-benchmark
 ```
 
 ## Quick Start
 
 ```typescript
-import { runBenchmarks } from '@cofounder/benchmark';
+import { runBenchmarks } from '@waymakerai/aicofounder-benchmark';
 
 const report = await runBenchmarks({
   detectors: [
@@ -81,7 +81,7 @@ interface DetectedFinding {
 ## Running Individual Benchmarks
 
 ```typescript
-import { runPiiBenchmark, runInjectionBenchmark, runToxicityBenchmark } from '@cofounder/benchmark';
+import { runPiiBenchmark, runInjectionBenchmark, runToxicityBenchmark } from '@waymakerai/aicofounder-benchmark';
 
 const piiResult = await runPiiBenchmark(myDetector, 'My PII Detector');
 const injResult = await runInjectionBenchmark(myDetector, 'My Injection Detector');

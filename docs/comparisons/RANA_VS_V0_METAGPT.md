@@ -25,8 +25,8 @@
 **TypeScript framework for production AI features**
 
 ```typescript
-import { APIGenerator, DatabaseGenerator } from '@cofounder/generate';
-import { createComplianceEnforcer } from '@cofounder/compliance';
+import { APIGenerator, DatabaseGenerator } from '@waymakerai/aicofounder-generate';
+import { createComplianceEnforcer } from '@waymakerai/aicofounder-compliance';
 
 // Generate production APIs
 const api = APIGenerator.generateCRUD(spec, {
@@ -119,7 +119,7 @@ const result = await generate('complete user management system', {
 **CoFounder:**
 ```typescript
 // Deploy as microservice
-import { generate } from '@cofounder/generate';
+import { generate } from '@waymakerai/aicofounder-generate';
 
 app.post('/api/generate', async (req, res) => {
   const code = await generate(req.body.description);
@@ -243,8 +243,8 @@ const schema = DatabaseGenerator.generatePrismaSchema(entity, {
 **CoFounder:**
 ```typescript
 // Native TypeScript
-import { generate } from '@cofounder/generate';
-import type { GeneratedFile } from '@cofounder/generate';
+import { generate } from '@waymakerai/aicofounder-generate';
+import type { GeneratedFile } from '@waymakerai/aicofounder-generate';
 
 const files: GeneratedFile[] = await generate('user auth');
 ```
@@ -348,7 +348,7 @@ company.run("Build todo app")
 
 **CoFounder:**
 ```typescript
-import { createComplianceEnforcer } from '@cofounder/compliance';
+import { createComplianceEnforcer } from '@waymakerai/aicofounder-compliance';
 
 const enforcer = createComplianceEnforcer({
   enableAllPresets: true,
@@ -411,7 +411,7 @@ const sql = DatabaseGenerator.generateSQLMigration(entity, {
 ```typescript
 // Deploy as microservice
 import express from 'express';
-import { generate } from '@cofounder/generate';
+import { generate } from '@waymakerai/aicofounder-generate';
 
 const app = express();
 
@@ -566,7 +566,7 @@ company.run("Build todo app")
 // Visit v0.dev, describe UI, get component
 
 // 2. Use CoFounder for backend
-import { APIGenerator, DatabaseGenerator } from '@cofounder/generate';
+import { APIGenerator, DatabaseGenerator } from '@waymakerai/aicofounder-generate';
 
 const api = APIGenerator.generateCRUD(spec, {
   framework: 'next',

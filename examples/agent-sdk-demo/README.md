@@ -1,6 +1,6 @@
 # agent-sdk-demo
 
-Demonstrates the core features of `@cofounder/agent-sdk`:
+Demonstrates the core features of `@waymakerai/aicofounder-agent-sdk`:
 
 - **Basic guarded agent** with `guards: true` for sensible defaults
 - **HIPAA agent factory** with strict PII blocking and compliance enforcement

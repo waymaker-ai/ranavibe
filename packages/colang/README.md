@@ -1,17 +1,17 @@
-# @cofounder/colang
+# @waymakerai/aicofounder-colang
 
 Parse NeMo Guardrails Colang files and convert them to CoFounder policy format. Migrate your existing NeMo Guardrails configurations to CoFounder with minimal effort.
 
 ## Installation
 
 ```bash
-npm install @cofounder/colang
+npm install @waymakerai/aicofounder-colang
 ```
 
 ## Quick Start
 
 ```typescript
-import { importColangFile } from '@cofounder/colang';
+import { importColangFile } from '@waymakerai/aicofounder-colang';
 import { readFileSync } from 'fs';
 
 const source = readFileSync('./guardrails.co', 'utf-8');
@@ -50,7 +50,7 @@ Locate your `.co` files from your NeMo Guardrails project, typically in the `con
 ### Step 2: Convert
 
 ```typescript
-import { importColangFile } from '@cofounder/colang';
+import { importColangFile } from '@waymakerai/aicofounder-colang';
 import { readFileSync, writeFileSync } from 'fs';
 
 const source = readFileSync('./config/rails.co', 'utf-8');

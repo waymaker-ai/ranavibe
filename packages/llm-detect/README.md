@@ -1,4 +1,4 @@
-# @cofounder/llm-detect
+# @waymakerai/aicofounder-llm-detect
 
 LLM-augmented detection using a small model (Haiku/mini) for edge cases that regex patterns cannot catch. Zero runtime dependencies.
 
@@ -18,7 +18,7 @@ Standard regex-based detection misses obfuscated PII, novel injection techniques
 ## Installation
 
 ```bash
-npm install @cofounder/llm-detect
+npm install @waymakerai/aicofounder-llm-detect
 ```
 
 ## Quick Start
@@ -26,7 +26,7 @@ npm install @cofounder/llm-detect
 ### LLM-only Detection
 
 ```typescript
-import { LLMDetector } from '@cofounder/llm-detect';
+import { LLMDetector } from '@waymakerai/aicofounder-llm-detect';
 
 const detector = new LLMDetector({
   model: 'claude-haiku-4-5-20251001',
@@ -48,7 +48,7 @@ console.log(result.findings);
 ### Hybrid Detection (Recommended)
 
 ```typescript
-import { HybridDetector } from '@cofounder/llm-detect';
+import { HybridDetector } from '@waymakerai/aicofounder-llm-detect';
 
 const detector = new HybridDetector({
   model: 'claude-haiku-4-5-20251001',
@@ -69,7 +69,7 @@ const result = await detector.detect({
 ### Regex-only Detection
 
 ```typescript
-import { regexDetect } from '@cofounder/llm-detect';
+import { regexDetect } from '@waymakerai/aicofounder-llm-detect';
 
 // Fast, free detection for well-known patterns
 const findings = regexDetect('My SSN is 123-45-6789', 'pii');

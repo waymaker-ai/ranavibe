@@ -144,7 +144,7 @@ cofounder mcp publish ./my-server --tag beta
 ### Basic Usage
 
 ```typescript
-import { scaffoldMCPServer, TEMPLATES } from '@cofounder/mcp';
+import { scaffoldMCPServer, TEMPLATES } from '@waymakerai/aicofounder-mcp';
 
 const result = scaffoldMCPServer({
   name: 'my-server',
@@ -256,7 +256,7 @@ Includes tools for:
 Create a mock MCP server for testing.
 
 ```typescript
-import { createMockServer, runToolTests } from '@cofounder/mcp';
+import { createMockServer, runToolTests } from '@waymakerai/aicofounder-mcp';
 
 const server = createMockServer({
   name: 'test-server',
@@ -302,7 +302,7 @@ import {
   assertResourceExists,
   assertToolSuccess,
   assertResultContains,
-} from '@cofounder/mcp';
+} from '@waymakerai/aicofounder-mcp';
 
 assertToolExists(server, 'echo');
 assertResourceExists(server, 'myserver://data');

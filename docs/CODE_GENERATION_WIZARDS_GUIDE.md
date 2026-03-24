@@ -534,7 +534,7 @@ import {
   parseIntent,
   createPlan,
   generateFromPlan,
-} from '@cofounder/generate';
+} from '@waymakerai/aicofounder-generate';
 
 // High-level API
 const result = await generate('User authentication with OAuth', {
@@ -559,4 +559,4 @@ const files = await generateFromPlan(plan);
 
 - [Code Generation Templates Guide](./CODE_GENERATION_TEMPLATES_GUIDE.md)
 - [Natural Language Code Generation Spec](./NATURAL_LANGUAGE_CODE_GENERATION_SPEC.md)
-- [@cofounder/generate Package](../packages/generate/)
+- [@waymakerai/aicofounder-generate Package](../packages/generate/)

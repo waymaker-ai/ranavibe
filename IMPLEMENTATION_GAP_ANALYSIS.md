@@ -50,7 +50,7 @@
 
 ## Part 2: Feature Implementation Gap Analysis
 
-### 2.1 Quick LLM Helpers (`@cofounder/helpers`)
+### 2.1 Quick LLM Helpers (`@waymakerai/aicofounder-helpers`)
 
 **Status**: ✅ **100% COMPLETE**
 
@@ -73,7 +73,7 @@
 
 ---
 
-### 2.2 Prompt Management System (`@cofounder/prompts`)
+### 2.2 Prompt Management System (`@waymakerai/aicofounder-prompts`)
 
 **Status**: ✅ **100% COMPLETE**
 
@@ -91,7 +91,7 @@
 
 ---
 
-### 2.3 Advanced RAG Package (`@cofounder/rag`)
+### 2.3 Advanced RAG Package (`@waymakerai/aicofounder-rag`)
 
 **Status**: ✅ **100% COMPLETE**
 
@@ -113,17 +113,17 @@
 
 ---
 
-### 2.4 Natural Language Code Generation (`@cofounder/generate`)
+### 2.4 Natural Language Code Generation (`@waymakerai/aicofounder-generate`)
 
 **Status**: ⚠️ **~40% COMPLETE**
 
 | Spec Requirement | Status | Notes |
 |------------------|--------|-------|
-| Dedicated `@cofounder/generate` package | ❌ | Not created |
+| Dedicated `@waymakerai/aicofounder-generate` package | ❌ | Not created |
 | Intent parser | ❌ | Not implemented |
 | Implementation planner | ❌ | Not implemented |
 | Context analyzer | ❌ | Not implemented |
-| Basic code generator | ✅ | Via `@cofounder/helpers` generate() |
+| Basic code generator | ✅ | Via `@waymakerai/aicofounder-helpers` generate() |
 | Interactive wizard | ❌ | Not implemented |
 | 20+ code templates | ❌ | Not implemented |
 | Quality gates integration | ⚠️ | Partial (exists separately) |
@@ -207,8 +207,8 @@ MISSING (Must Build):
 | Security features | ✅ | PII, injection, rate limiting |
 | Observability | ✅ | Tracing, metrics, audit |
 | Vibe enforcer | ✅ | Constraint enforcement |
-| LangChain adapter | ✅ | `@cofounder/langchain` |
-| CrewAI adapter | ✅ | `@cofounder/crewai` |
+| LangChain adapter | ✅ | `@waymakerai/aicofounder-langchain` |
+| CrewAI adapter | ✅ | `@waymakerai/aicofounder-crewai` |
 | Preset agents | ✅ | RAG QA, Chat, Task |
 | Agent communication protocols | ❌ | **NOT IMPLEMENTED** |
 | Agent-to-agent messaging | ❌ | Not implemented |
@@ -405,7 +405,7 @@ NOW (Dec 2025):
 Q1 2025 (Jan-Mar):
 ├── Natural Language Code Gen: 10 weeks
 ├── MCP Server Creation: 4 weeks (parallel)
-└── Ship @cofounder/generate v1.0, MCP tools v1.0
+└── Ship @waymakerai/aicofounder-generate v1.0, MCP tools v1.0
 
 Q2 2025 (Apr-Jun):
 ├── Multi-Agent Orchestration: 8 weeks

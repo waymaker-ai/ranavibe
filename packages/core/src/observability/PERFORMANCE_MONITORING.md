@@ -15,16 +15,16 @@ The PerformanceMonitor class provides real-time performance tracking and analyti
 
 ## Installation
 
-The performance monitoring is included in `@cofounder/core`:
+The performance monitoring is included in `@waymakerai/aicofounder-core`:
 
 ```typescript
-import { createPerformanceMonitor } from '@cofounder/core';
+import { createPerformanceMonitor } from '@waymakerai/aicofounder-core';
 ```
 
 ## Quick Start
 
 ```typescript
-import { createPerformanceMonitor } from '@cofounder/core';
+import { createPerformanceMonitor } from '@waymakerai/aicofounder-core';
 
 // Create a performance monitor
 const monitor = createPerformanceMonitor({
@@ -249,7 +249,7 @@ createPerformanceMonitor(config?: PerformanceMonitorConfig): PerformanceMonitor
 Example of integrating performance monitoring with the CoFounder client:
 
 ```typescript
-import { createCoFounder, createPerformanceMonitor } from '@cofounder/core';
+import { createCoFounder, createPerformanceMonitor } from '@waymakerai/aicofounder-core';
 
 const cofounder = createCoFounder({
   providers: {

@@ -1,8 +1,8 @@
-# @cofounder/core
+# @waymakerai/aicofounder-core
 
 > Core SDK for CoFounder - Rapid AI Native Architecture
 
-The `@cofounder/core` package provides a unified, type-safe API for working with 9 LLM providers, automatic cost optimization, and intelligent caching.
+The `@waymakerai/aicofounder-core` package provides a unified, type-safe API for working with 9 LLM providers, automatic cost optimization, and intelligent caching.
 
 ## Features
 
@@ -17,7 +17,7 @@ The `@cofounder/core` package provides a unified, type-safe API for working with
 ## Installation
 
 ```bash
-npm install @cofounder/core
+npm install @waymakerai/aicofounder-core
 ```
 
 ## Quick Start
@@ -25,7 +25,7 @@ npm install @cofounder/core
 ### Simple Usage
 
 ```typescript
-import { createCoFounder } from '@cofounder/core';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
 
 const cofounder = createCoFounder({
   providers: {
@@ -79,7 +79,7 @@ const response = await cofounder
 Create `cofounder.config.ts`:
 
 ```typescript
-import { defineConfig } from '@cofounder/core';
+import { defineConfig } from '@waymakerai/aicofounder-core';
 
 export default defineConfig({
   providers: {
@@ -254,7 +254,7 @@ await cofounder.clearCache();
 ### Error Handling
 
 ```typescript
-import { RanaAuthError, RanaRateLimitError, RanaNetworkError } from '@cofounder/core';
+import { RanaAuthError, RanaRateLimitError, RanaNetworkError } from '@waymakerai/aicofounder-core';
 
 try {
   const response = await cofounder.chat('Hello!');
@@ -274,7 +274,7 @@ try {
 ### Creating a Plugin
 
 ```typescript
-import { definePlugin } from '@cofounder/core';
+import { definePlugin } from '@waymakerai/aicofounder-core';
 
 const loggingPlugin = definePlugin({
   name: 'logging-plugin',

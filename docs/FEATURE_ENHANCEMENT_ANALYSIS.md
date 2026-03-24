@@ -68,8 +68,8 @@ This analysis compares CoFounder's current capabilities with advanced agent fram
 
 #### Proposed Enhancement
 ```typescript
-// New @cofounder/guidelines package
-import { GuidelineManager, createGuideline } from '@cofounder/guidelines';
+// New @waymakerai/aicofounder-guidelines package
+import { GuidelineManager, createGuideline } from '@waymakerai/aicofounder-guidelines';
 
 const manager = new GuidelineManager();
 
@@ -128,8 +128,8 @@ const agent = createAgent({
 
 #### Proposed Enhancement
 ```typescript
-// New conversation journey system in @cofounder/agents
-import { ConversationJourney, createJourney } from '@cofounder/agents';
+// New conversation journey system in @waymakerai/aicofounder-agents
+import { ConversationJourney, createJourney } from '@waymakerai/aicofounder-agents';
 
 const customerSupport = createJourney({
   name: 'customer-support',
@@ -200,8 +200,8 @@ const agent = createAgent({
 
 #### Proposed Enhancement
 ```typescript
-// Enhanced analytics in @cofounder/agents
-import { ConversationAnalytics } from '@cofounder/agents';
+// Enhanced analytics in @waymakerai/aicofounder-agents
+import { ConversationAnalytics } from '@waymakerai/aicofounder-agents';
 
 const analytics = new ConversationAnalytics({
   tracking: {
@@ -299,8 +299,8 @@ const report = await analytics.getReport({
 
 #### Proposed Enhancement
 ```typescript
-// Enhanced compliance in @cofounder/agents
-import { ComplianceEnforcer, createComplianceRule } from '@cofounder/agents';
+// Enhanced compliance in @waymakerai/aicofounder-agents
+import { ComplianceEnforcer, createComplianceRule } from '@waymakerai/aicofounder-agents';
 
 const enforcer = new ComplianceEnforcer({
   rules: [
@@ -402,8 +402,8 @@ const agent = createAgent({
 
 #### Proposed Enhancement
 ```typescript
-// Enhanced context in @cofounder/agents
-import { ContextManager, ContextStrategy } from '@cofounder/agents';
+// Enhanced context in @waymakerai/aicofounder-agents
+import { ContextManager, ContextStrategy } from '@waymakerai/aicofounder-agents';
 
 const contextManager = new ContextManager({
   strategies: {
@@ -475,8 +475,8 @@ const agent = createAgent({
 
 #### Proposed Enhancement
 ```typescript
-// Explainability features in @cofounder/agents
-import { ExplainableAgent } from '@cofounder/agents';
+// Explainability features in @waymakerai/aicofounder-agents
+import { ExplainableAgent } from '@waymakerai/aicofounder-agents';
 
 const agent = new ExplainableAgent({
   explain: {
@@ -533,7 +533,7 @@ console.log(result.explanation);
 
 ### Phase 1: Foundation (Q1 2026) - 6-8 weeks
 **Priority**: High
-**Packages**: `@cofounder/guidelines`, `@cofounder/compliance`
+**Packages**: `@waymakerai/aicofounder-guidelines`, `@waymakerai/aicofounder-compliance`
 
 1. **Guideline Management System** (3-4 weeks)
    - Core guideline engine
@@ -552,7 +552,7 @@ console.log(result.explanation);
    - Validation gates
    - Basic analytics
 
-**Deliverable**: `@cofounder/agents@2.1.0` with guidelines and compliance
+**Deliverable**: `@waymakerai/aicofounder-agents@2.1.0` with guidelines and compliance
 
 ---
 
@@ -570,7 +570,7 @@ console.log(result.explanation);
    - Relevance filtering
    - Dynamic injection
 
-**Deliverable**: `@cofounder/analytics@1.0.0`, `@cofounder/agents@2.2.0`
+**Deliverable**: `@waymakerai/aicofounder-analytics@1.0.0`, `@waymakerai/aicofounder-agents@2.2.0`
 
 ---
 
@@ -587,7 +587,7 @@ console.log(result.explanation);
    - Custom reports
    - Export functionality
 
-**Deliverable**: `@cofounder/explainability@1.0.0`, Analytics Dashboard v1
+**Deliverable**: `@waymakerai/aicofounder-explainability@1.0.0`, Analytics Dashboard v1
 
 ---
 

@@ -658,7 +658,7 @@ function suggestDesignToken(value: string): string {
 
 ```typescript
 // .cofounder/custom-rules.ts
-import { DesignSystemChecker } from '@cofounder/core';
+import { DesignSystemChecker } from '@waymakerai/aicofounder-core';
 import { noMagicNumbers } from './rules/no-magic-numbers';
 
 const checker = new DesignSystemChecker(config);

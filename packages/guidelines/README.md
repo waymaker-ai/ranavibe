@@ -1,4 +1,4 @@
-# @cofounder/guidelines
+# @waymakerai/aicofounder-guidelines
 
 > Dynamic guideline management for CoFounder agents - Context-aware behavioral rules
 
@@ -14,7 +14,7 @@
 ## Installation
 
 ```bash
-npm install @cofounder/guidelines
+npm install @waymakerai/aicofounder-guidelines
 ```
 
 ## Quick Start
@@ -22,7 +22,7 @@ npm install @cofounder/guidelines
 ### Basic Usage
 
 ```typescript
-import { createGuidelineManager, createGuideline, Conditions } from '@cofounder/guidelines';
+import { createGuidelineManager, createGuideline, Conditions } from '@waymakerai/aicofounder-guidelines';
 
 const manager = createGuidelineManager();
 
@@ -50,7 +50,7 @@ console.log(matched);
 ### Using Presets
 
 ```typescript
-import { PresetGuidelines } from '@cofounder/guidelines';
+import { PresetGuidelines } from '@waymakerai/aicofounder-guidelines';
 
 // Add preset guidelines
 await manager.addGuideline(PresetGuidelines.noMedicalAdvice());
@@ -63,7 +63,7 @@ await manager.addGuideline(PresetGuidelines.professionalTone());
 Build complex matching logic easily:
 
 ```typescript
-import { Conditions } from '@cofounder/guidelines';
+import { Conditions } from '@waymakerai/aicofounder-guidelines';
 
 // Topic matching
 Conditions.topic('medical')
@@ -211,7 +211,7 @@ const manager = createGuidelineManager({
 ### File Storage
 
 ```typescript
-import { FileStorage } from '@cofounder/guidelines';
+import { FileStorage } from '@waymakerai/aicofounder-guidelines';
 
 const manager = createGuidelineManager({
   storage: new FileStorage('./guidelines.json')
@@ -256,7 +256,7 @@ import {
   createGuideline,
   Conditions,
   PresetGuidelines,
-} from '@cofounder/guidelines';
+} from '@waymakerai/aicofounder-guidelines';
 
 const manager = createGuidelineManager({
   enableAnalytics: true,
@@ -355,7 +355,7 @@ import type {
   GuidelineViolation,
   ValidationResult,
   EnforcementLevel,
-} from '@cofounder/guidelines';
+} from '@waymakerai/aicofounder-guidelines';
 ```
 
 ## Best Practices

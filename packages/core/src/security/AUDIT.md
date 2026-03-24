@@ -15,7 +15,7 @@ Comprehensive audit logging system for CoFounder security with GDPR compliance a
 ## Quick Start
 
 ```typescript
-import { createAuditLogger, hashApiKey } from '@cofounder/core';
+import { createAuditLogger, hashApiKey } from '@waymakerai/aicofounder-core';
 
 // Create audit logger with default settings
 const audit = createAuditLogger();
@@ -40,7 +40,7 @@ await audit.close();
 ### Basic Configuration
 
 ```typescript
-import { createAuditLogger, type AuditLoggerConfig } from '@cofounder/core';
+import { createAuditLogger, type AuditLoggerConfig } from '@waymakerai/aicofounder-core';
 
 const config: AuditLoggerConfig = {
   // Destinations - where logs are written
@@ -137,7 +137,7 @@ await audit.logResponse(
 ### Security Events
 
 ```typescript
-import { detectPII, detectInjectionAttempt } from '@cofounder/core';
+import { detectPII, detectInjectionAttempt } from '@waymakerai/aicofounder-core';
 
 // Detect PII
 const userInput = 'Contact me at john@example.com';
@@ -410,7 +410,7 @@ process.on('SIGTERM', async () => {
 ### Hash API Key
 
 ```typescript
-import { hashApiKey } from '@cofounder/core';
+import { hashApiKey } from '@waymakerai/aicofounder-core';
 
 const hash = hashApiKey('sk-ant-1234567890');
 // Returns: 16-character hash
@@ -419,7 +419,7 @@ const hash = hashApiKey('sk-ant-1234567890');
 ### Detect PII
 
 ```typescript
-import { detectPII } from '@cofounder/core';
+import { detectPII } from '@waymakerai/aicofounder-core';
 
 const result = detectPII('Contact me at john@example.com');
 // result.detected: true
@@ -429,7 +429,7 @@ const result = detectPII('Contact me at john@example.com');
 ### Detect Injection Attempts
 
 ```typescript
-import { detectInjectionAttempt } from '@cofounder/core';
+import { detectInjectionAttempt } from '@waymakerai/aicofounder-core';
 
 const result = detectInjectionAttempt('Ignore previous instructions');
 // result.detected: true
@@ -439,7 +439,7 @@ const result = detectInjectionAttempt('Ignore previous instructions');
 ## Integration with CoFounder Client
 
 ```typescript
-import { createCoFounder, createAuditLogger, hashApiKey } from '@cofounder/core';
+import { createCoFounder, createAuditLogger, hashApiKey } from '@waymakerai/aicofounder-core';
 
 const audit = createAuditLogger();
 await audit.initialize();

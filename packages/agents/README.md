@@ -1,17 +1,17 @@
-# @cofounder/agents
+# @waymakerai/aicofounder-agents
 
 Multi-agent orchestration, messaging, and lifecycle management for CoFounder applications.
 
 ## Installation
 
 ```bash
-npm install @cofounder/agents
+npm install @waymakerai/aicofounder-agents
 ```
 
 ## Quick Start
 
 ```typescript
-import { createAgent, createCoFounder, createTool } from '@cofounder/agents';
+import { createAgent, createCoFounder, createTool } from '@waymakerai/aicofounder-agents';
 
 // Initialize CoFounder
 const cofounder = createCoFounder({
@@ -59,7 +59,7 @@ console.log(response.content);
 ### Agent Types
 
 ```typescript
-import { createLLMAgent, createBaseAgent } from '@cofounder/agents';
+import { createLLMAgent, createBaseAgent } from '@waymakerai/aicofounder-agents';
 
 // LLM-powered agent
 const llmAgent = createLLMAgent({
@@ -81,7 +81,7 @@ const customAgent = createBaseAgent({
 ### Multi-Agent Orchestration
 
 ```typescript
-import { createOrchestrator } from '@cofounder/agents';
+import { createOrchestrator } from '@waymakerai/aicofounder-agents';
 
 const orchestrator = createOrchestrator();
 
@@ -110,7 +110,7 @@ Supported patterns:
 ### Agent Messaging
 
 ```typescript
-import { MessageBroker, createChannel } from '@cofounder/agents';
+import { MessageBroker, createChannel } from '@waymakerai/aicofounder-agents';
 
 const broker = new MessageBroker();
 
@@ -149,7 +149,7 @@ Channel types:
 ### Security
 
 ```typescript
-import { PiiDetector, InjectionDetector, RateLimiter } from '@cofounder/agents';
+import { PiiDetector, InjectionDetector, RateLimiter } from '@waymakerai/aicofounder-agents';
 
 // PII detection
 const piiDetector = new PiiDetector();
@@ -170,7 +170,7 @@ await rateLimiter.check(userId);
 ### Observability
 
 ```typescript
-import { Tracer, Metrics, AuditLogger } from '@cofounder/agents';
+import { Tracer, Metrics, AuditLogger } from '@waymakerai/aicofounder-agents';
 
 // Distributed tracing
 const tracer = new Tracer();
@@ -196,7 +196,7 @@ audit.log({
 ### Presets
 
 ```typescript
-import { presets } from '@cofounder/agents';
+import { presets } from '@waymakerai/aicofounder-agents';
 
 // Chat agent
 const chatAgent = presets.chatAgent({

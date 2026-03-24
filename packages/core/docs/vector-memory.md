@@ -20,7 +20,7 @@ The Vector Memory system provides semantic search capabilities for storing and r
 ### Basic Usage with Auto-Embedding
 
 ```typescript
-import { createInMemoryVectorMemory, EmbeddingProvider } from '@cofounder/core';
+import { createInMemoryVectorMemory, EmbeddingProvider } from '@waymakerai/aicofounder-core';
 
 // Create a simple embedding provider (mock for demo)
 const embeddingProvider: EmbeddingProvider = {
@@ -56,7 +56,7 @@ results.forEach(result => {
 ### File-Based Persistence
 
 ```typescript
-import { createFileVectorMemory } from '@cofounder/core';
+import { createFileVectorMemory } from '@waymakerai/aicofounder-core';
 
 const memory = createFileVectorMemory('./memories.json', 384, {
   embeddingProvider,
@@ -75,7 +75,7 @@ await memory.close();
 ### Pre-computed Embeddings
 
 ```typescript
-import { createInMemoryVectorMemory } from '@cofounder/core';
+import { createInMemoryVectorMemory } from '@waymakerai/aicofounder-core';
 
 const memory = createInMemoryVectorMemory(768); // OpenAI ada-002 dimensions
 await memory.initialize();
@@ -111,7 +111,7 @@ VectorMemory (Main Class)
 Best for development, testing, and small datasets.
 
 ```typescript
-import { InMemoryVectorBackend, createVectorMemory } from '@cofounder/core';
+import { InMemoryVectorBackend, createVectorMemory } from '@waymakerai/aicofounder-core';
 
 const memory = createVectorMemory({
   dimensions: 384,
@@ -133,7 +133,7 @@ const memory = createVectorMemory({
 Good for persistent storage of small to medium datasets.
 
 ```typescript
-import { FileVectorBackend, createVectorMemory } from '@cofounder/core';
+import { FileVectorBackend, createVectorMemory } from '@waymakerai/aicofounder-core';
 
 const memory = createVectorMemory({
   dimensions: 384,
@@ -156,7 +156,7 @@ const memory = createVectorMemory({
 Integrate with external vector databases:
 
 ```typescript
-import { VectorMemoryBackend } from '@cofounder/core';
+import { VectorMemoryBackend } from '@waymakerai/aicofounder-core';
 
 class PineconeBackend implements VectorMemoryBackend {
   async initialize() { /* ... */ }
@@ -362,7 +362,7 @@ Calculate similarity using specified metric.
 
 ```typescript
 import OpenAI from 'openai';
-import { createVectorMemory, EmbeddingProvider } from '@cofounder/core';
+import { createVectorMemory, EmbeddingProvider } from '@waymakerai/aicofounder-core';
 
 const openai = new OpenAI();
 
@@ -383,7 +383,7 @@ const memory = createInMemoryVectorMemory(1536, { embeddingProvider });
 ### Anthropic with CoFounder Client
 
 ```typescript
-import { createCoFounder, createVectorMemory } from '@cofounder/core';
+import { createCoFounder, createVectorMemory } from '@waymakerai/aicofounder-core';
 
 const cofounder = createCoFounder({
   providers: {
@@ -404,7 +404,7 @@ const embeddingProvider = {
 ### Chatbot with Conversation Memory
 
 ```typescript
-import { createFileVectorMemory } from '@cofounder/core';
+import { createFileVectorMemory } from '@waymakerai/aicofounder-core';
 
 class ChatbotMemory {
   private vectorMemory;

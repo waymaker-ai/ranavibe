@@ -1,4 +1,4 @@
-# @cofounder/openclaw
+# @waymakerai/aicofounder-openclaw
 
 CoFounder guardrails for [OpenClaw](https://github.com/openclaw-ai/openclaw) agents. Adds PII detection, prompt injection blocking, toxicity filtering, compliance enforcement, and cost tracking to any OpenClaw agent as a skill or standalone bridge.
 
@@ -7,7 +7,7 @@ CoFounder guardrails for [OpenClaw](https://github.com/openclaw-ai/openclaw) age
 ## Installation
 
 ```bash
-npm install @cofounder/openclaw
+npm install @waymakerai/aicofounder-openclaw
 ```
 
 ## Quick Start
@@ -17,7 +17,7 @@ npm install @cofounder/openclaw
 The primary integration. Register CoFounder as a skill in your OpenClaw agent:
 
 ```typescript
-import { createCoFounderSkill } from '@cofounder/openclaw';
+import { createCoFounderSkill } from '@waymakerai/aicofounder-openclaw';
 
 const cofounderSkill = createCoFounderSkill({
   pii: 'redact',                    // 'detect' | 'redact' | 'block'
@@ -48,7 +48,7 @@ The skill hooks into OpenClaw's message pipeline:
 Use when you want guardrails without the OpenClaw skill system:
 
 ```typescript
-import { OpenClawBridge } from '@cofounder/openclaw';
+import { OpenClawBridge } from '@waymakerai/aicofounder-openclaw';
 
 const bridge = new OpenClawBridge({
   guardOptions: {
@@ -75,7 +75,7 @@ Protect your webhook server:
 
 ```typescript
 import express from 'express';
-import { OpenClawBridge } from '@cofounder/openclaw';
+import { OpenClawBridge } from '@waymakerai/aicofounder-openclaw';
 
 const app = express();
 const bridge = new OpenClawBridge({
@@ -215,7 +215,7 @@ import {
   detectToxicity, hasToxicity,
   checkCompliance, isCompliant,
   BudgetTracker,
-} from '@cofounder/openclaw';
+} from '@waymakerai/aicofounder-openclaw';
 
 // PII
 const pii = detectPII('Email: user@example.com, SSN: 123-45-6789');
@@ -247,7 +247,7 @@ console.log(budget.getSpent()); // $0.0075
 
 ## Comparison with NemoClaw / NeMo Guardrails
 
-| Feature | @cofounder/openclaw | NemoClaw | NeMo Guardrails |
+| Feature | @waymakerai/aicofounder-openclaw | NemoClaw | NeMo Guardrails |
 |---------|-------------------|----------|-----------------|
 | Zero dependencies | Yes | No (requires NeMo) | No (Python + ML models) |
 | Install size | ~50KB | ~500MB+ | ~2GB+ |

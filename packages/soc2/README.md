@@ -1,4 +1,4 @@
-# @cofounder/soc2
+# @waymakerai/aicofounder-soc2
 
 Auto-generate SOC 2 Type II audit evidence from CoFounder guardrail data. Zero runtime dependencies.
 
@@ -17,13 +17,13 @@ This package maps CoFounder AI guardrail features to SOC 2 Trust Service Criteri
 ## Installation
 
 ```bash
-npm install @cofounder/soc2
+npm install @waymakerai/aicofounder-soc2
 ```
 
 ## Quick Start
 
 ```typescript
-import { generateSOC2Report, collectEvidence, SOC2Controls } from '@cofounder/soc2';
+import { generateSOC2Report, collectEvidence, SOC2Controls } from '@waymakerai/aicofounder-soc2';
 
 // Generate a SOC 2 report
 const { report, formatted } = generateSOC2Report({

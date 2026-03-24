@@ -1,4 +1,4 @@
-# @cofounder/compliance
+# @waymakerai/aicofounder-compliance
 
 > Enterprise compliance enforcement for CoFounder agents - Healthcare, Finance, Privacy, Security
 
@@ -15,7 +15,7 @@
 ## Installation
 
 ```bash
-npm install @cofounder/compliance
+npm install @waymakerai/aicofounder-compliance
 ```
 
 ## Quick Start
@@ -23,7 +23,7 @@ npm install @cofounder/compliance
 ### Enable All Presets
 
 ```typescript
-import { createComplianceEnforcer } from '@cofounder/compliance';
+import { createComplianceEnforcer } from '@waymakerai/aicofounder-compliance';
 
 const enforcer = createComplianceEnforcer({
   enableAllPresets: true,  // Enable all built-in rules
@@ -48,7 +48,7 @@ console.log(result.violations);
 ### Custom Rules
 
 ```typescript
-import { createComplianceEnforcer, createComplianceRule } from '@cofounder/compliance';
+import { createComplianceEnforcer, createComplianceRule } from '@waymakerai/aicofounder-compliance';
 
 const enforcer = createComplianceEnforcer();
 
@@ -78,7 +78,7 @@ enforcer.addRule(createComplianceRule({
 ### Healthcare (HIPAA)
 
 ```typescript
-import { PresetRules } from '@cofounder/compliance';
+import { PresetRules } from '@waymakerai/aicofounder-compliance';
 
 // No medical advice
 enforcer.addRule(PresetRules.hipaaNoMedicalAdvice());
@@ -182,7 +182,7 @@ The system supports 7 enforcement actions:
 ## PII Detection & Redaction
 
 ```typescript
-import { detectPII, redactPII } from '@cofounder/compliance';
+import { detectPII, redactPII } from '@waymakerai/aicofounder-compliance';
 
 // Detect PII
 const text = 'Contact me at john@example.com or 555-1234';
@@ -311,8 +311,8 @@ console.log('Violations:', result.violations.length);
 ## Advanced Example: Complete Integration
 
 ```typescript
-import { createComplianceEnforcer, PresetRules } from '@cofounder/compliance';
-import { createCoFounder } from '@cofounder/core';
+import { createComplianceEnforcer, PresetRules } from '@waymakerai/aicofounder-compliance';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
 
 // Create CoFounder client
 const cofounder = createCoFounder({
@@ -380,7 +380,7 @@ async function compliantChat(userMessage: string, context: any) {
 ## Rule Development Guide
 
 ```typescript
-import { createComplianceRule } from '@cofounder/compliance';
+import { createComplianceRule } from '@waymakerai/aicofounder-compliance';
 
 const myRule = createComplianceRule({
   id: 'unique-id',

@@ -1,4 +1,4 @@
-# @cofounder/dashboard
+# @waymakerai/aicofounder-dashboard
 
 AI observability dashboard for the CoFounder ecosystem. Track costs, monitor security events, enforce compliance, and analyze performance -- all with zero runtime dependencies.
 
@@ -17,7 +17,7 @@ AI observability dashboard for the CoFounder ecosystem. Track costs, monitor sec
 ## Quick Start
 
 ```ts
-import { RanaDashboard } from '@cofounder/dashboard';
+import { RanaDashboard } from '@waymakerai/aicofounder-dashboard';
 
 const dashboard = new RanaDashboard({
   storage: 'memory',
@@ -93,7 +93,7 @@ Stores events as JSON files organized by date (`cofounder-data/YYYY-MM-DD.json`)
 ### Custom
 
 ```ts
-import type { StorageInterface } from '@cofounder/dashboard';
+import type { StorageInterface } from '@waymakerai/aicofounder-dashboard';
 
 class MyStorage implements StorageInterface {
   async store(events) { /* ... */ }
@@ -125,7 +125,7 @@ dashboard.acknowledgeAlert(alertId);
 Each metric calculator can be used standalone:
 
 ```ts
-import { CostMetricsCalculator, MemoryStorage } from '@cofounder/dashboard';
+import { CostMetricsCalculator, MemoryStorage } from '@waymakerai/aicofounder-dashboard';
 
 const storage = new MemoryStorage();
 const costMetrics = new CostMetricsCalculator(storage);

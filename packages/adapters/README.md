@@ -1,11 +1,11 @@
-# @cofounder/adapters
+# @waymakerai/aicofounder-adapters
 
 Integration adapters for enterprise guardrail products. Provides unified conversion between CoFounder policies and Lakera Guard, AWS Bedrock Guardrails, and Galileo evaluation formats.
 
 ## Installation
 
 ```bash
-npm install @cofounder/adapters
+npm install @waymakerai/aicofounder-adapters
 ```
 
 ## Quick Start
@@ -15,7 +15,7 @@ npm install @cofounder/adapters
 Run CoFounder policies alongside enterprise adapters and merge all findings:
 
 ```typescript
-import { createUnifiedAdapter } from '@cofounder/adapters';
+import { createUnifiedAdapter } from '@waymakerai/aicofounder-adapters';
 
 const unified = createUnifiedAdapter({
   cofounder: { pii: 'redact', injection: 'block' },
@@ -31,7 +31,7 @@ console.log(result.findings);   // combined findings from all adapters
 ### Individual Adapters
 
 ```typescript
-import { createLakeraAdapter, createBedrockAdapter, createGalileoAdapter } from '@cofounder/adapters';
+import { createLakeraAdapter, createBedrockAdapter, createGalileoAdapter } from '@waymakerai/aicofounder-adapters';
 
 // Lakera Guard
 const lakera = createLakeraAdapter({

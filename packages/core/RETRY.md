@@ -15,7 +15,7 @@ CoFounder Core includes a robust retry system with exponential backoff, jitter, 
 ## Quick Start
 
 ```typescript
-import { createCoFounder } from '@cofounder/core';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
 
 const cofounder = createCoFounder({
   providers: {
@@ -201,7 +201,7 @@ With jitter, each delay is randomized between 50% and 150% of the calculated val
 The retry system automatically classifies errors:
 
 ```typescript
-import { classifyError } from '@cofounder/core';
+import { classifyError } from '@waymakerai/aicofounder-core';
 
 const error = new Error('Rate limit exceeded');
 error.status = 429;
@@ -288,7 +288,7 @@ const cofounder = createCoFounder({
 Use the retry system independently:
 
 ```typescript
-import { withRetry } from '@cofounder/core';
+import { withRetry } from '@waymakerai/aicofounder-core';
 
 async function myApiCall() {
   // Your API call here
@@ -307,7 +307,7 @@ console.log('Retries:', metadata.retryCount);
 ### Create Retry Wrapper
 
 ```typescript
-import { createRetryWrapper } from '@cofounder/core';
+import { createRetryWrapper } from '@waymakerai/aicofounder-core';
 
 const retryFn = createRetryWrapper({
   maxRetries: 5,
@@ -321,7 +321,7 @@ const result2 = await retryFn(() => apiCall2());
 ### Error Classification
 
 ```typescript
-import { classifyError, shouldRetryError } from '@cofounder/core';
+import { classifyError, shouldRetryError } from '@waymakerai/aicofounder-core';
 
 const error = new Error('Service unavailable');
 const errorType = classifyError(error);

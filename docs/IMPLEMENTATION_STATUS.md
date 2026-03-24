@@ -10,7 +10,7 @@ This document tracks the implementation status of CoFounder framework components
 
 ## Completed Features
 
-### 1. Security Layer (`@cofounder/agents/security`)
+### 1. Security Layer (`@waymakerai/aicofounder-agents/security`)
 
 **Status: ✅ Complete**
 
@@ -38,7 +38,7 @@ This document tracks the implementation status of CoFounder framework components
   - Configurable limits per user/org/path
   - Presets: standard, strict, relaxed, per-second, daily, LLM API
 
-### 2. VibeSpec Runtime Enforcer (`@cofounder/agents/middleware`)
+### 2. VibeSpec Runtime Enforcer (`@waymakerai/aicofounder-agents/middleware`)
 
 **Status: ✅ Complete**
 
@@ -50,7 +50,7 @@ This document tracks the implementation status of CoFounder framework components
   - Tool argument constraints
   - Middleware function for agent integration
 
-### 3. Observability (`@cofounder/agents/observability`)
+### 3. Observability (`@waymakerai/aicofounder-agents/observability`)
 
 **Status: ✅ Complete**
 
@@ -67,7 +67,7 @@ This document tracks the implementation status of CoFounder framework components
   - Console exporter
   - AI-specific metrics (LLM, agent, tool, RAG, security)
 
-### 4. Audit Logging (`@cofounder/agents/audit`)
+### 4. Audit Logging (`@waymakerai/aicofounder-agents/audit`)
 
 **Status: ✅ Complete**
 
@@ -79,7 +79,7 @@ This document tracks the implementation status of CoFounder framework components
   - Query interface with filtering
   - Memory storage (Supabase storage can be added)
 
-### 5. CLI (`@cofounder/cli`)
+### 5. CLI (`@waymakerai/aicofounder-cli`)
 
 **Status: ✅ Complete**
 
@@ -97,7 +97,7 @@ This document tracks the implementation status of CoFounder framework components
   - `cofounder security check` - Quick security check
   - `cofounder check` - Run all guardrail checks
 
-### 6. Knowledge Base (`@cofounder/rag/knowledge-base`)
+### 6. Knowledge Base (`@waymakerai/aicofounder-rag/knowledge-base`)
 
 **Status: ✅ Complete**
 
@@ -112,9 +112,9 @@ This document tracks the implementation status of CoFounder framework components
 
 **Status: ✅ Complete**
 
-- **@cofounder/langchain** - RanaChatModel for LangChain
-- **@cofounder/crewai** - RanaCrewModel for CrewAI
-- **@cofounder/mcp** - MCP server integration (pre-existing)
+- **@waymakerai/aicofounder-langchain** - RanaChatModel for LangChain
+- **@waymakerai/aicofounder-crewai** - RanaCrewModel for CrewAI
+- **@waymakerai/aicofounder-mcp** - MCP server integration (pre-existing)
 
 ---
 
@@ -166,7 +166,7 @@ packages/
 ### Security
 
 ```typescript
-import { checkInput, securityPresets, detectPII, checkForInjection } from '@cofounder/agents';
+import { checkInput, securityPresets, detectPII, checkForInjection } from '@waymakerai/aicofounder-agents';
 
 // Check input with preset
 const result = await checkInput(userMessage, securityPresets.healthcare);
@@ -186,7 +186,7 @@ console.log(injection.blocked); // true
 ### VibeSpec Enforcer
 
 ```typescript
-import { createVibeEnforcer, loadVibeSpec } from '@cofounder/agents';
+import { createVibeEnforcer, loadVibeSpec } from '@waymakerai/aicofounder-agents';
 
 const vibeConfig = await loadVibeSpec('./config/vibes/customer-support.yml');
 const enforcer = createVibeEnforcer({ vibeConfig, strictMode: true });
@@ -204,7 +204,7 @@ if (!result.allowed) {
 ### Observability
 
 ```typescript
-import { initTracer, initMetrics, AIAttributes, AIMetrics } from '@cofounder/agents';
+import { initTracer, initMetrics, AIAttributes, AIMetrics } from '@waymakerai/aicofounder-agents';
 
 const tracer = initTracer({ serviceName: 'my-agent' });
 const metrics = initMetrics({ prefix: 'myapp' });
@@ -223,7 +223,7 @@ metrics.histogram(AIMetrics.LLM_LATENCY, 250, { model: 'claude-3-5-sonnet' });
 ### Audit Logging
 
 ```typescript
-import { initAuditLogger, MemoryAuditStorage } from '@cofounder/agents';
+import { initAuditLogger, MemoryAuditStorage } from '@waymakerai/aicofounder-agents';
 
 const auditLogger = initAuditLogger({
   serviceName: 'my-agent',
@@ -258,14 +258,14 @@ const events = await auditLogger.query({
 
 | Feature | Package | Path |
 |---------|---------|------|
-| PII Detection | @cofounder/agents | `packages/agents/src/security/pii-detector.ts` |
-| Injection Detection | @cofounder/agents | `packages/agents/src/security/injection-detector.ts` |
-| Output Validation | @cofounder/agents | `packages/agents/src/security/output-validator.ts` |
-| Rate Limiting | @cofounder/agents | `packages/agents/src/security/rate-limiter.ts` |
-| Vibe Enforcer | @cofounder/agents | `packages/agents/src/middleware/vibe-enforcer.ts` |
-| Tracer | @cofounder/agents | `packages/agents/src/observability/tracer.ts` |
-| Metrics | @cofounder/agents | `packages/agents/src/observability/metrics.ts` |
-| Audit Logger | @cofounder/agents | `packages/agents/src/audit/audit-logger.ts` |
-| Feature CLI | @cofounder/cli | `packages/cli/src/commands/feature.ts` |
-| Security CLI | @cofounder/cli | `packages/cli/src/commands/security.ts` |
-| Knowledge Base | @cofounder/rag | `packages/rag/src/knowledge-base/` |
+| PII Detection | @waymakerai/aicofounder-agents | `packages/agents/src/security/pii-detector.ts` |
+| Injection Detection | @waymakerai/aicofounder-agents | `packages/agents/src/security/injection-detector.ts` |
+| Output Validation | @waymakerai/aicofounder-agents | `packages/agents/src/security/output-validator.ts` |
+| Rate Limiting | @waymakerai/aicofounder-agents | `packages/agents/src/security/rate-limiter.ts` |
+| Vibe Enforcer | @waymakerai/aicofounder-agents | `packages/agents/src/middleware/vibe-enforcer.ts` |
+| Tracer | @waymakerai/aicofounder-agents | `packages/agents/src/observability/tracer.ts` |
+| Metrics | @waymakerai/aicofounder-agents | `packages/agents/src/observability/metrics.ts` |
+| Audit Logger | @waymakerai/aicofounder-agents | `packages/agents/src/audit/audit-logger.ts` |
+| Feature CLI | @waymakerai/aicofounder-cli | `packages/cli/src/commands/feature.ts` |
+| Security CLI | @waymakerai/aicofounder-cli | `packages/cli/src/commands/security.ts` |
+| Knowledge Base | @waymakerai/aicofounder-rag | `packages/rag/src/knowledge-base/` |

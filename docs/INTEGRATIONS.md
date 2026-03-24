@@ -30,7 +30,7 @@ n8n is a workflow automation tool that lets you connect various services togethe
 #### Installation
 
 ```typescript
-import { createN8nIntegration } from '@cofounder/core';
+import { createN8nIntegration } from '@waymakerai/aicofounder-core';
 
 const n8n = createN8nIntegration({
   baseUrl: 'http://localhost:5678', // Your n8n instance
@@ -86,7 +86,7 @@ Connect CoFounder with 6,000+ apps through Zapier.
 #### Installation
 
 ```typescript
-import { createZapierIntegration } from '@cofounder/core';
+import { createZapierIntegration } from '@waymakerai/aicofounder-core';
 
 const zapier = createZapierIntegration({
   clientId: process.env.ZAPIER_CLIENT_ID,
@@ -143,7 +143,7 @@ Visual automation platform for complex workflows.
 #### Installation
 
 ```typescript
-import { createMakeIntegration } from '@cofounder/core';
+import { createMakeIntegration } from '@waymakerai/aicofounder-core';
 
 const make = createMakeIntegration({
   apiKey: process.env.MAKE_API_KEY,
@@ -201,7 +201,7 @@ Persistent memory for AI agents using Mem0.
 #### Installation
 
 ```typescript
-import { createMem0Integration, withMemory } from '@cofounder/core';
+import { createMem0Integration, withMemory } from '@waymakerai/aicofounder-core';
 
 const mem0 = createMem0Integration({
   apiKey: process.env.MEM0_API_KEY,
@@ -275,7 +275,7 @@ Long-term memory store with automatic summarization.
 #### Installation
 
 ```typescript
-import { createZepIntegration, createZepConversation } from '@cofounder/core';
+import { createZepIntegration, createZepConversation } from '@waymakerai/aicofounder-core';
 
 const zep = createZepIntegration({
   apiKey: process.env.ZEP_API_KEY,
@@ -343,7 +343,7 @@ AI-powered content management for Webflow CMS.
 #### Installation
 
 ```typescript
-import { createWebflowIntegration } from '@cofounder/core';
+import { createWebflowIntegration } from '@waymakerai/aicofounder-core';
 
 const webflow = createWebflowIntegration({
   apiToken: process.env.WEBFLOW_API_TOKEN,
@@ -411,7 +411,7 @@ Build AI-powered components and interactions for Framer.
 #### Installation
 
 ```typescript
-import { createFramerIntegration } from '@cofounder/core';
+import { createFramerIntegration } from '@waymakerai/aicofounder-core';
 
 const framer = createFramerIntegration({
   debug: true,
@@ -483,7 +483,7 @@ AI-powered database operations with Airtable.
 #### Installation
 
 ```typescript
-import { createAirtableIntegration } from '@cofounder/core';
+import { createAirtableIntegration } from '@waymakerai/aicofounder-core';
 
 const airtable = createAirtableIntegration({
   apiKey: process.env.AIRTABLE_API_KEY,
@@ -560,7 +560,7 @@ AI-powered knowledge management with Notion.
 #### Installation
 
 ```typescript
-import { createNotionIntegration } from '@cofounder/core';
+import { createNotionIntegration } from '@waymakerai/aicofounder-core';
 
 const notion = createNotionIntegration({
   apiKey: process.env.NOTION_API_KEY,
@@ -655,35 +655,35 @@ CoFounder also includes these pre-built integrations:
 Model inference and embeddings from Hugging Face.
 
 ```typescript
-import { createHuggingFaceProvider } from '@cofounder/core';
+import { createHuggingFaceProvider } from '@waymakerai/aicofounder-core';
 ```
 
 ### Vercel
 Deploy and manage Vercel projects.
 
 ```typescript
-import { createVercelClient } from '@cofounder/core';
+import { createVercelClient } from '@waymakerai/aicofounder-core';
 ```
 
 ### Supabase
 Vector storage with Supabase pgvector.
 
 ```typescript
-import { createSupabaseVectorStore } from '@cofounder/core';
+import { createSupabaseVectorStore } from '@waymakerai/aicofounder-core';
 ```
 
 ### Weights & Biases
 Experiment tracking and logging.
 
 ```typescript
-import { createWandbTracker } from '@cofounder/core';
+import { createWandbTracker } from '@waymakerai/aicofounder-core';
 ```
 
 ### Sentry
 Error tracking and performance monitoring.
 
 ```typescript
-import { createSentryIntegration } from '@cofounder/core';
+import { createSentryIntegration } from '@waymakerai/aicofounder-core';
 ```
 
 ---

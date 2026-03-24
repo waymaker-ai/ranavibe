@@ -16,7 +16,7 @@ Secure API key management with automatic rotation, health monitoring, and gracef
 ### Basic Usage
 
 ```typescript
-import { KeyRotationManager, MemoryStorage } from '@cofounder/core/security';
+import { KeyRotationManager, MemoryStorage } from '@waymakerai/aicofounder-core/security';
 
 // Create a rotation manager
 const rotationManager = new KeyRotationManager({
@@ -39,8 +39,8 @@ await rotationManager.rotateKey('anthropic', 'sk-ant-api-key-67890');
 ### Integration with ProviderManager
 
 ```typescript
-import { KeyRotationManager, createRotatedProviderConfig } from '@cofounder/core/security';
-import { ProviderManager } from '@cofounder/core';
+import { KeyRotationManager, createRotatedProviderConfig } from '@waymakerai/aicofounder-core/security';
+import { ProviderManager } from '@waymakerai/aicofounder-core';
 
 // Create rotation manager
 const rotationManager = new KeyRotationManager({
@@ -211,7 +211,7 @@ A key is considered unhealthy if:
 ### MemoryStorage (Development)
 
 ```typescript
-import { MemoryStorage } from '@cofounder/core/security';
+import { MemoryStorage } from '@waymakerai/aicofounder-core/security';
 
 const storage = new MemoryStorage();
 ```
@@ -221,7 +221,7 @@ Keys are stored in memory and lost on restart. Use for development/testing.
 ### EncryptedFileStorage (Production)
 
 ```typescript
-import { EncryptedFileStorage } from '@cofounder/core/security';
+import { EncryptedFileStorage } from '@waymakerai/aicofounder-core/security';
 
 const storage = new EncryptedFileStorage({
   filePath: '/secure/path/keys.enc',

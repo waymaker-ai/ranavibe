@@ -17,7 +17,7 @@ CoFounder provides 7 built-in orchestration patterns for coordinating multi-agen
 ## Quick Start
 
 ```typescript
-import { createOrchestrator, createLLMAgent } from '@cofounder/agents';
+import { createOrchestrator, createLLMAgent } from '@waymakerai/aicofounder-agents';
 
 // Create orchestrator
 const orchestrator = createOrchestrator();

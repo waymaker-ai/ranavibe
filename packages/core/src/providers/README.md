@@ -23,7 +23,7 @@ The CoFounder Provider Reliability System includes multiple features to ensure y
 ## Quick Start
 
 ```typescript
-import { createCoFounder } from '@cofounder/core';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
 
 const cofounder = createCoFounder({
   providers: {
@@ -75,7 +75,7 @@ const response = await cofounder.chat('Hello, world!');
 You can configure different retry behaviors for specific providers:
 
 ```typescript
-import { createCoFounder, createFallbackManager, ProviderManager } from '@cofounder/core';
+import { createCoFounder, createFallbackManager, ProviderManager } from '@waymakerai/aicofounder-core';
 
 const providerManager = new ProviderManager({
   openai: process.env.OPENAI_API_KEY,
@@ -399,7 +399,7 @@ The circuit breaker has three states:
 ## Quick Start
 
 ```typescript
-import { createCoFounder } from '@cofounder/core';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
 
 const cofounder = createCoFounder({
   providers: {

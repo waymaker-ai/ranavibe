@@ -12,7 +12,7 @@ We've transformed CoFounder from a CLI-only tool into a full-featured JavaScript
 
 ```bash
 # Installation
-npm install -g @cofounder/cli
+npm install -g @waymakerai/aicofounder-cli
 
 # Setup (manual, tedious)
 cofounder init
@@ -44,10 +44,10 @@ cofounder llm:cost-estimate
 
 ```typescript
 // Installation
-npm install @cofounder/core @cofounder/react
+npm install @waymakerai/aicofounder-core @waymakerai/aicofounder-react
 
 // Simple setup
-import { createCoFounder } from '@cofounder/core';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
 
 const cofounder = createCoFounder({
   providers: {
@@ -66,7 +66,7 @@ const response = await cofounder
   .chat('Hello!');
 
 // React integration
-import { useCoFounderChat } from '@cofounder/react';
+import { useCoFounderChat } from '@waymakerai/aicofounder-react';
 
 function App() {
   const { chat, response, loading, cost } = useCoFounderChat(cofounder);
@@ -104,7 +104,7 @@ cofounder llm:chat "What is TypeScript?"
 **AFTER:**
 ```typescript
 // Core SDK
-import { createCoFounder } from '@cofounder/core';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
 
 const cofounder = createCoFounder({ ... });
 const response = await cofounder.chat('What is TypeScript?');
@@ -219,7 +219,7 @@ providers:
 **AFTER:**
 ```typescript
 // cofounder.config.ts (TypeScript!)
-import { defineConfig } from '@cofounder/core';
+import { defineConfig } from '@waymakerai/aicofounder-core';
 
 export default defineConfig({
   providers: {
@@ -442,17 +442,17 @@ exec('cofounder llm:chat "Hello"', (err, stdout) => {
 **AFTER:**
 ```typescript
 // 1. Setup (2 minutes)
-npm install @cofounder/core @cofounder/react
+npm install @waymakerai/aicofounder-core @waymakerai/aicofounder-react
 
 // 2. Use in code (5 minutes)
-import { createCoFounder } from '@cofounder/core';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
 
 const cofounder = createCoFounder({
   providers: { anthropic: process.env.ANTHROPIC_API_KEY }
 });
 
 // 3. React integration (10 minutes)
-import { useCoFounderChat } from '@cofounder/react';
+import { useCoFounderChat } from '@waymakerai/aicofounder-react';
 
 function ChatApp() {
   const { chat, response, loading, cost } = useCoFounderChat(cofounder);

@@ -15,7 +15,7 @@ Comprehensive token usage tracking and analytics for CoFounder observability.
 
 ## Installation
 
-The TokenAnalytics module is part of `@cofounder/core`:
+The TokenAnalytics module is part of `@waymakerai/aicofounder-core`:
 
 ```typescript
 import {
@@ -23,7 +23,7 @@ import {
   createMemoryAnalytics,
   createFileAnalytics,
   createAutoSaveAnalytics
-} from '@cofounder/core';
+} from '@waymakerai/aicofounder-core';
 ```
 
 ## Quick Start
@@ -31,7 +31,7 @@ import {
 ### Basic Usage (In-Memory)
 
 ```typescript
-import { createCoFounder, createMemoryAnalytics } from '@cofounder/core';
+import { createCoFounder, createMemoryAnalytics } from '@waymakerai/aicofounder-core';
 
 // Create analytics tracker
 const analytics = createMemoryAnalytics();
@@ -58,7 +58,7 @@ console.log('Total cost:', summary.totalCost);
 ### File-Based Persistence
 
 ```typescript
-import { createFileAnalytics } from '@cofounder/core';
+import { createFileAnalytics } from '@waymakerai/aicofounder-core';
 
 const analytics = createFileAnalytics('./analytics.json', {
   maxRecords: 1000,
@@ -78,7 +78,7 @@ await analytics.track(response);
 ### Auto-Save with Intervals
 
 ```typescript
-import { createAutoSaveAnalytics } from '@cofounder/core';
+import { createAutoSaveAnalytics } from '@waymakerai/aicofounder-core';
 
 // Auto-save every 60 seconds
 const analytics = createAutoSaveAnalytics(
@@ -379,7 +379,7 @@ interface PersistenceOptions {
 ### 1. Track and Analyze Usage
 
 ```typescript
-import { createCoFounder, createMemoryAnalytics } from '@cofounder/core';
+import { createCoFounder, createMemoryAnalytics } from '@waymakerai/aicofounder-core';
 
 const cofounder = createCoFounder({ /* config */ });
 const analytics = createMemoryAnalytics();
@@ -459,7 +459,7 @@ newAnalytics.import(backup);
 ### 5. Integration with CostTracker
 
 ```typescript
-import { createCoFounder, createMemoryAnalytics } from '@cofounder/core';
+import { createCoFounder, createMemoryAnalytics } from '@waymakerai/aicofounder-core';
 
 const cofounder = createCoFounder({
   providers: { anthropic: process.env.ANTHROPIC_API_KEY },
@@ -532,7 +532,7 @@ import type {
   AnalyticsSummary,
   PersistenceOptions,
   TokenAnalyticsConfig,
-} from '@cofounder/core';
+} from '@waymakerai/aicofounder-core';
 ```
 
 ## Integration with Existing Systems

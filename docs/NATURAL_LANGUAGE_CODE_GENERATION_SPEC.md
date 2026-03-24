@@ -53,7 +53,7 @@ cofounder generate "User authentication with email and Google OAuth, following O
 ### 1. Core Components
 
 ```
-@cofounder/generate
+@waymakerai/aicofounder-generate
 ├── cli/
 │   ├── generate.ts          # Main CLI command
 │   ├── interactive.ts        # Interactive wizard

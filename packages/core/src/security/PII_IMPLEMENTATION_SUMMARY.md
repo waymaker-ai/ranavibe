@@ -120,7 +120,7 @@ Added to main exports with proper organization under the Security section.
 
 ### Usage Example
 ```typescript
-import { createPIIDetector, redactPII, maskPII } from '@cofounder/core';
+import { createPIIDetector, redactPII, maskPII } from '@waymakerai/aicofounder-core';
 
 // Basic usage
 const detector = createPIIDetector();
@@ -212,7 +212,7 @@ The PII module integrates seamlessly with existing CoFounder security features:
 
 ### With Audit Logger
 ```typescript
-import { createAuditLogger, redactPII } from '@cofounder/core';
+import { createAuditLogger, redactPII } from '@waymakerai/aicofounder-core';
 
 const auditLogger = createAuditLogger();
 auditLogger.logAction('user_action', redactPII(userId), { ... });
@@ -220,7 +220,7 @@ auditLogger.logAction('user_action', redactPII(userId), { ... });
 
 ### With Content Filter
 ```typescript
-import { createContentFilter, createPIIDetector } from '@cofounder/core';
+import { createContentFilter, createPIIDetector } from '@waymakerai/aicofounder-core';
 
 const contentFilter = createContentFilter();
 const piiDetector = createPIIDetector();

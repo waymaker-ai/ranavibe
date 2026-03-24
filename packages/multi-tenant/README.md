@@ -1,17 +1,17 @@
-# @cofounder/multi-tenant
+# @waymakerai/aicofounder-multi-tenant
 
 Multi-tenant policy server for teams. HTTP API for managing CoFounder guardrail policies per-project with tenant isolation, API key authentication, rate limiting, and usage tracking.
 
 ## Installation
 
 ```bash
-npm install @cofounder/multi-tenant
+npm install @waymakerai/aicofounder-multi-tenant
 ```
 
 ## Quick Start
 
 ```typescript
-import { TenantServer } from '@cofounder/multi-tenant';
+import { TenantServer } from '@waymakerai/aicofounder-multi-tenant';
 
 const server = new TenantServer({ storage: 'file', dataDir: './tenants' });
 await server.start({ port: 3457 });
@@ -181,7 +181,7 @@ interface ServerConfig {
 Access the tenant manager directly for use without the HTTP server:
 
 ```typescript
-import { TenantManager, MemoryStorage } from '@cofounder/multi-tenant';
+import { TenantManager, MemoryStorage } from '@waymakerai/aicofounder-multi-tenant';
 
 const storage = new MemoryStorage();
 const manager = new TenantManager(storage);

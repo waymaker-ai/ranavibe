@@ -14,7 +14,7 @@ Complete error tracking and monitoring system for CoFounder SDK operations.
 ## Quick Start
 
 ```typescript
-import { createErrorTracker, RanaAuthError } from '@cofounder/core';
+import { createErrorTracker, RanaAuthError } from '@waymakerai/aicofounder-core';
 
 // Create an error tracker
 const tracker = createErrorTracker({
@@ -195,7 +195,7 @@ const tracker = createErrorTracker({
 ## Integration with Sentry
 
 ```typescript
-import { createErrorTracker } from '@cofounder/core';
+import { createErrorTracker } from '@waymakerai/aicofounder-core';
 
 const tracker = createErrorTracker({
   sentryDsn: process.env.SENTRY_DSN,
@@ -247,7 +247,7 @@ import {
   captureError,
   getErrorStats,
   getRecentErrors,
-} from '@cofounder/core';
+} from '@waymakerai/aicofounder-core';
 
 // Configure once
 configureErrorTracker({
@@ -313,7 +313,7 @@ console.log(recent[0].count); // 10
 ## Example: Full Integration
 
 ```typescript
-import { createCoFounder, createErrorTracker } from '@cofounder/core';
+import { createCoFounder, createErrorTracker } from '@waymakerai/aicofounder-core';
 
 const tracker = createErrorTracker({
   sentryDsn: process.env.SENTRY_DSN,

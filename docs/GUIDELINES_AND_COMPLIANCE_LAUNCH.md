@@ -10,7 +10,7 @@
 
 Two incredible new packages that make CoFounder the **most comprehensive AI agent framework** for enterprise applications:
 
-### 📦 Package 1: `@cofounder/guidelines`
+### 📦 Package 1: `@waymakerai/aicofounder-guidelines`
 **Dynamic, context-aware behavioral control for AI agents**
 
 Turn this:
@@ -36,7 +36,7 @@ const matched = await guidelines.match(context);
 // Guidelines automatically apply based on context!
 ```
 
-### 📦 Package 2: `@cofounder/compliance`
+### 📦 Package 2: `@waymakerai/aicofounder-compliance`
 **Enterprise compliance enforcement - HIPAA, SEC, GDPR, and more**
 
 Turn this:
@@ -60,7 +60,7 @@ const result = await enforcer.enforce(input, output, context);
 
 ## Key Features
 
-### @cofounder/guidelines
+### @waymakerai/aicofounder-guidelines
 
 ✨ **Dynamic Matching**
 - Guidelines automatically apply based on conversation context
@@ -86,7 +86,7 @@ const result = await enforcer.enforce(input, output, context);
 - File-based storage
 - Custom storage adapters
 
-### @cofounder/compliance
+### @waymakerai/aicofounder-compliance
 
 🏥 **HIPAA Compliance**
 - No medical advice/diagnoses
@@ -217,9 +217,9 @@ Analytics & Audit Trail
 ## Integration Example
 
 ```typescript
-import { createCoFounder } from '@cofounder/core';
-import { createGuidelineManager, PresetGuidelines } from '@cofounder/guidelines';
-import { createComplianceEnforcer, PresetRules } from '@cofounder/compliance';
+import { createCoFounder } from '@waymakerai/aicofounder-core';
+import { createGuidelineManager, PresetGuidelines } from '@waymakerai/aicofounder-guidelines';
+import { createComplianceEnforcer, PresetRules } from '@waymakerai/aicofounder-compliance';
 
 // Setup
 const cofounder = createCoFounder({ providers: { anthropic: API_KEY } });
@@ -280,7 +280,7 @@ async function protectedChat(message: string, context: any) {
 ### Installation
 
 ```bash
-npm install @cofounder/guidelines @cofounder/compliance
+npm install @waymakerai/aicofounder-guidelines @waymakerai/aicofounder-compliance
 ```
 
 ### Production Configuration
@@ -371,8 +371,8 @@ const compliance = createComplianceEnforcer({
 ## Roadmap
 
 ### Q1 2026 (Completed ✅)
-- [x] @cofounder/guidelines v1.0
-- [x] @cofounder/compliance v1.0
+- [x] @waymakerai/aicofounder-guidelines v1.0
+- [x] @waymakerai/aicofounder-compliance v1.0
 - [x] Preset guidelines (8+)
 - [x] Preset compliance rules (9+)
 - [x] PII detection (10+ types)
@@ -385,7 +385,7 @@ const compliance = createComplianceEnforcer({
 - [ ] Conversation analytics dashboard
 - [ ] LLM-based violation detection
 - [ ] Custom compliance rule builder UI
-- [ ] Integration with @cofounder/agents
+- [ ] Integration with @waymakerai/aicofounder-agents
 
 ### Q3 2026 (Planned)
 - [ ] Explainability system
@@ -430,7 +430,7 @@ MIT © Waymaker
 **Ready to build compliant, enterprise-grade AI agents?**
 
 ```bash
-npm install @cofounder/guidelines @cofounder/compliance
+npm install @waymakerai/aicofounder-guidelines @waymakerai/aicofounder-compliance
 ```
 
 🚀 Let's build something incredible together!

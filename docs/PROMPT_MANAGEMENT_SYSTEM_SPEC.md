@@ -38,7 +38,7 @@ CoFounder developers currently:
 
 ```typescript
 // Define prompts in centralized registry
-import { definePrompt, usePrompt } from '@cofounder/prompts';
+import { definePrompt, usePrompt } from '@waymakerai/aicofounder-prompts';
 
 // Define prompt with metadata
 export const summarizeArticle = definePrompt({
@@ -128,7 +128,7 @@ cofounder prompts analytics summarize-article --last 30d
 ### 1. Core Components
 
 ```
-@cofounder/prompts
+@waymakerai/aicofounder-prompts
 ├── cli/
 │   ├── create.ts             # Create new prompt
 │   ├── test.ts               # Test prompt

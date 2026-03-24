@@ -150,7 +150,7 @@ export type {
 ### Basic Usage
 
 ```typescript
-import { createTracer } from '@cofounder/core';
+import { createTracer } from '@waymakerai/aicofounder-core';
 
 const tracer = createTracer();
 const span = tracer.startTrace('chat_request', {
@@ -184,7 +184,7 @@ tracer.endSpan(parent, 'success');
 ### Global Tracer
 
 ```typescript
-import { getGlobalTracer } from '@cofounder/core';
+import { getGlobalTracer } from '@waymakerai/aicofounder-core';
 
 const tracer = getGlobalTracer();
 const span = tracer.startTrace('operation');
@@ -205,7 +205,7 @@ const tracer = createTracer({
 ### Function Wrapping
 
 ```typescript
-import { traced } from '@cofounder/core';
+import { traced } from '@waymakerai/aicofounder-core';
 
 const myFunction = async (msg: string) => {
   // ... logic ...
@@ -334,7 +334,7 @@ import {
   type SpanStatus,
   type TraceExport,
   type TracerConfig,
-} from '@cofounder/core';
+} from '@waymakerai/aicofounder-core';
 ```
 
 ## Summary

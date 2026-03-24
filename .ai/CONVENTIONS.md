@@ -62,7 +62,7 @@ Use consistent markers for tracking:
 
 ```
 packages/
-├── core/                 # @cofounder/core
+├── core/                 # @waymakerai/aicofounder-core
 │   ├── src/
 │   │   ├── index.ts     # Public exports
 │   │   ├── client.ts    # Main client
@@ -70,8 +70,8 @@ packages/
 │   │   ├── utils/       # Utilities
 │   │   └── providers/   # Provider implementations
 │   └── package.json
-├── testing/             # @cofounder/testing
-└── mcp/                 # @cofounder/mcp
+├── testing/             # @waymakerai/aicofounder-testing
+└── mcp/                 # @waymakerai/aicofounder-mcp
 
 tools/
 └── cli/                 # cofounder CLI
@@ -266,7 +266,7 @@ describe('CostTracker', () => {
 ### 5.3 AI Test Patterns
 
 ```typescript
-import { aiTest, semanticMatch, toMostlyBe } from '@cofounder/testing';
+import { aiTest, semanticMatch, toMostlyBe } from '@waymakerai/aicofounder-testing';
 
 aiTest('should generate greeting', async ({ cofounder }) => {
   const response = await cofounder.chat('Say hello');

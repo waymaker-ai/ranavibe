@@ -25,7 +25,7 @@ CoFounder developers must:
 
 ```typescript
 // Current: Verbose boilerplate for simple summarization
-import { createCoFounderClient } from '@cofounder/core';
+import { createCoFounderClient } from '@waymakerai/aicofounder-core';
 
 const client = createCoFounderClient({
   provider: 'anthropic',
@@ -46,7 +46,7 @@ const summary = response.content;
 
 ```typescript
 // New: One-liner for common tasks
-import { quick } from '@cofounder/quick';
+import { quick } from '@waymakerai/aicofounder-quick';
 
 // Summarization
 const summary = await quick.summarize(longText);
@@ -87,7 +87,7 @@ const content = await quick.generate('blog post about AI safety', {
 ### 1. Package Structure
 
 ```
-@cofounder/quick
+@waymakerai/aicofounder-quick
 ├── summarize.ts          # Text summarization
 ├── translate.ts          # Language translation
 ├── classify.ts           # Text classification
@@ -968,7 +968,7 @@ export function configure(config: Partial<QuickConfig>): void {
 }
 
 // Usage
-import { configure } from '@cofounder/quick';
+import { configure } from '@waymakerai/aicofounder-quick';
 
 configure({
   models: {
@@ -1119,7 +1119,7 @@ cofounder quick config --cache-ttl 7200 --prefer-cheaper
 
 **1. Customer Support Automation**
 ```typescript
-import { quick } from '@cofounder/quick';
+import { quick } from '@waymakerai/aicofounder-quick';
 
 async function handleSupportEmail(email: string) {
   // Classify urgency
@@ -1148,7 +1148,7 @@ async function handleSupportEmail(email: string) {
 
 **2. Content Moderation Pipeline**
 ```typescript
-import { quick } from '@cofounder/quick';
+import { quick } from '@waymakerai/aicofounder-quick';
 
 async function moderateUserPost(post: string) {
   // Check for policy violations
@@ -1172,7 +1172,7 @@ async function moderateUserPost(post: string) {
 
 **3. Document Processing**
 ```typescript
-import { quick } from '@cofounder/quick';
+import { quick } from '@waymakerai/aicofounder-quick';
 
 async function processDocument(doc: string) {
   // Summarize

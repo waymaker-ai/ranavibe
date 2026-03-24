@@ -353,14 +353,14 @@ This roadmap outlines the strategic implementation plan for transforming CoFound
 ### Incremental Shipping (Agile)
 
 **Q1 2025 Releases**:
-- `@cofounder/quick@1.0.0` (Week 4) [DONE]
-- `@cofounder/prompts@1.0.0` (Week 6) [DONE]
-- `@cofounder/quick@1.1.0` with full feature set (Week 8) [DONE]
+- `@waymakerai/aicofounder-quick@1.0.0` (Week 4) [DONE]
+- `@waymakerai/aicofounder-prompts@1.0.0` (Week 6) [DONE]
+- `@waymakerai/aicofounder-quick@1.1.0` with full feature set (Week 8) [DONE]
 
 **Q2 2025 Releases**:
-- `@cofounder/generate@1.0.0` (Week 20)
-- `@cofounder/rag-advanced@1.0.0` (Week 21) [DONE]
-- `@cofounder/mcp@1.0.0` (Week 22)
+- `@waymakerai/aicofounder-generate@1.0.0` (Week 20)
+- `@waymakerai/aicofounder-rag-advanced@1.0.0` (Week 21) [DONE]
+- `@waymakerai/aicofounder-mcp@1.0.0` (Week 22)
 
 **Major Version**:
 - `cofounder@2.0.0` - Full feature release (Week 24)
@@ -598,7 +598,7 @@ This roadmap outlines the strategic implementation plan for transforming CoFound
 
 We've added two incredible packages that make CoFounder the most comprehensive agent framework:
 
-### @cofounder/guidelines - Dynamic Behavioral Control
+### @waymakerai/aicofounder-guidelines - Dynamic Behavioral Control
 **Context-aware guidelines that adapt to conversation flow**
 
 ✨ Features:
@@ -611,7 +611,7 @@ We've added two incredible packages that make CoFounder the most comprehensive a
 
 Use cases: Brand voice consistency, regulatory compliance, customer support empathy, domain-specific constraints
 
-### @cofounder/compliance - Enterprise Compliance Enforcement
+### @waymakerai/aicofounder-compliance - Enterprise Compliance Enforcement
 **Automatic enforcement of HIPAA, SEC, GDPR, and more**
 
 🛡️ Features:

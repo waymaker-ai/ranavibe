@@ -18,7 +18,7 @@ import {
   MessageBroker,
   createChannel,
   createRequestChannel
-} from '@cofounder/agents';
+} from '@waymakerai/aicofounder-agents';
 
 // Create a message broker
 const broker = new MessageBroker();
@@ -484,7 +484,7 @@ broker.subscribe('step-2', 'workflow', async (msg) => {
 The messaging system integrates seamlessly with CoFounder's orchestrator:
 
 ```typescript
-import { createOrchestrator, MessageBroker } from '@cofounder/agents';
+import { createOrchestrator, MessageBroker } from '@waymakerai/aicofounder-agents';
 
 const broker = new MessageBroker();
 const orchestrator = createOrchestrator({
@@ -534,7 +534,7 @@ import type {
   SendOptions,
   MessageBrokerStats,
   ChannelStats,
-} from '@cofounder/agents';
+} from '@waymakerai/aicofounder-agents';
 ```
 
 ## Related Documentation

@@ -17,35 +17,35 @@ Initial public release to npm under the `@cofounder` organization.
 
 | Package | Version | Description |
 |---------|---------|-------------|
-| `@cofounder/core` | 2.0.0 | Unified LLM client with cost optimization, provider routing, and guardrails |
-| `@cofounder/agents` | 1.0.0 | Agent Development Kit (ADK) with presets, tools, and orchestration |
-| `@cofounder/rag` | 1.0.0 | RAG pipeline: chunking, retrieval, reranking, knowledge base |
-| `@cofounder/mcp` | 2.0.0 | Model Context Protocol server & client implementation |
-| `@cofounder/helpers` | 1.0.0 | Quick LLM helpers for common tasks (summarize, translate, classify, etc.) |
-| `@cofounder/prompts` | 1.0.0 | Enterprise prompt management with versioning and A/B testing |
-| `@cofounder/generate` | 1.0.0 | Natural language code generation with templates and wizards |
-| `@cofounder/react` | 2.0.0 | React hooks and components for chat, RAG, and streaming |
-| `@cofounder/testing` | 1.0.0 | AI-native testing framework with semantic assertions |
-| `@cofounder/cli` | 1.0.0 | CLI for init, check, feature flows, and development workflows |
-| `@cofounder/sdk` | 0.1.0 | SDK for programmatic access to quality gates and REPM validation |
-| `@cofounder/ui` | 0.1.0 | Glass morphism component library for React |
-| `@cofounder/ui-cli` | 0.1.0 | CLI tool for installing CoFounder UI components |
-| `@cofounder/crewai` | 1.0.0 | CrewAI adapter for CoFounder |
-| `@cofounder/langchain` | 1.0.0 | LangChain adapter for CoFounder |
-| `@cofounder/mcp-server` | 0.1.0 | MCP server for Claude integration |
+| `@waymakerai/aicofounder-core` | 2.0.0 | Unified LLM client with cost optimization, provider routing, and guardrails |
+| `@waymakerai/aicofounder-agents` | 1.0.0 | Agent Development Kit (ADK) with presets, tools, and orchestration |
+| `@waymakerai/aicofounder-rag` | 1.0.0 | RAG pipeline: chunking, retrieval, reranking, knowledge base |
+| `@waymakerai/aicofounder-mcp` | 2.0.0 | Model Context Protocol server & client implementation |
+| `@waymakerai/aicofounder-helpers` | 1.0.0 | Quick LLM helpers for common tasks (summarize, translate, classify, etc.) |
+| `@waymakerai/aicofounder-prompts` | 1.0.0 | Enterprise prompt management with versioning and A/B testing |
+| `@waymakerai/aicofounder-generate` | 1.0.0 | Natural language code generation with templates and wizards |
+| `@waymakerai/aicofounder-react` | 2.0.0 | React hooks and components for chat, RAG, and streaming |
+| `@waymakerai/aicofounder-testing` | 1.0.0 | AI-native testing framework with semantic assertions |
+| `@waymakerai/aicofounder-cli` | 1.0.0 | CLI for init, check, feature flows, and development workflows |
+| `@waymakerai/aicofounder-sdk` | 0.1.0 | SDK for programmatic access to quality gates and REPM validation |
+| `@waymakerai/aicofounder-ui` | 0.1.0 | Glass morphism component library for React |
+| `@waymakerai/aicofounder-ui-cli` | 0.1.0 | CLI tool for installing CoFounder UI components |
+| `@waymakerai/aicofounder-crewai` | 1.0.0 | CrewAI adapter for CoFounder |
+| `@waymakerai/aicofounder-langchain` | 1.0.0 | LangChain adapter for CoFounder |
+| `@waymakerai/aicofounder-mcp-server` | 0.1.0 | MCP server for Claude integration |
 | `create-cofounder-app` | 2.0.0 | CLI to scaffold new CoFounder applications |
 
 ### Installation
 
 ```bash
 # Core package
-npm install @cofounder/core
+npm install @waymakerai/aicofounder-core
 
 # Create new app
 npx create-cofounder-app my-app
 
 # Full stack
-npm install @cofounder/core @cofounder/agents @cofounder/rag @cofounder/react
+npm install @waymakerai/aicofounder-core @waymakerai/aicofounder-agents @waymakerai/aicofounder-rag @waymakerai/aicofounder-react
 ```
 
 ### Infrastructure
@@ -66,7 +66,7 @@ npm install @cofounder/core @cofounder/agents @cofounder/rag @cofounder/react
 - Property name mismatches in `packages/agents/src/middleware/vibe-enforcer.ts`
 - Implicit any types in `packages/generate/src/quality/auto-fixer.ts`
 - Template interface flexibility in `packages/generate/src/types.ts`
-- Package references from `@cofounder/ui` to `@cofounder/ui` in docs
+- Package references from `@waymakerai/aicofounder-ui` to `@waymakerai/aicofounder-ui` in docs
 
 ### Version Strategy
 
@@ -144,7 +144,7 @@ npm install @cofounder/core @cofounder/agents @cofounder/rag @cofounder/react
 
 #### 🎉 New Packages - Framework Expansion
 
-**@cofounder/guidelines** - Dynamic Behavioral Control
+**@waymakerai/aicofounder-guidelines** - Dynamic Behavioral Control
 - Context-aware guideline matching with priority-based resolution
 - 3 enforcement levels: strict, advisory, monitored
 - 8+ preset guidelines for common scenarios (medical, finance, legal, brand voice)
@@ -153,7 +153,7 @@ npm install @cofounder/core @cofounder/agents @cofounder/rag @cofounder/react
 - Memory and file-based storage options
 - Package documentation: `packages/guidelines/README.md`
 
-**@cofounder/compliance** - Enterprise Compliance Enforcement
+**@waymakerai/aicofounder-compliance** - Enterprise Compliance Enforcement
 - Automatic HIPAA, SEC, GDPR, CCPA, Legal, Safety compliance
 - PII detection and redaction (10+ types: email, phone, SSN, credit card, medical records, etc.)
 - 7 enforcement actions: allow, block, redact, append, replace, warn, escalate
@@ -162,7 +162,7 @@ npm install @cofounder/core @cofounder/agents @cofounder/rag @cofounder/react
 - 9+ preset compliance rules ready to use
 - Package documentation: `packages/compliance/README.md`
 
-**@cofounder/context-optimizer** - Extended Context Optimization
+**@waymakerai/aicofounder-context-optimizer** - Extended Context Optimization
 - Handle 400K+ token contexts efficiently (GPT-5.2, Gemini 3, Claude 4.5)
 - 70% cost savings maintained at 400K scale
 - 4 optimization strategies: hybrid (recommended), full, rag, summarize
@@ -172,7 +172,7 @@ npm install @cofounder/core @cofounder/agents @cofounder/rag @cofounder/react
 - LLM-based summarization support
 - Package documentation: `packages/context-optimizer/README.md`
 
-#### 🚀 Major Enhancements - @cofounder/generate
+#### 🚀 Major Enhancements - @waymakerai/aicofounder-generate
 
 **Advanced API Generation** ⭐ NEW
 - Complete CRUD API generation for Next.js App Router (GET, POST, PUT, DELETE)
@@ -258,8 +258,8 @@ npm install @cofounder/core @cofounder/agents @cofounder/rag @cofounder/react
 
 - Updated `CoFounder_2025_ROADMAP.md` to reflect new packages and strategic opportunities
   - Q1 2026: Guidelines, Compliance, Context Optimizer (✅ Complete)
-  - Q2 2026: @cofounder/graph, @cofounder/observability, MCP Marketplace
-  - Q3 2026: @cofounder/multimodal, Universal Agent Protocol
+  - Q2 2026: @waymakerai/aicofounder-graph, @waymakerai/aicofounder-observability, MCP Marketplace
+  - Q3 2026: @waymakerai/aicofounder-multimodal, Universal Agent Protocol
 
 ### Framework Philosophy Evolution
 
@@ -316,13 +316,13 @@ All new packages are additive and optional. No breaking changes.
 
 ```bash
 # Add guidelines
-npm install @cofounder/guidelines
+npm install @waymakerai/aicofounder-guidelines
 
 # Add compliance
-npm install @cofounder/compliance
+npm install @waymakerai/aicofounder-compliance
 
 # Add context optimization
-npm install @cofounder/context-optimizer
+npm install @waymakerai/aicofounder-context-optimizer
 ```
 
 See `docs/WHATS_NEW_2026.md` for complete getting started guides.
@@ -567,7 +567,7 @@ See `docs/WHATS_NEW_2026.md` for complete getting started guides.
 
 - **Repository:** https://github.com/waymaker-ai/cofounder
 - **Documentation:** https://cofounder.cx
-- **npm Organization:** https://www.npmjs.com/org/cofounder
+- **npm Organization:** https://www.npmjs.com/org/waymakerai
 - **Issues:** https://github.com/waymaker-ai/cofounder/issues
 - **Discussions:** https://github.com/waymaker-ai/cofounder/discussions
 

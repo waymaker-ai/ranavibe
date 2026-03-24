@@ -1,6 +1,6 @@
 # ci-demo
 
-Demonstrates `@cofounder/ci` for CI/CD guardrails:
+Demonstrates `@waymakerai/aicofounder-ci` for CI/CD guardrails:
 
 - **Available rules** listing all built-in scan rules (hardcoded keys, PII in prompts, injection vulnerabilities, model approval, cost estimation, safe defaults)
 - **Programmatic scan** running a full codebase scan from TypeScript

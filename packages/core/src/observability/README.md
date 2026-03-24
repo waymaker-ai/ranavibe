@@ -36,7 +36,7 @@ The CoFounder Observability module provides comprehensive tracing capabilities t
 ### Basic Usage
 
 ```typescript
-import { createTracer } from '@cofounder/core';
+import { createTracer } from '@waymakerai/aicofounder-core';
 
 // Create a tracer
 const tracer = createTracer({
@@ -70,7 +70,7 @@ console.log(exported);
 ### Nested Operations
 
 ```typescript
-import { createTracer } from '@cofounder/core';
+import { createTracer } from '@waymakerai/aicofounder-core';
 
 const tracer = createTracer();
 
@@ -94,7 +94,7 @@ tracer.endSpan(parentSpan, 'success');
 ### Error Handling
 
 ```typescript
-import { createTracer } from '@cofounder/core';
+import { createTracer } from '@waymakerai/aicofounder-core';
 
 const tracer = createTracer();
 const span = tracer.startTrace('risky_operation');
@@ -110,7 +110,7 @@ try {
 ### Global Tracer
 
 ```typescript
-import { createTracer, setGlobalTracer, getGlobalTracer } from '@cofounder/core';
+import { createTracer, setGlobalTracer, getGlobalTracer } from '@waymakerai/aicofounder-core';
 
 // Set up global tracer once
 const tracer = createTracer({ maxTraces: 1000 });
@@ -124,7 +124,7 @@ const span = globalTracer.startTrace('operation');
 ### Function Wrapping
 
 ```typescript
-import { traced } from '@cofounder/core';
+import { traced } from '@waymakerai/aicofounder-core';
 
 // Wrap an async function
 async function processMessage(msg: string): Promise<string> {
@@ -141,7 +141,7 @@ const result = await tracedProcess('Hello!');
 ### Auto-Export
 
 ```typescript
-import { createTracer } from '@cofounder/core';
+import { createTracer } from '@waymakerai/aicofounder-core';
 
 const tracer = createTracer({
   autoExport: true,
@@ -273,7 +273,7 @@ interface TraceExport {
 ### Real-World Example: Complete Chat Request
 
 ```typescript
-import { createTracer } from '@cofounder/core';
+import { createTracer } from '@waymakerai/aicofounder-core';
 
 async function handleChatRequest(tracer: Tracer) {
   // Main request trace
@@ -346,7 +346,7 @@ async function handleChatRequest(tracer: Tracer) {
 ### Integration with Monitoring Services
 
 ```typescript
-import { createTracer } from '@cofounder/core';
+import { createTracer } from '@waymakerai/aicofounder-core';
 
 // Example: Send to DataDog
 const tracer = createTracer({
@@ -386,7 +386,7 @@ const tracer = createTracer({
 ### Statistics and Monitoring
 
 ```typescript
-import { getGlobalTracer } from '@cofounder/core';
+import { getGlobalTracer } from '@waymakerai/aicofounder-core';
 
 const tracer = getGlobalTracer();
 

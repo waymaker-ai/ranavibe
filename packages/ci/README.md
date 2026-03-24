@@ -1,4 +1,4 @@
-# @cofounder/ci
+# @waymakerai/aicofounder-ci
 
 CI/CD guardrails for AI applications. Scan your codebase for security, compliance, cost, and safety issues in AI/LLM code -- with zero runtime dependencies.
 
@@ -14,7 +14,7 @@ CI/CD guardrails for AI applications. Scan your codebase for security, complianc
 ## Installation
 
 ```bash
-npm install @cofounder/ci --save-dev
+npm install @waymakerai/aicofounder-ci --save-dev
 ```
 
 ## CLI Usage
@@ -149,7 +149,7 @@ build/
 ## Programmatic Usage
 
 ```typescript
-import { scan, formatReport } from '@cofounder/ci';
+import { scan, formatReport } from '@waymakerai/aicofounder-ci';
 
 const result = scan({
   scanPath: './src',

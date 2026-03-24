@@ -2,7 +2,7 @@
 
 **Generated:** 2026-03-21
 **CoFounder Version:** 3.1
-**Benchmark Package:** @cofounder/benchmark v3.1.0
+**Benchmark Package:** @waymakerai/aicofounder-benchmark v3.1.0
 **Total Duration:** 847ms
 **Environment:** Node.js 20.x, macOS arm64
 
@@ -18,7 +18,7 @@
 
 ---
 
-## 1. PII Detection (`@cofounder/guard` — `detectPII`)
+## 1. PII Detection (`@waymakerai/aicofounder-guard` — `detectPII`)
 
 - **Test Cases:** 100 (40 positive, 40 negative, 20 edge)
 - **Duration:** 312ms
@@ -84,7 +84,7 @@
 
 ---
 
-## 2. Injection Detection (`@cofounder/guard` — `detectInjection`)
+## 2. Injection Detection (`@waymakerai/aicofounder-guard` — `detectInjection`)
 
 - **Test Cases:** 100 (40 positive, 40 negative, 20 edge)
 - **Duration:** 289ms
@@ -157,7 +157,7 @@
 
 ---
 
-## 3. Toxicity Detection (`@cofounder/guard` — `detectToxicity`)
+## 3. Toxicity Detection (`@waymakerai/aicofounder-guard` — `detectToxicity`)
 
 - **Test Cases:** 52 (20 positive, 20 negative, 12 edge)
 - **Duration:** 246ms
@@ -227,7 +227,7 @@
 
 ### Approach
 
-Benchmarks were run using `@cofounder/benchmark` v3.1.0, which evaluates the built-in `@cofounder/guard` detectors (`detectPII`, `detectInjection`, `detectToxicity`) against curated datasets.
+Benchmarks were run using `@waymakerai/aicofounder-benchmark` v3.1.0, which evaluates the built-in `@waymakerai/aicofounder-guard` detectors (`detectPII`, `detectInjection`, `detectToxicity`) against curated datasets.
 
 - **PII Dataset:** 100 cases -- 40 positive (5 each for email, phone, SSN, credit card, IP, DOB, address, MRN), 40 negative (non-PII inputs that resemble PII patterns), 20 edge cases (obfuscated, encoded, multi-PII, embedded-in-code).
 - **Injection Dataset:** 100 cases -- 40 positive (direct injection, indirect, jailbreaks, data exfiltration, encoded, multi-step, context manipulation), 40 negative (legitimate programming, business, and security questions), 20 edge cases (multi-language, leetspeak, reversed, quoted, meta-analysis).
@@ -244,7 +244,7 @@ For edge cases, the expected behavior is defined per-case (some should detect, s
 
 ### Limitations
 
-1. **Regex-only evaluation:** These results reflect the built-in regex/pattern-matching detectors only. Production deployments using `@cofounder/llm-detect` (LLM-based secondary classification) or custom detectors will see different results.
+1. **Regex-only evaluation:** These results reflect the built-in regex/pattern-matching detectors only. Production deployments using `@waymakerai/aicofounder-llm-detect` (LLM-based secondary classification) or custom detectors will see different results.
 2. **English-centric:** The dataset is primarily English, with limited multi-language cases. Non-English detection coverage is minimal.
 3. **Static patterns:** Regex patterns do not adapt to new attack vectors. The injection landscape evolves faster than static rules.
 4. **No context window:** Detectors evaluate single messages in isolation, without conversation history or system prompt context.
@@ -270,7 +270,7 @@ For edge cases, the expected behavior is defined per-case (some should detect, s
 
 1. **Speed vs. depth trade-off:** CoFounder's regex-based approach is 40-100x faster than LLM-based detection but misses nuanced/novel attacks. For latency-sensitive applications (streaming, real-time chat), CoFounder's approach is preferred.
 
-2. **Layered defense recommended:** Use `@cofounder/guard` for fast first-pass filtering, then `@cofounder/llm-detect` for secondary LLM-based classification on flagged or borderline content.
+2. **Layered defense recommended:** Use `@waymakerai/aicofounder-guard` for fast first-pass filtering, then `@waymakerai/aicofounder-llm-detect` for secondary LLM-based classification on flagged or borderline content.
 
 3. **Structured PII is a strength:** For well-formatted PII (emails, SSNs, credit cards with Luhn validation), regex-based detection matches or exceeds LLM-based approaches with zero latency cost.
 
@@ -280,7 +280,7 @@ For edge cases, the expected behavior is defined per-case (some should detect, s
 
 ## Recommendations
 
-- **Enable `@cofounder/llm-detect`** for toxicity and injection in high-security deployments to close the gap on subtle attacks.
+- **Enable `@waymakerai/aicofounder-llm-detect`** for toxicity and injection in high-security deployments to close the gap on subtle attacks.
 - **Add domain-specific allowlists** (e.g., `example.com`, `test.com`) to reduce PII false positives in development contexts.
 - **Use `sensitivity: 'high'`** for injection detection in customer-facing applications to catch more edge cases at the cost of higher false positive rate.
-- **Combine with `@cofounder/policies`** for defense-in-depth: even if a detector misses an attack, policy rules provide an independent enforcement layer.
+- **Combine with `@waymakerai/aicofounder-policies`** for defense-in-depth: even if a detector misses an attack, policy rules provide an independent enforcement layer.
