@@ -43,5 +43,10 @@
   "peerDependencies": {
     "@waymakerai/aicofounder-core": "workspace:*",
     "@waymakerai/aicofounder-agents": "workspace:*"
-  }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ]
 }
