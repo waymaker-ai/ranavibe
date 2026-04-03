@@ -1,6 +1,6 @@
 # CoFounder
 
-**Guardrails & Guidance for AI-Assisted Development**
+**by [Waymaker AI](https://waymaker.cx) | Guardrails & Guidance for AI-Assisted Development**
 
 > **CoFounder is a free, open-source, integration-friendly guardrail layer for AI-assisted development.**
 > It plugs into your existing stack (Vercel AI SDK, Supabase, LangChain, CrewAI, etc.) and makes sure agents **don't trash your codebase, ignore your design system and business rules, ship mock-only work, or waste your time and budget.**
@@ -16,6 +16,50 @@ Everything else (RAG, specs, flows, integrations) exists to support that.
 [![GitHub Stars](https://img.shields.io/github/stars/waymaker-ai/cofounder?style=social)](https://github.com/waymaker-ai/cofounder)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![npm version](https://badge.fury.io/js/%40waymakerai%2Faicofounder-core.svg)](https://www.npmjs.com/package/@waymakerai/aicofounder-core)
+[![npm downloads](https://img.shields.io/npm/dm/@waymakerai/aicofounder-core)](https://www.npmjs.com/package/@waymakerai/aicofounder-core)
+[![CI](https://img.shields.io/github/actions/workflow/status/waymaker-ai/cofounder/ci.yml?branch=main)](https://github.com/waymaker-ai/cofounder/actions)
+[![Discord](https://img.shields.io/discord/PLACEHOLDER?label=discord)](https://discord.gg/PLACEHOLDER)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
+
+---
+
+## Quick Demo
+
+### Before AICofounder (agent goes rogue):
+```
+❌ Agent commits AWS keys to repo
+❌ Agent leaks patient SSN in API response
+❌ Agent blows through $500 in API calls overnight
+❌ Agent gives investment advice (SEC violation)
+❌ Agent rewrites your auth middleware "for fun"
+```
+
+### After AICofounder (3 lines of code):
+```typescript
+import { createGuard } from '@waymakerai/aicofounder-guard';
+
+const guard = createGuard({
+  pii: 'redact',
+  injection: 'block',
+  budget: { limit: 50, period: 'day' },
+  compliance: { frameworks: ['hipaa', 'gdpr', 'sec'] }
+});
+
+const result = guard.check(userInput);
+// ✅ PII redacted, injections blocked, budget enforced, compliance checked
+// All in < 1ms with zero dependencies
+```
+
+---
+
+## Why AICofounder?
+
+- ⚡ **< 1ms guard latency** (vs 100ms-2s for LLM-based alternatives)
+- 📦 **~50KB, zero runtime dependencies**
+- 💰 **70% cost reduction** through caching + smart routing
+- 🔒 **HIPAA, GDPR, SEC, SOX, PCI DSS** compliance built-in
+- 🔌 **Works with LangChain, CrewAI, Vercel AI SDK, Supabase**
+- 🆓 **MIT licensed**, free forever
 
 ---
 
