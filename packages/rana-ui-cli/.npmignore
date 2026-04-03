@@ -1,0 +1,51 @@
+# Source files — NEVER publish TypeScript source
+src/
+__tests__/
+*.test.ts
+*.test.js
+*.spec.ts
+*.spec.js
+test/
+tests/
+
+# Build config
+tsconfig.json
+tsconfig.*.json
+vitest.config.*
+jest.config.*
+.eslintrc*
+.prettierrc*
+turbo.json
+
+# Source maps — this is EXACTLY what leaked Claude Code's 512K lines
+*.map
+*.js.map
+*.d.ts.map
+
+# Environment & secrets
+.env
+.env.*
+*.pem
+*.key
+
+# Development artifacts
+node_modules/
+coverage/
+.turbo/
+.cache/
+*.tsbuildinfo
+
+# Documentation (keep README)
+docs/
+CHANGELOG.md
+CONTRIBUTING.md
+
+# Git & CI
+.git/
+.github/
+.gitignore
+.npmrc
+
+# OS artifacts
+.DS_Store
+Thumbs.db

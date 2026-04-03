@@ -1,0 +1,63 @@
+# Root-level .npmignore — defense-in-depth for the monorepo
+# Each package also has its own .npmignore
+
+# Source files
+src/
+__tests__/
+*.test.ts
+*.test.js
+*.spec.ts
+*.spec.js
+test/
+tests/
+
+# Source maps — NEVER publish (this leaked Claude Code's 512K lines)
+*.map
+*.js.map
+*.d.ts.map
+
+# Build config
+tsconfig.json
+tsconfig.*.json
+vitest.config.*
+jest.config.*
+turbo.json
+pnpm-workspace.yaml
+.eslintrc*
+.prettierrc*
+
+# Environment & secrets
+.env
+.env.*
+*.pem
+*.key
+
+# Development artifacts
+node_modules/
+coverage/
+.turbo/
+.cache/
+*.tsbuildinfo
+
+# Documentation (individual packages keep their README)
+docs/
+CHANGELOG.md
+CONTRIBUTING.md
+GOVERNANCE.md
+ARCHITECTURE.md
+
+# Git & CI
+.git/
+.github/
+.gitignore
+.npmrc
+
+# Website (not published)
+website/
+
+# Tools (published separately)
+tools/
+
+# OS artifacts
+.DS_Store
+Thumbs.db
