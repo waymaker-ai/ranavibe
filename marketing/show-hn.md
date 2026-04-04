@@ -14,6 +14,8 @@ AICofounder is a 7-layer guard system that sits between your AI agent and your c
 
 Works with Vercel AI SDK, LangChain, CrewAI, Supabase, and anything else that speaks HTTP or has a middleware pattern. The caching and smart routing layer typically cuts token costs by ~70%, which alone has paid for the integration time for most teams we've talked to.
 
+We also ship a CI/CD scanner (`@waymakerai/aicofounder-ci`) with 7 static analysis rules that catch hardcoded secrets, exposed source maps, VITE_/NEXT_PUBLIC_ env var leaks that get baked into client bundles, debug modes left on in production, GraphQL introspection enabled without auth, CORS wildcards, and CI/CD secrets echoed in logs. Just `npx @waymakerai/aicofounder-ci scan --rules all` in your pipeline.
+
 One thing we feel strongly about: we refuse to sell the "ship a startup in 30 minutes with AI" fantasy. AI-assisted development is powerful, but it needs the same engineering discipline as everything else — tests, code review, guardrails. AICofounder is the guardrails part. MIT licensed, no vendor lock-in, no telemetry, no cloud dependency. Run it entirely on your own infra.
 
 GitHub: https://github.com/waymaker-ai/cofounder

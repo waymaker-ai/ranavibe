@@ -527,6 +527,8 @@ const featureAgent = new Agent({
 | `@waymakerai/aicofounder-crewai` | CrewAI adapter |
 | `@waymakerai/aicofounder-mcp` | Model Context Protocol server & client |
 | `@waymakerai/aicofounder-react` | React hooks for chat, RAG, streaming |
+| `@waymakerai/aicofounder-ci` | CI/CD scanner: 7 rules for secrets, PII, injection, exposed assets |
+| `@waymakerai/aicofounder-guard` | Runtime guard engine: PII, injection, toxicity, budget, rate limit |
 
 ---
 
@@ -553,6 +555,8 @@ These features are tested, documented, and suitable for production use:
 | Audit Logging | `core` | Stable |
 | Memory Management | `core` | Stable |
 | Config Parsing | `core` | Stable |
+| CI Scanner (7 rules) | `ci` | Stable |
+| Exposed Asset Detection | `ci` | Stable |
 
 ### Beta (Functional, Needs Validation)
 
@@ -643,6 +647,13 @@ cofounder security:audit      # Run security scan
 cofounder security:setup      # Setup security config
 ```
 
+### CI/CD Scanner
+```bash
+npx @waymakerai/aicofounder-ci scan --rules all          # Scan codebase for security issues
+npx @waymakerai/aicofounder-ci scan --rules no-exposed-assets  # Check for exposed assets only
+npx @waymakerai/aicofounder-ci validate                  # Validate .aicofounder.yml config
+```
+
 ### Agent Commands
 ```bash
 cofounder agent:new           # Scaffold a new agent
@@ -665,6 +676,12 @@ cofounder vibe:compile        # Show compiled system prompt
 - **[START_HERE.md](START_HERE.md)** - Navigation hub
 - **[QUICK_START_GUIDE.md](QUICK_START_GUIDE.md)** - 5-minute tutorial
 - **[docs/cofounder-os-spec.md](docs/cofounder-os-spec.md)** - Full API specification
+
+### Training Academy
+- **[Fundamentals](https://cofounder.waymaker.cx/training/fundamentals)** - 8 lessons: framework basics, architecture, first project
+- **[Building AI Agents](https://cofounder.waymaker.cx/training/building-agents)** - 12 lessons: tools, memory, orchestration, testing
+- **[Advanced Patterns](https://cofounder.waymaker.cx/training/advanced-patterns)** - 15 lessons: streaming, caching, RAG, pipelines
+- **[Production Deployment](https://cofounder.waymaker.cx/training/production-deployment)** - 10 lessons: Vercel, AWS, Docker, monitoring, security
 
 ### Framework Guides
 - **[docs/LLM_OPTIMIZATION_GUIDE.md](docs/LLM_OPTIMIZATION_GUIDE.md)** - Cost optimization

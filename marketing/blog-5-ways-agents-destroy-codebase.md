@@ -193,8 +193,30 @@ The answer isn't to stop using AI agents. The answer is the same one engineering
 
 AICofounder is a 7-layer guard system that runs in under 1ms per check, ships at ~50KB with zero runtime dependencies, and is MIT licensed. It's free and open source because we believe guardrails should be table stakes, not a premium add-on.
 
-Your AI agent is only as safe as the boundaries you set for it. Set them.
+## Bonus: Catching Exposure Before It Ships
+
+Everything above focuses on runtime guards. But some of the worst failures happen before runtime — in your build config, your CI pipeline, or your `.env` files.
+
+That's why we also ship `@waymakerai/aicofounder-ci`, a zero-dependency static analysis scanner with 7 rules that run against your codebase in CI:
+
+```bash
+npx @waymakerai/aicofounder-ci scan --rules all
+```
+
+It catches:
+- **Hardcoded API keys and secrets** in source code
+- **Source map files** exposed in production bundles
+- **`VITE_SECRET` / `NEXT_PUBLIC_DB_URL`** environment variables that get embedded in client bundles
+- **Debug mode** left on in production (`FLASK_DEBUG=1`, `DJANGO_DEBUG=True`)
+- **GraphQL introspection** enabled without auth gates
+- **CORS wildcards** (`origin: '*'`) on authenticated endpoints
+- **CI/CD secrets** echoed to GitHub Actions logs
+- **Directory listing** enabled in nginx/Apache configs
+
+It runs in your GitHub Action, posts findings as PR comments, and outputs SARIF for code scanning dashboards. Zero config to start — just `npx` and go.
+
+Your AI agent is only as safe as the boundaries you set for it. Set them — at runtime *and* at build time.
 
 ---
 
-*AICofounder is built by [Waymaker AI](https://waymaker.ai). Check out the project on GitHub. MIT licensed, always free.*
+*AICofounder is built by [Waymaker AI](https://waymaker.ai). Check out the project on GitHub. MIT licensed, always free. Learn more at our [Training Academy](https://cofounder.waymaker.cx/training) with 45 lessons across 4 modules.*

@@ -58,13 +58,25 @@ Works with LangChain, CrewAI, Vercel AI SDK. Adapters for Lakera Guard and AWS B
 
 ---
 
-**Tweet 8 (Open source)**
+**Tweet 8 (CI Scanner)**
 
-MIT licensed. Fully open source. No "open core" bait-and-switch. The compliance module, the guard, the agent SDK, the cost optimizer -- all of it, free. We'd rather have 10,000 devs using this than 10 enterprises paying us to ignore the problem.
+We also ship a CI/CD scanner with 7 rules that catches exposed source maps, VITE_SECRET env vars in client bundles, debug modes left on in prod, GraphQL introspection without auth, secrets echoed in GitHub Actions, and more. Just: npx @waymakerai/aicofounder-ci scan --rules all
 
 ---
 
-**Tweet 9 (CTA)**
+**Tweet 9 (Training)**
+
+We built a free training academy with 45 lessons across 4 courses: Fundamentals, Building AI Agents, Advanced Patterns, Production Deployment. Real code, real patterns, not vibes. cofounder.waymaker.cx/training
+
+---
+
+**Tweet 10 (Open source)**
+
+MIT licensed. Fully open source. No "open core" bait-and-switch. The compliance module, the guard, the agent SDK, the CI scanner, the cost optimizer -- all of it, free. We'd rather have 10,000 devs using this than 10 enterprises paying us to ignore the problem.
+
+---
+
+**Tweet 11 (CTA)**
 
 Ship AI features without shipping liability.
 

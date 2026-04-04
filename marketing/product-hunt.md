@@ -15,6 +15,8 @@ AICofounder is a free, open-source guardrail engine that wraps any AI agent in 7
 - **Compliance Out of the Box** — HIPAA, GDPR, SEC, SOX, and PCI DSS rules are built in, not afterthoughts. Pass audits without writing custom policy code.
 - **Drop-In Integrations** — Works with LangChain, CrewAI, Vercel AI SDK, and Supabase. One import, a few lines of config, and your agents are protected.
 - **70% Cost Reduction** — Intelligent token budgeting, request caching, and rate limiting cut your LLM spend without cutting capability.
+- **CI/CD Code Scanner** — 7 built-in static analysis rules catch hardcoded secrets, exposed source maps, VITE_/NEXT_PUBLIC_ env var leaks, debug modes in production, GraphQL introspection, CORS wildcards, and CI/CD secret leaks — all before code reaches production.
+- **45-Lesson Training Academy** — Four complete courses: Fundamentals (8 lessons), Building AI Agents (12), Advanced Patterns (15), and Production Deployment (10). Free at cofounder.waymaker.cx/training.
 - **Open Source, MIT Licensed** — Fully free. No usage tiers, no vendor lock-in, no "contact sales for the compliance module." The whole thing is on GitHub.
 
 ## First Comment (Maker's Comment)

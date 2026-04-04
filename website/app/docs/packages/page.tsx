@@ -295,16 +295,19 @@ rana test --semantic --coverage`,
         name: '@waymakerai/aicofounder-ci',
         shortName: 'ci',
         icon: RefreshCw,
-        description: 'CI/CD integration for GitHub Actions. Runs guard checks on PRs, generates SARIF reports, posts compliance comments.',
+        description: 'CI/CD static analysis scanner with 7 built-in rules: hardcoded secrets, PII in prompts, prompt injection, model approval, cost estimation, safe defaults, and exposed asset detection (source maps, env var leaks, debug modes, CORS, GraphQL introspection, CI/CD secret leaks).',
         install: 'npm install @waymakerai/aicofounder-ci',
         layer: 'DevOps',
-        keyExports: ['CIRunner', 'SARIFReporter', 'PRCommentReporter'],
-        example: `# .github/workflows/rana.yml
+        keyExports: ['scan', 'noHardcodedKeys', 'noExposedAssets', 'noInjectionVuln', 'noPiiInPrompts', 'approvedModels', 'costEstimation', 'safeDefaults'],
+        example: `# Scan your codebase
+npx @waymakerai/aicofounder-ci scan --rules all --fail-on high
+
+# GitHub Actions
 - uses: waymaker-ai/cofounder-ci@v1
   with:
-    guard: true
-    compliance: hipaa,gdpr
-    fail-on: critical`,
+    rules: all
+    fail-on: high
+    comment-on-pr: true`,
       },
       {
         name: '@waymakerai/aicofounder-testing',
