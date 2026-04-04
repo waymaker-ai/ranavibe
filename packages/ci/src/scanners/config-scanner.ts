@@ -13,6 +13,7 @@ const KNOWN_RULES = [
   'approved-models',
   'cost-estimation',
   'safe-defaults',
+  'no-exposed-assets',
 ];
 
 /**

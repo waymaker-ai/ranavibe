@@ -177,6 +177,7 @@ console.log(report);
 | `approved-models` | medium | Enforce approved model list |
 | `cost-estimation` | medium | Estimate LLM usage costs |
 | `safe-defaults` | medium | Check for unsafe LLM configurations |
+| `no-exposed-assets` | high | Detect source maps, build misconfigs, debug modes, sensitive files, API introspection, CORS, directory listing, CI/CD secret leaks |
 
 ## License
 

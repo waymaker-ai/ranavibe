@@ -31,6 +31,7 @@ export {
   approvedModels,
   costEstimation,
   safeDefaults,
+  noExposedAssets,
 } from './rules/index.js';
 
 // Scanners
