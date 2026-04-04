@@ -47,31 +47,38 @@ You don't need to be an expert! Here are many ways to help:
 - Customer support bot
 - Industry-specific examples
 
-### 5. Enhance Compliance
+### 5. Improve CI/CD Scanner
+- Add new scanning rules to @waymakerai/aicofounder-ci
+- Expand `no-exposed-assets` with new exposure patterns
+- Improve false-positive filtering
+- Add support for new file types and frameworks
+- Write tests for edge cases
+
+### 6. Enhance Compliance
 - Add new compliance rules (@waymakerai/aicofounder-compliance)
 - Improve PII detection patterns
 - Add industry-specific regulations
 - Test compliance enforcement
 
-### 6. Improve Guidelines
+### 7. Improve Guidelines
 - Create preset guidelines (@waymakerai/aicofounder-guidelines)
 - Add condition builders
 - Improve matching logic
 - Build analytics features
 
-### 7. Optimize Context Handling
+### 8. Optimize Context Handling
 - Enhance context optimization strategies (@waymakerai/aicofounder-context-optimizer)
 - Improve file prioritization
 - Add better summarization
 - Test with large codebases
 
-### 8. Build MCP Servers
+### 9. Build MCP Servers
 - Create new MCP connectors
 - Improve existing servers
 - Test MCP integrations
 - Document MCP usage
 
-### 9. Write Code
+### 10. Write Code
 - Fix bugs across packages
 - Implement new features
 - Improve performance

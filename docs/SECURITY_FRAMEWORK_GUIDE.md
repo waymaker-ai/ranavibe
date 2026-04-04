@@ -1233,6 +1233,73 @@ quality_gates:
 
 ---
 
+## CI/CD Code Scanning
+
+In addition to runtime guards, CoFounder provides static analysis via `@waymakerai/aicofounder-ci` to catch security issues before code reaches production.
+
+### Quick Start
+
+```bash
+npx @waymakerai/aicofounder-ci scan --rules all --fail-on high
+```
+
+### Available Rules (7)
+
+| Rule | Severity | Description |
+|------|----------|-------------|
+| `no-hardcoded-keys` | critical | Detects API keys, secrets, passwords, and credentials |
+| `no-pii-in-prompts` | high | Finds PII in prompt templates and test fixtures |
+| `no-injection-vuln` | critical | Catches prompt injection from unsanitized user input |
+| `approved-models` | medium | Enforces approved LLM model list |
+| `cost-estimation` | medium | Estimates monthly LLM costs per code reference |
+| `safe-defaults` | medium | Checks for unsafe LLM configs |
+| `no-exposed-assets` | high | Detects source maps, env var leaks, debug modes, CORS, API introspection, CI/CD secrets |
+
+### Exposed Asset Detection (`no-exposed-assets`)
+
+This rule covers 10 categories of web application exposure:
+
+- **Source map leaks** - `sourceMappingURL` in bundles, webpack/vite sourcemap configs
+- **Vite/Next.js env exposure** - `VITE_SECRET`, `NEXT_PUBLIC_DB_URL` embedded in client bundles
+- **Debug mode in production** - Flask/Django debug, `ACTIONS_STEP_DEBUG`
+- **Sensitive file exposure** - `.npmrc` tokens, credentials in URLs, private keys
+- **API introspection** - GraphQL `introspection: true`, Swagger docs without auth
+- **CORS misconfiguration** - Wildcard `origin: '*'` on authenticated endpoints
+- **Server directory listing** - nginx `autoindex on`, Apache `Options Indexes`
+- **CI/CD secret leaks** - Secrets echoed in GitHub Actions logs, `printenv` in workflows
+- **Database admin tools** - phpMyAdmin, adminer routes exposed publicly
+- **Infrastructure disclosure** - Internal corporate URLs and hardcoded public IPs
+
+### GitHub Actions Integration
+
+```yaml
+# .github/workflows/security.yml
+- uses: waymaker-ai/cofounder-ci@v1
+  with:
+    rules: all
+    fail-on: high
+    comment-on-pr: true
+```
+
+### Configuration
+
+```yaml
+# .aicofounder.yml
+rules:
+  no-exposed-assets:
+    enabled: true
+    severity: high
+  no-hardcoded-keys:
+    enabled: true
+    severity: critical
+scan:
+  exclude:
+    - "*.test.ts"
+    - "__mocks__/**"
+```
+
+---
+
 ## Conclusion
 
 Security is **non-negotiable**. Following these patterns ensures:
@@ -1243,6 +1310,7 @@ Security is **non-negotiable**. Following these patterns ensures:
 ✅ **Data Protection** - Encrypted sensitive data
 ✅ **OWASP Prevention** - Protected against common attacks
 ✅ **Compliance** - Audit-ready logs
+✅ **CI/CD Scanning** - Exposed assets caught before deployment
 
 **Next:** [LLM Optimization Guide](./LLM_OPTIMIZATION_GUIDE.md)
 

@@ -673,8 +673,8 @@ cofounder vibe:compile        # Show compiled system prompt
 ## Documentation
 
 ### Getting Started
-- **[START_HERE.md](START_HERE.md)** - Navigation hub
-- **[QUICK_START_GUIDE.md](QUICK_START_GUIDE.md)** - 5-minute tutorial
+- **[GETTING_STARTED.md](GETTING_STARTED.md)** - Navigation hub
+- **[QUICK_START.md](QUICK_START.md)** - 5-minute tutorial
 - **[docs/cofounder-os-spec.md](docs/cofounder-os-spec.md)** - Full API specification
 
 ### Training Academy

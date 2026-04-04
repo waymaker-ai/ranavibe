@@ -971,10 +971,52 @@ All commands integrate with `.cofounder.yml` quality gates:
 
 ---
 
+## 🔍 CI/CD Scanner Commands
+
+### `npx @waymakerai/aicofounder-ci scan`
+Scan codebase for security issues, exposed assets, and misconfigurations
+```bash
+npx @waymakerai/aicofounder-ci scan                     # Scan with all rules
+npx @waymakerai/aicofounder-ci scan --rules all          # Explicit all rules
+npx @waymakerai/aicofounder-ci scan --rules no-exposed-assets,no-hardcoded-keys
+npx @waymakerai/aicofounder-ci scan --fail-on high       # Fail on high+ severity
+npx @waymakerai/aicofounder-ci scan --format sarif       # SARIF output for code scanning
+npx @waymakerai/aicofounder-ci scan --format json        # JSON output
+npx @waymakerai/aicofounder-ci scan --format markdown    # Markdown report
+npx @waymakerai/aicofounder-ci scan --config .aicofounder.yml
+```
+
+**Available Rules (7):**
+| Rule | Default Severity | What It Catches |
+|------|-----------------|-----------------|
+| `no-hardcoded-keys` | critical | API keys, secrets, passwords, tokens in source code |
+| `no-pii-in-prompts` | high | PII (emails, SSNs, credit cards) in prompt templates |
+| `no-injection-vuln` | critical | Prompt injection from unsanitized user input |
+| `approved-models` | medium | Unapproved or deprecated LLM models |
+| `cost-estimation` | medium | Monthly LLM cost estimates per code reference |
+| `safe-defaults` | medium | Unsafe LLM configs (high temp, missing max_tokens) |
+| `no-exposed-assets` | high | Source maps, env var leaks, debug modes, CORS, GraphQL introspection, CI/CD secrets |
+
+### `npx @waymakerai/aicofounder-ci validate`
+Validate .aicofounder.yml configuration file
+```bash
+npx @waymakerai/aicofounder-ci validate                  # Validate config
+npx @waymakerai/aicofounder-ci validate --config path/to/.aicofounder.yml
+```
+
+### `npx @waymakerai/aicofounder-ci check`
+Scan with GitHub Actions integration (PR comments, check runs)
+```bash
+npx @waymakerai/aicofounder-ci check --rules all --fail-on high
+# Requires GITHUB_TOKEN environment variable
+```
+
+---
+
 ## 💎 Why CoFounder CLI is Unique
 
 **No competitor offers:**
-1. **30+ integrated commands** across all frameworks
+1. **35+ integrated commands** across all frameworks including CI/CD scanning
 2. **70% LLM cost reduction** built-in
 3. **Auto-fix capabilities** for most issues
 4. **Interactive wizards** for complex setup
