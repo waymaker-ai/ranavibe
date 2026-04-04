@@ -5,6 +5,7 @@ import { noInjectionVuln } from './no-injection-vuln.js';
 import { approvedModels } from './approved-models.js';
 import { costEstimation } from './cost-estimation.js';
 import { safeDefaults } from './safe-defaults.js';
+import { noExposedAssets } from './no-exposed-assets.js';
 
 /** All available rules */
 export const ALL_RULES: RuleDefinition[] = [
@@ -14,6 +15,7 @@ export const ALL_RULES: RuleDefinition[] = [
   approvedModels,
   costEstimation,
   safeDefaults,
+  noExposedAssets,
 ];
 
 /** Map of rule ID to rule definition */
@@ -36,4 +38,5 @@ export {
   approvedModels,
   costEstimation,
   safeDefaults,
+  noExposedAssets,
 };
