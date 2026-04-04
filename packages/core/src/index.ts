@@ -27,7 +27,7 @@
  */
 
 // Main client
-export { CoFounderClient, Rana, createCoFounder } from './client';
+export { CoFounderClient, createCoFounder } from './client';
 
 // Types
 export type {
@@ -760,7 +760,7 @@ export {
   WandbRun,
   WandbError,
   createWandbTracker,
-  createCoFounderWandbMiddleware,
+  createRanaWandbMiddleware,
   withExperiment,
 } from './integrations';
 export type {

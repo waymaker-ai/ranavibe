@@ -193,7 +193,7 @@ export class ComplianceEnforcer {
           }
 
           // In strict mode, block on any violation
-          if (this.config.strictMode && checkResult.severity === 'critical') {
+          if (this.config.strictMode && checkResult.action === 'block') {
             overallAction = 'block';
             finalOutput = '';
             break;

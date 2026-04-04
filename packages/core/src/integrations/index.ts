@@ -37,7 +37,7 @@ export {
   VercelError,
   createVercelClient,
   createVercelConfig,
-  createRanaVercelConfig,
+  createCoFounderVercelConfig,
   deployToVercel,
   getDeployButton,
   generateDeployReadme,
