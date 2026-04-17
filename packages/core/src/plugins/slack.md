@@ -45,7 +45,7 @@ const cofounder = createCoFounder({
   },
   defaults: {
     provider: 'anthropic',
-    model: 'claude-3-5-sonnet-20241022',
+    model: 'claude-sonnet-4-5-20250929',
   },
 });
 
@@ -54,7 +54,7 @@ const slack = createSlackPlugin({
   botToken: process.env.SLACK_BOT_TOKEN!,
   appToken: process.env.SLACK_APP_TOKEN, // Optional, for Socket Mode
   signingSecret: process.env.SLACK_SIGNING_SECRET, // Optional, for webhooks
-  defaultModel: 'claude-3-5-sonnet-20241022',
+  defaultModel: 'claude-sonnet-4-5-20250929',
 });
 
 // Handle incoming messages
@@ -418,7 +418,7 @@ const cofounder = createCoFounder({
       botToken: process.env.SLACK_BOT_TOKEN!,
       autoReply: true, // Automatically reply to messages
       autoThreadReplies: true,
-      defaultModel: 'claude-3-5-sonnet-20241022',
+      defaultModel: 'claude-sonnet-4-5-20250929',
     }),
   ],
 });

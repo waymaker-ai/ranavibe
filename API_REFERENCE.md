@@ -34,12 +34,12 @@ npx @waymakerai/aicofounder-cli init
 
 ### Core Commands
 
-#### `cofounder init`
+#### `aicofounder init`
 
 Initialize CoFounder in your project.
 
 ```bash
-cofounder init [options]
+aicofounder init [options]
 
 Options:
   -t, --template <type>  Template to use: default, react, nextjs, vue
@@ -47,9 +47,9 @@ Options:
   --skip-install         Skip npm install
 
 Examples:
-  cofounder init                    # Use default template
-  cofounder init -t nextjs          # Use Next.js template
-  cofounder init -t react --force   # Force overwrite existing config
+  aicofounder init                    # Use default template
+  aicofounder init -t nextjs          # Use Next.js template
+  aicofounder init -t react --force   # Force overwrite existing config
 ```
 
 **What it does:**
@@ -60,21 +60,21 @@ Examples:
 
 ---
 
-#### `cofounder check`
+#### `aicofounder check`
 
 Check compliance with CoFounder standards.
 
 ```bash
-cofounder check [options]
+aicofounder check [options]
 
 Options:
   -v, --verbose  Show detailed output
   -f, --fix      Automatically fix issues where possible
 
 Examples:
-  cofounder check           # Quick check
-  cofounder check -v        # Detailed output
-  cofounder check --fix     # Auto-fix issues
+  aicofounder check           # Quick check
+  aicofounder check -v        # Detailed output
+  aicofounder check --fix     # Auto-fix issues
 ```
 
 **Checks:**
@@ -115,7 +115,7 @@ Examples:
 ```
 
 **Deployment flow:**
-1. Run quality checks (`cofounder check`)
+1. Run quality checks (`aicofounder check`)
 2. Run tests
 3. Build project
 4. Deploy to target environment
@@ -142,12 +142,12 @@ Output:
 
 ---
 
-#### `cofounder validate`
+#### `aicofounder validate`
 
 Validate `.cofounder.yml` configuration.
 
 ```bash
-cofounder validate
+aicofounder validate
 
 Output:
   - Configuration validity
@@ -160,12 +160,12 @@ Output:
 
 ### Database Commands
 
-#### `cofounder db:setup`
+#### `aicofounder db:setup`
 
 Interactive database setup wizard.
 
 ```bash
-cofounder db:setup
+aicofounder db:setup
 
 Interactive prompts:
   1. Choose database provider (Supabase, PostgreSQL, MySQL, MongoDB)
@@ -183,12 +183,12 @@ Interactive prompts:
 
 ---
 
-#### `cofounder db:migrate`
+#### `aicofounder db:migrate`
 
 Run database migrations.
 
 ```bash
-cofounder db:migrate [options]
+aicofounder db:migrate [options]
 
 Options:
   --create <name>   Create new migration
@@ -198,55 +198,55 @@ Options:
   --dry-run         Preview migrations without executing
 
 Examples:
-  cofounder db:migrate                    # Run pending migrations
-  cofounder db:migrate --create add-users # Create new migration
-  cofounder db:migrate --down             # Rollback last migration
+  aicofounder db:migrate                    # Run pending migrations
+  aicofounder db:migrate --create add-users # Create new migration
+  aicofounder db:migrate --down             # Rollback last migration
 ```
 
 ---
 
-#### `cofounder db:seed`
+#### `aicofounder db:seed`
 
 Seed database with data.
 
 ```bash
-cofounder db:seed [options]
+aicofounder db:seed [options]
 
 Options:
   --file <path>  Path to seed file
   --clear        Clear existing data first
 
 Examples:
-  cofounder db:seed                  # Run all seed files
-  cofounder db:seed --file users.ts  # Run specific seed
-  cofounder db:seed --clear          # Clear and seed
+  aicofounder db:seed                  # Run all seed files
+  aicofounder db:seed --file users.ts  # Run specific seed
+  aicofounder db:seed --clear          # Clear and seed
 ```
 
 ---
 
-#### `cofounder db:reset`
+#### `aicofounder db:reset`
 
 Reset database (WARNING: deletes all data).
 
 ```bash
-cofounder db:reset [options]
+aicofounder db:reset [options]
 
 Options:
   --force  Skip confirmation prompt
 
 Example:
-  cofounder db:reset         # Reset with confirmation
-  cofounder db:reset --force # Force reset
+  aicofounder db:reset         # Reset with confirmation
+  aicofounder db:reset --force # Force reset
 ```
 
 ---
 
-#### `cofounder db:studio`
+#### `aicofounder db:studio`
 
 Open database management UI.
 
 ```bash
-cofounder db:studio
+aicofounder db:studio
 
 Opens:
   - Prisma Studio (for Prisma projects)
@@ -256,12 +256,12 @@ Opens:
 
 ---
 
-#### `cofounder db:status`
+#### `aicofounder db:status`
 
 Show database status.
 
 ```bash
-cofounder db:status
+aicofounder db:status
 
 Output:
   - Database provider
@@ -275,12 +275,12 @@ Output:
 
 ### Security Commands
 
-#### `cofounder security:audit`
+#### `aicofounder security:audit`
 
 Run security audit on codebase.
 
 ```bash
-cofounder security:audit [options]
+aicofounder security:audit [options]
 
 Options:
   --fix      Automatically fix issues where possible
@@ -288,9 +288,9 @@ Options:
   --json     Output results as JSON
 
 Examples:
-  cofounder security:audit           # Run audit
-  cofounder security:audit --fix     # Auto-fix issues
-  cofounder security:audit --verbose # Detailed output
+  aicofounder security:audit           # Run audit
+  aicofounder security:audit --fix     # Auto-fix issues
+  aicofounder security:audit --verbose # Detailed output
 ```
 
 **Checks:**
@@ -341,12 +341,12 @@ Overall Security Score: 96/100
 
 ---
 
-#### `cofounder security:setup`
+#### `aicofounder security:setup`
 
 Interactive security setup wizard.
 
 ```bash
-cofounder security:setup
+aicofounder security:setup
 
 Interactive prompts:
   1. Choose authentication provider (Supabase, NextAuth, Clerk, Auth0)
@@ -361,12 +361,12 @@ Interactive prompts:
 
 ### LLM Commands
 
-#### `cofounder llm:setup`
+#### `aicofounder llm:setup`
 
 Setup LLM providers.
 
 ```bash
-cofounder llm:setup
+aicofounder llm:setup
 
 Interactive prompts:
   1. Choose providers (OpenAI, Anthropic, Google, xAI, Mistral, etc.)
@@ -389,12 +389,12 @@ Interactive prompts:
 
 ---
 
-#### `cofounder llm:analyze`
+#### `aicofounder llm:analyze`
 
 Analyze LLM usage and costs.
 
 ```bash
-cofounder llm:analyze [options]
+aicofounder llm:analyze [options]
 
 Options:
   --detailed     Show detailed analysis
@@ -402,9 +402,9 @@ Options:
   --timeframe <days> Analyze last N days (default: 30)
 
 Examples:
-  cofounder llm:analyze                # Last 30 days
-  cofounder llm:analyze --detailed     # Detailed breakdown
-  cofounder llm:analyze --provider openai --timeframe 7
+  aicofounder llm:analyze                # Last 30 days
+  aicofounder llm:analyze --detailed     # Detailed breakdown
+  aicofounder llm:analyze --provider openai --timeframe 7
 ```
 
 **Output:**
@@ -435,12 +435,12 @@ Total Potential Savings: $900/month (72%)
 
 ---
 
-#### `cofounder llm:optimize`
+#### `aicofounder llm:optimize`
 
 Apply LLM cost optimizations.
 
 ```bash
-cofounder llm:optimize [options]
+aicofounder llm:optimize [options]
 
 Options:
   --all              Apply all optimizations without prompting
@@ -450,9 +450,9 @@ Options:
   --prompts          Optimize prompt templates
 
 Examples:
-  cofounder llm:optimize           # Interactive mode
-  cofounder llm:optimize --all     # Apply all optimizations
-  cofounder llm:optimize --caching # Only enable caching
+  aicofounder llm:optimize           # Interactive mode
+  aicofounder llm:optimize --all     # Apply all optimizations
+  aicofounder llm:optimize --caching # Only enable caching
 ```
 
 **Optimizations applied:**
@@ -481,12 +481,12 @@ Examples:
 
 ---
 
-#### `cofounder llm:compare`
+#### `aicofounder llm:compare`
 
 Compare LLM models and pricing.
 
 ```bash
-cofounder llm:compare [options]
+aicofounder llm:compare [options]
 
 Options:
   --providers <list>  Compare specific providers (comma-separated)
@@ -494,9 +494,9 @@ Options:
   --task <type>       Task type: chat, completion, embedding, multimodal
 
 Examples:
-  cofounder llm:compare                        # Compare all providers
-  cofounder llm:compare --providers openai,anthropic
-  cofounder llm:compare --metric cost --task chat
+  aicofounder llm:compare                        # Compare all providers
+  aicofounder llm:compare --providers openai,anthropic
+  aicofounder llm:compare --metric cost --task chat
 ```
 
 **Output:**
@@ -760,7 +760,7 @@ llm:
       models: [gpt-4o, gpt-4o-mini]
       default: true
     - name: anthropic
-      models: [claude-3-5-sonnet-20241022, claude-3-haiku-20240307]
+      models: [claude-sonnet-4-5-20250929, claude-3-haiku-20240307]
     - name: google
       models: [gemini-2.0-flash, gemini-3-exp]
 

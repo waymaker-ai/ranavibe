@@ -1,15 +1,11 @@
 # CoFounder
 
-**by [Waymaker AI](https://waymaker.cx) | Guardrails & Guidance for AI-Assisted Development**
+**Keeps AI coding agents from wrecking your codebase.**
+Free, open-source guardrails + spec-driven feature flow for AI-assisted development, by [Waymaker AI](https://waymaker.cx).
 
-> **CoFounder is a free, open-source, integration-friendly guardrail layer for AI-assisted development.**
-> It plugs into your existing stack (Vercel AI SDK, Supabase, LangChain, CrewAI, etc.) and makes sure agents **don't trash your codebase, ignore your design system and business rules, ship mock-only work, or waste your time and budget.**
+CoFounder plugs into your existing stack (Vercel AI SDK, Supabase, LangChain, CrewAI, OpenClaw, Claude Code) and stops agents from committing secrets, leaking PII, shipping mock data, blowing through budgets, or refactoring things no one asked them to. It's the safety harness and coach for AI-assisted work on real products — not a magic "ship-a-startup-in-30-minutes" button.
 
-CoFounder's job is to be the **safety harness and brain coach for AI agents** so they build **real, safe, on-spec product work** — not cute demos that create mess.
-
-Everything else (RAG, specs, flows, integrations) exists to support that.
-
-- Free and open source
+- Free and open source (MIT)
 - Bring-your-own LLM providers and tools
 - Designed for real products, not toy demos
 
@@ -25,7 +21,7 @@ Everything else (RAG, specs, flows, integrations) exists to support that.
 
 ## Quick Demo
 
-### Before AICofounder (agent goes rogue):
+### Before CoFounder (agent goes rogue):
 ```
 ❌ Agent commits AWS keys to repo
 ❌ Agent leaks patient SSN in API response
@@ -34,7 +30,7 @@ Everything else (RAG, specs, flows, integrations) exists to support that.
 ❌ Agent rewrites your auth middleware "for fun"
 ```
 
-### After AICofounder (3 lines of code):
+### After CoFounder (3 lines of code):
 ```typescript
 import { createGuard } from '@waymakerai/aicofounder-guard';
 
@@ -52,7 +48,7 @@ const result = guard.check(userInput);
 
 ---
 
-## Why AICofounder?
+## Why CoFounder?
 
 - ⚡ **< 1ms guard latency** (vs 100ms-2s for LLM-based alternatives)
 - 📦 **~50KB, zero runtime dependencies**
@@ -240,7 +236,7 @@ export default defineConfig({
     },
     anthropic: {
       apiKey: process.env.ANTHROPIC_API_KEY!,
-      models: ['claude-3-5-sonnet-20241022'],
+      models: ['claude-sonnet-4-5-20250929'],
     },
   },
 
@@ -248,7 +244,7 @@ export default defineConfig({
     defaultProvider: 'openai',
     rules: [
       { match: 'light', provider: 'openai', model: 'gpt-4.1-mini' },
-      { match: 'heavy', provider: 'anthropic', model: 'claude-3-5-sonnet-20241022' },
+      { match: 'heavy', provider: 'anthropic', model: 'claude-sonnet-4-5-20250929' },
     ],
   },
 
@@ -431,7 +427,7 @@ rag:
 
 llm:
   provider: "anthropic"
-  model: "claude-3-5-sonnet-20241022"
+  model: "claude-sonnet-4-5-20250929"
   temperature: 0.1
 
 security:
@@ -592,13 +588,13 @@ These features are implemented but not production-hardened:
 
 ### Known Limitations
 
-1. **No Production Deployments Yet**: CoFounder has not been deployed at scale in production environments. Use with appropriate caution.
+1. **Early production usage**: CoFounder is dogfooded inside Waymaker AI (`waymaker.cx`) and a small set of early adopters. It has not yet been battle-tested across thousands of repos, so treat the "Beta" packages as functional-but-evolving and pin versions in production.
 
-2. **Integration Testing**: While unit tests pass, end-to-end integration testing with all providers is ongoing.
+2. **Integration Testing**: Unit tests pass across all packages. End-to-end integration testing with every provider combination (OpenAI, Anthropic, Gemini, Mistral, Meta) is ongoing and tracked in `packages/benchmark/RESULTS.md`.
 
-3. **Documentation Gaps**: Some advanced features lack comprehensive documentation.
+3. **Documentation Gaps**: Some advanced features (voice, video, fine-tuning pipelines) are marked experimental and lack comprehensive documentation — see Feature Maturity table above.
 
-4. **CLI Commands**: Many CLI commands are implemented but not all have been thoroughly tested in diverse project structures.
+4. **CLI Commands**: All core commands (`init`, `check`, `feature:new`, `feature:implement`) are covered by tests. Some advanced commands (`llm:compare`, `agent:serve`) are stable in Next.js projects but have had less exposure to other stacks.
 
 ### What We'd Recommend
 
@@ -629,22 +625,22 @@ aicofounder feature:implement   # Branch + scoped implementation
 
 ### LLM Commands
 ```bash
-cofounder llm:setup           # Configure providers
-cofounder llm:analyze         # Cost and usage analysis
-cofounder llm:compare         # Compare providers for your use case
+aicofounder llm:setup         # Configure providers
+aicofounder llm:analyze       # Cost and usage analysis
+aicofounder llm:compare       # Compare providers for your use case
 ```
 
 ### Database Commands
 ```bash
-cofounder db:setup            # Setup wizard
-cofounder db:migrate          # Run migrations
-cofounder db:check            # Validate schema
+aicofounder db:setup          # Setup wizard
+aicofounder db:migrate        # Run migrations
+aicofounder db:check          # Validate schema
 ```
 
 ### Security Commands
 ```bash
-cofounder security:audit      # Run security scan
-cofounder security:setup      # Setup security config
+aicofounder security:audit    # Run security scan
+aicofounder security:setup    # Setup security config
 ```
 
 ### CI/CD Scanner
@@ -656,16 +652,16 @@ npx @waymakerai/aicofounder-ci validate                  # Validate .aicofounder
 
 ### Agent Commands
 ```bash
-cofounder agent:new           # Scaffold a new agent
-cofounder agent:test          # Run agent tests
-cofounder agent:serve         # Start agent as API server
+aicofounder agent:new         # Scaffold a new agent
+aicofounder agent:test        # Run agent tests
+aicofounder agent:serve       # Start agent as API server
 ```
 
 ### Vibe Commands
 ```bash
-cofounder vibe:new            # Create new VibeSpec
-cofounder vibe:validate       # Validate VibeSpec YAML
-cofounder vibe:compile        # Show compiled system prompt
+aicofounder vibe:new          # Create new VibeSpec
+aicofounder vibe:validate     # Validate VibeSpec YAML
+aicofounder vibe:compile      # Show compiled system prompt
 ```
 
 ---

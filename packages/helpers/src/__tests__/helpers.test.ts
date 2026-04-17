@@ -179,7 +179,7 @@ describe('Config', () => {
     expect(modelCosts['gpt-4o']).toBeDefined();
     expect(modelCosts['gpt-4o'].input).toBeGreaterThan(0);
     expect(modelCosts['gpt-4o'].output).toBeGreaterThan(0);
-    expect(modelCosts['claude-3-5-sonnet-20241022']).toBeDefined();
+    expect(modelCosts['claude-sonnet-4-5-20250929']).toBeDefined();
   });
 });
 

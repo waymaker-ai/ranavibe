@@ -35,7 +35,7 @@ This directory contains the AI collaboration framework for CoFounder. These docu
 
 2. **Check status** anytime:
    ```bash
-   cofounder docs:status
+   aicofounder docs:status
    ```
 
 3. **Track progress** in ROADMAP.md:
@@ -55,19 +55,19 @@ This directory contains the AI collaboration framework for CoFounder. These docu
 
 ```bash
 # Document health check
-cofounder docs:check
+aicofounder docs:check
 
 # List all documents
-cofounder docs:list
+aicofounder docs:list
 
 # Project status summary
-cofounder docs:status
+aicofounder docs:status
 
 # Validate frontmatter
-cofounder docs:validate
+aicofounder docs:validate
 
 # Archive deprecated docs
-cofounder docs:archive
+aicofounder docs:archive
 ```
 
 ## Key Principles

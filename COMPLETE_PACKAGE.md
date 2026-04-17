@@ -204,7 +204,7 @@ Through:
 ```typescript
 const response = await cofounder
   .provider('anthropic')
-  .model('claude-3-5-sonnet-20241022')
+  .model('claude-sonnet-4-5-20250929')
   .temperature(0.7)
   .optimize('cost')
   .cache(true)

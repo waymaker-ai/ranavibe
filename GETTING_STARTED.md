@@ -20,14 +20,14 @@ npx create-cofounder-app my-ai-app
 cd my-ai-app
 
 # Or add to existing project
-cofounder init
+aicofounder init
 ```
 
 ### 3. Configure Your LLM Provider
 
 ```bash
 # Interactive setup
-cofounder llm:setup
+aicofounder llm:setup
 
 # Or set environment variables
 export OPENAI_API_KEY=sk-...
@@ -144,10 +144,10 @@ console.log(result.citations);
 
 ```bash
 # Initialize project
-cofounder init
+aicofounder init
 
 # Check compliance
-cofounder check
+aicofounder check
 
 # Auto-fix issues
 cofounder fix
@@ -176,13 +176,13 @@ cofounder generate:interactive
 
 ```bash
 # Setup providers
-cofounder llm:setup
+aicofounder llm:setup
 
 # Compare pricing
-cofounder llm:compare
+aicofounder llm:compare
 
 # Analyze usage
-cofounder llm:analyze
+aicofounder llm:analyze
 
 # Cost estimation
 cofounder cost:estimate
@@ -192,20 +192,20 @@ cofounder cost:estimate
 
 ```bash
 # Setup database
-cofounder db:setup
+aicofounder db:setup
 
 # Run migrations
-cofounder db:migrate
+aicofounder db:migrate
 
 # Open Prisma Studio
-cofounder db:studio
+aicofounder db:studio
 ```
 
 ### Security & SEO
 
 ```bash
 # Security audit
-cofounder security:audit
+aicofounder security:audit
 
 # SEO check
 cofounder seo:check
@@ -310,7 +310,7 @@ CoFounder helps you reduce LLM costs by up to 70%:
 
 ```bash
 # Analyze current costs
-cofounder llm:analyze
+aicofounder llm:analyze
 
 # Get optimization suggestions
 cofounder optimize

@@ -68,7 +68,7 @@ console.log(response.content);
 // React/jQuery-style chainable API
 const response = await cofounder
   .provider('anthropic')
-  .model('claude-3-5-sonnet-20241022')
+  .model('claude-sonnet-4-5-20250929')
   .temperature(0.7)
   .maxTokens(1000)
   .optimize('cost')
@@ -305,7 +305,7 @@ export default defineConfig({
   // Defaults
   defaults: {
     provider: 'anthropic',
-    model: 'claude-3-5-sonnet-20241022',
+    model: 'claude-sonnet-4-5-20250929',
     temperature: 0.7,
     max_tokens: 1024,
     optimize: 'balanced',
@@ -368,9 +368,9 @@ const cofounder = createCoFounder(config);
 
 ```bash
 # Current (verbose)
-cofounder llm:analyze
-cofounder db:migrate
-cofounder security:audit
+aicofounder llm:analyze
+aicofounder db:migrate
+aicofounder security:audit
 
 # New (one-word shortcuts)
 cofounder analyze      # Auto-detects LLM analysis
@@ -379,7 +379,7 @@ cofounder audit        # Auto-detects security
 cofounder optimize     # Apply all optimizations
 cofounder fix          # Auto-fix all issues
 cofounder test         # Run all tests
-cofounder check        # Check everything
+aicofounder check        # Check everything
 ```
 
 ### Interactive Mode
@@ -541,15 +541,15 @@ const customCachePlugin = definePlugin({
 
 ```bash
 # Setup
-cofounder init
-cofounder llm:setup
-cofounder db:setup
+aicofounder init
+aicofounder llm:setup
+aicofounder db:setup
 
 # Development
 npm run dev
 
 # Check
-cofounder check --verbose
+aicofounder check --verbose
 
 # Deploy
 cofounder deploy
@@ -573,8 +573,8 @@ const response = await cofounder.chat('Hello!');
 
 // 4. Use shorter CLI commands
 cofounder dev        // Instead of npm run dev
-cofounder analyze    // Instead of cofounder llm:analyze
-cofounder optimize   // Instead of cofounder llm:optimize
+cofounder analyze    // Instead of aicofounder llm:analyze
+cofounder optimize   // Instead of aicofounder llm:optimize
 ```
 
 ### From Template to SDK
@@ -744,7 +744,7 @@ await cofounder.use(myPlugin);
 ❌ CLI commands only, no programmatic API
 ❌ Configuration in YAML files only
 ❌ No React/framework integration
-❌ Verbose commands (`cofounder llm:analyze`)
+❌ Verbose commands (`aicofounder llm:analyze`)
 ❌ Limited customization
 
 ### After (SDK + CLI)

@@ -13,7 +13,7 @@
  *   rules: [{
  *     name: 'code-tasks',
  *     condition: (req) => req.messages.some(m => m.content.includes('code')),
- *     target: { provider: 'anthropic', model: 'claude-3-5-sonnet-20241022' },
+ *     target: { provider: 'anthropic', model: 'claude-sonnet-4-5-20250929' },
  *     priority: 10,
  *     enabled: true,
  *   }],
@@ -24,7 +24,7 @@
  *   messages: [{ role: 'user', content: 'Write Python code' }],
  * });
  *
- * console.log(decision.provider, decision.model); // anthropic claude-3-5-sonnet-20241022
+ * console.log(decision.provider, decision.model); // anthropic claude-sonnet-4-5-20250929
  *
  * // Quick route using global router
  * const quick = await route({ messages: [...] });

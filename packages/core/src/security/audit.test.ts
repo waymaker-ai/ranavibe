@@ -51,7 +51,7 @@ describe('AuditLogger', () => {
 
       const apiKeyHash = hashApiKey('test-key-123');
       await audit.logApiKeyUsage(apiKeyHash, 'anthropic', 'chat_request', {
-        model: 'claude-3-5-sonnet-20241022',
+        model: 'claude-sonnet-4-5-20250929',
       });
 
       await audit.flush();
@@ -198,7 +198,7 @@ describe('AuditLogger', () => {
       });
       await audit.initialize();
 
-      await audit.logRequest('anthropic', 'claude-3-5-sonnet-20241022', 'user-123');
+      await audit.logRequest('anthropic', 'claude-sonnet-4-5-20250929', 'user-123');
       await audit.flush();
 
       const logContent = fs.readFileSync(testLogPath, 'utf8');
@@ -213,7 +213,7 @@ describe('AuditLogger', () => {
       });
       await audit.initialize();
 
-      await audit.logRequest('anthropic', 'claude-3-5-sonnet-20241022', 'user-123');
+      await audit.logRequest('anthropic', 'claude-sonnet-4-5-20250929', 'user-123');
       await audit.flush();
 
       const logContent = fs.readFileSync(testLogPath, 'utf8');
@@ -230,7 +230,7 @@ describe('AuditLogger', () => {
       });
       await audit.initialize();
 
-      await audit.logRequest('anthropic', 'claude-3-5-sonnet-20241022');
+      await audit.logRequest('anthropic', 'claude-sonnet-4-5-20250929');
       await audit.logSecurityEvent({
         type: 'injection_attempt',
         severity: 'high',
@@ -251,7 +251,7 @@ describe('AuditLogger', () => {
       });
       await audit.initialize();
 
-      await audit.logRequest('anthropic', 'claude-3-5-sonnet-20241022');
+      await audit.logRequest('anthropic', 'claude-sonnet-4-5-20250929');
       await audit.logConfigChange('test', 'config');
 
       await audit.flush();
@@ -339,7 +339,7 @@ describe('AuditLogger', () => {
       });
       await audit.initialize();
 
-      await audit.logResponse('anthropic', 'claude-3-5-sonnet-20241022', 'success');
+      await audit.logResponse('anthropic', 'claude-sonnet-4-5-20250929', 'success');
       await audit.logResponse('openai', 'gpt-4o', 'failure');
       await audit.flush();
 

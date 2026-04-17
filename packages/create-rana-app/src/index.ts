@@ -156,7 +156,7 @@ models:
   approved:
     - gpt-4o
     - gpt-4o-mini
-    - claude-3-5-sonnet-20241022
+    - claude-sonnet-4-5-20250929
     - claude-3-haiku-20240307
 
 budget:
@@ -460,7 +460,7 @@ async function runAgent(userMessage: string): Promise<string> {
     iterations++;
 
     const response = await client.messages.create({
-      model: 'claude-3-5-sonnet-20241022',
+      model: 'claude-sonnet-4-5-20250929',
       max_tokens: 1024,
       system: 'You are a helpful assistant with access to tools. Use them when appropriate.',
       tools,

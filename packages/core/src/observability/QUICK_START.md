@@ -19,7 +19,7 @@ const tracer = createTracer();
 // 2. Start a trace
 const span = tracer.startTrace('my_operation', {
   provider: 'anthropic',
-  model: 'claude-3-5-sonnet-20241022'
+  model: 'claude-sonnet-4-5-20250929'
 });
 
 // 3. Do your work
@@ -147,7 +147,7 @@ Every span captures:
   attributes: {
     // Your custom data
     provider: "anthropic",
-    model: "claude-3-5-sonnet-20241022",
+    model: "claude-sonnet-4-5-20250929",
     input_tokens: 100,
     output_tokens: 200,
     cost: 0.003,

@@ -262,7 +262,7 @@ async function stepLLM(): Promise<Partial<WizardState> | null> {
             ];
           case 'anthropic':
             return [
-              { title: 'Claude 3.5 Sonnet (recommended)', value: 'claude-3-5-sonnet-20241022' },
+              { title: 'Claude 3.5 Sonnet (recommended)', value: 'claude-sonnet-4-5-20250929' },
               { title: 'Claude 3 Haiku (cheaper)', value: 'claude-3-haiku-20240307' },
             ];
           case 'openai':

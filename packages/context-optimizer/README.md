@@ -207,7 +207,7 @@ const optimized = await optimizer.optimize({
 // Use with CoFounder
 const response = await cofounder.chat({
   messages: optimized.messages,
-  model: 'claude-3-5-sonnet-20241022',
+  model: 'claude-sonnet-4-5-20250929',
 });
 
 console.log(response.content);

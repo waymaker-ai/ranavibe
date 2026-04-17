@@ -1,0 +1,53 @@
+{
+  "$schema": "https://claude.com/schemas/plugin.json",
+  "name": "cofounder",
+  "displayName": "CoFounder",
+  "version": "0.1.0",
+  "description": "Guardrails + spec-driven feature flow for Claude Code. Stops agents from committing secrets, shipping mock data, or refactoring out of scope. Reads VibeSpec / FlowSpec from your repo.",
+  "author": {
+    "name": "Waymaker AI",
+    "url": "https://waymaker.cx"
+  },
+  "homepage": "https://cofounder.cx",
+  "repository": "https://github.com/waymaker-ai/cofounder",
+  "license": "MIT",
+  "keywords": ["guardrails", "safety", "vibespec", "flowspec", "ai-coding", "cofounder"],
+  "skills": [
+    "skills/cofounder-feature-new",
+    "skills/cofounder-feature-implement",
+    "skills/cofounder-check",
+    "skills/cofounder-spec-review"
+  ],
+  "agents": [
+    "agents/cofounder-reviewer.md"
+  ],
+  "commands": [
+    "commands/cofounder.md"
+  ],
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup",
+        "command": "${CLAUDE_PLUGIN_ROOT}/hooks/session-start.sh"
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "command": "${CLAUDE_PLUGIN_ROOT}/hooks/pre-edit-guardrails.sh"
+      }
+    ],
+    "Stop": [
+      {
+        "command": "${CLAUDE_PLUGIN_ROOT}/hooks/stop-summary.sh"
+      }
+    ]
+  },
+  "mcpServers": {
+    "cofounder": {
+      "command": "node",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/mcp-server/dist/index.js"],
+      "env": {}
+    }
+  }
+}

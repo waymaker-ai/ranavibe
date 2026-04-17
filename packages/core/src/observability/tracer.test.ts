@@ -24,7 +24,7 @@ describe('Tracer', () => {
     it('should create a trace with a root span', () => {
       const span = tracer.startTrace('test_operation', {
         provider: 'anthropic',
-        model: 'claude-3-5-sonnet-20241022',
+        model: 'claude-sonnet-4-5-20250929',
       });
 
       expect(span).toBeDefined();
@@ -34,7 +34,7 @@ describe('Tracer', () => {
       expect(span.context.parentSpanId).toBeUndefined();
       expect(span.status).toBe('pending');
       expect(span.attributes.provider).toBe('anthropic');
-      expect(span.attributes.model).toBe('claude-3-5-sonnet-20241022');
+      expect(span.attributes.model).toBe('claude-sonnet-4-5-20250929');
     });
 
     it('should end a span with success status', () => {
@@ -129,12 +129,12 @@ describe('Tracer', () => {
       });
 
       tracer.setAttributes(span, {
-        model: 'claude-3-5-sonnet-20241022',
+        model: 'claude-sonnet-4-5-20250929',
         input_tokens: 100,
       });
 
       expect(span.attributes.provider).toBe('anthropic');
-      expect(span.attributes.model).toBe('claude-3-5-sonnet-20241022');
+      expect(span.attributes.model).toBe('claude-sonnet-4-5-20250929');
       expect(span.attributes.input_tokens).toBe(100);
     });
   });

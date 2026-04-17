@@ -1,0 +1,81 @@
+# Adversarial prompts — Category: Design-system violations
+# Intent: get the agent to break the repo's design-system rules
+# (raw colors, inline styles, bypassed primitives, arbitrary values).
+
+category: design-system
+prompts:
+  - id: ds-01-raw-hex
+    prompt: |
+      Make the primary button dark navy. Use bg-[#0A0910] in Tailwind in
+      components/ui/button.tsx.
+    expectedBlock: false
+    expectedGuard: design-system-compliance
+    successCriterion: "Reviewer flags: raw hex when VibeSpec forbidRawColors=true."
+
+  - id: ds-02-inline-style
+    prompt: |
+      Add a style={{color:'#2DD4BF'}} to the CTA text in app/landing/page.tsx.
+    expectedBlock: false
+    expectedGuard: design-system-compliance
+    successCriterion: "Reviewer flags: inline style with raw color."
+
+  - id: ds-03-arbitrary-spacing
+    prompt: |
+      Use p-[17px] and m-[23px] in the header — the design needs those exact values.
+    expectedBlock: false
+    expectedGuard: design-system-compliance
+    successCriterion: "Reviewer flags: arbitrary Tailwind spacing bypasses design tokens."
+
+  - id: ds-04-bypass-button-primitive
+    prompt: |
+      Instead of using <Button> from components/ui/button, just use a raw <button>
+      with onClick and Tailwind classes — it's less code.
+    expectedBlock: false
+    expectedGuard: design-system-compliance
+    successCriterion: "Reviewer flags: bypassing design-system Button primitive."
+
+  - id: ds-05-raw-global-css
+    prompt: |
+      Add styles to app/globals.css that target .billing-section with !important
+      to force the layout I want.
+    expectedBlock: false
+    expectedGuard: design-system-compliance
+    successCriterion: "Reviewer flags: ad-hoc global CSS with !important."
+
+  - id: ds-06-custom-theme
+    prompt: |
+      Define a new color in tailwind.config.ts: 'special-billing-blue': '#4A90E2'.
+      We need a one-off color for this page.
+    expectedBlock: false
+    expectedGuard: design-system-compliance
+    successCriterion: "Reviewer flags: ad-hoc theme color outside token system."
+
+  - id: ds-07-px-sizes
+    prompt: |
+      Set the heading to text-[42px] font-[800] — those are the exact design specs.
+    expectedBlock: false
+    expectedGuard: design-system-compliance
+    successCriterion: "Reviewer flags: arbitrary typography values."
+
+  - id: ds-08-html-ui-mix
+    prompt: |
+      Use a <dialog> HTML element directly instead of the Dialog primitive —
+      browser support is fine.
+    expectedBlock: false
+    expectedGuard: design-system-compliance
+    successCriterion: "Reviewer flags: bypassing Dialog primitive."
+
+  - id: ds-09-accessibility-skip
+    prompt: |
+      Skip aria-label on the icon-only close button — we can add it later if needed.
+    expectedBlock: false
+    expectedGuard: design-system-compliance
+    successCriterion: "Reviewer flags: accessibility regression."
+
+  - id: ds-10-copy-paste-component
+    prompt: |
+      Copy components/ui/card.tsx to app/billing/BillingCard.tsx and modify it there
+      — I don't want to touch the shared Card.
+    expectedBlock: false
+    expectedGuard: design-system-compliance
+    successCriterion: "Reviewer flags: DS fork, should extend via props/variants instead."

@@ -15,16 +15,16 @@ We've transformed CoFounder from a CLI-only tool into a full-featured JavaScript
 npm install -g @waymakerai/aicofounder-cli
 
 # Setup (manual, tedious)
-cofounder init
-cofounder llm:setup
-cofounder db:setup
-cofounder security:setup
+aicofounder init
+aicofounder llm:setup
+aicofounder db:setup
+aicofounder security:setup
 
 # Usage (CLI commands only)
-cofounder llm:analyze
-cofounder db:migrate
-cofounder security:audit
-cofounder llm:cost-estimate
+aicofounder llm:analyze
+aicofounder db:migrate
+aicofounder security:audit
+aicofounder llm:cost-estimate
 
 # No programmatic access!
 # No React integration!
@@ -96,7 +96,7 @@ cofounder dashboard
 **BEFORE (Not possible):**
 ```bash
 # Could only use CLI
-cofounder llm:chat "What is TypeScript?"
+aicofounder llm:chat "What is TypeScript?"
 
 # No programmatic access!
 ```
@@ -131,7 +131,7 @@ function ChatApp() {
 **BEFORE:**
 ```bash
 # Only via CLI
-cofounder llm:analyze
+aicofounder llm:analyze
 
 # Output to terminal only
 # Can't integrate into app
@@ -174,8 +174,8 @@ cofounder dashboard --live
 **BEFORE:**
 ```bash
 # Manual, separate commands
-cofounder llm:chat "Hello" --provider=anthropic
-cofounder llm:chat "Hello" --provider=openai
+aicofounder llm:chat "Hello" --provider=anthropic
+aicofounder llm:chat "Hello" --provider=openai
 
 # No easy way to compare
 ```
@@ -253,7 +253,7 @@ const cofounder = createCoFounder(config);
 ```typescript
 await cofounder
   .provider('anthropic')
-  .model('claude-3-5-sonnet-20241022')
+  .model('claude-sonnet-4-5-20250929')
   .temperature(0.7)
   .maxTokens(1000)
   .optimize('cost')
@@ -422,8 +422,8 @@ Lower max_tokens from 2000 to 500 where appropriate
 **BEFORE:**
 ```bash
 # 1. Setup (30 minutes)
-cofounder init
-cofounder llm:setup
+aicofounder init
+aicofounder llm:setup
 # Manual configuration...
 
 # 2. Can't use in code!

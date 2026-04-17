@@ -70,7 +70,7 @@ export class CoFounderClient {
    * // Advanced usage
    * const response = await cofounder.chat({
    *   provider: 'anthropic',
-   *   model: 'claude-3-5-sonnet-20241022',
+   *   model: 'claude-sonnet-4-5-20250929',
    *   messages: [{ role: 'user', content: 'Hello!' }],
    *   optimize: 'cost'
    * });
@@ -182,7 +182,7 @@ export class CoFounderClient {
    * @example
    * const response = await cofounder
    *   .provider('anthropic')
-   *   .model('claude-3-5-sonnet-20241022')
+   *   .model('claude-sonnet-4-5-20250929')
    *   .optimize('cost')
    *   .cache(true)
    *   .chat({ messages: [...] });
@@ -446,7 +446,7 @@ export class CoFounderClient {
       case 'speed':
         return { provider: 'groq', model: 'llama-3.1-70b-versatile' };
       case 'quality':
-        return { provider: 'anthropic', model: 'claude-3-5-sonnet-20241022' };
+        return { provider: 'anthropic', model: 'claude-sonnet-4-5-20250929' };
       case 'balanced':
       default:
         return { provider: 'anthropic', model: 'claude-3-5-haiku-20241022' };

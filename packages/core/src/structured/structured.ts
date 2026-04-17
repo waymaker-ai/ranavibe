@@ -699,7 +699,7 @@ export class StructuredOutput extends EventEmitter {
           cost: totalCost,
           latency: Date.now() - startTime,
           provider: 'anthropic', // Default
-          model: 'claude-3-5-sonnet-20241022',
+          model: 'claude-sonnet-4-5-20250929',
           retries: {
             result: lastResult,
             attempts: retryConfig.maxRetries + 1,

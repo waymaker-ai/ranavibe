@@ -13,20 +13,20 @@ CoFounder now has **30+ production-ready CLI commands** across all frameworks!
 
 ## 📦 Core Commands
 
-### `cofounder init`
+### `aicofounder init`
 Initialize CoFounder in your project
 ```bash
-cofounder init                    # Default template
-cofounder init -t nextjs          # Next.js template
-cofounder init -f                 # Force overwrite
+aicofounder init                    # Default template
+aicofounder init -t nextjs          # Next.js template
+aicofounder init -f                 # Force overwrite
 ```
 
-### `cofounder check`
+### `aicofounder check`
 Check compliance with CoFounder standards
 ```bash
-cofounder check                   # Quick check
-cofounder check -v                # Verbose output
-cofounder check -f                # Auto-fix issues
+aicofounder check                   # Quick check
+aicofounder check -v                # Verbose output
+aicofounder check -f                # Auto-fix issues
 ```
 
 ### `cofounder deploy`
@@ -49,20 +49,20 @@ Show current CoFounder configuration
 cofounder config                  # Display configuration
 ```
 
-### `cofounder validate`
+### `aicofounder validate`
 Validate .cofounder.yml configuration
 ```bash
-cofounder validate                # Validate config file
+aicofounder validate                # Validate config file
 ```
 
 ---
 
 ## 🗄️ Database Commands
 
-### `cofounder db:setup`
+### `aicofounder db:setup`
 Interactive database setup wizard
 ```bash
-cofounder db:setup               # Choose: Supabase, Prisma, MySQL, SQLite
+aicofounder db:setup               # Choose: Supabase, Prisma, MySQL, SQLite
 ```
 
 **Features:**
@@ -71,46 +71,46 @@ cofounder db:setup               # Choose: Supabase, Prisma, MySQL, SQLite
 - .env configuration
 - Migration setup
 
-### `cofounder db:migrate`
+### `aicofounder db:migrate`
 Run database migrations
 ```bash
-cofounder db:migrate             # Run all pending migrations
+aicofounder db:migrate             # Run all pending migrations
 ```
 
-### `cofounder db:seed`
+### `aicofounder db:seed`
 Seed database with data
 ```bash
-cofounder db:seed                # Run seed script
+aicofounder db:seed                # Run seed script
 ```
 
-### `cofounder db:reset`
+### `aicofounder db:reset`
 Reset database (WARNING: deletes all data)
 ```bash
-cofounder db:reset               # Reset with confirmation
+aicofounder db:reset               # Reset with confirmation
 ```
 
-### `cofounder db:studio`
+### `aicofounder db:studio`
 Open Prisma Studio
 ```bash
-cofounder db:studio              # Visual database editor
+aicofounder db:studio              # Visual database editor
 ```
 
-### `cofounder db:status`
+### `aicofounder db:status`
 Show database status
 ```bash
-cofounder db:status              # Show tables, models, connection
+aicofounder db:status              # Show tables, models, connection
 ```
 
 ---
 
 ## 🔒 Security Commands
 
-### `cofounder security:audit`
+### `aicofounder security:audit`
 Run comprehensive security audit
 ```bash
-cofounder security:audit          # Quick audit
-cofounder security:audit --fix    # Auto-fix issues
-cofounder security:audit --verbose # Detailed output
+aicofounder security:audit          # Quick audit
+aicofounder security:audit --fix    # Auto-fix issues
+aicofounder security:audit --verbose # Detailed output
 ```
 
 **Checks:**
@@ -131,10 +131,10 @@ cofounder security:audit --verbose # Detailed output
 - Fix suggestions
 - Auto-fix capabilities
 
-### `cofounder security:setup`
+### `aicofounder security:setup`
 Interactive security setup wizard
 ```bash
-cofounder security:setup          # Configure auth, rate limiting, headers
+aicofounder security:setup          # Configure auth, rate limiting, headers
 ```
 
 **Features:**
@@ -147,11 +147,11 @@ cofounder security:setup          # Configure auth, rate limiting, headers
 
 ## 🤖 LLM Commands
 
-### `cofounder llm:analyze`
+### `aicofounder llm:analyze`
 Analyze LLM usage and costs
 ```bash
-cofounder llm:analyze             # Cost analysis
-cofounder llm:analyze --detailed  # Detailed breakdown
+aicofounder llm:analyze             # Cost analysis
+aicofounder llm:analyze --detailed  # Detailed breakdown
 ```
 
 **Analysis:**
@@ -161,11 +161,11 @@ cofounder llm:analyze --detailed  # Detailed breakdown
 - Optimization opportunities
 - Potential savings (70%+ reduction)
 
-### `cofounder llm:optimize`
+### `aicofounder llm:optimize`
 Apply LLM cost optimizations
 ```bash
-cofounder llm:optimize            # Interactive selection
-cofounder llm:optimize --all      # Apply all optimizations
+aicofounder llm:optimize            # Interactive selection
+aicofounder llm:optimize --all      # Apply all optimizations
 ```
 
 **Optimizations:**
@@ -179,10 +179,10 @@ cofounder llm:optimize --all      # Apply all optimizations
 - Model selection logic
 - Cost tracking utilities
 
-### `cofounder llm:compare`
+### `aicofounder llm:compare`
 Compare LLM models and pricing
 ```bash
-cofounder llm:compare             # Show all models with costs
+aicofounder llm:compare             # Show all models with costs
 ```
 
 **Models Covered:**
@@ -194,10 +194,10 @@ cofounder llm:compare             # Show all models with costs
 - Gemini Pro
 - Local (Ollama)
 
-### `cofounder llm:setup`
+### `aicofounder llm:setup`
 Setup LLM providers
 ```bash
-cofounder llm:setup               # Configure API keys
+aicofounder llm:setup               # Configure API keys
 ```
 
 **Providers:**
@@ -754,16 +754,16 @@ cofounder mcp add-resource users  # Interactive resource creation
 ### New Project Setup
 ```bash
 # 1. Initialize CoFounder
-cofounder init -t nextjs
+aicofounder init -t nextjs
 
 # 2. Setup database
-cofounder db:setup
+aicofounder db:setup
 
 # 3. Setup security
-cofounder security:setup
+aicofounder security:setup
 
 # 4. Setup LLM providers
-cofounder llm:setup
+aicofounder llm:setup
 
 # 5. Setup SEO
 cofounder seo:setup
@@ -772,7 +772,7 @@ cofounder seo:setup
 cofounder mobile:setup
 
 # 7. Check everything
-cofounder check
+aicofounder check
 
 # Total time: ~10 minutes
 ```
@@ -780,15 +780,15 @@ cofounder check
 ### Pre-Deployment Checklist
 ```bash
 # Run all checks
-cofounder check
-cofounder security:audit
+aicofounder check
+aicofounder security:audit
 cofounder seo:check
 cofounder mobile:validate
-cofounder llm:analyze
+aicofounder llm:analyze
 
 # Fix issues
-cofounder check --fix
-cofounder security:audit --fix
+aicofounder check --fix
+aicofounder security:audit --fix
 cofounder seo:check --fix
 cofounder mobile:validate --fix
 
@@ -799,13 +799,13 @@ cofounder deploy
 ### Cost Optimization
 ```bash
 # 1. Analyze current costs
-cofounder llm:analyze --detailed
+aicofounder llm:analyze --detailed
 
 # 2. See potential savings
-cofounder llm:compare
+aicofounder llm:compare
 
 # 3. Apply optimizations
-cofounder llm:optimize --all
+aicofounder llm:optimize --all
 
 # Expected: 70% cost reduction
 ```
@@ -847,16 +847,16 @@ cofounder mobile:validate --fix
 ### Chaining Commands
 ```bash
 # Setup everything
-cofounder db:setup && cofounder security:setup && cofounder llm:setup
+aicofounder db:setup && aicofounder security:setup && aicofounder llm:setup
 
 # Run all checks
-cofounder check && cofounder security:audit && cofounder seo:check && cofounder mobile:validate
+aicofounder check && aicofounder security:audit && cofounder seo:check && cofounder mobile:validate
 
 # Generate all files
-cofounder seo:generate --all && cofounder db:migrate
+cofounder seo:generate --all && aicofounder db:migrate
 
 # Deploy with checks
-cofounder security:audit && cofounder deploy --verify
+aicofounder security:audit && cofounder deploy --verify
 ```
 
 ### CI/CD Integration
@@ -865,8 +865,8 @@ cofounder security:audit && cofounder deploy --verify
 jobs:
   deploy:
     steps:
-      - run: cofounder check
-      - run: cofounder security:audit
+      - run: aicofounder check
+      - run: aicofounder security:audit
       - run: cofounder seo:check
       - run: cofounder mobile:validate
       - run: cofounder deploy
@@ -876,13 +876,13 @@ jobs:
 ```bash
 # .husky/pre-commit
 #!/bin/sh
-cofounder check
-cofounder security:audit
+aicofounder check
+aicofounder security:audit
 
 # .husky/pre-push
 #!/bin/sh
-cofounder check --fix
-cofounder security:audit --fix
+aicofounder check --fix
+aicofounder security:audit --fix
 cofounder seo:check --fix
 ```
 
@@ -912,8 +912,8 @@ cofounder analyze                 # Complete project analysis
 cofounder optimize --all          # Auto-optimize everything
 
 # Agent commands
-cofounder agent:deploy            # Deploy with AI agent
-cofounder agent:fix               # Fix issues with AI
+aicofounder agent:deploy            # Deploy with AI agent
+aicofounder agent:fix               # Fix issues with AI
 
 # Template commands
 cofounder template:create         # Create custom template
@@ -930,9 +930,9 @@ cofounder template:install        # Install community template
 cofounder --help
 
 # Command-specific help
-cofounder db:setup --help
-cofounder security:audit --help
-cofounder llm:analyze --help
+aicofounder db:setup --help
+aicofounder security:audit --help
+aicofounder llm:analyze --help
 
 # Version
 cofounder --version

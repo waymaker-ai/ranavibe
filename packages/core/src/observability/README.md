@@ -47,7 +47,7 @@ const tracer = createTracer({
 // Start a trace
 const span = tracer.startTrace('chat_request', {
   provider: 'anthropic',
-  model: 'claude-3-5-sonnet-20241022'
+  model: 'claude-sonnet-4-5-20250929'
 });
 
 // ... perform your operation ...
@@ -279,7 +279,7 @@ async function handleChatRequest(tracer: Tracer) {
   // Main request trace
   const requestSpan = tracer.startTrace('cofounder.chat', {
     provider: 'anthropic',
-    model: 'claude-3-5-sonnet-20241022'
+    model: 'claude-sonnet-4-5-20250929'
   });
 
   try {

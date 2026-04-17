@@ -24,7 +24,7 @@ function basicExample() {
   // Start a trace
   const span = tracer.startTrace('chat_request', {
     provider: 'anthropic',
-    model: 'claude-3-5-sonnet-20241022',
+    model: 'claude-sonnet-4-5-20250929',
   });
 
   // Simulate some work
@@ -123,7 +123,7 @@ function errorExample() {
 
   const span = tracer.startTrace('failed_request', {
     provider: 'anthropic',
-    model: 'claude-3-5-sonnet-20241022',
+    model: 'claude-sonnet-4-5-20250929',
   });
 
   try {
@@ -211,7 +211,7 @@ async function simulateChatRequest(tracer: Tracer): Promise<void> {
   // Start main request trace
   const requestSpan = tracer.startTrace('cofounder.chat', {
     provider: 'anthropic',
-    model: 'claude-3-5-sonnet-20241022',
+    model: 'claude-sonnet-4-5-20250929',
     optimize: 'balanced',
   });
 

@@ -251,7 +251,7 @@ llm_providers:
   primary: gemini-3
   fallbacks:
     - gemini-2.0-flash-exp
-    - claude-3-5-sonnet-20241022
+    - claude-sonnet-4-5-20250929
     - gpt-4o
 
 cost_optimization:

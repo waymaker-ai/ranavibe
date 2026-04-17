@@ -29,17 +29,17 @@ async function basicAuditLogging() {
     apiKeyHash,
     'anthropic',
     'chat_request',
-    { model: 'claude-3-5-sonnet-20241022' }
+    { model: 'claude-sonnet-4-5-20250929' }
   );
 
   // Log LLM request
-  await audit.logRequest('anthropic', 'claude-3-5-sonnet-20241022', 'user-123', {
+  await audit.logRequest('anthropic', 'claude-sonnet-4-5-20250929', 'user-123', {
     temperature: 0.7,
     max_tokens: 1000,
   });
 
   // Log successful response
-  await audit.logResponse('anthropic', 'claude-3-5-sonnet-20241022', 'success', 1234, 'user-123', {
+  await audit.logResponse('anthropic', 'claude-sonnet-4-5-20250929', 'success', 1234, 'user-123', {
     tokens_used: 500,
     cost: 0.005,
   });
@@ -199,7 +199,7 @@ async function configurationChangeAuditing() {
     'admin-user',
     {
       provider: 'anthropic',
-      model: 'claude-3-5-sonnet-20241022',
+      model: 'claude-sonnet-4-5-20250929',
     }
   );
 
@@ -311,7 +311,7 @@ async function errorAuditing() {
       'user-123',
       {
         provider: 'anthropic',
-        model: 'claude-3-5-sonnet-20241022',
+        model: 'claude-sonnet-4-5-20250929',
         retry_count: 3,
       }
     );
@@ -486,7 +486,7 @@ async function productionSetup() {
   const apiKeyHash = hashApiKey(apiKey);
 
   await audit.logApiKeyUsage(apiKeyHash, 'anthropic', 'chat_request', {
-    model: 'claude-3-5-sonnet-20241022',
+    model: 'claude-sonnet-4-5-20250929',
     environment: process.env.NODE_ENV,
   });
 

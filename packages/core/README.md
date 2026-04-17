@@ -44,7 +44,7 @@ console.log(response.content);
 ```typescript
 const response = await cofounder
   .provider('anthropic')
-  .model('claude-3-5-sonnet-20241022')
+  .model('claude-sonnet-4-5-20250929')
   .optimize('cost')
   .cache(true)
   .chat({ messages: [{ role: 'user', content: 'Hello!' }] });
@@ -56,7 +56,7 @@ const response = await cofounder
 // Anthropic
 const response = await cofounder
   .anthropic()
-  .model('claude-3-5-sonnet-20241022')
+  .model('claude-sonnet-4-5-20250929')
   .chat({ messages: [...] });
 
 // OpenAI
@@ -90,7 +90,7 @@ export default defineConfig({
 
   defaults: {
     provider: 'anthropic',
-    model: 'claude-3-5-sonnet-20241022',
+    model: 'claude-sonnet-4-5-20250929',
     temperature: 0.7,
     max_tokens: 1024,
     optimize: 'balanced',

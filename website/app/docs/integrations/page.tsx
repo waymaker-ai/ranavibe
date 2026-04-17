@@ -491,7 +491,7 @@ const bedrock = new BedrockAdapter({
 
 // Chat completion (normalized API)
 const result = await bedrock.chat({
-  model: 'anthropic.claude-3-5-sonnet-20241022-v2:0',
+  model: 'anthropic.claude-sonnet-4-5-20250929-v2:0',
   messages: [
     { role: 'user', content: 'Explain quantum computing briefly' },
   ],
@@ -505,7 +505,7 @@ console.log(result.cost);         // Calculated cost in USD
 
 // Streaming
 const stream = await bedrock.stream({
-  model: 'anthropic.claude-3-5-sonnet-20241022-v2:0',
+  model: 'anthropic.claude-sonnet-4-5-20250929-v2:0',
   messages: [{ role: 'user', content: 'Tell me a story' }],
 });
 
@@ -526,7 +526,7 @@ const guardResult = await skill.hooks.beforeMessage(
 
 if (guardResult.proceed) {
   const response = await bedrock.chat({
-    model: 'anthropic.claude-3-5-sonnet-20241022-v2:0',
+    model: 'anthropic.claude-sonnet-4-5-20250929-v2:0',
     messages: [{ role: 'user', content: guardResult.modifiedContent || userInput }],
   });
 }`}</pre>

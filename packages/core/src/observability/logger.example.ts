@@ -47,7 +47,7 @@ export function structuredLoggingExample() {
     userId: 'user-123',
     requestId: 'req-456',
     provider: 'anthropic',
-    model: 'claude-3-5-sonnet-20241022',
+    model: 'claude-sonnet-4-5-20250929',
   });
 
   logger.debug('Cache lookup', {
@@ -194,7 +194,7 @@ export async function requestResponseLoggingExample() {
   // Simulate a request
   const request: RanaChatRequest = {
     provider: 'anthropic',
-    model: 'claude-3-5-sonnet-20241022',
+    model: 'claude-sonnet-4-5-20250929',
     messages: [
       { role: 'user', content: 'Hello, how are you?' },
     ],
@@ -212,7 +212,7 @@ export async function requestResponseLoggingExample() {
   const response: RanaChatResponse = {
     id: 'resp-456',
     provider: 'anthropic',
-    model: 'claude-3-5-sonnet-20241022',
+    model: 'claude-sonnet-4-5-20250929',
     content: "I'm doing well, thank you!",
     role: 'assistant',
     usage: {

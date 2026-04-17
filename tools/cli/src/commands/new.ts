@@ -176,7 +176,7 @@ export async function newCommand(
 function getDefaultModel(provider: string): string {
   const defaults: Record<string, string> = {
     openai: 'gpt-4o-mini',
-    anthropic: 'claude-3-5-sonnet-20241022',
+    anthropic: 'claude-sonnet-4-5-20250929',
     google: 'gemini-1.5-flash',
     groq: 'llama-3.1-70b-versatile',
     xai: 'grok-2',

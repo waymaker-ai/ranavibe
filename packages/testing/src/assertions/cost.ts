@@ -21,7 +21,7 @@ export const MODEL_PRICING: Record<
   'o1-mini': { input: 3.0, output: 12.0, provider: 'openai' },
 
   // Anthropic
-  'claude-3-5-sonnet-20241022': { input: 3.0, output: 15.0, provider: 'anthropic' },
+  'claude-sonnet-4-5-20250929': { input: 3.0, output: 15.0, provider: 'anthropic' },
   'claude-3-5-haiku-20241022': { input: 0.8, output: 4.0, provider: 'anthropic' },
   'claude-3-opus-20240229': { input: 15.0, output: 75.0, provider: 'anthropic' },
 

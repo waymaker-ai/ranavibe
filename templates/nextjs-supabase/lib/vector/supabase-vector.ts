@@ -66,7 +66,7 @@ export async function semanticSearch(query: string, limit: number = 5) {
  */
 export async function ragAnswer(
   question: string,
-  model: 'gemini-2.0-flash-exp' | 'gpt-4o' | 'claude-3-5-sonnet-20241022' = 'gemini-2.0-flash-exp'
+  model: 'gemini-2.0-flash-exp' | 'gpt-4o' | 'claude-sonnet-4-5-20250929' = 'gemini-2.0-flash-exp'
 ) {
   // Step 1: Retrieve relevant documents
   const relevantDocs = await semanticSearch(question, 5);

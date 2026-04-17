@@ -170,7 +170,7 @@ class RAGPipeline {
     // Auto-detect provider
     if (process.env.ANTHROPIC_API_KEY) {
       this.provider = 'anthropic';
-      this.model = 'claude-3-5-sonnet-20241022';
+      this.model = 'claude-sonnet-4-5-20250929';
     } else if (process.env.OPENAI_API_KEY) {
       this.provider = 'openai';
       this.model = 'gpt-4o';

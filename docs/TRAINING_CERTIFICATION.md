@@ -42,9 +42,9 @@ The CoFounder Certification Program validates your expertise in AI-native develo
 |------|--------|--------|
 | 9:00-9:30 | Welcome | Introduction, setup, course overview |
 | 9:30-10:15 | CoFounder Philosophy | AI-native development, production-first mindset |
-| 10:15-11:30 | CLI Mastery | `cofounder init`, `cofounder check`, `cofounder deploy`, all 22+ commands |
-| 11:30-12:45 | Database Framework | `cofounder db:setup`, Supabase/Prisma, RLS patterns |
-| 1:45-3:15 | Security Framework | `cofounder security:audit`, OWASP Top 10, authentication |
+| 10:15-11:30 | CLI Mastery | `aicofounder init`, `aicofounder check`, `cofounder deploy`, all 22+ commands |
+| 11:30-12:45 | Database Framework | `aicofounder db:setup`, Supabase/Prisma, RLS patterns |
+| 1:45-3:15 | Security Framework | `aicofounder security:audit`, OWASP Top 10, authentication |
 | 3:30-5:15 | LLM Optimization | 9 providers, 70% cost reduction, caching, smart routing |
 | 5:15-6:00 | Day 1 Project | Build and deploy an AI-powered app |
 

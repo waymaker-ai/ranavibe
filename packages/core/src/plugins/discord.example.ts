@@ -142,7 +142,7 @@ async function main() {
           choices: [
             { name: 'GPT-4o', value: 'gpt-4o' },
             { name: 'GPT-4o Mini', value: 'gpt-4o-mini' },
-            { name: 'Claude 3.5 Sonnet', value: 'claude-3-5-sonnet-20241022' },
+            { name: 'Claude 3.5 Sonnet', value: 'claude-sonnet-4-5-20250929' },
           ],
         },
       ],

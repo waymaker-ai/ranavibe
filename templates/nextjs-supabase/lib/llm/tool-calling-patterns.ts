@@ -183,7 +183,7 @@ export async function agentChat(userMessage: string, maxIterations = 5) {
 
     // Call LLM with tools
     const response = await luka.chat({
-      model: 'gpt-4o', // or 'gemini-2.0-flash-exp' or 'claude-3-5-sonnet-20241022'
+      model: 'gpt-4o', // or 'gemini-2.0-flash-exp' or 'claude-sonnet-4-5-20250929'
       messages,
       tools,
       temperature: 0.7,

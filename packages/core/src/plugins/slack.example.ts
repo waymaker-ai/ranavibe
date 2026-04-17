@@ -21,7 +21,7 @@ async function basicSetup() {
     },
     defaults: {
       provider: 'anthropic',
-      model: 'claude-3-5-sonnet-20241022',
+      model: 'claude-sonnet-4-5-20250929',
     },
   });
 
@@ -30,7 +30,7 @@ async function basicSetup() {
     botToken: process.env.SLACK_BOT_TOKEN!,
     appToken: process.env.SLACK_APP_TOKEN,
     signingSecret: process.env.SLACK_SIGNING_SECRET,
-    defaultModel: 'claude-3-5-sonnet-20241022',
+    defaultModel: 'claude-sonnet-4-5-20250929',
   });
 
   // Handle messages
@@ -301,7 +301,7 @@ async function pluginIntegration() {
   const plugin = slackPlugin({
     botToken: process.env.SLACK_BOT_TOKEN!,
     autoReply: true, // Auto-reply to all messages
-    defaultModel: 'claude-3-5-sonnet-20241022',
+    defaultModel: 'claude-sonnet-4-5-20250929',
     autoThreadReplies: true,
   });
 

@@ -42,7 +42,7 @@ async function example2_FluentAPI() {
   // Chainable methods
   const response = await cofounder
     .provider('anthropic')
-    .model('claude-3-5-sonnet-20241022')
+    .model('claude-sonnet-4-5-20250929')
     .temperature(0.7)
     .maxTokens(500)
     .optimize('cost')

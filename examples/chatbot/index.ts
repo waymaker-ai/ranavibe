@@ -18,7 +18,7 @@ import readline from 'readline';
 const CONFIG = {
   // Will auto-detect from environment variables
   provider: process.env.LLM_PROVIDER || 'anthropic',
-  model: process.env.LLM_MODEL || 'claude-3-5-sonnet-20241022',
+  model: process.env.LLM_MODEL || 'claude-sonnet-4-5-20250929',
   systemPrompt: `You are a helpful AI assistant powered by CoFounder.
 You are knowledgeable, concise, and friendly.
 If you're unsure about something, say so.
@@ -68,7 +68,7 @@ const PROVIDERS: Record<string, {
     }),
     estimateCost: (tokens, model) => {
       const rates: Record<string, number> = {
-        'claude-3-5-sonnet-20241022': 0.003,
+        'claude-sonnet-4-5-20250929': 0.003,
         'claude-3-haiku-20240307': 0.00025,
         'claude-3-opus-20240229': 0.015,
       };
@@ -198,7 +198,7 @@ async function main() {
 
   // Default models for each provider
   const defaultModels: Record<string, string> = {
-    anthropic: 'claude-3-5-sonnet-20241022',
+    anthropic: 'claude-sonnet-4-5-20250929',
     openai: 'gpt-4o',
     groq: 'llama-3.1-70b-versatile',
   };
