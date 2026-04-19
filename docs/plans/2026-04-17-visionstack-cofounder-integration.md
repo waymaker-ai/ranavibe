@@ -2,10 +2,19 @@
 
 **Date:** 2026-04-17
 **Author:** Ashley Kays (with Claude Opus 4.7 analysis)
-**Status:** Draft — ready for execution
+**Status:** Draft — superseded by audit findings (see callout below)
 **Canonical repos:**
 - Visionstack (target): `/Users/ashleykays/visionstack` → `github.com/ashleyrabbitt/waymaker` (branch: `main`)
 - CoFounder (source): `/Users/ashleykays/projects/ranavibe` → `github.com/waymaker-ai/ranavibe` (branch: `main`)
+
+> ## ⚠️ Corrections after audit
+>
+> Three assumptions in this plan were corrected by the Stage 0 audit on 2026-04-17.
+> **Read [`./2026-04-17-visionstack-audit.md`](./2026-04-17-visionstack-audit.md) for the authoritative findings.** Summary of corrections:
+>
+> 1. **Stale files: 2, not 6.** Only `ai_builder_enhanced.py` and `ai_builder_production.py` have zero live references. The other 4 previously marked "stale" (`ai_builder_enhanced_v2`, `ai_builder_multipage`, `ai_builder_real`, `ai_builder_ultimate`) are actively imported by `pipeline_orchestrator_fastapi.py`, `pipeline_phases_api.py`, `analysis_api_simple.py`, `builder_modes_api.py`, and `comprehensive_app_generator.py`.
+> 2. **No central LLM chokepoint exists.** 139 files directly `import openai`/`import anthropic`. Stage 2's "wrap the centralized LLM client" has to change to "guard at each API boundary" — see audit for the corrected pattern.
+> 3. **Timeline shrinks to ~6.5 engineering days** (not 10), because the smaller stale set and API-boundary pattern both reduce scope.
 
 ---
 
