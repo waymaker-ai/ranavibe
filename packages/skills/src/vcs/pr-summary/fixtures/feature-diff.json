@@ -1,0 +1,15 @@
+{
+  "id": "feature-diff",
+  "input": {
+    "userMessage": "Summarize for PR",
+    "args": {
+      "diff": "diff --git a/components/BillingPage.tsx b/components/BillingPage.tsx\n@@ -10,6 +10,18 @@\n+ // Annual upgrade option\n+ <button onClick={upgradeToAnnual}>Switch to annual</button>\n",
+      "diffRange": "main...HEAD"
+    }
+  },
+  "expect": {
+    "contains": ["Summary", "Blast radius", "How to test"],
+    "notContains": ["Generated with Claude Code", "next-generation"],
+    "maxLatencySeconds": 30
+  }
+}

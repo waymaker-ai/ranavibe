@@ -1,0 +1,12 @@
+{
+  "id": "empty-diff",
+  "input": {
+    "userMessage": "Write the PR description",
+    "args": { "diff": "", "diffRange": "main...HEAD" }
+  },
+  "expect": {
+    "contains": ["no changes", "branch"],
+    "notContains": ["This PR adds", "Future work"],
+    "maxLatencySeconds": 10
+  }
+}

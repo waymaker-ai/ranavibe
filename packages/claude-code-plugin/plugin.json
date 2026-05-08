@@ -2,8 +2,8 @@
   "$schema": "https://claude.com/schemas/plugin.json",
   "name": "cofounder",
   "displayName": "CoFounder",
-  "version": "0.1.0",
-  "description": "Guardrails + spec-driven feature flow for Claude Code. Stops agents from committing secrets, shipping mock data, or refactoring out of scope. Reads VibeSpec / FlowSpec from your repo.",
+  "version": "0.2.0",
+  "description": "Guardrails + spec-driven feature flow + a curated skill library for Claude Code. Stops agents from committing secrets, shipping mock data, or refactoring out of scope. Reads VibeSpec / FlowSpec from your repo and routes models per skill.",
   "author": {
     "name": "Waymaker AI",
     "url": "https://waymaker.cx"
@@ -11,18 +11,43 @@
   "homepage": "https://cofounder.cx",
   "repository": "https://github.com/waymaker-ai/cofounder",
   "license": "MIT",
-  "keywords": ["guardrails", "safety", "vibespec", "flowspec", "ai-coding", "cofounder"],
+  "keywords": [
+    "guardrails",
+    "safety",
+    "vibespec",
+    "flowspec",
+    "ai-coding",
+    "cofounder",
+    "skills"
+  ],
   "skills": [
     "skills/cofounder-feature-new",
     "skills/cofounder-feature-implement",
     "skills/cofounder-check",
-    "skills/cofounder-spec-review"
+    "skills/cofounder-spec-review",
+    "skills/cofounder-pattern-scout",
+    "skills/cofounder-diagram",
+    "skills/cofounder-readme",
+    "skills/cofounder-pr-summary",
+    "skills/cofounder-commit",
+    "skills/cofounder-test-plan",
+    "skills/cofounder-vibespec-author",
+    "skills/cofounder-compliance-frame",
+    "skills/cofounder-cost-route",
+    "skills/cofounder-context-fit",
+    "skills/cofounder-sandbox-preview",
+    "skills/cofounder-second-opinion"
   ],
   "agents": [
-    "agents/cofounder-reviewer.md"
+    "agents/cofounder-reviewer.md",
+    "agents/cofounder-scout.md",
+    "agents/cofounder-spec-writer.md"
   ],
   "commands": [
-    "commands/cofounder.md"
+    "commands/cofounder.md",
+    "commands/spec.md",
+    "commands/check.md",
+    "commands/explain-changes.md"
   ],
   "hooks": {
     "SessionStart": [

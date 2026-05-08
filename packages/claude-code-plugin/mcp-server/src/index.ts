@@ -17,11 +17,69 @@ import {
   ListToolsRequestSchema,
 } from "@modelcontextprotocol/sdk/types.js";
 import { readFileSync, existsSync, readdirSync, statSync } from "node:fs";
-import { join, resolve, relative } from "node:path";
+import { join, resolve, relative, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
 import { parse as parseYaml } from "yaml";
 
-const VERSION = "0.1.0";
+const VERSION = "0.2.0";
 const PROTO_VERSION = "cofounder.cx/v1";
+
+// Resolve the skills MANIFEST.json — packaged alongside @waymakerai/aicofounder-skills.
+// Search order: env override → workspace path (dev) → bundled fallback.
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+function findSkillsManifest(): string | null {
+  const envPath = process.env.COFOUNDER_SKILLS_MANIFEST;
+  if (envPath && existsSync(envPath)) return envPath;
+
+  // Walk up from __dirname looking for a sibling `packages/skills/MANIFEST.json`
+  // or a direct `skills/MANIFEST.json`. Works for both dev (tsx) and dist runs.
+  let cur = __dirname;
+  for (let i = 0; i < 6; i++) {
+    const candidates = [
+      resolve(cur, "skills", "MANIFEST.json"),
+      resolve(cur, "packages", "skills", "MANIFEST.json"),
+    ];
+    for (const c of candidates) {
+      if (existsSync(c)) return c;
+    }
+    const parent = resolve(cur, "..");
+    if (parent === cur) break;
+    cur = parent;
+  }
+  return null;
+}
+
+interface ManifestSkill {
+  id: string;
+  path: string;
+  category: string;
+  description: string;
+  sensitivity: { mayTouchPII: boolean; writesCode: boolean; runsShell: boolean; network: boolean };
+  modelClass: "light" | "mid" | "heavy";
+  nextSkill?: string;
+  requires: string[];
+  emits: string[];
+  hasFixtures: boolean;
+}
+
+interface SkillsManifest {
+  apiVersion: string;
+  generatedAt: string;
+  skillCount: number;
+  skills: ManifestSkill[];
+}
+
+function loadSkillsManifest(): SkillsManifest | null {
+  const path = findSkillsManifest();
+  if (!path) return null;
+  try {
+    return JSON.parse(readFileSync(path, "utf8")) as SkillsManifest;
+  } catch {
+    return null;
+  }
+}
 
 function repoRoot(hint?: string): string {
   return resolve(hint ?? process.env.CLAUDE_PROJECT_DIR ?? process.cwd());
@@ -264,8 +322,70 @@ const server = new Server(
   },
 );
 
+// Build skill tools from the manifest at startup so non-Claude-Code clients
+// (Cursor, Cline, Windsurf, Claude Desktop) can invoke the same skills.
+const skillsManifest = loadSkillsManifest();
+
+function buildSkillTools(manifest: SkillsManifest | null) {
+  if (!manifest) return [] as Array<{ name: string; description: string; inputSchema: unknown }>;
+  return manifest.skills.map((s) => ({
+    name: `cofounder.skill.${s.id.replace(/^cofounder-/, "")}`,
+    description:
+      s.description.length > 380 ? s.description.slice(0, 377) + "..." : s.description,
+    inputSchema: {
+      type: "object",
+      required: ["task"],
+      properties: {
+        task: {
+          type: "string",
+          description: "Natural-language request the skill should fulfill.",
+        },
+        repoRoot: {
+          type: "string",
+          description: "Optional repo root. Defaults to CLAUDE_PROJECT_DIR or cwd.",
+        },
+      },
+    },
+  }));
+}
+
+async function tool_runSkill(args: { task: string; repoRoot?: string; skillId: string }) {
+  if (!skillsManifest) {
+    throw new Error("Skills manifest not found. Install @waymakerai/aicofounder-skills.");
+  }
+  const skill = skillsManifest.skills.find((s) => s.id === args.skillId);
+  if (!skill) throw new Error(`Unknown skill: ${args.skillId}`);
+
+  // Locate the SKILL.md so the calling agent can load instructions.
+  const root = repoRoot(args.repoRoot);
+  const manifestPath = findSkillsManifest()!;
+  const skillBodyPath = resolve(dirname(manifestPath), skill.path);
+
+  return {
+    skillId: skill.id,
+    category: skill.category,
+    sensitivity: skill.sensitivity,
+    modelClass: skill.modelClass,
+    nextSkill: skill.nextSkill ?? null,
+    instructions: existsSync(skillBodyPath) ? readFileSync(skillBodyPath, "utf8") : null,
+    instructionsPath: relative(root, skillBodyPath),
+    task: args.task,
+    note: "Load `instructions` as the system prompt and execute against `task` using a model from the declared modelClass. Honor sensitivity declarations.",
+  };
+}
+
 server.setRequestHandler(ListToolsRequestSchema, async () => ({
   tools: [
+    ...buildSkillTools(skillsManifest),
+    {
+      name: "cofounder.listSkills",
+      description:
+        "List all skills exposed by the CoFounder Skill Library. Returns id, category, description, sensitivity, modelClass, and any chained next-skill.",
+      inputSchema: {
+        type: "object",
+        properties: {},
+      },
+    },
     {
       name: "cofounder.listVibeSpecs",
       description:
@@ -331,7 +451,29 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
   const { name, arguments: args } = request.params;
   const a = (args ?? {}) as Record<string, unknown>;
   let result: unknown;
+
+  // Skill-tool dispatch: every cofounder.skill.<id> routes through tool_runSkill.
+  if (name.startsWith("cofounder.skill.")) {
+    const shortId = name.slice("cofounder.skill.".length);
+    const fullId = `cofounder-${shortId}`;
+    result = await tool_runSkill({
+      task: String(a.task ?? ""),
+      repoRoot: a.repoRoot as string | undefined,
+      skillId: fullId,
+    });
+    return {
+      content: [{ type: "text", text: JSON.stringify(result, null, 2) }],
+    };
+  }
+
   switch (name) {
+    case "cofounder.listSkills":
+      result = {
+        manifestFound: skillsManifest != null,
+        skillCount: skillsManifest?.skillCount ?? 0,
+        skills: skillsManifest?.skills ?? [],
+      };
+      break;
     case "cofounder.listVibeSpecs":
       result = await tool_listVibeSpecs(a as { repoRoot?: string });
       break;
