@@ -1,0 +1,29 @@
+apiVersion: cofounder.cx/v1
+id: lab-results-panel
+name: "Lab results panel on patient portal"
+description: >
+  Shows the user's recent lab results in a panel that renders alongside the
+  billing summary on the patient portal home page.
+
+userStories:
+  - "As a patient, I can see my recent lab results without navigating away from the portal home."
+
+acceptanceCriteria:
+  - "Panel displays the 5 most recent lab results."
+  - "Empty state shows a 'no recent labs' message."
+  - "Loading state shows a skeleton."
+
+# NOTE: this is the PRE-FRAME version. Run cofounder-compliance-frame and
+# the proposed rewrite below should be applied.
+affectedPaths:
+  - "components/PatientDashboard.tsx"
+  - "lib/labs/getRecentResults.ts"
+
+dataSources:
+  - "lab_results table"
+
+constraints:
+  - "Use existing dashboard layout."
+
+nonGoals:
+  - "Lab result history older than 30 days."

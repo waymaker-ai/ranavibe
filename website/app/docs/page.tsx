@@ -30,6 +30,13 @@ const sections = [
     isNew: true,
   },
   {
+    icon: GitCompare,
+    title: 'What breaks without us',
+    description: 'Three real failure modes — invented APIs, committed secrets, destructive migrations — with before/after',
+    href: '/docs/before-after',
+    isNew: true,
+  },
+  {
     icon: Bot,
     title: 'Agents',
     description: 'Build autonomous AI agents with tools and memory',

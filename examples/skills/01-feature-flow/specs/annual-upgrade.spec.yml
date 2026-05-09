@@ -1,0 +1,33 @@
+apiVersion: cofounder.cx/v1
+id: annual-upgrade
+name: "Annual upgrade option"
+description: >
+  Lets admin users switch their team's billing from monthly to annual on the
+  existing settings page. Annual plans bill at 10x the monthly rate (2 months
+  free).
+
+userStories:
+  - "As an admin, I can toggle annual billing so my team gets a discount."
+
+acceptanceCriteria:
+  - "Submit button is disabled while the request is in flight."
+  - "Successful upgrade shows a confirmation banner with the new amount."
+  - "401 if unauthenticated."
+
+affectedPaths:
+  - "app/settings/billing/page.tsx"
+  - "components/billing/PlanSelector.tsx"
+  - "lib/billing/upgradeFlow.ts"
+  - "tests/billing/annualUpgrade.test.ts"
+
+dataSources:
+  - "subscriptions table (existing)"
+  - "Stripe Customer Portal API"
+
+constraints:
+  - "Use existing PlanSelector component — do not fork it."
+  - "All new colors must come from tailwind tokens (forbidRawColors)."
+
+nonGoals:
+  - "Refunds for mid-cycle plan switches."
+  - "Multi-currency support."

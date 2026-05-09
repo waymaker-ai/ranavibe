@@ -1,0 +1,22 @@
+apiVersion: cofounder.cx/v1
+project: example-01-feature-flow
+description: "Demonstrates the spec → implement → check loop on a tiny billing app."
+
+vibe: feature_work
+
+routing:
+  defaultProvider: anthropic
+  rules:
+    - match: light
+      model: claude-haiku-4-5-20251001
+    - match: mid
+      model: claude-sonnet-4-6
+    - match: heavy
+      model: claude-opus-4-7
+
+guardrails:
+  forbidMockInProd: true
+  forbidHardcodedCredentials: true
+  forbidRawColors: true
+  requireBranchPerFeature: true
+  requireTestsForFeatureWork: true

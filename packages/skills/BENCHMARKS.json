@@ -1,0 +1,45 @@
+{
+  "apiVersion": "cofounder.cx/skills/benchmarks/v1",
+  "generatedAt": "2026-05-09T07:02:38.061Z",
+  "environment": {
+    "node": "v25.8.1",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "preflightOverhead": {
+    "iterations": 100000,
+    "meanMicroseconds": 0.053,
+    "medianMicroseconds": 0.042,
+    "note": "Includes sensitivity preflight + model routing decision. Pure JS, no I/O."
+  },
+  "modelCostDelta": {
+    "per1kInvocations": {
+      "everythingOnOpus": 315,
+      "correctlyRouted": 211.5,
+      "saved": 103.5
+    },
+    "byClass": [
+      {
+        "cls": "light",
+        "model": "claude-haiku-4-5-20251001",
+        "perCall": 0.004
+      },
+      {
+        "cls": "mid",
+        "model": "claude-sonnet-4-6",
+        "perCall": 0.0465
+      },
+      {
+        "cls": "heavy",
+        "model": "claude-opus-4-7",
+        "perCall": 0.6
+      }
+    ]
+  },
+  "fixtureStructure": {
+    "totalFixtures": 4,
+    "parsedClean": 4,
+    "fixturesWithLatencyBudget": 4,
+    "fixturesWithRefuseAssertions": 2
+  }
+}

@@ -99,6 +99,25 @@ export {
 } from './importer';
 export { createPolicyPackage, prepareForPublish } from './publisher';
 
+// Skills marketplace — community-contributed skills (separate namespace)
+export { SkillMarketplace, SKILL_CATALOG_SEED } from './skills';
+export type {
+  SkillPackageMeta,
+  SkillSearchQuery,
+  SkillSearchResult,
+  SkillInstallRequest,
+  SkillInstallResult,
+  SkillPublishRequest,
+  SkillPublishResult,
+} from './skills';
+
+/**
+ * Pre-instantiated skills marketplace seeded with the official catalog entry.
+ * Import as: `import { skillsMarketplace } from '@waymakerai/aicofounder-marketplace';`
+ */
+import { SkillMarketplace, SKILL_CATALOG_SEED } from './skills';
+export const skillsMarketplace = new SkillMarketplace(SKILL_CATALOG_SEED);
+
 // Type re-exports
 export type {
   PolicyCategory,

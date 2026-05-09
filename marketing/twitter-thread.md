@@ -1,89 +1,155 @@
-# AICofounder Launch Thread
+# Twitter / X Thread — CoFounder umbrella relaunch
+
+Posting cadence: drop one tweet at launch time, reply with 1–2 follow-ups every 30 min for the first 2 hours, one more at the 6h mark. Don't auto-thread.
 
 ---
 
-**Tweet 1 (Hook)**
+## Tweet 1 (launch tweet)
 
-I lost 3 days because an AI agent rewrote my auth middleware and leaked PII to the client. No warning, no diff review, just a "helpful" refactor that exposed SSNs in API responses. We need guardrails. Not vibes. Actual guardrails.
+We just shipped CoFounder v2 — the open-source skill library + guardrails for AI coding agents.
 
----
+16 skills. Spec → scope → sandbox-preview → ship.
 
-**Tweet 2 (What it is)**
+Works in Claude Code, Cursor, Cline, Windsurf.
 
-So we built AICofounder -- an open-source guardrails framework for AI-assisted development. PII detection, prompt injection blocking, toxicity filtering, cost tracking, rate limiting. One import. Zero dependencies.
+MIT.
 
----
+[90s video]
 
-**Tweet 3 (Speed + simplicity)**
+🧵
 
-The guard runs in <1ms. Zero deps, under 50KB. Ships ESM + CJS + full TypeScript types. Detects 11 PII types, 25+ injection patterns, and 7 toxicity categories out of the box. No ML model to load. No Python sidecar. Just JavaScript.
-
----
-
-**Tweet 4 (Compliance)**
-
-If you're building in healthcare, finance, or anything touching user data: we ship HIPAA, GDPR/CCPA, and SEC/FINRA compliance presets. Automatic output validation. Full audit trail. The kind of stuff that takes 6 months to build internally.
+→ cofounder.cx
 
 ---
 
-**Tweet 5 (Cost savings)**
+## Tweet 2 (the why)
 
-We were burning $4k/mo on LLM calls before we added smart routing and caching. Now it's under $1.2k. 70% cost reduction isn't marketing copy, it's our actual AWS bill. Built-in cost tracking across 20+ models from 9 providers.
+We kept watching AI agents do real damage:
+- Committing Stripe keys
+- Inventing functions that don't exist
+- Running DELETE FROM users in prod
+
+Smarter models didn't fix it.
+
+A flow that's hard to bypass did.
+
+That's CoFounder.
 
 ---
 
-**Tweet 6 (Code snippet)**
+## Tweet 3 (the skill that catches secrets)
 
-It's actually this simple:
+Example: `cofounder-commit`
 
-```ts
-import { createGuard } from '@waymakerai/aicofounder-guard';
+Reads the staged diff. If it sees a high-entropy string matching sk_live_* / AKIA* / etc, it refuses to commit and tells you to rotate.
 
-const guard = createGuard({
-  pii: 'redact',
-  injection: 'block'
-});
+Not a vibe. A literal pre-commit gate.
 
-const result = guard.check(userInput);
-// result.safe, result.redacted, result.reason
+[screenshot]
+
+---
+
+## Tweet 4 (the skill for compliance)
+
+Building in healthcare or fintech?
+
+`cofounder-compliance-frame` reframes your feature spec against HIPAA / GDPR / SEC / PCI *before* code is written.
+
+Catches the "co-render PHI with billing" finding at the spec stage. Not at audit.
+
+[screenshot]
+
+---
+
+## Tweet 5 (the skill for cost)
+
+Skills declare modelClass: light | mid | heavy.
+
+Light tasks (commit messages, classification) → Haiku.
+Mid tasks (refactors) → Sonnet.
+Heavy tasks (architecture) → Opus.
+
+Our benchmark shows ~33% cost savings vs everything-on-Opus.
+
+Script in repo. Reproduce.
+
+---
+
+## Tweet 6 (cross-host)
+
+The big surprise:
+
+Every skill is auto-published as an MCP tool.
+
+Same skill runs in Claude Code, Cursor, Cline, Windsurf, Claude Desktop.
+
+Setup guides: cofounder.cx/docs/integrations/cursor (also /cline, /windsurf)
+
+---
+
+## Tweet 7 (the reframe — what we're NOT)
+
+What CoFounder is NOT:
+- A "ship a startup in 30 min" button
+- A replacement for engineers, tests, reviews
+- A walled-garden orchestrator
+- A cloud product
+
+What it IS:
+- The safety harness for AI-assisted dev
+- Free, MIT, no telemetry
+- Your stack, your keys, your infra
+
+---
+
+## Tweet 8 (CTA)
+
+```
+npm install @waymakerai/aicofounder-cli
+npx aicofounder init
+/spec Add team billing settings
 ```
 
-That's it. That's the whole setup.
+That's the install. That's the loop.
+
+GitHub: github.com/waymaker-ai/cofounder
+Docs: cofounder.cx/docs/skills
+Browse skills: cofounder.cx/skills/browse
+
+PRs and issues welcome. ❤️
 
 ---
 
-**Tweet 7 (Integrations)**
+## Reply-ready answers
 
-Works with LangChain, CrewAI, Vercel AI SDK. Adapters for Lakera Guard and AWS Bedrock Guardrails. Express/Fastify middleware included. Wraps any LLM client -- OpenAI, Anthropic, Google, Mistral, Groq, Ollama. You don't rewrite your stack. You wrap it.
+**"how is this different from cursor rules"**
+Rules are static instructions. Skills are executable — own system prompt, own sensitivity, own chain. Use both.
 
----
+**"is it open source"**
+Yes. MIT. github.com/waymaker-ai/cofounder. No CLA. No telemetry. No cloud.
 
-**Tweet 8 (CI Scanner)**
+**"does it work with [model X]"**
+Yes — skills are provider-agnostic. Default routing maps light/mid/heavy to Haiku/Sonnet/Opus but you can override.
 
-We also ship a CI/CD scanner with 7 rules that catches exposed source maps, VITE_SECRET env vars in client bundles, debug modes left on in prod, GraphQL introspection without auth, secrets echoed in GitHub Actions, and more. Just: npx @waymakerai/aicofounder-ci scan --rules all
+**"can i write my own skills"**
+Yes. CONTRIBUTING_SKILLS.md. SKILL.md is markdown + YAML frontmatter. Write one in 10 minutes.
 
----
-
-**Tweet 9 (Training)**
-
-We built a free training academy with 45 lessons across 4 courses: Fundamentals, Building AI Agents, Advanced Patterns, Production Deployment. Real code, real patterns, not vibes. cofounder.waymaker.cx/training
-
----
-
-**Tweet 10 (Open source)**
-
-MIT licensed. Fully open source. No "open core" bait-and-switch. The compliance module, the guard, the agent SDK, the CI scanner, the cost optimizer -- all of it, free. We'd rather have 10,000 devs using this than 10 enterprises paying us to ignore the problem.
+**"received an error"**
+Reply with the issue link or DM. Don't argue in public threads.
 
 ---
 
-**Tweet 11 (CTA)**
+## Hashtags (use sparingly)
 
-Ship AI features without shipping liability.
+`#AIagents` `#OpenSource` `#DevTools`
 
-GitHub: https://github.com/waymaker-ai/cofounder
-npm: npm install @waymakerai/aicofounder-core
-Docs: https://cofounder.cx
-
-Star the repo. Try the guard. Open an issue if we missed something. We're building this in the open and we want your feedback.
+Skip these unless they're trending: `#vibecoding` `#coding` (oversaturated)
 
 ---
+
+## What NOT to tweet
+
+- Pricing comparisons against named competitors. We don't punch down.
+- "Killer of [framework]". We don't kill anything.
+- Inflated metrics. The benchmark exists; cite it.
+- "Ship a startup in 30 minutes" energy. We're the opposite of that.

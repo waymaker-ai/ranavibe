@@ -1,6 +1,6 @@
 ---
 name: cofounder-sandbox-preview
-description: Use this skill BEFORE running anything destructive — migrations, data backfills, mass renames, deletions, scripts that touch external services. Runs the operation in `@waymakerai/aicofounder-sandbox` and reports what would happen, without touching the real environment. Required for any skill marked `sensitivity.runsShell: true`.
+description: "Use this skill BEFORE running anything destructive — migrations, data backfills, mass renames, deletions, scripts that touch external services. Runs the operation in `@waymakerai/aicofounder-sandbox` and reports what would happen, without touching the real environment. Required for any skill marked `sensitivity.runsShell: true`."
 sensitivity:
   mayTouchPII: false
   writesCode: false

@@ -27,12 +27,14 @@
   "scripts": {
     "build": "tsc -p runtime/tsconfig.json",
     "manifest": "node --import tsx runtime/src/cli/build-manifest.ts",
+    "benchmark": "node runtime/dist/cli/benchmark.js",
     "test": "vitest run"
   },
   "dependencies": {
     "yaml": "^2.8.0"
   },
   "devDependencies": {
+    "@types/node": "^20.0.0",
     "tsx": "^4.7.0",
     "typescript": "^5.4.0",
     "vitest": "^4.1.0"
