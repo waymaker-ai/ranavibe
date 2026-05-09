@@ -1,10 +1,25 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Package, Sparkles, Brain, Search, Shield, Scale, Layers, ArrowRight, Lock, Activity, GitBranch, Eye, Cpu, FileCheck } from 'lucide-react';
+import { Package, Sparkles, Brain, Search, Shield, Scale, Layers, ArrowRight, Lock, Activity, GitBranch, Eye, Cpu, FileCheck, BookOpen } from 'lucide-react';
 import Link from 'next/link';
 
 const packages = [
+  {
+    name: '@waymakerai/aicofounder-skills',
+    icon: BookOpen,
+    description: '16 curated skills for AI coding agents — spec-driven, guard-enforced, compliance-aware, cost-routed',
+    features: ['16 Skills', '3 Sub-agents', '4 Commands', 'MCP-exposed'],
+    color: 'from-violet-500 to-fuchsia-500',
+    example: `// Auto-loaded by the cofounder Claude Code plugin
+// or call from any MCP client:
+{
+  "tool": "cofounder.skill.feature-new",
+  "input": { "task": "Add team billing settings" }
+}
+// Returns: spec template, model class, sensitivity flags`,
+    isNew: true,
+  },
   {
     name: '@waymakerai/aicofounder-agent-sdk',
     icon: Cpu,

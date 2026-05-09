@@ -202,6 +202,26 @@ broker.subscribe(tasks, async (msg, ctx) => {
   await ctx.acknowledge();
 });`,
       },
+      {
+        name: '@waymakerai/aicofounder-skills',
+        shortName: 'skills',
+        icon: Sparkles,
+        description: 'Source-of-truth for the CoFounder Skill Library: 16 skills, 3 sub-agents, 4 slash commands. Skills declare sensitivity, model class, and chain position; the runtime handles model routing, sandbox preview, telemetry, and MCP re-exposure.',
+        install: 'npm install @waymakerai/aicofounder-skills',
+        isNew: true,
+        layer: 'Agent',
+        keyExports: ['loadAllSkills', 'buildManifest', 'planChain', 'route', 'runFixture', 'buildMcpTools', 'preflight', 'previewBeforeRun'],
+        example: `import { loadAllSkills, buildManifest, planChain } from '@waymakerai/aicofounder-skills';
+
+const skills = loadAllSkills('packages/skills/src', repoRoot);
+const manifest = buildManifest(skills);
+
+// FlowSpec chaining: feature-new -> feature-implement -> check
+const plan = planChain(manifest, 'cofounder-feature-implement');
+// plan.steps -> [{ id: 'cofounder-feature-new', reason: 'required' },
+//                { id: 'cofounder-feature-implement', reason: 'starting' },
+//                { id: 'cofounder-check', reason: 'suggested-next' }]`,
+      },
     ] as PackageInfo[],
   },
   {

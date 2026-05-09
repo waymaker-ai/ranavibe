@@ -7,6 +7,41 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Unreleased]
+
+### Added — CoFounder Skill Library
+
+A curated agentic-skill layer for AI coding agents working in real codebases.
+
+**New package:** `@waymakerai/aicofounder-skills`
+
+- **16 skills** across six categories — feature flow, codebase intelligence, documentation, version control, testing, and CoFounder-native (compliance frame, cost route, context fit, sandbox preview, second opinion, VibeSpec author).
+- **3 sub-agents** — `cofounder-reviewer`, `cofounder-scout`, `cofounder-spec-writer`.
+- **4 slash commands** — `/cofounder`, `/spec`, `/check`, `/explain-changes`.
+- **Skill schema extension**: every skill declares `sensitivity` (mayTouchPII / writesCode / runsShell / network), `modelClass` (light / mid / heavy), and chain position (`nextSkill`, `requires`, `emits`).
+
+**Seven architectural moves** that compound across every skill:
+
+1. **FlowSpec skill chaining** — topologically-sorted prerequisite walk + suggested-next chain, cycle-safe.
+2. **Golden-fixture replay** — each skill ships fixture inputs/outputs; the CI scanner replays them on every PR.
+3. **MCP re-exposure** — every skill is auto-published as a `cofounder.skill.*` MCP tool. Cursor, Cline, Windsurf, Claude Desktop all get the same skills.
+4. **Skill telemetry** — JSONL transport at `.cofounder/telemetry.jsonl`; consumed by `@waymakerai/aicofounder-dashboard`.
+5. **Sensitivity declarations + guard mapping** — skills route through the right `@waymakerai/aicofounder-policies` presets at runtime.
+6. **Per-skill model routing** — `modelClass` drives Haiku / Sonnet / Opus selection; quality-critical skills (compliance, second-opinion) cannot be downgraded for cost.
+7. **Sandbox preview for destructive skills** — skills tagged `runsShell` or `writesCode` route through `@waymakerai/aicofounder-sandbox` first.
+
+**Plugin updates** (`@waymakerai/aicofounder-claude-code-plugin` v0.2.0):
+
+- Plugin now registers all 16 skills, 3 sub-agents, and 4 slash commands.
+- MCP server auto-builds tool descriptors from the skills manifest at startup.
+
+**Docs:**
+
+- New page: [`/docs/skills`](https://cofounder.cx/docs/skills).
+- Package catalog and home page updated to feature the skill library.
+
+---
+
 ## [2.1.1] - 2025-12-14
 
 ### Published to npm

@@ -6,7 +6,7 @@ import {
   Book, Zap, Package, Terminal, ArrowRight, GitCompare, BookOpen,
   Brain, Layers, Building2, Shield, Activity, FlaskConical,
   Database, RefreshCw, Puzzle, Link2, Bot, DollarSign, Workflow, Settings,
-  GraduationCap, HelpCircle
+  GraduationCap, HelpCircle, Sparkles
 } from 'lucide-react';
 
 const sections = [
@@ -21,6 +21,13 @@ const sections = [
     title: 'Packages',
     description: 'Learn about @waymakerai/aicofounder-helpers, @waymakerai/aicofounder-prompts, and @waymakerai/aicofounder-rag',
     href: '/docs/packages',
+  },
+  {
+    icon: Sparkles,
+    title: 'Skill Library',
+    description: '16 skills, 3 sub-agents, 4 commands — spec-driven, guard-enforced, compliance-aware, cost-routed',
+    href: '/docs/skills',
+    isNew: true,
   },
   {
     icon: Bot,
@@ -183,8 +190,13 @@ export default function DocsPage() {
                 <div className="mb-4 p-3 rounded-lg bg-background-secondary w-fit group-hover:bg-gradient-subtle transition-colors">
                   <section.icon className="h-6 w-6" />
                 </div>
-                <h2 className="text-xl font-semibold mb-2 group-hover:text-gradient-from transition-colors">
+                <h2 className="text-xl font-semibold mb-2 group-hover:text-gradient-from transition-colors flex items-center gap-2">
                   {section.title}
+                  {(section as { isNew?: boolean }).isNew && (
+                    <span className="px-2 py-0.5 text-[10px] font-bold rounded-full bg-gradient-to-r from-gradient-from to-gradient-to text-white">
+                      NEW
+                    </span>
+                  )}
                 </h2>
                 <p className="text-foreground-secondary text-sm mb-4 flex-grow">
                   {section.description}
