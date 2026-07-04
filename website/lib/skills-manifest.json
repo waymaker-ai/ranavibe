@@ -1,0 +1,189 @@
+{
+  "apiVersion": "cofounder.cx/skills/v1",
+  "generatedAt": "2026-05-08T00:00:00.000Z",
+  "skillCount": 16,
+  "skills": [
+    {
+      "id": "cofounder-feature-new",
+      "path": "src/feature-flow/feature-new/SKILL.md",
+      "category": "feature-flow",
+      "description": "Use this skill when the user wants to start a new feature — \"add X feature\", \"let's build a Y page\", \"I want to add Z to the app\". Guides idea → clarifying questions → VibeSpec-compliant feature spec written to `specs/<slug>.spec.yml`. DOES NOT write implementation code.",
+      "sensitivity": { "mayTouchPII": false, "writesCode": false, "runsShell": false, "network": false },
+      "modelClass": "mid",
+      "nextSkill": "cofounder-feature-implement",
+      "requires": [],
+      "emits": ["skill.run", "spec.proposed"],
+      "hasFixtures": false
+    },
+    {
+      "id": "cofounder-feature-implement",
+      "path": "src/feature-flow/feature-implement/SKILL.md",
+      "category": "feature-flow",
+      "description": "Use this skill when the user points to a CoFounder feature spec and asks to implement it — \"implement specs/X.yml\", \"build this spec\", \"let's ship this\". Creates a branch, proposes a scoped changeset, implements under VibeSpec constraints, adds tests, and runs guardrail checks before handing off for review. Does NOT merge or deploy.",
+      "sensitivity": { "mayTouchPII": false, "writesCode": true, "runsShell": true, "network": false },
+      "modelClass": "heavy",
+      "nextSkill": "cofounder-check",
+      "requires": ["cofounder-feature-new"],
+      "emits": ["skill.run", "skill.complete", "branch.created", "files.written"],
+      "hasFixtures": false
+    },
+    {
+      "id": "cofounder-check",
+      "path": "src/feature-flow/check/SKILL.md",
+      "category": "feature-flow",
+      "description": "Use this skill when the user asks to validate their repo against CoFounder guardrails — \"run cofounder check\", \"verify the changes are safe\", \"is this PR-ready?\", \"check for guardrail violations\". Runs typecheck, lint, tests, and CoFounder-specific rules (no secrets, no mock data in prod, no scope creep, no design-system violations) and reports a pass/fail summary.",
+      "sensitivity": { "mayTouchPII": false, "writesCode": false, "runsShell": true, "network": false },
+      "modelClass": "mid",
+      "requires": [],
+      "emits": ["skill.run", "skill.findings"],
+      "hasFixtures": false
+    },
+    {
+      "id": "cofounder-spec-review",
+      "path": "src/feature-flow/spec-review/SKILL.md",
+      "category": "feature-flow",
+      "description": "Use this skill when the user has a CoFounder spec file (under specs/) and asks to review it — \"review this spec\", \"is this spec good?\", \"anything missing?\". Returns a structured critique covering completeness, testability, scope clarity, and VibeSpec compliance. Does NOT modify the spec.",
+      "sensitivity": { "mayTouchPII": false, "writesCode": false, "runsShell": false, "network": false },
+      "modelClass": "heavy",
+      "requires": [],
+      "emits": ["skill.run", "spec.findings"],
+      "hasFixtures": false
+    },
+    {
+      "id": "cofounder-pattern-scout",
+      "path": "src/codebase-intel/pattern-scout/SKILL.md",
+      "category": "codebase-intel",
+      "description": "Searches for similar functions, components, hooks, models, routes, and styling. Returns the closest matches ranked by similarity, with a recommendation to extend or create new.",
+      "sensitivity": { "mayTouchPII": false, "writesCode": false, "runsShell": false, "network": false },
+      "modelClass": "light",
+      "nextSkill": "cofounder-feature-new",
+      "requires": [],
+      "emits": ["skill.run", "skill.match.found", "skill.match.empty"],
+      "hasFixtures": false
+    },
+    {
+      "id": "cofounder-diagram",
+      "path": "src/documentation/diagram/SKILL.md",
+      "category": "documentation",
+      "description": "Generates Mermaid (default) or PlantUML diagrams from REAL code — actual imports, actual call graph, actual schema — never invented relationships.",
+      "sensitivity": { "mayTouchPII": false, "writesCode": false, "runsShell": false, "network": false },
+      "modelClass": "mid",
+      "requires": [],
+      "emits": ["skill.run", "diagram.generated"],
+      "hasFixtures": false
+    },
+    {
+      "id": "cofounder-readme",
+      "path": "src/documentation/readme/SKILL.md",
+      "category": "documentation",
+      "description": "Generates a README from REAL exports, REAL scripts, REAL config — never from imagined APIs.",
+      "sensitivity": { "mayTouchPII": false, "writesCode": false, "runsShell": false, "network": false },
+      "modelClass": "mid",
+      "requires": [],
+      "emits": ["skill.run", "readme.generated"],
+      "hasFixtures": false
+    },
+    {
+      "id": "cofounder-pr-summary",
+      "path": "src/vcs/pr-summary/SKILL.md",
+      "category": "vcs",
+      "description": "Generates a PR description from the ACTUAL diff — mental-model framing for the reviewer, not a list of file names.",
+      "sensitivity": { "mayTouchPII": false, "writesCode": false, "runsShell": true, "network": false },
+      "modelClass": "mid",
+      "requires": [],
+      "emits": ["skill.run", "pr.summary.generated"],
+      "hasFixtures": true
+    },
+    {
+      "id": "cofounder-commit",
+      "path": "src/vcs/commit/SKILL.md",
+      "category": "vcs",
+      "description": "Writes a Conventional Commits-style message from the ACTUAL staged diff. Will NEVER commit without explicit user confirmation.",
+      "sensitivity": { "mayTouchPII": false, "writesCode": false, "runsShell": true, "network": false },
+      "modelClass": "light",
+      "requires": [],
+      "emits": ["skill.run", "commit.message.proposed"],
+      "hasFixtures": true
+    },
+    {
+      "id": "cofounder-test-plan",
+      "path": "src/testing/test-plan/SKILL.md",
+      "category": "testing",
+      "description": "Reads a spec or a diff and proposes a tiered test plan — what to assert, at what layer (unit / integration / e2e), and what's NOT worth testing.",
+      "sensitivity": { "mayTouchPII": false, "writesCode": false, "runsShell": false, "network": false },
+      "modelClass": "mid",
+      "nextSkill": "cofounder-feature-implement",
+      "requires": [],
+      "emits": ["skill.run", "test.plan.generated"],
+      "hasFixtures": false
+    },
+    {
+      "id": "cofounder-vibespec-author",
+      "path": "src/native/vibespec-author/SKILL.md",
+      "category": "native",
+      "description": "Reads the repo to infer existing conventions and proposes a VibeSpec that codifies them.",
+      "sensitivity": { "mayTouchPII": false, "writesCode": false, "runsShell": false, "network": false },
+      "modelClass": "heavy",
+      "nextSkill": "cofounder-feature-new",
+      "requires": [],
+      "emits": ["skill.run", "vibespec.proposed"],
+      "hasFixtures": false
+    },
+    {
+      "id": "cofounder-compliance-frame",
+      "path": "src/native/compliance-frame/SKILL.md",
+      "category": "native",
+      "description": "Reframes a feature spec against HIPAA, GDPR/CCPA, SEC, PCI DSS, FERPA, or SOX requirements before code is written.",
+      "sensitivity": { "mayTouchPII": true, "writesCode": false, "runsShell": false, "network": false },
+      "modelClass": "heavy",
+      "nextSkill": "cofounder-feature-new",
+      "requires": [],
+      "emits": ["skill.run", "compliance.frame.applied", "compliance.violation.predicted"],
+      "hasFixtures": false
+    },
+    {
+      "id": "cofounder-cost-route",
+      "path": "src/native/cost-route/SKILL.md",
+      "category": "native",
+      "description": "Recommends the cheapest model that's still good enough for the task, based on task class and the project's budget envelope.",
+      "sensitivity": { "mayTouchPII": false, "writesCode": false, "runsShell": false, "network": false },
+      "modelClass": "light",
+      "requires": [],
+      "emits": ["skill.run", "model.routed", "cost.report.generated"],
+      "hasFixtures": false
+    },
+    {
+      "id": "cofounder-context-fit",
+      "path": "src/native/context-fit/SKILL.md",
+      "category": "native",
+      "description": "Distills long inputs (long files, long histories, huge diffs, large RAG returns) into the minimum context that preserves the answer.",
+      "sensitivity": { "mayTouchPII": false, "writesCode": false, "runsShell": false, "network": false },
+      "modelClass": "mid",
+      "requires": [],
+      "emits": ["skill.run", "context.distilled", "context.savings"],
+      "hasFixtures": false
+    },
+    {
+      "id": "cofounder-sandbox-preview",
+      "path": "src/native/sandbox-preview/SKILL.md",
+      "category": "native",
+      "description": "Runs destructive operations in @waymakerai/aicofounder-sandbox and reports what would happen, without touching the real environment.",
+      "sensitivity": { "mayTouchPII": false, "writesCode": false, "runsShell": true, "network": false },
+      "modelClass": "mid",
+      "requires": [],
+      "emits": ["skill.run", "sandbox.preview.complete", "sandbox.violation"],
+      "hasFixtures": false
+    },
+    {
+      "id": "cofounder-second-opinion",
+      "path": "src/native/second-opinion/SKILL.md",
+      "category": "native",
+      "description": "Routes the same prompt through a different model (or provider) and diffs the answers. Surfaces disagreements where they matter, not where they don't.",
+      "sensitivity": { "mayTouchPII": false, "writesCode": false, "runsShell": false, "network": true },
+      "modelClass": "heavy",
+      "requires": [],
+      "emits": ["skill.run", "second.opinion.requested", "second.opinion.disagreement"],
+      "hasFixtures": false
+    }
+  ]
+}

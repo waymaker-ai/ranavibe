@@ -79,7 +79,7 @@ tracker.addBreadcrumb({
   category: 'request',
   message: 'Starting chat request',
   level: 'info',
-  data: { model: 'claude-3-5-sonnet-20241022' }
+  data: { model: 'claude-sonnet-4-5-20250929' }
 });
 
 tracker.addBreadcrumb({

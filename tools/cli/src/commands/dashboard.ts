@@ -72,7 +72,7 @@ const COST_TABLE: Record<string, Record<string, { input: number; output: number 
     'gpt-3.5-turbo': { input: 0.0005, output: 0.0015 },
   },
   anthropic: {
-    'claude-3-5-sonnet-20241022': { input: 0.003, output: 0.015 },
+    'claude-sonnet-4-5-20250929': { input: 0.003, output: 0.015 },
     'claude-3-haiku-20240307': { input: 0.00025, output: 0.00125 },
     'claude-3-opus-20240229': { input: 0.015, output: 0.075 },
   },

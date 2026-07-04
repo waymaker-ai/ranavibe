@@ -30,7 +30,7 @@ async function gmailExample() {
     pollingInterval: 60000, // Check every minute
     autoClassify: true,
     llmProvider: 'anthropic',
-    llmModel: 'claude-3-5-sonnet-20241022',
+    llmModel: 'claude-sonnet-4-5-20250929',
   });
 
   // Connect CoFounder client

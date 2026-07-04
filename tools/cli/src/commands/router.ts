@@ -69,7 +69,7 @@ export async function routerTestCommand(options: {
   }
 
   console.log(chalk.bold('\nRouting Decision:'));
-  console.log(`  ${chalk.green('✓')} Selected Model: ${chalk.cyan('claude-3-5-sonnet-20241022')}`);
+  console.log(`  ${chalk.green('✓')} Selected Model: ${chalk.cyan('claude-sonnet-4-5-20250929')}`);
   console.log(`  ${chalk.green('✓')} Provider: ${chalk.cyan('Anthropic')}`);
   console.log(`  ${chalk.green('✓')} Strategy: ${chalk.yellow('capability-match')}`);
 

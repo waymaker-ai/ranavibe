@@ -19,7 +19,7 @@
  *   botToken: process.env.SLACK_BOT_TOKEN,
  *   appToken: process.env.SLACK_APP_TOKEN,
  *   signingSecret: process.env.SLACK_SIGNING_SECRET,
- *   defaultModel: 'claude-3-5-sonnet-20241022'
+ *   defaultModel: 'claude-sonnet-4-5-20250929'
  * });
  *
  * // Handle messages
@@ -718,7 +718,7 @@ export class SlackBot {
  * const slack = createSlackPlugin({
  *   botToken: process.env.SLACK_BOT_TOKEN,
  *   appToken: process.env.SLACK_APP_TOKEN,
- *   defaultModel: 'claude-3-5-sonnet-20241022'
+ *   defaultModel: 'claude-sonnet-4-5-20250929'
  * });
  * ```
  */

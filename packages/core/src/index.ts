@@ -19,7 +19,7 @@
  * // Advanced usage with fluent API
  * const response = await cofounder
  *   .provider('anthropic')
- *   .model('claude-3-5-sonnet-20241022')
+ *   .model('claude-sonnet-4-5-20250929')
  *   .optimize('cost')
  *   .cache(true)
  *   .chat({ messages: [...] });
@@ -27,7 +27,7 @@
  */
 
 // Main client
-export { CoFounderClient, Rana, createCoFounder } from './client';
+export { CoFounderClient, createCoFounder } from './client';
 
 // Types
 export type {
@@ -760,7 +760,7 @@ export {
   WandbRun,
   WandbError,
   createWandbTracker,
-  createCoFounderWandbMiddleware,
+  createRanaWandbMiddleware,
   withExperiment,
 } from './integrations';
 export type {

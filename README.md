@@ -1,21 +1,61 @@
 # CoFounder
 
-**Guardrails & Guidance for AI-Assisted Development**
+**Keeps AI coding agents from wrecking your codebase.**
+Free, open-source guardrails + spec-driven feature flow for AI-assisted development, by [Waymaker AI](https://waymaker.cx).
 
-> **CoFounder is a free, open-source, integration-friendly guardrail layer for AI-assisted development.**
-> It plugs into your existing stack (Vercel AI SDK, Supabase, LangChain, CrewAI, etc.) and makes sure agents **don't trash your codebase, ignore your design system and business rules, ship mock-only work, or waste your time and budget.**
+CoFounder plugs into your existing stack (Vercel AI SDK, Supabase, LangChain, CrewAI, OpenClaw, Claude Code) and stops agents from committing secrets, leaking PII, shipping mock data, blowing through budgets, or refactoring things no one asked them to. It's the safety harness and coach for AI-assisted work on real products — not a magic "ship-a-startup-in-30-minutes" button.
 
-CoFounder's job is to be the **safety harness and brain coach for AI agents** so they build **real, safe, on-spec product work** — not cute demos that create mess.
-
-Everything else (RAG, specs, flows, integrations) exists to support that.
-
-- Free and open source
+- Free and open source (MIT)
 - Bring-your-own LLM providers and tools
 - Designed for real products, not toy demos
 
 [![GitHub Stars](https://img.shields.io/github/stars/waymaker-ai/cofounder?style=social)](https://github.com/waymaker-ai/cofounder)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![npm version](https://badge.fury.io/js/%40waymakerai%2Faicofounder-core.svg)](https://www.npmjs.com/package/@waymakerai/aicofounder-core)
+[![npm downloads](https://img.shields.io/npm/dm/@waymakerai/aicofounder-core)](https://www.npmjs.com/package/@waymakerai/aicofounder-core)
+[![CI](https://img.shields.io/github/actions/workflow/status/waymaker-ai/cofounder/ci.yml?branch=main)](https://github.com/waymaker-ai/cofounder/actions)
+[![Discord](https://img.shields.io/discord/PLACEHOLDER?label=discord)](https://discord.gg/PLACEHOLDER)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
+
+---
+
+## Quick Demo
+
+### Before CoFounder (agent goes rogue):
+```
+❌ Agent commits AWS keys to repo
+❌ Agent leaks patient SSN in API response
+❌ Agent blows through $500 in API calls overnight
+❌ Agent gives investment advice (SEC violation)
+❌ Agent rewrites your auth middleware "for fun"
+```
+
+### After CoFounder (3 lines of code):
+```typescript
+import { createGuard } from '@waymakerai/aicofounder-guard';
+
+const guard = createGuard({
+  pii: 'redact',
+  injection: 'block',
+  budget: { limit: 50, period: 'day' },
+  compliance: { frameworks: ['hipaa', 'gdpr', 'sec'] }
+});
+
+const result = guard.check(userInput);
+// ✅ PII redacted, injections blocked, budget enforced, compliance checked
+// All in < 1ms with zero dependencies
+```
+
+---
+
+## Why CoFounder?
+
+- ⚡ **< 1ms guard latency** (vs 100ms-2s for LLM-based alternatives)
+- 📦 **~50KB, zero runtime dependencies**
+- 💰 **70% cost reduction** through caching + smart routing
+- 🔒 **HIPAA, GDPR, SEC, SOX, PCI DSS** compliance built-in
+- 🔌 **Works with LangChain, CrewAI, Vercel AI SDK, Supabase**
+- 🆓 **MIT licensed**, free forever
 
 ---
 
@@ -196,7 +236,7 @@ export default defineConfig({
     },
     anthropic: {
       apiKey: process.env.ANTHROPIC_API_KEY!,
-      models: ['claude-3-5-sonnet-20241022'],
+      models: ['claude-sonnet-4-5-20250929'],
     },
   },
 
@@ -204,7 +244,7 @@ export default defineConfig({
     defaultProvider: 'openai',
     rules: [
       { match: 'light', provider: 'openai', model: 'gpt-4.1-mini' },
-      { match: 'heavy', provider: 'anthropic', model: 'claude-3-5-sonnet-20241022' },
+      { match: 'heavy', provider: 'anthropic', model: 'claude-sonnet-4-5-20250929' },
     ],
   },
 
@@ -387,7 +427,7 @@ rag:
 
 llm:
   provider: "anthropic"
-  model: "claude-3-5-sonnet-20241022"
+  model: "claude-sonnet-4-5-20250929"
   temperature: 0.1
 
 security:
@@ -483,6 +523,8 @@ const featureAgent = new Agent({
 | `@waymakerai/aicofounder-crewai` | CrewAI adapter |
 | `@waymakerai/aicofounder-mcp` | Model Context Protocol server & client |
 | `@waymakerai/aicofounder-react` | React hooks for chat, RAG, streaming |
+| `@waymakerai/aicofounder-ci` | CI/CD scanner: 7 rules for secrets, PII, injection, exposed assets |
+| `@waymakerai/aicofounder-guard` | Runtime guard engine: PII, injection, toxicity, budget, rate limit |
 
 ---
 
@@ -509,6 +551,8 @@ These features are tested, documented, and suitable for production use:
 | Audit Logging | `core` | Stable |
 | Memory Management | `core` | Stable |
 | Config Parsing | `core` | Stable |
+| CI Scanner (7 rules) | `ci` | Stable |
+| Exposed Asset Detection | `ci` | Stable |
 
 ### Beta (Functional, Needs Validation)
 
@@ -544,13 +588,13 @@ These features are implemented but not production-hardened:
 
 ### Known Limitations
 
-1. **No Production Deployments Yet**: CoFounder has not been deployed at scale in production environments. Use with appropriate caution.
+1. **Early production usage**: CoFounder is dogfooded inside Waymaker AI (`waymaker.cx`) and a small set of early adopters. It has not yet been battle-tested across thousands of repos, so treat the "Beta" packages as functional-but-evolving and pin versions in production.
 
-2. **Integration Testing**: While unit tests pass, end-to-end integration testing with all providers is ongoing.
+2. **Integration Testing**: Unit tests pass across all packages. End-to-end integration testing with every provider combination (OpenAI, Anthropic, Gemini, Mistral, Meta) is ongoing and tracked in `packages/benchmark/RESULTS.md`.
 
-3. **Documentation Gaps**: Some advanced features lack comprehensive documentation.
+3. **Documentation Gaps**: Some advanced features (voice, video, fine-tuning pipelines) are marked experimental and lack comprehensive documentation — see Feature Maturity table above.
 
-4. **CLI Commands**: Many CLI commands are implemented but not all have been thoroughly tested in diverse project structures.
+4. **CLI Commands**: All core commands (`init`, `check`, `feature:new`, `feature:implement`) are covered by tests. Some advanced commands (`llm:compare`, `agent:serve`) are stable in Next.js projects but have had less exposure to other stacks.
 
 ### What We'd Recommend
 
@@ -581,36 +625,43 @@ aicofounder feature:implement   # Branch + scoped implementation
 
 ### LLM Commands
 ```bash
-cofounder llm:setup           # Configure providers
-cofounder llm:analyze         # Cost and usage analysis
-cofounder llm:compare         # Compare providers for your use case
+aicofounder llm:setup         # Configure providers
+aicofounder llm:analyze       # Cost and usage analysis
+aicofounder llm:compare       # Compare providers for your use case
 ```
 
 ### Database Commands
 ```bash
-cofounder db:setup            # Setup wizard
-cofounder db:migrate          # Run migrations
-cofounder db:check            # Validate schema
+aicofounder db:setup          # Setup wizard
+aicofounder db:migrate        # Run migrations
+aicofounder db:check          # Validate schema
 ```
 
 ### Security Commands
 ```bash
-cofounder security:audit      # Run security scan
-cofounder security:setup      # Setup security config
+aicofounder security:audit    # Run security scan
+aicofounder security:setup    # Setup security config
+```
+
+### CI/CD Scanner
+```bash
+npx @waymakerai/aicofounder-ci scan --rules all          # Scan codebase for security issues
+npx @waymakerai/aicofounder-ci scan --rules no-exposed-assets  # Check for exposed assets only
+npx @waymakerai/aicofounder-ci validate                  # Validate .aicofounder.yml config
 ```
 
 ### Agent Commands
 ```bash
-cofounder agent:new           # Scaffold a new agent
-cofounder agent:test          # Run agent tests
-cofounder agent:serve         # Start agent as API server
+aicofounder agent:new         # Scaffold a new agent
+aicofounder agent:test        # Run agent tests
+aicofounder agent:serve       # Start agent as API server
 ```
 
 ### Vibe Commands
 ```bash
-cofounder vibe:new            # Create new VibeSpec
-cofounder vibe:validate       # Validate VibeSpec YAML
-cofounder vibe:compile        # Show compiled system prompt
+aicofounder vibe:new          # Create new VibeSpec
+aicofounder vibe:validate     # Validate VibeSpec YAML
+aicofounder vibe:compile      # Show compiled system prompt
 ```
 
 ---
@@ -618,9 +669,15 @@ cofounder vibe:compile        # Show compiled system prompt
 ## Documentation
 
 ### Getting Started
-- **[START_HERE.md](START_HERE.md)** - Navigation hub
-- **[QUICK_START_GUIDE.md](QUICK_START_GUIDE.md)** - 5-minute tutorial
+- **[GETTING_STARTED.md](GETTING_STARTED.md)** - Navigation hub
+- **[QUICK_START.md](QUICK_START.md)** - 5-minute tutorial
 - **[docs/cofounder-os-spec.md](docs/cofounder-os-spec.md)** - Full API specification
+
+### Training Academy
+- **[Fundamentals](https://cofounder.waymaker.cx/training/fundamentals)** - 8 lessons: framework basics, architecture, first project
+- **[Building AI Agents](https://cofounder.waymaker.cx/training/building-agents)** - 12 lessons: tools, memory, orchestration, testing
+- **[Advanced Patterns](https://cofounder.waymaker.cx/training/advanced-patterns)** - 15 lessons: streaming, caching, RAG, pipelines
+- **[Production Deployment](https://cofounder.waymaker.cx/training/production-deployment)** - 10 lessons: Vercel, AWS, Docker, monitoring, security
 
 ### Framework Guides
 - **[docs/LLM_OPTIMIZATION_GUIDE.md](docs/LLM_OPTIMIZATION_GUIDE.md)** - Cost optimization

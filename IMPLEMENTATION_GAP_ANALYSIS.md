@@ -129,7 +129,7 @@
 | Quality gates integration | ⚠️ | Partial (exists separately) |
 | Smart file placement | ❌ | Not implemented |
 | CLI: `cofounder generate "..."` | ❌ | Not implemented |
-| Feature workflow CLI | ✅ | `cofounder feature:new/implement` exists |
+| Feature workflow CLI | ✅ | `aicofounder feature:new/implement` exists |
 
 **Gap Analysis**:
 

@@ -105,8 +105,8 @@ If you're upgrading from CoFounder v1.x:
 **CLI Commands (Still Work)**
 All v1.x CLI commands continue to work:
 ```bash
-cofounder init
-cofounder check
+aicofounder init
+aicofounder check
 cofounder deploy
 # etc.
 ```
@@ -115,7 +115,7 @@ cofounder deploy
 You can now also use CoFounder programmatically:
 ```typescript
 // Old: CLI only
-// $ cofounder llm:chat "Hello"
+// $ aicofounder llm:chat "Hello"
 
 // New: SDK
 import { createCoFounder } from '@waymakerai/aicofounder-core';
@@ -181,7 +181,7 @@ Chain methods for intuitive usage:
 ```typescript
 const response = await cofounder
   .provider('anthropic')
-  .model('claude-3-5-sonnet-20241022')
+  .model('claude-sonnet-4-5-20250929')
   .temperature(0.7)
   .maxTokens(1000)
   .optimize('cost')

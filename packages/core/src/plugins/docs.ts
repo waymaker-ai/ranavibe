@@ -97,7 +97,7 @@ export interface DocsAnswer {
  */
 export interface DocsPluginConfig {
   /** CoFounder client instance */
-  aicofounder: CoFounderClient;
+  cofounder: CoFounderClient;
 
   /** Documentation sources to ingest */
   sources?: DocumentSource[];
@@ -728,8 +728,8 @@ Please provide a clear, accurate answer based on the documentation above. Cite y
 
       return response.content
         .split('\n')
-        .map(q => q.trim())
-        .filter(q => q.length > 0 && q.endsWith('?'))
+        .map((q: string) => q.trim())
+        .filter((q: string) => q.length > 0 && q.endsWith('?'))
         .slice(0, 3);
     } catch (error) {
       // If follow-up generation fails, just return empty array

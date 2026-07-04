@@ -613,7 +613,7 @@ export class ModelRouter extends EventEmitter {
 
     if (!modelDef) {
       // Fallback to default
-      modelDef = this.registry.getModel('anthropic', 'claude-3-5-sonnet-20241022');
+      modelDef = this.registry.getModel('anthropic', 'claude-sonnet-4-5-20250929');
       if (!modelDef) {
         throw new Error('No suitable model found for routing constraints');
       }

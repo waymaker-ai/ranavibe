@@ -27,7 +27,7 @@ export type ModelName =
   | 'gpt-4o'
   | 'gpt-3.5-turbo'
   // Anthropic
-  | 'claude-3-5-sonnet-20241022'
+  | 'claude-sonnet-4-5-20250929'
   | 'claude-3-haiku-20240307'
   | 'claude-3-opus-20240229'
   // Google Gemini
@@ -521,7 +521,7 @@ export class LUKAClient {
       'gpt-3.5-turbo': { input: 0.5, output: 1.5 },
 
       // Anthropic (per 1M tokens)
-      'claude-3-5-sonnet-20241022': { input: 3, output: 15 },
+      'claude-sonnet-4-5-20250929': { input: 3, output: 15 },
       'claude-3-haiku-20240307': { input: 0.25, output: 1.25 },
       'claude-3-opus-20240229': { input: 15, output: 75 },
 
@@ -574,8 +574,8 @@ export async function smartChat(
 
   const strategies: Record<string, ModelName[]> = {
     simple: ['llama-3.1-8b-instant', 'gemini-2.0-flash-exp', 'claude-3-haiku-20240307', 'gpt-3.5-turbo'],
-    medium: ['gemini-2.0-flash-exp', 'claude-3-5-sonnet-20241022', 'gpt-4o'],
-    complex: ['gemini-3', 'claude-3-5-sonnet-20241022', 'gpt-4o', 'gpt-4-turbo'],
+    medium: ['gemini-2.0-flash-exp', 'claude-sonnet-4-5-20250929', 'gpt-4o'],
+    complex: ['gemini-3', 'claude-sonnet-4-5-20250929', 'gpt-4o', 'gpt-4-turbo'],
   };
 
   const models = strategies[complexity];

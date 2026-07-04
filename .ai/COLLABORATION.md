@@ -263,13 +263,13 @@ Build shared understanding:
 
 ```bash
 # Check project status
-cofounder docs:status
+aicofounder docs:status
 
 # See all documents
-cofounder docs:list
+aicofounder docs:list
 
 # Validate document health
-cofounder docs:check
+aicofounder docs:check
 
 # Show open roadmap items
 cat ROADMAP.md | grep "\[ \]"

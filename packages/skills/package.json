@@ -1,0 +1,42 @@
+{
+  "name": "@waymakerai/aicofounder-skills",
+  "version": "0.1.0",
+  "description": "CoFounder Skill Library — agentic skills, sub-agents, and slash commands. Source-of-truth consumed by the Claude Code plugin and MCP server.",
+  "license": "MIT",
+  "author": "Waymaker <support@waymaker.cx>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/waymaker-ai/cofounder.git",
+    "directory": "packages/skills"
+  },
+  "homepage": "https://cofounder.cx",
+  "keywords": [
+    "cofounder",
+    "skills",
+    "claude-code",
+    "agent-skills",
+    "vibespec"
+  ],
+  "files": [
+    "src",
+    "runtime/src",
+    "runtime/dist",
+    "MANIFEST.json",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p runtime/tsconfig.json",
+    "manifest": "node --import tsx runtime/src/cli/build-manifest.ts",
+    "benchmark": "node runtime/dist/cli/benchmark.js",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "yaml": "^2.8.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.4.0",
+    "vitest": "^4.1.0"
+  }
+}

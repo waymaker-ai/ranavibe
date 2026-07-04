@@ -1,0 +1,11 @@
+apiVersion: 1
+providers:
+  - name: 'CoFounder'
+    orgId: 1
+    folder: 'CoFounder'
+    type: file
+    disableDeletion: false
+    editable: true
+    options:
+      path: /etc/grafana/provisioning/dashboards
+      foldersFromFilesStructure: false

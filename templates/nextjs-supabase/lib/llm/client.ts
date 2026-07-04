@@ -48,7 +48,7 @@ export const LLM_PROVIDERS = {
   anthropic: {
     name: 'Anthropic',
     models: {
-      'claude-3-5-sonnet-20241022': {
+      'claude-sonnet-4-5-20250929': {
         inputCost: 0.003,
         outputCost: 0.015,
         contextWindow: 200000,
@@ -92,13 +92,13 @@ export function selectModel(options: {
 
   // For high complexity or large context, use best model
   if (complexity === 'high' || estimatedTokens > 50000) {
-    if (provider === 'anthropic') return 'claude-3-5-sonnet-20241022';
+    if (provider === 'anthropic') return 'claude-sonnet-4-5-20250929';
     if (provider === 'grok') return 'grok-beta';
     return 'gpt-4-turbo-preview';
   }
 
   // Medium complexity: Grok offers good balance
-  if (provider === 'anthropic') return 'claude-3-5-sonnet-20241022';
+  if (provider === 'anthropic') return 'claude-sonnet-4-5-20250929';
   if (provider === 'grok') return 'grok-beta';
   if (provider === 'openai') return 'gpt-3.5-turbo';
 

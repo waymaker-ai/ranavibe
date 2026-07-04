@@ -1,0 +1,23 @@
+apiVersion: cofounder.cx/v1
+project: example-02-hipaa-compliance
+description: "Demonstrates compliance-frame on a regulated-industry feature."
+
+vibe: regulated_health
+
+compliance:
+  frameworks: [hipaa, gdpr]
+  requireAuditLog: true
+  forbidPhiInLogs: true
+
+routing:
+  defaultProvider: anthropic
+  rules:
+    - match: heavy           # compliance-frame is modelClass: heavy
+      model: claude-opus-4-7
+
+guardrails:
+  forbidMockInProd: true
+  forbidHardcodedCredentials: true
+  forbidPhiInLogs: true
+  requireBranchPerFeature: true
+  requireTestsForFeatureWork: true

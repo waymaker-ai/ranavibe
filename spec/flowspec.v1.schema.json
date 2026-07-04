@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cofounder.cx/spec/flowspec.v1.schema.json",
+  "title": "FlowSpec",
+  "description": "Declarative configuration for how AI-assisted feature work is broken into steps. Each step has a gate — criteria that must pass before the flow advances. Tools (Claude Code plugins, Cursor, CoFounder CLI) execute flows by running each step's prompt, then running the gate.",
+  "type": "object",
+  "required": ["id", "name", "steps"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "apiVersion": {
+      "type": "string",
+      "const": "cofounder.cx/v1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_-]*$"
+    },
+    "name": { "type": "string", "minLength": 1 },
+    "description": { "type": "string" },
+    "vibe": {
+      "type": "string",
+      "description": "Reference to a VibeSpec id that governs all steps in this flow."
+    },
+    "inputs": {
+      "type": "array",
+      "description": "Inputs the user must provide to start the flow.",
+      "items": {
+        "type": "object",
+        "required": ["name", "type"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string" },
+          "type": { "type": "string", "enum": ["string", "path", "url", "boolean", "number", "select"] },
+          "description": { "type": "string" },
+          "required": { "type": "boolean", "default": true },
+          "default": {},
+          "options": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "kind"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]*$"
+          },
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "kind": {
+            "type": "string",
+            "enum": ["clarify", "plan", "implement", "test", "review", "deploy", "custom"],
+            "description": "Canonical step kind. Tools may render step UIs differently based on kind."
+          },
+          "prompt": {
+            "type": "string",
+            "description": "Template prompt executed by the agent. May reference {{inputs.name}} and {{steps.<id>.output}}."
+          },
+          "promptPath": {
+            "type": "string",
+            "description": "Alternative to `prompt`: path to a markdown file containing the prompt template."
+          },
+          "requires": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Step ids that must complete before this step can run."
+          },
+          "gate": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "Criteria that must pass before the flow advances past this step.",
+            "properties": {
+              "checks": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "compile",
+                    "typecheck",
+                    "lint",
+                    "test",
+                    "aicofounder-check",
+                    "no-secrets",
+                    "no-mock-data",
+                    "scope-respect",
+                    "design-system-compliance",
+                    "human-approval"
+                  ]
+                }
+              },
+              "commands": {
+                "type": "array",
+                "items": { "type": "string" },
+                "description": "Shell commands to run as part of the gate. Non-zero exit code fails the gate."
+              },
+              "humanApprovalRequired": { "type": "boolean", "default": false }
+            }
+          },
+          "onFail": {
+            "type": "string",
+            "enum": ["abort", "retry", "ask-human", "skip"],
+            "default": "ask-human"
+          },
+          "output": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "How to capture the step's output.",
+            "properties": {
+              "savePath": { "type": "string", "description": "File path to write the step output to." },
+              "format": { "type": "string", "enum": ["markdown", "yaml", "json", "diff", "patch"] }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}

@@ -32,6 +32,18 @@ program
   .option('-f, --force', 'Overwrite existing .aicofounder.yml')
   .action(initCommand);
 
+// Cursor rules generator — compile VibeSpecs to .cursor/rules/*.mdc
+program
+  .command('cursor:generate')
+  .description('Compile VibeSpec YAML into Cursor rule files (.cursor/rules/*.mdc)')
+  .option('-o, --out-dir <path>', 'Output directory (default: .cursor/rules)')
+  .option('--always-apply', 'Generate rules as alwaysApply: true (default false)')
+  .option('--dry-run', 'Print what would be written without writing')
+  .action(async (options) => {
+    const { cursorGenerateCommand } = await import('./commands/cursor.js');
+    await cursorGenerateCommand(options);
+  });
+
 // ============================================================================
 // ONE-WORD SHORTCUTS (New!)
 // ============================================================================

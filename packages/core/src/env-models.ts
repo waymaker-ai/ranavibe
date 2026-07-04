@@ -63,7 +63,7 @@ const DEFAULT_MODELS: Record<ModelPurpose, EnvModelConfig> = {
   code: {
     development: { provider: 'ollama', model: 'codellama', fallback: { provider: 'anthropic', model: 'claude-3-5-haiku-20241022' } },
     staging: { provider: 'anthropic', model: 'claude-3-5-haiku-20241022' },
-    production: { provider: 'anthropic', model: 'claude-3-5-sonnet-20241022' },
+    production: { provider: 'anthropic', model: 'claude-sonnet-4-5-20250929' },
     test: { provider: 'ollama', model: 'codellama' },
   },
   embedding: {
@@ -86,7 +86,7 @@ const DEFAULT_MODELS: Record<ModelPurpose, EnvModelConfig> = {
   },
   smart: {
     development: { provider: 'ollama', model: 'llama3.2', fallback: { provider: 'anthropic', model: 'claude-3-5-haiku-20241022' } },
-    staging: { provider: 'anthropic', model: 'claude-3-5-sonnet-20241022' },
+    staging: { provider: 'anthropic', model: 'claude-sonnet-4-5-20250929' },
     production: { provider: 'anthropic', model: 'claude-3-opus-20240229' },
     test: { provider: 'ollama', model: 'llama3.2' },
   },
@@ -290,5 +290,5 @@ export function printEnvModelConfig(): void {
   }
 
   console.log('\n   Set custom models via environment variables:');
-  console.log('   CoFounder_MODEL_CHAT=anthropic:claude-3-5-sonnet-20241022\n');
+  console.log('   CoFounder_MODEL_CHAT=anthropic:claude-sonnet-4-5-20250929\n');
 }

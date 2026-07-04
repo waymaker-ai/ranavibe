@@ -214,7 +214,7 @@ export async function promptCreate(options: {
               ];
             case 'anthropic':
               return [
-                { title: 'Claude 3.5 Sonnet (recommended)', value: 'claude-3-5-sonnet-20241022' },
+                { title: 'Claude 3.5 Sonnet (recommended)', value: 'claude-sonnet-4-5-20250929' },
                 { title: 'Claude 3 Haiku (cheaper)', value: 'claude-3-haiku-20240307' },
               ];
             case 'google':
@@ -414,7 +414,7 @@ export async function promptTest(promptId: string, options: {
       'gpt-4-turbo': { input: 0.01, output: 0.03 },
     },
     anthropic: {
-      'claude-3-5-sonnet-20241022': { input: 0.003, output: 0.015 },
+      'claude-sonnet-4-5-20250929': { input: 0.003, output: 0.015 },
       'claude-3-haiku-20240307': { input: 0.00025, output: 0.00125 },
     },
     google: {

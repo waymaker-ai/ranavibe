@@ -23,7 +23,7 @@ const MODELS: Record<string, { display: string; models: { value: string; title: 
   anthropic: {
     display: 'Anthropic',
     models: [
-      { value: 'claude-3-5-sonnet-20241022', title: 'Claude 3.5 Sonnet (Best)' },
+      { value: 'claude-sonnet-4-5-20250929', title: 'Claude 3.5 Sonnet (Best)' },
       { value: 'claude-3-haiku-20240307', title: 'Claude 3 Haiku (Fast)' },
       { value: 'claude-3-opus-20240229', title: 'Claude 3 Opus (Most capable)' },
     ],

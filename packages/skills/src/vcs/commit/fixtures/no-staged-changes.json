@@ -1,0 +1,13 @@
+{
+  "id": "no-staged-changes",
+  "input": {
+    "userMessage": "Commit this for me.",
+    "args": { "stagedFiles": [], "stagedDiff": "" }
+  },
+  "expect": {
+    "contains": ["nothing is staged", "stop"],
+    "notContains": ["git commit"],
+    "refusesToWriteFiles": [],
+    "maxLatencySeconds": 10
+  }
+}

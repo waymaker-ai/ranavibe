@@ -1,0 +1,31 @@
+{
+  "name": "@waymakerai/claude-plugin-cofounder",
+  "version": "0.1.0",
+  "description": "CoFounder guardrails + spec-driven feature flow as a Claude Code plugin",
+  "keywords": ["claude-code", "plugin", "cofounder", "guardrails", "vibespec"],
+  "homepage": "https://cofounder.cx",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/waymaker-ai/cofounder.git",
+    "directory": "packages/claude-code-plugin"
+  },
+  "license": "MIT",
+  "files": [
+    "plugin.json",
+    "skills/**",
+    "agents/**",
+    "hooks/**",
+    "commands/**",
+    "mcp-server/dist/**",
+    "mcp-server/package.json",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "cd mcp-server && npm run build",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@waymakerai/aicofounder-core": "workspace:*",
+    "@waymakerai/aicofounder-guard": "workspace:*"
+  }
+}

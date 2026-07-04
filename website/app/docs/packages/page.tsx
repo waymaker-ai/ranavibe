@@ -202,6 +202,26 @@ broker.subscribe(tasks, async (msg, ctx) => {
   await ctx.acknowledge();
 });`,
       },
+      {
+        name: '@waymakerai/aicofounder-skills',
+        shortName: 'skills',
+        icon: Sparkles,
+        description: 'Source-of-truth for the CoFounder Skill Library: 16 skills, 3 sub-agents, 4 slash commands. Skills declare sensitivity, model class, and chain position; the runtime handles model routing, sandbox preview, telemetry, and MCP re-exposure.',
+        install: 'npm install @waymakerai/aicofounder-skills',
+        isNew: true,
+        layer: 'Agent',
+        keyExports: ['loadAllSkills', 'buildManifest', 'planChain', 'route', 'runFixture', 'buildMcpTools', 'preflight', 'previewBeforeRun'],
+        example: `import { loadAllSkills, buildManifest, planChain } from '@waymakerai/aicofounder-skills';
+
+const skills = loadAllSkills('packages/skills/src', repoRoot);
+const manifest = buildManifest(skills);
+
+// FlowSpec chaining: feature-new -> feature-implement -> check
+const plan = planChain(manifest, 'cofounder-feature-implement');
+// plan.steps -> [{ id: 'cofounder-feature-new', reason: 'required' },
+//                { id: 'cofounder-feature-implement', reason: 'starting' },
+//                { id: 'cofounder-check', reason: 'suggested-next' }]`,
+      },
     ] as PackageInfo[],
   },
   {
@@ -295,16 +315,19 @@ rana test --semantic --coverage`,
         name: '@waymakerai/aicofounder-ci',
         shortName: 'ci',
         icon: RefreshCw,
-        description: 'CI/CD integration for GitHub Actions. Runs guard checks on PRs, generates SARIF reports, posts compliance comments.',
+        description: 'CI/CD static analysis scanner with 7 built-in rules: hardcoded secrets, PII in prompts, prompt injection, model approval, cost estimation, safe defaults, and exposed asset detection (source maps, env var leaks, debug modes, CORS, GraphQL introspection, CI/CD secret leaks).',
         install: 'npm install @waymakerai/aicofounder-ci',
         layer: 'DevOps',
-        keyExports: ['CIRunner', 'SARIFReporter', 'PRCommentReporter'],
-        example: `# .github/workflows/rana.yml
+        keyExports: ['scan', 'noHardcodedKeys', 'noExposedAssets', 'noInjectionVuln', 'noPiiInPrompts', 'approvedModels', 'costEstimation', 'safeDefaults'],
+        example: `# Scan your codebase
+npx @waymakerai/aicofounder-ci scan --rules all --fail-on high
+
+# GitHub Actions
 - uses: waymaker-ai/cofounder-ci@v1
   with:
-    guard: true
-    compliance: hipaa,gdpr
-    fail-on: critical`,
+    rules: all
+    fail-on: high
+    comment-on-pr: true`,
       },
       {
         name: '@waymakerai/aicofounder-testing',

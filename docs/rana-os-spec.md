@@ -783,7 +783,7 @@ rag:
 
 llm:
   provider: "anthropic"
-  model: "claude-3-5-sonnet-20241022"
+  model: "claude-sonnet-4-5-20250929"
   temperature: 0.1
   maxTokens: 800
 
@@ -1379,15 +1379,15 @@ cofounder kb:query <kb-id> "question"   # Query knowledge base
 cofounder kb:delete <kb-id>             # Delete knowledge base
 
 # Agent Management
-cofounder agent:new <name>              # Scaffold new agent
-cofounder agent:test <agent-file>       # Run agent tests
-cofounder agent:serve <agent-file>      # Start agent as API server
-cofounder agent:chat <agent-file>       # Interactive chat with agent
+aicofounder agent:new <name>              # Scaffold new agent
+aicofounder agent:test <agent-file>       # Run agent tests
+aicofounder agent:serve <agent-file>      # Start agent as API server
+aicofounder agent:chat <agent-file>       # Interactive chat with agent
 
 # Vibe Management
-cofounder vibe:new <name>               # Create new vibe config
-cofounder vibe:validate <vibe-file>     # Validate vibe YAML
-cofounder vibe:compile <vibe-file>      # Show compiled system prompt
+aicofounder vibe:new <name>               # Create new vibe config
+aicofounder vibe:validate <vibe-file>     # Validate vibe YAML
+aicofounder vibe:compile <vibe-file>      # Show compiled system prompt
 
 # MCP
 cofounder mcp:serve                     # Start CoFounder MCP server

@@ -24,12 +24,12 @@ await audit.initialize();
 // Log API key usage
 const apiKeyHash = hashApiKey(process.env.ANTHROPIC_API_KEY);
 await audit.logApiKeyUsage(apiKeyHash, 'anthropic', 'chat_request', {
-  model: 'claude-3-5-sonnet-20241022'
+  model: 'claude-sonnet-4-5-20250929'
 });
 
 // Log request/response
-await audit.logRequest('anthropic', 'claude-3-5-sonnet-20241022', 'user-123');
-await audit.logResponse('anthropic', 'claude-3-5-sonnet-20241022', 'success', 1234);
+await audit.logRequest('anthropic', 'claude-sonnet-4-5-20250929', 'user-123');
+await audit.logResponse('anthropic', 'claude-sonnet-4-5-20250929', 'success', 1234);
 
 // Always close when done
 await audit.close();
@@ -110,7 +110,7 @@ await audit.logApiKeyUsage(
   hashApiKey('sk-ant-123'),
   'anthropic',
   'chat_request',
-  { model: 'claude-3-5-sonnet-20241022' }
+  { model: 'claude-sonnet-4-5-20250929' }
 );
 ```
 
@@ -118,7 +118,7 @@ await audit.logApiKeyUsage(
 
 ```typescript
 // Log request
-await audit.logRequest('anthropic', 'claude-3-5-sonnet-20241022', 'user-123', {
+await audit.logRequest('anthropic', 'claude-sonnet-4-5-20250929', 'user-123', {
   temperature: 0.7,
   max_tokens: 1000,
 });
@@ -126,7 +126,7 @@ await audit.logRequest('anthropic', 'claude-3-5-sonnet-20241022', 'user-123', {
 // Log response
 await audit.logResponse(
   'anthropic',
-  'claude-3-5-sonnet-20241022',
+  'claude-sonnet-4-5-20250929',
   'success',
   1234, // latency_ms
   'user-123',
@@ -459,14 +459,14 @@ await audit.logApiKeyUsage(
 
 // Make request with logging
 const requestStart = Date.now();
-await audit.logRequest('anthropic', 'claude-3-5-sonnet-20241022', 'user-123');
+await audit.logRequest('anthropic', 'claude-sonnet-4-5-20250929', 'user-123');
 
 try {
   const response = await cofounder.chat('Hello!');
 
   await audit.logResponse(
     'anthropic',
-    'claude-3-5-sonnet-20241022',
+    'claude-sonnet-4-5-20250929',
     'success',
     Date.now() - requestStart,
     'user-123',
@@ -515,7 +515,7 @@ await audit.close();
   action: "chat_request",
   resource: "chat_api",
   provider: "anthropic",
-  model: "claude-3-5-sonnet-20241022",
+  model: "claude-sonnet-4-5-20250929",
 
   // Metadata
   metadata: {

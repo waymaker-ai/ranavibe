@@ -13,7 +13,7 @@ Data sourced from `packages/guard/src/enforcers/budget.ts` (primary) and `extens
 | claude-opus-4-6 | $15.00 | $75.00 | 200,000 |
 | claude-sonnet-4-6 | $3.00 | $15.00 | 200,000 |
 | claude-haiku-4-5-20251001 | $0.80 | $4.00 | 200,000 |
-| claude-3-5-sonnet-20241022 | $3.00 | $15.00 | 200,000 |
+| claude-sonnet-4-5-20250929 | $3.00 | $15.00 | 200,000 |
 | claude-3-5-haiku-20241022 | $0.80 | $4.00 | 200,000 |
 | claude-3-opus-20240229 | $15.00 | $75.00 | 200,000 |
 | claude-3-sonnet-20240229 | $3.00 | $15.00 | 200,000 |

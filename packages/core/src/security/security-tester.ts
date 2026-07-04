@@ -10,7 +10,7 @@
  * - Input validation tests
  */
 
-import type { RanaClient } from '../client';
+import type { CoFounderClient as RanaClient } from '../client';
 
 export interface SecurityTestResult {
   testName: string;

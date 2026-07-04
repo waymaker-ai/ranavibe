@@ -1,0 +1,88 @@
+{
+  "annotations": { "list": [] },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "title": "LLM Request Rate",
+      "type": "timeseries",
+      "datasource": "Prometheus",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 },
+      "targets": [
+        {
+          "expr": "rate(cofounder_llm_requests_total[5m])",
+          "legendFormat": "{{provider}} - {{model}}"
+        }
+      ]
+    },
+    {
+      "title": "LLM Latency (p95)",
+      "type": "timeseries",
+      "datasource": "Prometheus",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 },
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.95, rate(cofounder_llm_latency_seconds_bucket[5m]))",
+          "legendFormat": "{{provider}} p95"
+        }
+      ]
+    },
+    {
+      "title": "Token Usage",
+      "type": "stat",
+      "datasource": "Prometheus",
+      "gridPos": { "h": 4, "w": 6, "x": 0, "y": 8 },
+      "targets": [
+        {
+          "expr": "sum(increase(cofounder_tokens_total[24h]))",
+          "legendFormat": "Tokens (24h)"
+        }
+      ]
+    },
+    {
+      "title": "Estimated Cost (24h)",
+      "type": "stat",
+      "datasource": "Prometheus",
+      "gridPos": { "h": 4, "w": 6, "x": 6, "y": 8 },
+      "targets": [
+        {
+          "expr": "sum(increase(cofounder_cost_usd_total[24h]))",
+          "legendFormat": "Cost USD"
+        }
+      ]
+    },
+    {
+      "title": "Guard Blocks",
+      "type": "stat",
+      "datasource": "Prometheus",
+      "gridPos": { "h": 4, "w": 6, "x": 12, "y": 8 },
+      "targets": [
+        {
+          "expr": "sum(increase(cofounder_guard_blocks_total[24h]))",
+          "legendFormat": "Blocked (24h)"
+        }
+      ]
+    },
+    {
+      "title": "Cache Hit Rate",
+      "type": "gauge",
+      "datasource": "Prometheus",
+      "gridPos": { "h": 4, "w": 6, "x": 18, "y": 8 },
+      "targets": [
+        {
+          "expr": "sum(cofounder_cache_hits_total) / (sum(cofounder_cache_hits_total) + sum(cofounder_cache_misses_total)) * 100",
+          "legendFormat": "Hit Rate %"
+        }
+      ]
+    }
+  ],
+  "schemaVersion": 39,
+  "tags": ["cofounder", "ai", "llm"],
+  "templating": { "list": [] },
+  "time": { "from": "now-6h", "to": "now" },
+  "title": "CoFounder AI Operations",
+  "uid": "cofounder-ops"
+}

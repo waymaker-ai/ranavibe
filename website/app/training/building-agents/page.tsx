@@ -54,9 +54,10 @@ export default function BuildingAgentsPage() {
         <div className="space-y-4 mb-12">
           <h2 className="text-2xl font-bold mb-6">Course Content</h2>
           {lessons.map((lesson) => (
-            <div
+            <Link
               key={lesson.id}
-              className="card flex items-center gap-4 opacity-75 cursor-not-allowed"
+              href={`/training/building-agents/lesson-${lesson.id}`}
+              className="card flex items-center gap-4 hover:border-foreground/20"
             >
               <Circle className="h-6 w-6 text-foreground-secondary flex-shrink-0" />
               <div className="flex-1">
@@ -69,8 +70,8 @@ export default function BuildingAgentsPage() {
                   <span>{lesson.duration}</span>
                 </div>
               </div>
-              <Play className="h-5 w-5 text-foreground-secondary" />
-            </div>
+              <Play className="h-5 w-5 text-foreground-secondary group-hover:text-foreground transition-colors" />
+            </Link>
           ))}
         </div>
 

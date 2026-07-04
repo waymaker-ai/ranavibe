@@ -25,7 +25,7 @@ standards:
 
 ```bash
 # Check compliance
-cofounder check-design-system
+aicofounder check-design-system
 
 # See coverage report
 cofounder design-coverage
@@ -40,7 +40,7 @@ cofounder design-violations --fix
 # .github/workflows/ci.yml
 - name: Design System Compliance
   run: |
-    cofounder check-design-system
+    aicofounder check-design-system
     cofounder design-coverage --threshold 90
 ```
 
@@ -458,7 +458,7 @@ jobs:
 
       - name: Design System Check
         run: |
-          cofounder check-design-system
+          aicofounder check-design-system
           cofounder design-coverage --threshold 90
           cofounder design-violations
 
@@ -473,7 +473,7 @@ jobs:
 #!/bin/sh
 
 # Check design system compliance
-cofounder check-design-system || exit 1
+aicofounder check-design-system || exit 1
 
 # Check coverage threshold
 cofounder design-coverage --threshold 85 || exit 1
@@ -486,7 +486,7 @@ cofounder design-coverage --threshold 85 || exit 1
 #!/bin/sh
 
 # Full design system audit
-cofounder check-design-system --strict
+aicofounder check-design-system --strict
 
 # Accessibility tests
 npm run a11y-audit
@@ -682,7 +682,7 @@ checker.addRule(noMagicNumbers);
 
 1. **Configure**: Copy `templates/cofounder-custom-design-system.yml`
 2. **Enable**: Set `design_system.enabled: true`
-3. **Run check**: `cofounder check-design-system`
+3. **Run check**: `aicofounder check-design-system`
 4. **Fix violations**: `cofounder design-violations --fix`
 5. **Add to CI**: GitHub Actions workflow
 6. **Monitor coverage**: Track over time

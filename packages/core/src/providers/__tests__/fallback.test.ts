@@ -65,7 +65,7 @@ describe('FallbackManager', () => {
         .mockResolvedValueOnce({
           id: 'test-2',
           provider: 'anthropic',
-          model: 'claude-3-5-sonnet-20241022',
+          model: 'claude-sonnet-4-5-20250929',
           content: 'Hello from Anthropic!',
           role: 'assistant',
           usage: { prompt_tokens: 10, completion_tokens: 5, total_tokens: 15 },
@@ -125,7 +125,7 @@ describe('FallbackManager', () => {
         .mockResolvedValueOnce({
           id: 'test-3',
           provider: 'anthropic',
-          model: 'claude-3-5-sonnet-20241022',
+          model: 'claude-sonnet-4-5-20250929',
           content: 'Success!',
           role: 'assistant',
           usage: { prompt_tokens: 10, completion_tokens: 5, total_tokens: 15 },
@@ -168,7 +168,7 @@ describe('FallbackManager', () => {
         .mockResolvedValueOnce({
           id: 'test-4',
           provider: 'anthropic',
-          model: 'claude-3-5-sonnet-20241022',
+          model: 'claude-sonnet-4-5-20250929',
           content: 'Success!',
           role: 'assistant',
           usage: { prompt_tokens: 10, completion_tokens: 5, total_tokens: 15 },

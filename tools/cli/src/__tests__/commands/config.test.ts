@@ -60,7 +60,7 @@ describe('provider configuration', () => {
   it('should have correct provider defaults', () => {
     const providerDefaults: Record<string, { model: string; maxTokens: number }> = {
       openai: { model: 'gpt-4o', maxTokens: 4096 },
-      anthropic: { model: 'claude-3-5-sonnet-20241022', maxTokens: 4096 },
+      anthropic: { model: 'claude-sonnet-4-5-20250929', maxTokens: 4096 },
       google: { model: 'gemini-1.5-flash', maxTokens: 8192 },
       groq: { model: 'llama-3.1-70b-versatile', maxTokens: 4096 },
     };

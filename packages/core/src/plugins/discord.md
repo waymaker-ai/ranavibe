@@ -367,7 +367,7 @@ discord.onCommand('compare', async (interaction) => {
   // Get responses from multiple models
   const [gpt4, claude] = await Promise.all([
     cofounder.chat({ messages: [{ role: 'user', content: question }], model: 'gpt-4o' }),
-    cofounder.chat({ messages: [{ role: 'user', content: question }], model: 'claude-3-5-sonnet-20241022' }),
+    cofounder.chat({ messages: [{ role: 'user', content: question }], model: 'claude-sonnet-4-5-20250929' }),
   ]);
 
   const embed = {

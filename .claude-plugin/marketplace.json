@@ -1,0 +1,34 @@
+{
+  "$schema": "https://claude.com/schemas/marketplace.json",
+  "name": "waymaker-ai",
+  "displayName": "Waymaker AI",
+  "description": "Guardrails, spec-driven feature flow, and a curated skill library for Claude Code, Cursor, Windsurf, and any MCP-compatible host. Stops agents from committing secrets, shipping mock data, or refactoring out of scope.",
+  "homepage": "https://cofounder.cx",
+  "author": {
+    "name": "Waymaker AI",
+    "url": "https://waymaker.cx",
+    "email": "support@waymaker.cx"
+  },
+  "repository": "https://github.com/waymaker-ai/cofounder",
+  "license": "MIT",
+  "plugins": [
+    {
+      "name": "cofounder",
+      "source": "./packages/claude-code-plugin",
+      "displayName": "CoFounder",
+      "description": "Guardrails + VibeSpec/FlowSpec feature flow + 16 skills, 4 commands, 3 agents, 3 hooks, and a built-in MCP server.",
+      "version": "0.2.0",
+      "keywords": [
+        "guardrails",
+        "safety",
+        "vibespec",
+        "flowspec",
+        "spec-driven",
+        "ai-coding",
+        "cofounder",
+        "skills"
+      ],
+      "category": "development"
+    }
+  ]
+}

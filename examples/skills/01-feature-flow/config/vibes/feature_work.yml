@@ -1,0 +1,42 @@
+apiVersion: cofounder.cx/v1
+id: feature_work
+name: "Feature work — Next.js + Tailwind"
+description: >
+  Default vibe for this example. Mirrors what cofounder-vibespec-author would
+  infer from a real Next.js + Tailwind project.
+
+vibe:
+  tone: "concise, factual"
+  scopeRules:
+    allowedPaths:
+      - "app/**"
+      - "components/**"
+      - "lib/**"
+      - "tests/**"
+      - "specs/**"
+    forbiddenPaths:
+      - ".env*"
+      - "infrastructure/**"
+  dataRules:
+    forbidMockInProd: true
+    forbidHardcodedCredentials: true
+  designSystem:
+    forbidRawColors: true
+    componentLibrary: "components/ui"
+  testing:
+    framework: "vitest"
+    requireForFeatureWork: true
+  vcs:
+    branchPattern: "feat/<slug>"
+    commitStyle: "conventional"
+    requireBranchPerFeature: true
+
+allowedActions:
+  - "edit_files"
+  - "run_tests"
+  - "create_branch"
+  - "open_pr"
+disallowedActions:
+  - "force_push"
+  - "modify_env_files"
+  - "modify_ci_config"

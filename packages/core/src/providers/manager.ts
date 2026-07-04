@@ -310,7 +310,7 @@ export class ProviderManager {
     request: RanaChatRequest
   ): Promise<Partial<RanaChatResponse>> {
     const response = await client.messages.create({
-      model: request.model || 'claude-3-5-sonnet-20241022',
+      model: request.model || 'claude-sonnet-4-5-20250929',
       messages: request.messages,
       max_tokens: request.max_tokens || 1024,
       temperature: request.temperature ?? 0.7,
@@ -482,7 +482,7 @@ export class ProviderManager {
     // Pricing per 1M tokens (as of 2025)
     const pricing: Record<string, { input: number; output: number }> = {
       // Anthropic
-      'claude-3-5-sonnet-20241022': { input: 3.0, output: 15.0 },
+      'claude-sonnet-4-5-20250929': { input: 3.0, output: 15.0 },
       'claude-3-5-haiku-20241022': { input: 0.8, output: 4.0 },
       'claude-3-opus-20240229': { input: 15.0, output: 75.0 },
 

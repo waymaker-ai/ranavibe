@@ -108,7 +108,7 @@ export const recommendedModels: Record<string, Record<Provider, string>> = {
   },
   extract: {
     openai: 'gpt-4o',
-    anthropic: 'claude-3-5-sonnet-20241022',
+    anthropic: 'claude-sonnet-4-5-20250929',
     google: 'gemini-1.5-pro',
     groq: 'llama-3.1-70b-versatile',
     together: 'meta-llama/Llama-3.1-70B-Instruct-Turbo',
@@ -124,7 +124,7 @@ export const recommendedModels: Record<string, Record<Provider, string>> = {
   },
   answer: {
     openai: 'gpt-4o',
-    anthropic: 'claude-3-5-sonnet-20241022',
+    anthropic: 'claude-sonnet-4-5-20250929',
     google: 'gemini-1.5-pro',
     groq: 'llama-3.1-70b-versatile',
     together: 'meta-llama/Llama-3.1-70B-Instruct-Turbo',
@@ -140,7 +140,7 @@ export const recommendedModels: Record<string, Record<Provider, string>> = {
   },
   generate: {
     openai: 'gpt-4o',
-    anthropic: 'claude-3-5-sonnet-20241022',
+    anthropic: 'claude-sonnet-4-5-20250929',
     google: 'gemini-1.5-pro',
     groq: 'llama-3.1-70b-versatile',
     together: 'meta-llama/Llama-3.1-70B-Instruct-Turbo',
@@ -173,7 +173,7 @@ export const modelCosts: Record<string, { input: number; output: number }> = {
   'gpt-4o-mini': { input: 0.15, output: 0.6 },
   'gpt-4-turbo': { input: 10.0, output: 30.0 },
   // Anthropic
-  'claude-3-5-sonnet-20241022': { input: 3.0, output: 15.0 },
+  'claude-sonnet-4-5-20250929': { input: 3.0, output: 15.0 },
   'claude-3-haiku-20240307': { input: 0.25, output: 1.25 },
   'claude-3-opus-20240229': { input: 15.0, output: 75.0 },
   // Google

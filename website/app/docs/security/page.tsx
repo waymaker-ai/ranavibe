@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
   ArrowLeft, ArrowRight, Shield, AlertTriangle, Eye, Lock,
-  Gauge, DollarSign, Cpu, ClipboardList, CheckCircle2,
+  Gauge, DollarSign, Cpu, ClipboardList, CheckCircle2, FileSearch,
 } from 'lucide-react';
 
 export default function SecurityPage() {
@@ -498,11 +498,115 @@ import { OPENAI_ONLY, ANTHROPIC_ONLY, MAJOR_PROVIDERS_ONLY } from '@waymakerai/a
           </div>
         </motion.div>
 
+        {/* ───── CI/CD Code Scanning ───── */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.375 }}
+          className="card mb-12"
+        >
+          <div className="flex items-start gap-4 mb-6">
+            <div className="p-3 rounded-lg bg-gradient-subtle">
+              <FileSearch className="h-6 w-6" />
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold mb-2">CI/CD Code Scanning</h2>
+              <p className="text-foreground-secondary">
+                Automated static analysis for your codebase. Catches security issues, exposed assets,
+                and misconfigurations before they reach production.
+              </p>
+            </div>
+          </div>
+
+          <div className="code-block font-mono text-sm overflow-x-auto mb-6">
+            <pre>{`npx @waymakerai/aicofounder-ci scan --rules all`}</pre>
+          </div>
+
+          <h3 className="text-lg font-semibold mb-4">Scanner Rules</h3>
+          <div className="overflow-x-auto mb-6">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 font-medium">Rule</th>
+                  <th className="text-left py-2 font-medium">Severity</th>
+                  <th className="text-left py-2 font-medium">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { rule: 'no-hardcoded-keys', severity: 'critical', desc: 'Detects API keys, secrets, passwords, and credentials in source code' },
+                  { rule: 'no-pii-in-prompts', severity: 'high', desc: 'Finds PII (emails, SSNs, credit cards) in prompt templates and test fixtures' },
+                  { rule: 'no-injection-vuln', severity: 'critical', desc: 'Catches prompt injection vulnerabilities from unsanitized user input' },
+                  { rule: 'approved-models', severity: 'medium', desc: 'Enforces an approved LLM model list and flags deprecated models' },
+                  { rule: 'cost-estimation', severity: 'medium', desc: 'Estimates monthly LLM costs per code reference and warns on budget overruns' },
+                  { rule: 'safe-defaults', severity: 'medium', desc: 'Checks for unsafe LLM configs (high temperature, missing max_tokens, no system prompt)' },
+                  { rule: 'no-exposed-assets', severity: 'high', desc: 'Detects source maps, build misconfigs, debug modes, CORS wildcards, API introspection, CI/CD secret leaks, and more' },
+                ].map((row) => (
+                  <tr key={row.rule} className="border-b border-border last:border-0">
+                    <td className="py-2 font-mono text-gradient-from text-xs">{row.rule}</td>
+                    <td className="py-2">
+                      <span className={`px-2 py-0.5 rounded text-xs font-medium ${
+                        row.severity === 'critical' ? 'bg-red-500/20 text-red-400' :
+                        row.severity === 'high' ? 'bg-orange-500/20 text-orange-400' :
+                        'bg-yellow-500/20 text-yellow-400'
+                      }`}>
+                        {row.severity}
+                      </span>
+                    </td>
+                    <td className="py-2 text-foreground-secondary text-xs">{row.desc}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-lg font-semibold mb-4">Asset Exposure Detection</h3>
+          <p className="text-foreground-secondary mb-4">
+            The <code className="font-mono text-sm">no-exposed-assets</code> rule covers the following categories of exposure:
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            {[
+              { title: 'Source Map Leaks', desc: 'sourceMappingURL in bundles, webpack/vite sourcemap config' },
+              { title: 'Vite/Next.js Env Exposure', desc: 'VITE_SECRET, NEXT_PUBLIC_DB_URL in client bundles' },
+              { title: 'Debug Mode in Production', desc: 'Flask/Django debug, ACTIONS_STEP_DEBUG' },
+              { title: 'Sensitive File Exposure', desc: '.npmrc tokens, credentials in URLs, private keys' },
+              { title: 'API Introspection', desc: 'GraphQL introspection/playground, Swagger docs without auth' },
+              { title: 'CORS Misconfiguration', desc: 'Wildcard origins allowing cross-site requests' },
+              { title: 'Server Directory Listing', desc: 'nginx autoindex, Apache Options Indexes' },
+              { title: 'CI/CD Secret Leaks', desc: 'Secrets echoed in GitHub Actions logs' },
+              { title: 'Database Admin Tools', desc: 'phpMyAdmin, adminer routes exposed publicly' },
+              { title: 'Infrastructure Disclosure', desc: 'Internal URLs and hardcoded IPs in code' },
+            ].map((item) => (
+              <div key={item.title} className="p-4 rounded-lg bg-background-secondary">
+                <h4 className="font-semibold mb-1">{item.title}</h4>
+                <p className="text-sm text-foreground-secondary">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-semibold mb-4">Configuration</h3>
+          <div className="code-block font-mono text-sm overflow-x-auto">
+            <pre>{`# .aicofounder.yml
+rules:
+  no-exposed-assets:
+    enabled: true
+    severity: high
+  no-hardcoded-keys:
+    enabled: true
+    severity: critical
+
+scan:
+  exclude:
+    - "*.test.ts"
+    - "__mocks__/**"`}</pre>
+          </div>
+        </motion.div>
+
         {/* ───── Audit Logging ───── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
+          transition={{ delay: 0.45 }}
           className="card mb-12"
         >
           <div className="flex items-start gap-4 mb-6">
@@ -571,7 +675,7 @@ const guard = createGuard({
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.45 }}
+          transition={{ delay: 0.5 }}
           className="card mb-12"
         >
           <div className="flex items-start gap-4 mb-6">
@@ -633,7 +737,7 @@ const guard = createGuard({
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
+          transition={{ delay: 0.55 }}
           className="flex justify-between items-center pt-8 border-t border-border"
         >
           <Link

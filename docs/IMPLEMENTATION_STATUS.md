@@ -95,7 +95,7 @@ This document tracks the implementation status of CoFounder framework components
 - **Security Scanning** (`commands/security.ts`)
   - `cofounder security scan` - Full codebase scan for secrets/PII
   - `cofounder security check` - Quick security check
-  - `cofounder check` - Run all guardrail checks
+  - `aicofounder check` - Run all guardrail checks
 
 ### 6. Knowledge Base (`@waymakerai/aicofounder-rag/knowledge-base`)
 

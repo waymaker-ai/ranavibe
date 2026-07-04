@@ -314,7 +314,7 @@ export function estimateCost(
 ): number {
   // Cost per 1M tokens (approximate rates)
   const rates: Record<string, { prompt: number; completion: number }> = {
-    'claude-3-5-sonnet-20241022': { prompt: 3.00, completion: 15.00 },
+    'claude-sonnet-4-5-20250929': { prompt: 3.00, completion: 15.00 },
     'claude-3-opus-20240229': { prompt: 15.00, completion: 75.00 },
     'gpt-4-turbo': { prompt: 10.00, completion: 30.00 },
     'gpt-4': { prompt: 30.00, completion: 60.00 },

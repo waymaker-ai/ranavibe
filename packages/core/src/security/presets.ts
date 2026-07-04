@@ -13,10 +13,19 @@
 
 import type {
   PIIDetectorConfig,
+} from './pii';
+import type {
   ContentFilterConfig,
-  RateLimitConfig,
+} from './filter';
+import type {
   AuditLoggerConfig,
-} from './types';
+} from './audit';
+
+export interface RateLimitConfig {
+  maxRequests: number;
+  windowMs: number;
+  keyGenerator?: (request: unknown) => string;
+}
 
 export interface SecurityPresetConfig {
   name: string;

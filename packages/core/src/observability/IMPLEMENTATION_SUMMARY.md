@@ -155,7 +155,7 @@ import { createTracer } from '@waymakerai/aicofounder-core';
 const tracer = createTracer();
 const span = tracer.startTrace('chat_request', {
   provider: 'anthropic',
-  model: 'claude-3-5-sonnet-20241022'
+  model: 'claude-sonnet-4-5-20250929'
 });
 
 // Perform operation...

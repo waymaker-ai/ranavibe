@@ -21,7 +21,7 @@ const monitor = createPerformanceMonitor({
 monitor.recordRequest({
   timestamp: Date.now(),
   provider: 'anthropic' as LLMProvider,
-  model: 'claude-3-5-sonnet-20241022',
+  model: 'claude-sonnet-4-5-20250929',
   latency: 1234,
   success: true,
   cost: 0.01,

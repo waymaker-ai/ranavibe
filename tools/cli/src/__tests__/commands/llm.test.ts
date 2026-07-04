@@ -30,8 +30,8 @@ describe('model selection', () => {
       'gpt4': 'gpt-4o',
       'gpt4o': 'gpt-4o',
       'gpt4-mini': 'gpt-4o-mini',
-      'claude': 'claude-3-5-sonnet-20241022',
-      'claude-sonnet': 'claude-3-5-sonnet-20241022',
+      'claude': 'claude-sonnet-4-5-20250929',
+      'claude-sonnet': 'claude-sonnet-4-5-20250929',
       'claude-haiku': 'claude-3-5-haiku-20241022',
       'gemini': 'gemini-1.5-flash',
       'gemini-pro': 'gemini-1.5-pro',
@@ -53,7 +53,7 @@ describe('model selection', () => {
     };
 
     expect(inferProvider('gpt-4o')).toBe('openai');
-    expect(inferProvider('claude-3-5-sonnet-20241022')).toBe('anthropic');
+    expect(inferProvider('claude-sonnet-4-5-20250929')).toBe('anthropic');
     expect(inferProvider('gemini-1.5-pro')).toBe('google');
     expect(inferProvider('llama-3.1-70b')).toBe('groq');
     expect(inferProvider('grok-beta')).toBe('xai');

@@ -4,7 +4,7 @@ const MODEL_PRICING: Record<string, { input: number; output: number }> = {
   'claude-opus-4-6': { input: 15, output: 75 },
   'claude-sonnet-4-6': { input: 3, output: 15 },
   'claude-haiku-4-5-20251001': { input: 0.80, output: 4 },
-  'claude-3-5-sonnet-20241022': { input: 3, output: 15 },
+  'claude-sonnet-4-5-20250929': { input: 3, output: 15 },
   'claude-3-opus-20240229': { input: 15, output: 75 },
   'gpt-4o': { input: 2.50, output: 10 },
   'gpt-4o-mini': { input: 0.15, output: 0.60 },

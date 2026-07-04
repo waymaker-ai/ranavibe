@@ -377,7 +377,7 @@ const patientIntakeBot = createRana({
   },
   security: securityPresets.hipaa(),
   defaults: {
-    model: 'claude-3-5-sonnet-20240620',
+    model: 'claude-sonnet-4-5-20250929',
     temperature: 0.3, // Lower temperature for healthcare
   },
 });

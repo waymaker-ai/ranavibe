@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cofounder.cx/spec/vibespec.v1.schema.json",
+  "title": "VibeSpec",
+  "description": "Declarative configuration for how an AI agent should behave in a given context. VibeSpecs are portable across tools (Claude Code, Cursor, Cline, CoFounder runtime, LangChain, CrewAI, OpenClaw) via the CoFounder open standard.",
+  "type": "object",
+  "required": ["id", "name"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Optional schema reference for editor tooling."
+    },
+    "apiVersion": {
+      "type": "string",
+      "const": "cofounder.cx/v1",
+      "description": "Spec version identifier. Tools use this to pick the correct parser."
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_-]*$",
+      "description": "Machine-readable identifier (lowercase, snake_case or kebab-case)."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human-readable name."
+    },
+    "description": {
+      "type": "string",
+      "description": "What this vibe is for, in 1-3 sentences."
+    },
+    "extends": {
+      "type": "string",
+      "description": "Optional parent VibeSpec id to inherit from."
+    },
+    "vibe": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tone": {
+          "type": "string",
+          "description": "Comma-separated tone descriptors (e.g. 'calm, factual, friendly')."
+        },
+        "constraints": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Rules the agent MUST follow. Each entry is one short imperative sentence."
+        },
+        "allowedActions": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Whitelist of action/tool identifiers the agent may use."
+        },
+        "disallowedActions": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Blacklist of action/tool identifiers the agent must never use."
+        },
+        "designSystem": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Design-system rules for coding agents working on UI.",
+          "properties": {
+            "componentsPath": { "type": "string" },
+            "tokensPath": { "type": "string" },
+            "forbidRawColors": { "type": "boolean", "default": true },
+            "forbidRawSpacing": { "type": "boolean", "default": false },
+            "requireComponents": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "dataRules": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Rules about what data sources are allowed.",
+          "properties": {
+            "forbidMockInProd": { "type": "boolean", "default": true },
+            "forbidHardcodedCredentials": { "type": "boolean", "default": true },
+            "allowedDatabases": { "type": "array", "items": { "type": "string" } },
+            "piiHandling": {
+              "type": "string",
+              "enum": ["allow", "redact", "block"],
+              "default": "redact"
+            }
+          }
+        },
+        "scopeRules": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "What files the agent can touch.",
+          "properties": {
+            "allowedPaths": { "type": "array", "items": { "type": "string" } },
+            "forbiddenPaths": { "type": "array", "items": { "type": "string" } },
+            "requireChangesetApproval": { "type": "boolean", "default": false }
+          }
+        }
+      }
+    },
+    "rag": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kbId"],
+      "properties": {
+        "kbId": { "type": "string" },
+        "topK": { "type": "integer", "minimum": 1, "default": 6 },
+        "rerank": { "type": "boolean", "default": false },
+        "filters": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    },
+    "llm": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "provider": {
+          "type": "string",
+          "description": "anthropic | openai | google | mistral | meta | bedrock | vertex | gateway | <custom>"
+        },
+        "model": { "type": "string" },
+        "temperature": { "type": "number", "minimum": 0, "maximum": 2 },
+        "maxTokens": { "type": "integer", "minimum": 1 },
+        "fallback": {
+          "type": "array",
+          "items": { "type": "object", "properties": { "provider": { "type": "string" }, "model": { "type": "string" } } }
+        }
+      }
+    },
+    "security": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "piiRedaction": { "type": "boolean", "default": true },
+        "promptInjectionDetection": { "type": "boolean", "default": true },
+        "toxicityFiltering": { "type": "boolean", "default": false },
+        "maxToolCalls": { "type": "integer", "minimum": 0, "default": 10 },
+        "auditLogging": { "type": "boolean", "default": true },
+        "compliance": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["hipaa", "gdpr", "ccpa", "sec", "pci", "ferpa", "sox"]
+          }
+        }
+      }
+    },
+    "budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "limit": { "type": "number", "minimum": 0, "description": "Monetary limit per period in USD." },
+        "period": { "type": "string", "enum": ["hour", "day", "week", "month"], "default": "day" },
+        "onExceeded": { "type": "string", "enum": ["warn", "block", "downgrade"], "default": "warn" }
+      },
+      "required": ["limit"]
+    },
+    "eval": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "successCriteria": { "type": "array", "items": { "type": "string" } },
+        "blockedPatterns": { "type": "array", "items": { "type": "string" } },
+        "testPromptsPath": { "type": "string", "description": "Path to a file of test prompts used by aicofounder eval." }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Free-form metadata. Tool-specific keys should be namespaced (e.g. 'cursor.priority', 'claude.skillName').",
+      "additionalProperties": true
+    }
+  }
+}
