@@ -38,7 +38,7 @@ export default function CursorIntegrationPage() {
         </motion.div>
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="card mb-8">
-          <h2 className="text-xl font-bold mb-3">2. Add to Cursor's MCP config</h2>
+          <h2 className="text-xl font-bold mb-3">2. Add to Cursor&apos;s MCP config</h2>
           <p className="text-sm text-foreground-secondary mb-3">
             In Cursor, open <strong>Settings → MCP</strong> and add a new server. Or edit{' '}
             <code className="font-mono text-xs">~/.cursor/mcp.json</code> directly:
@@ -105,7 +105,7 @@ export default function CursorIntegrationPage() {
           <ul className="text-sm text-foreground-secondary list-disc list-inside space-y-2">
             <li>
               <strong className="text-foreground">No PreToolUse hooks in Cursor.</strong> The Claude-Code-only hooks
-              (secret detection on Edit/Write) don't run. The skill-side guards (cofounder-commit, cofounder-check)
+              (secret detection on Edit/Write) don&apos;t run. The skill-side guards (cofounder-commit, cofounder-check)
               still do.
             </li>
             <li>

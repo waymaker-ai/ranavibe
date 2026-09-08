@@ -189,7 +189,7 @@ export default function BeforeAfterPage() {
               it does. A grep step before writing closes the gap.
             </li>
             <li>
-              <strong className="text-foreground">Committed secrets</strong> — agents optimize for "task done", not "task done safely". A
+              <strong className="text-foreground">Committed secrets</strong> — agents optimize for &quot;task done&quot;, not &quot;task done safely&quot;. A
               pre-commit hook reading the staged diff catches it deterministically.
             </li>
             <li>

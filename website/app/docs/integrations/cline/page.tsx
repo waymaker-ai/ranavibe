@@ -58,14 +58,14 @@ export default function ClineIntegrationPage() {
 }`}</pre>
           </div>
           <p className="text-sm text-foreground-secondary mt-3">
-            Reload the Cline panel; you'll see <strong>cofounder</strong> in the MCP server list with green status.
+            Reload the Cline panel; you&apos;ll see <strong>cofounder</strong> in the MCP server list with green status.
           </p>
         </motion.div>
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }} className="card mb-8">
           <h2 className="text-xl font-bold mb-3">3. Recommended autoApprove</h2>
           <p className="text-sm text-foreground-secondary mb-3">
-            Cline can auto-approve tool calls. We recommend approving only the read-only skills, since they don't
+            Cline can auto-approve tool calls. We recommend approving only the read-only skills, since they don&apos;t
             touch your workspace:
           </p>
           <div className="code-block font-mono text-xs overflow-x-auto">
@@ -80,7 +80,7 @@ export default function ClineIntegrationPage() {
           </div>
           <p className="text-sm text-foreground-secondary mt-3">
             Skills with <code className="font-mono text-xs">sensitivity.writesCode</code> or{' '}
-            <code className="font-mono text-xs">runsShell</code> should require manual approval — that's the entire
+            <code className="font-mono text-xs">runsShell</code> should require manual approval — that&apos;s the entire
             point of declaring sensitivity in the first place.
           </p>
         </motion.div>
@@ -94,8 +94,8 @@ export default function ClineIntegrationPage() {
               <code className="font-mono text-xs">cofounder.listVibeSpecs</code> manually at the start of a session.
             </li>
             <li>
-              <strong className="text-foreground">Plan mode.</strong> If you use Cline's Plan mode, skills with{' '}
-              <code className="font-mono text-xs">sensitivity.runsShell</code> still won't execute commands —{' '}
+              <strong className="text-foreground">Plan mode.</strong> If you use Cline&apos;s Plan mode, skills with{' '}
+              <code className="font-mono text-xs">sensitivity.runsShell</code> still won&apos;t execute commands —{' '}
               expected behavior.
             </li>
           </ul>

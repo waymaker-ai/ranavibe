@@ -19,7 +19,7 @@ export default function WindsurfIntegrationPage() {
             <h1 className="text-4xl font-bold">CoFounder Skills in Windsurf</h1>
           </div>
           <p className="text-lg text-foreground-secondary">
-            Windsurf's Cascade agent speaks MCP. Configure the CoFounder server once and every skill is available —
+            Windsurf&apos;s Cascade agent speaks MCP. Configure the CoFounder server once and every skill is available —
             including the spec-driven flow, compliance frame, and sandbox preview that Windsurf does not ship natively.
           </p>
         </motion.div>
@@ -61,7 +61,7 @@ export default function WindsurfIntegrationPage() {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }} className="card mb-8">
           <h2 className="text-xl font-bold mb-3">3. Cascade memory & VibeSpecs</h2>
           <p className="text-sm text-foreground-secondary mb-3">
-            Windsurf's Cascade memory and CoFounder's VibeSpecs solve different problems and pair well:
+            Windsurf&apos;s Cascade memory and CoFounder&apos;s VibeSpecs solve different problems and pair well:
           </p>
           <ul className="text-sm text-foreground-secondary list-disc list-inside space-y-1">
             <li>
@@ -82,12 +82,12 @@ export default function WindsurfIntegrationPage() {
           <ul className="text-sm text-foreground-secondary list-disc list-inside space-y-2">
             <li>
               <strong className="text-foreground">Cascade write mode.</strong> Skills with{' '}
-              <code className="font-mono text-xs">sensitivity.writesCode</code> still go through Cascade's
-              file-edit approval flow. The skill's sandbox preview runs first if eligible.
+              <code className="font-mono text-xs">sensitivity.writesCode</code> still go through Cascade&apos;s
+              file-edit approval flow. The skill&apos;s sandbox preview runs first if eligible.
             </li>
             <li>
               <strong className="text-foreground">Multi-file edits.</strong> Cascade is good at multi-file changes;{' '}
-              <code className="font-mono text-xs">cofounder-feature-implement</code> respects the spec's{' '}
+              <code className="font-mono text-xs">cofounder-feature-implement</code> respects the spec&apos;s{' '}
               <code className="font-mono text-xs">affectedPaths</code> as a fence.
             </li>
           </ul>
