@@ -14,7 +14,8 @@ Stops agents from committing secrets, shipping mock data, refactoring out of sco
 | `skills/cofounder-spec-review` | Structured critique of a draft spec |
 | `agents/cofounder-reviewer` | Read-only diff review against VibeSpecs, with confidence-filtered findings |
 | `hooks/session-start.sh` | Auto-load `.aicofounder.yml` + VibeSpecs into every session |
-| `hooks/pre-edit-guardrails.sh` | Block secrets and `.env*` writes at `Edit`/`Write` time |
+| `hooks/pre-edit-guardrails.sh` | Block secrets and unignored `.env*` writes at `Edit`/`Write`/`MultiEdit` time |
+| `hooks/pre-bash-guardrails.sh` | Block force-push, `--no-verify`, `reset --hard`, destructive `rm`/SQL, curl\|bash pipes, and secret writes issued via `Bash` |
 | `hooks/stop-summary.sh` | End-of-turn reminder to run `aicofounder check` |
 | `mcp-server/` | MCP tools (`cofounder.listVibeSpecs`, `.getFeatureSpec`, `.validateAgainstVibe`, `.checkChangeset`) — callable from Claude Code, Cursor, Cline, Claude Desktop, Windsurf, or any MCP host |
 | `commands/cofounder.md` | `/cofounder <new\|implement\|check\|review>` slash command |

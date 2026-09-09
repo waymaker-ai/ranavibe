@@ -14,6 +14,10 @@
 
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=lib/secret-scan.sh
+source "${SCRIPT_DIR}/lib/secret-scan.sh"
+
 # Read the entire stdin (Claude Code passes tool input as JSON)
 input=$(cat)
 
@@ -47,32 +51,33 @@ except Exception:
 
 [[ -z "$path" ]] && exit 0
 
-# --- Tier 1: block a new .env* file creation ---
-if [[ "$(basename "$path")" =~ ^\.env ]]; then
-  echo "CoFounder guardrail: writing to $path is blocked. Secrets belong in a gitignored .env.local (use your vercel env pull / secret manager). If this is intentional, add the file manually outside Claude." >&2
-  exit 2
+# --- Tier 1: block writing an uncommitted-secrets env file ---
+# Safe, intended files (.env.local, .env.example, .env.sample, .env.template)
+# are explicitly allowed — blocking them was blocking the exact path our own
+# error message told users to use instead. Anything else matching .env* is
+# blocked UNLESS it's already gitignored (a gitignored .env is the normal,
+# safe way to keep local secrets out of version control).
+base="$(basename "$path")"
+if [[ "$base" =~ ^\.env ]]; then
+  case "$base" in
+    .env.local|.env.*.local|.env.example|.env.sample|.env.template)
+      : # allowed — safe by convention
+      ;;
+    *)
+      if git -C "$(dirname "$path")" check-ignore -q "$path" 2>/dev/null; then
+        : # allowed — already gitignored, won't reach version control
+      else
+        echo "CoFounder guardrail: writing to $path is blocked because it is not gitignored. Use .env.local (gitignored) instead, or add $base to .gitignore first if this is intentional." >&2
+        exit 2
+      fi
+      ;;
+  esac
 fi
 
-# --- Tier 1: secret patterns in content ---
+# --- Tier 1: secret patterns in content (shared scanner: gitleaks if present, else embedded set) ---
 if [[ -n "$content" ]]; then
-  # Stripe live key
-  if echo "$content" | grep -Eq 'sk_live_[A-Za-z0-9]{10,}'; then
-    echo "CoFounder guardrail: Stripe live secret key detected in $path. Blocked. Move it to an env var." >&2
-    exit 2
-  fi
-  # OpenAI key
-  if echo "$content" | grep -Eq 'sk-[A-Za-z0-9]{20,}'; then
-    echo "CoFounder guardrail: OpenAI-style secret key detected in $path. Blocked. Move it to an env var." >&2
-    exit 2
-  fi
-  # Anthropic key
-  if echo "$content" | grep -Eq 'sk-ant-[A-Za-z0-9\-_]{20,}'; then
-    echo "CoFounder guardrail: Anthropic secret key detected in $path. Blocked. Move it to an env var." >&2
-    exit 2
-  fi
-  # AWS access key
-  if echo "$content" | grep -Eq 'AKIA[0-9A-Z]{16}'; then
-    echo "CoFounder guardrail: AWS access key detected in $path. Blocked. Use IAM roles or env vars." >&2
+  if ! finding=$(cofounder_scan_secrets "$content"); then
+    echo "CoFounder guardrail: ${finding} detected in $path. Blocked. Move it to an env var or secret manager." >&2
     exit 2
   fi
 fi
