@@ -9,6 +9,42 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed — Bash guardrail hole, `.env` false-positive, secret coverage
+
+Closes the highest-priority gap from the 2026-07-04 security hardening
+evaluation: every guardrail only watched `Edit`/`Write`/`MultiEdit`, so an
+agent could bypass all of them with a shell command
+(`echo "sk_live_..." > config.js`, `git push --force`, `git reset --hard`,
+`rm -rf`, `curl | bash`, raw destructive SQL).
+
+- **New:** `hooks/pre-bash-guardrails.sh` — `PreToolUse` hook on `Bash`.
+  Blocks force-push, `--no-verify`, `reset --hard`, `clean -f`, direct push
+  to `main`/`master`, `rm -rf` on home/system paths, `chmod 777`,
+  `curl|bash` pipes, destructive SQL (`DROP`/`TRUNCATE`/unscoped `DELETE`),
+  and secret writes via shell redirection. Escape hatch: `.cofounder.yml`
+  `bash: allow: [...]` substring allowlist.
+- **Fixed:** `pre-edit-guardrails.sh`'s `.env*` matcher blocked the exact
+  safe files its own error message recommended (`.env.local`,
+  `.env.example`, `.env.sample`, `.env.template`) and blocked *any* `.env*`
+  file regardless of gitignore status. Now allows the safe-by-convention
+  names and anything already gitignored; only blocks an unignored,
+  non-safe `.env*` file.
+- **New shared library:** `hooks/lib/secret-scan.sh`, sourced by both
+  hooks, so they can't drift out of sync. Uses `gitleaks` when it's on
+  `PATH` (authoritative, community-maintained ruleset); falls back to an
+  embedded pattern set (Stripe/OpenAI/Anthropic/AWS/GitHub/Google/Slack/
+  npm/GCP-service-account/PEM/DB-connection-string/Supabase-service-role)
+  when it isn't, so coverage degrades gracefully instead of disappearing.
+- **Docs honesty:** removed the "Works with ... Vercel AI SDK" claim —
+  there is no guardrail-aware Vercel AI SDK adapter (`packages/core`'s
+  `integrations/vercel.ts` is a Vercel *deployment*-config helper, unrelated
+  to LLM-call guardrails). Not tracked as a gap here; a real
+  `wrapLanguageModel` middleware is a separate, unscoped follow-up.
+- **Manual test coverage:** `hooks/test-pre-bash-guardrails.sh` (17 cases),
+  `hooks/test-pre-edit-guardrails.sh` (7 cases), `hooks/test-bash-allowlist.sh`
+  (2 cases). Not yet wired into CI — run by hand until a proper harness is
+  added; tracked as a fast-follow, not silently skipped.
+
 ### Added — CoFounder Skill Library
 
 A curated agentic-skill layer for AI coding agents working in real codebases.

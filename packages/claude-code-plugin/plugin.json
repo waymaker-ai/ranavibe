@@ -60,6 +60,10 @@
       {
         "matcher": "Edit|Write|MultiEdit",
         "command": "${CLAUDE_PLUGIN_ROOT}/hooks/pre-edit-guardrails.sh"
+      },
+      {
+        "matcher": "Bash",
+        "command": "${CLAUDE_PLUGIN_ROOT}/hooks/pre-bash-guardrails.sh"
       }
     ],
     "Stop": [
