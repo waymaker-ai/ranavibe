@@ -17,6 +17,8 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # shellcheck source=lib/secret-scan.sh
 source "${SCRIPT_DIR}/lib/secret-scan.sh"
+# shellcheck source=lib/cofounder-config.sh
+source "${SCRIPT_DIR}/lib/cofounder-config.sh"
 
 # Read the entire stdin (Claude Code passes tool input as JSON)
 input=$(cat)
@@ -80,6 +82,26 @@ if [[ -n "$content" ]]; then
     echo "CoFounder guardrail: ${finding} detected in $path. Blocked. Move it to an env var or secret manager." >&2
     exit 2
   fi
+fi
+
+# --- Tier 1: VibeSpec scope enforcement (turns validateAgainstVibe from
+# advice into a real block). Only enforced if a VibeSpec in the repo
+# declares scopeRules; fails open if node or the compiled CLI is missing so
+# a packaging problem degrades to "unenforced," not "nothing works." ---
+scope_cli="${SCRIPT_DIR}/../mcp-server/dist/enforce-scope-cli.js"
+if command -v node >/dev/null 2>&1 && [[ -f "$scope_cli" ]]; then
+  if scope_reason=$(node "$scope_cli" "$path" "$PWD" 2>&1 >/dev/null); then
+    : # in scope, or no vibe declares scopeRules
+  else
+    if cofounder_config_allows scope "$path"; then
+      echo "CoFounder guardrail: $path is out of VibeSpec scope but allowlisted via .cofounder.yml scope.allow — proceeding." >&2
+    else
+      echo "CoFounder guardrail: ${scope_reason}. Blocked. Add $path to the VibeSpec's allowedPaths, or add it to .cofounder.yml scope.allow if this is an intentional exception." >&2
+      exit 2
+    fi
+  fi
+else
+  echo "CoFounder guardrail (WARN): scope enforcement skipped — mcp-server is not built (run \`npm run build\` in packages/claude-code-plugin/mcp-server)." >&2
 fi
 
 # --- Tier 2: warn on mock data in non-test paths ---

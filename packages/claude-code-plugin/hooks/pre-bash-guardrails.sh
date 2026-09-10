@@ -21,6 +21,8 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # shellcheck source=lib/secret-scan.sh
 source "${SCRIPT_DIR}/lib/secret-scan.sh"
+# shellcheck source=lib/cofounder-config.sh
+source "${SCRIPT_DIR}/lib/cofounder-config.sh"
 
 input=$(cat)
 
@@ -36,42 +38,7 @@ except Exception:
 [[ -z "$command" ]] && exit 0
 
 # --- Escape hatch: .cofounder.yml bash.allow substrings ---
-_find_cofounder_yml() {
-  local dir="$PWD"
-  while [[ "$dir" != "/" ]]; do
-    if [[ -f "$dir/.cofounder.yml" ]]; then
-      printf '%s' "$dir/.cofounder.yml"
-      return 0
-    fi
-    dir="$(dirname "$dir")"
-  done
-  return 1
-}
-
-allowed_by_config=false
-if cofounder_yml="$(_find_cofounder_yml)"; then
-  # Naive but dependency-free: grab list entries under a top-level `bash:` /
-  # `allow:` block (2-space indent convention used elsewhere in this repo).
-  in_bash=false
-  in_allow=false
-  while IFS= read -r line; do
-    if [[ "$line" =~ ^bash: ]]; then in_bash=true; in_allow=false; continue; fi
-    if [[ "$in_bash" == true && "$line" =~ ^[a-zA-Z] ]]; then in_bash=false; in_allow=false; fi
-    if [[ "$in_bash" == true && "$line" =~ ^[[:space:]]+allow: ]]; then in_allow=true; continue; fi
-    if [[ "$in_allow" == true ]]; then
-      if [[ "$line" =~ ^[[:space:]]*-[[:space:]]*[\"\']?([^\"\']+)[\"\']?[[:space:]]*$ ]]; then
-        substr="${BASH_REMATCH[1]}"
-        if [[ -n "$substr" && "$command" == *"$substr"* ]]; then
-          allowed_by_config=true
-        fi
-      else
-        in_allow=false
-      fi
-    fi
-  done < "$cofounder_yml"
-fi
-
-if [[ "$allowed_by_config" == true ]]; then
+if cofounder_config_allows bash "$command"; then
   echo "CoFounder guardrail: command matched a Tier-1 pattern but is allowlisted via .cofounder.yml bash.allow — proceeding." >&2
   exit 0
 fi
