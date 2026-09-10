@@ -51,6 +51,16 @@ except Exception:
     pass
 ' 2>/dev/null || true)
 
+# Extract session_id (for taint tracking — see the block near exit 0)
+session_id=$(printf '%s' "$input" | python3 -c '
+import sys, json
+try:
+    d = json.load(sys.stdin)
+    print(d.get("session_id", ""))
+except Exception:
+    print("")
+' 2>/dev/null || true)
+
 [[ -z "$path" ]] && exit 0
 
 # --- Tier 1: block writing an uncommitted-secrets env file ---
@@ -118,6 +128,15 @@ if [[ -n "$content" ]]; then
       echo "CoFounder guardrail (WARN): mock-data identifier found in $path (production path). Verify this is not shipping to prod." >&2
     fi
   fi
+fi
+
+# --- Passive: record whether this now-allowed write is taint-worthy, so a
+# later exfil-shaped shell command referencing this file can be blocked
+# (see pre-bash-guardrails.sh + mcp-server/src/taint.ts). Never blocks —
+# fails open silently if node/dist or session_id are unavailable. ---
+taint_cli="${SCRIPT_DIR}/../mcp-server/dist/record-taint-cli.js"
+if [[ -n "$content" && -n "$session_id" ]] && command -v node >/dev/null 2>&1 && [[ -f "$taint_cli" ]]; then
+  printf '%s' "$content" | node "$taint_cli" "$path" "$PWD" "$session_id" >/dev/null 2>&1 || true
 fi
 
 exit 0
