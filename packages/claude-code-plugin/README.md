@@ -14,7 +14,7 @@ Stops agents from committing secrets, shipping mock data, refactoring out of sco
 | `skills/cofounder-spec-review` | Structured critique of a draft spec |
 | `agents/cofounder-reviewer` | Read-only diff review against VibeSpecs, with confidence-filtered findings |
 | `hooks/session-start.sh` | Auto-load `.aicofounder.yml` + VibeSpecs into every session |
-| `hooks/pre-edit-guardrails.sh` | Block secrets and unignored `.env*` writes at `Edit`/`Write`/`MultiEdit` time |
+| `hooks/pre-edit-guardrails.sh` | Block secrets, unignored `.env*` writes, and out-of-VibeSpec-scope edits at `Edit`/`Write`/`MultiEdit` time |
 | `hooks/pre-bash-guardrails.sh` | Block force-push, `--no-verify`, `reset --hard`, destructive `rm`/SQL, curl\|bash pipes, and secret writes issued via `Bash` |
 | `hooks/stop-summary.sh` | End-of-turn reminder to run `aicofounder check` |
 | `mcp-server/` | MCP tools (`cofounder.listVibeSpecs`, `.getFeatureSpec`, `.validateAgainstVibe`, `.checkChangeset`) — callable from Claude Code, Cursor, Cline, Claude Desktop, Windsurf, or any MCP host |
@@ -24,12 +24,17 @@ Stops agents from committing secrets, shipping mock data, refactoring out of sco
 
 ### From source (development)
 
+`mcp-server/` is nested two levels deep under `packages/`, so the root
+pnpm workspace (glob: `packages/*`) doesn't pick it up as a member — it's a
+standalone npm package on purpose, built with plain `npm`:
+
 ```bash
 git clone https://github.com/waymaker-ai/cofounder
-cd cofounder/packages/claude-code-plugin
-pnpm install
-pnpm --filter @waymakerai/claude-plugin-cofounder-mcp build
-# Then symlink or reference from your Claude Code plugin path
+cd cofounder/packages/claude-code-plugin/mcp-server
+npm install
+npm run build
+# Then symlink or reference the plugin root (one level up) from your
+# Claude Code plugin path
 ```
 
 ### Published (coming soon)

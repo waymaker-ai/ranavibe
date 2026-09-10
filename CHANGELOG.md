@@ -9,6 +9,56 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added — Enforced VibeSpec scope (Track 1)
+
+Executes Track 1's headline item from the 2026-07-04 strategy addendum
+(docs/plans/2026-07-04-strategy-addendum.md): "refactoring things no one
+asked for" was a core selling point but was previously **unenforced** —
+`cofounder.validateAgainstVibe` could compute a scope violation, but
+nothing stopped an agent from ignoring it; the MCP tool is one the agent
+may or may not call.
+
+- **New `packages/claude-code-plugin/mcp-server/src/scope.ts`**: extracted
+  the scope-matching logic (`matchesGlob`, `findVibeSpecs`) out of
+  `tool_validateAgainstVibe` into a shared module, plus a new
+  `checkFileScope()` that checks one file against every VibeSpec in the
+  repo declaring `scopeRules`. `index.ts` now imports from here instead of
+  keeping its own duplicate copy.
+- **New `enforce-scope-cli.ts`** (compiled to `dist/enforce-scope-cli.js`):
+  a small CLI the plugin hooks can shell out to. Exit 0 = in scope or no
+  vibe declares scope rules; exit 1 = blocked, reason on stderr. Fails
+  open (exit 0) on any internal error or missing args — a bug in
+  enforcement shouldn't become a denial-of-service against every edit.
+- **`pre-edit-guardrails.sh`** now calls this CLI on every `Edit`/`Write`/
+  `MultiEdit` and blocks (exit 2) when a file falls outside a VibeSpec's
+  `allowedPaths` or inside its `forbiddenPaths`. Fails open (warns, does
+  not block) if `node` or the compiled CLI is missing, so a packaging
+  problem degrades to "unenforced" rather than "nothing works."
+- **New shared `hooks/lib/cofounder-config.sh`**: extracted the
+  `.cofounder.yml` allow-list reader out of `pre-bash-guardrails.sh` (was
+  inline, now `cofounder_config_allows <section> <candidate>`) so the same
+  escape-hatch mechanism covers both `bash: allow: [...]` and the new
+  `scope: allow: [...]`.
+- **Packaging fix, found while building this**: `packages/claude-code-plugin/mcp-server`
+  is nested two levels under `packages/`, so the pnpm workspace glob
+  (`packages/*`) never picks it up as a member — `pnpm --filter
+  @waymakerai/claude-plugin-cofounder-mcp build`, the command this
+  package's own README documented, does not resolve to anything. Fixed
+  the README to document the working `npm install && npm run build`
+  sequence (matches how the parent package's own `build` script already
+  invokes it). Also fixes a stale, out-of-date `pnpm-lock.yaml` that was
+  missing entries for `packages/adversarial` and `packages/claude-code-plugin`
+  (pre-existing drift, unrelated to this change, blocking any
+  `--frozen-lockfile` install repo-wide).
+- **Manual test coverage**: `mcp-server/test-enforce-scope.sh` (4 cases),
+  `hooks/test-pre-edit-scope-enforcement.sh` (4 cases, requires
+  `mcp-server/dist` built). Same caveat as Track 0 — not yet wired into CI.
+
+Not done here: bash-hook-side scope enforcement (the strategy doc says
+"edit + bash hooks" — catching scope violations made via shell redirection,
+`sed -i`, `mv`, etc. needs its own heuristic and is a separate, unscoped
+follow-up, not silently skipped).
+
 ### Fixed — Bash guardrail hole, `.env` false-positive, secret coverage
 
 Closes the highest-priority gap from the 2026-07-04 security hardening
