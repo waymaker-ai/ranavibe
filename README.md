@@ -523,7 +523,7 @@ const featureAgent = new Agent({
 | `@waymakerai/aicofounder-crewai` | CrewAI adapter |
 | `@waymakerai/aicofounder-mcp` | Model Context Protocol server & client |
 | `@waymakerai/aicofounder-react` | React hooks for chat, RAG, streaming |
-| `@waymakerai/aicofounder-ci` | CI/CD scanner: 7 rules for secrets, PII, injection, exposed assets |
+| `@waymakerai/aicofounder-ci` | CI/CD scanner + agent-agnostic pre-commit hook: 9 rules for secrets, PII, injection, exposed assets, unsafe `.env` files, mock data |
 | `@waymakerai/aicofounder-guard` | Runtime guard engine: PII, injection, toxicity, budget, rate limit |
 
 ---
@@ -648,6 +648,7 @@ aicofounder security:setup    # Setup security config
 npx @waymakerai/aicofounder-ci scan --rules all          # Scan codebase for security issues
 npx @waymakerai/aicofounder-ci scan --rules no-exposed-assets  # Check for exposed assets only
 npx @waymakerai/aicofounder-ci validate                  # Validate .aicofounder.yml config
+npx @waymakerai/aicofounder-ci install-hook               # Install an agent-agnostic git pre-commit hook
 ```
 
 ### Agent Commands
