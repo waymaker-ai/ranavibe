@@ -35,6 +35,15 @@ except Exception:
     print("")
 ' 2>/dev/null || true)
 
+session_id=$(printf '%s' "$input" | python3 -c '
+import sys, json
+try:
+    d = json.load(sys.stdin)
+    print(d.get("session_id", ""))
+except Exception:
+    print("")
+' 2>/dev/null || true)
+
 [[ -z "$command" ]] && exit 0
 
 # --- Escape hatch: .cofounder.yml bash.allow substrings ---
@@ -103,6 +112,19 @@ if printf '%s' "$command" | grep -Eq '>>?[[:space:]]*"?\.env([.\"]|[[:space:]]|$
 fi
 if ! finding=$(cofounder_scan_secrets "$command"); then
   block "${finding} detected in the command text itself."
+fi
+
+# --- Session-aware exfiltration check: does this command look like it
+# sends data out AND reference a file this session tainted earlier (see
+# pre-edit-guardrails.sh + mcp-server/src/taint.ts)? Fails open if
+# node/dist or session_id are unavailable. ---
+exfil_cli="${SCRIPT_DIR}/../mcp-server/dist/check-exfil-cli.js"
+if [[ -n "$session_id" ]] && command -v node >/dev/null 2>&1 && [[ -f "$exfil_cli" ]]; then
+  if exfil_reason=$(node "$exfil_cli" "$command" "$PWD" "$session_id" 2>&1 >/dev/null); then
+    : # not exfil-shaped, or no taint match
+  else
+    block "$exfil_reason"
+  fi
 fi
 
 exit 0

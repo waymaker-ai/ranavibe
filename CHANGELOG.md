@@ -9,6 +9,115 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added — PII checked at edit time (P1-7)
+
+Executes P1-7 from the 2026-07-04 security hardening evaluation: PII was
+never checked when the agent *writes* it. CoFounder's runtime PII
+libraries only run if the host app wires them into its request path —
+they never see an agent hardcoding an SSN into a fixture or a prompt
+template.
+
+- **`mcp-server/src/check-pii-cli.js`**: called from
+  `pre-edit-guardrails.sh` on every `Edit`/`Write`/`MultiEdit`. Reuses
+  the same classifier the taint tracker uses
+  (`content-sensitivity.ts`) — same deliberately-narrow v1 PII set
+  (email + US SSN; phone / credit-card have far higher false-positive
+  rates, scoped out not silently included).
+- **Mode**, per the doc: `warn` by default (surfaced to the user, does
+  not block); `block` when a `.cofounder.yml` / `.aicofounder.yml` in
+  scope declares a `compliance.frameworks` (or VibeSpec
+  `security.compliance`) list containing `hipaa` or `gdpr`. Explicit
+  `pii: { mode: warn | block }` overrides either way.
+- Fails open if node/dist is missing — degrades to unenforced, never to
+  "blocks every write."
+
+Not using the real `PIIDetector` class in `packages/core/src/security/pii.ts`
+for the same reason the taint tracker doesn't:
+`@waymakerai/aicofounder-core@2.0.0` is broken on npm (published tarball
+has no `dist/`). Flagged in the taint-tracking entry below.
+
+**Test coverage**: `mcp-server/test-check-pii.sh` — 9 cases (warn vs
+block mode resolution from every config shape, explicit override both
+directions, plus an e2e case through the real `pre-edit-guardrails.sh`
+hook with a hipaa `.cofounder.yml`). 55 tests across Track 1's full
+feature set passing.
+
+### Added — Session-aware taint tracking (Harden-parity)
+
+Not from the July strategy doc — surfaced by a 2026-09-10 competitive
+review of Harden AIF, a security layer for AI coding agents that
+publicized catching exactly this pattern: an agent debugging a Stripe
+issue left customer emails in a diagnostic file, then — hours later, in
+an unrelated-looking step — tried to upload that file externally.
+Nothing in the upload command itself was dangerous; the danger was in
+what an earlier action put into the file being moved.
+
+Every CoFounder guardrail up to this point is point-in-time: it inspects
+one edit or one shell command in isolation, with zero memory of anything
+else in the session. That structurally cannot catch this pattern. This
+adds a minimal memory layer scoped to the Claude Code session
+(`session_id`, read from the hook's stdin JSON — confirmed present on
+every `PreToolUse` invocation per the official hooks reference).
+
+- **`mcp-server/src/taint.ts`**: session-scoped taint log at
+  `.cofounder/taint/<session_id>.jsonl`. `recordTaint()` appends an
+  event; `findTaintedReference()` checks whether a command's text
+  references a tainted file (by path or basename — exact CLI-argument
+  parsing is too fragile across curl/scp/rsync/aws-cli's differing
+  syntaxes to rely on, so this is a pragmatic substring check: false
+  negatives are possible, false positives are not). `looksExfilShaped()`
+  matches commands that plausibly move data externally (curl POST/PUT/
+  `--data`/`-F`/`--upload-file`, `wget --post-*`, `scp`/`rsync` to a
+  remote host, `aws s3 cp`, `gh gist create`, netcat pipes).
+- **`mcp-server/src/content-sensitivity.ts`**: classifies written content
+  as taint-worthy — the same secret patterns as `hooks/lib/secret-scan.sh`
+  (kept in sync, extend both together) plus a deliberately narrow PII set
+  for v1 (email, US SSN only — phone/credit-card have much higher
+  false-positive rates, scoped out rather than silently included).
+  Matching here does **not** block the write (a debugging session that
+  legitimately needs to write PII to a local file should be allowed to —
+  the risk is what happens to the file next).
+- **`record-taint-cli.js`** (new hooks/wire-in): called from
+  `pre-edit-guardrails.sh` after a write passes every blocking check.
+  Passive — always exits 0, records taint reasons found in the content.
+- **`check-exfil-cli.js`** (new hooks/wire-in): called from
+  `pre-bash-guardrails.sh` on every command. Blocks (exit 1, reason on
+  stderr naming the earlier taint event) only when a command is both
+  exfil-shaped AND references a file this *same session* tainted.
+- Both fail open (exit 0) on any internal error, missing `session_id`, or
+  a missing compiled CLI — a bug here degrades to "unenforced," never to
+  "blocks everything."
+
+**Deliberate v1 scope limits** (flagged, not silently omitted):
+PII patterns limited to email + SSN; the substring-based file-reference
+match instead of real shell-argument parsing; no cross-session
+correlation (by design — taint that leaked across unrelated sessions in
+the same repo would be a bigger problem than the one this solves);
+taint logs are never cleaned up automatically (a `.cofounder/taint/`
+directory will accumulate one file per session — a `SessionStart`-hook
+cleanup of logs older than N days is a natural fast-follow, not done
+here).
+
+**Test coverage**: `mcp-server/test-taint-tracking.sh` (7 cases, the raw
+CLIs) + `hooks/test-taint-hooks-e2e.sh` (5 cases — the actual
+Stripe-diagnostic-file scenario replayed through the real
+`pre-edit-guardrails.sh` and `pre-bash-guardrails.sh` hooks with a shared
+session id, plus session-isolation and untainted-file controls). All 46
+tests across Track 1's full feature set (scope enforcement + taint
+tracking) passing.
+
+**Also found, not fixed here**: `@waymakerai/aicofounder-core@2.0.0` is
+currently **broken on the public npm registry** — its `package.json`
+declares `"files": ["dist", "README.md"]` but the published tarball
+contains no `dist/` directory at all, so `require()`/`import` fails for
+every external consumer. This is why PII detection here uses a small
+local pattern set instead of the real `PIIDetector` class that already
+exists in `packages/core/src/security/pii.ts` (verified real and
+well-built — just unreachable via npm right now). Republishing wasn't
+done as part of this change: it's an external, irreversible action
+(npm versions are immutable) that needs explicit sign-off, not something
+to do silently mid-feature.
+
 ### Added — Enforced VibeSpec scope (Track 1)
 
 Executes Track 1's headline item from the 2026-07-04 strategy addendum
