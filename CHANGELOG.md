@@ -9,6 +9,53 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added — Agent-agnostic pre-commit hook (`@waymakerai/aicofounder-ci`)
+
+Executes P2-8 from the 2026-07-04 security hardening evaluation
+(docs/plans/2026-07-04-agent-security-hardening-eval.md), which the doc
+calls **"the single highest-leverage coverage item"**: only Claude Code
+has a real blocking hook API today. Copilot, Aider, Codex, Continue, Zed,
+Amazon Q, and most other coding agents have no such surface — a native
+CoFounder integration will never cover them. A pre-commit hook covers all
+of them at once, agent-independent, because it checks the commit boundary
+rather than integrating with any one agent's hook API.
+
+- **`aicofounder-ci precommit`**: scans exactly the **staged** content
+  (`git show :<path>`, not the working tree) against a focused Tier-1
+  rule set — secrets, unsafe `.env*` files, mock-data-in-prod warnings.
+  Blocks (exit 1) on any high/critical finding.
+- **`aicofounder-ci install-hook`**: writes a `.git/hooks/pre-commit` that
+  calls `precommit`. Refuses to clobber a hook it didn't install (use
+  `--force`) — won't silently break an existing husky/lefthook setup.
+- **New rules**: `no-unsafe-env-file` (critical — blocks a staged `.env*`
+  file that isn't `.env.local`/`.env.example`/`.env.sample`/
+  `.env.template`) and `no-mock-data-in-prod` (medium — warns on a
+  mock/fake-data identifier outside a test/fixture path, mirrored from the
+  Claude Code plugin's pre-edit-guardrails.sh).
+- **Husky and lefthook recipes** documented in `packages/ci/README.md` for
+  teams that already manage hooks that way.
+- **Docs honesty, found while writing this**: `packages/ci/README.md`'s
+  own CLI examples called the binary `cofounder-ci` throughout — the
+  actual `bin` name (per `package.json`) is `aicofounder-ci`. Every
+  example command in that doc was wrong. Fixed. Also swapped a deprecated
+  model-ID example (`claude-sonnet-4-20250514`, retired) for a current one.
+
+Deliberately excludes VibeSpec scope-checking and PII detection from the
+`precommit` rule set for now: scope-checking lives in
+`packages/claude-code-plugin/mcp-server`, which sits outside the pnpm
+workspace and isn't a dependency `packages/ci` can currently resolve
+cleanly — needs a real decision (publish it as its own package, or
+duplicate ~40 lines) before it's worth wiring in. PII-at-edit (P1-7) was
+never built anywhere yet. Both are flagged, not silently dropped.
+
+**Manual + automated test coverage**: `precommit.test.ts` (7 cases),
+`install-hook.test.ts` (6 cases), `no-unsafe-env-file.test.ts` (6 cases),
+`no-mock-data-in-prod.test.ts` (4 cases) — all real vitest, wired into the
+existing test runner (unlike the Claude Code plugin's bash hooks, this
+package already has one). Plus `test-precommit-e2e.sh`, a smoke test
+against the actual built CLI binary and a real `.git/hooks/pre-commit`
+firing on real `git commit` calls (6 cases). 220+ total tests passing.
+
 ### Added — CoFounder Skill Library
 
 A curated agentic-skill layer for AI coding agents working in real codebases.
