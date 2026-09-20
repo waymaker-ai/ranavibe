@@ -9,6 +9,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added — PII checked at edit time (P1-7)
+
+Executes P1-7 from the 2026-07-04 security hardening evaluation: PII was
+never checked when the agent *writes* it. CoFounder's runtime PII
+libraries only run if the host app wires them into its request path —
+they never see an agent hardcoding an SSN into a fixture or a prompt
+template.
+
+- **`mcp-server/src/check-pii-cli.js`**: called from
+  `pre-edit-guardrails.sh` on every `Edit`/`Write`/`MultiEdit`. Reuses
+  the same classifier the taint tracker uses
+  (`content-sensitivity.ts`) — same deliberately-narrow v1 PII set
+  (email + US SSN; phone / credit-card have far higher false-positive
+  rates, scoped out not silently included).
+- **Mode**, per the doc: `warn` by default (surfaced to the user, does
+  not block); `block` when a `.cofounder.yml` / `.aicofounder.yml` in
+  scope declares a `compliance.frameworks` (or VibeSpec
+  `security.compliance`) list containing `hipaa` or `gdpr`. Explicit
+  `pii: { mode: warn | block }` overrides either way.
+- Fails open if node/dist is missing — degrades to unenforced, never to
+  "blocks every write."
+
+Not using the real `PIIDetector` class in `packages/core/src/security/pii.ts`
+for the same reason the taint tracker doesn't:
+`@waymakerai/aicofounder-core@2.0.0` is broken on npm (published tarball
+has no `dist/`). Flagged in the taint-tracking entry below.
+
+**Test coverage**: `mcp-server/test-check-pii.sh` — 9 cases (warn vs
+block mode resolution from every config shape, explicit override both
+directions, plus an e2e case through the real `pre-edit-guardrails.sh`
+hook with a hipaa `.cofounder.yml`). 55 tests across Track 1's full
+feature set passing.
+
 ### Added — Session-aware taint tracking (Harden-parity)
 
 Not from the July strategy doc — surfaced by a 2026-09-10 competitive

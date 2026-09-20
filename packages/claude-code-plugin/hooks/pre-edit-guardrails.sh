@@ -114,6 +114,19 @@ else
   echo "CoFounder guardrail (WARN): scope enforcement skipped — mcp-server is not built (run \`npm run build\` in packages/claude-code-plugin/mcp-server)." >&2
 fi
 
+# --- PII at edit time (P1-7): warn by default, block when a .cofounder.yml
+# in scope declares a hipaa/gdpr compliance framework. Fails open if
+# node/dist is missing. ---
+pii_cli="${SCRIPT_DIR}/../mcp-server/dist/check-pii-cli.js"
+if [[ -n "$content" ]] && command -v node >/dev/null 2>&1 && [[ -f "$pii_cli" ]]; then
+  if pii_out=$(printf '%s' "$content" | node "$pii_cli" "$path" "$PWD" 2>&1 >/dev/null); then
+    [[ -n "$pii_out" ]] && echo "CoFounder guardrail: $pii_out" >&2
+  else
+    echo "CoFounder guardrail: $pii_out" >&2
+    exit 2
+  fi
+fi
+
 # --- Tier 2: warn on mock data in non-test paths ---
 if [[ -n "$content" ]]; then
   is_test=false
