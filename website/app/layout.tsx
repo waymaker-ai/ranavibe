@@ -10,25 +10,25 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: {
-    default: 'CoFounder - Build Production AI Apps in Minutes',
+    default: 'CoFounder - Open-Source Guardrails for AI Agents',
     template: '%s | CoFounder Framework',
   },
-  description: 'Production-ready AI development framework with 70% cost reduction. Includes @waymakerai/aicofounder-helpers, @waymakerai/aicofounder-prompts, @waymakerai/aicofounder-rag packages. 9 LLM providers, enterprise security, and 25+ CLI commands.',
-  keywords: ['AI', 'LLM', 'RAG', 'OpenAI', 'Anthropic', 'Claude', 'GPT', 'React', 'TypeScript', 'Cost Optimization', 'Prompt Management', 'Enterprise AI', 'Waymaker'],
+  description: 'Free, open-source (MIT) guardrails for AI agents and AI-assisted development: PII redaction, prompt-injection blocking, budget limits, and compliance checks for Claude Code, Vercel AI SDK, LangChain, CrewAI, and OpenClaw.',
+  keywords: ['AI guardrails', 'AI safety', 'PII redaction', 'prompt injection', 'LLM', 'Claude Code', 'AI agents', 'open source', 'TypeScript', 'Waymaker'],
   authors: [{ name: 'Waymaker AI' }],
   creator: 'Waymaker AI',
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://cofounder.cx',
-    title: 'CoFounder - Build Production AI Apps in Minutes',
-    description: 'Production-ready AI development framework with 70% cost reduction. 9 LLM providers, enterprise security, and React hooks included.',
+    title: 'CoFounder - Open-Source Guardrails for AI Agents',
+    description: 'Free, open-source (MIT) guardrails for AI agents and AI-assisted development: PII redaction, prompt-injection blocking, budget limits, and compliance checks for Claude Code, Vercel AI SDK, LangChain, CrewAI, and OpenClaw.',
     siteName: 'CoFounder Framework',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'CoFounder - Build Production AI Apps in Minutes',
-    description: 'Production-ready AI framework with 70% cost reduction. @waymakerai/aicofounder-helpers, @waymakerai/aicofounder-prompts, @waymakerai/aicofounder-rag packages for AI development.',
+    title: 'CoFounder - Open-Source Guardrails for AI Agents',
+    description: 'Free, open-source (MIT) guardrails for AI agents and AI-assisted development: PII redaction, prompt-injection blocking, budget limits, and compliance checks for Claude Code, Vercel AI SDK, LangChain, CrewAI, and OpenClaw.',
     creator: '@waylokai',
   },
   robots: {
