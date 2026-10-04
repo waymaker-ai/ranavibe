@@ -6,6 +6,8 @@ import { approvedModels } from './approved-models.js';
 import { costEstimation } from './cost-estimation.js';
 import { safeDefaults } from './safe-defaults.js';
 import { noExposedAssets } from './no-exposed-assets.js';
+import { noMockDataInProd } from './no-mock-data-in-prod.js';
+import { noUnsafeEnvFile } from './no-unsafe-env-file.js';
 
 /** All available rules */
 export const ALL_RULES: RuleDefinition[] = [
@@ -16,7 +18,15 @@ export const ALL_RULES: RuleDefinition[] = [
   costEstimation,
   safeDefaults,
   noExposedAssets,
+  noMockDataInProd,
+  noUnsafeEnvFile,
 ];
+
+/** Rules run by `aicofounder-ci precommit` — repo-agnostic Tier-1 checks
+ * only (secrets, unsafe env files). Excludes rules scoped to CoFounder's
+ * own LLM-usage conventions (approved-models, cost-estimation, etc.),
+ * which don't apply to an arbitrary downstream repo's pre-commit hook. */
+export const PRECOMMIT_RULES: RuleDefinition[] = [noHardcodedKeys, noUnsafeEnvFile, noMockDataInProd];
 
 /** Map of rule ID to rule definition */
 export const RULES_MAP: Map<string, RuleDefinition> = new Map(
@@ -39,4 +49,6 @@ export {
   costEstimation,
   safeDefaults,
   noExposedAssets,
+  noMockDataInProd,
+  noUnsafeEnvFile,
 };

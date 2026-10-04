@@ -7,6 +7,8 @@
  *   aicofounder-ci scan [path] [--rules all] [--format console] [--fail-on high]
  *   aicofounder-ci validate [config-path]
  *   aicofounder-ci check [path] [--format github-pr]
+ *   aicofounder-ci precommit
+ *   aicofounder-ci install-hook [--force]
  */
 
 import type { ReportFormat, Severity, ScanConfig } from './types.js';
@@ -16,6 +18,8 @@ import { formatReport } from './reporters/index.js';
 import { postOrUpdateComment } from './github/pr-comment.js';
 import { createCheckRun, outputWorkflowCommands } from './github/annotations.js';
 import { formatGitHubPr } from './reporters/github.js';
+import { runPrecommitScan, formatPrecommitReport } from './precommit.js';
+import { installGitHook } from './install-hook.js';
 
 // ---- Argument parsing (zero deps) ----
 
@@ -81,6 +85,11 @@ Usage:
   aicofounder-ci scan [path]       Scan codebase for AI security issues
   aicofounder-ci validate [config] Validate .aicofounder.yml configuration
   aicofounder-ci check [path]      Scan and post results to GitHub PR
+  aicofounder-ci precommit         Scan staged files; agent-agnostic — works
+                                    regardless of which coding agent (or
+                                    human) produced the diff
+  aicofounder-ci install-hook      Install a .git/hooks/pre-commit that
+                                    runs precommit (--force to overwrite)
   aicofounder-ci help              Show this help message
 
 Options:
@@ -141,6 +150,23 @@ function buildConfig(parsed: ParsedArgs): ScanConfig {
 }
 
 // ---- Commands ----
+
+async function cmdPrecommit(_parsed: ParsedArgs): Promise<number> {
+  const result = runPrecommitScan(process.cwd());
+  process.stdout.write(formatPrecommitReport(result) + '\n');
+  return result.blocked ? 1 : 0;
+}
+
+async function cmdInstallHook(parsed: ParsedArgs): Promise<number> {
+  const force = parsed.flags.force === 'true';
+  const result = installGitHook(process.cwd(), force);
+  if (result.installed) {
+    process.stdout.write(`Installed pre-commit hook at ${result.path}\n`);
+    return 0;
+  }
+  process.stderr.write(`Not installed: ${result.reason}\n`);
+  return result.reason?.startsWith('already installed') ? 0 : 1;
+}
 
 async function cmdScan(parsed: ParsedArgs): Promise<number> {
   const config = buildConfig(parsed);
@@ -261,6 +287,12 @@ async function main(): Promise<void> {
       break;
     case 'check':
       exitCode = await cmdCheck(parsed);
+      break;
+    case 'precommit':
+      exitCode = await cmdPrecommit(parsed);
+      break;
+    case 'install-hook':
+      exitCode = await cmdInstallHook(parsed);
       break;
     case 'help':
     case '--help':

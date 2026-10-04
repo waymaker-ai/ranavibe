@@ -12,15 +12,19 @@
       "require": "./dist/index.js"
     }
   },
-  "files": ["dist", "README.md"],
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts",
     "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
-    "test": "vitest",
+    "test": "vitest run",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",
+    "gray-matter": "^4.0.3",
     "tsup": "^8.0.1",
     "typescript": "^5.3.3",
     "vitest": "^1.0.0"
@@ -33,5 +37,7 @@
     "directory": "packages/openclaw"
   },
   "homepage": "https://cofounder.cx",
-  "publishConfig": { "access": "public" }
+  "publishConfig": {
+    "access": "public"
+  }
 }

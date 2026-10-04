@@ -10,6 +10,7 @@ CI/CD guardrails for AI applications. Scan your codebase for security, complianc
 - **Approved Models** - Enforce an allowlist of approved LLM models, warn on deprecated models
 - **Cost Estimation** - Estimate monthly costs from LLM calls found in code
 - **Safe Defaults** - Check for unsafe configs (temperature > 2, missing max_tokens, missing system prompts)
+- **Agent-Agnostic Pre-commit Hook** - Block secrets, unsafe `.env*` files, and mock data at commit time — works no matter which coding agent (or human) produced the diff, since it checks the commit boundary rather than integrating with any one agent's hook API
 
 ## Installation
 
@@ -21,23 +22,71 @@ npm install @waymakerai/aicofounder-ci --save-dev
 
 ```bash
 # Scan current directory
-npx cofounder-ci scan
+npx aicofounder-ci scan
 
 # Scan specific path with specific rules
-npx cofounder-ci scan ./src --rules no-hardcoded-keys,no-injection-vuln --format json
+npx aicofounder-ci scan ./src --rules no-hardcoded-keys,no-injection-vuln --format json
 
 # Fail only on critical issues
-npx cofounder-ci scan . --fail-on critical
+npx aicofounder-ci scan . --fail-on critical
 
 # Output SARIF for GitHub Security tab
-npx cofounder-ci scan . --format sarif > results.sarif
+npx aicofounder-ci scan . --format sarif > results.sarif
 
 # Validate configuration
-npx cofounder-ci validate .cofounder.yml
+npx aicofounder-ci validate .cofounder.yml
 
 # Scan and post to GitHub PR
-npx cofounder-ci check . --format github-pr
+npx aicofounder-ci check . --format github-pr
 ```
+
+## Pre-commit hook (agent-agnostic protection)
+
+The scanner above works against any codebase — it doesn't care whether the
+diff came from a human, Claude Code, Cursor, Copilot, Aider, or any other
+coding agent. `precommit` runs a focused Tier-1 subset (secrets,
+`.env`-file safety, mock-data-in-prod warnings) against exactly what's
+**staged** — not the working tree, so an unstaged edit on top of a staged
+file can't hide or introduce a finding.
+
+```bash
+# One-time install: writes .git/hooks/pre-commit
+npx aicofounder-ci install-hook
+
+# Re-run to update; --force to overwrite a hook this tool didn't install
+npx aicofounder-ci install-hook --force
+
+# Run it manually against currently-staged files
+npx aicofounder-ci precommit
+```
+
+The installed hook checks for a local `./node_modules/.bin/aicofounder-ci`
+first (fast, no network) and falls back to `npx` if this package isn't a
+project dependency. Bypass for one commit with `git commit --no-verify`
+(the hook can't stop that — it's a git-level escape hatch, not a bug).
+
+### Husky
+
+```bash
+npx husky init   # if not already set up
+echo 'npx aicofounder-ci precommit' > .husky/pre-commit
+```
+
+### Lefthook
+
+```yaml
+# lefthook.yml
+pre-commit:
+  commands:
+    cofounder:
+      run: npx aicofounder-ci precommit
+```
+
+Only `install-hook` writes to `.git/hooks/pre-commit` directly — with
+husky or lefthook already managing that file, just add the `npx
+aicofounder-ci precommit` line as shown above instead of running
+`install-hook` (which will refuse to overwrite a hook it didn't create,
+to avoid clobbering your existing setup).
 
 ## GitHub Action Usage
 
@@ -62,7 +111,7 @@ jobs:
           config: '.cofounder.yml'
           comment-on-pr: 'true'
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          approved-models: 'claude-sonnet-4-20250514,gpt-4o,gemini-2.0-flash'
+          approved-models: 'claude-sonnet-5,gpt-4o,gemini-2.0-flash'
           budget-limit: '500'
 ```
 
@@ -109,7 +158,7 @@ scan:
 
 models:
   approved:
-    - claude-sonnet-4-20250514
+    - claude-sonnet-5
     - gpt-4o
     - gemini-2.0-flash
   blocked:
@@ -178,6 +227,13 @@ console.log(report);
 | `cost-estimation` | medium | Estimate LLM usage costs |
 | `safe-defaults` | medium | Check for unsafe LLM configurations |
 | `no-exposed-assets` | high | Detect source maps, build misconfigs, debug modes, sensitive files, API introspection, CORS, directory listing, CI/CD secret leaks |
+| `no-unsafe-env-file` | critical | Block a staged `.env*` file that isn't `.env.local`/`.env.example`/`.env.sample`/`.env.template` |
+| `no-mock-data-in-prod` | medium | Warn on a mock/fake-data identifier outside a test/fixture path |
+
+`no-hardcoded-keys`, `no-unsafe-env-file`, and `no-mock-data-in-prod` also
+make up `precommit`'s rule set (see above) — the other rules are scoped to
+CoFounder's own LLM-usage conventions and don't apply to an arbitrary
+downstream repo's pre-commit hook.
 
 ## License
 
