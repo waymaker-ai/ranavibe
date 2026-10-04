@@ -16,10 +16,11 @@ import {
   CallToolRequestSchema,
   ListToolsRequestSchema,
 } from "@modelcontextprotocol/sdk/types.js";
-import { readFileSync, existsSync, readdirSync, statSync } from "node:fs";
+import { readFileSync, existsSync, readdirSync } from "node:fs";
 import { join, resolve, relative, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parse as parseYaml } from "yaml";
+import { findVibeSpecs, matchesGlob } from "./scope.js";
 
 const VERSION = "0.2.0";
 const PROTO_VERSION = "cofounder.cx/v1";
@@ -91,21 +92,6 @@ function readFile(path: string): string {
 
 function loadYamlFile(path: string): unknown {
   return parseYaml(readFile(path));
-}
-
-function findVibeSpecs(root: string): string[] {
-  const candidates: string[] = [];
-  for (const dir of ["specs/vibes", "config/vibes", ".cofounder/vibes"]) {
-    const full = join(root, dir);
-    if (existsSync(full) && statSync(full).isDirectory()) {
-      for (const f of readdirSync(full)) {
-        if (f.endsWith(".yml") || f.endsWith(".yaml")) {
-          candidates.push(join(full, f));
-        }
-      }
-    }
-  }
-  return candidates;
 }
 
 function findFeatureSpecs(root: string): string[] {
@@ -292,20 +278,6 @@ async function tool_checkChangeset(args: {
     findings,
     pass: findings.filter((f) => f.severity === "tier1").length === 0,
   };
-}
-
-// Minimal glob matcher — supports ** and *
-function matchesGlob(path: string, pattern: string): boolean {
-  const re = new RegExp(
-    "^" +
-      pattern
-        .replace(/[.+^${}()|[\]\\]/g, "\\$&")
-        .replace(/\*\*/g, "§§")
-        .replace(/\*/g, "[^/]*")
-        .replace(/§§/g, ".*") +
-      "$",
-  );
-  return re.test(path);
 }
 
 // --- Server bootstrap ---

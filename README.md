@@ -3,7 +3,7 @@
 **Keeps AI coding agents from wrecking your codebase.**
 Free, open-source guardrails + spec-driven feature flow for AI-assisted development, by [Waymaker AI](https://waymaker.cx).
 
-CoFounder plugs into your existing stack (Vercel AI SDK, Supabase, LangChain, CrewAI, OpenClaw, Claude Code) and stops agents from committing secrets, leaking PII, shipping mock data, blowing through budgets, or refactoring things no one asked them to. It's the safety harness and coach for AI-assisted work on real products — not a magic "ship-a-startup-in-30-minutes" button.
+CoFounder plugs into your existing stack (Supabase, LangChain, CrewAI, OpenClaw, Claude Code) and stops agents from committing secrets, leaking PII, shipping mock data, blowing through budgets, or refactoring things no one asked them to. It's the safety harness and coach for AI-assisted work on real products — not a magic "ship-a-startup-in-30-minutes" button.
 
 - Free and open source (MIT)
 - Bring-your-own LLM providers and tools
@@ -54,7 +54,7 @@ const result = guard.check(userInput);
 - 📦 **~50KB, zero runtime dependencies**
 - 💰 **70% cost reduction** through caching + smart routing
 - 🔒 **HIPAA, GDPR, SEC, SOX, PCI DSS** compliance built-in
-- 🔌 **Works with LangChain, CrewAI, Vercel AI SDK, Supabase**
+- 🔌 **Works with LangChain, CrewAI, Supabase, OpenClaw**
 - 🆓 **MIT licensed**, free forever
 
 ---
@@ -92,7 +92,7 @@ CoFounder focuses on:
 
 - turning **feature ideas → clear specs → safe draft implementations**
 - enforcing **design systems, business rules, and engineering hygiene**
-- integrating into real stacks (Vercel AI SDK, Supabase, LangChain, CrewAI, etc.)
+- integrating into real stacks (Supabase, LangChain, CrewAI, OpenClaw, etc.)
 - helping humans **ship real features faster** instead of cleaning up after reckless agents
 
 **You still need engineers, reviews, and real operations.**
@@ -152,7 +152,6 @@ CoFounder is an **integration-friendly guardrail & guidance layer** for AI agent
 
 - **Integration-friendly**
   Plugs into your existing stack:
-  - Vercel AI SDK
   - Supabase
   - LangChain / LangGraph
   - CrewAI
@@ -176,7 +175,7 @@ CoFounder is an **integration-friendly guardrail & guidance layer** for AI agent
   It won't pretend you can build a full, scalable production product in half an hour.
 
 - **A replacement for your engineers or your stack**
-  It doesn't replace Vercel AI SDK, Supabase, LangChain, CrewAI, or your CI/CD.
+  It doesn't replace Supabase, LangChain, CrewAI, your LLM SDK of choice, or your CI/CD.
   It complements them with guardrails and guidance.
 
 - **A walled-garden orchestrator**
@@ -210,7 +209,7 @@ pnpm add -D @waymakerai/aicofounder-cli
 
 ### 2. Initialize CoFounder in your app
 
-From your app root (for example, a Vercel AI SDK + Supabase app):
+From your app root (for example, a Next.js + Supabase app):
 
 ```bash
 npx aicofounder init
@@ -258,7 +257,7 @@ export default defineConfig({
 
 ### 4. Use CoFounder in your server code
 
-Example with a Vercel AI SDK–style handler:
+Example with a Next.js route handler:
 
 ```typescript
 // app/api/cofounder-chat/route.ts
@@ -281,7 +280,7 @@ export async function POST(req: NextRequest) {
 }
 ```
 
-You still use your usual stack (Vercel AI SDK + Supabase, LangChain, CrewAI, etc.)—
+You still use your usual stack (whatever LLM SDK you use, Supabase, LangChain, CrewAI, etc.)—
 CoFounder just centralizes providers, routing, and guardrails underneath.
 
 ---

@@ -14,6 +14,12 @@
 
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=lib/secret-scan.sh
+source "${SCRIPT_DIR}/lib/secret-scan.sh"
+# shellcheck source=lib/cofounder-config.sh
+source "${SCRIPT_DIR}/lib/cofounder-config.sh"
+
 # Read the entire stdin (Claude Code passes tool input as JSON)
 input=$(cat)
 
@@ -45,34 +51,78 @@ except Exception:
     pass
 ' 2>/dev/null || true)
 
+# Extract session_id (for taint tracking — see the block near exit 0)
+session_id=$(printf '%s' "$input" | python3 -c '
+import sys, json
+try:
+    d = json.load(sys.stdin)
+    print(d.get("session_id", ""))
+except Exception:
+    print("")
+' 2>/dev/null || true)
+
 [[ -z "$path" ]] && exit 0
 
-# --- Tier 1: block a new .env* file creation ---
-if [[ "$(basename "$path")" =~ ^\.env ]]; then
-  echo "CoFounder guardrail: writing to $path is blocked. Secrets belong in a gitignored .env.local (use your vercel env pull / secret manager). If this is intentional, add the file manually outside Claude." >&2
-  exit 2
+# --- Tier 1: block writing an uncommitted-secrets env file ---
+# Safe, intended files (.env.local, .env.example, .env.sample, .env.template)
+# are explicitly allowed — blocking them was blocking the exact path our own
+# error message told users to use instead. Anything else matching .env* is
+# blocked UNLESS it's already gitignored (a gitignored .env is the normal,
+# safe way to keep local secrets out of version control).
+base="$(basename "$path")"
+if [[ "$base" =~ ^\.env ]]; then
+  case "$base" in
+    .env.local|.env.*.local|.env.example|.env.sample|.env.template)
+      : # allowed — safe by convention
+      ;;
+    *)
+      if git -C "$(dirname "$path")" check-ignore -q "$path" 2>/dev/null; then
+        : # allowed — already gitignored, won't reach version control
+      else
+        echo "CoFounder guardrail: writing to $path is blocked because it is not gitignored. Use .env.local (gitignored) instead, or add $base to .gitignore first if this is intentional." >&2
+        exit 2
+      fi
+      ;;
+  esac
 fi
 
-# --- Tier 1: secret patterns in content ---
+# --- Tier 1: secret patterns in content (shared scanner: gitleaks if present, else embedded set) ---
 if [[ -n "$content" ]]; then
-  # Stripe live key
-  if echo "$content" | grep -Eq 'sk_live_[A-Za-z0-9]{10,}'; then
-    echo "CoFounder guardrail: Stripe live secret key detected in $path. Blocked. Move it to an env var." >&2
+  if ! finding=$(cofounder_scan_secrets "$content"); then
+    echo "CoFounder guardrail: ${finding} detected in $path. Blocked. Move it to an env var or secret manager." >&2
     exit 2
   fi
-  # OpenAI key
-  if echo "$content" | grep -Eq 'sk-[A-Za-z0-9]{20,}'; then
-    echo "CoFounder guardrail: OpenAI-style secret key detected in $path. Blocked. Move it to an env var." >&2
-    exit 2
+fi
+
+# --- Tier 1: VibeSpec scope enforcement (turns validateAgainstVibe from
+# advice into a real block). Only enforced if a VibeSpec in the repo
+# declares scopeRules; fails open if node or the compiled CLI is missing so
+# a packaging problem degrades to "unenforced," not "nothing works." ---
+scope_cli="${SCRIPT_DIR}/../mcp-server/dist/enforce-scope-cli.js"
+if command -v node >/dev/null 2>&1 && [[ -f "$scope_cli" ]]; then
+  if scope_reason=$(node "$scope_cli" "$path" "$PWD" 2>&1 >/dev/null); then
+    : # in scope, or no vibe declares scopeRules
+  else
+    if cofounder_config_allows scope "$path"; then
+      echo "CoFounder guardrail: $path is out of VibeSpec scope but allowlisted via .cofounder.yml scope.allow — proceeding." >&2
+    else
+      echo "CoFounder guardrail: ${scope_reason}. Blocked. Add $path to the VibeSpec's allowedPaths, or add it to .cofounder.yml scope.allow if this is an intentional exception." >&2
+      exit 2
+    fi
   fi
-  # Anthropic key
-  if echo "$content" | grep -Eq 'sk-ant-[A-Za-z0-9\-_]{20,}'; then
-    echo "CoFounder guardrail: Anthropic secret key detected in $path. Blocked. Move it to an env var." >&2
-    exit 2
-  fi
-  # AWS access key
-  if echo "$content" | grep -Eq 'AKIA[0-9A-Z]{16}'; then
-    echo "CoFounder guardrail: AWS access key detected in $path. Blocked. Use IAM roles or env vars." >&2
+else
+  echo "CoFounder guardrail (WARN): scope enforcement skipped — mcp-server is not built (run \`npm run build\` in packages/claude-code-plugin/mcp-server)." >&2
+fi
+
+# --- PII at edit time (P1-7): warn by default, block when a .cofounder.yml
+# in scope declares a hipaa/gdpr compliance framework. Fails open if
+# node/dist is missing. ---
+pii_cli="${SCRIPT_DIR}/../mcp-server/dist/check-pii-cli.js"
+if [[ -n "$content" ]] && command -v node >/dev/null 2>&1 && [[ -f "$pii_cli" ]]; then
+  if pii_out=$(printf '%s' "$content" | node "$pii_cli" "$path" "$PWD" 2>&1 >/dev/null); then
+    [[ -n "$pii_out" ]] && echo "CoFounder guardrail: $pii_out" >&2
+  else
+    echo "CoFounder guardrail: $pii_out" >&2
     exit 2
   fi
 fi
@@ -91,6 +141,15 @@ if [[ -n "$content" ]]; then
       echo "CoFounder guardrail (WARN): mock-data identifier found in $path (production path). Verify this is not shipping to prod." >&2
     fi
   fi
+fi
+
+# --- Passive: record whether this now-allowed write is taint-worthy, so a
+# later exfil-shaped shell command referencing this file can be blocked
+# (see pre-bash-guardrails.sh + mcp-server/src/taint.ts). Never blocks —
+# fails open silently if node/dist or session_id are unavailable. ---
+taint_cli="${SCRIPT_DIR}/../mcp-server/dist/record-taint-cli.js"
+if [[ -n "$content" && -n "$session_id" ]] && command -v node >/dev/null 2>&1 && [[ -f "$taint_cli" ]]; then
+  printf '%s' "$content" | node "$taint_cli" "$path" "$PWD" "$session_id" >/dev/null 2>&1 || true
 fi
 
 exit 0
