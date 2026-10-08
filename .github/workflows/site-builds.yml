@@ -1,0 +1,33 @@
+name: Site builds
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build-sites:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        site: [website, apps/web, apps/rana-ui-docs]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 8.12.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Build site and workspace dependencies
+        run: pnpm --filter './${{ matrix.site }}...' run build
+        env:
+          NEXT_TELEMETRY_DISABLED: '1'
