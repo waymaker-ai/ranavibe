@@ -9,6 +9,8 @@ import { PWAInitializer } from '@/components/pwa-initializer';
 import './globals.css';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://cofounder.cx'),
+  alternates: { canonical: './' },
   title: {
     default: 'CoFounder - Open-Source Guardrails for AI Agents',
     template: '%s | CoFounder Framework',
