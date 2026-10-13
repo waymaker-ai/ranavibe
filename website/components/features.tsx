@@ -94,7 +94,7 @@ const features = [
   {
     icon: Box,
     title: 'Sandboxed Execution',
-    description: 'Run untrusted AI-generated code safely with @waymakerai/aicofounder-sandbox. Process isolation, resource limits, timeout enforcement, and output capture. Evaluate agent tool calls without risk.',
+    description: 'Run untrusted AI-generated code safely with @waymakerai/aicofounder-sandbox. Process isolation, resource limits, timeout enforcement, and output capture. Evaluate agent tool calls within configured execution limits.',
     isNew: true,
   },
   {
