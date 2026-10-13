@@ -106,7 +106,7 @@ export function Hero() {
               <div className="text-foreground-secondary mt-2">{`import { ComplianceEnforcer, PresetRules } from '@waymakerai/aicofounder-compliance';`}</div>
               <div className="text-foreground-secondary">{`import { GuidelineManager, Conditions } from '@waymakerai/aicofounder-guidelines';`}</div>
               <div className="text-foreground-secondary">{`import { ContextOptimizer } from '@waymakerai/aicofounder-context-optimizer';`}</div>
-              <div className="mt-2 text-gradient-to">{`// HIPAA-compliant AI with built-in guardrails`}</div>
+              <div className="mt-2 text-gradient-to">{`// AI guardrails configured for a healthcare workflow`}</div>
               <div className="text-foreground-secondary">{`const enforcer = new ComplianceEnforcer([PresetRules.hipaa()]);`}</div>
             </div>
           </motion.div>

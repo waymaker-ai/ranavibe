@@ -105,7 +105,7 @@ await dashboard.serve({ port: 3456 });`,
   {
     name: '@waymakerai/aicofounder-compliance',
     icon: Shield,
-    description: 'Automatic HIPAA, SEC, GDPR, CCPA compliance enforcement',
+    description: 'Configurable checks for HIPAA, SEC, GDPR and CCPA-related policies',
     features: ['PII Detection', 'Auto Redaction', 'Audit Trail', 'Disclaimers'],
     color: 'from-red-500 to-orange-500',
     example: `const enforcer = new ComplianceEnforcer([
