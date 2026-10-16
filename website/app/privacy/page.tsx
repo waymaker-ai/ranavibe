@@ -11,7 +11,7 @@ export default function PrivacyPage() {
       <div className="container-wide max-w-3xl">
         <h1 className="text-4xl font-bold mb-8">Privacy Policy</h1>
         <p className="text-foreground-secondary mb-8">
-          Last updated: March 22, 2026
+          Last updated: October 16, 2026
         </p>
 
         <div className="prose prose-neutral dark:prose-invert max-w-none space-y-8">
@@ -30,8 +30,7 @@ export default function PrivacyPage() {
               <div>
                 <h3 className="text-lg font-medium mb-2">Website</h3>
                 <p className="text-foreground-secondary">
-                  We collect standard web analytics data (page views, referrer, browser type) to improve
-                  the website experience. We do not use third-party tracking cookies.
+                  Optional Google Analytics loads only after you allow it. It measures public page visits and may set first-party analytics cookies. We do not send query strings, fragments, form answers, code, or saved work. Dashboard, playground, account and authentication routes are excluded. Automatic interaction tracking, Google signals and advertising personalization are disabled. Use Analytics settings to decline or withdraw consent. Google receives ordinary connection information when analytics is enabled.
                 </p>
               </div>
               <div>
@@ -64,7 +63,7 @@ export default function PrivacyPage() {
           <section>
             <h2 className="text-2xl font-semibold mb-4">Third-Party Services</h2>
             <p className="text-foreground-secondary">
-              Our website is hosted on Vercel. When you use CoFounder to connect to LLM providers
+              Our website is hosted on Railway. When you use CoFounder to connect to LLM providers
               (OpenAI, Anthropic, Google, etc.), your API calls go directly to those providers.
               CoFounder does not proxy, store, or log your LLM requests.
             </p>

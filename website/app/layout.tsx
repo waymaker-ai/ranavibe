@@ -7,6 +7,7 @@ import { Footer } from '@/components/footer';
 import { PWAInstall } from '@/components/pwa-install';
 import { PWAInitializer } from '@/components/pwa-initializer';
 import './globals.css';
+import { MarketingAnalytics } from '@/components/marketing-analytics';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://cofounder.cx'),
@@ -69,6 +70,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <body className="min-h-screen flex flex-col antialiased">
         <PWAInitializer />
+        <MarketingAnalytics />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navigation />
           <main className="flex-1">{children}</main>
