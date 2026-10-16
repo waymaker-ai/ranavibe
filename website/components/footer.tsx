@@ -33,6 +33,7 @@ const footerLinks: Record<string, FooterSection> = {
   resources: {
     title: 'Resources',
     links: [
+      { label: 'Engineering Journal', href: '/blog' },
       { label: 'GitHub', href: 'https://github.com/waymaker-ai/cofounder', external: true },
       { label: 'npm', href: 'https://www.npmjs.com/org/waymakerai', external: true },
       { label: 'Discord', href: 'https://discord.gg/cofounder', external: true },
@@ -180,3 +181,4 @@ export function Footer() {
     </footer>
   );
 }
+
