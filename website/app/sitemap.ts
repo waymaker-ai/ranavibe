@@ -1,3 +1,4 @@
+import journal from '@/content/engineering-journal.json';
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -14,6 +15,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/pricing',
     '/training',
     '/training/fundamentals',
+    '/blog',
+    ...journal.map(post => '/blog/' + post.slug),
   ];
 
   return routes.map((route) => ({
@@ -23,3 +26,4 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: route === '' ? 1 : route.startsWith('/docs') ? 0.8 : 0.6,
   }));
 }
+
