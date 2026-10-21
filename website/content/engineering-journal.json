@@ -1,5 +1,201 @@
 [
   {
+    "site": "cofounder",
+    "topic": "up",
+    "slug": "upwork-mcp-freelance-workflow",
+    "title": "Upwork MCP for technical founders: scope the human expertise your build needs",
+    "description": "A practical Upwork MCP workflow for engineers and technical founders: project fit, honest proposals, bid review, portfolio evidence, and a small side-work test.",
+    "quickAnswer": "Use Upwork MCP to research suitable projects, prepare evidence-based proposals, and review supported account actions. Start with one service you can deliver, approve the actual bid and costs, and verify submission. It can reduce administration; it does not guarantee work.",
+    "category": "Freelance work",
+    "bodyHtml": "<p>An AI-assisted build still benefits from accountable human expertise. A focused engagement might review authorization, checkout behavior, or failure recovery. You can offer such a service if you have the demonstrated skills, or hire a specialist when your own product needs them.</p><h2>What the connection changes</h2><p>MCP—Model Context Protocol—lets a compatible AI assistant work with connected tools. Upwork’s official server supports marketplace and account workflows, including job research and proposal actions. Available tools depend on your account and role. Use the official connection and your own sign-in; start by asking which actions your account supports.</p><h2>Choose one offer you can deliver</h2><p>For engineers and technical founders, a useful starting scope is <strong>a bounded integration reliability review</strong>. Prepare a small repository with a reproducible failure, regression test, and runbook. State the inputs the client supplies, the finished deliverable, timing, and revision allowance. Explicitly exclude production credentials, open-ended maintenance, and accepting contracts without review. This is an illustrative offer, not a claim that a particular client has bought it.</p><h2>Find a match before writing a pitch</h2><p>Give the assistant your real skills, work samples, availability, and budget criteria. Ask it to return a small shortlist with the original job links, stated requirements, evidence of fit, missing information, and reasons to pass. Open the full listing. Check scope, timing, client history where available, and whether you can show relevant work. A job listing is an opportunity to evaluate, not a promise of employment.</p><blockquote><p>Find a small shortlist of projects suited to a bounded integration reliability review. Compare each with the evidence in my profile and portfolio. Separate facts in the listing from your inferences. Flag gaps, unclear scope, and schedule conflicts. Do not submit applications or spend Connects. Recommend one project to review and explain why.</p></blockquote><h2>Prepare a proposal with evidence</h2><p>For the best match, connect one stated client problem with one relevant example of your work. Draft a short approach, a realistic first milestone, and one useful question. Check for an existing proposal or invitation before starting a new application. Verify every claim about experience, clients, outcomes, and availability; AI should not fill gaps with impressive-sounding details.</p><h2>Review the bid and the submission</h2><p>Review the actual rate or project price, screening answers, scope, files, and Connects cost. A proposal preview is not a submitted application. Approve the specific action and inspect the returned status. An optional boosted bid is a separate Connects decision; a high placement does not establish job fit or guarantee a win. Complete any required financial or binding step on Upwork when directed there.</p><h2>Make the portfolio support the promise</h2><p>Use the assistant to turn real work into a clear case study: problem, your contribution, decisions, deliverable, and evidence. Label fictional samples as demonstrations. Use only supported profile or portfolio controls in your connection; finish unsupported updates in Upwork itself. Never assume a prepared rewrite has been published. Review the live profile and remove client information you do not have permission to share.</p><h2>Run a small side-work experiment</h2><p>Choose a weekly time allowance and an application-spending ceiling before you begin. Track suitable jobs reviewed, proposals, replies, interviews, paid work, fees, expenses, delivery hours, and revision time. Calculate the effective return using all the time involved. Improve the offer or targeting when the evidence points there. The connection can reduce administrative effort; it cannot guarantee clients or income.</p><p><a href=\"https://www.upwork.com/resources/how-to-get-started-on-upwork-as-a-freelancer\">Explore Upwork’s freelancer getting-started guide</a>. That is the route for readers looking for work.</p><h2>If you need to hire help</h2><p>The same marketplace can help you find a specialist for a bounded task. Write the brief, compare relevant work, and agree on a paid milestone with clear acceptance criteria. Keep account ownership and business decisions with you.</p><p><strong>Affiliate disclosure:</strong> We may earn a commission if you become a qualifying Upwork customer through the following link. <a href=\"https://partners.upwork.com/vhopea3uwegl\" rel=\"sponsored nofollow noopener\">Explore hiring on Upwork</a>. This is a hiring referral, separate from the freelancer information above.</p><h2>Continue with a related guide</h2><p><a href=\"/blog/shopify-ai-mcp-practical-guide\">Shopify MCP for engineers: separate developer context from commerce actions</a> · <a href=\"/blog/best-mcps-practical-productivity\">MCPs for technical founders: connect tools without losing control of delivery</a></p><p>For practical AI learning, see <a href=\"https://aiteachers.cc/blog/upwork-mcp-freelance-workflow/\">the AI Teachers lesson</a>.</p>",
+    "faq": [
+      {
+        "question": "Can this help me find side work?",
+        "answer": "Yes, it can support research and proposal preparation when you have a service you can deliver. Test fit, costs, and available time. Marketplace access and AI assistance do not guarantee clients."
+      },
+      {
+        "question": "Is the affiliate link a freelancer signup bonus?",
+        "answer": "No. The disclosed Upwork referral here is for hiring. Use the separate freelancer guide to explore finding work; no signup reward or earnings claim is made."
+      },
+      {
+        "question": "Can I publish portfolio changes automatically?",
+        "answer": "Only use the specific actions supported by your account and connection. Prepare accurate material, approve any write, and verify the live result. Complete unsupported changes on Upwork."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Upwork: official MCP server and current setup",
+        "url": "https://www.upwork.com/ai/mcp"
+      },
+      {
+        "label": "Upwork: getting started as a freelancer",
+        "url": "https://www.upwork.com/resources/how-to-get-started-on-upwork-as-a-freelancer"
+      }
+    ],
+    "publishedAt": "2026-10-20",
+    "sourcesCheckedAt": "2026-10-20",
+    "minutes": 4,
+    "coverFormat": "svg",
+    "imageWidth": 1440,
+    "imageHeight": 960,
+    "imageAlt": "Workflow: choose a service, review projects, prepare evidence, approve the proposal.",
+    "imageCaption": "Original workflow diagram. Suggested practice, not a product screenshot or measured result.",
+    "canonical": "https://cofounder.cx/blog/upwork-mcp-freelance-workflow",
+    "imagePath": "/images/journal/upwork-mcp-freelance-workflow.svg"
+  },
+  {
+    "site": "cofounder",
+    "topic": "shop",
+    "slug": "shopify-ai-mcp-practical-guide",
+    "title": "Shopify MCP for engineers: separate developer context from commerce actions",
+    "description": "A practical Shopify guide for engineers and technical founders: Sidekick, native AI, MCP roles, integrations, and one useful store experiment.",
+    "quickAnswer": "Shopify combines commerce operations with native AI and several distinct MCP surfaces. Start with Sidekick and one real store task, use the appropriate developer or commerce connection, and add integrations only when they solve a specific gap.",
+    "category": "AI commerce",
+    "bodyHtml": "<p>Treat each commerce surface as a different interface with its own credentials, capabilities, and failure modes. Developer documentation access does not imply access to store administration. A cart action is not a payment, and a successful response needs a corresponding state check.</p><p><strong>Affiliate disclosure:</strong> This guide includes our Shopify affiliate link. We may earn a commission from a qualifying referral. <a href=\"https://shopify.pxf.io/6k9njE\" rel=\"sponsored nofollow noopener\">Explore Shopify</a>. Check current plans, eligibility, and total costs before starting.</p><h2>Start with the customer job</h2><p>Write down one buyer, one product, and one reason the offer is useful. Verify product facts, rights to images and copy, delivery, and support. Then choose one store task to improve. A focused test is easier to judge than installing several apps at once.</p><h2>Use native AI close to the store</h2><p>Sidekick works in Shopify admin and can help with store questions, content, and supported tasks. Shopify also provides AI assistance within specific workflows, including product and theme content, images, and customer conversations. Features often discussed as Shopify Magic now sit within Shopify’s broader AI-powered tools. Availability varies; check the current help page and your account before planning around a feature.</p><h2>Understand the different Shopify MCP jobs</h2><p>For builders, the AI Toolkit and Dev MCP supply Shopify-specific documentation, schemas, and validation context. Store management through authenticated tools is a separate capability with permissions. For shopping experiences, Storefront Catalog serves one merchant, while Global Catalog supports discovery across merchants. Cart MCP handles a shopper’s selections; Checkout MCP supports checkout sessions and a route to finish the purchase. Customer Accounts MCP addresses authenticated customer requests such as order information. These are distinct surfaces, not interchangeable names for full store access.</p><h2>Choose integrations around a real gap</h2><p>Use Shopify Flow for event-driven rules such as an internal task after an order condition is met. Its trigger, condition, and action structure is different from asking an AI assistant to interpret a problem. For work spanning other apps, consider an existing Zapier or Make workflow only when the native path is insufficient. Check the actual events, permissions, retries, costs, and delivery behavior. An integration appearing in a directory does not prove your whole workflow works.</p><h2>Try a product-page improvement</h2><p>Select one product with an accurate source sheet. Gather the questions a shopper needs answered, then ask for a draft description and a list of missing evidence. Review the result against the product, especially size, compatibility, materials, claims, delivery, and returns. Keep images faithful to what the buyer receives.</p><blockquote><p>Review this product page against the supplied specification sheet and approved policies. Identify unanswered buyer questions. Draft a clearer description using only supported facts, and list every assumption separately. Propose one change to test. Do not change prices, publish content, issue refunds, contact customers, or install apps.</p></blockquote><h2>Test the whole buying experience</h2><p>Preview on a phone. Check variants, stock, cart totals, shipping explanations, policy links, and the next step. Use an approved test purchase process when checking checkout and delivery. If the product is a download, confirm the customer can actually access the correct file. Keep a dated record of the test and who reviewed it.</p><h2>Decide whether the stack earns its cost</h2><p>Compare setup, subscriptions, app charges, payment costs, support, review, and maintenance with the value of the work improved. Track a useful outcome: fewer unanswered product questions, fewer handling errors, or a clearer completion path. Sales can be measured, but a before-and-after change alone does not prove the AI caused them. Start with one product and expand when the evidence supports it.</p><p>Shopify is especially worth evaluating when commerce operations are central to your business. A simple service page may need a lighter setup. <a href=\"https://shopify.pxf.io/6k9njE\" rel=\"sponsored nofollow noopener\">Review Shopify through our affiliate link</a> when you have a concrete store workflow to test.</p><h2>Continue with a related guide</h2><p><a href=\"/blog/upwork-mcp-freelance-workflow\">Upwork MCP for technical founders: scope the human expertise your build needs</a> · <a href=\"/blog/best-mcps-practical-productivity\">MCPs for technical founders: connect tools without losing control of delivery</a></p><p>For an ecommerce operations perspective, continue with <a href=\"https://ecomcoach.xyz/blog/shopify-ai-mcp-practical-guide.html\">Ecom Coach’s Shopify guide</a>.</p>",
+    "faq": [
+      {
+        "question": "Do I need an MCP server to use Shopify AI?",
+        "answer": "No. Sidekick and built-in AI tools can be used within supported Shopify workflows. MCP connections serve additional tasks and have their own setup and access requirements."
+      },
+      {
+        "question": "Is Shopify Flow the same as an MCP server?",
+        "answer": "No. Flow runs workflows using triggers, conditions, and actions. MCP lets an AI application interact with tools and data. They can complement one another."
+      },
+      {
+        "question": "Will AI make my store profitable?",
+        "answer": "No tool can guarantee demand or profit. Validate the product, make delivery reliable, and measure total costs and customer outcomes."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Shopify: AI-powered tools",
+        "url": "https://help.shopify.com/en/manual/ai-powered-tools"
+      },
+      {
+        "label": "Shopify: Sidekick",
+        "url": "https://help.shopify.com/en/manual/ai-powered-tools/sidekick"
+      },
+      {
+        "label": "Shopify: connecting third-party AI tools",
+        "url": "https://help.shopify.com/en/manual/ai-powered-tools/connecting-ai-tools"
+      },
+      {
+        "label": "Shopify: AI Toolkit and Dev MCP",
+        "url": "https://shopify.dev/docs/apps/build/ai-toolkit"
+      },
+      {
+        "label": "Shopify: Storefront Catalog MCP",
+        "url": "https://shopify.dev/docs/agents/catalog/storefront-catalog"
+      },
+      {
+        "label": "Shopify: Global Catalog MCP",
+        "url": "https://shopify.dev/docs/agents/catalog/global-catalog"
+      },
+      {
+        "label": "Shopify: Cart MCP",
+        "url": "https://shopify.dev/docs/agents/carts-and-checkout/cart-mcp"
+      },
+      {
+        "label": "Shopify: Checkout MCP",
+        "url": "https://shopify.dev/docs/agents/carts-and-checkout/checkout-mcp"
+      },
+      {
+        "label": "Shopify: Customer Accounts MCP",
+        "url": "https://shopify.dev/docs/apps/build/customer-accounts-mcp"
+      },
+      {
+        "label": "Shopify: Flow",
+        "url": "https://help.shopify.com/en/manual/shopify-flow"
+      }
+    ],
+    "publishedAt": "2026-10-20",
+    "sourcesCheckedAt": "2026-10-20",
+    "minutes": 4,
+    "coverFormat": "svg",
+    "imageWidth": 1440,
+    "imageHeight": 960,
+    "imageAlt": "Three Shopify contexts: developer tools, merchant operations, and buyer commerce.",
+    "imageCaption": "Original workflow diagram. Suggested practice, not a product screenshot or measured result.",
+    "canonical": "https://cofounder.cx/blog/shopify-ai-mcp-practical-guide",
+    "imagePath": "/images/journal/shopify-ai-mcp-practical-guide.svg"
+  },
+  {
+    "site": "cofounder",
+    "topic": "mcp",
+    "slug": "best-mcps-practical-productivity",
+    "title": "MCPs for technical founders: connect tools without losing control of delivery",
+    "description": "Choose useful MCPs for engineers and technical founders. Compare tasks, costs, review needs, and a first-week test that protects your time.",
+    "quickAnswer": "Choose MCPs by the job: Upwork for work opportunities, Shopify for commerce, Zapier or Make for app handoffs, Notion and Todoist for organization, and GitHub, Figma, Stripe, or Supabase for specialist workflows. Test one before expanding.",
+    "category": "MCP workflows",
+    "bodyHtml": "<p>For an engineering workflow, start with GitHub for source context, Figma for design intent, and the relevant platform’s official server. Keep actions observable and verify the resulting state. A successful tool call is only one part of proving that a feature works for a user.</p><h2>Pick the outcome before the connection</h2><p>MCP is a way for an AI application to use connected tools and information. The useful question is which repeated task becomes easier to complete and check. The recommendations below are selected for concrete jobs and official documentation, not affiliate payout or promised income. They are current research recommendations, not a claim of hands-on testing of every service.</p><table><thead><tr><th>MCP</th><th>Best starting use</th><th>A small trial</th><th>What to check</th></tr></thead><tbody><tr><td>Upwork</td><td>Find or hire specialist work</td><td>Compare three projects with your actual portfolio evidence.</td><td>Check proposal terms, Connects, and confirmation; work is not guaranteed.</td></tr><tr><td>Shopify</td><td>Build and operate a commerce workflow</td><td>Review one product page or explore the correct commerce MCP surface.</td><td>Separate developer, merchant, and buyer access; confirm current eligibility.</td></tr><tr><td>Zapier</td><td>Connect work across business apps</td><td>Prepare a task or record update from approved information.</td><td>Enable only needed actions and check usage costs.</td></tr><tr><td>Make</td><td>Run a defined automation</td><td>Expose one tested scenario with clear inputs and outputs.</td><td>Plan duplicate handling, failures, and scope restrictions.</td></tr><tr><td>Notion</td><td>Find and maintain working knowledge</td><td>Turn approved notes into a decision page with source links.</td><td>Review workspace access and distinguish evidence from inference.</td></tr><tr><td>Todoist</td><td>Reduce forgotten commitments</td><td>Capture agreed tasks and review a realistic weekly list.</td><td>Verify dates and avoid filling every free hour.</td></tr><tr><td>GitHub</td><td>Shorten engineering coordination</td><td>Summarize an issue and prepare a focused code-review brief.</td><td>Inspect changes and tests before merging or deploying.</td></tr><tr><td>Figma</td><td>Carry design context into delivery</td><td>Inspect a selected design and prepare implementation questions.</td><td>Check visual fidelity, accessibility, and the user’s actual task.</td></tr><tr><td>Stripe</td><td>Understand and support payment workflows</td><td>Inspect an authorized business workflow or research an integration.</td><td>Start in the appropriate test environment; review live money actions.</td></tr><tr><td>Supabase</td><td>Work with application data and backend context</td><td>Inspect a development schema and plan a bounded improvement.</td><td>Use a scoped development project and review data access before changes.</td></tr></tbody></table><h2>To save time, remove one repeated handoff</h2><p>Choose a task you repeat each week: locating a brief, copying approved action items, preparing a project review, or assembling a job shortlist. Record how long it takes today. Connect the system that holds the relevant information and ask for one output. Include review time when comparing the new process with the old one.</p><h2>To save money, count the entire workflow</h2><p>Check whether the connection duplicates something you already pay for. Include the AI subscription, connector or automation usage, third-party app costs, setup, correction, and ongoing maintenance. A useful formula is: time saved multiplied by the value you assign that time, minus tool costs and extra review effort. Treat that as your planning estimate, not a guaranteed saving.</p><h2>To create income, attach the tool to a valuable service</h2><p>A connection can help you research a buyer, deliver a project, or operate a store. It does not create demand by itself. For this audience, test a bounded integration reliability review. Use a real sample, a clear scope, and a customer conversation. Keep the first offer small enough that you can deliver and learn without pretending to have skills you do not have.</p><h2>To make life better, protect what the saved time is for</h2><p>For everyday use, Todoist and Notion can be useful starting points for commitments and information. An approved calendar or email action through a bridge can reduce another handoff when needed. Keep shared schedules accurate and personal data limited to the task. Decide in advance what the recovered time supports: rest, family, a hobby, or a focused project. No MCP can guarantee happiness.</p><h2>A first-week experiment</h2><p>Choose one task and one connection. On the first attempt, request a read-only summary. Next, prepare a small change for review and verify its result. Repeat the workflow on another example and record mistakes. At the end of the week, compare time, cost, output quality, and how much attention it required. Keep, narrow, or remove the connection based on that evidence.</p><blockquote><p>Help me choose one connected workflow for this recurring task. First explain the required access, the expected output, and how I will check it. Start with a read-only review. Separate facts from guesses. Before changing records or spending money, show the exact proposed action. After an approved action, verify what happened and report anything unfinished.</p></blockquote><h2>A useful default stack</h2><p>For most nontechnical readers, start with the system where you already keep tasks or notes. Add Upwork when seeking or hiring freelance help, Shopify when running commerce, or GitHub and Figma when shipping software. Choose one automation bridge when you need it. Installing all ten is not a success measure; completing a useful task with less effort is.</p><h2>Continue with a related guide</h2><p><a href=\"/blog/upwork-mcp-freelance-workflow\">Upwork MCP for technical founders: scope the human expertise your build needs</a> · <a href=\"/blog/shopify-ai-mcp-practical-guide\">Shopify MCP for engineers: separate developer context from commerce actions</a></p><p>Explore the wider tool-learning library at <a href=\"https://aisuperpower.cc/\">AI Superpower</a>.</p>",
+    "faq": [
+      {
+        "question": "Which MCP should I start with?",
+        "answer": "Start with the official connection for the app that already holds the information for one recurring task. Prefer a narrow read-only trial before allowing changes."
+      },
+      {
+        "question": "Do MCPs save money automatically?",
+        "answer": "No. Subscriptions, usage, setup, and review can outweigh the benefit. Compare the whole workflow and remove connections that do not earn their place."
+      },
+      {
+        "question": "Can an MCP make me happier or successful faster?",
+        "answer": "It may reduce friction and free time for meaningful work or life outside work. Those are possibilities to test, not guaranteed personal or financial outcomes."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Upwork: official MCP",
+        "url": "https://www.upwork.com/ai/mcp"
+      },
+      {
+        "label": "Shopify: AI Toolkit",
+        "url": "https://shopify.dev/docs/apps/build/ai-toolkit"
+      },
+      {
+        "label": "Zapier: MCP quickstart",
+        "url": "https://docs.zapier.com/mcp/get-started/quickstart"
+      },
+      {
+        "label": "Make: MCP server",
+        "url": "https://help.make.com/make-mcp-server"
+      },
+      {
+        "label": "Notion: MCP",
+        "url": "https://developers.notion.com/guides/mcp/overview"
+      },
+      {
+        "label": "Todoist: official developer platform",
+        "url": "https://developer.todoist.com/"
+      },
+      {
+        "label": "GitHub: official MCP server",
+        "url": "https://github.com/github/github-mcp-server"
+      },
+      {
+        "label": "Figma: MCP setup",
+        "url": "https://help.figma.com/hc/en-us/articles/39216419318551-Get-started-with-the-Figma-MCP-server"
+      },
+      {
+        "label": "Stripe: MCP",
+        "url": "https://docs.stripe.com/mcp"
+      },
+      {
+        "label": "Supabase: MCP",
+        "url": "https://supabase.com/docs/guides/getting-started/mcp"
+      }
+    ],
+    "publishedAt": "2026-10-20",
+    "sourcesCheckedAt": "2026-10-20",
+    "minutes": 5,
+    "coverFormat": "svg",
+    "imageWidth": 1440,
+    "imageHeight": 960,
+    "imageAlt": "Choose a task, connect one tool, review the result, and measure the benefit.",
+    "imageCaption": "Original workflow diagram. Suggested practice, not a product screenshot or measured result.",
+    "canonical": "https://cofounder.cx/blog/best-mcps-practical-productivity",
+    "imagePath": "/images/journal/best-mcps-practical-productivity.svg"
+  },
+  {
     "site": "ranavibe",
     "slug": "forward-deployed-developer-handoff-checklist",
     "title": "A forward-deployed developer’s production handoff checklist",
@@ -28,7 +224,9 @@
     "imageAlt": "Workflow diagram: Explain the workflow → Transfer ownership → Rehearse failure → Confirm readiness",
     "imageWidth": 1400,
     "imageHeight": 788,
-    "imageCaption": "Original workflow diagram. A suggested practice, not measured results."
+    "imageCaption": "Original workflow diagram. A suggested practice, not measured results.",
+    "imagePath": "/images/journal/forward-deployed-developer-handoff-checklist.png",
+    "sourcesCheckedAt": "2026-10-16"
   },
   {
     "site": "ranavibe",
@@ -59,7 +257,9 @@
     "imageAlt": "Workflow diagram: Understand the workflow → Build within boundaries → Verify production behavior → Hand over ownership",
     "imageWidth": 1400,
     "imageHeight": 788,
-    "imageCaption": "Original workflow diagram. A suggested practice, not measured results."
+    "imageCaption": "Original workflow diagram. A suggested practice, not measured results.",
+    "imagePath": "/images/journal/forward-deployed-developer-production-handoff.png",
+    "sourcesCheckedAt": "2026-10-16"
   },
   {
     "site": "ranavibe",
@@ -94,7 +294,9 @@
     "imageAlt": "Workflow diagram: Set system boundaries → Implement in small slices → Review independently → Operate with ownership",
     "imageWidth": 1400,
     "imageHeight": 788,
-    "imageCaption": "Original workflow diagram. A suggested practice, not measured results."
+    "imageCaption": "Original workflow diagram. A suggested practice, not measured results.",
+    "imagePath": "/images/journal/modern-engineering-team-ai-responsibilities.png",
+    "sourcesCheckedAt": "2026-10-16"
   },
   {
     "site": "ranavibe",
@@ -129,6 +331,8 @@
     "imageAlt": "Workflow diagram: Agree on behavior → Build and inspect → Meet the quality bar → Learn after release",
     "imageWidth": 1400,
     "imageHeight": 788,
-    "imageCaption": "Original workflow diagram. A suggested practice, not measured results."
+    "imageCaption": "Original workflow diagram. A suggested practice, not measured results.",
+    "imagePath": "/images/journal/agile-ai-engineering-definition-of-done.png",
+    "sourcesCheckedAt": "2026-10-16"
   }
 ]
