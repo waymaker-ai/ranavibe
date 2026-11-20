@@ -61,7 +61,7 @@ jobs:
         continue-on-error: true
 
       - name: Run tests
-        run: pnpm -r test --if-present
+        run: pnpm -r --if-present test
         continue-on-error: true
 
       - name: Publish to npm (dry run)
