@@ -1,0 +1,45 @@
+name: MCP consumer install
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - packages/mcp-server/**
+      - .github/workflows/mcp-consumer.yml
+  pull_request:
+    paths:
+      - packages/mcp-server/**
+      - .github/workflows/mcp-consumer.yml
+permissions:
+  contents: read
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 8.12.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: pnpm --filter @waymakerai/aicofounder-mcp-server... install --frozen-lockfile
+      - run: pnpm --filter @waymakerai/aicofounder-core build
+      - run: pnpm --filter @waymakerai/aicofounder-mcp-server build
+      - name: Pack and install as an external customer
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/consumer" "$RUNNER_TEMP/packed"
+          (cd packages/core && pnpm pack --pack-destination "$RUNNER_TEMP/packed")
+          cd packages/mcp-server
+          pnpm pack --pack-destination "$RUNNER_TEMP/packed"
+          cd "$RUNNER_TEMP/consumer"
+          npm install --ignore-scripts --no-fund --no-audit "$RUNNER_TEMP"/packed/*.tgz
+          printf '%s\n' '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18","clientInfo":{"name":"consumer-check","version":"1"},"capabilities":{}}}' '{"jsonrpc":"2.0","method":"notifications/initialized"}' '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}' '{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"cofounder_estimate_cost","arguments":{"model":"gpt-4o","input_tokens":0,"output_tokens":0}}}' | timeout 15 node_modules/.bin/aicofounder-mcp > result.jsonl
+          node -e "const r=require('fs').readFileSync('result.jsonl','utf8').trim().split('\n').map(JSON.parse); if(!r.some(x=>x.id===2 && x.result?.tools?.length)) process.exit(1); if(!r.some(x=>x.id===3 && !x.result?.isError && /0\\.00/.test(x.result?.content?.[0]?.text))) process.exit(1); console.log('Consumer discovery and zero-token cost calculation passed')"
+      - name: Save the two tested pilot packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: cofounder-mcp-consumer-packages
+          path: ${{ runner.temp }}/packed/*.tgz
+          retention-days: 30

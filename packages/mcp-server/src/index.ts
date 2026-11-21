@@ -19,8 +19,8 @@ import * as fs from 'fs';
 
 const server = new Server({
   name: 'aicofounder-mcp',
-  version: '2.1.0',
-});
+  version: '2.1.1',
+}, {capabilities: {tools: {}, resources: {}, prompts: {}}});
 
 // ============================================================================
 // PII Detection Patterns
@@ -2153,7 +2153,7 @@ LIABILITY: The operators of this system make no warranties, express or implied, 
         output += `## Analysis Details\n\n`;
         output += `- Word count: ${wordCount}\n`;
         output += `- Sentences: ${sentences.length}\n`;
-        output += `- Avg sentence length: ${avgSentenceLen.toFixed(1)} words\n`;
+        output += `- Avg sentence length: ${avgSentenceLength.toFixed(1)} words\n`;
         output += `- Paragraphs: ${paragraphs.length}\n`;
         output += `- Has headings: ${hasHeadings ? 'Yes' : 'No'}\n`;
         output += `- Has bullet points: ${hasBullets ? 'Yes' : 'No'}\n`;

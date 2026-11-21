@@ -1,6 +1,6 @@
 {
   "name": "@waymakerai/aicofounder-core",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "CoFounder Core SDK - Unified LLM client with cost optimization",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -17,7 +17,7 @@
     "README.md"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm",
+    "build": "tsup src/index.ts --format cjs,esm && tsc --emitDeclarationOnly --noCheck",
     "build:no-dts": "tsup src/index.ts --format cjs,esm",
     "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
     "test": "vitest",

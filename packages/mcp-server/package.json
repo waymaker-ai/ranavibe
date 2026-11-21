@@ -1,6 +1,6 @@
 {
   "name": "@waymakerai/aicofounder-mcp-server",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "CoFounder MCP server for Claude integration",
   "bin": {
     "aicofounder-mcp": "./dist/index.js"
@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",
-    "@waymakerai/aicofounder-core": "workspace:*"
+    "@waymakerai/aicofounder-core": "^2.0.1"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",

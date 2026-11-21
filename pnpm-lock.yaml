@@ -695,7 +695,7 @@ importers:
         specifier: ^1.29.0
         version: 1.29.0(zod@3.25.76)
       '@waymakerai/aicofounder-core':
-        specifier: workspace:*
+        specifier: ^2.0.1
         version: link:../core
     devDependencies:
       '@types/node':
