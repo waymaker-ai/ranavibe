@@ -19,8 +19,8 @@ import * as fs from 'fs';
 
 const server = new Server({
   name: 'aicofounder-mcp',
-  version: '2.1.0',
-});
+  version: '2.1.1',
+}, {capabilities: {tools: {}, resources: {}, prompts: {}}});
 
 // ============================================================================
 // PII Detection Patterns
