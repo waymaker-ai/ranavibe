@@ -315,7 +315,7 @@ Always:
 - Show CLI commands`,
   prompt_starters: [
     'How do I add Gemini 2.0 Flash to my project?',
-    'What's the cheapest provider for simple tasks?',
+    "What's the cheapest provider for simple tasks?",
     'Help me implement RAG with vector search',
     'How do I optimize my LLM costs?',
   ],

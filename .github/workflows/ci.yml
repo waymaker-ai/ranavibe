@@ -77,7 +77,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Type check all packages
-        run: pnpm -r typecheck --if-present
+        run: pnpm -r --if-present typecheck
 
   test:
     name: Test & Coverage
@@ -196,7 +196,15 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build all packages
+      # The published libraries retain their Node 18 build coverage. The apps
+      # resolve Next.js 16, which requires Node >=20.9; build the full workspace
+      # on Node 20 instead of claiming that those apps support Node 18.
+      - name: Build library packages on Node 18
+        if: matrix.node-version == '18.x'
+        run: pnpm --filter './packages/**' -r build
+
+      - name: Build the full workspace on Node 20
+        if: matrix.node-version != '18.x'
         run: pnpm -r build
 
   format:
