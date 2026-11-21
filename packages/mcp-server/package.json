@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",
-    "@waymakerai/aicofounder-core": "workspace:*"
+    "@waymakerai/aicofounder-core": "^2.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",
