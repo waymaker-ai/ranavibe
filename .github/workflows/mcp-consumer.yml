@@ -30,9 +30,16 @@ jobs:
         shell: bash
         run: |
           mkdir -p "$RUNNER_TEMP/consumer" "$RUNNER_TEMP/packed"
+          (cd packages/core && pnpm pack --pack-destination "$RUNNER_TEMP/packed")
           cd packages/mcp-server
           pnpm pack --pack-destination "$RUNNER_TEMP/packed"
           cd "$RUNNER_TEMP/consumer"
           npm install --ignore-scripts --no-fund --no-audit "$RUNNER_TEMP"/packed/*.tgz
           printf '%s\n' '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18","clientInfo":{"name":"consumer-check","version":"1"},"capabilities":{}}}' '{"jsonrpc":"2.0","method":"notifications/initialized"}' '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}' | timeout 15 node_modules/.bin/aicofounder-mcp > result.jsonl
           node -e "const r=require('fs').readFileSync('result.jsonl','utf8').trim().split('\n').map(JSON.parse); if(!r.some(x=>x.id===2 && x.result?.tools?.length)) process.exit(1); console.log('Consumer tool discovery passed')"
+      - name: Save the two tested pilot packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: cofounder-mcp-consumer-packages
+          path: ${{ runner.temp }}/packed/*.tgz
+          retention-days: 30
